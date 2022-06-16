@@ -17,9 +17,9 @@ analytics:
     anonymize_ip         : # true, false (default)
 
 # Reading Files
-include:
-  - .htaccess
-  - _pages
+#include:
+#  - .htaccess
+#  - _pages
   
 collections:
 pages:
