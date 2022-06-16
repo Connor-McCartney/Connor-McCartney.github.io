@@ -23,7 +23,7 @@ include:
   
 collections:
 pages:
-#  output: false #true
+  output: false #true
   permalink: none #/:path/
   
 defaults:
