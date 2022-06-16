@@ -6,4 +6,4 @@ title: Misc
 <br>
 [Resources](/misc/resources)
 
-[KDE-Plasma](/misc/kde-plasma)
+[My KDE Plasma customisations](/misc/kde-plasma)
