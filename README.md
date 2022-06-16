@@ -2,4 +2,4 @@
 
 ## <https://connormccartney.github.io/blog/>
 
-Forked from https://github.com/mmistakes/minimal-mistakes
+(Forked from https://github.com/mmistakes/minimal-mistakes)
