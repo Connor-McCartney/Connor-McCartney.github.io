@@ -1,5 +1,5 @@
 ---
-permalink: /cryptography/rsa/can't-login-ICTF-2022
+permalink: /cryptography/rsa/cant-login-ICTF-2022
 title: Can't Login - Incognito CTF 2022
 ---
 
