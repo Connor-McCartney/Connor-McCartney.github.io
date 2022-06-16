@@ -1,6 +1,6 @@
 ---
-permalink: /resources/
-title: Resources
+permalink: /misc/
+title: Misc
 ---
 
 <br>
