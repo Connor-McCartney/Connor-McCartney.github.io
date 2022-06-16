@@ -9,7 +9,7 @@ title: RSA
 
 
 
-### Key Recovery - [San Diego CTF 2022](https://github.com/Connor-McCartney/CTF_Files/tree/main/2022/SDCTF)
+### [Key Recovery - San Diego CTF 2022](https://github.com/Connor-McCartney/CTF_Files/tree/main/2022/SDCTF/key-recovery)
 
 This challenge involved fixing an OpenSSH Private Key. Let's start by analysing a dummy, <br>
 non-corrupted key: 
@@ -108,7 +108,7 @@ print(pem.decode())
 
 And with this, we can 'almost' re-create the openssh private key:
 
-![image](https://github.com/Connor-McCartney/Connor-McCartney.github.io/blob/main/_pages/cryptography/rsa/images/re-creation.png)
+![image](https://raw.githubusercontent.com/Connor-McCartney/Connor-McCartney.github.io/main/_pages/cryptography/rsa/images/re-creation.png)
 
 
 Two sections are different, the check-ints and the comment at bottom. <br>
