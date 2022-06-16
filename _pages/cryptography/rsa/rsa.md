@@ -23,20 +23,20 @@ We can generate a public pem key from this:
 Using similar technique in Information Paradox from Space Heroes CTF 2022 <br>
 we can get n and e from the public key:
 
-![image](https://raw.githubusercontent.com/Connor-McCartney/CTF-files/main/SDCTF-2022/screenshots/cyberchef.png](https://raw.githubusercontent.com/Connor-McCartney/Connor-McCartney.github.io/main/_pages/cryptography/rsa/images/cyberchef.png)
+![image](https://raw.githubusercontent.com/Connor-McCartney/Connor-McCartney.github.io/main/_pages/cryptography/rsa/images/cyberchef.png)
 
 Now let's analyse the openssh private key. I've highlighted values in yellow, and headers in green.
 We see n and e appear twice:
 
-![image](https://raw.githubusercontent.com/Connor-McCartney/CTF-files/main/SDCTF-2022/screenshots/n_and_e.png](https://raw.githubusercontent.com/Connor-McCartney/Connor-McCartney.github.io/main/_pages/cryptography/rsa/images/n_and_e.png)
+![image](https://raw.githubusercontent.com/Connor-McCartney/Connor-McCartney.github.io/main/_pages/cryptography/rsa/images/n_and_e.png)
 
 From this blog <https://dnaeon.github.io/openssh-private-key-binary-format/> I found this table useful:
 
-![image](https://raw.githubusercontent.com/Connor-McCartney/CTF-files/main/SDCTF-2022/screenshots/explanation.png](https://raw.githubusercontent.com/Connor-McCartney/Connor-McCartney.github.io/main/_pages/cryptography/rsa/images/explanation.png)
+![image](https://raw.githubusercontent.com/Connor-McCartney/Connor-McCartney.github.io/main/_pages/cryptography/rsa/images/explanation.png)
 
 So next value is d (in blue):
 
-![image](https://raw.githubusercontent.com/Connor-McCartney/CTF-files/main/SDCTF-2022/screenshots/d.png](https://raw.githubusercontent.com/Connor-McCartney/Connor-McCartney.github.io/main/_pages/cryptography/rsa/images/d.png)
+![image](https://raw.githubusercontent.com/Connor-McCartney/Connor-McCartney.github.io/main/_pages/cryptography/rsa/images/d.png)
 
 This is enough to create our own PEM private key:
 
@@ -108,7 +108,7 @@ print(pem.decode())
 
 And with this, we can 'almost' re-create the openssh private key:
 
-![image](https://raw.githubusercontent.com/Connor-McCartney/CTF-files/main/SDCTF-2022/screenshots/re-creation.png](https://github.com/Connor-McCartney/Connor-McCartney.github.io/blob/main/_pages/cryptography/rsa/images/re-creation.png)
+![image](https://github.com/Connor-McCartney/Connor-McCartney.github.io/blob/main/_pages/cryptography/rsa/images/re-creation.png)
 
 
 Two sections are different, the check-ints and the comment at bottom. <br>
@@ -120,7 +120,7 @@ Now the process to fix the key in this challenge is the exact same process <br>
 (luckily the check-ints and comment were not corrupted, so I could just modify those). <br>
 Here is the final solution (the flag was the sha256 hash):
 
-![image](https://raw.githubusercontent.com/Connor-McCartney/CTF-files/main/SDCTF-2022/screenshots/final.png](https://raw.githubusercontent.com/Connor-McCartney/Connor-McCartney.github.io/main/_pages/cryptography/rsa/images/final.png)
+![image](https://raw.githubusercontent.com/Connor-McCartney/Connor-McCartney.github.io/main/_pages/cryptography/rsa/images/final.png)
 
 
 
