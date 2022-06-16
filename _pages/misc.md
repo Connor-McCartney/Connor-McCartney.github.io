@@ -4,5 +4,4 @@ title: Misc
 ---
 
 <br>
-
-[Resources](/misc/resources/)
+[Resources](/misc/resources)
