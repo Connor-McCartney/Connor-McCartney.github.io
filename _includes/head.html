@@ -13,28 +13,6 @@
   document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
 </script>
 
-
-
-<!-- MathJax Latex -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    jax: ["input/TeX", "output/HTML-CSS"],
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ["\\(", "\\)"] ],
-      displayMath: [ ['$$', '$$'], ["\\[", "\\]"] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-    //,
-    //displayAlign: "left",
-    //displayIndent: "2em"
-  });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
-That’s it.
-
-
-
 <!-- For all browsers -->
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
