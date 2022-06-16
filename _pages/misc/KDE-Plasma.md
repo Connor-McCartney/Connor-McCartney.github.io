@@ -44,7 +44,7 @@ Settings > Show Menubar > disable
 
 
 ## Remove firefox
-<br>
+
 ```
 sudo dnf remove firefox 
 rm -r ~/.mozilla 
