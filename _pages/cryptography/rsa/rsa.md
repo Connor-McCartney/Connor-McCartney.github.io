@@ -9,7 +9,7 @@ title: RSA
 __vulnerability: partial OpenSSH private key__ 
 
 
-# [Can't Login - Incognito CTF 2022](/cryptography/rsa/can't-login-ICTF-2022) 
+# [Can't Login - Incognito CTF 2022](/cryptography/rsa/cant-login-ICTF-2022) 
 __vulnerability: common ssh-key password__
 
 
