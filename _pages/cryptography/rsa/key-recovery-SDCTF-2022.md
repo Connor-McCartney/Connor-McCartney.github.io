@@ -1,6 +1,6 @@
 ---
 permalink: /cryptography/rsa/key-recovery-SDCTF-2022
-title: RSA
+title: Key Recovery SDCTF 2022
 ---
 
 
