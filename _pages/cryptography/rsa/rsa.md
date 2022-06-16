@@ -3,7 +3,7 @@ permalink: /cryptography/rsa
 title: RSA
 ---
 
-<br>
+
 # [Key Recovery - San Diego CTF 2022](/cryptography/rsa/key-recovery-SDCTF-2022) <br>
 __vulnerability: partial OpenSSH private key__ 
 
