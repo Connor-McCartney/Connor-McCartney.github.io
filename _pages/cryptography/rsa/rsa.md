@@ -9,11 +9,8 @@ title: RSA
 
 
 
-### Key Recovery - San Diego CTF 2022
-
-__vulnerability: partial private key___
-
-[Writeup](/cryptography/rsa/key-recovery-SDCTF-2022)
+# [Key Recovery - San Diego CTF 2022](/cryptography/rsa/key-recovery-SDCTF-2022) <br>
+__vulnerability: partial private key__ <br>
 
 
 
