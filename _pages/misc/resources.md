@@ -4,7 +4,6 @@ title: Resources
 ---
 
 <br>
-
 ## Recommended
 
 MathJax - LaTex for websites: <https://www.mathjax.org/#gettingstarted> <br>
