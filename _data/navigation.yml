@@ -1,5 +1,5 @@
 main:
   - title: "Resources"
     url: /resources/
-  - title: "Cryptography"
-    url: /cryptography/
+  - title: "Misc"
+    url: /misc/
