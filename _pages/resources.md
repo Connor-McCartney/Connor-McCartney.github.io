@@ -11,13 +11,13 @@ MathJax - LaTex for websites: <https://www.mathjax.org/#gettingstarted> <br>
 uBlock Origin - great ad blocker <https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en> <br>
 sagemath - mathematics software <https://www.sagemath.org/> <br>
 
-# Libraries
+## Libraries
 
-Python input - pynput <https://pypi.org/project/pynput/> <br>
-Python progress bar - tqdm <https://github.com/tqdm/tqdm> <br>
+pynput - python input <https://pypi.org/project/pynput/> <br>
+tqdm - Python progress bar <https://github.com/tqdm/tqdm> <br>
+pwntools - CTF framework <https://docs.pwntools.com/en/stable/> <br>
 
-
-# Other
+## Other
 
 Online LaTeX editor: <https://www.codecogs.com/eqnedit.php> <br>
 HTTP file server <https://www.rejetto.com/hfs/?f=dl> <br>
