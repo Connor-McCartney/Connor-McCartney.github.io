@@ -4,7 +4,7 @@ title: KDE-Plasma
 ---
 
 
-#### Configure shortcuts (my preferences)
+## Configure shortcuts (my preferences)
 
 Open shortcuts
 
@@ -19,13 +19,13 @@ Switch to next desktop: change to control+shift+right <br>
 Switch to previous desktop: change to control+shift+left <br>
 
 
-#### Setup virtual desktops
+## Setup virtual desktops
 
 Open virtual desktops <br>
 I like to have 4. Turn navigation wraps around off. 
 
 
-#### Configure konsole
+## Configure konsole
 
 Open konsole<br>
 Settings > Manage Profiles <br>
@@ -43,7 +43,7 @@ Settings > Toolbars shown > disable all
 Settings > Show Menubar > disable
 
 
-#### Remove firefox
+## Remove firefox
 <br>
 ```
 sudo dnf remove firefox 
@@ -51,7 +51,7 @@ rm -r ~/.mozilla
 rm -r ~/.cache/mozilla 
 ```
   
-####  Remove krunner desktop 
+##  Remove krunner desktop 
 
 Add the following to ~/.config/kdeglobals <br>
 
@@ -60,26 +60,26 @@ Add the following to ~/.config/kdeglobals <br>
 run_command=false
 ```
 
-#### Disable screen locking/power saving
+## Disable screen locking/power saving
 
 Advanced power settings > Stop charging only once below > 80% <br>
 Energy saving > On AC Power > turn everything off except dim screen and energy saving <br>
 Screen locking > disable
 
-#### Grub Customizer
+## Grub Customizer
 
 Disable look for other operating systems. <br>
 Boot default entry after 1 second. <br>
 Kernel parameters: quiet loglevel=1 nowatchdog nvme_load=YES fsck.mode=skip modprobe.blacklist=iTCO_wdt
 
-#### Mirage global theme
+## Mirage global theme
 <br>
 
-#### Desktop effects
+## Desktop effects
 
 Turn on wobbly windows, magic lamp, translucency, fall apart
 
-#### Fix monitor bug
+## Fix monitor bug
 
 Autostart > Add login script:
 
@@ -88,13 +88,13 @@ Autostart > Add login script:
 killall plasmashell; sleep 3; plasmashell
 ```
 
-#### Disable wallet
+## Disable wallet
 
 sudo dnf install kwalletmanager <br>
 Then go to System Settings>Account Details>KDE Wallet and uncheck "Enable the KDE wallet subsystem"
 
 
-#### Forgetting wifi password
+## Forgetting wifi password
 
 Go to your network connections. From there click on wireless tab. Choose your connection and then click the edit button. <br>
 Make sure your password is entered then click on the wireless security tab. <br>
