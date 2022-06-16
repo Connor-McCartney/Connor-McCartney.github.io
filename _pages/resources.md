@@ -5,7 +5,7 @@ title: Resources
 
 <br>
 
-## Useful (highly recommended)
+## Recommended
 
 MathJax - LaTex for websites: <https://www.mathjax.org/#gettingstarted> <br>
 uBlock Origin - great ad blocker <https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en> <br>
