@@ -13,7 +13,7 @@
     {% include head.html %}
     {% include head/custom.html %}
     
-    {% include mathjax_support.html %}
+    {% include _mathjax_support.html %}
   </head>
 
   <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
