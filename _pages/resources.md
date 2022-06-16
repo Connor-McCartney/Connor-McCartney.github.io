@@ -22,7 +22,7 @@ pwntools - CTF framework <https://docs.pwntools.com/en/stable/> <br>
 
 Wayback Machine <http://archive.org/> <br>
 CyberChef <https://gchq.github.io/CyberChef/> <br>
-Cipher Identifier - <https://www.dcode.fr/cipher-identifier> <br>
+Cipher Identifier <https://www.dcode.fr/cipher-identifier> <br>
 AI substitution cipher solvers <https://www.guballa.de/substitution-solver> <br>
 https://www.boxentriq.com/code-breaking/cryptogram <br>
 <http://quipqiup.com/> <br>
