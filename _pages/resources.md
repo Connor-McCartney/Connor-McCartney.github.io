@@ -16,7 +16,7 @@ KeePassXC - offline password manager <https://keepassxc.org/> <br>
 
 pynput - python input <https://pypi.org/project/pynput/> <br>
 tqdm - python progress bar <https://github.com/tqdm/tqdm> <br>
-pwntools - CTF framework <https://docs.pwntools.com/en/stable/> <br>
+pwntools - python CTF framework <https://docs.pwntools.com/en/stable/> <br>
 
 ## CTF
 
