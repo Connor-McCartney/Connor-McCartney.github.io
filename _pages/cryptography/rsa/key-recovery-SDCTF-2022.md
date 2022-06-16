@@ -1,3 +1,8 @@
+---
+permalink: /cryptography/rsa/key-recovery-SDCTF-2022
+title: RSA
+---
+
 
 [Challenge Files](https://github.com/Connor-McCartney/CTF_Files/tree/main/2022/SDCTF/key-recovery)
 
