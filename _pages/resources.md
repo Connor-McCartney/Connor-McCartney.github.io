@@ -25,5 +25,5 @@ ssh into windows <https://theitbros.com/ssh-into-windows/> <br>
 ssh into linux <https://www.youtube.com/watch?v=5MYrES7b8mE&list=WL> <br>
 MS office alternative <https://www.onlyoffice.com/> <br>
 AI substitution cipher solvers <https://www.guballa.de/substitution-solver> <http://quipqiup.com/> <br>
-After Fedora install <https://www.youtube.com/watch?v=RrRpXs2pkzg>  * but don't set Fastestmirror=true  <br>
+After Fedora install <https://www.youtube.com/watch?v=RrRpXs2pkzg>  * but don't set fastestmirror=true  <br>
 Integer Sequences Encyclopedia <https://oeis.org/> <br>
