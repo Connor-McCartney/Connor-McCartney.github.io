@@ -7,4 +7,4 @@ title: Cryptography
 Cryptography is a big hobby of mine. I find it to be a very balanced combination of mathematics and programming. <br>
 Here is a record of various CTF challenges grouped by category. 
 
-# [RSA](/cryptography/rsa)
+<span style="font-size:4em;">   [RSA](/cryptography/rsa)   </span>
