@@ -24,6 +24,7 @@ Cipher Identifier <https://www.dcode.fr/cipher-identifier> <br>
 AI substitution cipher solvers <https://www.guballa.de/substitution-solver> <br>
 <https://www.boxentriq.com/code-breaking/cryptogram> <br>
 <http://quipqiup.com> <br>
+Hashcat Example Hashes <https://hashcat.net/wiki/doku.php?id=example_hashes> <br>
 
 ## Other
 
