@@ -1,6 +1,8 @@
 main:
   - title: "Misc"
     url: /misc/
+  - title: "HTB"
+    url: /htb/
   - title: "Cryptography"
     url: /cryptography/
 
