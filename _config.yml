@@ -4,7 +4,7 @@ title: "About"
 minimal_mistakes_skin    : "dark" #  "dark", "neon", "mint (light)", "plum (purple)", 
 
 # SEO Related
-google_site_verification : google-site-verification=3mYPCG7y6WG1NMJgJkysZfDG1TRDwPCGMQQn9ht-soc
+google_site_verification : "3mYPCG7y6WG1NMJgJkysZfDG1TRDwPCGMQQn9ht-soc" #https://search.google.com/search-console
 
 # Analytics
 analytics:
