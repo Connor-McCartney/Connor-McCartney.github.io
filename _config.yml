@@ -3,11 +3,8 @@ title: "About"
 # theme                
 minimal_mistakes_skin    : "dark" #  "dark", "neon", "mint (light)", "plum (purple)", 
 
-google:
-  search_engine_id       : # YOUR_SEARCH_ENGINE_ID
-  instant_search         : # false (default), true
 # SEO Related
-google_site_verification :
+google_site_verification : google-site-verification=3mYPCG7y6WG1NMJgJkysZfDG1TRDwPCGMQQn9ht-soc
 
 # Analytics
 analytics:
