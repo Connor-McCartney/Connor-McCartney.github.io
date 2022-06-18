@@ -334,3 +334,7 @@ Info: Upload successful!
 ```
 
 <br>
+
+
+
+cat C:/Users/legacyy/AppData/Roaming/Microsoft/Windows/PowerShell/PSReadLine/ConsoleHost_history.txt
