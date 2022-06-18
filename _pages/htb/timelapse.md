@@ -156,3 +156,12 @@ It contains a pfx file. I didn't know what it was so I googled it: https://www.g
 Then the first link told me how to extract private key: `openssl pkcs12 -in [yourfile.pfx] -nocerts -out [drlive.key]`
 
 <br>
+
+```
+[connor@fedora timelapse]$ openssl pkcs12 -in legacyy_dev_auth.pfx -nocerts -out priv.key
+Enter Import Password:
+```
+
+<br>
+
+But again it is password protected.
