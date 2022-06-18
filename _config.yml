@@ -3,16 +3,6 @@ title: "About"
 # theme                
 minimal_mistakes_skin    : "dark" #  "dark", "neon", "mint (light)", "plum (purple)", 
 
-# SEO Related
-google_site_verification : "3mYPCG7y6WG1NMJgJkysZfDG1TRDwPCGMQQn9ht-soc" #https://search.google.com/search-console
-
-# Analytics
-analytics:
-  provider               : false # false (default), "google", "google-universal", "google-gtag", "custom"
-  google:
-    tracking_id          :
-    anonymize_ip         : # true, false (default)
-
 # Reading Files
 include:
   - _pages
