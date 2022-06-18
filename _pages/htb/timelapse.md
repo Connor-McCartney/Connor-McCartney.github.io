@@ -48,3 +48,29 @@ Nmap done: 1 IP address (1 host up) scanned in 60.62 seconds
 
 Note the SMB protocol - we can enumerate it with [smbmap](https://github.com/ShawnDEvans/smbmap):
 
+```
+[connor@fedora smbmap]$ sudo python smbmap.py -H 10.10.11.152 -u guest
+
+    ________  ___      ___  _______   ___      ___       __         _______
+   /"       )|"  \    /"  ||   _  "\ |"  \    /"  |     /""\       |   __ "\
+  (:   \___/  \   \  //   |(. |_)  :) \   \  //   |    /    \      (. |__) :)
+   \___  \    /\  \/.    ||:     \/   /\   \/.    |   /' /\  \     |:  ____/
+    __/  \   |: \.        |(|  _  \  |: \.        |  //  __'  \    (|  /
+   /" \   :) |.  \    /:  ||: |_)  :)|.  \    /:  | /   /  \   \  /|__/ \
+  (_______/  |___|\__/|___|(_______/ |___|\__/|___|(___/    \___)(_______)
+ -----------------------------------------------------------------------------
+     SMBMap - Samba Share Enumerator | Shawn Evans - ShawnDEvans@gmail.com   
+                     https://github.com/ShawnDEvans/smbmap
+
+                                                                                                    
+[+] IP: 10.10.11.152:445        Name: 10.10.11.152              Status: Authenticated
+        Disk                                                    Permissions     Comment
+        ----                                                    -----------     -------
+        ADMIN$                                                  NO ACCESS       Remote Admin
+        C$                                                      NO ACCESS       Default share
+        IPC$                                                    READ ONLY       Remote IPC
+        NETLOGON                                                NO ACCESS       Logon server share 
+        Shares                                                  READ ONLY
+        SYSVOL                                                  NO ACCESS       Logon server share 
+```
+
