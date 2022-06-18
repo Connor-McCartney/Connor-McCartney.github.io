@@ -262,5 +262,10 @@ nx143vIioHYMiGCnKsHdWiMrG2UWLOoeUrlUmpr069kY/nn7+zSEa2pA
 -----END CERTIFICATE-----
 ```
 
-Next I built [evil-winrm](https://github.com/Hackplayers/evil-winrm)
+Next I installed [evil-winrm](https://github.com/Hackplayers/evil-winrm) with
+
+```
+sudo dnf remove ruby && sudo dnf install ruby-devel
+gem install evil-winrm
+```
 
