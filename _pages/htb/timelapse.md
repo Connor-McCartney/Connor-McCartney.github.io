@@ -112,7 +112,8 @@ Archive:  winrm_backup.zip
 
 <br>
 
-We find a password protected zip file.
+We find a password protected zip file. <br>
+I followed this to install johntheripper: <https://github.com/openwall/john/blob/bleeding-jumbo/doc/INSTALL-FEDORA>
 
 <br>
 
