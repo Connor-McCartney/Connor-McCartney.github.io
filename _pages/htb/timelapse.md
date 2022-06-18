@@ -118,4 +118,41 @@ I used [fcrackzip](https://github.com/foreni-packages/fcrackzip) and rockyou:
 
 <br>
 
+```
+[connor@fedora timelapse]$ time fcrackzip -D -u winrm_backup.zip -p rockyou.txt
+sh: -c: line 1: unexpected EOF while looking for matching `"'
+sh: -c: line 2: syntax error: unexpected end of file
+sh: -c: line 1: unexpected EOF while looking for matching `"'
+sh: -c: line 2: syntax error: unexpected end of file
+sh: -c: line 1: unexpected EOF while looking for matching ``'
+sh: -c: line 2: syntax error: unexpected end of file
 
+
+PASSWORD FOUND!!!!: pw == supremelegacy
+
+real    1m3.700s
+user    0m21.971s
+sys     0m39.765s
+```
+
+<br>
+
+Now we can open it: 
+
+<br>
+
+```
+[connor@fedora timelapse]$ unzip winrm_backup.zip 
+Archive:  winrm_backup.zip
+[winrm_backup.zip] legacyy_dev_auth.pfx password: 
+  inflating: legacyy_dev_auth.pfx    
+[connor@fedora timelapse]$ l
+legacyy_dev_auth.pfx  rockyou.txt  winrm_backup.zip
+```
+
+<br>
+
+It contains a pfx file. I didn't know what it was so I googled it: https://www.google.com/search?q=pfx+file&oq=pfx+file <br>
+Then the first link told me how to extract private key: `openssl pkcs12 -in [yourfile.pfx] -nocerts -out [drlive.key]`
+
+<br>
