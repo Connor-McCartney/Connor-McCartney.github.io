@@ -114,7 +114,7 @@ Archive:  winrm_backup.zip
 
 We find a password protected zip file. <br>
 
-I used [fcrackzip](https://github.com/hyc/fcrackzip) and rockyou:
+I used [fcrackzip](https://github.com/foreni-packages/fcrackzip) and rockyou:
 
 <br>
 
