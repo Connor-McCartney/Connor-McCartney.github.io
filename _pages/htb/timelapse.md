@@ -74,3 +74,32 @@ Note the SMB protocol - we can enumerate it with [smbmap](https://github.com/Sha
         SYSVOL                                                  NO ACCESS       Logon server share 
 ```
 
+Next let's try access the READ ONLY disks.
+
+```
+[connor@fedora timelapse]$ smbclient //10.10.11.152/Shares
+Password for [SAMBA\connor]:
+Try "help" to get a list of possible commands.
+smb: \> ls
+  .                                   D        0  Tue Oct 26 01:39:15 2021
+  ..                                  D        0  Tue Oct 26 01:39:15 2021
+  Dev                                 D        0  Tue Oct 26 05:40:06 2021
+  HelpDesk                            D        0  Tue Oct 26 01:48:42 2021
+
+                6367231 blocks of size 4096. 2442478 blocks available
+smb: \> cd Dev
+smb: \Dev\> ls
+  .                                   D        0  Tue Oct 26 05:40:06 2021
+  ..                                  D        0  Tue Oct 26 05:40:06 2021
+  winrm_backup.zip                    A     2611  Tue Oct 26 01:46:42 2021
+
+                6367231 blocks of size 4096. 2442478 blocks available
+smb: \Dev\> get winrm_backup.zip 
+getting file \Dev\winrm_backup.zip of size 2611 as winrm_backup.zip (7.3 KiloBytes/sec) (average 7.3 KiloBytes/sec)
+smb: \Dev\> ^C
+[connor@fedora timelapse]$ unzip winrm_backup.zip 
+Archive:  winrm_backup.zip
+[winrm_backup.zip] legacyy_dev_auth.pfx password: 
+```
+
+We find a password protected zip file. 
