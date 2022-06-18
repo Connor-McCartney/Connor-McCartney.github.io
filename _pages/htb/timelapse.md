@@ -152,7 +152,7 @@ legacyy_dev_auth.pfx  rockyou.txt  winrm_backup.zip
 
 <br>
 
-It contains a pfx file. I didn't know what it was so I googled it: https://www.google.com/search?q=pfx+file&oq=pfx+file <br>
+It contains a pfx file. I didn't know what it was so I googled it: <https://www.google.com/search?q=pfx+file&oq=pfx+file> <br>
 Then the first link told me how to extract private key: `openssl pkcs12 -in [yourfile.pfx] -nocerts -out [drlive.key]`
 
 <br>
