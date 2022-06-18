@@ -167,3 +167,71 @@ Enter Import Password:
 But again it is password protected. <br>
 I followed this to install johntheripper: https://github.com/openwall/john/blob/bleeding-jumbo/doc/INSTALL-FEDORA <br>
 Then managed to get the password: thuglegacy
+
+```
+[connor@fedora timelapse]$ python ~/Public/john/run/pfx2john.py legacyy_dev_auth.pfx > pfx_hash
+[connor@fedora timelapse]$ time john -w=rockyou.txt pfx_hash 
+Using default input encoding: UTF-8
+Loaded 1 password hash (pfx, (.pfx, .p12) [PKCS#12 PBE (SHA1/SHA2) 128/128 AVX 4x])
+Cost 1 (iteration count) is 2000 for all loaded hashes
+Cost 2 (mac-type [1:SHA1 224:SHA224 256:SHA256 384:SHA384 512:SHA512]) is 1 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, 'h' for help, almost any other key for status
+thuglegacy       (legacyy_dev_auth.pfx)     
+1g 0:00:03:03 DONE (2022-06-18 22:14) 0.005438g/s 17574p/s 17574c/s 17574C/s thuglife03282006..thug209
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+
+real    3m4.115s
+user    10m9.072s
+sys     0m2.833s
+```
+
+<br>
+
+Now we have the private key:
+
+```
+[connor@fedora timelapse]$ openssl pkcs12 -in legacyy_dev_auth.pfx -nocerts -out priv.key
+Enter Import Password:
+Enter PEM pass phrase:
+Verifying - Enter PEM pass phrase:
+[connor@fedora timelapse]$ cat priv.key 
+Bag Attributes
+    Microsoft Local Key set: <No Values>
+    localKeyID: 01 00 00 00 
+    friendlyName: te-4a534157-c8f1-4724-8db6-ed12f25c2a9b
+    Microsoft CSP Name: Microsoft Software Key Storage Provider
+Key Attributes
+    X509v3 Key Usage: 90 
+-----BEGIN ENCRYPTED PRIVATE KEY-----
+MIIFLTBXBgkqhkiG9w0BBQ0wSjApBgkqhkiG9w0BBQwwHAQInskoJp2TmPsCAggA
+MAwGCCqGSIb3DQIJBQAwHQYJYIZIAWUDBAEqBBBbc4EWTlVLVO7IkyZoDZV+BIIE
+0OMR/8XuO1roOUx9f7nBBaoxG9qv/WbOjMhp7TwCFD3wKiH0aQjdOKg3ObKNdCI7
+XzH5dMZYEmycxuKDo+pAtcyADt5giGpO6qUP1zjmlKeVO7rAAbtVpXm5XQMMFoao
+lGAPZP4+LT9BjvcPVIvb/3PpDWs/hbywvE3I6ctzYC64lY6XTqpdTd/Lz3UBW1js
+pJsWAz5bltokmYRvXioZ4syKa7FJK5WeqGP6AWftxQ7YjN1v6otSQczA8lSlAsUX
+hOprqiSnaPuK1UJm73p3TW0GXyAQRsanWh2/YI8vMGHJpuDAqkqrrBYKv2oSfXCR
+XH6VtQUsveK5SQe5/+5rRqwokyY7YiCsEvjNGh/IA+ukudr8m+qZT//A/fwnF2+D
+SFjn2PGNyOgBu6QdchWtsBK9IOMPgKr9YBv3RGn4kaU4UKnPRZPcdS7vu8y7E9Yt
+//F1CDbo3geRZGQb3tTBhb/vnS20197zj2SUsObJHjAAnkQxqywme7ZIeMfZLdpw
+n0UVo1GQ87VnqhJP0O5B6aeLm6PIBSDRHC/o02c6w9jiCISUiJBC/z0pxp5R42an
+vq20wFeGhfKuBYCfwsVtN/peBmdtTqAA0ECYMXteZCZmdQut+XkZ1f+bCZCro9h5
+HEpxQOh4Bu2QO3LNkKmU86mT75i4KD/8f82sczv8FXIaWfLCZc+nvLnJsxVKy7/S
+1XiEzPd9R9EA1kfErxRN09/dH6OD3S20bflZfwJZd/ohc3xo8n/967cJcO6IueVb
+laJ9PVNQIeILomgXiFPEzQSWcb9kKYtPwoNYxOos1GYKQ3hXxyi2nkJGdFBx+mgk
+Wluf8urYospy8u4gHih+wmVOnYG3tKE9cF3x22r5JoADodqGxTIR87ipQT4SeDUe
+9XjcYFW5/SOcuQdJ+39187boXZd4EO+iJ9U03w2Bj0jrR3QgvIpDYCMtiILzbzkH
+8xHbrqzdbWA7bEZt3FYPjY48eqI8eW7qyiIC1w9sX8dc8PIqVZ8FWXgdVSemoL1C
+jkvNfVE827UdU5KqhuJuk8uH1vQ4tNjNz22xTP3hg8aUgFPo0giFqn8BZSWb0+uM
+iWI12AJdpEA52AxXabZw7BxCRvYdQYgNcJaieR5JRH8BpwB2YJ2yaZ+Cu67ANvDa
+BEYh9gkUN5laIpD+NovfW2AUYnkWR9nXGf4NOAfMHfluYQ94I/svjQ3AbVliQwzo
+myvUmOIimEX+tnQHXYtuFsg4lwU3fo95s35E7fqUDKR3jxXwO/3SrqVlUG1bLCeS
+HC/i4vImDxbWHlyUNFkECZte2uWg1NxpVIJZazCQbh3K7/UW0eqmgnETgyHxnk5L
+IOUW//3L8yLU0/GSLYcmi1hBqTJXqyHTz8sy3ydelDiT864lfrsTUhFnV2OVHajj
+VTqQsMwbUBWwGiO5D7i2Xo/FECQMy8OOqq7l4N5UBYG+f/XRwIYouyuhhE7cfxBp
+THXRt2z/CKe95ojr+Rdb2dzj5a9ItXssCzXVeXOM+qWe+DGGBd4j4SWnUOmgy9CD
+ZCC3YuUi1+nniU6tkwEa26/arb57wQ1oe6175J64C2B2A3cvuUbOQQ8JFGPQJHss
+S3l+R+ePLcsoaEBR5nrAOa7ICiZ/g0WFj78cslLXKr4Z
+-----END ENCRYPTED PRIVATE KEY-----
+```
