@@ -262,4 +262,5 @@ nx143vIioHYMiGCnKsHdWiMrG2UWLOoeUrlUmpr069kY/nn7+zSEa2pA
 -----END CERTIFICATE-----
 ```
 
+Next I built [evil-winrm](https://github.com/Hackplayers/evil-winrm)
 
