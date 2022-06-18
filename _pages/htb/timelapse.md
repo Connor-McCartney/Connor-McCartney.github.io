@@ -49,7 +49,7 @@ Nmap done: 1 IP address (1 host up) scanned in 60.62 seconds
 Note the SMB protocol - we can enumerate it with [smbmap](https://github.com/ShawnDEvans/smbmap):
 
 ```
-[connor@fedora smbmap]$ sudo python smbmap.py -H 10.10.11.152 -u guest
+[connor@fedora smbmap]$ python smbmap.py -H 10.10.11.152 -u guest
 
     ________  ___      ___  _______   ___      ___       __         _______
    /"       )|"  \    /"  ||   _  "\ |"  \    /"  |     /""\       |   __ "\
