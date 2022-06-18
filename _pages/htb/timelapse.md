@@ -46,7 +46,9 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: 1 IP address (1 host up) scanned in 60.62 seconds
 ```
 
+<br>
 Note the SMB protocol - we can enumerate it with [smbmap](https://github.com/ShawnDEvans/smbmap):
+<br>
 
 ```
 [connor@fedora smbmap]$ python smbmap.py -H 10.10.11.152 -u guest
@@ -74,7 +76,9 @@ Note the SMB protocol - we can enumerate it with [smbmap](https://github.com/Sha
         SYSVOL                                                  NO ACCESS       Logon server share 
 ```
 
+<br>
 Next let's try access the READ ONLY disks.
+<br>
 
 ```
 [connor@fedora timelapse]$ smbclient //10.10.11.152/Shares
@@ -102,4 +106,8 @@ Archive:  winrm_backup.zip
 [winrm_backup.zip] legacyy_dev_auth.pfx password: 
 ```
 
-We find a password protected zip file. 
+<br>
+We find a password protected zip file.
+<br>
+
+
