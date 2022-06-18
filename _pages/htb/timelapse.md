@@ -165,7 +165,7 @@ Enter Import Password:
 <br>
 
 But again it is password protected. <br>
-I followed this to install johntheripper: https://github.com/openwall/john/blob/bleeding-jumbo/doc/INSTALL-FEDORA <br>
+I followed this to install johntheripper: <https://github.com/openwall/john/blob/bleeding-jumbo/doc/INSTALL-FEDORA> <br>
 Then managed to get the password: thuglegacy
 
 <br>
