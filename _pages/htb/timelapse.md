@@ -352,7 +352,11 @@ Checking PS history file
                0 Dir(s)   9,944,387,584 bytes free
 ```
 
+<br>
+
 There are creds in the file:
+
+<br>
 
 ```
 *Evil-WinRM* PS C:\Users\legacyy\Documents> cat C:\Users\legacyy\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
@@ -369,7 +373,11 @@ get-aduser -filter * -properties *
 exit
 ```
 
+<br>
+
 Add `10.10.11.152 timelapse.htb` to /etc/hosts then we can use [laps.py](https://raw.githubusercontent.com/n00py/LAPSDumper/main/laps.py)
+
+<br>
 
 ```
 [connor@fedora timelapse]$ cat laps.py 
