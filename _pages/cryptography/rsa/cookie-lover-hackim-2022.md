@@ -17,10 +17,10 @@ def sign(msg : bytes):
     return pow(bytes_to_long(msg), key.d, key.n)
 ```
 
-There was a signature oracle that let's you choose a msg and returns $$msg^d \ (mod \ n)$$. <br>
+There was a signature oracle that let's you choose a message m and returns $$m^d \ (mod \ n)$$. <br>
 The same key is always used and the goal is to sign 'I love cookies.' <br>
 We can do this by factorising m into $$k \ \times \ \frac{m}{k}$$ <br>
-Then $$k^d \ \times \ (\frac{m}{k})^d \ (mod m) \ = \  $$
+Then $$k^d \ \times \ (\frac{m}{k})^d \ (mod m) \ = \$$
 
 ```python
 from Crypto.Util.number import *
