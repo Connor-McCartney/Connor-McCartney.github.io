@@ -15,3 +15,7 @@ __vulnerability: partial OpenSSH private key__
 
 <span style="font-size:2em;">   [Can't Login - Incognito CTF 2022](/cryptography/rsa/can't-login-ICTF-2022)       </span> <br>
 __vulnerability: common ssh-key password__
+
+
+<span style="font-size:2em;">   [Cookie Lover - HackIM CTF 2022](/cryptography/rsa/cookie-lover-hackim-2022)       </span> <br>
+__vulnerability: signature oracle__
