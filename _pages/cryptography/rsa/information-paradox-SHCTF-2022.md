@@ -57,7 +57,7 @@ d2e07bda14aeb3d182d0f50af0afebd3a11e4367d87a5b581214733fb96b1f20144cee31<br>
 2048eff9f1be04e26a4bf258e523ce2c443bc362d9edd5db326db66abdfd287839b219f2
 
 
-In between these headers we can see two full values! <br>
+In between these <span style="color:green">headers</span> we can see two full values! <br>
 The order of data in PEM encodings is n, e, d, p, q, d mod (p-1), d mod (q-1). <br>
 I tested if they were prime and found that the first one was and the second one was not. <br>
 Therefore the first one must be q and the second one must be d mod (p-1). <br>
