@@ -7,7 +7,7 @@ title: logloglog - Angstrom CTF 2022
 
 [Challenge files](https://github.com/Connor-McCartney/CTF_Files/tree/main/2022/angstromCTF/logloglog)
 
-In this challenge $p = 2^{1024}q + 1$,  where q is a very large prime. <br>
+In this challenge $$p = 2^{1024}q + 1$$,  where q is a very large prime. <br>
 
 
 The standard pohlig-hellman algorithm uses all factors of p-1, but here e is small enough (e < 2^1024) that it can be recovered <br>
