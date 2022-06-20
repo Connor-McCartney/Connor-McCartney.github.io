@@ -1,6 +1,6 @@
 ---
 permalink: /cryptography/rsa/cookie-lover-hackim-2022
-title: Cookie Lover - HackIM 2022
+title: Cookie Lover - HackIM CTF 2022
 ---
 
 
@@ -19,9 +19,8 @@ def sign(msg : bytes):
 
 There was a signature oracle that let's you choose a msg and returns $$msg^d \ (mod \ n)$$. <br>
 The same key is always used and the goal is to sign 'I love cookies.' <br>
-We can do this by factorising m into $$k \ \times \ \frac{m}{k}$$
-
-
+We can do this by factorising m into $$k \ \times \ \frac{m}{k}$$ <br>
+Then $$k^d \ \times \ (\frac{m}{k})^d \ (mod m) \ = \  $$
 
 ```python
 from Crypto.Util.number import *
