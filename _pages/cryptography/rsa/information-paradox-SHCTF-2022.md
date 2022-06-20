@@ -39,7 +39,7 @@ More info [here](https://letsencrypt.org/docs/a-warm-welcome-to-asn1-and-der/). 
 Note we don't find e in this, but it usually has a short encoding form, and it's header is just 02xx.
 
 
-1836063cd965c8e0083995<span style="color:green">**02820101**</span><span style="color:red">00d36f2093bd46887ea77f84d39fcbb782ad47b1b1 <br>
+1836063cd965c8e0083995<span style="color:green">**02820101**</span><span style="color:yellow">00d36f2093bd46887ea77f84d39fcbb782ad47b1b1 <br>
 3bca08aec96afe3ddd66176931b5b5128989bf8e60ae30b985d93b7b8936bd92969d0b00<br>
 d12d61287c28925348b1b1447f3541b4b6b35449cf175fc20c5b82a0fd47a59f602a73e1<br>
 af46246889cfc950dac7c6f8d4674797f0fd814874c57afc936525575d0ab7970df48ad5<br>
