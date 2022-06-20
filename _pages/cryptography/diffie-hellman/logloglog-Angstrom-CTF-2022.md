@@ -10,7 +10,7 @@ title: logloglog - Angstrom CTF 2022
 In this challenge $$p = 2^{1024}q + 1$$,  where q is a very large prime. <br>
 
 
-The standard pohlig-hellman algorithm uses all factors of p-1, but here e is small enough (e < 2^1024) that it can be recovered <br>
+The standard Pohlig-Hellman algorithm uses all factors of p-1, but here e is small enough ($$e < 2^{1024}$$) that it can be recovered <br>
 without combining the discrete log of every subgroup. (So we don't need to use the factor q, which would take too long as it's a large prime). 
 
 
@@ -33,6 +33,20 @@ def egcd(a, b):
         gcd, x, y = egcd(b % a, a)
         return (gcd, y - (b // a) * x, x)
 
+def Combine(X, P):
+   x = 0
+   N = 1
+   Y = []
+   for k in range(0, len(P)):
+       Y.append(P[k][0]**P[k][1])
+   for j in range(0, len(Y)):
+       N *= Y[j]
+   for i in range(0, len(Y)):
+       _, s, _ = egcd(N//Y[i], Y[i]) 
+       e = s * (N//Y[i])
+       x += X[i]*e
+   return x
+   
 def pohligHellman(P, g, b, n):
     A = [] 
     u = 0
@@ -52,21 +66,7 @@ def pohligHellman(P, g, b, n):
         A.append(u)
         u = 0
         b = r            
-    return A
-
-def Combine(X, P):
-   x = 0
-   N = 1
-   Y = []
-   for k in range(0, len(P)):
-       Y.append(P[k][0]**P[k][1])
-   for j in range(0, len(Y)):
-       N *= Y[j]
-   for i in range(0, len(Y)):
-       _, s, _ = egcd(N//Y[i], Y[i]) 
-       e = s * (N//Y[i])
-       x += X[i]*e
-   return x
+    return Combine(A, factors)
 
 #################################################################
 
@@ -77,8 +77,7 @@ a = 0xaf99914e5fb222c655367eeae3965f67d8c8b3a0b3c76c56983dd40d5ec45f5bcde78f7a81
 p = 0xb4ec8caf1c16a20c421f4f78f3c10be621bc3f9b2401b1ecd6a6b536c9df70bdbf024d4d4b236cbfcb202b702c511aded6141d98202524709a75a13e02f17f2143cd01f2867ca1c4b9744a59d9e7acd0280deb5c256250fb849d96e1e294ad3cf787a08c782ec52594ef5fcf133cd15488521bfaedf485f37990f5bd95d5796b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001
 
 factors = [(2,1024)]
-Z = pohligHellman(factors, 3, a, p)
-e = Combine(Z, factors)
+e = pohligHellman(factors, 3, a, p) 
 
 #now flag is just lower bits of e
 flag = long_to_bytes(int(np.base_repr(e, 2)[-880:], 2))
