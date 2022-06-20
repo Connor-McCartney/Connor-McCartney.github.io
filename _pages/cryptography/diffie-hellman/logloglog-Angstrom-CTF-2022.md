@@ -9,7 +9,7 @@ title: logloglog - Angstrom CTF 2022
 
 In this challenge $$p = 2^{1024}q + 1$$,  where q is a very large prime. <br>
 
-$$a = g^e (mod p)$$
+$$a = g^e\ (mod\ p)$$
 
 The standard Pohlig-Hellman algorithm uses all factors of p-1, but here e is small enough ($$e < 2^{1024}$$) that it can be recovered <br>
 without combining the discrete log of every subgroup. (So we don't need to use the factor q, which would take too long as it's a large prime). 
