@@ -28,7 +28,7 @@ order = p-1
 _g = pow(g, order//(2**1024), p)
 _a = pow(a, order//(2**1024), p)
 
-e = discrete_log(_g, _a, p) 
+e = discrete_log(p, _a, _g)  
 
 #now flag is just lower bits of e
 flag = long_to_bytes(int(np.base_repr(e, 2)[-880:], 2))
