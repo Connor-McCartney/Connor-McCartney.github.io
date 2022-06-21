@@ -1,6 +1,6 @@
 ---
 permalink: /cryptography/diffie-hellman/logloglog-Angstrom-CTF-2022
-title: logloglog - Angstrom CTF 2022
+title: log log log - Angstrom CTF 2022
 ---
 
 <br>
