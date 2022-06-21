@@ -3,7 +3,7 @@ permalink: /cryptography/rsa/very-smooth-picoCTF-2022
 title: Very Smooth - picoCTF 2022
 ---
 
-The weakness is that p-1 and q-1 are both [smooth numbers](https://en.wikipedia.org/wiki/Smooth_number), so n can be factorised using [Pollard's p-1 algorithm](https://en.wikipedia.org/wiki/Pollard%27s_p_%E2%88%92_1_algorithm).
+When p-1 and q-1 are both [smooth numbers](https://en.wikipedia.org/wiki/Smooth_number), n can be factorised using [Pollard's p-1 algorithm](https://en.wikipedia.org/wiki/Pollard%27s_p_%E2%88%92_1_algorithm).
 
 ```python
 from Crypto.Util.number import *
