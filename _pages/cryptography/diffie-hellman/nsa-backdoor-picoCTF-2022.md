@@ -3,6 +3,7 @@ permalink: /cryptography/diffie-hellman/nsa-backdoorpicoCTF-2022
 title: NSA Backdoor - picoCTF 2022
 ---
 
+
 We have $$c = 3^m \ (mod \ n)$$ <br>
 Generally n is prime to ensure there is only one possible plaintext, but here it is the product of two primes. <br>
 n can be factorised using [Pollard's p-1 algorithm](https://en.wikipedia.org/wiki/Pollard%27s_p_%E2%88%92_1_algorithm):
