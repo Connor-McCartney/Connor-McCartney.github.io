@@ -16,6 +16,8 @@ by transferring the problem into the subgroup of order 2^1024:
 
 $$a^q \equiv (g^e)^q \ (mod\ p)$$
 
+$$a^q \equiv (g^q)^e \ (mod\ p)$$
+
 
 ```python
 from sympy.ntheory.residue_ntheory import discrete_log #implements the Pohlig–Hellman algorithm
