@@ -17,7 +17,7 @@ $$a^q \equiv (g^q)^e \ (mod\ p)$$
 
 
 ```python
-from sympy.ntheory.residue_ntheory import discrete_log #implements the Pohlig–Hellman algorithm
+from sympy.ntheory.residue_ntheory import _discrete_log_pohlig_hellman
 from Crypto.Util.number import long_to_bytes
 import numpy as np
 
@@ -28,7 +28,7 @@ q = 1270491686265326063997656157399914167184367213630300189554004897360671988693
 
 _g = pow(g, q, p)
 _a = pow(a, q, p)
-e = discrete_log(p, _a, _g)  
+e = _discrete_log_pohlig_hellman(p, _a, _g)  
 
 #now flag is just lower bits of e
 flag = long_to_bytes(int(np.base_repr(e, 2)[-880:], 2))
