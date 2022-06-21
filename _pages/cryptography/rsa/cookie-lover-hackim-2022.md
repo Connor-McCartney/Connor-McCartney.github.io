@@ -21,9 +21,9 @@ def sign(msg : bytes):
 
 There was a signature oracle that let's you choose a message m and returns $$m^d \ (mod \ n)$$ <br>
 The same key is always used and the goal is to sign 'I love cookies.' <br>
-We can do this by factorising m into $$k \ \times \ \frac{m}{k}$$ <br>
+We can do this by factorising m into $$k \ \cdot \ \frac{m}{k}$$ <br>
 
-Then $$k^d \ \times \ (\frac{m}{k})^d \ (mod \ n) \ = k^d \ \times \ \frac{m^d}{k^{\ d}} \ (mod \ n) = m^d \ (mod \ n)$$
+Then $$k^d \ \cdot \ (\frac{m}{k})^d \ \ (mod \ n) \ = k^d \ \cdot \ \frac{m^d}{k^{\ d}} \ \ (mod \ n) = m^d \ \ (mod \ n)$$
 
 <br>
 
