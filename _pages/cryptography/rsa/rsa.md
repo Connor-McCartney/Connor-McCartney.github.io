@@ -5,6 +5,11 @@ title: RSA
 
 <br>
 
+
+<span style="font-size:2em;">   [Very Smooth - picoCTF 2022](/cryptography/rsa/very-smooth-picoCTF-2022)       </span> <br>
+__vulnerability: factorisation with Pollard's p-1 algorithm__
+
+
 <span style="font-size:2em;">   [Information Paradox - Space Heroes CTF 2022](/cryptography/rsa/information-paradox-SHCTF-2022)       </span> <br>
 __vulnerability: partial PEM private key__
 
