@@ -5,7 +5,7 @@ title: Resources
 
 ## Recommended
 
-MathJax - LaTex for websites: <https://www.mathjax.org/#gettingstarted> <br>
+MathJax - LaTeX for websites: <https://www.mathjax.org/#gettingstarted> <br>
 uBlock Origin - great ad blocker <https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en> <br>
 sagemath - mathematics software <https://www.sagemath.org> <br>
 KeePassXC - offline password manager <https://keepassxc.org> <br>
