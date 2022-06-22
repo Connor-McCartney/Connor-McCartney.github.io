@@ -10,7 +10,7 @@ title: MOVs Like Jagger - HTB Cyber Apocalypse CTF 2022
 
 The challenge title hints at the [MOV attack](https://eprint.iacr.org/2018/307.pdf) which works on curves with a small embedding degree. <br>
 
-First we can define our curve and calculate the embedding degree (k):
+First we can define the curve and calculate the embedding degree (k):
 
 ```python
 # curve
@@ -58,4 +58,4 @@ print(secret.xy()) # (338674607206389654805492721792, 39082849158697254133118423
 ```
 
 The secret would be different depending on the public keys the server gives you. <br>
-Submit to get flag HTB{I7_5h0075_,1t_m0v5,_wh47_15_i7?} 
+Submit to get flag `HTB{I7_5h0075_,1t_m0v5,_wh47_15_i7?}`
