@@ -58,4 +58,4 @@ print(secret.xy()) # (338674607206389654805492721792, 39082849158697254133118423
 ```
 
 The secret would be different depending on the public keys the server gives you. <br>
-Submit to get flag HTB{I7_5h0075_,1t_m0v5,_wh47_15_i7?}. 
+Submit to get flag HTB{I7_5h0075_,1t_m0v5,_wh47_15_i7?} 
