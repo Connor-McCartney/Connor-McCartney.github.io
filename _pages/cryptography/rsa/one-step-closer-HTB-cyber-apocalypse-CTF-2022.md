@@ -34,10 +34,12 @@ def encrypt_flag():
 
 The same flag (m) is encrypted with the same keys but random affine padding:
 
-$$c_1$$ = $$(a_1 \cdot m + b_1)^e mod \ n$$
+$$c_1$$ = $$(a_1 m + b_1)^e \ mod \ n$$
 
-$$c_2$$ = $$(a_2 \cdot m + b_2)^e mod \ n$$
+$$c_2$$ = $$(a_2 m + b_2)^e \ mod \ n$$
 
+This is vulnerable to the Franklin-Reiter attack:
+ 
 <br>
 
 ```python
