@@ -12,8 +12,6 @@ The challenge title hints at the [MOV attack](https://eprint.iacr.org/2018/307.p
 
 First we can define our curve and calculate the embedding degree (k):
 
-<br>
-
 ```python
 # curve
 a = -35
@@ -32,10 +30,12 @@ B = E(0x21cd699755718698a1963cd50, 0x21e48edd5538758b156ee9328)
 
 # embedding degree
 k = 1
-while (p**k - 1) % E.order != 0:
+while (p**k - 1) % E.order() != 0:
     k += 1
 print(k) 
 ```
+
+<br>
 
 We get k = 2, small enough for the MOV attack to work. It transfers the discrete log from $$E(F_p)$$ to $$F_{p^2}^\times$$, which is much easier. <br>
 
@@ -57,4 +57,5 @@ secret = nA * B
 print(secret.xy()) # (338674607206389654805492721792, 390828491586972541331184235565)
 ```
 
-
+The secret would be different depending on the public keys the server gives you. <br>
+Submit to get flag HTB{I7_5h0075_,1t_m0v5,_wh47_15_i7?}. 
