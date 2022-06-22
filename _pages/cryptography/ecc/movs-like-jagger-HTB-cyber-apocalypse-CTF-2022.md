@@ -45,11 +45,10 @@ def MOV_attack(E, G, A, k):
     T = E2.random_point()
     M = T.order()
     N = G.order()
-    d = gcd(M, N)
-    T1 = (M//d) * T
-    s1 = E2(G).weil_pairing(T1, N)
-    s2 = E2(A).weil_pairing(T1, N)
-    nA = s2.log(s1)
+    T1 = (M//gcd(M, N)) * T
+    _G = E2(G).weil_pairing(T1, N)
+    _A = E2(A).weil_pairing(T1, N)
+    nA = _A.log(_G)
     return nA
 
 nA = MOV_attack(E, G, A, k)
