@@ -10,6 +10,10 @@ title: RSA
 __vulnerability: factorisation with Pollard's p-1 algorithm__
 
 
+<span style="font-size:2em;">   [One Step Closer - HTB Cyber Apocalypse CTF 2022](/cryptography/rsa/one-step-closer-HTB-cyber-apocalypse-CTF-2022)       </span> <br>
+__vulnerability: affine padding (allowing Franklin-Reiter attack)__
+
+
 <span style="font-size:2em;">   [Information Paradox - Space Heroes CTF 2022](/cryptography/rsa/information-paradox-SHCTF-2022)       </span> <br>
 __vulnerability: partial PEM private key__
 
