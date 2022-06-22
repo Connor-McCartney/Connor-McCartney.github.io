@@ -11,9 +11,9 @@ We have $$a = g^e\ (mod\ p)$$ where $$p = 2^{1024}q + 1$$ and q is a very large 
 
 e is small enough ($$e < 2^{1024}$$) that it can be recovered by transferring the problem into a subgroup of order $$2^{1024}$$
 
-$$a^q \equiv (g^e)^q \ (mod\ p)$$
+ $$a^q \equiv (g^e)^q \ (mod\ p)$$
 
-$$a^q \equiv (g^q)^e \ (mod\ p)$$
+ $$a^q \equiv (g^q)^e \ (mod\ p)$$
 
 
 ```python
