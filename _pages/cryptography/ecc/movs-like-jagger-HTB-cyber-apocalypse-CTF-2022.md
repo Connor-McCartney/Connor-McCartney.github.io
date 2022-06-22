@@ -39,7 +39,7 @@ print(k)
 
 We get k = 2, small enough for the MOV attack to work. It transfers the discrete log from $$E(F_p)$$ to $$F_{p^2}^\times$$, which is much easier. <br>
 
-```
+```python
 def MOV_attack(E, G, A, k):
     E2 = EllipticCurve(GF(p**k), [a,b])
     T = E2.random_point()
