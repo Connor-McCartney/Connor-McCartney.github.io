@@ -44,4 +44,7 @@ beta – compute a root mod b where b is a factor of N and $$b \geq N^β$$ (Defa
 
 # Challenges
 
+<br>
+
+<span style="font-size:2em;">   [delta - CrewCTF 2022](/cryptography/small-roots/delta-CrewCTF-2022)       </span> <br>
 
