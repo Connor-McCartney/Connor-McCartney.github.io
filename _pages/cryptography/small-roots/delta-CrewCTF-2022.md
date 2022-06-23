@@ -18,19 +18,23 @@ val = (pow(2,e,n)*(x**3) + pow(3,e,n)*(x**2) + pow(5,e,n)*x + pow(7,e,n)) % n
 
 <br>
 
-small_roots will find x mod p. Note that $$x = p^2 + 1337p + delta$$ so $$x \ (mod \ p) = delta$$. <br>
+We need to choose parameters for small_roots: <br>
+X – the bound for the root <br>
+beta – compute a root mod b where b is a factor of N and $$b \geq N^β$$ (Default: 1.0, so b=N) <br>
 
-delta is a 64 bit integer so our bound should be $$2^{64}$$. We also know p < q, so p < $$n^{0.5}$$, so beta should be 0.5
+It is unclear if small_roots will compute a root mod p or a root mod q. We know that $$p < n^{0.5} < q$$.
+p and q also have the same bit length so they will be somewhat close to $$n^{0.5}$$. E.g. $$n^{0.49} < p < n^{0.5} < q < n^{0.51}$$ <br>
+It so happens that using beta=0.49 will compute x mod p where $$p \geq n^{0.49}$$. <br>
+Note that $$x = p^2 + 1337p + delta$$ so $$x \ (mod \ p) = x = p^2 + 1337p + delta \ (mod \ p) = delta$$. <br>
+So small_roots will return delta! This lets us choose the bounds, delta is a 64 bit integer so our bound should be $$2^{64}$$. 
 
 ```python
 PR.<x> = PolynomialRing(Zmod(n))
 f = pow(2,e,n)*(x**3) + pow(3,e,n)*(x**2) + pow(5,e,n)*x + pow(7,e,n) - val
-delta = small_roots(f, X=2^64, beta=0.5)[0]
+delta = small_roots(f, X=2^64, beta=0.49)[0]
 ```
 
-Next, x = delta mod p, so fn(x) = fn(delta) = 0 mod p, so p divides fn(delta)
-
-Therefore p can be recovered with gcd!
+Next $$f(delta) \equiv 0 \ (mod \ p)$$, so p divides f(delta) and p can be recovered with gcd.
 
 ```python
 from Crypto.PublicKey import RSA
@@ -67,11 +71,10 @@ val = 55719322748654060909881801139095138877488925481861026479419112168355471570
 
 PR.<x> = PolynomialRing(Zmod(n))
 f = pow(2,e,n)*(x**3) + pow(3,e,n)*(x**2) + pow(5,e,n)*x + pow(7,e,n) - val
-delta = small_roots(f, X=2^64, beta=0.5)[0]
+delta = small_roots(f, X=2^64, beta=0.49)[0]
 
 p = gcd(int(f(delta)), n)
 q = n//p
-assert p*q == n
 
 d = inverse(e, (p-1)*(q-1))
 key = RSA.construct((int(n), int(e), int(d), int(p), int(q)))
