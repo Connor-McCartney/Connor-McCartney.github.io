@@ -21,7 +21,7 @@ X – the bound for the root <br>
 beta – compute a root mod b where b is a factor of N and $$b \geq N^β$$ (Default: 1.0, so b=N) <br>
 
 It is unclear if small_roots will compute a root mod p or a root mod q. <br>
-We know that $$p < n^{0.5} < q$$.
+We know that $$p < n^{0.5} < q$$ <br>
 p and q also have the same bit length so they will be somewhat close to $$n^{0.5}$$ <br>
 (E.g. $$n^{0.49} < p < n^{0.5} < q < n^{0.51}$$) <br>
 It so happens that using beta=0.49 will compute x mod p where $$p \geq n^{0.49}$$ <br>
