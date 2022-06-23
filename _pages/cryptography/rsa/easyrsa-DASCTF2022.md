@@ -3,9 +3,9 @@ permalink: /cryptography/rsa/easyrsa-DASCTF2022
 title: easyRSA - DASCTF 2022
 ---
 
-# Challenge
-
 <br>
+
+# Challenge
 
 ```python
 from Crypto.Util.number import *
@@ -26,7 +26,7 @@ print(c)
 
 # Solve
 
-Since gcd(e, p - 1) = 1, we can just solve for m mod p.
+Since gcd(e, p-1) = 1, we can just solve for m mod p.
 
 $$c \equiv m^e$$ (mod $$p$$)
 
