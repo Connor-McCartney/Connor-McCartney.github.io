@@ -9,7 +9,7 @@ This section is dedicated to solving problems that involve [Coppersmith’s algo
 
 I have modified [sagemath's implementation](https://doc.sagemath.org/html/en/reference/polynomial_rings/sage/rings/polynomial/polynomial_modn_dense_ntl.html#sage.rings.polynomial.polynomial_modn_dense_ntl.small_roots) to include a calculation for epsilon. [Here is their source code](https://gitlab.com/sagemath/sage/-/blob/develop/src/sage/rings/polynomial/polynomial_modn_dense_ntl.pyx).
 
-And here is my one:
+And here is mine:
 
 ```python
 def small_roots(f, X, beta=1.0):
@@ -40,6 +40,6 @@ Inputs:
 
 f - the function
 
-X - the bound for the root (|x| < X)
+X - the bound for the root ($$|x|$$ < X)
 
 beta – compute a root mod b where b is a factor of N and $$b \geq N^β$$ (Default: 1.0, so b=N)
