@@ -18,7 +18,7 @@ val = (pow(2,e,n)*(x**3) + pow(3,e,n)*(x**2) + pow(5,e,n)*x + pow(7,e,n)) % n
 
 We need to choose parameters for small_roots: <br>
 X – the bound for the root <br>
-beta – compute a root mod b where b is a factor of N and $$b \geq N^β$$ (Default: 1.0, so b=N) <br>
+beta – compute a root mod b where b is a factor of N and $$b \geq N^β$$  <br>
 
 It is unclear if small_roots will compute a root mod p or a root mod q. <br>
 We know that $$p < n^{0.5} < q$$ <br>
