@@ -14,3 +14,6 @@ Here is a record of various CTF challenges grouped by category.
 
 
 <span style="font-size:2em;">   [Elliptic Curve Cryptography](/cryptography/ecc)   </span>
+
+
+<span style="font-size:2em;">   [Coppersmith's Small Roots](/cryptography/small-roots)   </span>
