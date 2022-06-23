@@ -36,10 +36,8 @@ def small_roots(f, X, beta=1.0):
 
 Inputs:
 
-f - the function
-
-X - the bound for the root
-
+f – the function <br>
+X – the bound for the root <br>
 beta – compute a root mod b where b is a factor of N and $$b \geq N^β$$ (Default: 1.0, so b=N)
 
 <br>
