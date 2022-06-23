@@ -15,7 +15,7 @@ And here is mine:
 def small_roots(f, X, beta=1.0):
     N = f.parent().characteristic()
     delta = f.degree()
-    epsilon = RR(beta^2/fn.degree() - log(2*X, N))
+    epsilon = RR(beta^2/f.degree() - log(2*X, N))
     f = f.monic().change_ring(ZZ)
     P,(x,) = f.parent().objgens()
     m = max(beta**2/(delta * epsilon), 7*beta/delta).ceil()
