@@ -40,6 +40,6 @@ c = 4696972939092316324310880431818603750283693088655847940791436263413270090872
 
 assert gcd(e, p-1) == 1
 m = mod(c, p).nth_root(e)
-print(ong_to_bytes(int(m)))
+print(long_to_bytes(int(m)))
 #DASCTF{1d86d07076bff93136ac60bbe61274d7}
 ```
