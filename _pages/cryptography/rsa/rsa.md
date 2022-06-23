@@ -18,6 +18,10 @@ __vulnerability: affine padding (allowing Franklin-Reiter attack)__
 __vulnerability: non-prime e and gcd(e, p-1) = 1__
 
 
+<span style="font-size:2em;">   [baby RSA DICECTF 2022](/cryptography/rsa/baby-rsa-DICECTF-2022)       </span> <br>
+__vulnerability: e | (p-1) and e | (q-1)__
+
+
 <span style="font-size:2em;">   [Information Paradox - Space Heroes CTF 2022](/cryptography/rsa/information-paradox-SHCTF-2022)       </span> <br>
 __vulnerability: partial PEM private key__
 
