@@ -40,7 +40,7 @@ Inputs:
 
 f - the function
 
-X - the bound for the root ($$|x|$$ < X)
+X - the bound for the root (\mid x \mid < X)
 
 beta – compute a root mod b where b is a factor of N and $$b \geq N^β$$ (Default: 1.0, so b=N)
 
