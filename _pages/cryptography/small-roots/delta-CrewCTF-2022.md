@@ -7,8 +7,6 @@ title: delta - CrewCTF 2022
 
 [Challenge files](https://github.com/Connor-McCartney/CTF_Files/tree/main/2022/CrewCTF/delta)
 
-<br>
-
 ```python
 delta = getRandomNBitInteger(64)
 x = p**2 + 1337*p + delta
@@ -16,7 +14,7 @@ x = p**2 + 1337*p + delta
 val = (pow(2,e,n)*(x**3) + pow(3,e,n)*(x**2) + pow(5,e,n)*x + pow(7,e,n)) % n
 ```
 
-<br>
+<br> 
 
 We need to choose parameters for small_roots: <br>
 X – the bound for the root <br>
@@ -33,6 +31,8 @@ PR.<x> = PolynomialRing(Zmod(n))
 f = pow(2,e,n)*(x**3) + pow(3,e,n)*(x**2) + pow(5,e,n)*x + pow(7,e,n) - val
 delta = small_roots(f, X=2^64, beta=0.49)[0]
 ```
+
+<br>
 
 Next $$f(delta) \equiv 0 \ (mod \ p)$$, so p divides f(delta) and p can be recovered with gcd.
 
