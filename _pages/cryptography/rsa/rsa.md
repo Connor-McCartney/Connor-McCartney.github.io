@@ -14,6 +14,10 @@ __vulnerability: factorisation with Pollard's p-1 algorithm__
 __vulnerability: affine padding (allowing Franklin-Reiter attack)__
 
 
+<span style="font-size:2em;">   [easyRSA - DASCTF 2022](/cryptography/rsa/easyrsa-DASCTF2022)       </span> <br>
+__vulnerability: non-prime e and gcd(e, p-1) = 1__
+
+
 <span style="font-size:2em;">   [Information Paradox - Space Heroes CTF 2022](/cryptography/rsa/information-paradox-SHCTF-2022)       </span> <br>
 __vulnerability: partial PEM private key__
 
