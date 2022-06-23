@@ -28,7 +28,7 @@ print(c)
 
 Since gcd(e, p - 1) = 1, we can just solve for m mod p.
 
-$$c \equiv m^e$$ (mod p)
+$$c \equiv m^e$$ (mod $$p$$)
 
 ```python
 from Crypto.Util.number import *
