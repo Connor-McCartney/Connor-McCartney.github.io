@@ -1,6 +1,6 @@
 ---
 permalink: /cryptography/small-roots
-title: Small Roots
+title: Coppersmith's Small Roots
 ---
 
 <br>
