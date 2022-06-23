@@ -34,8 +34,6 @@ def small_roots(f, X, beta=1.0):
     return [root for root in roots if N.gcd(ZZ(f(root))) >= N**beta]
 ```
 
-<br>
-
 Inputs:
 
 f - the function
@@ -44,6 +42,7 @@ X - the bound for the root (| x | < X)
 
 beta – compute a root mod b where b is a factor of N and $$b \geq N^β$$ (Default: 1.0, so b=N)
 
+<br>
 
 # Challenges
 
