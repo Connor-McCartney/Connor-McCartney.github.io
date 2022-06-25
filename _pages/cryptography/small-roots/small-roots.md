@@ -12,10 +12,11 @@ I have modified [sagemath's implementation](https://doc.sagemath.org/html/en/ref
 And here is mine:
 
 ```python
-def small_roots(f, X, beta=1.0):
+def small_roots(f, X, beta=1.0, epsilon=None):
     N = f.parent().characteristic()
     delta = f.degree()
-    epsilon = RR(beta^2/f.degree() - log(2*X, N))
+    if epsilon is None:
+        epsilon = RR(beta^2/f.degree() - log(2*X, N))
     f = f.monic().change_ring(ZZ)
     P,(x,) = f.parent().objgens()
     m = max(beta**2/(delta * epsilon), 7*beta/delta).ceil()
