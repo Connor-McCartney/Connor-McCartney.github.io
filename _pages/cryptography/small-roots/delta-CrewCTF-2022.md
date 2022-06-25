@@ -44,10 +44,11 @@ from Crypto.Cipher import PKCS1_OAEP
 from Crypto.Hash import SHA256
 from Crypto.Util.number import long_to_bytes, inverse
 
-def small_roots(f, X, beta=1.0):
+def small_roots(f, X, beta=1.0, epsilon=None):
     N = f.parent().characteristic()
     delta = f.degree()
-    epsilon = RR(beta^2/f.degree() - log(2*X, N))
+    if epsilon is None:
+        epsilon = RR(beta^2/f.degree() - log(2*X, N))
     f = f.monic().change_ring(ZZ)
     P,(x,) = f.parent().objgens()
     m = max(beta**2/(delta * epsilon), 7*beta/delta).ceil()
