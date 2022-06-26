@@ -52,8 +52,39 @@ c1, c2, c3 = 1268196573919981524276949967801999986488529166073152640081117541596
 
 m is encrypted 3 times: <br>
 
-$$c_1$$ = $$m^3 \ \ \ \ \ \ \ \ \ (mod \ n_1)$$       
+$$c_1$$ = $$m^3 \ \ \ \ \ \ \ \ \ \ \ \ (mod \ n_1)$$       
 $$c_2$$ = $$(am + b)^3 \ \ (mod \ n_2)$$           
 $$c_3$$ = $$(cm + d)^3 \ \ (mod \ n_3)$$    
 
+We can use the flag format (k), splitting m into k and x. <br>
+len(m) = 127 and len(k) = 8, so len(x) = 127-8 = 119.
+
+```python
+k = bytes_to_long(b'SECFEST{')
+m = x + k * 2**(8*119)
+```
+
+<br>
+
+Now we need to solve for x. First we must use CRT to combine the three functions:
+
+```python
+Z1 = crt([1, 0, 0], [n1, n2, n3]) 
+Z2 = crt([0, 1, 0], [n1 ,n2, n3]) 
+Z3 = crt([0, 0, 1], [n1, n2, n3]) 
+
+PR.<x> = PolynomialRing(Zmod(n1 * n2 * n3))
+x = PR.gen()
+
+f1 = m**3 - c1
+f2 = (a*m+b)**3 - c2
+f3 = (c*m+d)**3 - c3
+f = f1*Z1 + f2*Z2 + f3*Z3
+```
+
+<br>
+
+Now we can use small_roots on f. The maximum value x could be is $$2^{8 \cdot 119}$$. <br>
+The default calculation for epsilon timed out so it required some fine-tuning. <br>
+Increasing it will make it faster but increasing it too much will cause it to fail. <br>
 
