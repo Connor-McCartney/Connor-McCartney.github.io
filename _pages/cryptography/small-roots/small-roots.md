@@ -48,4 +48,4 @@ beta – compute a root mod b where b is a factor of N and $$b \geq N^β$$ (Defa
 
 <span style="font-size:2em;">   [delta - CrewCTF 2022](/cryptography/small-roots/delta-CrewCTF-2022)       </span> <br>
 
-<span style="font-size:2em;">   [really_sick_aesthetic - CrewCTF 2022](/cryptography/small-roots/really-sick-aesthetic-CrewCTF-2022)       </span> <br>
+<span style="font-size:2em;">   [really_sick_aesthetic - SECFEST 2022](/cryptography/small-roots/really-sick-aesthetic-CrewCTF-2022)       </span> <br>
