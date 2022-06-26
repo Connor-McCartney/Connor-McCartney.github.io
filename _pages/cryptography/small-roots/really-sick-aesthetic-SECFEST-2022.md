@@ -1,6 +1,6 @@
 ---
-permalink: /cryptography/small-roots/really-sick-aesthetic-CrewCTF-2022
-title: really_sick_aesthetic - CrewCTF 2022
+permalink: /cryptography/small-roots/really-sick-aesthetic-SECFEST-2022
+title: really_sick_aesthetic - SECFEST 2022
 ---
 
 <br>
