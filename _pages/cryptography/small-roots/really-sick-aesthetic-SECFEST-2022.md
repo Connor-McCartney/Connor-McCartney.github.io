@@ -74,7 +74,6 @@ Z2 = crt([0, 1, 0], [n1 ,n2, n3])
 Z3 = crt([0, 0, 1], [n1, n2, n3]) 
 
 PR.<x> = PolynomialRing(Zmod(n1 * n2 * n3))
-x = PR.gen()
 
 f1 = m**3 - c1
 f2 = (a*m+b)**3 - c2
