@@ -61,7 +61,7 @@ len(m) = 127 and len(k) = 8, so len(x) = 127-8 = 119.
 
 ```python
 k = bytes_to_long(b'SECFEST{')
-m = x + k * 2**(8*119)
+m = k * 2**(8*119) + x
 ```
 
 <br>
@@ -152,7 +152,7 @@ Z3 = crt([0, 0, 1], [n1, n2, n3])
 PR.<x> = PolynomialRing(Zmod(n1 * n2 * n3))
 
 k = bytes_to_long(b'SECFEST{')
-m = x + k * 2**(8*119)
+m = k * 2**(8*119) + x
 
 f1 = m**3 - c1
 f2 = (a*m+b)**3 - c2
