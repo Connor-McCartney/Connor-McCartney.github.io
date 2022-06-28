@@ -87,7 +87,7 @@ We get rp = 405771 and rq = 11974933.
 
 We're given $$pp = a^4 + rq, qq = b^4 + rq$$ and $$n = pp \cdot qq$$  
 
-n = $$(a^4 + rq)(b^4 + rq)$$ <br>
-$$ \ \ = (ab)^4 + rq \cdot a^$ + rp \cdot b^4 + rp \cdot rq$$
+n $$= (a^4 + rq)(b^4 + rq)$$ <br>
+$$ \ \ = (ab)^4 + rq \cdot a^4 + rp \cdot b^4 + rp \cdot rq$$
 
 
