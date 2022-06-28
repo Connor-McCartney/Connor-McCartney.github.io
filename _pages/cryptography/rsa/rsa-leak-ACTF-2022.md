@@ -5,7 +5,7 @@ title: rsa_leak ACTF 2022
 
 <br>
 
-Challenge: 
+## Challenge
 
 ```python
 def leak(a, b):
@@ -51,5 +51,17 @@ c = 4843394807870826655840890082213184683947347235040527495825456629101713787954
 '''
 ```
 
-# Solve 
+<br>
+
+## Solve 
+
+First solving for rp and rq, which are both less than $$2^{24}$$: <br>
+We can loop over rp and solve for rq each time, breaking if we find one where rq < $$2^{24}$$.
+
+leak_n = 122146249659110799196678177080657779971 <br>
+leak_value = 90846368443479079691227824315092288065 <br>
+
+leak_value $$\equiv {rp}^e + {rq}^e + 0xdeadbeef$$ (mod leak_n)
+
+
 
