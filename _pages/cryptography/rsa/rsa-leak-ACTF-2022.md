@@ -111,6 +111,7 @@ $$\ rq \cdot p - z + rp \cdot q = 0$$ <br>
 
 multiply by p <br>
 $$\ rq \cdot p^2 - zp + rp \cdot pq = 0$$ <br>
+
 now we just have a quadratic to solve p
 
 ```python
