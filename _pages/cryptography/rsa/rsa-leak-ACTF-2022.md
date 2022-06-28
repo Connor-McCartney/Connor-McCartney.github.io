@@ -65,5 +65,26 @@ leak_value $$\equiv {(rp)}^e + {(rq)}^e +$$ 0xdeadbeef (mod leak_n) <br>
 leak_value $$- {(rp)}^e -$$ 0xdeadbeef $$\equiv {(rq)}^e$$  (mod leak_n) <br>
 (leak_value $$- {(rp)}^e - 0xdeadbeef)^{e^{-1}} \equiv rq$$  (mod leak_n) <br>
 
+<br>
+
+```python
+from tqdm import tqdm
+
+leak_value = 90846368443479079691227824315092288065
+leak_n = 122146249659110799196678177080657779971
+leak_p, leak_q = 8949458376079230661, 13648451618657980711
+e = 65537
+
+for rp in tqdm(range(2**26)):
+    rq = pow((leak_value - pow(rp,e,leak_n) - 0xdeadbeef), pow(e, -1, (leak_p-1)*(leak_q-1)), leak_n) % leak_n
+    if rq < 2**24:
+        break
+
+print(rp, rq)
+```
+
+We get rp = 405771 and rq = 11974933.
+
+
 
 
