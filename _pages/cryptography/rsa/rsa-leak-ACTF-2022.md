@@ -90,7 +90,7 @@ We're given $$pp = a^4 + rp, \ qq = b^4 + rq$$ and $$n = pp \cdot qq$$
 n $$= (a^4 + rp)(b^4 + rq)$$ <br>
 $$ \ \ = (ab)^4 + rq \cdot a^4 + rp \cdot b^4 + rp \cdot rq$$
 
-Now the term $$(ab)^4$$ is significantly larger than all others, so in fact we can do $$ab = \sqrt[4]{n}$
+The term $$(ab)^4$$ is significantly larger than all others, so in fact we can do $$ab = \sqrt[4]{n}$$
 
 ```python
 ab = iroot(n,4)[0]
@@ -103,4 +103,11 @@ Now let's work in terms of p and q instead of a and b:
 pq = $$(ab)^4$$ <br>
 
 $$\ n = pq + rq \cdot p + rp \cdot q + rp \cdot rq$$ <br>
-$$\ rq \cdot p + rp \cdot q = n - pq - rp \cdot rq$$
+$$\ rq \cdot p + rp \cdot q = n - pq - rp \cdot rq$$ <br>
+let z = $$n - pq - rp \cdot rq$$  <br>
+$$\ rq \cdot p + rp \cdot q = z$$ <br>
+$$\ rq \cdot p - z - rp \cdot q = 0$$ <br>
+multiply by p <br>
+$$\ rq \cdot p^2 - zp - rp \cdot pq = 0$$ <br>
+now we just have a quadratic to solve p
+
