@@ -106,8 +106,8 @@ $$\ n = pq + rq \cdot p + rp \cdot q + rp \cdot rq$$ <br>
 $$\ rq \cdot p + rp \cdot q = n - pq - rp \cdot rq$$ <br>
 let z = $$n - pq - rp \cdot rq$$  <br>
 $$\ rq \cdot p + rp \cdot q = z$$ <br>
-$$\ rq \cdot p - z - rp \cdot q = 0$$ <br>
+$$\ rq \cdot p - z + rp \cdot q = 0$$ <br>
 multiply by p <br>
-$$\ rq \cdot p^2 - zp - rp \cdot pq = 0$$ <br>
+$$\ rq \cdot p^2 - zp + rp \cdot pq = 0$$ <br>
 now we just have a quadratic to solve p
 
