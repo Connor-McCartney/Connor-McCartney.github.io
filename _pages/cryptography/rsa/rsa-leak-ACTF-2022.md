@@ -65,8 +65,6 @@ leak_value $$\equiv {(rp)}^e + {(rq)}^e +$$ 0xdeadbeef (mod leak_n) <br>
 leak_value $$- {(rp)}^e -$$ 0xdeadbeef $$\equiv {(rq)}^e$$  (mod leak_n) <br>
 ( leak_value $$- {(rp)}^e -$$ 0xdeadbeef $$)^{e^{-1}} \equiv rq$$  (mod leak_n) <br>
 
-<br>
-
 ```python
 from tqdm import tqdm
 
@@ -83,8 +81,13 @@ for rp in tqdm(range(2**26)):
 print(rp, rq)
 ```
 
+<br>
+
 We get rp = 405771 and rq = 11974933.
 
+We're given $$pp = a^4 + rq, qq = b^4 + rq$$ and $$n = pp \cdot qq$$  
 
+n = $$(a^4 + rq)(b^4 + rq)$$ <br>
+$$ \ \ = (ab)^4 + rq \cdot a^$ + rp \cdot b^4 + rp \cdot rq$$
 
 
