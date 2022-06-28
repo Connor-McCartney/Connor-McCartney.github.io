@@ -102,5 +102,5 @@ Now let's work in terms of p and q instead of a and b:
 
 pq = $$(ab)^4$$ <br>
 
-$$\ n = pq + rq \cdot p + rp \cdot q + rp \cdot rq$$
+$$\ n = pq + rq \cdot p + rp \cdot q + rp \cdot rq$$ <br>
 $$\ rq \cdot p + rp \cdot q = n - pq - rp \cdot rq$$
