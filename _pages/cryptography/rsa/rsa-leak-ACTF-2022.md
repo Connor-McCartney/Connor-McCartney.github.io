@@ -61,7 +61,9 @@ We can loop over rp and solve for rq each time, breaking if we find one where rq
 leak_n = 122146249659110799196678177080657779971 <br>
 leak_value = 90846368443479079691227824315092288065 <br>
 
-leak_value $$\equiv {rp}^e + {rq}^e + 0xdeadbeef$$ (mod leak_n)
+leak_value $$\equiv {(rp)}^e + {(rq)}^e +$$ 0xdeadbeef (mod leak_n)
+leak_value $$- {(rp)}^e -$$0xdeadbeef $$\equiv {(rq)}^e$$  (mod leak_n)
+(leak_value $$- {(rp)}^e -$$0xdeadbeef)$$\cdot e^{-1} \equiv rq$$  (mod leak_n)
 
 
 
