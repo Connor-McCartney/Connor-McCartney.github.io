@@ -28,7 +28,7 @@ Hashcat Example Hashes <https://hashcat.net/wiki/doku.php?id=example_hashes> <br
 
 ## Other
 
-Note taking: <https://obsidian.md/> <br>
+Note taking: <https://obsidian.md> <br>
 HTTP file server <https://www.rejetto.com/hfs/?f=dl> <br>
 MS office alternative <https://www.onlyoffice.com> <br>
 After Fedora install <https://www.youtube.com/watch?v=RrRpXs2pkzg>  * but don't set fastestmirror=true  <br>
