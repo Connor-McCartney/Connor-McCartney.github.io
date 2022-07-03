@@ -8,21 +8,14 @@ title: KDE-Plasma
 
 Open shortcuts
 
-Delete the following:<br>
-Quick tile window to the top <br>
-Quick tile window to the bottom <br>
+Delete quick tile window to the bottom <br>
 
 Change the following:<br>
 If control+alt+t doesn't open terminal, click add application, search konsole and add shortcut. <br>
+Quick tile window to the top: change to control + shift + up <br>
 Show desktop grid: change to meta+tab <br>
 Switch to next desktop: change to control+shift+right <br>
 Switch to previous desktop: change to control+shift+left <br>
-
-
-## Setup virtual desktops
-
-Open virtual desktops <br>
-I like to have 4. Turn navigation wraps around off. 
 
 
 ## Configure konsole
@@ -66,6 +59,11 @@ Advanced power settings > Stop charging only once below > 80% <br>
 Energy saving > On AC Power > turn everything off except dim screen and energy saving <br>
 Screen locking > disable
 
+## Disable wallet
+
+sudo dnf install kwalletmanager <br>
+Then go to System Settings>Account Details>KDE Wallet and uncheck "Enable the KDE wallet subsystem"
+
 ## Grub Customizer
 
 Disable look for other operating systems. <br>
@@ -87,11 +85,6 @@ Autostart > Add login script:
 #!/bin/bash
 killall plasmashell; sleep 3; plasmashell
 ```
-
-## Disable wallet
-
-sudo dnf install kwalletmanager <br>
-Then go to System Settings>Account Details>KDE Wallet and uncheck "Enable the KDE wallet subsystem"
 
 
 ## Forgetting wifi password
