@@ -70,9 +70,6 @@ Disable look for other operating systems. <br>
 Boot default entry after 1 second. <br>
 Kernel parameters: quiet loglevel=1 nowatchdog nvme_load=YES fsck.mode=skip modprobe.blacklist=iTCO_wdt
 
-## Mirage global theme
-<br>
-
 ## Desktop effects
 
 Turn on wobbly windows, magic lamp, translucency, fall apart
