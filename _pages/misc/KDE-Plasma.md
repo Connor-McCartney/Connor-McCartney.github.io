@@ -6,12 +6,7 @@ title: KDE-Plasma
 
 ## Configure shortcuts (my preferences)
 
-Open shortcuts
-
-Delete quick tile window to the bottom <br>
-
-Change the following:<br>
-If control+alt+t doesn't open terminal, click add application, search konsole and add shortcut. <br>
+Quick tile window to the bottom: remove <br>
 Quick tile window to the top: change to control + shift + up <br>
 Show desktop grid: change to meta+tab <br>
 Switch to next desktop: change to control+shift+right <br>
@@ -25,15 +20,7 @@ Settings > Manage Profiles <br>
 Create a new profile > Appearance > Choose a colour scheme <br>
 Set this profile as default and apply<br>
 
-Right click near top of konsole <br>
-More actions > Configure special application settings <br>
-Change exact match to substring match <br>
-Add property > no titlebar and frame > yes > force <br>
-Add property > maximised horizontally > yes > force <br>
-Add property > maximised vertically > yes > force <br>
-
-Settings > Toolbars shown > disable all
-Settings > Show Menubar > disable
+Settings > Toolbars shown > disable
 
 
 ## Remove firefox
