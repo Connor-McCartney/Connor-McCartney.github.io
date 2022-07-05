@@ -31,5 +31,5 @@ Hashcat Example Hashes <https://hashcat.net/wiki/doku.php?id=example_hashes> <br
 Note taking: <https://obsidian.md> <br>
 HTTP file server <https://www.rejetto.com/hfs/?f=dl> <br>
 MS office alternative <https://www.onlyoffice.com> <br>
-After Fedora install <https://www.youtube.com/watch?v=RrRpXs2pkzg>  * but don't set fastestmirror=true  <br>
+After Fedora install <https://www.youtube.com/watch?v=RrRpXs2pkzg>  <br>
 Integer Sequences Encyclopedia <https://oeis.org> <br>
