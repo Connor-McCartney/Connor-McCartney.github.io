@@ -39,7 +39,7 @@ print(c)
 
 Solve:
 
-We have $$c = m^{3^{2^{100}}} \ (mod \ p)$$  <br>
+We have $$c = m^{3^{(2^{100})}} \ (mod \ p)$$  <br>
 
 ```pythonfrom Crypto.Util.number import long_to_bytes
 
