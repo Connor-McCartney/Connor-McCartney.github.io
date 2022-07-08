@@ -11,7 +11,7 @@ title: The HUGE e - Crew CTF 2022
 
 We have to solve $$c = m^e \ (mod \ p)$$ where e = $$e1^{e2^{e3}}$$. <br>
 p-1 is smooth which allows phi(p-1) to be calculated. 
-The problem is obtaining a value for e. I used this approach <https://math.stackexchange.com/questions/81228/modular-exponentiation-by-hand-ab-bmod-c>
+I used this approach <https://math.stackexchange.com/questions/81228/modular-exponentiation-by-hand-ab-bmod-c>
 
 ```python
 from Crypto.Util.number import *
