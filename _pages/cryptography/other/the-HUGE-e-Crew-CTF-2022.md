@@ -7,7 +7,7 @@ title: The HUGE e - Crew CTF 2022
 
 [Challenge](https://github.com/Connor-McCartney/CTF_Files/tree/main/2022/CrewCTF/the-HUGE-e)
 
-We have to solve $$c = m^e \ (mod \ p)$$ where e = $$e1^{e2^{e3}}$$ <br>
+We have to solve $$c = m^e \ (mod \ p)$$ where e = $$e_1^{e_2^{e_3}}$$ <br>
 p-1 is smooth which allows phi(p-1) to be calculated. 
 I used this approach <https://math.stackexchange.com/questions/81228/modular-exponentiation-by-hand-ab-bmod-c>
 
