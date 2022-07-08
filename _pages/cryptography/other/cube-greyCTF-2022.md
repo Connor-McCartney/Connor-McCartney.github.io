@@ -40,7 +40,6 @@ print(c)
 Solve:
 
 We have $$c = m^{3^{2^{100}}} \ (mod \ p)$$  <br>
-then $$m = c^{3^{-2^{100}}} \ (mod \ p)$$
 
 ```pythonfrom Crypto.Util.number import long_to_bytes
 
