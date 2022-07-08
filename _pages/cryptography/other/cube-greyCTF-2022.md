@@ -1,6 +1,6 @@
 ---
 permalink: /cryptography/other/cube-greyCTF-2022
-title: cube - Grey Cat The Flag 2022
+title: Cube - Grey Cat The Flag 2022
 ---
 
 <br>
