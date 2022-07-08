@@ -17,3 +17,6 @@ Here is a record of various CTF challenges grouped by category.
 
 
 <span style="font-size:2em;">   [Coppersmith's Small Roots](/cryptography/small-roots)   </span>
+
+
+<span style="font-size:2em;">   [Other](/cryptography/other)   </span>
