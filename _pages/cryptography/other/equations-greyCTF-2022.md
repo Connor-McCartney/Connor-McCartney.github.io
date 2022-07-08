@@ -3,11 +3,11 @@ permalink: /cryptography/other/equations-greyCTF-2022
 title: equations - Grey Cat The Flag 2022
 ---
 
+<br>
+<br>
 
 <https://nusgreyhats.org/posts/guides/sage_note/>
 A nice SageMath guide by team behind this CTF
-
-<br>
 
 # Equation
 
