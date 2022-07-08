@@ -9,10 +9,10 @@ title: equations - Grey Cat The Flag 2022
 A nice SageMath guide by team behind this CTF: <br>
 <https://nusgreyhats.org/posts/guides/sage_note/> 
 
+<br>
 
 # Equation
 
-<br>
 
 Challenge:
 
@@ -56,7 +56,6 @@ print(long_to_bytes(int(part1)).decode() + long_to_bytes(int(part2)).decode())
 
 # Equation 2
 
-<br>
 
 Challenge:
 
@@ -126,7 +125,6 @@ print(long_to_bytes(int(part1)).decode() + long_to_bytes(int(part2)).decode())
 
 # Equation 3
 
-<br>
 
 Challenge:
 
@@ -167,8 +165,6 @@ print(f'g = {g}')
 <br>
 
 Solve:
-
-<br>
 
 
 ```python
