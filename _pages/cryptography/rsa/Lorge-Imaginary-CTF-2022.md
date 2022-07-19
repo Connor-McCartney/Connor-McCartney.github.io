@@ -11,7 +11,7 @@ This challenge identifies a case in which regular Pollard p-1 factorisation does
 
 (largest prime factor of p-1 and q-1 is the same)
 
-Once we identify this largest prime factor, we can retry using g=pow(2,19071329,n)
+Once we identify this largest prime factor (19071329), we can retry using g=pow(2,19071329,n)
 
 ```python
 from gmpy2 import gcd, powmod, next_prime
