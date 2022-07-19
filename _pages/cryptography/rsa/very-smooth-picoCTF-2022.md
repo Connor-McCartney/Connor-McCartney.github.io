@@ -15,7 +15,7 @@ ct = 0x310a423b12a26d0c8244181d158571f973c42e9ebae9ae004aabd371568efaa199e4d163e
 n = 0x78428327ba89ad5746fd5546b9cab148c9ee3b634eb4b6da6256e56782c6b3fdfddee19cc4a07c1b97c5f5148108f11c29e5ebfbdd8a48247cb64fc39cba6148d2c55ff85762d64e61fdfb57b66c21d2380b4362b5fee96b0553daebec02aa4832c755a3c5e61fb9f18b9504401a1021c7dffbd8896cbf592a2d68692bd15aa141af385b396185ba6582e8e9feacf2f3977a6a8dcdb6835e4807604afea9f1e6063787f6b1bd33f724f11a5834d38f4eebe3019a06adb5011de6e289d18eb020d21d0d97e35be47ff3605bbbb4a6c481a5d01c2383712360a8f3bc63ca63013d3ea2c19dd78eb475d2ff231b4ecccd17b5e81ecdfad9ca4a704c4bf1d53211e9
 e = 65537
 
-def pollard_factorisation(N, g=2):
+def pollard_pm1(N, g=2):
         k=2
         while True:
                 g = powmod(g, k, N)
@@ -24,8 +24,7 @@ def pollard_factorisation(N, g=2):
                         return p, N//p
                 k = next_prime(k)
 
-
-p, q = pollard_factorisation(n)
+p, q = pollard_pm1(n)
 d = pow(e, -1, (p-1)*(q-1))
 flag = long_to_bytes(pow(ct, d, n))
 print(flag.decode())
