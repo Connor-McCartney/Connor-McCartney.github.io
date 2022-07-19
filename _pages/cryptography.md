@@ -5,8 +5,6 @@ title: Cryptography
 
 <br>
 
-Here is a record of various CTF challenges grouped by category. 
-
 <span style="font-size:2em;">   [RSA](/cryptography/rsa)   </span>
 
 
