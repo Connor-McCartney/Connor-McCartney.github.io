@@ -3,6 +3,8 @@ permalink: /cryptography/rsa/very-smooth-picoCTF-2022
 title: Very Smooth - picoCTF 2022
 ---
 
+<br>
+
 When p-1 and q-1 are both [smooth numbers](https://en.wikipedia.org/wiki/Smooth_number), n can be factorised using [Pollard's p-1 algorithm](https://en.wikipedia.org/wiki/Pollard%27s_p_%E2%88%92_1_algorithm).
 
 ```python
