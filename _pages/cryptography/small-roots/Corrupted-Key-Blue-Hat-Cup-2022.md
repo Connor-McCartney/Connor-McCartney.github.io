@@ -45,7 +45,7 @@ $$k^{-1} \cdot  (dqlow \cdot e + k - 1) \equiv q\ (mod\ 2^{120})$$
 
 Now we can solve the lower 120 bits of q. 
 
-Since dq . e = k(q-1)+1, and q-1 > dq, k < e.
+Since dq·e = k(q-1)+1, and q-1 > dq, k < e.
 
 So we only have to iterate from k=1 to k=e.
 
