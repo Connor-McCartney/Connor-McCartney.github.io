@@ -75,7 +75,7 @@ $$u \cdot q^2 - q = k\cdot n$$
 
 $$u \cdot q^2 - q\ (mod\ n) = 0$$
 
-So we can apply small_roots to u.q^2-q  
+So we can apply small_roots to u·q^2-q  
 
 Now check size of n:
 ```
