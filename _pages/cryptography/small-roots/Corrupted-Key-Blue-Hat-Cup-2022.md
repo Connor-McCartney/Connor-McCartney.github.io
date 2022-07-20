@@ -55,8 +55,11 @@ for k in range(1, e):
 Next to recover q:
 
 $$u = q^{-1}\ mod\ p$$$$u \cdot q \equiv 1\ mod\ p$$$$u \cdot q - 1 = k\cdot p$$$$u \cdot q^2 - q = k\cdot p \cdot q$$
+
 $$u \cdot q^2 - q = k\cdot n$$
+
 $$u \cdot q^2 - q\ (mod\ n) = 0$$
+
 So we can apply small_roots to u.q^2-q  
 
 Now check size of n:
@@ -65,8 +68,11 @@ print(len(bin(n)[2:]))
 # 1024
 ```
 So q should be 512 bits. q_low is 120 bits, so 
+
 $$q = 2^{120} \cdot x + qlow$$
+
 and we should search up to 
+
 $$X = 2^{512 - 120}$$
 
 
