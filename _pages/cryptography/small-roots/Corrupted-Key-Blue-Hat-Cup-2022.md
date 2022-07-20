@@ -49,7 +49,7 @@ Since dq·e = k(q-1)+1, and q-1 > dq, k < e.
 
 So we only have to iterate from k=1 to k=e.
 
-```
+```python
 for k in range(1, e):
 	try:
 		q_low = (pow(k, -1, 2**120) * (dq_low * e + k - 1)) % (2**120)
