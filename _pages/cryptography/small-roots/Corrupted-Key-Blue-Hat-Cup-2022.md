@@ -61,7 +61,13 @@ for k in range(1, e):
 
 Next to recover q:
 
-$$u = q^{-1}\ mod\ p$$$$u \cdot q \equiv 1\ mod\ p$$$$u \cdot q - 1 = k\cdot p$$$$u \cdot q^2 - q = k\cdot p \cdot q$$
+$$u = q^{-1}\ mod\ p$$
+
+$$u \cdot q \equiv 1\ mod\ p$$
+
+$$u \cdot q - 1 = k\cdot p$$
+
+$$u \cdot q^2 - q = k\cdot p \cdot q$$
 
 $$u \cdot q^2 - q = k\cdot n$$
 
