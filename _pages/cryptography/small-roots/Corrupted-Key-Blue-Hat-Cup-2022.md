@@ -21,7 +21,9 @@ $$Where\ u = q^{-1}\ mod\ p,\ and\ dq = d\ mod\ (q-1)$$
 Solve:
 
 $$dq \cdot e \equiv d \cdot e\ mod\ (q-1)$$
+
 $$dq \cdot e \equiv 1\ mod\ (q-1)$$
+
 $$dq \cdot e - 1 = k\ (q-1)$$
 
 Check how many bits of dq we have:
@@ -32,12 +34,17 @@ print(len(bin(dq_low)[2:]))
 ```
 
 So, $$dqlow = dq\ mod\ 2^{120} $$
+
 $$dq \cdot e + k - 1 = k \cdot q$$
+
 $$dqlow \cdot e + k - 1 \equiv k \cdot q\ (mod\ 2^{120})$$
+
 $$k^{-1} \cdot  (dqlow \cdot e + k - 1) \equiv q\ (mod\ 2^{120})$$
 
 Now we can solve the lower 120 bits of q. 
+
 Since dq . e = k(q-1)+1, and q-1 > dq, k < e.
+
 So we only have to iterate from k=1 to k=e.
 
 ```
