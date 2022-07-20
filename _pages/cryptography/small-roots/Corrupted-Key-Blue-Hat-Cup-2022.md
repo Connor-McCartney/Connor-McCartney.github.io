@@ -78,7 +78,8 @@ $$u \cdot q^2 - q\ (mod\ n) = 0$$
 So we can apply small_roots to u·q^2-q  
 
 Now check size of n:
-```
+
+```python
 print(len(bin(n)[2:]))
 # 1024
 ```
