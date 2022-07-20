@@ -104,24 +104,24 @@ u = 1188924614486678251915539215736947805971597759711488558587350285212788890719
 dq_low = 1043891160170747082120115133012365745  
   
 for k in tqdm(range(1, e)):  
-   #k = 59199  
-   try:  
-       q_low = (pow(k, -1, 2**120) * (dq_low * e + k - 1)) % (2**120)  
-       q_low = int(q_low)  
-   except:  
-       continue  
+    #k = 59199  
+    try:  
+        q_low = (pow(k, -1, 2**120) * (dq_low * e + k - 1)) % (2**120)  
+        q_low = int(q_low)  
+    except:  
+        continue  
   
-   PR.<x> = PolynomialRing(Zmod(n))  
-   qq = 2**120 * x + q_low  
-   f = u*qq**2 - qq  
-   xx = f.monic().small_roots(X=2**(512-120))  
-   if xx:  
-       xx = xx[0]  
-       q = 2**120 * xx + int(q_low)  
-       q = int(q)  
-       p = n // q  
-       d = pow(e, -1, (p-1)*(q-1))  
-       rsa = RSA.construct((int(n),int(e),int(d),int(p),int(q)))  
-       print(PKCS1_OAEP.new(rsa).decrypt(long_to_bytes(c)))  
-       break
+    PR.<x> = PolynomialRing(Zmod(n))  
+    qq = 2**120 * x + q_low  
+    f = u*qq**2 - qq  
+    xx = f.monic().small_roots(X=2**(512-120))  
+    if xx:  
+        xx = xx[0]  
+        q = 2**120 * xx + int(q_low)  
+        q = int(q)  
+        p = n // q  
+        d = pow(e, -1, (p-1)*(q-1))  
+        rsa = RSA.construct((int(n),int(e),int(d),int(p),int(q)))  
+        print(PKCS1_OAEP.new(rsa).decrypt(long_to_bytes(c)))  
+        break
 ```
