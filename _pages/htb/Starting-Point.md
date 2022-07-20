@@ -626,8 +626,6 @@ postgres@vaccine:/var/lib/postgresql$ ls
 Now for privesc:<br>
 The machine uses both PHP & SQL, so there should be cleartext creds in /var/www/html
 
-<Br>
-
 ```
 postgres@vaccine:/var/www/html$ cat dashboard.php
 ```
