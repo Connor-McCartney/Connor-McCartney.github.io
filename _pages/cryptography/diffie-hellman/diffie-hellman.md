@@ -13,3 +13,6 @@ __vulnerability: non-prime field__
 <span style="font-size:2em;">   [log log log - Angstrom CTF 2022](/cryptography/diffie-hellman/logloglog-Angstrom-CTF-2022)       </span> <br>
 __vulnerability: smooth field order (allowing Pohlig–Hellman algorithm)__
 
+
+<span style="font-size:2em;">   [MEWTWO - squeamishossifrage](/cryptography/diffie-hellman/MEWTWO-squeamishossifrage)       </span> <br>
+__vulnerability: isomorphism (mod p^2)__
