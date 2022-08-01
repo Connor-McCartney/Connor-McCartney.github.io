@@ -36,7 +36,6 @@ def solve_linear_mod(equations, bounds, guesses=None):
     for vi, var in enumerate(vars):
         scale = S >> (int(bounds[var]).bit_length())
         scales[var] = scale
-        # Fill in vars block of B
         B[NR + vi, vi] = scale
         Y[NR + vi] = guesses.get(var, int(bounds[var]) >> 1) * scale
     for ri, (rel, m) in enumerate(equations):
