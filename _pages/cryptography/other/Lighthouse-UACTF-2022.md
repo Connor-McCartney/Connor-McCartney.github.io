@@ -14,7 +14,7 @@ Each wheel turned each other wheel a certain number of times. JS code in /dist
 
 Have to find minimum turns for each wheel to get goal = 8, 11, 22, 4, 14, 26, 3, 21
 
-So basically solve 8 linear equations mod 29.
+So solve 8 linear equations mod 29.
 
 ```py
 import fpylll
