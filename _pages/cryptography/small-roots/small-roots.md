@@ -38,8 +38,9 @@ def small_roots(f, X, beta=1.0, epsilon=None):
 Inputs:
 
 f – the function <br>
-X – the bound for the root <br>
+X – the absolute bound for the root (-X < x < X) <br>
 beta – compute a root mod b where b is a factor of N and $$b \geq N^β$$ (Default: 1.0, so b=N)
+epsilon - satisfies $$x \leq \frac{1}{2} N^{\frac{\beta^2}{\delta} - \epsilon}$$
 
 <br>
 
