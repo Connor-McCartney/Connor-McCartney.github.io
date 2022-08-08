@@ -34,6 +34,10 @@ __vulnerability: partial PEM private key__
 __vulnerability: partial OpenSSH private key__ 
 
 
+<span style="font-size:2em;">   [PSYDUCK - squeamishossifrage](/cryptography/rsa/PSYDUCK-squeamishossifrage)       </span> <br>
+__vulnerability: upper bits of p given__
+
+
 <span style="font-size:2em;">   [Can't Login - Incognito CTF 2022](/cryptography/rsa/can't-login-ICTF-2022)       </span> <br>
 __vulnerability: common ssh-key password__
 
