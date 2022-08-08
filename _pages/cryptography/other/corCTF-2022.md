@@ -112,7 +112,7 @@ $$f(f(f(f(s)))) = a^4s + a^3b + a^2b + ab + b$$
 
 $$f(f(f(f(f(s))))) = a^5s + a^4b + a^3b + a^2b + ab + b$$
 
-Then notice the last terms form a geometric sequence:
+Then notice the last terms form a geometric series:
 
 $$\sum_{i=1}^n{b \cdot a^{i-1}} = \frac{b(1-a^n)}{1-a}$$
 
