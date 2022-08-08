@@ -129,17 +129,17 @@ def mult_alternative(s, n):
 
 Next solve priv_a (n):
 
-$$A = a^n \cdot s \ + b (1-a^n) \cdot (1-a)^{-1} \ (mod \ p)$$
+$$A \equiv a^n \cdot s \ + b (1-a^n) \cdot (1-a)^{-1} \ (mod \ p)$$
 
 let u = pow(1-a, -1, p)
 
-$$A = a^n \cdot s \ + b (1-a^n) \cdot u \ (mod \ p)$$
+$$A \equiv a^n \cdot s \ + b (1-a^n) \cdot u \ (mod \ p)$$
 
-$$A = a^n \cdot s \ + b \cdot u - b \cdot a^n \cdot u \ (mod \ p)$$
+$$A \equiv a^n \cdot s \ + b \cdot u - b \cdot a^n \cdot u \ (mod \ p)$$
 
-$$A - b \cdot u = a^n (s - b\cdot u) \ (mod \ p)$$
+$$A - b \cdot u \equiv a^n (s - b\cdot u) \ (mod \ p)$$
 
-$$(A - b \cdot u)(s - b\cdot u)^{-1} = a^n \ (mod \ p)$$
+$$(A - b \cdot u)(s - b\cdot u)^{-1} \equiv a^n \ (mod \ p)$$
 
 Now it is a discrete log problem, and luckily p-1 is smooth so Pohlig Hellman solves it fast. 
 
