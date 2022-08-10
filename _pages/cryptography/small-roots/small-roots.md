@@ -12,15 +12,17 @@ I have modified [sagemath's implementation](https://doc.sagemath.org/html/en/ref
 And here is mine:
 
 ```python
-def small_roots(f, X, beta=1.0, epsilon=None):
+def small_roots(f, X, beta=1.0, m=None):
     N = f.parent().characteristic()
     delta = f.degree()
-    if epsilon is None:
+    if m is None:
         epsilon = RR(beta^2/f.degree() - log(2*X, N))
+        m = max(beta**2/(delta * epsilon), 7*beta/delta).ceil()
+    t = int((delta*m*(1/beta - 1)).floor())
+    #print(f"m = {m}")
+    
     f = f.monic().change_ring(ZZ)
     P,(x,) = f.parent().objgens()
-    m = max(beta**2/(delta * epsilon), 7*beta/delta).ceil()
-    t = int((delta*m*(1/beta - 1)).floor())
     g  = [x**j * N**(m-i) * f**i for i in range(m) for j in range(delta)]
     g.extend([x**i * f**m for i in range(t)]) 
     B = Matrix(ZZ, len(g), delta*m + max(delta,t))
@@ -35,12 +37,11 @@ def small_roots(f, X, beta=1.0, epsilon=None):
     return [root for root in roots if N.gcd(ZZ(f(root))) >= N**beta]
 ```
 
-Inputs:
-
 f – the function <br>
 X – the absolute bound for the root (-X < x < X) <br>
 beta – compute a root mod b where b is a factor of N and $$b \geq N^β$$ (Default: 1.0, so b=N) <br>
-epsilon – satisfies $$x \leq \frac{1}{2} N^{\frac{\beta^2}{\delta} - \epsilon}$$
+epsilon – satisfies $$x \leq \frac{1}{2} N^{\frac{\beta^2}{\delta} - \epsilon}$$ <br>
+m and t – lattice dimensions (higher is more effective but slower)
 
 <br>
 
