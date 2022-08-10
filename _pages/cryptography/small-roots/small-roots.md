@@ -7,9 +7,7 @@ title: Coppersmith's Small Roots
 
 This section is dedicated to solving problems that involve [Coppersmith’s algorithm for finding small roots](http://cr.yp.to/bib/2001/coppersmith.pdf).
 
-I have modified [sagemath's implementation](https://doc.sagemath.org/html/en/reference/polynomial_rings/sage/rings/polynomial/polynomial_modn_dense_ntl.html#sage.rings.polynomial.polynomial_modn_dense_ntl.small_roots) to include a calculation for epsilon and make the function monic. [Here is their source code](https://gitlab.com/sagemath/sage/-/blob/develop/src/sage/rings/polynomial/polynomial_modn_dense_ntl.pyx).
-
-And here is mine:
+I have modified [sagemath's implementation](https://doc.sagemath.org/html/en/reference/polynomial_rings/sage/rings/polynomial/polynomial_modn_dense_ntl.html#sage.rings.polynomial.polynomial_modn_dense_ntl.small_roots) to use a different calculation for epsilon, make the function monic, and accept m as a paramater that should be tweaked.
 
 ```python
 def small_roots(f, X, beta=1.0, m=None):
