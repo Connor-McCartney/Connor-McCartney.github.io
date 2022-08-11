@@ -23,18 +23,10 @@ beta – compute a root mod b where b is a factor of N and $$b \geq N^β$$  <br>
 It is unclear if small_roots will compute a root mod p or a root mod q. <br>
 We know that $$p < n^{0.5} < q$$ <br>
 p and q also have the same bit length so they will be somewhat close to $$n^{0.5}$$ <br>
-(E.g. $$n^{0.49} < p < n^{0.5} < q < n^{0.51}$$) <br>
-It so happens that using beta=0.49 will compute x mod p where $$p \geq n^{0.49}$$ <br>
+(E.g. $$n^{0.4} < p < n^{0.5} < q < n^{0.6}$$) <br>
+It so happens that using beta=0.4 will compute x mod p where $$p \geq n^{0.4}$$ <br>
 Note that $$x = p^2 + 1337p + delta$$ so $$x \ (mod \ p) = p^2 + 1337p + delta \ (mod \ p) = delta$$ <br>
 So small_roots will return delta! This lets us choose the bounds, delta is a 64 bit integer so our bound should be $$2^{64}$$.
-
-```python
-PR.<x> = PolynomialRing(Zmod(n))
-f = pow(2,e,n)*(x**3) + pow(3,e,n)*(x**2) + pow(5,e,n)*x + pow(7,e,n) - val
-delta = small_roots(f, X=2^64, beta=0.49)[0]
-```
-
-<br>
 
 Next $$f(delta) \equiv 0 \ (mod \ p)$$, so p divides f(delta) and p can be recovered with gcd.
 
@@ -44,15 +36,17 @@ from Crypto.Cipher import PKCS1_OAEP
 from Crypto.Hash import SHA256
 from Crypto.Util.number import long_to_bytes, inverse
 
-def small_roots(f, X, beta=1.0, epsilon=None):
+def small_roots(f, X, beta=1.0, m=None):
     N = f.parent().characteristic()
     delta = f.degree()
-    if epsilon is None:
+    if m is None:
         epsilon = RR(beta^2/f.degree() - log(2*X, N))
+        m = max(beta**2/(delta * epsilon), 7*beta/delta).ceil()
+    t = int((delta*m*(1/beta - 1)).floor())
+    print(f"m = {m}")
+    
     f = f.monic().change_ring(ZZ)
     P,(x,) = f.parent().objgens()
-    m = max(beta**2/(delta * epsilon), 7*beta/delta).ceil()
-    t = int((delta*m*(1/beta - 1)).floor())
     g  = [x**j * N**(m-i) * f**i for i in range(m) for j in range(delta)]
     g.extend([x**i * f**m for i in range(t)]) 
     B = Matrix(ZZ, len(g), delta*m + max(delta,t))
@@ -74,7 +68,7 @@ val = 55719322748654060909881801139095138877488925481861026479419112168355471570
 
 PR.<x> = PolynomialRing(Zmod(n))
 f = pow(2,e,n)*(x**3) + pow(3,e,n)*(x**2) + pow(5,e,n)*x + pow(7,e,n) - val
-delta = small_roots(f, X=2^64, beta=0.49)[0]
+delta = small_roots(f, X=2^64, beta=0.4, m=3)[0]
 
 p = gcd(int(f(delta)), n)
 q = n//p
@@ -83,5 +77,4 @@ d = inverse(e, (p-1)*(q-1))
 key = RSA.construct((int(n), int(e), int(d), int(p), int(q)))
 flag = PKCS1_OAEP.new(key=key, hashAlgo=SHA256).decrypt(long_to_bytes(c))
 print(flag)
-#crew{m0dp_3qu4710n_l34d5_u5_f4c70r1n6}
 ```
