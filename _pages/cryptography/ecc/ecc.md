@@ -14,5 +14,5 @@ __vulnerability: small embedding degree (allowing MOV attack)__
 __challenge: find y-coordinate over non-prime field__
 
 
-<span style="font-size:2em;">   [cookie_lover_reloaded - HackIM CTF 2022](/cryptography/ecc/cookie_lover_reloaded-HackIM-CTF-2022)       </span> <br>
+<span style="font-size:2em;">   [cookie lover reloaded - HackIM CTF 2022](/cryptography/ecc/cookie-lover-reloaded-HackIM-CTF-2022)       </span> <br>
 __vulnerability: small k used for signature__
