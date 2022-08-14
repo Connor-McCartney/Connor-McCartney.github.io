@@ -1,6 +1,6 @@
 ---
-permalink: /cryptography/ecc/cookie_lover_reloaded-HackIM-CTF-2022
-title: cookie_lover_reloaded - HackIM CTF 2022
+permalink: /cryptography/ecc/cookie-lover-reloaded-HackIM-CTF-2022
+title: cookie lover reloaded - HackIM CTF 2022
 ---
 
 <br>
