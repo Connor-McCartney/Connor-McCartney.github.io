@@ -117,4 +117,4 @@ Here is the final solution (the flag was the sha256 hash):
 ![image](https://raw.githubusercontent.com/Connor-McCartney/Connor-McCartney.github.io/main/_pages/cryptography/rsa/images/final.png)
 
 
-Update: After 2022 update d must also be modified to use the Carmichael totient function rather than the Euler totient function.
+Update (2022): d must also be modified to use the Carmichael totient function rather than the Euler totient function.
