@@ -26,6 +26,14 @@ AI substitution cipher solvers <https://www.guballa.de/substitution-solver> <br>
 <http://quipqiup.com> <br>
 Hashcat Example Hashes <https://hashcat.net/wiki/doku.php?id=example_hashes> <br>
 
+## Challenges
+
+<https://www.hackerrank.com/dashboard>
+<https://app.hackthebox.com/machines/list/active>
+<https://cryptohack.org/challenges/>
+<https://squeamishossifrage.eu/index.html#challenges>
+<https://mysterytwister.org/challenges/all-challenges-compact/>
+
 ## Other
 
 Note taking: <https://obsidian.md> <br>
