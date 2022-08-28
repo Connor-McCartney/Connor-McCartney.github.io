@@ -28,11 +28,11 @@ Hashcat Example Hashes <https://hashcat.net/wiki/doku.php?id=example_hashes> <br
 
 ## Challenges
 
-<https://www.hackerrank.com/dashboard> <br>
-<https://app.hackthebox.com/machines/list/active> <br>
-<https://cryptohack.org/challenges/> <br>
-<https://squeamishossifrage.eu/index.html#challenges> <br>
-<https://mysterytwister.org/challenges/all-challenges-compact/> <br>
+coding <https://www.hackerrank.com/dashboard> <br>
+pentesting <https://app.hackthebox.com/machines/list/active> <br>
+cryptography <https://cryptohack.org/challenges> <br>
+cryptography <https://squeamishossifrage.eu/index.html#challenges> <br>
+cryptography <https://mysterytwister.org/challenges/all-challenges-compact> <br>
 
 ## Other
 
