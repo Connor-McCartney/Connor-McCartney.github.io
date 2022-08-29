@@ -38,6 +38,10 @@ __vulnerability: partial OpenSSH private key__
 __vulnerability: upper bits of p given__
 
 
+<span style="font-size:2em;">   [corrupt-key-1 picoMini](/cryptography/rsa/corrupt-key-1-picoMini)       </span> <br>
+__vulnerability: upper bits of p given__
+
+
 <span style="font-size:2em;">   [Can't Login - Incognito CTF 2022](/cryptography/rsa/can't-login-ICTF-2022)       </span> <br>
 __vulnerability: common ssh-key password__
 
