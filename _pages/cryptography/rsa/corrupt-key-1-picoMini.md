@@ -5,7 +5,7 @@ title: corrupt-key-1 picoMini
 
 <br>
 
-We are given 256 upper bits of p, which can be solved by bruting some bits and then using coppersmith's method. <br>
+We are given the 256 upper bits of p, which can be solved by bruting some bits and then using coppersmith's method. <br>
 The number of bits and m must be tweaked, higher m will take longer but more bits also takes longer...
 
 
