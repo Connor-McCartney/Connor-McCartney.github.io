@@ -40,7 +40,7 @@ Then use the email 4774706@delivery.htb to sign up here http://delivery.htb:8065
 
 Then go back and click 'check ticket status' with  user@delivery.htb and ticket id: 4774706.
 
-We see a confirmation URL http://delivery.htb/:8065/do_verify_email?token=yfb6qoounnptzz6biskzss9mq79hhp1h7nkkij4sgtpa41rid9p8d1zb8km36ph6&email=4774706%40delivery.htb
+We see a confirmation URL <http://delivery.htb/:8065/do_verify_email?token=yfb6qoounnptzz6biskzss9mq79hhp1h7nkkij4sgtpa41rid9p8d1zb8km36ph6&email=4774706%40delivery.htb>
 
 Now we have access to the Internal team!
 
