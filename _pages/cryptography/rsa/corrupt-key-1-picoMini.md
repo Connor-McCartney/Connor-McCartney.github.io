@@ -48,7 +48,6 @@ def recover(p_high, n, m):
         return p
 
 def solve(bits, m):
-    print(m, bits)
     for x in tqdm(range(2**bits)):
         _p = _p_high + x * 2**(256-bits)
         p_high = int(bin(_p)[:256+bits+2], 2)
