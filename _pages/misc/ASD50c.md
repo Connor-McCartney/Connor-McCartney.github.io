@@ -13,7 +13,9 @@ title: Solving the codes from Australian Signals Directorate cyber-spy agency's 
 
 ![image](https://raw.githubusercontent.com/Connor-McCartney/Connor-McCartney.github.io/main/_pages/misc/images/braille.png)
 
-This is a reference to the [atbash cipher](https://www.dcode.fr/atbash-cipher) which @h4sh and I found decodes the outer ring:
+This is a reference to the [atbash cipher](https://www.dcode.fr/atbash-cipher) which @h4sh and I found decodes the outer ring on the front of the coin:
+
+![image](https://raw.githubusercontent.com/Connor-McCartney/Connor-McCartney.github.io/main/_pages/misc/images/frontofcoin.png)
 
 DVZIVZFWZXRLFHRMXLMXVKGZMWNVGRXFOLFHRMVCVXFGRLM . URMWXOZIRGBRM7DRWGSC5WVKGS
 
