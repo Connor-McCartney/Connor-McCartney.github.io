@@ -13,4 +13,4 @@ title: Misc
 
 <span style="font-size:2em;">   [How to SSH into a virtualbox virtual machine](/misc/sshvirtualbox)   </span>
 
-<span style="font-size:2em;">   [ASD 75th anniversary 50 cent coin](/misc/ASD50cent)   </span>
+<span style="font-size:2em;">   [ASD 75th anniversary 50c coin](/misc/ASD50c)   </span>
