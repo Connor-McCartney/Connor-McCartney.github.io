@@ -65,3 +65,10 @@ The inner circle has colours WBBBBBWWBWBBWWWBBBWBBWBBBBWWWWBBBWBWWWBBWBBWWBBWBBW
 @lol! found if you replace the white with '1' and the black with '0' then convert using binary with byte length 7, it decodes to 'ASDCbr2022'
 
 ![image](https://raw.githubusercontent.com/Connor-McCartney/Connor-McCartney.github.io/main/_pages/misc/images/ASDCbr2022.png)
+
+<br>
+The outer circle has colours BWWWWGWWWWBGBBBBWGWWBBBGGWBBGBBBGWBBBGBWGBWBBGWBBBGBGBWBGWGBWWBGBWGBWBGWBWG <br>
+At first we thought it might be ternary, but it turned out to be morse code. <br>
+If you replace the black with dots, whites with dashes and grey/dotted with spaces, it decodes to '1947DSBALBERTPARK':
+
+![image](https://raw.githubusercontent.com/Connor-McCartney/Connor-McCartney.github.io/main/_pages/misc/images/morse.png)
