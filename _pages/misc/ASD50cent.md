@@ -12,3 +12,6 @@ title: Solving the codes from Australian Signals Directorate cyber-spy agency's 
 ![image](https://raw.githubusercontent.com/Connor-McCartney/Connor-McCartney.github.io/main/_pages/misc/images/backofcoin.png)
 
 ![image](https://raw.githubusercontent.com/Connor-McCartney/Connor-McCartney.github.io/main/_pages/misc/images/braille.png)
+
+This is a reference to the [atbash cipher](https://www.dcode.fr/atbash-cipher) which decodes other parts of the coin:
+
