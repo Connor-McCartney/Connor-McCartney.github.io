@@ -10,3 +10,5 @@ title: Solving the codes from Australian Signals Directorate cyber-spy agency's 
 @Chiefclapcheek figured out that the back of the coin had braille under some letters, which when put in order spelled 'atbash'.
 
 ![image](https://raw.githubusercontent.com/Connor-McCartney/Connor-McCartney.github.io/main/_pages/misc/images/backofcoin.png)
+
+![image](https://raw.githubusercontent.com/Connor-McCartney/Connor-McCartney.github.io/main/_pages/misc/images/braille.png)
