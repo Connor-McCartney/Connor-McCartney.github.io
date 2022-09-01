@@ -64,4 +64,4 @@ Then we started looking at the different shadings/colours. <br>
 The inner circle has colours WBBBBBWWBWBBWWWBBBWBBWBBBBWWWWBBBWBWWWBBWBBWWBBWBBWWBBBBBWWBBWBBWWBBWB <br>
 @lol! found if you replace the white with '1' and the black with '0' then convert using binary with byte length 7, it decodes to 'ASDCbr2022'
 
-
+![image](https://raw.githubusercontent.com/Connor-McCartney/Connor-McCartney.github.io/main/_pages/misc/images/ASDCbr2022.png)
