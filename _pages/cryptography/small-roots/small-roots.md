@@ -53,3 +53,5 @@ m and t – lattice dimensions (higher is more effective but slower)
 <span style="font-size:2em;">   [really_sick_aesthetic - SECFEST 2022](/cryptography/small-roots/really-sick-aesthetic-SECFEST-2022)       </span> <br>
 
 <span style="font-size:2em;">   [corrupt-key-1 picoMini](/cryptography/small-roots/corrupt-key-1-picoMini)       </span> <br>
+
+<span style="font-size:2em;">   [corrupt-key-2 picoMini](/cryptography/small-roots/corrupt-key-2-picoMini)       </span> <br>
