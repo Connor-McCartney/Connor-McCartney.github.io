@@ -43,7 +43,7 @@ class IIter:
             break
         return ret
 
-def coppersmith(f, bounds, beta, m=1, t=1):
+def coppersmith(f, bounds, m=1, t=1):
     n = f.nvariables()
     N = f.base_ring().cardinality()
     f /= f.coefficients().pop(0) #monic
@@ -116,7 +116,7 @@ _p = 0xfe8984407b0816cc28e5ccc6bb73790000000000ca3806dd2cfdfc8d616b000000006109a
 
 PR.<x0,x1,x2> = PolynomialRing(Zmod(N), 3)
 f = _p + 2**16*x0 + 2**240*x1 + 2**352*x2
-x0, x1, x2 = coppersmith(f, bounds=(2**40,2**32,2**40,), beta=0.4, m=6)
+x0, x1, x2 = coppersmith(f, bounds=(2**40,2**32,2**40,), m=6)
 p = int(f(x0,x1,x2))
 
 q = N//p
