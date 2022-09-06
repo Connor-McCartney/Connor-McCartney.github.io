@@ -16,9 +16,7 @@ Switch to previous desktop: change to control+shift+left <br>
 ## Configure konsole
 
 Open konsole<br>
-Settings > Manage Profiles <br>
-Create a new profile > Appearance > Choose a colour scheme <br>
-Set this profile as default and apply<br>
+Settings > Manage Profiles , create a new profile and set as default
 
 Settings > Toolbars shown > disable 'main toolbar' and 'session toolbar'
 
