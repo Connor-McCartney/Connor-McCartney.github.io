@@ -22,7 +22,7 @@ Set this profile as default and apply<br>
 
 Settings > Toolbars shown > disable
 
-Toggle 'no border': alt f3 <br>
+Toggle 'no border': Settings > Configure Console > General > Remove window title bar and frame <br>
 Toggle 'menubar': ctrl shift m <br>
 
 ## Remove firefox
