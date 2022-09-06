@@ -22,6 +22,7 @@ Set this profile as default and apply<br>
 
 Settings > Toolbars shown > disable
 
+Toggle 'no border': alt f3
 
 ## Remove firefox
 
