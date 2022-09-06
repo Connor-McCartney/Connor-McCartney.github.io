@@ -20,7 +20,7 @@ Settings > Manage Profiles <br>
 Create a new profile > Appearance > Choose a colour scheme <br>
 Set this profile as default and apply<br>
 
-Settings > Toolbars shown > disable
+Settings > Toolbars shown > disable 'main toolbar' and 'session toolbar'
 
 Toggle 'no border': Settings > Configure Console > General > Remove window title bar and frame <br>
 Toggle 'menubar': ctrl shift m <br>
