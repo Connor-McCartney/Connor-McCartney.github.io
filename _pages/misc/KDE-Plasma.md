@@ -87,3 +87,4 @@ sudo dnf copr enable peterwu/iosevka
 sudo dnf install iosevka-fixed-ss03-fonts.noarch
 ```
 
+I like the semibold
