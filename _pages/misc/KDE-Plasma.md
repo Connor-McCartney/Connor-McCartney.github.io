@@ -66,7 +66,7 @@ Turn on wobbly windows, magic lamp, translucency, fall apart
 Autostart > Add login script:
 
 ```
-#!/bin/bash
+#!/usr/bin/bash
 killall plasmashell; sleep 3; plasmashell
 ```
 
@@ -76,3 +76,14 @@ killall plasmashell; sleep 3; plasmashell
 Go to your network connections. From there click on wireless tab. Choose your connection and then click the edit button. <br>
 Make sure your password is entered then click on the wireless security tab. <br>
 Then check the box in the bottom left corner that says available to all users. 
+
+
+## Iosevka font
+
+<https://copr.fedorainfracloud.org/coprs/peterwu/iosevka/>
+
+```
+sudo dnf copr enable peterwu/iosevka
+sudo dnf install iosevka-fixed-ss03-fonts.noarch
+```
+
