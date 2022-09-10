@@ -18,6 +18,10 @@ __vulnerability: factorisation with Pollard's p-1 algorithm, but largest prime f
 __vulnerability: affine padding (allowing Franklin-Reiter attack)__
 
 
+<span style="font-size:2em;">   [DeLorean - HTB](/cryptography/rsa/DeLoreanHTB)       </span> <br>
+__vulnerability: non-prime e and gcd(e, phi) is power of 2__
+
+
 <span style="font-size:2em;">   [easyRSA - DASCTF 2022](/cryptography/rsa/easyrsa-DASCTF2022)       </span> <br>
 __vulnerability: non-prime e and gcd(e, p-1) = 1__
 
