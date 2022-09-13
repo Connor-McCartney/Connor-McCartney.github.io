@@ -93,16 +93,5 @@ DISTRIB_DESCRIPTION="Ubuntu 21.10"        <br>
 PRETTY_NAME="Ubuntu 21.10"                <br>
 ID_LIKE=debian                            <br>
 
-I thought it might be something like this:
-
-```
-cd /etc; cat lsb-release os-release
-```
-
-Then thought of this which is shorter: 
-
-```
-cat /etc/*release
-```
-
-Still not correct.
+This information is found in /etc/lsb-release and /etc/os-release. <br>
+I thought `nl /etc/*` was technically correct, but managed to guess the flag: `Mystiko{nl /etc/*release}`
