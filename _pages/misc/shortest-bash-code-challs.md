@@ -95,3 +95,11 @@ ID_LIKE=debian                            <br>
 
 This information is found in /etc/lsb-release and /etc/os-release. <br>
 I thought `nl /etc/*` was technically correct, but managed to guess the flag: `Mystiko{nl /etc/*release}`
+
+
+# 9. My External IP
+
+I need to find only my external IP address. How can I do that in the shortest BASH terminal command?
+
+There are various websites that give you your IP, ifconfig.me and ifconfig.co seemed to have the shortest URLs. <br>
+`Mystiko{curl ifconfig.co}` was not accepted, but `Mystiko{curl ifconfig.me}` was.
