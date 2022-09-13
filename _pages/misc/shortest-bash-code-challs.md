@@ -83,3 +83,14 @@ Mystiko{de87beaf3d7a30134c0de342dcc43a76}
 
 <br>
 
+
+# 7. Read that file!!
+
+Find a way to get the following (at a minimum) information for a box that you have just accessed. <br>
+
+DISTRIB_ID=Ubuntu                         <br>
+DISTRIB_DESCRIPTION="Ubuntu 21.10"        <br>
+PRETTY_NAME="Ubuntu 21.10"                <br>
+ID_LIKE=debian                            <br>
+
+
