@@ -96,6 +96,8 @@ ID_LIKE=debian                            <br>
 This information is found in /etc/lsb-release and /etc/os-release. <br>
 I thought `nl /etc/*` was technically correct, but managed to guess the flag: `Mystiko{nl /etc/*release}`
 
+<br>
+
 
 # 9. My External IP
 
@@ -103,3 +105,16 @@ I need to find only my external IP address. How can I do that in the shortest BA
 
 There are various websites that give you your IP, ifconfig.me and ifconfig.co seemed to have the shortest URLs. <br>
 `Mystiko{curl ifconfig.co}` was not accepted, but `Mystiko{curl ifconfig.me}` was.
+
+<br>
+
+
+# 10. Hidden
+
+You are setting up a CTF challenge for your friends but want to ensure that they cannot see your history. <br>
+What is the shortest piece of code that you can use to hide your commands?
+
+
+
+
+
