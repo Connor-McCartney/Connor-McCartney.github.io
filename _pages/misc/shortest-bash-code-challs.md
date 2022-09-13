@@ -93,4 +93,6 @@ DISTRIB_DESCRIPTION="Ubuntu 21.10"        <br>
 PRETTY_NAME="Ubuntu 21.10"                <br>
 ID_LIKE=debian                            <br>
 
+I thought it might be something like this:
 
+cd /etc; cat lsb-release os-release
