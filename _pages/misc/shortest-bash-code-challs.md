@@ -95,4 +95,12 @@ ID_LIKE=debian                            <br>
 
 I thought it might be something like this:
 
+```
 cd /etc; cat lsb-release os-release
+```
+
+Then thought of this which is shorter: 
+
+```
+cat /etc/*release
+```
