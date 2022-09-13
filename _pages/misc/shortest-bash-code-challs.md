@@ -3,9 +3,11 @@ permalink: /misc/shortest-bash-code-challs
 title: Shortest Bash Code Challenges - Mystiko CTF 2022
 ---
 
+<br>
 
 There were 11 bash challenges with a one month Hack The Box VIP+ prize to the first person who completes all of them.
 
+<br>
 
 # 1. How many?
 
