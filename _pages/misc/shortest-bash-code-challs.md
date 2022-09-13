@@ -115,6 +115,15 @@ You are setting up a CTF challenge for your friends but want to ensure that they
 What is the shortest piece of code that you can use to hide your commands?
 
 
+<br>
 
 
+# 11. Delete the file - quickly!!!
+
+You have a file emailed to you by a spy you just met in a coffee shop. <br>
+You must delete it as quickly as you can. You check the file first and <br>
+notice that it has an 'i' attribute set. What is the shortest piece of <br>
+code that you can use to delete the file called "a" while not running as root user?
+
+Mystiko{sudo chattr -i a;rm a}
 
