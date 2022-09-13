@@ -104,3 +104,5 @@ Then thought of this which is shorter:
 ```
 cat /etc/*release
 ```
+
+Still not correct.
