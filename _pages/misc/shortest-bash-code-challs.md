@@ -114,6 +114,8 @@ There are various websites that give you your IP, ifconfig.me and ifconfig.co se
 You are setting up a CTF challenge for your friends but want to ensure that they cannot see your history. <br>
 What is the shortest piece of code that you can use to hide your commands?
 
+By default, commands with a space entered before them will not be saved in bash history. <br>
+Mystiko{ }
 
 <br>
 
