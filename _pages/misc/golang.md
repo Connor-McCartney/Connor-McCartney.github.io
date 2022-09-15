@@ -15,6 +15,21 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Hello, 世界")
+	fmt.Println("Hello world")
 }
+```
+
+# Running a program
+
+```
+[connor@fedora Desktop]$ go run program.go
+Hello world
+```
+
+# Compiling and running
+
+```
+[connor@fedora Desktop]$ go build program.go
+[connor@fedora Desktop]$ ./program 
+Hello world
 ```
