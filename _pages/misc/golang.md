@@ -89,3 +89,12 @@ func main() {
     }
 }
 ```
+
+```go
+func main() {
+    nums := []int{2, 3, 5, 7}
+    for i, n := range nums {
+        fmt.Println(i, n)
+    }
+}
+```
