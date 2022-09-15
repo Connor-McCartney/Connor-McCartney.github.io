@@ -80,3 +80,12 @@ func main() {
 
 <br>
 
+# For loops
+
+```go
+func main() {
+    for i := 1; i <= 5; i++ {
+        fmt.Println(i)
+    }
+}
+```
