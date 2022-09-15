@@ -33,6 +33,7 @@ coding <https://www.hackerrank.com/dashboard> <br>
 pentesting <https://app.hackthebox.com/machines/list/active> <br>
 cryptography <https://cryptohack.org/challenges> <br>
 cryptography <https://squeamishossifrage.eu/index.html#challenges> <br>
+web <https://portswigger.net/web-security> <br>
 
 ## Other
 
