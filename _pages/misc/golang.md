@@ -19,12 +19,16 @@ func main() {
 }
 ```
 
+<br>
+
 # Running a program
 
 ```
 [connor@fedora Desktop]$ go run program.go
 Hello world
 ```
+
+<br>
 
 # Compiling and running
 
@@ -33,3 +37,46 @@ Hello world
 [connor@fedora Desktop]$ ./program 
 Hello world
 ```
+
+<br>
+
+# Formats
+
+<https://pkg.go.dev/fmt>
+
+<br>
+
+# Getting input 
+
+There are no chars in golang<br>
+
+The byte type in Golang is an alias for the unsigned integer 8 type ( uint8 ). <br>
+The byte type is only used to semantically distinguish between an unsigned integer 8 and a byte. <br>
+The range of a byte is 0 to 255 (same as uint8 ).
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    var i int
+    var f float64
+    var s string
+    
+    fmt.Print("Enter an int: ") 
+    fmt.Scanf("%d", &i)
+    fmt.Printf("You entered %d\n\n", i)
+
+    fmt.Print("Enter a float: ")
+    fmt.Scanf("%f", &f)
+    fmt.Printf("You entered %0.2f\n\n", f)
+    
+    fmt.Print("Enter a string: ")
+    fmt.Scanf("%s", &s)
+    fmt.Printf("You entered %s\n\n", s)
+}
+```
+
+<br>
+
