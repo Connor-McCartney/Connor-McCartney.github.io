@@ -6,7 +6,7 @@ title: Sending emails using python
 <br>
 
 
-The Simple Mail Transfer Protocol (SMTP) is an internet standard communication protocol for electronic mail transmission. <br>
+The Simple Mail Transfer Protocol (SMTP) is an internet standard communication protocol for sending emails. <br>
 
 Here is a script to send emails using Outlook's SMTP and python's smtplib library.
 
