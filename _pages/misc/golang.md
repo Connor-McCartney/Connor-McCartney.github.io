@@ -98,3 +98,39 @@ func main() {
     }
 }
 ```
+
+<br>
+
+# Accepting arrays as arguments
+
+If you try this:
+
+```go
+func foo(lst []int) {
+
+}
+
+func main() {
+    a := [...]int {1, 2, 3}    
+    foo(a)
+}
+```
+
+You will see 
+
+```
+./t.go:9:9: cannot use a (variable of type [3]int) as type []int in argument to foo
+```
+
+The solution is to slice arrays when passing them into a function
+
+```go
+func foo(lst []int) {
+    
+}
+
+func main() {
+    a := [...]int {1, 2, 3}    
+    foo(a[:])
+}
+```
