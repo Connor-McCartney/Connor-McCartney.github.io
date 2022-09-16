@@ -122,7 +122,7 @@ You will see
 ./t.go:9:9: cannot use a (variable of type [3]int) as type []int in argument to foo
 ```
 
-The solution is to slice arrays when passing them into a function
+Go does not support generics. The solution is to slice arrays when passing them into a function
 
 ```go
 func foo(lst []int) {
