@@ -18,10 +18,6 @@ from email import encoders
 import smtplib
 import os
 
-
-
-
-
 SENDER = 'from@outlook.com'
 PASSWORD = 'XXXXXXXX'
 RECEIVER = 'to@example.com'
