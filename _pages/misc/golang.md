@@ -101,36 +101,10 @@ func main() {
 
 <br>
 
-# Accepting arrays as arguments
+# Creating dynamically-sized arrays
 
-If you try this:
+The make function allocates a zeroed array and returns a slice that refers to that array: <br>
+a := make([]int, 5)  // len(a)=5
 
-```go
-func foo(lst []int) {
-
-}
-
-func main() {
-    a := [...]int {1, 2, 3}    
-    foo(a)
-}
-```
-
-You will see 
-
-```
-./t.go:9:9: cannot use a (variable of type [3]int) as type []int in argument to foo
-```
-
-Go does not support generics. The solution is to slice arrays when passing them into a function
-
-```go
-func foo(lst []int) {
-    
-}
-
-func main() {
-    a := [...]int {1, 2, 3}    
-    foo(a[:])
-}
-```
+To specify a capacity, pass a third argument to make:<br>
+b := make([]int, 0, 5) // len(b)=0, cap(b)=5
