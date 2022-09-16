@@ -120,3 +120,15 @@ b := make([]int, 0, 5) // len(b)=0, cap(b)=5
 ```go
 m := make(map[KeyType]ValueType)
 ```
+
+<br>
+
+# How to check if a map contains a key
+
+This is the 'comma ok' idiom
+
+```go
+if value, ok := hashmap[x]; ok {
+	// checks if key is present and retrieves value
+}
+```
