@@ -104,7 +104,19 @@ func main() {
 # Creating dynamically-sized arrays
 
 The make function allocates a zeroed array and returns a slice that refers to that array: <br>
+```go
 a := make([]int, 5)  // len(a)=5
+```
 
 To specify a capacity, pass a third argument to make:<br>
+```go
 b := make([]int, 0, 5) // len(b)=0, cap(b)=5
+```
+
+<br>
+
+# Creating maps
+
+```go
+m = make(map[KeyType]ValueType)
+```
