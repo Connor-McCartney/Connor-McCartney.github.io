@@ -128,7 +128,17 @@ m := make(map[KeyType]ValueType)
 This is the 'comma ok' idiom
 
 ```go
-if value, ok := hashmap[x]; ok {
-	// checks if key is present and retrieves value
+if val, ok := dict["foo"]; ok {
+    //do something here
 }
 ```
+
+if statements in Go can include both a condition and an initialization statement. 
+
+First: initializes two variables - val will receive either the value of "foo" from the <br>
+map or a "zero value" (in this case the empty string) and ok will receive a bool that <br>
+will be set to true if "foo" was actually present in the map
+
+Second: evaluates ok, which will be true if "foo" was in the map
+
+<br>
