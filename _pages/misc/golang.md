@@ -118,5 +118,5 @@ b := make([]int, 0, 5) // len(b)=0, cap(b)=5
 # Creating maps
 
 ```go
-m = make(map[KeyType]ValueType)
+m := make(map[KeyType]ValueType)
 ```
