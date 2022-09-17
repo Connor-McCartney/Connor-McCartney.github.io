@@ -129,3 +129,9 @@ code that you can use to delete the file called "a" while not running as root us
 
 Mystiko{sudo chattr -i a;rm a}
 
+
+<br>
+
+I ended up winning the prize!
+
+![image](https://raw.githubusercontent.com/Connor-McCartney/Connor-McCartney.github.io/main/_pages/misc/images/bashchallenges.png)
