@@ -13,7 +13,7 @@ There were 11 bash challenges with a one month Hack The Box VIP+ prize to the fi
 
 Use the smallest amount of code to echo the number of characters in the string 'a'.
 
-Mystiko{echo ${#a}}
+`Mystiko{echo ${#a}}`
 
 <br>
 
@@ -22,7 +22,7 @@ Mystiko{echo ${#a}}
 
 Use the smallest amount of code to echo the variable 'a' all lower case.
 
-Mystiko{echo ${a,}} 
+`Mystiko{echo ${a,}}`
 
 <br>
 
@@ -31,7 +31,7 @@ Mystiko{echo ${a,}}
 
 Use the smallest amount of code to echo the answer of 2.50000 when dividing 5 by 2 on the command line.
 
-Mystiko{echo "scale=5;5/2"|bc}
+`Mystiko{echo "scale=5;5/2"|bc}`
 
 <br>
 
@@ -40,7 +40,7 @@ Mystiko{echo "scale=5;5/2"|bc}
 
 Use the smallest amount of code to list the directory contents of the user mystiko.
 
-Mystiko{ls ~mystiko}
+`Mystiko{ls ~mystiko}`
 
 <br>
 
@@ -49,7 +49,7 @@ Mystiko{ls ~mystiko}
 
 Use the smallest amount of code to return to your last directory.
 
-Mystiko{cd -} 
+`Mystiko{cd -}` 
 
 <br>
 
@@ -59,7 +59,7 @@ Mystiko{cd -}
 Can some one help me make it easier to type the following command in just by typing in the letters www <br>
 python3 -m http.server 8888 <br>
 
-Mystiko{alias www='python3 -m http.server 8888'}
+`Mystiko{alias www='python3 -m http.server 8888'}`
 
 <br>
 
@@ -79,7 +79,7 @@ The flag is the md5 hash of the terminal answer after you have run it.
 MD5(stdin)= de87beaf3d7a30134c0de342dcc43a76
 ```
 
-Mystiko{de87beaf3d7a30134c0de342dcc43a76}
+`Mystiko{de87beaf3d7a30134c0de342dcc43a76}`
 
 <br>
 
@@ -115,7 +115,7 @@ You are setting up a CTF challenge for your friends but want to ensure that they
 What is the shortest piece of code that you can use to hide your commands?
 
 By default, commands with a space entered before them will not be saved in bash history. <br>
-Mystiko{ }
+`Mystiko{ }`
 
 <br>
 
@@ -127,7 +127,7 @@ You must delete it as quickly as you can. You check the file first and <br>
 notice that it has an 'i' attribute set. What is the shortest piece of <br>
 code that you can use to delete the file called "a" while not running as root user?
 
-Mystiko{sudo chattr -i a;rm a}
+`Mystiko{sudo chattr -i a;rm a}`
 
 
 <br>
