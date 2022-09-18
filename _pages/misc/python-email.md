@@ -30,8 +30,8 @@ msg['To'] = RECEIVER
 attachments = ['file1.txt', 'file2.txt']
 if len(attachments) > 0: 
     for f in attachments:
-        part = MIMEBase('application', "octet-stream")
-        part.set_payload( open(f,"rb").read() )
+        part = MIMEBase('application', 'octet-stream')
+        part.set_payload( open(f,'rb').read() )
         encoders.encode_base64(part)
         part.add_header('Content-Disposition', 'attachment; filename="%s"' % os.path.basename(f))
         msg.attach(part)
