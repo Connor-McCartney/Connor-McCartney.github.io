@@ -106,4 +106,6 @@ In Overview > Firmware choose one with OVMF, eg ....OVMF_CODE.secboot.fd (enable
 Once windows boots and it asks to look for drivers, I got an error with the w11 one but the w10 one seems to work. <br>
 Also, to continue without internet you may have to pree Shift+F10 and then enter OOBE\BYPASSNRO
 
+Network setup:
 
+In E drive run the x64 driver. 
