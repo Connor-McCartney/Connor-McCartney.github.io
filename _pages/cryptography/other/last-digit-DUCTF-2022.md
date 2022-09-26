@@ -1,6 +1,6 @@
 ---
 permalink: /cryptography/other/last-digit-DUCTF-2022
-title: last-digit DUCTF-2022
+title: last-digit DUCTF2022
 ---
 
 <br>
