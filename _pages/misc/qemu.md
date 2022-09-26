@@ -90,7 +90,7 @@ Troubleshooting 'This PC doesn't meet the minimum system requirements to install
 
 * Minimum 4GB RAM and 2 CPUs is required
 * TPM and Secure-Boot are required
-* 64GB storage
+* Minimum 64GB storage
 
 We will use swtpm - a TPM emulator. 
 
