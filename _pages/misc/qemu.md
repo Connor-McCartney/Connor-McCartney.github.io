@@ -100,6 +100,6 @@ sudo dnf install swtpm
 
 Add Hardware > TPM > type:emulated, Mode:CRB, Version:2.0
 
-In overview > Firmware choose one with OVMF, eg ....OVMF_CODE.secboot.fd (enabled secure boot)
+In Overview > Firmware choose one with OVMF, eg ....OVMF_CODE.secboot.fd (enabled secure boot)
 
 In Boot Options > Boot Device Order, make sure SATA CDROM 1 is at the top.
