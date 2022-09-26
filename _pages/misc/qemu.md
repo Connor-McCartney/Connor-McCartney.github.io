@@ -70,3 +70,12 @@ Change SATA Disk 1 to VirtIO Disk 1
 
 Change NIC... to VirtIO
 
+<br>
+<br>
+
+Now some Windows-only drivers <https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.215-2/>:
+
+I downloaded virtio-win-0.1.215.iso 
+
+
+
