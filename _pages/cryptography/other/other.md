@@ -20,4 +20,4 @@ title: Other
 <span style="font-size:2em;">   [corCTF 2022](/cryptography/other/corCTF-2022) </span> <br>
 
 
-<span style="font-size:2em;">   [last-digit DUCTF-2022](/cryptography/other/last-digit-DUCTF-2022) </span> <br>
+<span style="font-size:2em;">   [last-digit DUCTF 2022](/cryptography/other/last-digit-DUCTF-2022) </span> <br>
