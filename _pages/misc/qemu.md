@@ -109,3 +109,7 @@ Also, to continue without internet you may have to pree Shift+F10 and then enter
 Network setup:
 
 In E drive run the x64 driver. 
+
+Unlock display settings:
+
+<https://www.spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe>
