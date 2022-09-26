@@ -84,3 +84,7 @@ Browse > Browse local > and add the virtio-win-0.1.215.iso
 Then we can click 'begin installation' :)
 
 
+Troubleshooting 'This PC doesn't meet the minimum system requirements to install this version of windows':
+
+* Minimum 4GB RAM is required
+
