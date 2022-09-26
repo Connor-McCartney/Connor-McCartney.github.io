@@ -18,3 +18,5 @@ title: Misc
 <span style="font-size:2em;">   [Sending emails using python](/misc/python-email)   </span>
 
 <span style="font-size:2em;">   [Shortest Bash Code Challenges - Mystiko CTF 2022](/misc/shortest-bash-code-challs)   </span>
+
+<span style="font-size:2em;">   [Configuring QEMU/Virt Manager](/misc/qemu)   </span>
