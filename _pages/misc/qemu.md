@@ -19,8 +19,6 @@ sudo systemctl enable libvirtd
 sudo dnf install qemu virt-manager virt-viewer dnsmasq bridge-utils libguestfs
 ```
 
-* vde2 missing https://github.com/virtualsquare/vde-2/blob/master/INSTALL
-
 ```
 sudo vim /etc/libvirt/libvirtd.conf
 ```
@@ -56,3 +54,19 @@ Grab the iso here: <https://www.microsoft.com/software-download/windows11>
 Edit > Preferences > General > Enable XML Editing (to be able to make advanced configurations)
 
 Click 'create a new VM' then follow the prompts until 'customize configuration before install'
+
+Click XML and then delete these lines:
+
+```
+    <timer name="rtc" tickpolicy="catchup"/>
+    <timer name="pit" tickpolicy="delay"/>
+```
+
+Change `<timer name="hpet" present="no"/>` to `<timer name="hpet" present="yes"/>`
+
+Then apply (this will improve CPU useage).
+
+Change SATA Disk 1 to VirtIO Disk 1
+
+Change NIC... to VirtIO
+
