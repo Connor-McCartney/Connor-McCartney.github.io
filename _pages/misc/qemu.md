@@ -42,3 +42,14 @@ reboot the machine now, then continue
 ```
 sudo systemctl restart libvirtd
 ```
+
+<br>
+
+# Creating VMs
+
+<br>
+
+I'm going to install Windows 11. 
+
+Grab the iso here: <https://www.microsoft.com/software-download/windows11>
+
