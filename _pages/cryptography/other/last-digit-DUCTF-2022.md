@@ -39,7 +39,7 @@ To disable this limit, you can do: `sys.set_int_max_str_digits(0)`
 
 Onto the challenge:
 
-Flag * n ~= 10^4300 will error and leak the flag. <br>
+Flag * n ≈ 10^4300 will error and leak the flag. <br>
 We just need to do a binary search to see when this will happen: <br>
 
 ```python
