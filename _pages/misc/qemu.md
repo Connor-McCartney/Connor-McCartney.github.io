@@ -103,7 +103,8 @@ Add Hardware > TPM > type:emulated, Mode:CRB, Version:2.0
 In Overview > Firmware choose one with OVMF, eg ....OVMF_CODE.secboot.fd (enabled secure boot)
 
 
-Once windows boots and it asks to look for drivers, I got an error with the w11 one but the w10 one seems to work. <br>
+Choose the w11 driver when partitioning.
+
 Also, to continue without internet you may have to pree Shift+F10 and then enter OOBE\BYPASSNRO
 
 Network setup:
