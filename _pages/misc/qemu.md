@@ -98,3 +98,8 @@ We will use swtpm - a TPM emulator.
 sudo dnf install swtpm
 ```
 
+Add Hardware > TPM > type:emulated, Mode:CRB, Version:2.0
+
+In overfiew > Firmware choose one with OVMF, eg ....OVMF_CODE.secboot.fd (enabled secure boot)
+
+In Boot Options > Boot Device Order, make sure SATA CDROM 1 is at the top.
