@@ -77,5 +77,10 @@ Now some Windows-only drivers <https://fedorapeople.org/groups/virt/virtio-win/d
 
 I downloaded virtio-win-0.1.215.iso 
 
+Click +Add Hardware, select CDROM device to create 'SATA CDROM 2'
+
+Browse > Browse local > and add the virtio-win-0.1.215.iso 
+
+
 
 
