@@ -5,7 +5,7 @@ title: Configuring QEMU/Virt Manager
 
 <br>
 
-This guide will be using fedora.
+# Installation
 
 <br>
 
