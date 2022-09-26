@@ -20,3 +20,25 @@ sudo dnf install qemu virt-manager virt-viewer dnsmasq bridge-utils libguestfs
 ```
 
 * vde2 missing https://github.com/virtualsquare/vde-2/blob/master/INSTALL
+
+```
+sudo vim /etc/libvirt/libvirtd.conf
+```
+
+Uncomment the following:
+
+```
+unix_sock_group = "libvirt"
+unix_sock_ro_perms = "0777"
+unix_sock_rw_perms = "0770"
+```
+
+```
+sudo usermod -aG libvirt connor
+```
+
+reboot the machine now, then continue
+
+```
+sudo systemctl restart libvirtd
+```
