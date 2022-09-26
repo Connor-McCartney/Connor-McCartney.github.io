@@ -87,4 +87,10 @@ Then we can click 'begin installation' :)
 Troubleshooting 'This PC doesn't meet the minimum system requirements to install this version of windows':
 
 * Minimum 4GB RAM is required
+* TPM and Secure-Boot are required
 
+We will use swtpm - a terminal emulator. 
+
+```
+sudo dnf install swtpm
+```
