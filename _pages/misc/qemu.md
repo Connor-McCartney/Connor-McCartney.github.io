@@ -16,7 +16,7 @@ sudo systemctl enable libvirtd
 ```
 
 ```
-sudo dnf install qemu virt-manager virt-viewer dnsmasq bridge-utils libguestfs
+sudo dnf install qemu virt-manager virt-viewer dnsmasq bridge-utils libguestfs edk2-ovmf.noarch
 ```
 
 ```
@@ -89,8 +89,9 @@ Troubleshooting 'This PC doesn't meet the minimum system requirements to install
 * Minimum 4GB RAM is required
 * TPM and Secure-Boot are required
 
-We will use swtpm - a terminal emulator. 
+We will use swtpm - a TPM emulator. 
 
 ```
 sudo dnf install swtpm
 ```
+
