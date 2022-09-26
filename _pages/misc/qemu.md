@@ -55,3 +55,4 @@ Grab the iso here: <https://www.microsoft.com/software-download/windows11>
 
 Edit > Preferences > General > Enable XML Editing (to be able to make advanced configurations)
 
+Click 'create a new VM' then follow the prompts.
