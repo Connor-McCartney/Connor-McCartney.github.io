@@ -15,3 +15,8 @@ sudo systemctl start libvirtd
 sudo systemctl enable libvirtd
 ```
 
+```
+sudo dnf install qemu virt-manager virt-viewer dnsmasq bridge-utils libguestfs
+```
+
+* vde2 missing https://github.com/virtualsquare/vde-2/blob/master/INSTALL
