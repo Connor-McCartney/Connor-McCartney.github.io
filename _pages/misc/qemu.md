@@ -55,6 +55,8 @@ Edit > Preferences > General > Enable XML Editing (to be able to make advanced c
 
 Click 'create a new VM' then follow the prompts until 'customize configuration before install'
 
+Windows 10 will be selected for Windows 11 - this is okay
+
 Click XML and then delete these lines:
 
 ```
