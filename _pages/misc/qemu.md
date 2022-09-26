@@ -81,6 +81,6 @@ Click +Add Hardware, select CDROM device to create 'SATA CDROM 2'
 
 Browse > Browse local > and add the virtio-win-0.1.215.iso 
 
-
+Then we can click 'begin installation' :)
 
 
