@@ -133,4 +133,5 @@ mkdir whonix
 cd whonix
 wget https://download.whonix.org/libvirt/16.0.5.3/Whonix-XFCE-16.0.5.3.Intel_AMD64.qcow2.libvirt.xz
 tar -xvf Whonix*.libvirt.xz
+touch WHONIX_BINARY_LICENSE_AGREEMENT_accepted
 ```
