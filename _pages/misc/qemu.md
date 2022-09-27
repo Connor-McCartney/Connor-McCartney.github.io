@@ -153,3 +153,9 @@ You'll need to log into your Whonix-Gateway once and run
 sudo setup-dist
 
 in order to finalize the installation.
+
+Tips:
+
+* update with `upgrade-nonroot`
+* CTRL+ALT to escape VM
+* default password is `changeme`
