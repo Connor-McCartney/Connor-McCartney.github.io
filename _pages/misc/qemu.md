@@ -147,3 +147,9 @@ sudo mv Whonix-Workstation*.qcow2 /var/lib/libvirt/images/Whonix-Workstation.qco
 cd ..
 rm -rf whonix
 ```
+
+You'll need to log into your Whonix-Gateway once and run
+
+sudo setup-dist
+
+in order to finalize the installation.
