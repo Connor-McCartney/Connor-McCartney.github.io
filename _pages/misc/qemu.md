@@ -144,5 +144,6 @@ sudo virsh -c qemu:///system define Whonix-Gateway*.xml
 sudo virsh -c qemu:///system define Whonix-Workstation*.xml
 sudo mv Whonix-Gateway*.qcow2 /var/lib/libvirt/images/Whonix-Gateway.qcow2
 sudo mv Whonix-Workstation*.qcow2 /var/lib/libvirt/images/Whonix-Workstation.qcow2
-
+cd ..
+rm -rf whonix
 ```
