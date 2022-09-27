@@ -114,3 +114,22 @@ In E drive run the x64 driver.
 Unlock display settings:
 
 <https://www.spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe>
+
+
+<br>
+<br>
+
+Installing Whonix:
+
+<br>
+
+<https://www.whonix.org/wiki/KVM>
+
+<br>
+
+```
+cd Downloads
+mkdir whonix
+cd whonix
+wget https://download.whonix.org/libvirt/16.0.5.3/Whonix-XFCE-16.0.5.3.Intel_AMD64.qcow2.libvirt.xz
+```
