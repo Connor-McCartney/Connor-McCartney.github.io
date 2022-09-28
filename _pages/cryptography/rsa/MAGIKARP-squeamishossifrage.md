@@ -64,3 +64,16 @@ V7XSfdFuWpY+5oAwg1erR1M/nrg1cZ5dKzsYzN5HCERE0MfC6LlPBKmfPg5SAx1u
 5CoWpCJm8VvefwNY
 -----END PKCS7-----
 ```
+
+We have enc_key: <br>
+`00026f44ba0be7f2920ca3bfce5da40d860719d62f096fe4615a9c358765804f4a5f6a08f9bc4ef4380ea55d76b5f2eed4687ec03c96133b8b27698a3eb308b8d660a295fb16085029d3e050e8a8a501f75230cb8307fda08e65c030c6fc7300bbe56773a4405cc490a442adf662ed5ed996cc0ac2987fe04dbf7ed22975c2ac`
+
+enc_data: <br>
+`8357ab47533f9eb835719e5d2b3b18ccde47084444d0c7c2e8b94f04a99f3e0e52031d6ee42a16a42266f15bde7f0358`
+
+iv: <br>
+`a420a665fdae57b5d27dd16e5a963ee6`
+
+The key is usually the last 64 hex str of pow(enc_key, d, n) 
+
+
