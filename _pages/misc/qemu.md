@@ -119,7 +119,7 @@ Unlock display settings:
 <br>
 <br>
 
-Installing Whonix:
+# Creating Whonix VMs
 
 <br>
 
