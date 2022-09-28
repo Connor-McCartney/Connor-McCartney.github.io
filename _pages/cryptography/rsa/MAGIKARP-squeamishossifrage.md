@@ -77,3 +77,20 @@ iv: <br>
 The key is usually the last 64 hex str of pow(enc_key, d, n) 
 
 
+```py
+from Crypto.Cipher import AES  
+from Crypto.Util.Padding import pad, unpad
+
+enc_key = '00026f44ba0be7f2920ca3bfce5da40d860719d62f096fe4615a9c358765804f4a5f6a08f9bc4ef4380ea55d76b5f2eed4687ec03c96133b8b27698a3eb308b8d660a295fb16085029d3e050e8a8a501f75230cb8307fda08e65c030c6fc7300bbe56773a4405cc490a442adf662ed5ed996cc0ac2987fe04dbf7ed22975c2ac'
+enc_data = '8357ab47533f9eb835719e5d2b3b18ccde47084444d0c7c2e8b94f04a99f3e0e52031d6ee42a16a42266f15bde7f0358'
+iv = 'a420a665fdae57b5d27dd16e5a963ee6'
+
+key = bytes.fromhex(enc_key[-64:])
+enc_data = bytes.fromhex(enc_data)
+iv = bytes.fromhex(iv)
+
+cipher = AES.new(key, AES.MODE_CBC, iv)  
+print(cipher.decrypt(pad(enc_data, 16)))
+
+# so{7c6c30b964910f44c56d3256dc73cbbc}
+```
