@@ -10,13 +10,9 @@ title: Configuring QEMU/Virt Manager
 <br>
 
 ```
-sudo dnf install libvirt-daemon-driver-qemu.x86_64
+sudo dnf install libvirt-daemon-driver-qemu.x86_64 qemu virt-manager virt-viewer dnsmasq bridge-utils libguestfs edk2-ovmf.noarch swtpm
 sudo systemctl start libvirtd
 sudo systemctl enable libvirtd
-```
-
-```
-sudo dnf install qemu virt-manager virt-viewer dnsmasq bridge-utils libguestfs edk2-ovmf.noarch
 ```
 
 ```
@@ -57,6 +53,18 @@ Click 'create a new VM' then follow the prompts until 'customize configuration b
 
 Windows 10 will be selected for Windows 11 - this is okay
 
+<br>
+
+### Configurations
+
+Change SATA Disk 1 to VirtIO Disk 1
+
+Change NIC... to VirtIO
+
+<br>
+
+### Optional performance configurations
+
 Click XML and then delete these lines:
 
 ```
@@ -66,42 +74,33 @@ Click XML and then delete these lines:
 
 Change `<timer name="hpet" present="no"/>` to `<timer name="hpet" present="yes"/>`
 
-Then apply (this will improve CPU useage).
-
-Change SATA Disk 1 to VirtIO Disk 1
-
-Change NIC... to VirtIO
-
-<br>
 <br>
 
-Now some Windows-only drivers <https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.215-2/>:
+### Windows-specific configurations
 
-I downloaded virtio-win-0.1.215.iso 
+I downloaded virtio-win-0.1.215.iso from here: <https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.215-2/>
 
 Click +Add Hardware, select CDROM device to create 'SATA CDROM 2'
 
 Browse > Browse local > and add the virtio-win-0.1.215.iso 
 
-Then we can click 'begin installation' :)
-
-
-Troubleshooting 'This PC doesn't meet the minimum system requirements to install this version of windows':
-
-* Minimum 4GB RAM and 2 CPUs is required
-* TPM and Secure-Boot are required
-* Minimum 64GB storage
-
-We will use swtpm - a TPM emulator. 
-
-```
-sudo dnf install swtpm
-```
-
 Add Hardware > TPM > type:emulated, Mode:CRB, Version:2.0
 
 In Overview > Firmware choose one with OVMF, eg ....OVMF_CODE.secboot.fd (enabled secure boot)
 
+
+<br>
+<br>
+<br>
+
+
+Then we can click 'begin installation' 
+
+Troubleshooting 'This PC doesn't meet the minimum system requirements to install this version of windows':
+
+* Minimum 4GB RAM and 2 CPUs is required
+* TPM and Secure-Boot are required (we will use swtpm - a TPM emulator)
+* Minimum 64GB storage
 
 Choose the w11 driver when partitioning.
 
