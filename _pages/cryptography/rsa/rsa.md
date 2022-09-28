@@ -42,6 +42,10 @@ __vulnerability: partial OpenSSH private key__
 __vulnerability: upper bits of p given__
 
 
+<span style="font-size:2em;">   [MAGIKARP - squeamishossifrage](/cryptography/rsa/MAGIKARP-squeamishossifrage)       </span> <br>
+__vulnerability: e=1__
+
+
 <span style="font-size:2em;">   [Can't Login - Incognito CTF 2022](/cryptography/rsa/can't-login-ICTF-2022)       </span> <br>
 __vulnerability: common ssh-key password__
 
