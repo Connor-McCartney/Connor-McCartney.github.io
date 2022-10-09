@@ -23,13 +23,6 @@ Settings > Toolbars shown > disable 'main toolbar' and 'session toolbar'
 Toggle 'no border': Settings > Configure Console > General > Remove window title bar and frame <br>
 Toggle 'menubar': ctrl shift m <br>
 
-## Remove firefox
-
-```
-sudo dnf remove firefox 
-rm -r ~/.mozilla 
-rm -r ~/.cache/mozilla 
-```
   
 ##  Remove krunner desktop 
 
