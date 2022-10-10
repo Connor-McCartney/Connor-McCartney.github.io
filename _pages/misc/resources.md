@@ -6,7 +6,7 @@ title: Resources
 ## Recommended
 
 MathJax - LaTeX for websites: <https://www.mathjax.org/#gettingstarted> <br>
-uBlock Origin - great ad blocker <https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en> <br>
+uBlock Origin - great ad blocker <https://addons.mozilla.org/en-US/firefox/addon/ublock-origin> <br>
 sagemath - mathematics software <https://www.sagemath.org> <br>
 KeePassXC - offline password manager <https://keepassxc.org> <br>
 Startpage - search engine <https://www.startpage.com> <br>
@@ -37,7 +37,7 @@ web <https://portswigger.net/web-security> <br>
 
 ## Other
 
-Note taking: <https://obsidian.md> <br>
+Note taking: <https://www.notion.so> <br>
 HTTP file server <https://www.rejetto.com/hfs/?f=dl> <br>
 MS office alternative <https://www.onlyoffice.com> <br>
 After Fedora install <https://www.youtube.com/watch?v=RrRpXs2pkzg>  <br>
