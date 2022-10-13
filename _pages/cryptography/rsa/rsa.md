@@ -18,6 +18,10 @@ __vulnerability: factorisation with Pollard's p-1 algorithm, but largest prime f
 __vulnerability: affine padding (allowing Franklin-Reiter attack)__
 
 
+<span style="font-size:2em;">   [Lost Modulus Again - HTB](/cryptography/rsa/Lost-Modulus-Again-HTB)       </span> <br>
+__vulnerability: short padding__
+
+
 <span style="font-size:2em;">   [quick maffs - HTB](/cryptography/rsa/quick-maffs-HTB)       </span> <br>
 __vulnerability: hint given (m1+m2+m3)__
 
