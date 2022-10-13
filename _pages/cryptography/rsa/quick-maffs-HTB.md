@@ -42,8 +42,9 @@ $$c_3 \equiv (m_3)^e$$
 
 $$m_1 + m_2 + m_3 = hint$$
 
-<[https://link.springer.com/content/pdf/10.1007/3-540-68339-9_1.pdf](https://link.springer.com/content/pdf/10.1007/3-540-68339-9_1.pdf)>
+<br>
 
+<https://link.springer.com/content/pdf/10.1007/3-540-68339-9_1.pdf> <br>
 The system of equations can be solved with Grobner Basis:
 
 <br>
