@@ -32,6 +32,8 @@ def encrypt_flag():
 
 <br>
 
+# Solve 
+
 The same flag (m) is encrypted with the same keys but random affine padding:
 
 $$c_1$$ = $$(a_1 \ m + b_1)^e \ mod \ n$$
