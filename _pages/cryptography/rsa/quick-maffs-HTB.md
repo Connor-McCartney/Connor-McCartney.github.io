@@ -9,8 +9,6 @@ title: quick maffs - HTB
 
 <br>
 
-Challenge:
-
 ```python
 from Crypto.Util.number import *
 from secret import pts,p,q
@@ -32,7 +30,9 @@ hint = 2674558878275613295915981392537201653631411909654166620884912623530781
 
 <br>
 
-Solve:
+# Solve
+
+<br>
 
 $$c_1 \equiv (m_1)^e$$
 
