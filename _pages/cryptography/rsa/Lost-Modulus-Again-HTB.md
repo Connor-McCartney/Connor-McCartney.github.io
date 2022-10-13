@@ -50,7 +50,7 @@ msg2 : 7499a590fcb19dd0880b77a0dd57f66f6055976100b10053adadaeec18c382c5c3d095b4e
 
 <br>
 
-Solve:
+# Solve
 
 First recover n with gcd then solve with Coppersmith’s short pad attack:
 
