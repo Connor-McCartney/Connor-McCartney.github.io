@@ -36,4 +36,8 @@ sudo systemctl enable tor
 sudo systemctl start tor
 ```
 
-View the .onion address with `sudo cat /var/lib/tor/hidden_service/hostname`
+View the .onion address with:
+
+```
+sudo cat /var/lib/tor/hidden_service/hostname`
+```
