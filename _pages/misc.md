@@ -20,3 +20,5 @@ title: Misc
 <span style="font-size:2em;">   [Shortest Bash Code Challenges - Mystiko CTF 2022](/misc/shortest-bash-code-challs)   </span>
 
 <span style="font-size:2em;">   [Configuring QEMU/Virt Manager](/misc/qemu)   </span>
+
+<span style="font-size:2em;">   [How to host your website on the TOR network](/misc/host-tor-site)   </span>
