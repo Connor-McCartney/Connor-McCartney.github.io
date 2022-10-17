@@ -36,4 +36,4 @@ sudo systemctl enable tor
 sudo systemctl start tor
 ```
 
-The address of the site will be available at `/var/lib/tor/hidden_service`
+View the .onion address with `sudo cat /var/lib/tor/hidden_service/hostname`
