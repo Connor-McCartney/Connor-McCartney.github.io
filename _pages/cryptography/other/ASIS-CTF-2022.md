@@ -53,9 +53,13 @@ Now there are two approaches. The first is to solve this quadratic:
 
 $$
 enc = \frac{m!}{2 (m-2)!} \cdot n^2 + mn + 1
-\\
+$$
+
+$$
 enc = \frac{m(m-1)(m-2!)}{2(m-2!)} \cdot n^2 + m n + 1
-\\
+$$
+
+$$
 enc = \frac{m(m-1)}{2} \cdot n^2 + mn + 1
 $$
 
@@ -75,9 +79,9 @@ The second approach is to take mod n^2 on both sides, removing the mC2 n^2 term:
 
 $$
 enc = {^mC_2} \cdot n^2 + mn  +1
-\\
+\verb\\
 enc \equiv m n + 1 \ (mod \ n^2)
-\\
+\verb\\\
 enc - 1 \equiv mn \ (mod \ n^2)
 $$
 
@@ -85,7 +89,7 @@ Then we can ignore mod n^2 on RHS because mn < n^2
 
 $$
 (enc - 1) \ (mod \ n^2) = mn
-\\
+\verb\\\
 m = \frac{(enc - 1) \ (mod \ n^2)}{n}
 $$
 
@@ -184,11 +188,11 @@ We can solve in similar fashion to [https://connor-mccartney.github.io/cryptogra
 
 $$
 enc \equiv s^m \cdot r^{2^k} \ (mod \ p)
-\\
+\verb\\\
 {enc}^{\frac{p-1}{2^k}} \equiv ({s}^{\frac{p-1}{2^k}})^m \cdot (r^{2^k\cdot \frac{p-1}{2^k}}) \ (mod \ p)
-\\
+\verb\\\
 {enc}^{\frac{p-1}{2^k}} \equiv ({s}^{\frac{p-1}{2^k}})^m \cdot r^{p-1} \ (mod \ p)
-\\
+\verb\\\
 {enc}^{\frac{p-1}{2^k}} \equiv ({s}^{\frac{p-1}{2^k}})^m \ (mod \ p)
 $$
 
