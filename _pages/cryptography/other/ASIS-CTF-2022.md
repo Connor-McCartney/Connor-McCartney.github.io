@@ -49,7 +49,6 @@ Taking the binomial mod n^3 eliminates all terms with factors divisible by n^3, 
 
 $$
 enc = {^mC_2} \cdot n^2 + mn  +1
-
 $$
 
 Now there are two approaches. The first is to solve this quadratic:
@@ -61,7 +60,6 @@ enc = \frac{m!}{2 (m-2)!} \cdot n^2 + mn + 1
 enc = \frac{m(m-1)(m-2!)}{2(m-2!)} \cdot n^2 + m n + 1
 \\
 enc = \frac{m(m-1)}{2} \cdot n^2 + mn + 1
-
 $$
 
 ```python
@@ -89,11 +87,9 @@ $$
 Then we can ignore mod n^2 on RHS because mn < n^2
 
 $$
-
 (enc - 1) \ (mod \ n^2) = mn
 \\
 m = \frac{(enc - 1) \ (mod \ n^2)}{n}
-
 $$
 
 ```python
@@ -329,23 +325,19 @@ Alternative solution:
 
 $$
 g^x \equiv x \ (mod \ p)
-
 $$
 
 $$
 g \equiv x^{x^{-1} \ (mod\ p-1)} \ (mod \ p)
-
 $$
 
 $$
 \text{Let}\ x^{-1} \ (mod\ p-1) = 1
-
 $$
 
 $$
 \text{Then } x \equiv 1 \ (mod\ p-1) \text{ and } x \equiv g\ (mod\ p
 )
-
 $$
 
 These can be solved with CRT (mod p(p-1)), then you can subtract p(p-1) to pass the check x<p.
