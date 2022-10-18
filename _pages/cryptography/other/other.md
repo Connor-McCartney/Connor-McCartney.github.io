@@ -21,3 +21,6 @@ title: Other
 
 
 <span style="font-size:2em;">   [last-digit DUCTF 2022](/cryptography/other/last-digit-DUCTF-2022) </span> <br>
+
+
+<span style="font-size:2em;">   [ASIS CTF 2022](/cryptography/other/ASIS-CTF-2022) </span> <br>
