@@ -47,15 +47,12 @@ $$
 
 Taking the binomial mod n^3 eliminates all terms with factors divisible by n^3, leaving just:
 
-$$
-enc = {^mC_2} \cdot n^2 + mn  +1
-$$
+$$enc = {^mC_2} \cdot n^2 + mn + 1$$
 
 Now there are two approaches. The first is to solve this quadratic:
 
 $$
 enc = \frac{m!}{2 (m-2)!} \cdot n^2 + mn + 1
-
 \\
 enc = \frac{m(m-1)(m-2!)}{2(m-2!)} \cdot n^2 + m n + 1
 \\
