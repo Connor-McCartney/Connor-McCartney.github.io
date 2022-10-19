@@ -16,3 +16,7 @@ __vulnerability: smooth field order (allowing Pohlig–Hellman algorithm)__
 
 <span style="font-size:2em;">   [MEWTWO - squeamishossifrage](/cryptography/diffie-hellman/MEWTWO-squeamishossifrage)       </span> <br>
 __vulnerability: isomorphism (mod p^2)__
+
+
+<span style="font-size:2em;">   [Rookie Mistake - HTB](/cryptography/diffie-hellman/Rookie-Mistake-HTB)       </span> <br>
+__vulnerability: isomorphism (mod p^2)__
