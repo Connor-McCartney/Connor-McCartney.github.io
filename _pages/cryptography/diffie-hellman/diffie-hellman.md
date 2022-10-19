@@ -7,7 +7,7 @@ title: Diffie-Hellman
 
 
 <span style="font-size:2em;">   [NSA Backdoor - picoCTF 2022](/cryptography/diffie-hellman/nsa-backdoorpicoCTF-2022)       </span> <br>
-__vulnerability: non-prime field__
+__vulnerability: non-prime field with m<p__
 
 
 <span style="font-size:2em;">   [log log log - Angstrom CTF 2022](/cryptography/diffie-hellman/logloglog-Angstrom-CTF-2022)       </span> <br>
@@ -19,4 +19,4 @@ __vulnerability: isomorphism (mod p^2)__
 
 
 <span style="font-size:2em;">   [Rookie Mistake - HTB](/cryptography/diffie-hellman/Rookie-Mistake-HTB)       </span> <br>
-__vulnerability: isomorphism (mod p^2)__
+__vulnerability: non-prime field with smooth order__
