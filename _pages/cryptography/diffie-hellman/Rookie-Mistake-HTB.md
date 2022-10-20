@@ -87,7 +87,59 @@ Unlike [https://connor-mccartney.github.io/cryptography/diffie-hellman/nsa-backd
 
 First calculate order:
 
+```python
+from sympy.ntheory.factor_ import factorint
+from sympy.core.numbers import igcd
+from sympy.utilities.misc import as_int
 
+
+def n_order(a, n, f):
+    """Returns the order of ``a`` modulo ``n``.
+    The order of ``a`` modulo ``n`` is the smallest integer
+    ``k`` such that ``a**k`` leaves a remainder of 1 with ``n``.
+    Examples
+    ========
+    >>> from sympy.ntheory import n_order
+    >>> n_order(3, 7)
+    6
+    >>> n_order(4, 7)
+    3
+    """
+    from collections import defaultdict
+    a, n = as_int(a), as_int(n)
+    if igcd(a, n) != 1:
+        raise ValueError("The two numbers should be relatively prime")
+    factors = defaultdict(int)
+    for px, kx in f.items():
+        if kx > 1:
+            factors[px] += kx - 1
+        fpx = factorint(px - 1)
+        for py, ky in fpx.items():
+            factors[py] += ky
+    group_order = 1
+    for px, kx in factors.items():
+        group_order *= px**kx
+    order = 1
+    if a > n:
+        a = a % n
+    for p, e in factors.items():
+        exponent = group_order
+        for f in range(e + 1):
+            if pow(a, exponent, n) != 1:
+                order *= p ** (e - f + 1)
+                break
+            exponent = exponent // p
+    return order
+
+
+n = 0xbe30ccaf896c16f53515e298df25df9158d0a95295c119f0444398b94fae26c0b4cf3a43b120cf0fb657069e0621eb1d2dd832eef3065e80ddbc35854dd4585cc41fd6a5b36339c0d9fcc066272be6818be6a624f75482bbb9c408010ac8c27b20397d870bfcb14e6318097b1601f99e391c9b68c5c586f8da561ff8507be9212713b910b748370ce692c11afa09b74ce80c5f5dd72046415aeed85e1ecedca14abe17ed19ab97729b859120699d9f80dd13f8483773df15b938b8399702a6e846b8728a70f1940d4c6e5835a06a89925eb1ec91a796f270e2d9be1a2c4bee5517109c161f04333d9c0d4034fbbd2dcf69fe734b759a89937f4d8ea0ee6b8385aae14a2cce361
+p = 0x16498bf7cc48a7465416e0f9ec8034f4030991e73aff9524ef74cc574228e36e6e1944c7686f69f0d1186a69b7aa77d7e954edc8a6932f006786f4648ecc8d4f4d3f6c03d9a1ee9fe61b28b6dd2791a63be581b8811a8ac90a387241ea68b7d36b4a274f64c7a721ad55cfcef23cd14c72542f576e4b507c11c4fa198e80021d484691b
+q = n // p
+g = 0x69420
+
+order = n_order(g, n, {p: 1, q: 1})
+assert order == (p-1)*(q-1) // 2
+```
 
 
 ```python
