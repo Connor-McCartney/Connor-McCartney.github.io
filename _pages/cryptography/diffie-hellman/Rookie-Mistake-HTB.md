@@ -85,7 +85,10 @@ Part 2:
 
 Unlike [https://connor-mccartney.github.io/cryptography/diffie-hellman/nsa-backdoorpicoCTF-2022](https://connor-mccartney.github.io/cryptography/diffie-hellman/nsa-backdoorpicoCTF-2022) m>p and m>q.
 
-GCD(p-1, q-1) = 2,  so we must divide the order by 2.
+First calculate order:
+
+
+
 
 ```python
 from sympy.ntheory.residue_ntheory import _discrete_log_pohlig_hellman
