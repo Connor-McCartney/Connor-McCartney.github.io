@@ -52,6 +52,8 @@ CVCTFM0R53ISN0T50FUN
 
 cvctf{m0r53isn0t50fun}
 
+<br>
+
 # Warmup 4
 
 Last warmup. You should get it fast if you use any social media.
@@ -72,3 +74,19 @@ cvctf{secretsaretobeh1dd3n}
 
 # Substitution
 
+Substitution is a cryptographic technique where a plaintext is replaced by a ciphertext. The ciphertext is a substitution of the plaintext.
+
+Here is a very simple CTF-related substitution cipher. Find out the flag.
+
+Hxpkdiz kcz Osxe ja x apzhjxs ljvr go jvogimxkjgv azhdijkf hgmpzkjkjgva. Kcziz xiz kcizz hgmmgv kfpza, Uzgpxirf, Xkkxhl Rzozvhz xvr mjyzr.
+Jo fgd cxwz ojedizr gdk kcz xqgwz mzaaxez, cziz ja fgdi osxe, pszxaz xrr hdisf qixhlzka qzogiz adqmjaajgv: hwhkoxwzifajmpszadqakjkdkjgv
+
+<br>
+
+<http://quipqiup.com/>
+
+cvctf{averysimplesubstitution}
+
+<br>
+
+# RSA 1
