@@ -240,7 +240,7 @@ NDAgNmIgNzEgNmEgNjkgM2EgMzIgM2QgNDIgM2YgM2QgNzUgMjcgNjIgNmEgM2QgNWQgNjUgMmQgNWMg
 
 <br>
 
-Base64 -> hex -> ASCII85 -> base64 -> base58 -> <https://cryptoji.com>
+Base64 -> hex -> base85 -> base64 -> base58 -> <https://cryptoji.com>
 
 cvctf{3m0j1_c4n_L34K_7h1ng5}
 
