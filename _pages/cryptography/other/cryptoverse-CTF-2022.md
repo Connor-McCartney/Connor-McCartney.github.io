@@ -440,7 +440,7 @@ but I will use m for flag and c for ciphertext.
 First we should factor n, because p and q are close together.
 
 $$
-\text{Let } \_p = n^\frac{1}{3} 
+\text{Let } \text{\_p} = n^\frac{1}{3} 
 $$
 
 $$
