@@ -252,5 +252,5 @@ $$c \equiv m^2 \ (mod \ n)$$
 
 We need to find the square root mod n. 
 
-I modified sympy's sqrt_mod function from <https://github.com/sympy/sympy/blob/master/sympy/ntheory/residue_ntheory.py>
+I modified sympy's sqrt_mod_iter function from <https://github.com/sympy/sympy/blob/master/sympy/ntheory/residue_ntheory.py>
 
