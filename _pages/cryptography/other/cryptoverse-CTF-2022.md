@@ -458,3 +458,6 @@ $$
 $$
 n = (\textunderscore p + a)^2 \cdot (p + b)
 $$
+
+Now we can use [Defund's Coppersmith implementation](https://github.com/defund/coppersmith/blob/master/coppersmith.sage):
+
