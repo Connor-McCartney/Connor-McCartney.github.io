@@ -440,11 +440,11 @@ but I will use m for flag and c for ciphertext.
 First we should factor n, because p and q are close together.
 
 $$
-\text{Let } \text{_p} = n^\frac{1}{3} 
+\text{Let } \_p = n^\frac{1}{3} 
 $$
 
 $$
-\text{Let } p = papprox + a
+\text{Let } p = \_p + a
 $$
 
 $$
@@ -456,5 +456,5 @@ n = p^2 \cdot q
 $$
 
 $$
-n = (papprox + a)^2 \cdot (p + b)
+n = (\_p + a)^2 \cdot (p + b)
 $$
