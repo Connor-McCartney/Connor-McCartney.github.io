@@ -175,7 +175,7 @@ if __name__ == "__main__":
 # RSA 3
 
 CRT attack but there is 1/10 chance we get a bad value, so collect more than you need <br>
-then zip the lits and use random.sample
+then zip the lists and use random.sample
 
 ```python
 from pwn import remote, process
