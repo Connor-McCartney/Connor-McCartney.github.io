@@ -169,3 +169,65 @@ if __name__ == "__main__":
     
 #b'cvctf{Hensel_Takagi_Lifting,but_Fermat_is_better?}'
 ```
+
+<br>
+
+# RSA 3
+
+CRT attack but there is 1/10 chance we get a bad value, so collect more than you need <br>
+then zip the lits and use random.sample
+
+```python
+from pwn import remote, process
+from sympy.ntheory.modular import crt
+from gmpy2 import iroot
+from random import sample
+from Crypto.Util.number import long_to_bytes
+
+def get_values():
+    n_list = []
+    c_list = []
+    while len(n_list) < 30:
+        #io = process("./server.py")
+        io = remote("137.184.215.151", 22629)
+        n = int(io.readline().split()[-1])
+        e = int(io.readline().split()[-1])
+        c = int(io.readline().split()[-1])
+        io.close()
+        if e == 17:
+            n_list.append(n)
+            c_list.append(c)
+            print(len(n_list))
+    return n_list, c_list
+
+def main():
+    n_list, c_list = get_values()
+    for _ in range(1000):
+        x = list(zip(n_list, c_list))
+        ns = []
+        cs = []
+        for a, b in sample(x, 17):
+            ns.append(a)
+            cs.append(b)
+        flag = iroot(crt(ns, cs)[0], 17)[0]
+        flag = long_to_bytes(flag)
+        if b"ctf" in flag:
+            print(flag)
+
+def crt_test():
+    m = 999999999999999999999999999999999999999
+    e = 3
+    from Crypto.Util.number import getPrime
+    ns = [getPrime(100)*getPrime(100) for _ in range(e)]
+    cs = [pow(m, e, n) for n in ns]
+    print(m == iroot(crt(ns, cs)[0], e)[0])
+
+if __name__ == "__main__":
+    main()
+
+#b'cvctf{Hastad_with_e=65537_might_be_slow}'
+```
+
+<br>
+
+
