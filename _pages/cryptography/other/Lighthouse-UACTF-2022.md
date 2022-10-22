@@ -80,7 +80,7 @@ def solve_linear_mod(equations, bounds, guesses=None):
 
 p = 29
 n = [var(f'n{i}') for i in range(1, 9)]
-bounds = bounds = {n[i]:p for i in range(8)}
+bounds = {n[i]:p for i in range(8)}
 print(solve_linear_mod([
     (8  == 18 + n1*1  + n2*46 + n3*48 + n4*40 + n5*48 + n6*11 + n7*19 + n8*12, p), 
     (11 == 12 + n1*6  + n2*1  + n3*30 + n4*11 + n5*49 + n6*9  + n7*34 + n8*10, p), 
