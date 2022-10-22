@@ -248,3 +248,9 @@ cvctf{3m0j1_c4n_L34K_7h1ng5}
 
 # Big Rabin
 
+$$c \equiv m^2 \ (mod \ n)$$
+
+We need to find the square root mod n. 
+
+I modified sympy's sqrt_mod function from <https://github.com/sympy/sympy/blob/master/sympy/ntheory/residue_ntheory.py>
+
