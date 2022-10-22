@@ -393,3 +393,38 @@ print(u)
 ```
 
 `cvctf{ECC_is_411_y0u_n33d_t0_kn0w...And_CryptoHack_15_4w3s0m3!}`
+
+<br>
+
+# 1337
+
+Systems of equations can be solved with Groebner basis
+
+```python
+from Crypto.Util.number import long_to_bytes
+
+p = 231609284865232306744388160907453774453
+PR.<w,x,y,z> = PolynomialRing(Zmod(p), 4)
+
+f1 = x^1+y^3+z^3+w^7 - 213929627434382339098735177055751649916
+f2 = y^1+z^3+w^3+x^7 - 19199104003461693263250446715340616788
+f3 = z^1+w^3+x^3+y^7 - 81305572597778258494448971196865605263
+f4 = w^1+x^3+y^3+z^7 - 204055349607012377951682156574173649079
+f5 = x+y+z+w - 2268211308285612387872477045295901103
+
+ww, xx, yy, zz = Ideal([f1, f2, f3, f4, f5]).groebner_basis()
+
+w = p - (ww - w)
+x = p - (xx - x)
+y = p - (yy - y)
+z = p - (zz - z)
+
+flag = b""
+for i in (x, y, z, w):
+    flag += long_to_bytes(int(i))
+print(flag)
+#cvctf{this chall is for another CTF but it was cancelled :(}
+```
+
+<br>
+
