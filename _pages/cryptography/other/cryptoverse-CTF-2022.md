@@ -444,7 +444,7 @@ $$
 $$
 
 $$
-\text{Let } p = \_ p + a
+\text{Let } p = \textunderscore p + a
 $$
 
 $$
@@ -456,5 +456,5 @@ n = p^2 \cdot q
 $$
 
 $$
-n = (\_p + a)^2 \cdot (p + b)
+n = (\textunderscore p + a)^2 \cdot (p + b)
 $$
