@@ -428,3 +428,8 @@ print(flag)
 
 <br>
 
+# Weird dlog
+
+$$
+\text{We have } n = p^2 \cdot q \text{ and } c \equiv g^m \ (mod \ n)
+$$
