@@ -444,7 +444,7 @@ $$
 $$
 
 $$
-\text{Let } p = \_p + a
+\text{Let } p = \_ p + a
 $$
 
 $$
