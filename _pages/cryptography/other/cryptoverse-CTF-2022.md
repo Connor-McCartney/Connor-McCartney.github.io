@@ -483,3 +483,9 @@ m = a*b_ % p
 print(long_to_bytes(m))
 #b'cvctf{Tatsuaki_Shigenori_uncommon_cryptosystem}'
 ```
+
+<br>
+
+# A Tale of Two Systems
+
+I couldn't solve it, check out <https://kevinliu.me/posts/cryptoverse>
