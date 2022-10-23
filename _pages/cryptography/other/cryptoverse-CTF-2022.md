@@ -444,20 +444,8 @@ $$
 $$
 
 $$
-\text{Let } p = \textunderscore p + a
+\text{Let } p = \textunderscore p + x
 $$
 
-$$
-\text{Let } q = p + b
-$$
-
-$$
-n = p^2 \cdot q
-$$
-
-$$
-n = (\textunderscore p + a)^2 \cdot (p + b)
-$$
-
-Now we can use [Defund's Coppersmith implementation](https://github.com/defund/coppersmith/blob/master/coppersmith.sage):
+Then use Coppersmith's method: 
 
