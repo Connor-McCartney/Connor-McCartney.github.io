@@ -138,7 +138,6 @@ def part_1():
 
 
 def fermat(n):
-    assert n % 2 != 0
     a = isqrt(n)
     b = a**2 - n
     while not is_square(b):
