@@ -321,7 +321,7 @@ pt-BR:
   back_to_top                : "Voltar para o topo"
 
 # Italian
-# -------
+# ------
 it: &DEFAULT_IT
   skip_links                 :
   skip_primary_nav           :
