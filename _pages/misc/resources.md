@@ -37,7 +37,7 @@ web <https://portswigger.net/web-security> <br>
 
 ## Other
 
-Note taking: <https://www.notion.so> <br>
+Note taking: <https://github.com/marktext/marktext> <br>
 HTTP file server <https://www.rejetto.com/hfs/?f=dl> <br>
 MS office alternative <https://www.onlyoffice.com> <br>
 After Fedora install <https://www.youtube.com/watch?v=RrRpXs2pkzg>  <br>
