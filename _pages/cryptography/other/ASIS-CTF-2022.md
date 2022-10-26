@@ -331,7 +331,7 @@ $$
 Now the trick is to send x=1-p
 
 $$
-g^{x} \equiv g^{1 - p} \equiv g^{-(p-1)} \equiv ({g^{p-1}})^{-1} \equiv (1)^{-1} \equiv 1 \equiv -(p-1) \equiv 1-p\  (mod\ p)
+g^{x} \equiv g^{1 - p} \equiv g^{-(p-1)} \equiv ({g^{p-1}})^{-1} \equiv (1)^{-1} \equiv 1 \equiv 1-p\  (mod\ p)
 $$
 
 Alternative solution:
