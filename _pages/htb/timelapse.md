@@ -7,7 +7,7 @@ title: Timelapse
 
 Small note: when using the UDP VPN sever I could not ping the machine but TCP worked. 
 
-As always, begin with nmap:
+# nmap
 
 ```
 [connor@fedora ~]$ nmap 10.10.11.152 -A
