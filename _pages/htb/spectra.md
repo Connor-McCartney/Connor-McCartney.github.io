@@ -110,8 +110,6 @@ $
 
 With `cat /etc/lsb-release` we see it is using ChromeOS
 
-#
-
 # Lateral Move
 
 We are currently the nginx user and want to pivot to Katie.
