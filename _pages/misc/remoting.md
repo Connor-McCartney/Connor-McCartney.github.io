@@ -10,3 +10,11 @@ Then enter this (or the PC name) in Remote Desktop Connection on the client to c
 
 If it doesn't work then a third-party firewall could be blocking it. <br>
 I also learned that you can not RDP into your own computer haha.
+
+
+# Linux to Windows (XRDP)
+
+<https://github.com/neutrinolabs/xrdp>
+
+On Fedora simply install with `sudo dnf install xrdp`
+
