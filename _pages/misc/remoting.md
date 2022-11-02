@@ -16,5 +16,14 @@ I also learned that you can not RDP into your own computer haha.
 
 <https://github.com/neutrinolabs/xrdp>
 
-On Fedora simply install with `sudo dnf install xrdp`
+On the linux machine:
 
+```
+sudo dnf install xrdp ufw
+sudo systemctl enable xrdp
+sudo ufw allow from any to any port 3389 proto tcp
+```
+
+On the Windows machine:
+
+Simply connect with the default Remote Desktop Connection tool.
