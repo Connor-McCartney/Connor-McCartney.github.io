@@ -12,7 +12,7 @@ If it doesn't work then a third-party firewall could be blocking it. <br>
 I also learned that you can not RDP into your own computer haha.
 
 
-# Linux to Windows (XRDP)
+# Windows to Linux (XRDP)
 
 <https://github.com/neutrinolabs/xrdp>
 
