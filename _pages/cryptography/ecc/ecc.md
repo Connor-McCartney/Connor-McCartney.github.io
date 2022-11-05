@@ -16,3 +16,7 @@ __challenge: find y-coordinate over non-prime field__
 
 <span style="font-size:2em;">   [cookie lover reloaded - HackIM CTF 2022](/cryptography/ecc/cookie-lover-reloaded-HackIM-CTF-2022)       </span> <br>
 __vulnerability: small k used for signature__
+
+
+<span style="font-size:2em;">   [Secure Vault - WICSME CTF 2022](/cryptography/ecc/Secure-Vault-WICSME-CTF-2022)       </span> <br>
+__vulnerability: small k used for signature__
