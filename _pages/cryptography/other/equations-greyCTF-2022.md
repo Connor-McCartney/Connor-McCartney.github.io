@@ -11,6 +11,9 @@ A nice SageMath guide by team behind this CTF: <br>
 
 <br>
 
+Archive: <br>
+<https://github.com/NUSGreyhats/greyctf-2022-public/tree/main/challenges>
+
 # Equation
 
 
