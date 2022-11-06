@@ -41,3 +41,7 @@ View the .onion address with:
 ```
 sudo cat /var/lib/tor/hidden_service/hostname
 ```
+
+# Add Onion-Location Header to clearweb site 
+
+<https://community.torproject.org/onion-services/advanced/onion-location/>
