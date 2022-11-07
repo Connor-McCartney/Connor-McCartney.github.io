@@ -16,6 +16,7 @@ Startpage - search engine <https://www.startpage.com> <br>
 pynput - python input <https://pypi.org/project/pynput> <br>
 tqdm - python progress bar <https://github.com/tqdm/tqdm> <br>
 pwntools - python CTF framework <https://docs.pwntools.com/en/stable> <br>
+fast discrete log - <https://gitlab.inria.fr/zimmerma/ecm>
 
 ## CTF
 
