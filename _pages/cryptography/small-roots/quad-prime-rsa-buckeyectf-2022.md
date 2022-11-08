@@ -67,3 +67,11 @@ $$
 $$
 0 \equiv q \cdot s \cdot (p \cdot q + 2 \cdot p) \ (\text{mod } n1 \cdot n2)
 $$
+
+$$
+0 \equiv p \cdot q + 2 \cdot p \ (\text{mod } p \cdot (q+2))
+$$
+
+$$
+0 \equiv n1 + 2 \cdot p \ (\text{mod } p \cdot (q+2))
+$$
