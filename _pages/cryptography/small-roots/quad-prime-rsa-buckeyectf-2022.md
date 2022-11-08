@@ -61,5 +61,5 @@ Unintended solution:
 We have: 
 
 $$
-n1 \cdot n2 = p \cdot q \cdot (q+2) \cdot s = q \cdot s (p \cdot q + 2 \cdot p)
+n1 \cdot n2 \ = \ p \cdot q \cdot (q+2) \cdot s \ = \ q \cdot s \cdot (p \cdot q + 2 \cdot p)
 $$
