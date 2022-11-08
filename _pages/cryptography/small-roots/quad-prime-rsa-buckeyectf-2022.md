@@ -65,5 +65,5 @@ n1 \cdot n2 \ = \ p \cdot q \cdot (q+2) \cdot s \ = \ q \cdot s \cdot (p \cdot q
 $$
 
 $$
-0 \equiv q \cdot s \cdot (p \cdot q + 2 \cdot p) \ (\text{mod } n1 \cdot n2
+0 \equiv q \cdot s \cdot (p \cdot q + 2 \cdot p) \ (\text{mod } n1 \cdot n2)
 $$
