@@ -57,3 +57,6 @@ m and t – lattice dimensions (higher is more effective but slower)
 <span style="font-size:2em;">   [corrupt-key-2 picoMini](/cryptography/small-roots/corrupt-key-2-picoMini)       </span> <br>
 
 <span style="font-size:2em;">   [Leaky RSA - ASCIS CTF 2022](/cryptography/small-roots/Leaky-RSA-ASCIS-CTF-2022)       </span> <br>
+
+<span style="font-size:2em;">   [quad-prime-rsa - buckeyectf 2022](/cryptography/small-roots/quad-prime-rsa-buckeyectf-2022)       </span> <br>
+
