@@ -7,6 +7,8 @@ title: dp_high ISITDTU CTF 2022
 
 # Challenge
 
+<br>
+
 ```python
 from Crypto.Util.number import bytes_to_long, getPrime
 from SECRET import FLAG
@@ -34,13 +36,19 @@ dp_high = 1528682061327606941204027235121547734644486174542891631806426376137001
 """
 ```
 
+<br>
+
 # Inspiration for writing
+
+<br>
 
 Theorem 62 (page 120) from [this paper.](https://www.researchgate.net/publication/36147050_New_RSA_vulnerabilities_using_lattice_reduction_methods)
 
-#
+<br>
 
 # Solution
+
+<br>
 
 $$
 dp \equiv d \ (\text{mod } p-1)
@@ -97,7 +105,11 @@ flag = pow(c, d, n)
 print(long_to_bytes(int(flag)))
 ```
 
+<br>
+
 # Alternative
+
+<br>
 
 $$
 dp \equiv d \ (\text{mod } p-1)
