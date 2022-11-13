@@ -130,7 +130,7 @@ $$
 0 \equiv 1 - k - dp \cdot e \ (\text{mod } p)
 $$
 
-Now for bivariate coppersmith we can use Defund's implementation <https://github.com/defund/coppersmith/blob/master/examples.sage>
+Now for bivariate coppersmith we can use Defund's implementation <https://github.com/defund/coppersmith/blob/master/coppersmith.sage>
 
 It has to be modified a bit to work, credit to Mistsu for the great work!
 
