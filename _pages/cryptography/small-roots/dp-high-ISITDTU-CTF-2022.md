@@ -53,18 +53,23 @@ Theorem 62 (page 120) from [this paper.](https://www.researchgate.net/publicatio
 $$
 dp \equiv d \ (\text{mod } p-1)
 $$
+
 $$
 dp \cdot e \equiv d \cdot e \ (\text{mod } p-1)
 $$
+
 $$
 dp \cdot e \equiv 1 \ (\text{mod } p-1)
 $$
+
 $$
 dp \cdot e = 1 + k (p-1)
 $$
+
 $$
 k \cdot p = dp \cdot e + k - 1
 $$
+
 $$
 k \cdot p \approx dp \cdot e + x
 $$
@@ -114,18 +119,23 @@ print(long_to_bytes(int(flag)))
 $$
 dp \equiv d \ (\text{mod } p-1)
 $$
+
 $$
 dp \cdot e \equiv d \cdot e \ (\text{mod } p-1)
 $$
+
 $$
 dp \cdot e \equiv 1 \ (\text{mod } p-1)
 $$
+
 $$
 dp \cdot e = 1 + k (p-1)
 $$
+
 $$
 0 = 1 + k \cdot p- k - dp \cdot e
 $$
+
 $$
 0 \equiv 1 - k - dp \cdot e \ (\text{mod } p)
 $$
