@@ -36,6 +36,12 @@ cryptography <https://cryptohack.org/challenges> <br>
 cryptography <https://squeamishossifrage.eu/index.html#challenges> <br>
 web <https://portswigger.net/web-security> <br>
 
+## Lookups
+
+MAC Address <https://maclookup.app> <br>
+SSID <https://wigle.net>
+Certificates <https://crt.sh>
+
 ## Other
 
 Note taking: <https://github.com/marktext/marktext> <br>
