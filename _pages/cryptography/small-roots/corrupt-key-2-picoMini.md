@@ -127,3 +127,35 @@ c = int(bytes.hex(c), 16)
 m = int(pow(c, d, N))
 print(bytes.fromhex(hex(m)[69:]).decode())
 ```
+
+<br>
+
+Extra:
+
+A function to create the poynomial from ?s in a string:
+
+```python
+_p = "fe8984407b0816cc28e5ccc6bb7379??????????ca3806dd2cfdfc8d616b????????6109a4dbe3876b8d1b8adc9175dfba0e1ef318801648d6??????????a05b"
+
+c = 0
+l = []
+b = 0
+bounds = []
+for i, h in enumerate(_p.split("?")[::-1]):
+    if h != '':
+        bounds.append(2**b)
+        b = 4
+        c += len(h)*4
+        l.append(c)
+    else:
+        b += 4
+    c += 4
+l = l[:-1]
+bounds = bounds[1:]
+xs = [f"x{i}" for i in range(len(l))]
+PR = PolynomialRing(Zmod(N), len(l), xs)
+f = int(_p.replace("?", "0"), 16) + sum([2**i * PR.objgens()[1][n] for n, (i, x) in enumerate(zip(l, xs))])
+
+roots = coppersmith(f, bounds, m=6)
+print(roots)
+```
