@@ -52,3 +52,17 @@ Integer Sequences Encyclopedia <https://oeis.org> <br>
 Cryptography notes <https://nbviewer.org/github/zademn/EverythingCrypto/tree/master> <br>
 Bypass disk encryption linux <https://alice.climent-pommeret.red/posts/bypass-disk-encryption-linux> <br>
 Torsocks <https://github.com/dgoulet/torsocks>
+
+## Blogs
+
+<https://affine.group> <br>
+<https://www.robertxiao.ca> <br>
+<https://jsur.in> <br>
+<https://rkm0959.tistory.com> <br>
+<https://blog.maple3142.net> <br>
+<https://klwu.co> <br>
+<https://www.ghostccamm.com> <br>
+<https://kubie.xyz> <br>
+<https://willwam.me> <br>
+<https://grhkm21.github.io> <br>
+<https://chovid99.github.io> <br>
