@@ -47,7 +47,6 @@ Certificates <https://crt.sh> <br>
 Note taking: <https://github.com/marktext/marktext> <br>
 HTTP file server <https://www.rejetto.com/hfs/?f=dl> <br>
 MS office alternative <https://www.onlyoffice.com> <br>
-After Fedora install <https://www.youtube.com/watch?v=RrRpXs2pkzg>  <br>
 Integer Sequences Encyclopedia <https://oeis.org> <br>
 Cryptography notes <https://nbviewer.org/github/zademn/EverythingCrypto/tree/master> <br>
 Bypass disk encryption linux <https://alice.climent-pommeret.red/posts/bypass-disk-encryption-linux> <br>
