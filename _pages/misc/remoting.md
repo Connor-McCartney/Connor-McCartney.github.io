@@ -2,7 +2,7 @@
 
 # Windows to Windows (RDP)
 
-By default, RDP is disabled. Search 'Remote Desktop Settings' to enable it.
+By default, RDP is disabled. Search 'Remote Desktop Settings' to enable it. You may need the pro editions of windows to enable it.
 
 Use the 'ipconfig' command in powershell to get the IPv4 address.
 
