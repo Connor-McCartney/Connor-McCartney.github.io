@@ -18,3 +18,7 @@ $\frac{dy}{dx} = f(x)$
 Seperable:
 
 $\frac{dy}{dx} = f(x) g(y)$
+
+Linear:
+
+$ \frac{dy}{dx} = q(x) - p(x) y$
