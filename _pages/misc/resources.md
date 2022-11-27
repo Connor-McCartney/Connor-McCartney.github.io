@@ -54,7 +54,7 @@ Torsocks <https://github.com/dgoulet/torsocks>
 
 ## Blogs
 
-<https://blog.cryptohack.org>
+<https://blog.cryptohack.org> <br>
 <https://affine.group> <br>
 <https://www.robertxiao.ca> <br>
 <https://jsur.in> <br>
@@ -67,4 +67,4 @@ Torsocks <https://github.com/dgoulet/torsocks>
 <https://grhkm21.github.io> <br>
 <https://chovid99.github.io> <br>
 <https://tl2cents.github.io> <br>
-<https://giacomopope.com>
+<https://giacomopope.com> <br>
