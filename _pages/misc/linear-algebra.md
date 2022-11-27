@@ -8,3 +8,11 @@ title: Linear Algebra Notes
 
 
 # 1. Solutions of first order ODEs
+
+
+Directly integrable:
+
+$$
+\frac{dy}{dx} = f(x)
+$$
+
