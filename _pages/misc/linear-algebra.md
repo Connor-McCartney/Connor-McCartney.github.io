@@ -12,7 +12,7 @@ title: Linear Algebra Notes
 
 Directly integrable:
 
-$$
+$
 \frac{dy}{dx} = f(x)
-$$
+$
 
