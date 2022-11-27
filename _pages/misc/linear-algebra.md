@@ -12,7 +12,9 @@ title: Linear Algebra Notes
 
 Directly integrable:
 
-$
-\frac{dy}{dx} = f(x)
-$
+$\frac{dy}{dx} = f(x)$
 
+
+Seperable:
+
+$\frac{dy}{dx} = f(x) g(y)$
