@@ -28,9 +28,13 @@ $\frac{dy}{dx} = q(x) - p(x) y$
 
 Exercises:
 
-1
+1:
 
 $\frac{dy}{dx} = y^{\frac{2}{3}}, \ y(0) = 1$
 
 $y = \int{y^{\frac{2}{3}}} \ dx$
 
+
+2:
+
+$\frac{dy}{dx} = \frac{3x^2 + 4x + 2}{2(y-1)}$
