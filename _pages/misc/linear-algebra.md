@@ -24,6 +24,32 @@ Linear:
 $\frac{dy}{dx} = q(x) - p(x) y$
 
 
+
+<br> <br> <br>
+
+
+
+Directly integrable:
+
+$\frac{dy}{dx} = f(x)$
+
+$y(x) = \int{f(x)} \ dx + c$
+
+
+
+Seperable:
+
+$\frac{dy}{dx} = f(x) g(y)$
+
+$$
+
+
+Linear:
+
+$\frac{dy}{dx} = q(x) - p(x) y$
+
+
+
 <br> <br> <br>
 
 Exercises:
