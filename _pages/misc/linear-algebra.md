@@ -30,6 +30,8 @@ Exercises:
 
 1: (Seperable)
 
+<https://www.wolframalpha.com/input?key=&i=%28dy%29%2F%28dx%29+%3D+y%5E%282%2F3%29%2C+y%280%29%3D1>
+
 $\frac{dy}{dx} = y^{\frac{2}{3}}, \ y(0) = 1$
 
 $y = \int{y^{\frac{2}{3}}} \ dx$
