@@ -9,6 +9,7 @@ title: Linear Algebra Notes
 
 # 1. Solutions of first order ODEs
 
+<br>
 
 Directly integrable:
 
