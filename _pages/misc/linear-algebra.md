@@ -34,7 +34,9 @@ Linear:
 
 $\frac{dy}{dx} = q(x) - p(x) y$
 
+Use an integrating factor, I, chosen carefully such that the LHS is reduced with the product rule.
 
+There is once choice for I that always works:  $I = e^{\int{p} \ dx}$
 
 <br> <br> <br>
 
