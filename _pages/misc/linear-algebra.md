@@ -44,7 +44,7 @@ $y = \frac{1}{27} (x+3)^3$
 <br> <br> <br>
 
 
-2 (Separable):
+2: (Separable)
 
 <https://www.wolframalpha.com/input?key=&i=%28dy%29%2F%28dx%29+%3D+%283x%5E2+%2B+4x+%2B+2%29+%2F+%282%28y-1%29%29%2C+y%280%29%3D1>
 
