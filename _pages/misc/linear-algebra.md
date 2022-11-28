@@ -56,7 +56,7 @@ Exercises:
 
 $\frac{dy}{dx} = y^{\frac{2}{3}}, \ y(0) = 1$
 
-We have g(x) = 1 and y(x) = $y^{\frac{2}{3}}$
+We have f(x) = 1 and g(y) = $y^{\frac{2}{3}}$
 
 $\int{ \frac{1}{g(y)} \ dy } = \int{f(x)} \ dx$
 
