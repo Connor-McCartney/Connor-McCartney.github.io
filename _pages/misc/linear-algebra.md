@@ -39,6 +39,7 @@ Final answer:
 
 $y = \frac{1}{27} (x+3)^3$
 
+<br> <br> <br>
 
 
 2:
