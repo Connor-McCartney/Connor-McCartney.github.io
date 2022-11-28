@@ -22,3 +22,6 @@ title: Misc
 <span style="font-size:2em;">   [Configuring QEMU/Virt Manager](/misc/qemu)   </span>
 
 <span style="font-size:2em;">   [How to host your website on the TOR network](/misc/host-tor-site)   </span>
+
+<span style="font-size:2em;">   [Linear Algebra Notes](/misc/linear-algebra)   </span>
+
