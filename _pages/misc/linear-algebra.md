@@ -38,9 +38,9 @@ Use an integrating factor, I, chosen carefully such that the LHS is reduced with
 
 There is once choice for I that always works:  $I = e^{\int{p} \ dx}$
 
-$I \frac{dy}{dx} + I p(x) y = I q(x)$
+$I \frac{dy}{dx} + I \cdot p(x) \cdot y = I \cdot q(x)$
 
-$\frac{d}{dx}(I \cdot y) = I q(x)$
+$\frac{d}{dx}(I \cdot y) = I \cdot q(x)$
 
 <br> <br> <br>
 
