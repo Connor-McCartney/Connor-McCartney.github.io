@@ -18,7 +18,7 @@ __vulnerability: non-prime field with smooth order__
 __vulnerability: smooth field order (allowing Pohlig–Hellman algorithm)__
 
 
-<span style="font-size:2em;">   [Break the Log - EmbeddedSecurityCTF 2022](/cryptography/diffie-hellman/Break-the-Log-EmbeddedSecurityCTF-20)       </span> <br>
+<span style="font-size:2em;">   [Break the Log - EmbeddedSecurityCTF 2022](/cryptography/diffie-hellman/Break-the-Log-EmbeddedSecurityCTF-2022)  </span> <br>
 __vulnerability: m < p (mod p^2)__
 
 
