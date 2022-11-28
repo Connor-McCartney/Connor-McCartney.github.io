@@ -42,7 +42,7 @@ $I \frac{dy}{dx} + I \cdot p(x) \cdot y = I \cdot q(x)$
 
 $\frac{d}{dx}(I \cdot y) = I \cdot q(x)$
 
-I \cdot y = \int{I \cdot q(x)} \ dx$
+$I \cdot y = \int{I \cdot q(x)} \ dx$
 
 
 
