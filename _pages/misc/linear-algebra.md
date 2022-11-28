@@ -35,13 +35,18 @@ $\frac{dy}{dx} = f(x)$
 
 $y(x) = \int{f(x)} \ dx + c$
 
+<br>
 
 
 Seperable:
 
 $\frac{dy}{dx} = f(x) g(y)$
 
-$$
+$\int{ \frac{1}{g(y)} \frac{dy}{dx} } \ dx = \int{f(x)} \ dx$
+
+$\int{ \frac{1}{g(y)} dy } = \int{f(x)} \ dx \ \ \text{(implicit solution)}$
+
+<br>
 
 
 Linear:
