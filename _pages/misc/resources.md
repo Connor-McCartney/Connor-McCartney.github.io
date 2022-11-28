@@ -46,7 +46,7 @@ Certificates <https://crt.sh> <br>
 
 ## Other
 
-Note taking: <https://github.com/marktext/marktext> <br>
+Note taking: <https://obsidian.md> <br>
 HTTP file server <https://www.rejetto.com/hfs/?f=dl> <br>
 MS office alternative <https://www.onlyoffice.com> <br>
 Integer Sequences Encyclopedia <https://oeis.org> <br>
