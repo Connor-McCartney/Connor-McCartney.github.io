@@ -22,3 +22,13 @@ $\frac{dy}{dx} = f(x) g(y)$
 Linear:
 
 $\frac{dy}{dx} = q(x) - p(x) y$
+
+
+
+
+Exercises:
+
+1)
+
+**$\frac{dy}{dx} = y^{\frac{2}{3}}, y(0) = 1$**
+
