@@ -49,4 +49,4 @@ $\frac{dy}{dx} = \frac{3x^2 + 4x + 2}{2(y-1)}, \ y(0) = 1$
 
 Final answer: 
 
-$y = 1 \pm sqrt{x^3 + 2x^2 + 2x}, \ \ x > 0$
+$y = 1 \pm \sqrt{x^3 + 2x^2 + 2x}, \ \ x > 0$
