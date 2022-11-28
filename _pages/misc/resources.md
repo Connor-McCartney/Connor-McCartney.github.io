@@ -10,8 +10,8 @@ uBlock Origin - great ad blocker <https://addons.mozilla.org/en-US/firefox/addon
 sagemath - mathematics software <https://www.sagemath.org> <br>
 KeePassXC - offline password manager <https://keepassxc.org> <br>
 Startpage - search engine <https://www.startpage.com> <br>
-Cybersecurity courses - <https://academy.tcm-sec.com/courses>
-API Security - <https://university.apisec.ai>
+Cybersecurity courses - <https://academy.tcm-sec.com/courses> <br>
+API Security - <https://university.apisec.ai> <br>
 
 ## Libraries
 
@@ -52,8 +52,8 @@ MS office alternative <https://www.onlyoffice.com> <br>
 Integer Sequences Encyclopedia <https://oeis.org> <br>
 Cryptography notes <https://nbviewer.org/github/zademn/EverythingCrypto/tree/master> <br>
 Bypass disk encryption linux <https://alice.climent-pommeret.red/posts/bypass-disk-encryption-linux> <br>
-Torsocks <https://github.com/dgoulet/torsocks>
-Project Ideas - <https://github.com/codecrafters-io/build-your-own-x>
+Torsocks <https://github.com/dgoulet/torsocks> <br>
+Project Ideas - <https://github.com/codecrafters-io/build-your-own-x> <br>
 
 ## Blogs
 
