@@ -24,7 +24,7 @@ Linear:
 $\frac{dy}{dx} = q(x) - p(x) y$
 
 
-
+<br> <br> <br>
 
 Exercises:
 
