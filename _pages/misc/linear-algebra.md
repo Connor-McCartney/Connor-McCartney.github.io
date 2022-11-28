@@ -60,7 +60,7 @@ We have f(x) = 1 and g(y) = $y^{\frac{2}{3}}$
 
 $\int{ \frac{1}{g(y)} \ dy } = \int{f(x)} \ dx$
 
-$y = \int{y^{\frac{2}{3}}} \ dx$
+$int{\frac{1}{y^{\frac{2}{3}}} \ dy = x + c$
 
 
 Final answer:
