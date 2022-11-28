@@ -62,10 +62,19 @@ $\int{ \frac{1}{g(y)} \ dy } = \int{f(x)} \ dx$
 
 $\int{  \frac{1}{ y^{\frac{2}{3}} }  } \ dy = x + c$
 
+$\int{  y^{-\frac{2}{3}}   } \ dy = x + c$
 
-Final answer:
+$3 y^{1/3}= x + c$
 
-$y = \frac{1}{27} (x+3)^3$
+When x=0, y=1
+
+$3 \cdot 1^{1/3}= 0 + c$
+$\therefore c=3$
+
+$y^{1/3} = \frac{1}{3} (x + 3)$
+
+$y = \frac{1}{27} (x + 3)^3$
+
 
 <br> <br> <br>
 
