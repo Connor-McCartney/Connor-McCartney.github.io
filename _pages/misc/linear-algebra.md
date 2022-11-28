@@ -12,7 +12,7 @@ title: Linear Algebra Notes
 
 Directly integrable:
 
-\(\frac{dy}{dx} = f(x)\)
+$\frac{dy}{dx} = f(x)$
 
 $y(x) = \int{f(x)} \ dx + c$
 
