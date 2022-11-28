@@ -14,25 +14,6 @@ Directly integrable:
 
 $\frac{dy}{dx} = f(x)$
 
-
-Seperable:
-
-$\frac{dy}{dx} = f(x) g(y)$
-
-Linear:
-
-$\frac{dy}{dx} = q(x) - p(x) y$
-
-
-
-<br> <br> <br>
-
-
-
-Directly integrable:
-
-$\frac{dy}{dx} = f(x)$
-
 $y(x) = \int{f(x)} \ dx + c$
 
 <br>
@@ -44,7 +25,7 @@ $\frac{dy}{dx} = f(x) g(y)$
 
 $\int{ \frac{1}{g(y)} \frac{dy}{dx} } \ dx = \int{f(x)} \ dx$
 
-$\int{ \frac{1}{g(y)} dy } = \int{f(x)} \ dx \ \ \text{(implicit solution)}$
+$\int{ \frac{1}{g(y)} \ dy } = \int{f(x)} \ dx \ \ \text{(implicit solution)}$
 
 <br>
 
