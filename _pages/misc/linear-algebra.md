@@ -34,4 +34,4 @@ $\frac{dy}{dx} = y^{\frac{2}{3}}, y(0) = 1$
 
 $y = \int{y^{\frac{2}{3}}} dx$
 
-$y = \frac{3}{5} \cdot y^{\frac{5}{3}} + c dx$
+$y = \frac{3}{5} \cdot y^{\frac{5}{3}} + c$
