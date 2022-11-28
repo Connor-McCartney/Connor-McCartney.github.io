@@ -86,7 +86,22 @@ $y = \frac{1}{27} (x + 3)^3$
 
 $\frac{dy}{dx} = \frac{3x^2 + 4x + 2}{2(y-1)}, \ y(0) = 1$
 
+We have f(x) = $3x^2 + 4x + 2$ and g(y) = $\frac{1}{2(y-1)}$
 
-Final answer: 
+$\int{ \frac{1}{g(y)} \ dy } = \int{f(x)} \ dx$
 
-$y = 1 \pm \sqrt{x^3 + 2x^2 + 2x}, \ \ x > 0$
+$\int{ 2y-2 \ dy } = \int{3x^2 + 4x + 2} \ dx$
+
+$y^2 - 2y = x^3 + 2x^2 + 2x + c$
+
+When x=0, y=1
+
+$1^2 - 2(1) = 0^3 + 2(0)^2 + 2(0) + c$
+
+$\therefore c = -1$
+
+$y^2 - 2y = 2x^3 + x^2 + 2x -1$
+
+$(y-1)^2 = x^3 + 2x^2 + 2x$
+
+$y = 1 \pm \sqrt{x^3 + 2x^2 + 2x}, x \geq 0$
