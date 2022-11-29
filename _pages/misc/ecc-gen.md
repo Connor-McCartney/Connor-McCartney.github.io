@@ -59,7 +59,6 @@ def solve_cm(D, q, c=None):
 
     ks = []
     for j in hilbert_class_polynomial_roots(D, gf):
-        print(f"{j = }")
         if j != 0 and j != gf(1728):
             k = j / (1728 - j)
             yield generate_curve(gf, k, c)
