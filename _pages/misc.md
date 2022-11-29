@@ -25,3 +25,4 @@ title: Misc
 
 <span style="font-size:2em;">   [Linear Algebra Notes](/misc/linear-algebra)   </span>
 
+<span style="font-size:2em;">   [Generating Elliptic Curves with a given order](/misc/ecc-gen)   </span>
