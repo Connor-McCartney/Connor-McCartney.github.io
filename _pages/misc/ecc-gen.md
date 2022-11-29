@@ -67,24 +67,6 @@ def solve_cm(D, q, c=None):
         for k in ks:
             yield generate_curve(gf, k, c)
 
-def get_embedding_degree(q, n, max_k):
-    """
-    Returns the embedding degree k of an elliptic curve.
-    Note: strictly speaking this function computes the Tate-embedding degree of a curve.
-    In almost all cases, the Tate-embedding degree is the same as the Weil-embedding degree (also just called the "embedding degree").
-    More information: Maas M., "Pairing-Based Cryptography" (Section 5.2)
-    :param q: the order of the curve base ring
-    :param n: the order of the base point
-    :param max_k: the maximum value of embedding degree to try
-    :return: the embedding degree k, or None if it was not found
-    """
-    for k in range(1, max_k + 1):
-        if q ** k % n == 1:
-            return k
-
-    return None
-
-
 def generate_anomalous_q(q, D=None, c=None):
     """
     Generates random anomalous elliptic curves for a specific modulus.
