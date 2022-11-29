@@ -67,45 +67,6 @@ def solve_cm(D, q, c=None):
         for k in ks:
             yield generate_curve(gf, k, c)
 
-def generate_anomalous_q(q, D=None, c=None):
-    """
-    Generates random anomalous elliptic curves for a specific modulus.
-    More information: Leprevost F. et al., "Generating Anomalous Elliptic Curves"
-    :param q: the prime finite field modulus
-    :param D: the (negative) CM discriminant to use (default: randomly chosen from [-11, -19, -43, -67, -163])
-    :param c: the parameter c to use in the CM method (default: random value)
-    :return: a generator generating random anomalous elliptic curves
-    """
-    Ds = [-11, -19, -43, -67, -163] if D is None else [D]
-    Ds = [D for D in Ds if (1 - 4 * q) % D == 0 and is_square((1 - 4 * q) // D)]
-    assert len(Ds) > 0, "Invalid value for q and default values of D."
-    D = choice(Ds)
-    for E in solve_cm(D, q, c):
-        if E.trace_of_frobenius() == 1:
-            yield E
-        else:
-            E = E.quadratic_twist()
-            yield E
-
-
-def generate_anomalous(q_bit_length, D=None, c=None):
-    """
-    Generates random anomalous elliptic curves for a specific modulus bit length.
-    More information: Leprevost F. et al., "Generating Anomalous Elliptic Curves"
-    :param q_bit_length: the bit length of the modulus, used to generate a random q
-    :param D: the (negative) CM discriminant to use (default: randomly chosen from [-11, -19, -43, -67, -163])
-    :param c: the parameter c to use in the CM method (default: random value)
-    :return: a generator generating random anomalous elliptic curves
-    """
-    Ds = [-11, -19, -43, -67, -163] if D is None else [D]
-    while True:
-        D = choice(Ds)
-        m_bit_length = (q_bit_length - D.bit_length()) // 2 + 1
-        m = randrange(2 ** (m_bit_length - 1), 2 ** m_bit_length)
-        q = -D * m * (m + 1) + (-D + 1) // 4
-        if q.bit_length() == q_bit_length and is_prime(q):
-            yield from generate_anomalous_q(q, D, c)
-
 
 def generate_with_trace_q(t, q, D=None, c=None):
     """
