@@ -11,6 +11,7 @@ Here is some useful code for creating random curves - taken from <br>
 ```py
 from random import choice
 from random import randrange
+from Crypto.Util.number import getPrime
 
 def generate_curve(gf, k, c=None):
     """
@@ -173,11 +174,10 @@ def generate_with_order(m, D=None, c=None):
     yield from generate_with_trace_q(q + 1 - m, q, D, c)
 
 
-from Crypto.Util.number import *
 p = getPrime(128)
 print(f"{p = }")
-a= generate_with_order(p)
-for i in a:
+
+for i in generate_with_order(p):
     print(i)
     break
 ```
