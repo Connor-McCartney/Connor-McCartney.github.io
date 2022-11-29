@@ -5,7 +5,7 @@ title: Generating Elliptic Curves with a given order
 
 <br>
 
-Here is some useful code for creating CTF challenges - taken from <https://github.com/jvdsn/crypto-attacks/blob/f9bd04b8311aaed12ef807155efdcbd0230e669d/shared/ecc.py>
+Here is some useful code for creating random curves - taken from <https://github.com/jvdsn/crypto-attacks/blob/f9bd04b8311aaed12ef807155efdcbd0230e669d/shared/ecc.py>
 
 ```py
 from random import choice
