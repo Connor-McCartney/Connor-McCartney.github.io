@@ -9,7 +9,16 @@ title: ezmat - Fat Hubble CTF 2022
 
 <br>
 
+```py
+G = random_matrix(GF(2), n, m)
+G[randint(0, n-1)] = pad_m1
+G = G.change_ring(ZZ)
 
+v = random_matrix(GF(p), 1, n)
+w = v * G
+```
+
+Challenge: Recover G given w.
 
 <br>
 
