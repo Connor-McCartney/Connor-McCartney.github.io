@@ -27,3 +27,6 @@ title: Other
 
 
 <span style="font-size:2em;">   [cryptoverse CTF 2022](/cryptography/other/cryptoverse-CTF-2022) </span> <br>
+
+
+<span style="font-size:2em;">   [ezmat - Fat Hubble CTF 2022](/cryptography/other/ezmat-Fat-Hubble-CTF-2022) </span> <br>
