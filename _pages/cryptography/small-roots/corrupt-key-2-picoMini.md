@@ -15,6 +15,9 @@ p = 0xfe8984407b0816cc28e5ccc6bb7379??????????ca3806dd2cfdfc8d616b????????6109a4
 I used this multivariate Coppersmith implementation: <https://gist.github.com/chrsow/f766786bfcb0034d8c6c9372b822222c> <br>
 
 ```py
+from tqdm import tqdm
+
+
 class IIter:
     def __init__(self, m, n):
         self.m = m
@@ -100,10 +103,10 @@ def coppersmith(f, bounds, m=1, t=1):
         f = symbolic_expression([ h[i](x) for i in ii ]).function(x_)
         jac = jacobian(f, x_)
         v = vector([ t // 2 for t in bounds ])
-        for _ in range(100): #1000
+        for _ in range(200):
             kwargs = {f'x{i}': v[i] for i in range(n)}
             tmp = v - jac(**kwargs).inverse() * f(**kwargs)
-            v = vector(float(d) for d in tmp)
+            v = vector((numerical_approx(d, prec=200) for d in tmp))
         v = [ int(_.round()) for _ in v ]
         if h[0](v) == 0:
             return v
