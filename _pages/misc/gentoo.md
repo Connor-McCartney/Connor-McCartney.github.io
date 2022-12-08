@@ -1,0 +1,219 @@
+
+
+<https://wiki.gentoo.org/wiki/Handbook:AMD64#Installing_Gentoo>
+
+You can do it from any live linux iso.
+
+First become root.
+
+```bash
+fdisk -l
+```
+
+Figure out what disk the computer uses (not the USB!) eg /dev/sda
+Partition for UEFI:
+
+```bash
+fdisk /dev/sda
+g
+
+# boot
+n
+1
+default
++256M
+t
+1
+
+# swap
+n
+2
+default
++16G
+t
+2
+19
+
+# root
+n
+3
+default
+default
+
+w
+```
+
+
+```bash
+mkfs.vfat -F 32 /dev/sda1
+mkfs.ext4 /dev/sda3
+mkswap /dev/sda2
+swapon /dev/sda2
+mkdir --parents /mnt/gentoo
+mount /dev/sda3 /mnt/gentoo
+```
+
+
+Set datetime, MMDDhhmm  eg 120810302022  is 8th December 10:30 am 2022
+
+```bash
+date 120810302022
+```
+
+Download the openrc stage3 from here: <https://www.gentoo.org/downloads/>
+
+```bash
+cd /mnt/gentoo
+wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20221205T133149Z/stage3-amd64-openrc-20221205T133149Z.tar.xz
+
+tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
+rm -rf stage3-*.tar.xz
+```
+
+
+A good choice for MAKEOPTS is the smaller of the number of threads the CPU has, or the total amount of system RAM divided by 2 GiB.
+Mirrors can be found here <https://www.gentoo.org/downloads/mirrors/>
+
+```bash
+vim /mnt/gentoo/etc/portage/make.conf
+```
+
+```bash
+COMMON_FLAGS="-march=native -O2 -pipe"
+MAKEOPTS="-j4"
+USE="-gnome -systemd"
+GENTOO_MIRRORS="https://mirror.aarnet.edu.au/pub/gentoo/"
+ACCEPT_LICENSE="*"
+GRUB_PLATFORMS="efi-64"
+```
+
+
+```bash
+mkdir --parents /mnt/gentoo/etc/portage/repos.conf
+cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
+cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
+
+mount --types proc /proc /mnt/gentoo/proc
+mount --rbind /sys /mnt/gentoo/sys
+mount --make-rslave /mnt/gentoo/sys
+mount --rbind /dev /mnt/gentoo/dev
+mount --make-rslave /mnt/gentoo/dev
+mount --bind /run /mnt/gentoo/run
+mount --make-slave /mnt/gentoo/run
+
+chroot /mnt/gentoo /bin/bash
+source /etc/profile
+export PS1="(chroot) ${PS1}"
+
+mount /dev/sda1 /boot
+emerge-webrsync
+emerge --sync
+```
+
+
+```bash
+eselect profile list
+eselect profile set X
+```
+
+```bash
+emerge --verbose --update --deep --newuse @world
+emerge app-editors/neovim
+```
+
+
+```bash
+ls /usr/share/zoneinfo
+echo "Australia/Brisbane" > /etc/timezone
+emerge --config sys-libs/timezone-data
+```
+
+```bash
+nvim /etc/locale.gen
+```
+
+```
+en_US.UTF-8 UTF-8
+```
+
+```bash
+locale-gen
+eselect localte list
+eselect locale set 4 # (US one just made)
+env-update && source /etc/profile
+```
+
+Now I will use genkernel.
+
+```
+emerge sys-kernel/gentoo-sources
+emerge sys-kernel/genkernel
+emerge sys-apps/pciutils
+emerge sys-kernel/linux-firmware
+```
+
+
+```bash
+eselect kernel set 1
+nvim /etc/fstab
+```
+
+```bash
+/dev/sda1   /boot        vfat    defaults,noatime     0 2
+/dev/sda2   none         swap    sw                   0 0
+/dev/sda3   /            ext4    noatime              0 1
+  
+/dev/cdrom  /mnt/cdrom   auto    noauto,user          0 0
+```
+
+```bash
+genkernel all
+```
+
+
+```
+nvim /etc/conf.d/hostname
+emerge --noreplace net-misc/netifrc
+ifconfig
+nvim /etc/conf.d/net
+```
+
+```bash
+config_enp2s0f1="dhcp"
+config_wlan0="dhcp"
+```
+
+```bash
+emerge net-misc/dhcpcd
+emerge net-wireless/wpa_supplicant
+cd /etc/init.d
+ln -s net.lo net.enp2s0f1
+ln -s net.lo net.wlan0
+rc-update add net.wlan0 default
+rc-service dhcpcd start
+```
+
+
+```bash
+emerge sys-boot/grub
+grub-install --target=x86_64-efi --efi-directory=/boot
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+```bash
+emerge app-admin/sudo
+visudo # uncomment wheel ALL=(ALL:ALL) ALL
+useradd -m -G users,wheel,audio -s /bin/bash connor
+nvim /etc/security/passwdqc.conf # enforce=none
+passwd
+emerge app-misc/neofetch
+
+su connor
+whoami
+sudo whoami
+reboot
+```
+
+
+
+
