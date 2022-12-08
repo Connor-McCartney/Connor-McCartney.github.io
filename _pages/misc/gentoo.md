@@ -81,10 +81,10 @@ vim /mnt/gentoo/etc/portage/make.conf
 ```bash
 COMMON_FLAGS="-march=native -O2 -pipe"
 MAKEOPTS="-j4"
-USE="-gnome -systemd"
+USE="icu python -gnome -systemd"
 GENTOO_MIRRORS="https://mirror.aarnet.edu.au/pub/gentoo/"
 ACCEPT_LICENSE="*"
-GRUB_PLATFORMS="efi-64"
+GRUB_PLATFORMS="efi-64" # UEFI only
 ```
 
 
@@ -173,32 +173,41 @@ genkernel all
 
 ```
 nvim /etc/conf.d/hostname
-emerge --noreplace net-misc/netifrc
-ifconfig
+emerge --noreplace net-misc/netifrc 
+ip a
 nvim /etc/conf.d/net
 ```
 
 ```bash
-config_enp2s0f1="dhcp"
-config_wlan0="dhcp"
+config_wlp3s0="dhcp"
+modules_wlp3s0="wpa_supplicant"
 ```
 
 ```bash
 emerge net-misc/dhcpcd
 emerge net-wireless/wpa_supplicant
 cd /etc/init.d
-ln -s net.lo net.enp2s0f1
-ln -s net.lo net.wlan0
-rc-update add net.wlan0 default
+ln -s net.lo net.wlp3s0
+rc-update add net.wlp3s0 default
+rc-service net.wlp3s0 start
 rc-service dhcpcd start
 ```
 
 
+Install grub (UEFI)
 ```bash
 emerge sys-boot/grub
 grub-install --target=x86_64-efi --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
+
+Install grub (legacy/BIOS)
+```bash
+emerge sys-boot/grub
+grub-install /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
 
 ```bash
 emerge app-admin/sudo
@@ -215,5 +224,15 @@ reboot
 ```
 
 
+```
+nvim /etc/wpa_supplicant/wpa_supplicant.conf
+```
 
-
+```bash
+ctrl_interface=/var/run/wpa_supplicant
+update_config=1
+network={
+	ssid="..."
+	psk="..."
+}
+```
