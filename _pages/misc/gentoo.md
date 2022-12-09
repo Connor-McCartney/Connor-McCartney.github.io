@@ -244,3 +244,18 @@ network={
 	psk="..."
 }
 ```
+
+
+KDE plasma
+
+<https://wiki.gentoo.org/wiki/KDE>
+
+```
+emerge sys-auth/elogind
+emerge sys-auth/polkit
+emerge sys-fs/udev
+emerge sys-fs/udisks
+emerge sys-apps/dbus
+emerge kde-plasma/plasma-meta-5.25.5
+```
+
