@@ -262,6 +262,9 @@ rc-update add dbus default
 
 emerge sys-auth/polkit
 emerge sys-fs/udisks
+
+rc-update add lvm boot
+
 emerge kde-plasma/plasma-meta
 ```
 
