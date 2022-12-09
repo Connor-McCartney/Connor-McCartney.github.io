@@ -260,5 +260,6 @@ emerge kde-plasma/plasma-meta
 
 rc-update add elogind boot
 rc-update add udev sysinit
+rc-update add dbus default
 ```
 
