@@ -252,14 +252,18 @@ KDE plasma
 
 ```
 emerge sys-auth/elogind
-emerge sys-auth/polkit
-emerge sys-fs/udev
-emerge sys-fs/udisks
-emerge sys-apps/dbus
-emerge kde-plasma/plasma-meta
-
 rc-update add elogind boot
+
+emerge sys-auth/polkit
+
+emerge sys-fs/udev
 rc-update add udev sysinit
+
+emerge sys-fs/udisks
+
+emerge sys-apps/dbus
 rc-update add dbus default
+
+emerge kde-plasma/plasma-meta
 ```
 
