@@ -146,7 +146,7 @@ en_US.UTF-8 UTF-8
 
 ```bash
 locale-gen
-eselect localte list
+eselect locale list
 eselect locale set 4 # (US one just made)
 env-update && source /etc/profile
 ```
