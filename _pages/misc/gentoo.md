@@ -259,10 +259,10 @@ emerge sys-auth/polkit
 emerge sys-fs/udev
 rc-update add udev sysinit
 
-emerge sys-fs/udisks
-
 emerge sys-apps/dbus
 rc-update add dbus default
+
+emerge sys-fs/udisks
 
 emerge kde-plasma/plasma-meta
 ```
