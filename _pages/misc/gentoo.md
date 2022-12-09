@@ -266,6 +266,7 @@ emerge sys-fs/udisks
 rc-update add lvm boot
 reboot
 
+emerge -av x11-base/xorg-server
 emerge kde-plasma/plasma-meta
 ```
 
