@@ -80,11 +80,19 @@ vim /mnt/gentoo/etc/portage/make.conf
 
 ```bash
 COMMON_FLAGS="-march=native -O2 -pipe"
+
+CFLAGS="${COMMON_FLAGS}"
+CXXFLAGS="${COMMON_FLAGS}"
+FCFLAGS="${COMMON_FLAGS}"
+FFLAGS="${COMMON_FLAGS}"
+
 MAKEOPTS="-j4"
 USE="icu python -gnome -systemd"
 GENTOO_MIRRORS="https://mirror.aarnet.edu.au/pub/gentoo/"
 ACCEPT_LICENSE="*"
 GRUB_PLATFORMS="efi-64" # UEFI only
+
+LC_MESSAGES=C
 ```
 
 
