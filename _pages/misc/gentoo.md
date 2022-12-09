@@ -256,7 +256,7 @@ emerge sys-auth/polkit
 emerge sys-fs/udev
 emerge sys-fs/udisks
 emerge sys-apps/dbus
-emerge kde-plasma/plasma-meta-5.25.5
+emerge kde-plasma/plasma-meta
 
 rc-update add elogind boot
 ```
