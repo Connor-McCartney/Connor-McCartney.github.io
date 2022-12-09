@@ -276,3 +276,4 @@ export $(dbus-launch)
 startplasma-wayland
 ```
 
+On an Acer Aspire the touchpad did not work, but in BIOS I changed touchpad: advanced to basic and then it worked.
