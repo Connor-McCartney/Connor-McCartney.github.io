@@ -16,7 +16,7 @@ git clone <URL>
   
 git status
   
-git add <example.file or folder>
+git add [example.file or folder]
   
 git commit -m "message"  # This will commit the changes locally
   
@@ -27,12 +27,12 @@ git push  # Enter your username and then the access token instead of your passwo
   
 git branch  # lists branches with asterisk next to current branch
   
-git branch <branch-name>  # creates new branch
+git branch [branch-name]  # creates new branch
   
-git checkout <branch-name>  # switches branch
+git checkout [branch-name]  # switches branch
   
-git branch -d <branch-name>  # deletes branch
+git branch -d [branch-name]  # deletes branch
   
-git merge <branch-name>  # merges this branch into your current active branch
+git merge [branch-name]  # merges this branch into your current active branch
   
-git rebase <branch-name>  # rebases your current active branch on top of the given branch
+git rebase [branch-name]  # rebases your current active branch on top of the given branch
