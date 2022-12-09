@@ -34,3 +34,5 @@ git checkout <branch-name>  # switches branch
 git branch -d <branch-name>  # deletes branch
   
 git merge <branch-name>  # merges this branch into your current active branch
+  
+git rebase <branch-name>  # rebases your current active branch on top of the given branch
