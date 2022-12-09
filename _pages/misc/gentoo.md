@@ -257,5 +257,7 @@ emerge sys-fs/udev
 emerge sys-fs/udisks
 emerge sys-apps/dbus
 emerge kde-plasma/plasma-meta-5.25.5
+
+rc-update add elogind boot
 ```
 
