@@ -29,3 +29,8 @@ git branch  # lists branches with asterisk next to current branch
   
 git branch <branch-name>  # creates new branch
   
+git checkout <branch-name>  # switches branch
+  
+git branch -d <branch-name>  # deletes branch
+  
+git merge <branch-name>  # merges this branch into your current active branch
