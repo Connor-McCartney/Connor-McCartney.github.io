@@ -267,6 +267,8 @@ rc-update add lvm boot
 reboot
 
 emerge x11-base/xorg-drivers
+emerge dev-libs/wayland
+
 emerge kde-plasma/plasma-meta
 ```
 
