@@ -220,7 +220,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ```bash
 emerge app-admin/sudo
 visudo # uncomment wheel ALL=(ALL:ALL) ALL
-useradd -m -G users,wheel,audio,plugdev,video -s /bin/bash connor
+useradd -m -G users,wheel,audio,plugdev,video,sddm -s /bin/bash connor
 nvim /etc/security/passwdqc.conf # enforce=none
 passwd
 emerge app-misc/neofetch
