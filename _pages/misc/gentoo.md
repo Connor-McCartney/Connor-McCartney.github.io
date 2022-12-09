@@ -87,7 +87,7 @@ FCFLAGS="${COMMON_FLAGS}"
 FFLAGS="${COMMON_FLAGS}"
 
 MAKEOPTS="-j4"
-USE="X icu python -gnome -systemd"
+USE="wayland gles2 icu python -gnome -systemd"
 GENTOO_MIRRORS="https://mirror.aarnet.edu.au/pub/gentoo/"
 ACCEPT_LICENSE="*"
 GRUB_PLATFORMS="efi-64" # UEFI only
