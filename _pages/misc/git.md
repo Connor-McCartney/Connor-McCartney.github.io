@@ -16,7 +16,7 @@ git clone <URL>
   
 git status
   
-git add <example.file>
+git add <example.file or folder>
   
 git commit -m "message"  # This will commit the changes locally
   
