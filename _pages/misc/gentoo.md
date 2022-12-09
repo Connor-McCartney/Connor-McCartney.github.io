@@ -264,6 +264,7 @@ emerge sys-auth/polkit
 emerge sys-fs/udisks
 
 rc-update add lvm boot
+reboot
 
 emerge kde-plasma/plasma-meta
 ```
