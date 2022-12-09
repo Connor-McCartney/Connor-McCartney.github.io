@@ -21,3 +21,11 @@ git add <example.file or folder>
 git commit -m "message"  # This will commit the changes locally
   
 git push  # Enter your username and then the access token instead of your password
+
+  
+# Branches
+  
+git branch  # lists branches with asterisk next to current branch
+  
+git branch <branch-name>  # creates new branch
+  
