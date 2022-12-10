@@ -205,6 +205,7 @@ Install grub (UEFI)
 ```bash
 emerge sys-boot/grub
 grub-install --target=x86_64-efi --efi-directory=/boot
+nvim /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
@@ -212,6 +213,7 @@ Install grub (legacy/BIOS)
 ```bash
 emerge sys-boot/grub
 grub-install /dev/sda
+nvim /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
