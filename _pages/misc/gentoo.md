@@ -280,6 +280,7 @@ On an Acer Aspire the touchpad did not work, but in BIOS I changed touchpad: adv
 SDDM next
 
 ```bash
+rc-update add xdm default
 emerge x11-misc/sddm
 mkdir -p /etc/sddm/scripts
 nvim /etc/sddm/scripts/wayland-setup
