@@ -281,6 +281,7 @@ SDDM next
 
 ```bash
 emerge x11-misc/sddm
+mkdir -p /etc/sddm/scripts
 nvim /etc/sddm/scripts/wayland-setup
 ```
 
