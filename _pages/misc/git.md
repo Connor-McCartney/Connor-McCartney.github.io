@@ -1,6 +1,8 @@
 
-
-Basics of using github/git
+---
+permalink: /misc/git
+title: Git/Github basics
+---
 
 
 # Github access token
