@@ -337,3 +337,11 @@ When there is an update, edit
 ```bash
 nvim `find / -name build_info.json 2> /dev/null`
 ```
+
+Audio
+
+Launch alsamixer and make sure each column has a green 00 under it (use the m key to toggle mute/unmute).
+
+```bash
+emerge kde-plasma/plasma-pa
+```
