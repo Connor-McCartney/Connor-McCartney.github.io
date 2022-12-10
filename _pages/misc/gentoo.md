@@ -274,6 +274,7 @@ emerge kde-apps/spectacle
 emerge kde-apps/dolphin
 emerge kde-apps/ark
 emerge dev-vcs/git
+emerge dev-util/cmake
 
 export $(dbus-launch)
 dbus-run-session startplasma-wayland
