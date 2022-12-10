@@ -269,6 +269,7 @@ emerge dev-libs/wayland
 emerge kde-plasma/plasma-meta
 emerge konsole
 emerge kde-apps/kwalletmanager
+emerge dev-vcs/git
 
 export $(dbus-launch)
 dbus-run-session startplasma-wayland
