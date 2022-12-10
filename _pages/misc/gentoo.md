@@ -271,6 +271,7 @@ emerge konsole
 emerge kde-apps/kwalletmanager
 emerge kde-misc/bismuth
 emerge kde-apps/spectacle
+emerge kde-apps/dolphin
 emerge dev-vcs/git
 
 export $(dbus-launch)
