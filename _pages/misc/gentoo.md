@@ -91,6 +91,7 @@ USE="wayland gles2 icu python -gnome -systemd"
 GENTOO_MIRRORS="https://mirror.aarnet.edu.au/pub/gentoo/"
 ACCEPT_LICENSE="*"
 GRUB_PLATFORMS="efi-64" # UEFI only
+EMERGE_DEFAULT_OPTS="--autounmask-write"
 
 LC_MESSAGES=C
 ```
