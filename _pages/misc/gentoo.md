@@ -331,6 +331,7 @@ Grub Customizer
 
 ```bash
 # download https://launchpad.net/grub-customizer/+download
+emerge dev-cpp/gtkmm
 cmake . && make
 sudo make install
 ```
