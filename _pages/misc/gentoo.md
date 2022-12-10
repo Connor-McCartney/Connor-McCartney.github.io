@@ -335,13 +335,3 @@ When there is an update, edit
 ```bash
 nvim `find / -name build_info.json 2> /dev/null`
 ```
-
-
-Grub Customizer
-
-```bash
-# download https://launchpad.net/grub-customizer/+download
-emerge dev-cpp/gtkmm:3.0
-cmake . && make
-sudo make install
-```
