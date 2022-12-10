@@ -269,6 +269,8 @@ emerge dev-libs/wayland
 emerge kde-plasma/plasma-meta
 emerge konsole
 emerge kde-apps/kwalletmanager
+emerge kde-misc/bismuth
+emerge kde-apps/spectacle
 emerge dev-vcs/git
 
 export $(dbus-launch)
