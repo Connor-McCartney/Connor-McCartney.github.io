@@ -1,4 +1,3 @@
-
 ---
 permalink: /misc/git
 title: Git/Github basics
