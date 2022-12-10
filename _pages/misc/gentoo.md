@@ -317,4 +317,11 @@ Discord
 ```bash
 sudo cp -r Discord /opt/Discord
 sudo ln -sf /opt/Discord/Discord /usr/bin/Discord
+sudo cp -r /opt/Discord/discord.desktop /usr/share/applications/
+sudo nvim /usr/share/applications/discord.desktop
+```
+
+```bash
+Exec=/usr/bin/Discord
+Icon=/opt/Discord/discord.png
 ```
