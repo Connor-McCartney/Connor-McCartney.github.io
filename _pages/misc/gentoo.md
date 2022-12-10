@@ -311,3 +311,10 @@ nvim /etc/conf.d/display-manager
 ```bash
 DISPLAYMANAGER="sddm"
 ```
+
+Discord
+
+```bash
+sudo cp -r Discord /opt/Discord
+sudo ln -sf /opt/Discord/Discord /usr/bin/Discord
+```
