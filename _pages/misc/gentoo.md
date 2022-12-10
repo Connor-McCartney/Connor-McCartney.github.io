@@ -272,7 +272,7 @@ emerge kde-apps/kwalletmanager
 emerge kde-misc/bismuth
 emerge kde-apps/spectacle
 emerge kde-apps/dolphin
-emerge app-arch/gzip
+emerge kde-apps/ark
 emerge dev-vcs/git
 
 export $(dbus-launch)
