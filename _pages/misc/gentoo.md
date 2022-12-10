@@ -273,7 +273,7 @@ emerge dev-libs/wayland
 emerge kde-plasma/plasma-meta
 emerge konsole
 export $(dbus-launch)
-startplasma-wayland
+dbus-run-session startplasma-wayland
 ```
 
 On an Acer Aspire the touchpad did not work, but in BIOS I changed touchpad: advanced to basic and then it worked.
