@@ -152,11 +152,9 @@ eselect locale set 4 # (US one just made)
 env-update && source /etc/profile
 ```
 
-Now I will use genkernel.
 
 ```
-emerge sys-kernel/gentoo-sources
-emerge sys-kernel/genkernel
+emerge sys-kernel/gentoo-kernel-bin:6.0.12
 emerge sys-apps/pciutils
 emerge sys-kernel/linux-firmware
 ```
@@ -175,9 +173,6 @@ nvim /etc/fstab
 /dev/cdrom  /mnt/cdrom   auto    noauto,user          0 0
 ```
 
-```bash
-genkernel all
-```
 
 
 ```
