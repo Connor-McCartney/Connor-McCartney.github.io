@@ -297,3 +297,11 @@ nvim /etc/sddm.conf
 [wayland]
 DisplayCommand=/etc/sddm/scripts/wayland-setup
 ```
+
+```bash
+nvim /etc/conf.d/display-manager
+```
+
+```bash
+DISPLAYMANAGER="sddm"
+```
