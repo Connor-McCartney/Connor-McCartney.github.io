@@ -276,3 +276,24 @@ dbus-run-session startplasma-wayland
 ```
 
 On an Acer Aspire the touchpad did not work, but in BIOS I changed touchpad: advanced to basic and then it worked.
+
+SDDM next
+
+```bash
+emerge x11-misc/sddm
+nvim /etc/sddm/scripts/wayland-setup
+```
+
+```bash
+export $(dbus-launch) && dbus-run-session startplasma-wayland
+```
+
+```bash
+chmod a+x /etc/sddm/scripts/wayland-setup
+nvim /etc/sddm.conf
+```
+
+```bash
+[wayland]
+DisplayCommand=/etc/sddm/scripts/wayland-setup
+```
