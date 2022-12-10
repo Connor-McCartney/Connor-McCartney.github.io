@@ -1,4 +1,7 @@
-
+---
+permalink: /misc/gentoo
+title: Gentoo
+---
 
 <https://wiki.gentoo.org/wiki/Handbook:AMD64#Installing_Gentoo>
 
@@ -326,6 +329,13 @@ sudo nvim /usr/share/applications/discord.desktop
 Exec=/usr/bin/Discord
 Icon=/opt/Discord/discord.png
 ```
+
+When there is an update, edit
+
+```bash
+nvim `find / -name build_info.json 2> /dev/null`
+```
+
 
 Grub Customizer
 
