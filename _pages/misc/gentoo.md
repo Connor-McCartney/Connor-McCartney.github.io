@@ -326,3 +326,11 @@ sudo nvim /usr/share/applications/discord.desktop
 Exec=/usr/bin/Discord
 Icon=/opt/Discord/discord.png
 ```
+
+Grub Customizer
+
+```bash
+# download https://launchpad.net/grub-customizer/+download
+cmake . && make
+sudo make install
+```
