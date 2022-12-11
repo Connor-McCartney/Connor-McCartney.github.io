@@ -364,5 +364,6 @@ OBSIDIAN
 emerge app-eselect/eselect-repository
 eselect repository enable r7l
 emerge-webrsync
+emerge --sync
 sudo emerge app-text/obsidian
 ```
