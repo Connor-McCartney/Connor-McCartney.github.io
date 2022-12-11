@@ -125,6 +125,9 @@ $\bar{x} = x-1, \bar{y} = y-2$
 
 $\frac{d \bar{y}}{d \bar{x}} = 2 \bar{x}(\bar{y} + 1), \ \bar{y}(0) = 0$
 
+<br>
+<br>
+<br>
 
 Let $y = \phi (x)$ be a solution to the IVP (1), then 
 
