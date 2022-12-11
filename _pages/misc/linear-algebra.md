@@ -153,6 +153,8 @@ Test for exactness:
 
 $P(x,y) + Q(x,y) \frac{dy}{dx} = 0$  is an exact ODE iff $\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x}$ everywhere in the region.
 
+<br>
+<br>
 
 Exercises:
 
