@@ -345,3 +345,10 @@ Launch alsamixer and make sure each column has a green 00 under it (use the m ke
 ```bash
 emerge kde-plasma/plasma-pa
 ```
+
+IOSEVKA font
+
+```bash
+sudo echo "media-fonts/iosevka **" >> /etc/portage/package.accept_keywords
+emerge media-fonts/iosevka
+```
