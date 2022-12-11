@@ -322,6 +322,8 @@ Discord
 
 ```bash
 emerge dev-libs/libatomic_ops
+emerge sys-libs/libcxx
+
 
 sudo cp -r Discord /opt/Discord
 sudo ln -sf /opt/Discord/Discord /usr/bin/Discord
