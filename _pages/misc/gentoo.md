@@ -281,6 +281,7 @@ emerge kde-apps/ark
 emerge dev-vcs/git
 emerge dev-util/cmake
 emerge dev-python/pip
+emerge sys-process/htop
 
 export $(dbus-launch)
 dbus-run-session startplasma-wayland
