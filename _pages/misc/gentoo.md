@@ -321,6 +321,8 @@ DISPLAYMANAGER="sddm"
 Discord
 
 ```bash
+emerge dev-libs/libatomic_ops
+
 sudo cp -r Discord /opt/Discord
 sudo ln -sf /opt/Discord/Discord /usr/bin/Discord
 sudo cp -r /opt/Discord/discord.desktop /usr/share/applications/
