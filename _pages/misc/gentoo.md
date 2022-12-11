@@ -363,6 +363,6 @@ OBSIDIAN
 ```bash
 emerge app-eselect/eselect-repository
 eselect repository enable r7l
-emerge-webrsyn
+emerge-webrsync
 sudo emerge app-text/obsidian
 ```
