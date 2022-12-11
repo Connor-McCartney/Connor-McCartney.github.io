@@ -106,3 +106,38 @@ $y^2 - 2y = x^3 + 2x^2 + 2x -1$
 $(y-1)^2 = x^3 + 2x^2 + 2x$
 
 $y = 1 \pm \sqrt{x^3 + 2x^2 + 2x}, \ x > 0$
+
+<br>
+<br>
+
+# 2. Successive approximations
+
+
+It is always possible to apply a variable shift so that the IVP can be written as
+
+$\frac{dy}{dx} = f(x,y), \ y(0) = 0$  (1)
+
+<br>
+
+E.g. $y' = 2(x-1)(y-1), \ y(1) = 2$
+
+$\bar{x} = x-1, \bar{y} = y-2$
+
+$\frac{d \bar{y}}{d \bar{x}} = 2 \bar{x}(\bar{y} + 1), \ \bar{y}(0) = 0$
+
+
+Let $y = \phi (x)$ be a solution to the IVP (1), then 
+
+$\phi(x) = \int_0^x{f(t, \phi (t))} dt$  (2)
+
+(1) and (2) are equivalent, so a solution to one is a solution to the other.
+
+Now consider
+
+$\phi_{n+1}(x) = \int_0^x{f(t, \phi_n (t))} dt$  (3)
+
+If there exists some k such that $\phi_{k+1}(x) = \phi_{k}(x)$ then $\phi_{k}(x)$ is a solution of (2) and hence (1).
+Generally this does not occur, but we may instead consider limit functions.
+
+<br>
+<br>
