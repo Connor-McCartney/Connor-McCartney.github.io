@@ -280,6 +280,7 @@ emerge kde-apps/dolphin
 emerge kde-apps/ark
 emerge dev-vcs/git
 emerge dev-util/cmake
+emerge dev-python/pip
 
 export $(dbus-launch)
 dbus-run-session startplasma-wayland
