@@ -94,7 +94,7 @@ USE="pulseaudio wayland gles2 icu python -gnome -systemd -bluetooth"
 GENTOO_MIRRORS="https://mirror.aarnet.edu.au/pub/gentoo/"
 ACCEPT_LICENSE="*"
 GRUB_PLATFORMS="efi-64" # UEFI only
-EMERGE_DEFAULT_OPTS="--autounmask-write"
+EMERGE_DEFAULT_OPTS="--autounmask=y --autounmask-write"
 
 LC_MESSAGES=C
 ```
@@ -349,6 +349,5 @@ emerge kde-plasma/plasma-pa
 IOSEVKA font
 
 ```bash
-sudo echo "media-fonts/iosevka **" >> /etc/portage/package.accept_keywords
 emerge media-fonts/iosevka
 ```
