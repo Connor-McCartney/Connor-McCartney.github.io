@@ -351,3 +351,9 @@ IOSEVKA font
 ```bash
 emerge media-fonts/iosevka
 ```
+
+KEEPASSXC
+
+```bash
+emerge app-admin/keepassxc
+```
