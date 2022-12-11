@@ -361,5 +361,8 @@ emerge app-admin/keepassxc
 OBSIDIAN
 
 ```bash
+emerge app-eselect/eselect-repository
+eselect repository enable r7l
+emerge-webrsyn
 sudo emerge app-text/obsidian
 ```
