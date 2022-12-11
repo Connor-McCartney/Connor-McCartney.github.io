@@ -357,3 +357,9 @@ KEEPASSXC
 ```bash
 emerge app-admin/keepassxc
 ```
+
+OBSIDIAN
+
+```bash
+sudo emerge app-text/obsidian
+```
