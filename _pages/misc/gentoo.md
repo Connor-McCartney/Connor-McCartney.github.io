@@ -288,7 +288,7 @@ dbus-run-session startplasma-wayland
 
 On an Acer Aspire the touchpad did not work, but in BIOS I changed touchpad: advanced to basic and then it worked.
 
-SDDM next
+SDDM 
 
 ```bash
 rc-update add xdm default
@@ -322,19 +322,7 @@ DISPLAYMANAGER="sddm"
 Discord
 
 ```bash
-emerge dev-libs/libatomic_ops
-emerge sys-libs/libcxx
-
-
-sudo cp -r Discord /opt/Discord
-sudo ln -sf /opt/Discord/Discord /usr/bin/Discord
-sudo cp -r /opt/Discord/discord.desktop /usr/share/applications/
-sudo nvim /usr/share/applications/discord.desktop
-```
-
-```bash
-Exec=/usr/bin/Discord
-Icon=/opt/Discord/discord.png
+emerge net-im/discord-bin
 ```
 
 When there is an update, edit
