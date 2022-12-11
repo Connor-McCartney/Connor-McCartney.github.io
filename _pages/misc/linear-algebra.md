@@ -144,3 +144,49 @@ Generally this does not occur, but we may instead consider limit functions.
 
 <br>
 <br>
+<br>
+
+# 3. Exact 1st order ODEs
+
+
+Test for exactness:
+
+$P(x,y) + Q(x,y) \frac{dy}{dx} = 0$  is an exact ODE iff $\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x}$ everywhere in the region.
+
+
+Exercises:
+
+1:
+<https://www.wolframalpha.com/input?key=&i=%5Ccos%28x%2By%29+dx+%2B+%283y%5E2+%2B+2y+%2B+%5Ccos%28x%2By%29%29+dy+%3D+0>
+
+$\cos(x+y) dx + (3y^2 + 2y + \cos(x+y)) dy = 0$
+
+Determine if it is exact, and solve if so.
+
+$\frac{\cos(x+y) dx}{dx} + (3y^2 + 2y + \cos(x+y)) \frac{dy}{dx} = 0$
+
+$\cos(x+y) + (3y^2 + 2y + \cos(x+y)) \frac{dy}{dx} = 0$
+
+We have P = $\cos(x+y)$ and Q = $3y^2 + 2y + \cos(x+y)$
+
+$\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x} = -sin(x+y)$
+
+So it is exact. Then we seek f(x,y) such that:
+
+(1) $\frac{\partial f}{\partial x} = P$    ->   $f = \int{\cos(x+y)} dy = \sin(x+y) + g(y)$ -> $\frac{\partial f}{\partial y} = \cos(x+y) + \frac{dg(y)}{dy}$
+
+(2) $\frac{\partial f}{\partial y} = Q$
+
+Compare (1) with (2) to solve $\frac{dg(y)}{dy}$ and then $g(y)$
+
+$\cos(x+y) + \frac{dg(y)}{dy} = Q$
+
+$\cos(x+y) + \frac{dg(y)}{dy} = 3y^2 + 2y + \cos(x+y)$
+
+$\frac{dg(y)}{dy} = 3y^2 + 2y$
+
+$g(y) = \int{3y^2 + 2y} \ dy$
+
+$g(y) = y^3 + y^2 + c$
+
+$\therefore f(x,y) = \sin(x+y) + y^3 + y^2 = c$
