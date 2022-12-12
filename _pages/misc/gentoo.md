@@ -282,6 +282,7 @@ emerge dev-vcs/git
 emerge dev-util/cmake
 emerge dev-python/pip
 emerge sys-process/htop
+emerge net-libs/nodejs
 
 export $(dbus-launch)
 dbus-run-session startplasma-wayland
