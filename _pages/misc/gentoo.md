@@ -297,26 +297,10 @@ SDDM
 rc-update add xdm default
 emerge x11-misc/sddm
 mkdir -p /etc/sddm/scripts
-nvim /etc/sddm/scripts/wayland-setup
-```
 
-```bash
-export $(dbus-launch) && dbus-run-session startplasma-wayland
-```
+nvim /etc/sddm/scripts/wayland-setup # export $(dbus-launch) && dbus-run-session startplasma-wayland
+nvim /etc/sddm/scripts/Xsetup # setxkbmap us
 
-```bash
-nvim /etc/sddm/scripts/wayland-setup
-```
-
-```bash
-nvim /etc/sddm/scripts/Xsetup
-```
-
-```bash
-setxkbmap us
-```
-
-```bash
 chmod a+x /etc/sddm/scripts/wayland-setup
 chmod a+x /etc/sddm/scripts/Xsetup
 nvim /etc/sddm.conf
