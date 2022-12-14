@@ -131,6 +131,7 @@ eselect profile set X
 ```bash
 emerge --verbose --update --deep --newuse @world
 emerge gui-apps/wl-clipboard
+emerge x11-misc/xclip
 emerge app-editors/neovim
 ```
 
