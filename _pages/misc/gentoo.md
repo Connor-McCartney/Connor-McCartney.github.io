@@ -90,7 +90,7 @@ FCFLAGS="${COMMON_FLAGS}"
 FFLAGS="${COMMON_FLAGS}"
 
 MAKEOPTS="-j4"
-USE="pulseaudio wayland gles2 icu python -gnome -systemd -bluetooth"
+USE="pulseaudio X wayland gles2 icu python -gnome -systemd -bluetooth"
 GENTOO_MIRRORS="https://mirror.aarnet.edu.au/pub/gentoo/"
 ACCEPT_LICENSE="*"
 GRUB_PLATFORMS="efi-64" # UEFI only
