@@ -107,6 +107,30 @@ $(y-1)^2 = x^3 + 2x^2 + 2x$
 
 $y = 1 \pm \sqrt{x^3 + 2x^2 + 2x}, \ x > 0$
 
+<br><br><br>
+
+3: (Linear)
+
+$y' + 2y = 4$, $y'(0) = 4$
+
+$y' = 4 - 2y$
+
+$q(x) = 4, p(x) = 2$
+
+$I = e^{\int{p} \text{ } dx} = e^{2x}$
+
+$e^{2x} y = \int{4e^{2x}} \text{ }dx$
+
+$e^{2x} y = 4(\frac{e^{2x}}{2}) + c$
+
+$y = 2 + ce^{-2x}$
+
+$y(0) = 4, c=2$
+
+$\therefore y = 2 + 2e^{-2x}$
+
+
+
 <br>
 <br>
 
