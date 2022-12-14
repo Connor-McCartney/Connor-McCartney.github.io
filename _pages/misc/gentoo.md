@@ -355,12 +355,17 @@ KEEPASSXC
 emerge app-admin/keepassxc
 ```
 
-OBSIDIAN
+Obsidian and OnlyOffice
 
 ```bash
 emerge app-eselect/eselect-repository
+
 eselect repository enable r7l
+eselect repository enable src_prepare-overlay
+
 emerge-webrsync
 emerge --sync
-sudo emerge app-text/obsidian
+
+emerge app-text/obsidian
+emerge app-office/onlyoffice-bin
 ```
