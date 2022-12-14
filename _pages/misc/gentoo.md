@@ -305,13 +305,29 @@ export $(dbus-launch) && dbus-run-session startplasma-wayland
 ```
 
 ```bash
+nvim /etc/sddm/scripts/wayland-setup
+```
+
+```bash
+nvim /etc/sddm/scripts/Xsetup
+```
+
+```bash
+setxkbmap us
+```
+
+```bash
 chmod a+x /etc/sddm/scripts/wayland-setup
+chmod a+x /etc/sddm/scripts/Xsetup
 nvim /etc/sddm.conf
 ```
 
 ```bash
 [wayland]
 DisplayCommand=/etc/sddm/scripts/wayland-setup
+
+[X11]
+DisplayCommand=/etc/sddm/scripts/Xsetup
 ```
 
 ```bash
