@@ -130,7 +130,6 @@ eselect profile set X
 
 ```bash
 emerge --verbose --update --deep --newuse @world
-nvim /etc/portage/package.use/neovim #app-editors/neovim x
 emerge app-editors/neovim
 ```
 
