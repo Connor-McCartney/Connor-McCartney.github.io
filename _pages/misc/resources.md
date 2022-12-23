@@ -54,8 +54,8 @@ Cryptography notes <https://nbviewer.org/github/zademn/EverythingCrypto/tree/mas
 Bypass disk encryption linux <https://alice.climent-pommeret.red/posts/bypass-disk-encryption-linux> <br>
 Torsocks <https://github.com/dgoulet/torsocks> <br>
 Project Ideas - <https://github.com/codecrafters-io/build-your-own-x> <br>
-FoxyProxy - <https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard>
-The Rust Programming Language <https://doc.rust-lang.org/book/title-page.html>
+FoxyProxy - <https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard> <br>
+The Rust Programming Language <https://doc.rust-lang.org/book/title-page.html> <br>
 
 ## Blogs
 
