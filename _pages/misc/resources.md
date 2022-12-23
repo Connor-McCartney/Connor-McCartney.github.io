@@ -55,6 +55,7 @@ Bypass disk encryption linux <https://alice.climent-pommeret.red/posts/bypass-di
 Torsocks <https://github.com/dgoulet/torsocks> <br>
 Project Ideas - <https://github.com/codecrafters-io/build-your-own-x> <br>
 FoxyProxy - <https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard>
+The Rust Programming Language <https://doc.rust-lang.org/book/title-page.html>
 
 ## Blogs
 
