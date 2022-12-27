@@ -30,3 +30,5 @@ title: Misc
 <span style="font-size:2em;">   [Gentoo](/misc/gentoo)   </span>
 
 <span style="font-size:2em;">   [Git/Github basics](/misc/git)   </span>
+
+<span style="font-size:2em;">   [Automating playing on lichess](/misc/lichess)   </span>
