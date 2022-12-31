@@ -366,6 +366,7 @@ eselect repository enable src_prepare-overlay
 emerge-webrsync
 emerge --sync
 
+echo "app-text/obsidian **" >> /etc/portage/package.accept_keywords
 emerge app-text/obsidian
 emerge app-office/onlyoffice-bin
 ```
@@ -393,3 +394,8 @@ cd ~/.config/google-chrome/Default
 rm 'Login Data'
 rm 'Login Data-journal'
 ```
+
+<br>
+
+Merge conflicts: `dispatch-conf` and enter 'u'
+
