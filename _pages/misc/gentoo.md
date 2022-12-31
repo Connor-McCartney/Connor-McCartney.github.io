@@ -369,3 +369,17 @@ emerge --sync
 emerge app-text/obsidian
 emerge app-office/onlyoffice-bin
 ```
+
+
+Mounting Hard Drive
+
+I ran into this bug
+
+<https://www.mail-archive.com/kde-bugs-dist@kde.org/msg624454.html>
+
+fixed by creating /etc/udisks2/mount_options.conf
+
+```bash
+[defaults]
+ntfs_defaults=uid=$UID,gid=$GID
+```
