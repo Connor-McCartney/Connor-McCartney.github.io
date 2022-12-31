@@ -366,7 +366,6 @@ eselect repository enable src_prepare-overlay
 emerge-webrsync
 emerge --sync
 
-echo "app-text/obsidian **" >> /etc/portage/package.accept_keywords
 emerge app-text/obsidian
 emerge app-office/onlyoffice-bin
 ```
