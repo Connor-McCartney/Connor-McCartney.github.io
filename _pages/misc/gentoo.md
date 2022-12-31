@@ -383,3 +383,13 @@ fixed by creating /etc/udisks2/mount_options.conf
 [defaults]
 ntfs_defaults=uid=$UID,gid=$GID
 ```
+
+<br>
+
+<https://unix.stackexchange.com/questions/538482/chrome-does-not-save-my-passwords>
+
+```bash
+cd ~/.config/google-chrome/Default
+rm 'Login Data'
+rm 'Login Data-journal'
+```
