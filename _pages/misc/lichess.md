@@ -27,5 +27,6 @@ while True:
     stockfish.set_fen_position(data["fen"])
     move = stockfish.get_best_move_time(1000)
     game = data["gameId"]
-    req = s.post
+    req = s.post(f"https://lichess.org/api/board/game/{game}/move/{move}", headers={"Authorization": f"Bearer {lichess_api_key}"})
+
 ```
