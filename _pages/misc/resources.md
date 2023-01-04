@@ -59,6 +59,7 @@ The Rust Programming Language <https://doc.rust-lang.org/book/title-page.html> <
 
 ## Blogs
 
+<madaidans-insecurities.github.io> <br>
 <https://blog.cryptohack.org> <br>
 <https://affine.group> <br>
 <https://www.robertxiao.ca> <br>
