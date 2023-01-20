@@ -21,6 +21,7 @@ printf "o\nn\n\n\n\n+8G\nn\n\n\n\n\nt\n1\n82\na\n2\nw\n" | fdisk /dev/sda
 # "Invalid or corrupted package (PGP signature)" fix
 
 ```bash
+pacman-key --init
 pacman-key --refresh
 pacman-key --populate
 sudo pacman -Sy archlinux-keyring
