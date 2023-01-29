@@ -1,5 +1,5 @@
 ---
-permalink: /htb/timelapse
+permalink: /misc/htb/timelapse
 title: Timelapse
 ---
 
