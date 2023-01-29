@@ -1,5 +1,5 @@
 ---
-permalink: /htb/delivery
+permalink: /misc/htb/delivery
 title: Delivery
 ---
 
