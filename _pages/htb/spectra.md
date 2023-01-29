@@ -1,5 +1,5 @@
 ---
-permalink: /htb/spectra
+permalink: /misc/htb/spectra
 title: Spectra
 ---
 
