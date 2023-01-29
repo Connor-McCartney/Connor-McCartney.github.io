@@ -19,7 +19,7 @@ title: Misc
 
 <span style="font-size:2em;">   [Sending emails using python](/misc/python-email)   </span>
 
-<span style="font-size:2em;">   [Hack the Box](/misc/htb-algebra)   </span>
+<span style="font-size:2em;">   [Hack the Box](/misc/htb)   </span>
 
 <span style="font-size:2em;">   [Linear Algebra Notes](/misc/linear-algebra)   </span>
 
