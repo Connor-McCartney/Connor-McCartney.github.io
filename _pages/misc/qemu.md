@@ -104,7 +104,7 @@ Troubleshooting 'This PC doesn't meet the minimum system requirements to install
 
 Choose the w11 driver when partitioning.
 
-Also, to continue without internet you may have to pree Shift+F10 and then enter OOBE\BYPASSNRO
+Also, to continue without internet you may have to press Shift+F10 and then enter OOBE\BYPASSNRO
 
 Network setup:
 
