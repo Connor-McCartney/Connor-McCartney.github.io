@@ -5,6 +5,9 @@ title: Cryptography
 
 <br>
 
+<span style="font-size:2em;">   [Coppersmith's Small Roots](/cryptography/small-roots)   </span>
+
+
 <span style="font-size:2em;">   [RSA](/cryptography/rsa)   </span>
 
 
@@ -12,9 +15,6 @@ title: Cryptography
 
 
 <span style="font-size:2em;">   [Elliptic Curve Cryptography](/cryptography/ecc)   </span>
-
-
-<span style="font-size:2em;">   [Coppersmith's Small Roots](/cryptography/small-roots)   </span>
 
 
 <span style="font-size:2em;">   [Other](/cryptography/other)   </span>
