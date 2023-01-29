@@ -1,5 +1,5 @@
 ---
-permalink: /htb/Starting-Point
+permalink: /misc/htb/Starting-Point
 title: Starting Point
 ---
 
