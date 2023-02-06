@@ -30,3 +30,37 @@ while True:
     req = s.post(f"https://lichess.org/api/board/game/{game}/move/{move}", headers={"Authorization": f"Bearer {lichess_api_key}"})
 
 ```
+
+
+And here is one for puzzles:
+
+```python
+import requests
+from json import loads
+
+s = requests.Session()
+lichess_api_key = "..."
+cookie = "lila2=..."
+
+def main():
+    req = s.get('https://lichess.org/training', headers={'Accept-Encoding': 'br', 'cookie': cookie})
+    line = req.content.decode().split("\n")[0]
+    id = line.split("Chess tactic #")[1][:5]
+    print(f"{id = }")
+    turn = line.split("Find the best move for ")[1][:5]
+    print(f"{turn = }")
+
+    #req = s.get(f"https://lichess.org/api/puzzle/{id}", headers={"Authorization": f"Bearer {lichess_api_key}", "Content-Type": "application/json"})
+    #moves = loads(req.text)['puzzle']['solution']
+    #solution = []
+    #for i in range(0, len(moves), 2):
+    #    solution.append(moves[i])
+    #print(f"{solution = }")
+
+    req = s.post(f'https://lichess.org/training/complete/mix/{id}', json={'win': 'true', 'rated': 'true'}, headers={'cookie': cookie})
+    print(req.status_code)
+
+if __name__ == "__main__":
+    while True:
+        main()
+```
