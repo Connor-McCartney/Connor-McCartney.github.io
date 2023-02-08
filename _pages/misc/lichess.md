@@ -15,6 +15,7 @@ import requests
 from json import loads
 from stockfish import Stockfish
 from os import system
+from random import randint
 
 stockfish = Stockfish(path="/usr/bin/stockfish")
 s = requests.Session()
@@ -38,7 +39,7 @@ while True:
             continue
         waiting_for_everyone = False
         stockfish.set_fen_position(data["fen"])
-        move = stockfish.get_best_move_time(100)
+        move = stockfish.get_best_move_time(randint(1, 10))
         print(move)
         game = data["gameId"]
         if game not in opened_in_firefox:
