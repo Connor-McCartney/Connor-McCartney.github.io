@@ -39,7 +39,7 @@ import requests
 from time import sleep
 
 s = requests.Session()
-cookie = "lila2=a36d4010df3c3b8d71be2c846e9660de95828583-sid=NggHW1iho7Vn55AjhMUJHB&sessionId=MRaYLEKHFwiS5sqGfaiIfr"
+cookie = "lila2=..."
 
 while True:
     sleep(10)
