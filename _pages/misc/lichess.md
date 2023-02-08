@@ -18,11 +18,9 @@ from stockfish import Stockfish
 stockfish = Stockfish(path="/usr/bin/stockfish")
 s = requests.Session()
 lichess_api_key = "..."
-cookie = "lila2=..."
 
 
 while True:
-    s.post('https://lichess.org/setup/hook/XXXXXXXXXXXX', json={"variant":"1", "mode":"1", "timeMode":"1", "time":"10", "increment":"0", "days":"2", "days_range":"2", "color":"random"}, headers={'cookie': cookie})
     req = s.get("https://lichess.org/api/account/playing", headers={"Authorization": f"Bearer {lichess_api_key}", "Content-Type": "application/json"})
     data = loads(req.text)["nowPlaying"][0]
     if not data["isMyTurn"]:
@@ -34,8 +32,23 @@ while True:
 
 ```
 
+Starting games:
 
-And here is one for puzzles:
+```python
+import requests
+from time import sleep
+
+s = requests.Session()
+cookie = "lila2=a36d4010df3c3b8d71be2c846e9660de95828583-sid=NggHW1iho7Vn55AjhMUJHB&sessionId=MRaYLEKHFwiS5sqGfaiIfr"
+
+while True:
+    sleep(10)
+    r = s.post('https://lichess.org/setup/hook/XXXXXXXXXXXX', json={"variant":"1", "mode":"1", "timeMode":"1", "time":"10", "increment":"0", "days":"2", "days_range":"2", "color":"random"}, headers={'cookie': cookie})
+    print(r.ok)
+```
+
+
+Puzzles:
 
 ```python
 import requests
