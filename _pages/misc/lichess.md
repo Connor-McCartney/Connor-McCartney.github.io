@@ -44,7 +44,7 @@ cookie = "lila2=..."
 while True:
     r = s.post('https://lichess.org/setup/hook/XXXXXXXXXXXX', json={"variant":"1", "mode":"1", "timeMode":"1", "time":"10", "increment":"0", "days":"2", "days_range":"2", "color":"random"}, headers={'cookie': cookie})
     print(r.ok)
-    sleep(2)
+    sleep(10)
 ```
 
 
