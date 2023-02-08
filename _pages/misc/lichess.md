@@ -21,18 +21,27 @@ lichess_api_key = "..."
 cookie = "lila2=..."
 
 
+def new_game():
+    print("new game")
+    requests.Session().post('https://lichess.org/setup/hook/XXXXXXXXXXXX', json={"variant":"1", "mode":"1", "timeMode":"1", "time":"10", "increment":"0", "days":"2", "days_range":"2", "color":"random"}, headers={'cookie': cookie})
+
+new_game()
 while True:
     req = s.get("https://lichess.org/api/account/playing", headers={"Authorization": f"Bearer {lichess_api_key}", "Content-Type": "application/json"})
-    data = loads(req.text)["nowPlaying"][0]
-    if not data["isMyTurn"]:
-        print("still their turn")
-        requests.Session().post('https://lichess.org/setup/hook/XXXXXXXXXXXX', json={"variant":"1", "mode":"1", "timeMode":"1", "time":"10", "increment":"0", "days":"2", "days_range":"2", "color":"random"}, headers={'cookie': cookie})
-        continue
-    stockfish.set_fen_position(data["fen"])
-    move = stockfish.get_best_move_time(100)
-    print(move)
-    game = data["gameId"]
-    s.post(f"https://lichess.org/api/board/game/{game}/move/{move}", headers={"Authorization": f"Bearer {lichess_api_key}"})
+    nowPlaying = loads(req.text)["nowPlaying"]
+    waiting_for_everyone = True
+    for data in nowPlaying:
+        if not data["isMyTurn"]:
+            print("still their turn")
+            continue
+        waiting_for_everyone = False
+        stockfish.set_fen_position(data["fen"])
+        move = stockfish.get_best_move_time(100)
+        print(move)
+        game = data["gameId"]
+        s.post(f"https://lichess.org/api/board/game/{game}/move/{move}", headers={"Authorization": f"Bearer {lichess_api_key}"})
+    if waiting_for_everyone:
+        new_game()
 
 ```
 
