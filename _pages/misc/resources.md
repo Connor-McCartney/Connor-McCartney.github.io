@@ -57,6 +57,7 @@ Project Ideas - <https://github.com/codecrafters-io/build-your-own-x> <br>
 FoxyProxy - <https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard> <br>
 The Rust Programming Language <https://doc.rust-lang.org/book/title-page.html> <br>
 Astronomy Pictures <https://apod.nasa.gov/apod/lib/aptree.html> <br>
+Private Duck Address <https://duckduckgo.com/email> <br>
 
 ## Blogs
 
