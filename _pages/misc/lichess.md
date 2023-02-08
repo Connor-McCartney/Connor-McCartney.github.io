@@ -26,7 +26,7 @@ while True:
     if not data["isMyTurn"]:
         continue
     stockfish.set_fen_position(data["fen"])
-    move = stockfish.get_best_move_time(1000)
+    move = stockfish.get_best_move_time(200)
     game = data["gameId"]
     s.post(f"https://lichess.org/api/board/game/{game}/move/{move}", headers={"Authorization": f"Bearer {lichess_api_key}"})
 
