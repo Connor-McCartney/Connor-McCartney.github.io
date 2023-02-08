@@ -29,7 +29,7 @@ while True:
         requests.Session().post('https://lichess.org/setup/hook/XXXXXXXXXXXX', json={"variant":"1", "mode":"1", "timeMode":"1", "time":"10", "increment":"0", "days":"2", "days_range":"2", "color":"random"}, headers={'cookie': cookie})
         continue
     stockfish.set_fen_position(data["fen"])
-    move = stockfish.get_best_move_time(1000)
+    move = stockfish.get_best_move_time(100)
     print(move)
     game = data["gameId"]
     s.post(f"https://lichess.org/api/board/game/{game}/move/{move}", headers={"Authorization": f"Bearer {lichess_api_key}"})
