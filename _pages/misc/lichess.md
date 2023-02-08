@@ -39,7 +39,7 @@ while True:
             continue
         waiting_for_everyone = False
         stockfish.set_fen_position(data["fen"])
-        move = stockfish.get_best_move_time(randint(1, 10) * 1000)
+        move = stockfish.get_best_move_time(randint(1, 3) * 1000)
         print(move)
         game = data["gameId"]
         if game not in opened_in_firefox:
