@@ -55,10 +55,52 @@ Puzzles:
 ```python
 import requests
 from json import loads
+from pynput.mouse import Button, Controller
+from time import sleep
 
+mouse = Controller()
 s = requests.Session()
-lichess_api_key = "..."
-cookie = "lila2=..."
+lichess_api_key = "lip_4Cxq84cF0uv1n8W6VKdO"
+cookie = "lila2=48208b9dfb0d76926a9d177736d186d1e7310e7b-sid=zlzBV6zZsMZV7oA6rxgMX8&sessionId=wkRYZHGGzF7FoJR2ylHPCq&bg=dark"
+
+def click():
+    mouse.press(Button.left)
+    mouse.release(Button.left)
+    sleep(0.3)
+
+def refresh():
+    mouse.position = (121, 116)
+    click()
+    sleep(1.5)
+
+def move(solution, turn):
+    width = 96
+    bottomleft_x = 600
+    bottomleft_y = 920
+    map_black_letters = {'h': 0, 'g': 1, 'f': 2, 'e': 3, 'd': 4, 'c': 5, 'b': 6, 'a': 7}
+    map_black_numbers = {'8': 0, '7': 1, '6': 2, '5': 3, '4': 4, '3': 5, '2': 6, '1': 7}
+    map_white_letters = {'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5, 'g': 6, 'h': 7}
+    map_white_numbers = {'1': 0, '2': 1, '3': 2, '4': 3, '5': 4, '6': 5, '7': 6, '8': 7}
+    if turn == "black":
+        for move in solution:
+            mouse.position = (bottomleft_x + width * map_black_letters[move[0]], bottomleft_y - width * map_black_numbers[move[1]])
+            click()
+            mouse.position = (bottomleft_x + width * map_black_letters[move[2]], bottomleft_y - width * map_black_numbers[move[3]])
+            click()
+            if move[3] == '1':
+                click()
+                mouse.press(Button.left)
+                mouse.release(Button.left)
+    if turn == "white":
+        for move in solution:
+            mouse.position = (bottomleft_x + width * map_white_letters[move[0]], bottomleft_y - width * map_white_numbers[move[1]])
+            click()
+            mouse.position = (bottomleft_x + width * map_white_letters[move[2]], bottomleft_y - width * map_white_numbers[move[3]])
+            click()
+            if move[3] == '8':
+                click()
+                mouse.press(Button.left)
+                mouse.release(Button.left)
 
 def main():
     req = s.get('https://lichess.org/training', headers={'Accept-Encoding': 'br', 'cookie': cookie})
@@ -68,17 +110,20 @@ def main():
     turn = line.split("Find the best move for ")[1][:5]
     print(f"{turn = }")
 
-    #req = s.get(f"https://lichess.org/api/puzzle/{id}", headers={"Authorization": f"Bearer {lichess_api_key}", "Content-Type": "application/json"})
-    #moves = loads(req.text)['puzzle']['solution']
-    #solution = []
-    #for i in range(0, len(moves), 2):
-    #    solution.append(moves[i])
-    #print(f"{solution = }")
+    req = s.get(f"https://lichess.org/api/puzzle/{id}", headers={"Authorization": f"Bearer {lichess_api_key}", "Content-Type": "application/json"})
+    moves = loads(req.text)['puzzle']['solution']
+    solution = []
+    for i in range(0, len(moves), 2):
+        solution.append(moves[i])
+    print(f"{solution = }")
+    move(solution, turn)
 
-    req = s.post(f'https://lichess.org/training/complete/mix/{id}', json={'win': 'true', 'rated': 'true'}, headers={'cookie': cookie})
-    print(req.status_code)
+    #req = s.post(f'https://lichess.org/training/complete/mix/{id}', json={'win': 'true', 'rated': 'true'}, headers={'cookie': cookie})
+    #print(req.status_code)
 
 if __name__ == "__main__":
+    sleep(3)
     while True:
+        refresh()
         main()
 ```
