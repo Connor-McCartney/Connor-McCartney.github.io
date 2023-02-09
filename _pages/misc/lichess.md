@@ -60,8 +60,8 @@ from time import sleep
 
 mouse = Controller()
 s = requests.Session()
-lichess_api_key = "lip_4Cxq84cF0uv1n8W6VKdO"
-cookie = "lila2=48208b9dfb0d76926a9d177736d186d1e7310e7b-sid=zlzBV6zZsMZV7oA6rxgMX8&sessionId=wkRYZHGGzF7FoJR2ylHPCq&bg=dark"
+lichess_api_key = "..."
+cookie = "lila2=..."
 
 def click():
     mouse.press(Button.left)
