@@ -127,3 +127,67 @@ if __name__ == "__main__":
         refresh()
         main()
 ```
+
+Bullet
+
+```python
+import requests
+from json import loads
+from pynput.mouse import Button, Controller
+from time import sleep
+from stockfish import Stockfish
+
+mouse = Controller()
+s = requests.Session()
+stockfish = Stockfish(path="/home/connor/Downloads/stockfish_15.1_linux_x64/stockfish-ubuntu-20.04-x86-64")
+lichess_api_key = "lip_yWkxKrk9vvJ1jCKykQnL"
+cookie = "lila2=9623260e2d0cc0c2ff9a3bda45634e0523aba1c8-sid=HPOB5sZEHSG9RBx2v6xLI2&sessionId=i5ln55mmA7CV1hj1qqxk7e"
+
+def click():
+    mouse.press(Button.left)
+    mouse.release(Button.left)
+
+def play_move(move, turn):
+    width = 96
+    bottomleft_x = 600
+    bottomleft_y = 920
+    map_black_letters = {'h': 0, 'g': 1, 'f': 2, 'e': 3, 'd': 4, 'c': 5, 'b': 6, 'a': 7}
+    map_black_numbers = {'8': 0, '7': 1, '6': 2, '5': 3, '4': 4, '3': 5, '2': 6, '1': 7}
+    map_white_letters = {'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5, 'g': 6, 'h': 7}
+    map_white_numbers = {'1': 0, '2': 1, '3': 2, '4': 3, '5': 4, '6': 5, '7': 6, '8': 7}
+    if turn == "black":
+        mouse.position = (bottomleft_x + width * map_black_letters[move[0]], bottomleft_y - width * map_black_numbers[move[1]])
+        click()
+        mouse.position = (bottomleft_x + width * map_black_letters[move[2]], bottomleft_y - width * map_black_numbers[move[3]])
+        click()
+        if move[3] == '1':
+            click()
+            mouse.press(Button.left)
+            mouse.release(Button.left)
+    if turn == "white":
+        mouse.position = (bottomleft_x + width * map_white_letters[move[0]], bottomleft_y - width * map_white_numbers[move[1]])
+        click()
+        mouse.position = (bottomleft_x + width * map_white_letters[move[2]], bottomleft_y - width * map_white_numbers[move[3]])
+        click()
+        if move[3] == '8':
+            click()
+            mouse.press(Button.left)
+            mouse.release(Button.left)
+
+def main():
+    while True:
+        req = s.get("https://lichess.org/api/account/playing", headers={"Authorization": f"Bearer {lichess_api_key}", "Content-Type": "application/json"})
+        nowPlaying = loads(req.text)["nowPlaying"]
+        data = nowPlaying[0]
+        turn = data["color"]
+        if not data["isMyTurn"]:
+            print("still their turn")
+            continue
+        stockfish.set_fen_position(data["fen"])
+        move = stockfish.get_best_move_time(10)
+        play_move(move, turn) 
+
+if __name__ == "__main__":
+    sleep(3)
+    main()
+```
