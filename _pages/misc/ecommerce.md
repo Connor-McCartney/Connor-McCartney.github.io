@@ -12,15 +12,13 @@ Reference:
 
 I go to to 192.168.0.1
 
-I have an Optus router, in the gui I go to:
-Network Settings > 
-Port Forwarding > 
-Add rules Manually > 
+I have an Optus router, in the gui I go to: <br>
+Network Settings >  Port Forwarding > Add rules Manually
 
-Service: http or https
-Protocol: TCP
-Internal host: your local machine ip
-External host: leave blank
+Service: http or https <br>
+Protocol: TCP <br>
+Internal host: your local machine ip <br>
+External host: leave blank <br>
 
 # Boilerplate test
 
