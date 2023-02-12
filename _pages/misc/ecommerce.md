@@ -38,3 +38,9 @@ sudo npx next start -p 80
 ```
 
 Then visit your public IP and it should be visible
+
+Now try this and you should see an SSL error because we haven't implemented this yet. 
+
+```
+sudo npx next start -p 443
+```
