@@ -24,14 +24,6 @@ External host: leave blank
 
 # Boilerplate test
 
-```html
-<html>  
-    <body>  
-        <h1>Test!</h1>   
-    </body>  
-</html>
-```
-
 Create next project:
 
 ```
@@ -46,3 +38,5 @@ npx next build
 sudo chown root .
 sudo npx next start -p 80
 ```
+
+Then visit your public IP and it should be visible
