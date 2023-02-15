@@ -1,5 +1,5 @@
 Reference:
-<https://www.youtube.com/watch?v=GarMdDTAZJo>
+<https://www.youtube.com/watch?v=bG88qVHGGic>
 
 # Technologies
 - NextJS
