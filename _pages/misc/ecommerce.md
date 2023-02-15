@@ -90,3 +90,7 @@ Edit DNS records, delete the existing ones and add:
 Type: `A-Address record` <br>
 Host: `example.com` <br>
 Answer (public IP): `xx.xx.xx.xx`
+
+<br>
+
+Don't expect immediate results, it can take some time. 
