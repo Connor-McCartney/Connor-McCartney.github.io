@@ -3,10 +3,9 @@ Reference:
 
 # Technologies
 - NextJS
-- Cloudflare
-- Google Domains
+- Nginx
 - Stripe
-- Nginx Proxy Manager
+
 
 # Port forwarding (80 and 443)
 
@@ -78,10 +77,6 @@ Now edit /etc/nginx/nginx.conf
 Apply the changes with `sudo systemctl restart nginx`
 
 
-# Cloudflare
+# Domain + SSL
 
-We will use this for free SSL. 
-
-First sign up to free plan: <https://dash.cloudflare.com/sign-up>
-
-
+There are lots of sites to buy domains, I used <https://porkbun.com>
