@@ -87,6 +87,7 @@ There are lots of sites to buy domains, I used <https://porkbun.com>
 
 Edit DNS records, delete the existing ones and add:
 
-Type  Host 	        Answer 	     TTL 	Priority 	
+Type  Host 	        Answer 	     TTL 	Priority 
+
 A	  *.example.com	xx.xx.xx.xx	 600		
 
