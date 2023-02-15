@@ -44,3 +44,37 @@ Now try this and you should see an SSL error because we haven't implemented this
 ```
 sudo npx next start -p 443
 ```
+
+# Nginx
+
+Running the website directly on port 80 opens you up to hackers. 
+
+Use nginx reverse proxy to cirumvent this. 
+
+start it with `sudo systemctl start nginx` and you should be able to see the default page if you go to your public IP.
+
+Then run your website on some other random port, eg `sudo npx next start -p 3000`
+
+Now edit /etc/nginx/nginx.conf
+
+```bash
+...
+    server {
+        listen       80;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            proxy_pass http://127.0.0.1:3000;
+            #root   /usr/share/nginx/html;
+            #index  index.html index.htm;
+        }
+...
+```
+
+Apply the changes with `sudo systemctl restart nginx`
+
+
