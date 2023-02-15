@@ -82,3 +82,5 @@ Apply the changes with `sudo systemctl restart nginx`
 There are lots of sites to buy domains, I used <https://porkbun.com>
 
 <https://kb.porkbun.com/article/70-how-to-turn-off-auto-renew>
+
+<https://kb.porkbun.com/article/71-how-your-free-ssl-certificate-works>
