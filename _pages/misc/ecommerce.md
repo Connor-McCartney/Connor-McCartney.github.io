@@ -87,7 +87,6 @@ There are lots of sites to buy domains, I used <https://porkbun.com>
 
 Edit DNS records, delete the existing ones and add:
 
-Type  Host 	        Answer 	     TTL 	Priority 
-
-A	  *.example.com	xx.xx.xx.xx	 600		
-
+Type: `A-Address record` <br>
+Host: `*.acneremover.shop` <br>
+Answer (public IP): `xx.xx.xx.xx`
