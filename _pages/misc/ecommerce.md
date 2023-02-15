@@ -78,3 +78,10 @@ Now edit /etc/nginx/nginx.conf
 Apply the changes with `sudo systemctl restart nginx`
 
 
+# Cloudflare
+
+We will use this for free SSL. 
+
+First sign up to free plan: <https://dash.cloudflare.com/sign-up>
+
+
