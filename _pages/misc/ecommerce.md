@@ -84,3 +84,9 @@ There are lots of sites to buy domains, I used <https://porkbun.com>
 <https://kb.porkbun.com/article/70-how-to-turn-off-auto-renew>
 
 <https://kb.porkbun.com/article/71-how-your-free-ssl-certificate-works>
+
+Edit DNS records, delete the existing ones and add:
+
+Type  Host 	        Answer 	     TTL 	Priority 	
+A	  *.example.com	xx.xx.xx.xx	 600		
+
