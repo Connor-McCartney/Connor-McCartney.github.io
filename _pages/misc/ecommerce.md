@@ -94,3 +94,12 @@ Answer (public IP): `xx.xx.xx.xx`
 <br>
 
 Don't expect immediate results, it can take some time. 
+
+
+```
+sudo mkdir /etc/pki
+sudo mkdir /etc/pki/nginx
+sudo cp domain.cert.pem /etc/pki/nginx/server.crt
+sudo mkdir /etc/pki/nginx/private
+sudo cp private.key.pem /etc/pki/nginx/private/server.key
+```
