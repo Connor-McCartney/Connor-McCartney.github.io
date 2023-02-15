@@ -88,5 +88,5 @@ There are lots of sites to buy domains, I used <https://porkbun.com>
 Edit DNS records, delete the existing ones and add:
 
 Type: `A-Address record` <br>
-Host: `*.acneremover.shop` <br>
+Host: `*.example.com` <br>
 Answer (public IP): `xx.xx.xx.xx`
