@@ -51,7 +51,7 @@ Running the website directly on port 80 opens you up to hackers.
 
 Use nginx reverse proxy to cirumvent this. 
 
-start it with `sudo systemctl start nginx` and you should be able to see the default page if you go to your public IP.
+Start it with `sudo systemctl start nginx` and you should be able to see the default page if you go to your public IP.
 
 Then run your website on some other random port, eg `sudo npx next start -p 3000`
 
