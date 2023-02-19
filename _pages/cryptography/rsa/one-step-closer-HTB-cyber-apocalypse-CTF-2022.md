@@ -61,13 +61,14 @@ def gcd(a, b):
         a, b = b, a % b
     return a.monic()
 
-def FranklinReiter(c1, c2, e, n, a1, b1, a2, b2):
-    P.<X> = PolynomialRing(Zmod(n))
-    g1 = (a1*X + b1)^e - c1
-    g2 = (a2*X + b2)^e - c2
-    return int(-gcd(g1, g2).coefficients()[0])
+def FranklinReiter(f1, f2):
+    return int(-gcd(f1, f2).coefficients()[0])
 
-m = FranklinReiter(c1, c2, e, n, a1, b1, a2, b2)
+P.<X> = PolynomialRing(Zmod(n))
+f1 = (a1*X + b1)^e - c1
+f2 = (a2*X + b2)^e - c2
+m = FranklinReiter(f1, f2)
 print(long_to_bytes(m))
+
 #HTB{f1n1t3_d1ff3r3nc35_134d_70_r31473d_m355493_4774ck5}
 ```
