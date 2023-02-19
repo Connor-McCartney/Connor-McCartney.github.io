@@ -63,6 +63,13 @@ Autostart > Add login script:
 killall plasmashell; sleep 3; plasmashell
 ```
 
+Another monitor bug:
+
+```
+#!/usr/bin/bash
+xrandr --output LVDS1 --off
+```
+
 
 ## Forgetting wifi password
 
