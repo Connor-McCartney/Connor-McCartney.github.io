@@ -10,10 +10,6 @@ title: Diffie-Hellman
 __vulnerability: non-prime field with m<p__
 
 
-<span style="font-size:2em;">   [Rookie Mistake - HTB](/cryptography/diffie-hellman/Rookie-Mistake-HTB)       </span> <br>
-__vulnerability: non-prime field with smooth order__
-
-
 <span style="font-size:2em;">   [log log log - Angstrom CTF 2022](/cryptography/diffie-hellman/logloglog-Angstrom-CTF-2022)       </span> <br>
 __vulnerability: smooth field order (allowing Pohlig–Hellman algorithm)__
 
