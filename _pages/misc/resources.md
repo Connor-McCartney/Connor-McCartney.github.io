@@ -58,6 +58,7 @@ FoxyProxy - <https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard> 
 The Rust Programming Language <https://doc.rust-lang.org/book/title-page.html> <br>
 Astronomy Pictures <https://apod.nasa.gov/apod/lib/aptree.html> <br>
 Private Duck Address <https://duckduckgo.com/email> <br>
+Text to Speech <https://ttsmp3.com/> <br>
 
 ## Blogs
 
