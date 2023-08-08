@@ -15,6 +15,8 @@ It Was A Good Day - Ice Cube
 
 # Sad
 
+Good Looking - Suki Waterhouse
+
 Here With Me - d4vd
 
 Ainsi Bas La Vida - Indila
@@ -46,9 +48,16 @@ Hungarian Dance No. 5 - Johannes Brahms
 
 1812 Overture (Finale) - Tchaikovsky
 
+Swan Lake - Tchaikovsky
+
 Lacrimosa - Mozart
 
 Reflections - Toshifumi Hinata
+
+Beethoven's 5th Symphony
+
+Dies Irae e Tuba Mirum - Verdi Requiem
+
 
 
 # Odd
