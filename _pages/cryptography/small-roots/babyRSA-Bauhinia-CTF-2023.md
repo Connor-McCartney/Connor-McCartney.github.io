@@ -6,7 +6,7 @@ title: grhkm's babyRSA - Bauhinia CTF 2023
 <br>
 
 
-Challenge:
+# Challenge:
 
 <br>
 
@@ -71,7 +71,7 @@ ct = 228531092425837729335432380722635953108902308583870077848108426673313950149
 
 <br><br>
 
-Solve:
+# Solve:
 
 Coming soon...
 
