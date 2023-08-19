@@ -23,3 +23,4 @@ title: Coppersmith's Small Roots
 
 <span style="font-size:2em;">   [dp_high ISITDTU CTF 2022](/cryptography/small-roots/dp-high-ISITDTU-CTF-2022)       </span> <br>
 
+<span style="font-size:2em;">   [grhkm's babyRSA - Bauhinia CTF 2023](/cryptography/small-roots/babyRSA-Bauhinia-CTF-2023)       </span> <br>
