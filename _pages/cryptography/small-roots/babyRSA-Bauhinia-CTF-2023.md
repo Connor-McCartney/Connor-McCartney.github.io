@@ -84,13 +84,13 @@ A google search leads to this paper "Factoring with Only a Third of the Secret C
 We begin with 4 equations:
 
 
-$`dp = h\_dp \cdot 2^i + l\_dp`$
+$$`dp = h\_dp \cdot 2^i + l\_dp`$$
 
-$`dq = h\_dq \cdot 2^i + l\_dq`$
+$$`dq = h\_dq \cdot 2^i + l\_dq`$$
 
-$`e \cdot dp = k(p-1) + 1`$
+$$`e \cdot dp = k(p-1) + 1`$$
 
-$`e \cdot dq = l(q-1) + 1`$
+$$`e \cdot dq = l(q-1) + 1`$$
 
 
 ```python
