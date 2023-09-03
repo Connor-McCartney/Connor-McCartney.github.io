@@ -331,3 +331,5 @@ for h_dp in solve(f, X=2**(512-i), m=20, t=10):
 
 # b6actf{y0u_mu5t_b3_c0nv1nc3d_th4t_lgn/5_is_gr34t3r_th4n_lgn/4_n0w}
 ```
+
+ETA author writeup: <https://github.com/grhkm21/CTF-challenges/blob/master/Bauhinia-CTF-2023/grhkm's%20babyRSA/sol/solve.sage>
