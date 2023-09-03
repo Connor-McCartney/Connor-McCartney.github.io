@@ -53,7 +53,7 @@ Since p must be odd, we can reduce the search range by 1 bit by changing
 to 
 
 ```python
-        f = p_high * 2**(p_bits-p_high_bits-1) + 2*x + 1
+        f = p_high * 2**(p_bits-p_high_bits) + 2*x + 1
         x = small_roots(f, X=2**(p_bits-p_high_bits-1), beta=0.4999, m=m)
 ```
 
