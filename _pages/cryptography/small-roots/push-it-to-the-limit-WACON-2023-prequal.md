@@ -51,14 +51,14 @@ Just a minor optimisiation: since p must be odd, we can reduce the bound by 1 bi
 
 ```python
         f = p_high * 2**(p_bits-p_high_bits) + x
-        x = small_roots(f, X=2**(p_bits-p_high_bits), beta=0.4999, m=m)
+        x = small_roots(f, X=2**(p_bits-p_high_bits), beta=0.5, m=m)
 ```
 
 to 
 
 ```python
         f = p_high * 2**(p_bits-p_high_bits) + 2*x + 1
-        x = small_roots(f, X=2**(p_bits-p_high_bits-1), beta=0.4999, m=m)
+        x = small_roots(f, X=2**(p_bits-p_high_bits-1), beta=0.5, m=m)
 ```
 
 <br>
@@ -140,7 +140,7 @@ def recover(p_high, n, m):
         p_high_bits = len(bin(p_high)) - 2
         PR.<x> = PolynomialRing(Zmod(n))
         f = p_high * 2**(p_bits-p_high_bits) + 2*x + 1
-        x = small_roots(f, X=2**(p_bits-p_high_bits-1), beta=0.49999, m=m)
+        x = small_roots(f, X=2**(p_bits-p_high_bits-1), beta=0.5, m=m)
         if x == []:
                 return None
         p = int(f(x[0]))
@@ -149,15 +149,15 @@ def recover(p_high, n, m):
 n = 24712135189687942739677490021030751776088469214818275631687482073531676912880823269667196936095460153002434759403063429337125873794523587731746689517070810687221399532024093572951282737818446579992570629531618780373767724789390101166147862982539311016801595612323156816999866783427829783286164172896802725820761659256555627406518829192800217880692359914672894220547306033679060066475600137205045054015651689487444267401130160872050085589597109014374199731072611044277806027332254214020499883131062627540945260814416104971893858787291926267157394988131329441246648393933117451348643609850156730059817506513924523851733
 p = 161405912451824860188834725646055524173328544131300133372580621368926433914138476338787007253318242142454894032713487340762003643551953941809023233323836632396674586164821404065443903169766781702197174899338334027128103867874700640036605974611327518250687560220955598412727224450293311080620976484498655311739
 
-m = 15
-for bits in range(15, 8, -1):
+m = 1
+for bits in range(15, 5, -1):
     p_high = p >> (512 - bits)
     while True:
         starttime = time.time()
         p = recover(p_high, n, m=m)
         t = time.time() - starttime
         if is_prime(p):
-            print(f"bruting {bits} bits with m={m} will take {2**bits * t // 3600} hours (single-threaded)")
+            print(f"bruting {bits} bits with m={m} will take {round(2**bits * t / 3600, 0)} hours (single-threaded)")
             break
         m += 1
 ```
