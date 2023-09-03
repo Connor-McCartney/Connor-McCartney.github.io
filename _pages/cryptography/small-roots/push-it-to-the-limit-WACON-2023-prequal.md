@@ -172,6 +172,7 @@ bruting 10 bits with m=25 will take 9.0 hours (single-threaded)
 bruting 9 bits with m=27 will take 6.0 hours (single-threaded)
 bruting 8 bits with m=30 will take 4.0 hours (single-threaded)
 bruting 7 bits with m=33 will take 3.0 hours (single-threaded)
-bruting 6 bits with m=38 will take 3.0 hours (single-threaded)
-
+bruting 6 bits with m=38 will take 2.86 hours (single-threaded)
+bruting 5 bits with m=44 will take 2.54 hours (single-threaded)
+bruting 4 bits with m=53 will take 2.53 hours (single-threaded)
 ```
