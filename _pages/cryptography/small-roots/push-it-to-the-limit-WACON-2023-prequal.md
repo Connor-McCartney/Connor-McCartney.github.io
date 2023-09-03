@@ -33,6 +33,8 @@ c = 1928529005435826459416019111905336348466105462285492755008654093622983620775
 p_msb = 161405912451824860188834725646055524173328544131300133372580621368926433914138476338787007253318242142454894032713487340762003643551953941809023233323836630063065828499586237941251339865726273353740523275987884928619323490566227483094269770052935277592758770273832919929071652425379016974435907024060290170880
 ```
 
+<br>
+
 # Solve
 
 Didn't play this ctf btw, just a post-solve. <br>
@@ -41,9 +43,11 @@ It's very similar to this one. <br>
 Half of the upper bits of p are given, the only difference is now p is 1024 bits not 512 bits. <br>
 This makes it a lot slower, so I edited my previous code to include 3 optimisations from maple3142. 
 
+<br>
+
 # Optimisation 1
 
-Since p must be odd, we can reduce the search range by 1 bit by changing
+Just a minor optimisiation: since p must be odd, we can reduce the bound by 1 bit by changing
 
 ```python
         f = p_high * 2**(p_bits-p_high_bits) + x
@@ -56,6 +60,8 @@ to
         f = p_high * 2**(p_bits-p_high_bits) + 2*x + 1
         x = small_roots(f, X=2**(p_bits-p_high_bits-1), beta=0.4999, m=m)
 ```
+
+<br>
 
 # Optimisation 2
 
@@ -83,6 +89,8 @@ def flatter(M):
 
 And now we can do `B =  flatter(B)` instead of `B = B.LLL()`
 
+<br>
+
 # Experiment
 
 Here's the full value of p:
@@ -90,6 +98,8 @@ Here's the full value of p:
 ```python
 p = 161405912451824860188834725646055524173328544131300133372580621368926433914138476338787007253318242142454894032713487340762003643551953941809023233323836632396674586164821404065443903169766781702197174899338334027128103867874700640036605974611327518250687560220955598412727224450293311080620976484498655311739
 ```
+
+Now let's analyse how long bruting a different number of bits takes:
 
 
 
