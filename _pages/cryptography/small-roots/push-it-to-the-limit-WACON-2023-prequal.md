@@ -176,3 +176,9 @@ bruting 6 bits with m=38 will take 3.28 hours (single-threaded)
 bruting 5 bits with m=44 will take 2.66 hours (single-threaded)
 bruting 4 bits with m=53 will take 2.53 hours (single-threaded)
 ```
+
+<br>
+
+# Optimisation 3
+
+parallelism
