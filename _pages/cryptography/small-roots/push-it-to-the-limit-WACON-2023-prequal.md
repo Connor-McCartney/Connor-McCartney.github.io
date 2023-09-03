@@ -35,11 +35,51 @@ p_msb = 161405912451824860188834725646055524173328544131300133372580621368926433
 
 # Solve
 
+Didn't play this ctf btw, just a post-solve. <br>
 It's very similar to this one. <br>
 <https://connor-mccartney.github.io/cryptography/small-roots/corrupt-key-1-picoMini> <br>
 Half of the upper bits of p are given, the only difference is now p is 1024 bits not 512 bits. <br>
-This makes it a lot slower, so I edited my previous code to include 3 optimisations. 
+This makes it a lot slower, so I edited my previous code to include 3 optimisations from maple3142. 
 
+# Optimisation 1
 
+Since p must be odd, we can reduce the search range by 1 bit by changing
 
+```python
+        f = p_high * 2**(p_bits-p_high_bits) + x
+        x = small_roots(f, X=2**(p_bits-p_high_bits), beta=0.4999, m=m)
+```
+
+to 
+
+```python
+        f = p_high * 2**(p_bits-p_high_bits-1) + x + 1
+        x = small_roots(f, X=2**(p_bits-p_high_bits - 1), beta=0.4999, m=m)
+```
+
+# Optimisation 2
+
+Using flatter for faster LLL. 
+
+```
+sudo pacman -S eigen --noconfirm
+cd ~/Documents
+git clone https://github.com/keeganryan/flatter
+cd flatter
+cmake .
+make -j4
+sudo ln -s ~/Documents/flatter/bin/flatter /usr/local/bin/flatter
+```
+
+```python
+from subprocess import check_output
+from re import findall
+
+def flatter(M):
+    z = "[[" + "]\n[".join(" ".join(map(str, row)) for row in M) + "]]"
+    ret = check_output(["flatter"], input=z.encode())
+    return matrix(M.nrows(), M.ncols(), map(int, findall(b"-?\\d+", ret)))
+```
+
+And now we can do `B =  flatter(B)` instead of B = B.LLL()
 
