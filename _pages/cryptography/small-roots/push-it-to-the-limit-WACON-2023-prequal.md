@@ -37,7 +37,7 @@ p_msb = 161405912451824860188834725646055524173328544131300133372580621368926433
 
 # Solve
 
-Didn't play this ctf btw, just a post-solve. <br>
+Didn't play this ctf btw, just upsolving. <br>
 It's very similar to this one. <br>
 <https://connor-mccartney.github.io/cryptography/small-roots/corrupt-key-1-picoMini> <br>
 Half of the upper bits of p are given, the only difference is now p is 1024 bits not 512 bits. <br>
