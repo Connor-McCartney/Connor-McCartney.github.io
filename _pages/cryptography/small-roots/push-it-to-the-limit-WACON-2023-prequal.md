@@ -162,3 +162,14 @@ for bits in range(15, 5, -1):
         m += 1
 ```
 
+```
+bruting 15 bits with m=17 will take 63.0 hours (single-threaded)
+bruting 14 bits with m=18 will take 38.0 hours (single-threaded)
+bruting 13 bits with m=19 will take 23.0 hours (single-threaded)
+bruting 12 bits with m=21 will take 17.0 hours (single-threaded)
+bruting 11 bits with m=23 will take 12.0 hours (single-threaded)
+bruting 10 bits with m=25 will take 9.0 hours (single-threaded)
+bruting 9 bits with m=27 will take 6.0 hours (single-threaded)
+bruting 8 bits with m=30 will take 4.0 hours (single-threaded)
+bruting 7 bits with m=33 will take 3.0 hours (single-threaded)
+```
