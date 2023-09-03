@@ -150,14 +150,14 @@ n = 2471213518968794273967749002103075177608846921481827563168748207353167691288
 p = 161405912451824860188834725646055524173328544131300133372580621368926433914138476338787007253318242142454894032713487340762003643551953941809023233323836632396674586164821404065443903169766781702197174899338334027128103867874700640036605974611327518250687560220955598412727224450293311080620976484498655311739
 
 m = 1
-for bits in range(15, 5, -1):
+for bits in range(15, 3, -1):
     p_high = p >> (512 - bits)
     while True:
         starttime = time.time()
         p = recover(p_high, n, m=m)
         t = time.time() - starttime
         if is_prime(p):
-            print(f"bruting {bits} bits with m={m} will take {int(2**bits * t // 3600)} hours (single-threaded)")
+            print(f"bruting {bits} bits with m={m} will take {round(2**bits * t / 3600, 2)} hours (single-threaded)")
             break
         m += 1
 ```
