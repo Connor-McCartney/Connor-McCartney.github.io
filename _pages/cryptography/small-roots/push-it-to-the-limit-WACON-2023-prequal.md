@@ -157,7 +157,7 @@ for bits in range(15, 5, -1):
         p = recover(p_high, n, m=m)
         t = time.time() - starttime
         if is_prime(p):
-            print(f"bruting {bits} bits with m={m} will take {int(2**bits * t / 3600, 0)} hours (single-threaded)")
+            print(f"bruting {bits} bits with m={m} will take {int(2**bits * t // 3600)} hours (single-threaded)")
             break
         m += 1
 ```
