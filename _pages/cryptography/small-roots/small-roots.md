@@ -15,7 +15,7 @@ title: Coppersmith's Small Roots
 
 <span style="font-size:2em;">   [corrupt-key-1 picoMini](/cryptography/small-roots/corrupt-key-1-picoMini)       </span> <br>
 
-<span style="font-size:2em;">   [Push It To The Limit - WACON 2023 Prequal](/cryptography/small-roots/push-it-to-the-limit-WACON-2023-prequa)       </span> <br>
+<span style="font-size:2em;">   [Push It To The Limit - WACON 2023 Prequal](/cryptography/small-roots/push-it-to-the-limit-WACON-2023-prequal)       </span> <br>
 
 <span style="font-size:2em;">   [corrupt-key-2 picoMini](/cryptography/small-roots/corrupt-key-2-picoMini)       </span> <br>
 
