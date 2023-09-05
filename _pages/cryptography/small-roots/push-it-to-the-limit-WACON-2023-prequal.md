@@ -183,8 +183,9 @@ bruting 4 bits with m=53 will take 2.53 hours (single-threaded)
 
 Parallelism:
 
-You can tweak the values for bits, m and threads, different values will probably be better depending <br>
-on your machine. Here's what worked well for me: bits=6, m=38, threads=6. 
+You can tweak the values for bits, m and threads, different values will probably be better <br>
+depending on your machine. Here's what worked well for me: bits=6, m=38, threads=6. <br>
+It finds the flag in about 25 minutes.
 
 ```python
 from Crypto.Util.number import *
@@ -250,7 +251,7 @@ def solve(x):
         d = pow(65537, -1, (p-1)*(q-1))
         flag = int(pow(c, d, n))
         print(x, long_to_bytes(flag))
-        os.system(f"sudo kill -9 {os.getpid()}")
+        os.system(f"kill -9 {os.getpid()}")
 
 with ProcessPoolExecutor(max_workers=6) as executor:
     search_space = range(2**bits)
