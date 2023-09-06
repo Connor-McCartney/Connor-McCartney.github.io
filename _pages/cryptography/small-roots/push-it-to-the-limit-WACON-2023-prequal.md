@@ -47,7 +47,7 @@ This makes it a lot slower, so I edited my previous code to include 3 optimisati
 
 # Optimisation 1
 
-Just a minor optimisiation: since p must be odd, we can reduce the bound by 1 bit by changing
+Just a minor optimisation: since p must be odd, we can reduce the bound by 1 bit by changing
 
 ```python
         f = p_high * 2**(p_bits-p_high_bits) + x
