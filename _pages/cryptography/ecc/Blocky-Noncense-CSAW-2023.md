@@ -29,8 +29,13 @@ seed = (self.a*self.seed^3 + self.b*self.seed^2 + self.c*self.seed + self.d) % s
 The challenge seemed to come from this paper <https://eprint.iacr.org/2023/305.pdf> <br>
 and I used the code linked in the appendix to solve it <br>
 <https://github.com/kudelskisecurity/ecdsa-polynomial-nonce-recurrence-attack/blob/main/original-attack/recurrence_nonces.py>
+
 <br>
+<br>
+
 The paper also tells us to set N=6 for a Cubic Congruential Generator.
+
+<br>
 <br>
 
 
