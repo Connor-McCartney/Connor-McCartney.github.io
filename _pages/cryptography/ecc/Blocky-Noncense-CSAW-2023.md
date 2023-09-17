@@ -30,6 +30,9 @@ The challenge seemed to come from this paper <https://eprint.iacr.org/2023/305.p
 and I used the code linked in the appendix to solve it <br>
 <https://github.com/kudelskisecurity/ecdsa-polynomial-nonce-recurrence-attack/blob/main/original-attack/recurrence_nonces.py>
 <br>
+The paper also tells us to set N=6 for a Cubic Congruential Generator.
+<br>
+
 
 ```python
 from pwn import remote
