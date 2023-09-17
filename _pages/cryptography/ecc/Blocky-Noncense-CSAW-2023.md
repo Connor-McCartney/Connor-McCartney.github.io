@@ -76,10 +76,7 @@ for i in range(1, 8):
     print(io.readuntil(b": ").decode())
     io.sendline(b"1")
     print(io.readuntil(b": ").decode())
-    x = hex(i)[2:]
-    x = "0"*(2 - len(x)) + x
-    print(x)
-    io.sendline(x.encode())
+    io.sendline(f"{i:02x}".encode())
 
 h = []
 s = []
