@@ -27,4 +27,4 @@ __vulnerability: small nonces (relative to curve order)__
 
 
 <span style="font-size:2em;">   [Blocky Noncense - CSAW 2023](/cryptography/ecc/Blocky-Noncense-CSAW-2023)       </span> <br>
-__vulnerability: nonce determined by polynomial congruential generator__
+__vulnerability: nonces determined by polynomial congruential generator__
