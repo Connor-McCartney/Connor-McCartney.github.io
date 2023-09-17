@@ -11,6 +11,17 @@ The attack is outlined in this paper: <https://eprint.iacr.org/2019/023.pdf>
 <br>
 As well as this accompanying video: <https://www.youtube.com/watch?v=6ssTlSSIJQE>
 
+<br>
+
+In main.go we see the nonces are only 64 bits:
+
+```go
+k := new(big.Int).SetUint64(nonce)
+```
+
+<br>
+<br>
+
 ```python
 from hashlib import sha256
 from Crypto.Util.number import long_to_bytes
