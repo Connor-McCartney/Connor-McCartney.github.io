@@ -1,6 +1,6 @@
 ---
 permalink: /cryptography/ecc/cookie-lover-reloaded-HackIM-CTF-2022
-title: cookie lover reloaded - HackIM CTF 2022
+title: Come on feel the nonce - CTFZone quals 2023
 ---
 
 <br>
