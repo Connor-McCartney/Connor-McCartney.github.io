@@ -31,11 +31,9 @@ and I used the code linked in the appendix to solve it <br>
 <https://github.com/kudelskisecurity/ecdsa-polynomial-nonce-recurrence-attack/blob/main/original-attack/recurrence_nonces.py>
 
 <br>
-<br>
 
 The paper also tells us to set N=6 for a Cubic Congruential Generator.
 
-<br>
 <br>
 
 
