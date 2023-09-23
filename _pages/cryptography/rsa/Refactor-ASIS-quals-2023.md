@@ -10,10 +10,14 @@ title: Refactor - ASIS quals 2023
 <br>
 <br>
 
-Frist find a multiple of phi and use that to factor n
+Frist find a multiple of phi and use that to factor n.
+
 <br>
+
 Then since e**2 divides phi we have to solve it like [this challenge](https://hackmd.io/fmdfFQ2iS6yoVpbR3KCiqQ?view#cryptobaby-rsa).
+
 <br>
+
 Also since we have a larger e and sage's nth_root function sucks I used a pari call instead. 
 
 
