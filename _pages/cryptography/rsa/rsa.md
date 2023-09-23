@@ -54,5 +54,8 @@ __vulnerability: common ssh-key password__
 __vulnerability: signature oracle__
 
 
-<span style="font-size:2em;">   [rsa_leak ACTF 2022](/cryptography/rsa/rsa-leak-ACTF-2022)       </span> <br>
+<span style="font-size:2em;">   [rsa_leak - ACTF 2022](/cryptography/rsa/rsa-leak-ACTF-2022)       </span> <br>
 __vulnerability: LSB attack__
+
+<span style="font-size:2em;">   [Refactor - ASIS quals 2023](/cryptography/rsa/Refactor-ASIS-quals-2023)       </span> <br>
+__vulnerability: multiple of phi known__
