@@ -89,3 +89,19 @@ def solve():
 
 print(solve())
 ```
+
+<br>
+
+UPDATE
+
+Since the flag was less than p and q you could solve it way faster:
+
+```python
+q, p = factor_with_kphi(n, kphi)
+
+for flag in mod_nth_root(c%p, e, p):
+    try:
+        print(long_to_bytes(int(flag)).decode())
+    except:
+        continue
+```
