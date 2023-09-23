@@ -10,7 +10,7 @@ title: Refactor - ASIS quals 2023
 <br>
 <br>
 
-Frist find a multiple of phi and use that to factor n.
+First find a multiple of phi and use that to factor n.
 
 <br>
 
