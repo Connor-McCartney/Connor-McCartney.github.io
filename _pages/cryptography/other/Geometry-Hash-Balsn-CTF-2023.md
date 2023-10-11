@@ -129,3 +129,33 @@ $$\text{centroidY} = \frac{y1 + y2 + y3}{3} = \frac{Ay + Ady \cdot i + By + Bdy 
 Now we can rewrite them for LLL:
 
 $$i \begin{bmatrix}Adx \\ Ady \\ 1 \\ 0 \\ 0\end{bmatrix} + j \begin{bmatrix}Bdx \\ Bdy \\ 0 \\ 1 \\ 0\end{bmatrix} + k \begin{bmatrix}Cdx \\ Cdy \\ 0 \\ 0 \\ 1\end{bmatrix} + \begin{bmatrix}Ax+Bx+Cx-3\cdot\text{centroidX} \\ Ay+By+Cy-3\cdot\text{centroidY} \\ 0 \\ 0 \\ 0\end{bmatrix} = \begin{bmatrix}\text{0 (+ precision error)} \\ \text{0 (+ precision error)} \\ i \\ j \\ k\end{bmatrix}$$
+
+<br>
+
+Demo:
+
+```python
+def r():
+    return randint(0, 2**1000)
+
+Ax, Bx, Cx    = r(), r(), r()
+Ay, By, Cy    = r(), r(), r()
+Adx, Bdx, Cdx = r(), r(), r()
+Ady, Bdy, Cdy = r(), r(), r()
+
+i, j, k = [randint(0, 2**32) for _ in range(3)]
+print(i, j, k)
+centroidX = (Adx*i + Bdx*j + Cdx*k + Ax + Bx + Cx) // 3
+centroidY = (Ady*i + Bdy*j + Cdy*k + Ay + By + Cy) // 3
+
+M = Matrix([
+    [Adx, Ady, 1, 0, 0],
+    [Bdx, Bdy, 0, 1, 0],
+    [Cdx, Cdy, 0, 0, 1],
+    [Ax + Bx + Cx - 3*centroidX, Ay + By + Cy - 3*centroidY, 0, 0, 0],
+])
+
+print(M.LLL()[0])
+```
+
+<br>
