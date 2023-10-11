@@ -1,6 +1,5 @@
 ---
-permalink: /cryptography/other/the-HUGE-e-Crew-CTF-2022
-title: The HUGE e - Crew CTF 2022
----
+permalink: /cryptography/other/Geometry-Hash-Balsn-CTF-2023.md
+title: Geometry Hash - Balsn CTF 2023
 
 <br>
