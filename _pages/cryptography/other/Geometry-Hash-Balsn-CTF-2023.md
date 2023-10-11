@@ -120,4 +120,6 @@ Part 1 - Centroid:
 
 We have 2 equations with 3 unknowns (i, j, k):
 
-$$\text{centroidX} = \frac{x1 + x2 + x3}{3}$$
+$$\text{centroidX} = \frac{x1 + x2 + x3}{3} = \frac{Ax + Adx \cdot i + Bx + Bdx \cdot j + Cx + Cdx \cdot k}{3}$$
+
+$$\text{centroidY} = \frac{y1 + y2 + y3}{3} = \frac{Ay + Ady \cdot i + By + Bdy \cdot j + Cy + Cdy \cdot y}{3}$$
