@@ -107,11 +107,11 @@ Note that the vertices of the triangles are unknown, given by: <br>
 
 So I'll denote:
 
-$$ (x1, y1) = (Ax + Adx \cdot i, Ay + Ady \cdot i) $$
+$$ (x1, \ y1) = (Ax + Adx \cdot i, \ Ay + Ady \cdot i) $$
 
-$$ (x2, y2) = (Bx + Bdx \cdot j, By + Bdy \cdot j) $$
+$$ (x2, \ y2) = (Bx + Bdx \cdot j, \ By + Bdy \cdot j) $$
 
-$$ (x3, y3) = (Cx + Cdx \cdot k, Cy + Cdy \cdot k) $$
+$$ (x3, \ y3) = (Cx + Cdx \cdot k, \ Cy + Cdy \cdot k) $$
 
 
 <br>
