@@ -128,8 +128,7 @@ $$\text{centroidY} = \frac{y1 + y2 + y3}{3} = \frac{Ay + Ady \cdot i + By + Bdy 
 
 Now we can rewrite them for LLL:
 
-
-$$i \begin{bmatrix}Adx \\ Ady \\ 1 \\ 0 \\ 0\end{bmatrix} + j \begin{bmatrix}Bdx \\ Bdy \\ 0 \\ 1 \\ 0\end{bmatrix} + k \begin{bmatrix}Cdx \\ Cdy \\ 0 \\ 0 \\ 1\end{bmatrix} + \begin{bmatrix}Ax+Bx+Cx-3\cdot\text{centroidX} \\ Ay+By+Cy-3\cdot\text{centroidy} \\ 1 \\ 0 \\ 0\end{bmatrix} = \begin{bmatrix}0 (\pm \text{precision error}) \\ 0 (\pm \text{precision error}) \\ i \\ j \\ k\end{bmatrix}$$
+$$i \begin{bmatrix}Adx \\ Ady \\ 1 \\ 0 \\ 0\end{bmatrix} + j \begin{bmatrix}Bdx \\ Bdy \\ 0 \\ 1 \\ 0\end{bmatrix} + k \begin{bmatrix}Cdx \\ Cdy \\ 0 \\ 0 \\ 1\end{bmatrix} + \begin{bmatrix}Ax+Bx+Cx-3\cdot\text{centroidX} \\ Ay+By+Cy-3\cdot\text{centroidy} \\ 0 \\ 0 \\ 0\end{bmatrix} = \begin{bmatrix}0 (\pm \text{precision error}) \\ 0 (\pm \text{precision error}) \\ i \\ j \\ k\end{bmatrix}$$
 
 <br>
 
