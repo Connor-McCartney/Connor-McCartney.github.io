@@ -120,4 +120,4 @@ Part 1 - Centroid:
 
 We have 2 equations with 3 unknowns (i, j, k):
 
-$$\text{centroid_x} = \frac{x1 + x2 + x3}{3}$$
+$$\text{centroidX} = \frac{x1 + x2 + x3}{3}$$
