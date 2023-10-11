@@ -1,5 +1,5 @@
 ---
-permalink: /cryptography/other/Geometry-Hash-Balsn-CTF-2023.md
+permalink: /cryptography/other/Geometry-Hash-Balsn-CTF-2023
 title: Geometry Hash - Balsn CTF 2023
 ---
 
