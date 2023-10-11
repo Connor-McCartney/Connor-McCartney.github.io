@@ -80,4 +80,44 @@ if __name__ == "__main__":
 	main()
 ```
 
-# Centroid
+<br>
+
+Solve
+
+<br>
+
+```python
+	A = RandomLine()
+	B = RandomLine()
+	C = RandomLine()
+	i, j, k = [secrets.randbits(32) for _ in range(3)]
+	triangle = Triangle(A[i], B[j], C[k])
+```
+
+<br>
+
+Note that the vertices of the triangles are unknown, given by: <br>
+
+```python
+	def __getitem__(self, i):
+		return Point(self.x + self.dx * i, self.y + self.dy * i, evaluate=False)
+```
+
+<br>
+
+So I'll denote:
+
+$$ vertexA = (Ax + Adx \cdot i, Ay + Ady \cdot i) $$
+
+$$ vertexB = (Bx + Bdx \cdot j, By + Bdy \cdot j) $$
+
+$$ vertexC = (Cx + Cdx \cdot k, Cy + Cdy \cdot k) $$
+
+
+<br>
+
+Part 1 - Centroid:
+
+We have 2 equations with 3 unknowns (i, j, k):
+
+$$\text{centroid_x} = \frac{x1 + x2 + x3}{3}$$
