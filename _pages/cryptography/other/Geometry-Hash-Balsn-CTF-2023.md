@@ -118,11 +118,14 @@ $$ (x3, \ y3) = (Cx + Cdx \cdot k, \ Cy + Cdy \cdot k) $$
 
 Part 1 - Centroid:
 
-We have 2 equations with 3 unknowns (i, j, k):
+We have 2 equations with 3 relatively small unknowns (i, j, k):
 
 $$\text{centroidX} = \frac{x1 + x2 + x3}{3} = \frac{Ax + Adx \cdot i + Bx + Bdx \cdot j + Cx + Cdx \cdot k}{3}$$
 
 $$\text{centroidY} = \frac{y1 + y2 + y3}{3} = \frac{Ay + Ady \cdot i + By + Bdy \cdot j + Cy + Cdy \cdot y}{3}$$
 
+<br>
 
-$$i \begin{bmatrix}Adx \\ Ady \\ 1 \\ 0 \\ 0\end{bmatrix}$$
+Now we can rewrite them for LLL:
+
+$$i \begin{bmatrix}Adx \\ Ady \\ 1 \\ 0 \\ 0\end{bmatrix} + j \begin{bmatrix}Bdx \\ Bdy \\ 0 \\ 1 \\ 0\end{bmatrix} + k \begin{bmatrix}Cdx \\ Cdy \\ 0 \\ 0 \\ 1\end{bmatrix} + \begin{bmatrix}Ax+Bx+Cx-3\cdot\text{centroidX} \\ Ay+By+Cy-3\cdot\text{centroidy} \\ 1 \\ 0 \\ 0\end{bmatrix} = \begin{bmatrix}\text{0 (+ precision error)} \\ \text{0 (+ precision error)} \\ i \\ j \\ k\end{bmatrix}$$
