@@ -193,7 +193,7 @@ $$- \ {ccX}^2 + 2 \cdot ccX \cdot Bx + 2 \cdot ccX \cdot Bdx \cdot j - {Bx}^2 - 
 
 $$- \ {ccY}^2 + 2 \cdot ccY \cdot By + 2 \cdot ccY \cdot Bdy \cdot j - {By}^2 - 2 \cdot By \cdot Bdy \cdot j - {(Bdy)}^2 j^2$$
 
-<br>
+
 
 $$0 = {ccX}^2 - 2 \cdot ccX \cdot Ax - 2 \cdot ccX \cdot Adx \cdot i + {Ax}^2 + 2 \cdot Ax \cdot Adx \cdot i + {(Adx)}^2 i^2$$ 
 
