@@ -185,4 +185,7 @@ $$0 = (ccX - (Ax + Adx \cdot i))^2 + (ccY - (Ay + Ady \cdot i))^2 - (ccX - (Cx +
 
 <br>
 
-$$0 = ({ccX}^2 - 2 (ccX) (Ax) - 2 (ccX) (Adx) i + (Ax)^2 + 2 (Ax) (Adx) i + {Adx}^2 i^2) + (ccY - (Ay + Ady \cdot i))^2 - (ccX - (Bx + Bdx \cdot j))^2 - (ccY - (By + Bdy \cdot j))^2$$
+$$0 = {ccX}^2 - 2 \cdot ccX \cdot Ax - 2 \cdot ccX \cdot Adx \cdot i + {Ax}^2 + 2 \cdot Ax \cdot Adx \cdot i + {Adx}^2 i^2$$ 
+$$ + (ccY - (Ay + Ady \cdot i))^2$$
+$$ - (ccX - (Bx + Bdx \cdot j))^2$$
+$$ - (ccY - (By + Bdy \cdot j))^2$$
