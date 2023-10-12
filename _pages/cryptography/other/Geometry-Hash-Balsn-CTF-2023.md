@@ -178,8 +178,11 @@ $$0 = (ccX - x1)^2 + (ccY - y1)^2 - (ccX - x3)^2 - (ccY - y3)^2$$
 
 
 <br>
-<br>
 
 $$0 = (ccX - (Ax + Adx \cdot i))^2 + (ccY - (Ay + Ady \cdot i))^2 - (ccX - (Bx + Bdx \cdot j))^2 - (ccY - (By + Bdy \cdot j))^2$$
 
 $$0 = (ccX - (Ax + Adx \cdot i))^2 + (ccY - (Ay + Ady \cdot i))^2 - (ccX - (Cx + Cdx \cdot k))^2 - (ccY - (Cy + Cdy \cdot k))^2$$
+
+<br>
+
+$$0 = ({ccX}^2 - 2 (ccX) (Ax) - 2 (ccX) (Adx) i + (Ax)^2 + 2 (Ax) (Adx) i + {Adx}^2 i^2) + (ccY - (Ay + Ady \cdot i))^2 - (ccX - (Bx + Bdx \cdot j))^2 - (ccY - (By + Bdy \cdot j))^2$$
