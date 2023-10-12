@@ -182,32 +182,20 @@ Adding them:
 
 $$0 = 2(ccX - x1)^2 + 2(ccY - y1)^2 - (ccX - x2)^2 - (ccY - y2)^2 - (ccX - x3)^2 - (ccY - y3)^2$$
 
-<br>
-Expanding:
-<br>
-
 
 <br>
 
-$$0 = (ccX - (Ax + Adx \cdot i))^2 + (ccY - (Ay + Ady \cdot i))^2 - (ccX - (Bx + Bdx \cdot j))^2 - (ccY - (By + Bdy \cdot j))^2$$
-
-$$0 = (ccX - (Ax + Adx \cdot i))^2 + (ccY - (Ay + Ady \cdot i))^2 - (ccX - (Cx + Cdx \cdot k))^2 - (ccY - (Cy + Cdy \cdot k))^2$$
+$$0 = 2(ccX - (Ax + Adx \cdot i))^2 + 2(ccY - (Ay + Ady \cdot i))^2 - (ccX - (Bx + Bdx \cdot j))^2 - (ccY - (By + Bdy \cdot j))^2 - (ccX - (Cx + Cdx \cdot k))^2 - (ccY - (Cy + Cdy \cdot k))^2$$
 
 <br>
 
-$$0 = {ccX}^2 - 2 \cdot ccX \cdot Ax - 2 \cdot ccX \cdot Adx \cdot i + {Ax}^2 + 2 \cdot Ax \cdot Adx \cdot i + {(Adx)}^2 i^2$$ 
+$$0 = 2({ccX}^2 - 2 \cdot ccX \cdot Ax - 2 \cdot ccX \cdot Adx \cdot i + {Ax}^2 + 2 \cdot Ax \cdot Adx \cdot i + {(Adx)}^2 i^2$$ 
 
-$$  + {ccY}^2 - 2 \cdot ccY \cdot Ay - 2 \cdot ccY \cdot Ady \cdot i + {Ay}^2 + 2 \cdot Ay \cdot Ady \cdot i + {(Ady)}^2 i^2$$
+$$  + {ccY}^2 - 2 \cdot ccY \cdot Ay - 2 \cdot ccY \cdot Ady \cdot i + {Ay}^2 + 2 \cdot Ay \cdot Ady \cdot i + {(Ady)}^2 i^2)$$
 
 $$- \ {ccX}^2 + 2 \cdot ccX \cdot Bx + 2 \cdot ccX \cdot Bdx \cdot j - {Bx}^2 - 2 \cdot Bx \cdot Bdx \cdot j - {(Bdx)}^2 j^2$$
 
 $$- \ {ccY}^2 + 2 \cdot ccY \cdot By + 2 \cdot ccY \cdot Bdy \cdot j - {By}^2 - 2 \cdot By \cdot Bdy \cdot j - {(Bdy)}^2 j^2$$
-
-
-
-$$0 = {ccX}^2 - 2 \cdot ccX \cdot Ax - 2 \cdot ccX \cdot Adx \cdot i + {Ax}^2 + 2 \cdot Ax \cdot Adx \cdot i + {(Adx)}^2 i^2$$ 
-
-$$  + {ccY}^2 - 2 \cdot ccY \cdot Ay - 2 \cdot ccY \cdot Ady \cdot i + {Ay}^2 + 2 \cdot Ay \cdot Ady \cdot i + {(Ady)}^2 i^2$$
 
 $$- \ {ccX}^2 + 2 \cdot ccX \cdot Cx + 2 \cdot ccX \cdot Cdx \cdot k - {Cx}^2 - 2 \cdot Cx \cdot Cdx \cdot k - {(Cdx)}^2 k^2$$
 
