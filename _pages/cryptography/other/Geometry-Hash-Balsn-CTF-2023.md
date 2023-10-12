@@ -193,4 +193,17 @@ $$- \ {ccX}^2 + 2 \cdot ccX \cdot Bx + 2 \cdot ccX \cdot Bdx \cdot j - {Bx}^2 - 
 
 $$- \ {ccY}^2 + 2 \cdot ccY \cdot By + 2 \cdot ccY \cdot Bdy \cdot j - {By}^2 - 2 \cdot By \cdot Bdy \cdot j - {(Bdy)}^2 j^2$$
 
+
+<br>
+
+
+$$0 = {ccX}^2 - 2 \cdot ccX \cdot Ax - 2 \cdot ccX \cdot Adx \cdot i + {Ax}^2 + 2 \cdot Ax \cdot Adx \cdot i + {(Adx)}^2 i^2$$ 
+
+$$  + {ccY}^2 - 2 \cdot ccY \cdot Ay - 2 \cdot ccY \cdot Ady \cdot i + {Ay}^2 + 2 \cdot Ay \cdot Ady \cdot i + {(Ady)}^2 i^2$$
+
+$$- \ {ccX}^2 + 2 \cdot ccX \cdot Cx + 2 \cdot ccX \cdot Cdx \cdot k - {Cx}^2 - 2 \cdot Cx \cdot Cdx \cdot k - {(Cdx)}^2 k^2$$
+
+$$- \ {ccY}^2 + 2 \cdot ccY \cdot Cy + 2 \cdot ccY \cdot Cdy \cdot k - {Cy}^2 - 2 \cdot Cy \cdot Cdy \cdot k - {(Cdy)}^2 k^2$$
+
+<br>
 <br>
