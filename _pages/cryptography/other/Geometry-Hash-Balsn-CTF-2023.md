@@ -212,4 +212,4 @@ $$- \ {ccY}^2 + 2 \cdot ccY \cdot Cy + 2 \cdot ccY \cdot Cdy \cdot k - {Cy}^2 - 
 
 $$0 = i^2 \cdot (2{(Adx)}^2 + 2{(Ady)}^2) + j^2 \cdot (-{(Bdx)}^2 - {(Bdy)}^2) + k^2 \cdot (-{(Cdx)}^2 - {(Cdy)}^2)$$
 
-$$ $$
+$$+ ...$$
