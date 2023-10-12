@@ -149,9 +149,9 @@ centroidX = (Adx*i + Bdx*j + Cdx*k + Ax + Bx + Cx) // 3
 centroidY = (Ady*i + Bdy*j + Cdy*k + Ay + By + Cy) // 3
 
 M = Matrix([
-    [Adx, Ady, 1, 0, 0],
-    [Bdx, Bdy, 0, 1, 0],
-    [Cdx, Cdy, 0, 0, 1],
+    [Adx,                        Ady,                        1, 0, 0],
+    [Bdx,                        Bdy,                        0, 1, 0],
+    [Cdx,                        Cdy,                        0, 0, 1],
     [Ax + Bx + Cx - 3*centroidX, Ay + By + Cy - 3*centroidY, 0, 0, 0],
 ])
 
