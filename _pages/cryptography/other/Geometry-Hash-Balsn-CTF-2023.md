@@ -189,6 +189,10 @@ $$0 = {ccX}^2 - 2 \cdot ccX \cdot Ax - 2 \cdot ccX \cdot Adx \cdot i + {Ax}^2 + 
 
 $$  + {ccY}^2 - 2 \cdot ccY \cdot Ay - 2 \cdot ccY \cdot Ady \cdot i + {Ay}^2 + 2 \cdot Ay \cdot Ady \cdot i + {Ady}^2 i^2$$
 
-$$ - (ccX - (Bx + Bdx \cdot j))^2$$
+$$- \ {ccX}^2 + 2 \cdot ccX \cdot Bx + 2 \cdot ccX \cdot Bdx \cdot j - {Bx}^2 - 2 \cdot Bx \cdot Bdx \cdot j - {Bdx}^2 j^2$$
+
+
 
 $$ - (ccY - (By + Bdy \cdot j))^2$$
+
+$$-a^2 + 2 a b + 2 a c d - b^2 - 2 b c d - c^2 d^2$$
