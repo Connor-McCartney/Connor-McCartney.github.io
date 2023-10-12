@@ -176,6 +176,16 @@ $$0 = (ccX - x1)^2 + (ccY - y1)^2 - (ccX - x2)^2 - (ccY - y2)^2$$
 
 $$0 = (ccX - x1)^2 + (ccY - y1)^2 - (ccX - x3)^2 - (ccY - y3)^2$$
 
+<br>
+Adding them:
+<br>
+
+$$0 = 2(ccX - x1)^2 + 2(ccY - y1)^2 - (ccX - x2)^2 - (ccY - y2)^2 - (ccX - x3)^2 - (ccY - y3)^2$$
+
+<br>
+Expanding:
+<br>
+
 
 <br>
 
