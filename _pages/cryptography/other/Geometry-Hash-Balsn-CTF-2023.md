@@ -185,13 +185,20 @@ $$0 = 2(ccX - x1)^2 + 2(ccY - y1)^2 - (ccX - x2)^2 - (ccY - y2)^2 - (ccX - x3)^2
 
 <br>
 
-$$0 = 2(ccX - (Ax + Adx \cdot i))^2 + 2(ccY - (Ay + Ady \cdot i))^2 - (ccX - (Bx + Bdx \cdot j))^2 - (ccY - (By + Bdy \cdot j))^2 - (ccX - (Cx + Cdx \cdot k))^2 - (ccY - (Cy + Cdy \cdot k))^2$$
+
+$$0 = 2(ccX - (Ax + Adx \cdot i))^2 + 2(ccY - (Ay + Ady \cdot i))^2$$
+
+$$- (ccX - (Bx + Bdx \cdot j))^2 - (ccY - (By + Bdy \cdot j))^2$$
+
+$$- (ccX - (Cx + Cdx \cdot k))^2 - (ccY - (Cy + Cdy \cdot k))^2$$
+
 
 <br>
 
-$$0 = 2({ccX}^2 - 2 \cdot ccX \cdot Ax - 2 \cdot ccX \cdot Adx \cdot i + {Ax}^2 + 2 \cdot Ax \cdot Adx \cdot i + {(Adx)}^2 i^2$$ 
 
-$$  + {ccY}^2 - 2 \cdot ccY \cdot Ay - 2 \cdot ccY \cdot Ady \cdot i + {Ay}^2 + 2 \cdot Ay \cdot Ady \cdot i + {(Ady)}^2 i^2)$$
+$$0 = 2{ccX}^2 - 4 \cdot ccX \cdot Ax - 4 \cdot ccX \cdot Adx \cdot i + 2{Ax}^2 + 4 \cdot Ax \cdot Adx \cdot i + 2{(Adx)}^2 i^2$$ 
+
+$$  + 2{ccY}^2 - 4 \cdot ccY \cdot Ay - 4 \cdot ccY \cdot Ady \cdot i + 2{Ay}^2 + 4 \cdot Ay \cdot Ady \cdot i + 2{(Ady)}^2 i^2$$
 
 $$- \ {ccX}^2 + 2 \cdot ccX \cdot Bx + 2 \cdot ccX \cdot Bdx \cdot j - {Bx}^2 - 2 \cdot Bx \cdot Bdx \cdot j - {(Bdx)}^2 j^2$$
 
@@ -202,4 +209,4 @@ $$- \ {ccX}^2 + 2 \cdot ccX \cdot Cx + 2 \cdot ccX \cdot Cdx \cdot k - {Cx}^2 - 
 $$- \ {ccY}^2 + 2 \cdot ccY \cdot Cy + 2 \cdot ccY \cdot Cdy \cdot k - {Cy}^2 - 2 \cdot Cy \cdot Cdy \cdot k - {(Cdy)}^2 k^2$$
 
 <br>
-<br>
+
