@@ -196,9 +196,9 @@ $$- (ccX - (Cx + Cdx \cdot k))^2 - (ccY - (Cy + Cdy \cdot k))^2$$
 <br>
 
 
-$$0 = 2{ccX}^2 - 4 \cdot ccX \cdot Ax - 4 \cdot ccX \cdot Adx \cdot i + 2{Ax}^2 + 4 \cdot Ax \cdot Adx \cdot i + 2{(Adx)}^2 i^2$$ 
+$$0 = 2 \cdot {ccX}^2 - 4 \cdot ccX \cdot Ax - 4 \cdot ccX \cdot Adx \cdot i + 2\cdot {Ax}^2 + 4 \cdot Ax \cdot Adx \cdot i + 2{(Adx)}^2 i^2$$ 
 
-$$  + 2{ccY}^2 - 4 \cdot ccY \cdot Ay - 4 \cdot ccY \cdot Ady \cdot i + 2{Ay}^2 + 4 \cdot Ay \cdot Ady \cdot i + 2{(Ady)}^2 i^2$$
+$$  + 2 \cdot {ccY}^2 - 4 \cdot ccY \cdot Ay - 4 \cdot ccY \cdot Ady \cdot i + 2 \cdot {Ay}^2 + 4 \cdot Ay \cdot Ady \cdot i + 2{(Ady)}^2 i^2$$
 
 $$- \ {ccX}^2 + 2 \cdot ccX \cdot Bx + 2 \cdot ccX \cdot Bdx \cdot j - {Bx}^2 - 2 \cdot Bx \cdot Bdx \cdot j - {(Bdx)}^2 j^2$$
 
