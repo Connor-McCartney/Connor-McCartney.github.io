@@ -169,8 +169,10 @@ The distances of the circumcenter from each vertex of a triangle are equal.
 $$\sqrt{(circumcenterX - x1)^2 + (circumcenterY - y1)^2} = \sqrt{(circumcenterX - x2)^2 + (circumcenterY - y2)^2} = \sqrt{(circumcenterX - x3)^2 + (circumcenterY - y3)^2}$$
 
 <br>
+We can make two equations:
 <br>
 
-$$(circumcenterX - x1)^2 + (circumcenterY - y1)^2 = (circumcenterX - x2)^2 + (circumcenterY - y2)^2$$
+$$0 = (circumcenterX - x1)^2 + (circumcenterY - y1)^2 - (circumcenterX - x2)^2 - (circumcenterY - y2)^2$$
 
-$$(circumcenterX - x2)^2 + (circumcenterY - y2)^2 = (circumcenterX - x3)^2 + (circumcenterY - y3)^2$$
+$$0 = (circumcenterX - x1)^2 + (circumcenterY - y1)^2 - (circumcenterX - x3)^2 - (circumcenterY - y3)^2$$
+
