@@ -176,3 +176,10 @@ $$0 = (circumcenterX - x1)^2 + (circumcenterY - y1)^2 - (circumcenterX - x2)^2 -
 
 $$0 = (circumcenterX - x1)^2 + (circumcenterY - y1)^2 - (circumcenterX - x3)^2 - (circumcenterY - y3)^2$$
 
+
+<br>
+<br>
+
+$$0 = (circumcenterX - (Ax + Adx \cdot i))^2 + (circumcenterY - (Ay + Ady \cdot i))^2 - (circumcenterX - (Bx + Bdx \cdot j))^2 - (circumcenterY - (By + Bdy \cdot j))^2$$
+
+$$0 = (circumcenterX - (Ax + Adx \cdot i))^2 + (circumcenterY - (Ay + Ady \cdot i))^2 - (circumcenterX - (Cx + Cdx \cdot k))^2 - (circumcenterY - (Cy + Cdy \cdot k))^2$$
