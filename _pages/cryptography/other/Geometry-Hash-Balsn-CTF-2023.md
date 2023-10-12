@@ -164,22 +164,22 @@ Part 2 - Circumcenter:
 
 <br>
 
-The distances of the circumcenter from each vertex of a triangle are equal.
+The distances of the circumcenter (ccX, ccY) from each vertex ((x1, y1), (x2, y2), (x3, y3)) of a triangle are equal.
 
-$$\sqrt{(circumcenterX - x1)^2 + (circumcenterY - y1)^2} = \sqrt{(circumcenterX - x2)^2 + (circumcenterY - y2)^2} = \sqrt{(circumcenterX - x3)^2 + (circumcenterY - y3)^2}$$
+$$\sqrt{(ccX - x1)^2 + (ccY - y1)^2} = \sqrt{(ccX - x2)^2 + (ccY - y2)^2} = \sqrt{(ccX - x3)^2 + (ccY - y3)^2}$$
 
 <br>
 We can make two equations:
 <br>
 
-$$0 = (circumcenterX - x1)^2 + (circumcenterY - y1)^2 - (circumcenterX - x2)^2 - (circumcenterY - y2)^2$$
+$$0 = (ccX - x1)^2 + (ccY - y1)^2 - (ccX - x2)^2 - (ccY - y2)^2$$
 
-$$0 = (circumcenterX - x1)^2 + (circumcenterY - y1)^2 - (circumcenterX - x3)^2 - (circumcenterY - y3)^2$$
+$$0 = (ccX - x1)^2 + (ccY - y1)^2 - (ccX - x3)^2 - (ccY - y3)^2$$
 
 
 <br>
 <br>
 
-$$0 = (circumcenterX - (Ax + Adx \cdot i))^2 + (circumcenterY - (Ay + Ady \cdot i))^2 - (circumcenterX - (Bx + Bdx \cdot j))^2 - (circumcenterY - (By + Bdy \cdot j))^2$$
+$$0 = (ccX - (Ax + Adx \cdot i))^2 + (ccY - (Ay + Ady \cdot i))^2 - (ccX - (Bx + Bdx \cdot j))^2 - (ccY - (By + Bdy \cdot j))^2$$
 
-$$0 = (circumcenterX - (Ax + Adx \cdot i))^2 + (circumcenterY - (Ay + Ady \cdot i))^2 - (circumcenterX - (Cx + Cdx \cdot k))^2 - (circumcenterY - (Cy + Cdy \cdot k))^2$$
+$$0 = (ccX - (Ax + Adx \cdot i))^2 + (ccY - (Ay + Ady \cdot i))^2 - (ccX - (Cx + Cdx \cdot k))^2 - (ccY - (Cy + Cdy \cdot k))^2$$
