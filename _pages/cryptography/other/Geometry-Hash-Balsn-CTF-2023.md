@@ -216,4 +216,4 @@ $$+ j^2 \cdot (-{(Bdx)}^2 - {(Bdy)}^2)$$
 
 $$+ k^2 \cdot (-{(Cdx)}^2 - {(Cdy)}^2)$$
 
-$$+ i \cdot (-4 \cdot ccX \codt Adx + 4 \cdot Ax \cdot Adx - 4 \cdot ccY \cdot Ady + 4 \cdot Ay \cdot Ady)$$
+$$+ i \cdot (-4 \cdot ccX \cdot Adx + 4 \cdot Ax \cdot Adx - 4 \cdot ccY \cdot Ady + 4 \cdot Ay \cdot Ady)$$
