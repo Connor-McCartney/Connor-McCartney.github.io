@@ -231,3 +231,14 @@ $$+ \ 2 \cdot ccX \cdot Cx - {Cx}^2 + 2 \cdot ccY \cdot Cy - {Cy}^2$$
 <br>
 
 $$0 = i^2 \cdot t_1 + j^2 \cdot t_2 + k^2 \cdot t_3 +  i \cdot t_4 + j \cdot t_5 + k \cdot t_6 + t_7$$
+
+<br>
+
+$$ i^2 \begin{bmatrix}t_1 \\ 1 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0\end{bmatrix} 
++ j^2 \begin{bmatrix}t_2 \\ 0 \\ 1 \\ 0 \\ 0 \\ 0 \\ 0\end{bmatrix}
++ k^2 \begin{bmatrix}t_3 \\ 0 \\ 0 \\ 1 \\ 0 \\ 0 \\ 0\end{bmatrix}
++ i \begin{bmatrix}t_4 \\ 0 \\ 0 \\ 0 \\ 1 \\ 0 \\ 0\end{bmatrix}
++ j \begin{bmatrix}t_5 \\ 0 \\ 0 \\ 0 \\ 0 \\ 1 \\ 0\end{bmatrix}
++ k \begin{bmatrix}t_6 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 1\end{bmatrix}
++ \begin{bmatrix}t_7 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0\end{bmatrix}
+=\begin{bmatrix}0 \\ i^2 \\ j^2 \\ k^2 \\ i \\ j \\ k\end{bmatrix}$$
