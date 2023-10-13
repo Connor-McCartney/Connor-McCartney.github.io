@@ -331,4 +331,6 @@ print(M.LLL()[0][-3:])
 
 <br>
 
+ETA - seems it was easier to leave it as two equations rather than combining them to one...
+
 Part 3 - Incenter:
