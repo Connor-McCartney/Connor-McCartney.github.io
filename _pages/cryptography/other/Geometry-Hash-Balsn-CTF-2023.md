@@ -228,3 +228,6 @@ $$+ \ 2 \cdot ccX \cdot Bx - {Bx}^2 + 2 \cdot ccY \cdot By - {By}^2$$
 
 $$+ \ 2 \cdot ccX \cdot Cx - {Cx}^2 + 2 \cdot ccY \cdot Cy - {Cy}^2$$
 
+<br>
+
+$$0 = i^2 \cdot t1 + j^2 \cdot t2 + k^2 \cdot t3 +  i \cdot t4 + j t5 + k \cdot t6 + t7$$
