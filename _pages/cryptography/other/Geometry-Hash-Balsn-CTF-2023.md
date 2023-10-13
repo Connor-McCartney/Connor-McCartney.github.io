@@ -182,7 +182,8 @@ Adding them:
 
 $$0 = 2(ccX - x1)^2 + 2(ccY - y1)^2 - (ccX - x2)^2 - (ccY - y2)^2 - (ccX - x3)^2 - (ccY - y3)^2$$
 
-
+<br>
+Substitute:
 <br>
 
 
@@ -193,6 +194,8 @@ $$- (ccX - (Bx + Bdx \cdot j))^2 - (ccY - (By + Bdy \cdot j))^2$$
 $$- (ccX - (Cx + Cdx \cdot k))^2 - (ccY - (Cy + Cdy \cdot k))^2$$
 
 
+<br>
+Expand:
 <br>
 
 
@@ -208,6 +211,8 @@ $$- \ {ccX}^2 + 2 \cdot ccX \cdot Cx + 2 \cdot ccX \cdot Cdx \cdot k - {Cx}^2 - 
 
 $$- \ {ccY}^2 + 2 \cdot ccY \cdot Cy + 2 \cdot ccY \cdot Cdy \cdot k - {Cy}^2 - 2 \cdot Cy \cdot Cdy \cdot k - {(Cdy)}^2 k^2$$
 
+<br>
+Collect unknown terms:
 <br>
 
 $$0 = i^2 \cdot (2{(Adx)}^2 + 2{(Ady)}^2)$$
@@ -233,5 +238,97 @@ $$+ \ 2 \cdot ccX \cdot Cx - {Cx}^2 + 2 \cdot ccY \cdot Cy - {Cy}^2$$
 $$0 = i^2 \cdot t_1 + j^2 \cdot t_2 + k^2 \cdot t_3 +  i \cdot t_4 + j \cdot t_5 + k \cdot t_6 + t_7$$
 
 <br>
+Finally we can write as vectors for LLL:
+<br>
 
 $$i^2 \begin{bmatrix}t_1 \\ 1 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0\end{bmatrix} + j^2 \begin{bmatrix}t_2 \\ 0 \\ 1 \\ 0 \\ 0 \\ 0 \\ 0\end{bmatrix} + k^2 \begin{bmatrix}t_3 \\ 0 \\ 0 \\ 1 \\ 0 \\ 0 \\ 0\end{bmatrix} + i \begin{bmatrix}t_4 \\ 0 \\ 0 \\ 0 \\ 1 \\ 0 \\ 0\end{bmatrix} + j \begin{bmatrix}t_5 \\ 0 \\ 0 \\ 0 \\ 0 \\ 1 \\ 0\end{bmatrix} + k \begin{bmatrix}t_6 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 1\end{bmatrix} + \begin{bmatrix}t_7 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0\end{bmatrix} = \begin{bmatrix}0 \\ i^2 \\ j^2 \\ k^2 \\ i \\ j \\ k\end{bmatrix}$$
+
+<br>
+Demo:
+<br>
+
+```python
+from sympy import Point, Triangle
+
+def r():
+    return randint(0, 2**1000)
+
+i, j, k = [randint(0, 2**32) for _ in range(3)]
+print(i, j, k)
+
+Ax, Bx, Cx    = r(), r(), r()
+Ay, By, Cy    = r(), r(), r()
+Adx, Bdx, Cdx = r(), r(), r()
+Ady, Bdy, Cdy = r(), r(), r()
+
+x1, y1 = Ax + Adx*i, Ay + Ady*i
+x2, y2 = Bx + Bdx*j, By + Bdy*j
+x3, y3 = Cx + Cdx*k, Cy + Cdy*k
+
+triangle = Triangle(Point(x1, y1), 
+                    Point(x2, y2), 
+                    Point(x3, y3)) 
+
+ccX, ccY = triangle.circumcenter
+
+assert (ccX - x1)**2 + (ccY - y1)**2 == (ccX - x2)**2 + (ccY - y2)**2 == (ccX - x3)**2 + (ccY - y3)**2
+assert 0 == (ccX - x1)**2 + (ccY - y1)**2 - (ccX - x2)**2 - (ccY - y2)**2 
+assert 0 == (ccX - x1)**2 + (ccY - y1)**2 - (ccX - x3)**2 - (ccY - y3)**2
+assert 0 == 2*(ccX-x1)**2 + 2*(ccY-y1)**2 - (ccX-x2)**2 - (ccY-y2)**2 - (ccX-x3)**2 - (ccY-y3)**2
+assert 0 == 2*(ccX-(Ax+Adx*i))**2 + 2*(ccY-(Ay+Ady*i))**2 - (ccX-(Bx+Bdx*j))**2 - (ccY-(By+Bdy*j))**2 - (ccX-(Cx+Cdx*k))**2 - (ccY-(Cy+Cdy*k))**2
+
+assert 0 == 2*ccX**2 - 4*ccX*Ax - 4*ccX*Adx*i + 2*Ax**2 + 4*Ax*Adx*i + 2*Adx**2*i**2 + \
+            2*ccY**2 - 4*ccY*Ay - 4*ccY*Ady*i + 2*Ay**2 + 4*Ay*Ady*i + 2*Ady**2*i**2 - \
+              ccX**2 + 2*ccX*Bx + 2*ccX*Bdx*j -   Bx**2 - 2*Bx*Bdx*j -   Bdx**2*j**2 - \
+              ccY**2 + 2*ccY*By + 2*ccY*Bdy*j -   By**2 - 2*By*Bdy*j -   Bdy**2*j**2 - \
+              ccX**2 + 2*ccX*Cx + 2*ccX*Cdx*k -   Cx**2 - 2*Cx*Cdx*k -   Cdx**2*k**2 - \
+              ccY**2 + 2*ccY*Cy + 2*ccY*Cdy*k -   Cy**2 - 2*Cy*Cdy*k -   Cdy**2*k**2 
+
+assert 0 == i**2 * (2*Adx**2 + 2*Ady**2) + \
+            j**2 * (-Bdx**2 - Bdy**2) + \
+            k**2 * (-Cdx**2 - Cdy**2) + \
+            i    * (-4*ccX*Adx + 4*Ax*Adx - 4*ccY*Ady + 4*Ay*Ady) + \
+            j    * (2*ccX*Bdx - 2*Bx*Bdx + 2*ccY*Bdy - 2*By*Bdy) + \
+            k    * (2*ccX*Cdx - 2*Cx*Cdx + 2*ccY*Cdy - 2*Cy*Cdy) + \
+            2*ccX**2 - 4*ccX*Ax + 2*Ax**2 + 2*ccY**2 - 4*ccY*Ay + 2*Ay**2 + \
+            -ccX**2 + 2*ccX*Bx - Bx**2 - ccY**2 + 2*ccY*By - By**2 + \
+            -ccX**2 + 2*ccX*Cx - Cx**2 - ccY**2 + 2*ccY*Cy - Cy**2
+
+
+assert 0 == i**2 * (2*Adx**2 + 2*Ady**2) + \
+            j**2 * (-Bdx**2 - Bdy**2) + \
+            k**2 * (-Cdx**2 - Cdy**2) + \
+            i    * (-4*ccX*Adx + 4*Ax*Adx - 4*ccY*Ady + 4*Ay*Ady) + \
+            j    * (2*ccX*Bdx - 2*Bx*Bdx + 2*ccY*Bdy - 2*By*Bdy) + \
+            k    * (2*ccX*Cdx - 2*Cx*Cdx + 2*ccY*Cdy - 2*Cy*Cdy) + \
+            - 4*ccX*Ax + 2*Ax**2 - 4*ccY*Ay + 2*Ay**2 + \
+            + 2*ccX*Bx -   Bx**2 + 2*ccY*By -   By**2 + \
+            + 2*ccX*Cx -   Cx**2 + 2*ccY*Cy -   Cy**2
+
+t1 = 2*Adx**2 + 2*Ady**2
+t2 = -Bdx**2 - Bdy**2
+t3 = -Cdx**2 - Cdy**2
+t4 = -4*ccX*Adx + 4*Ax*Adx - 4*ccY*Ady + 4*Ay*Ady
+t5 = 2*ccX*Bdx - 2*Bx*Bdx + 2*ccY*Bdy - 2*By*Bdy
+t6 = 2*ccX*Cdx - 2*Cx*Cdx + 2*ccY*Cdy - 2*Cy*Cdy
+t7 = - 4*ccX*Ax + 2*Ax**2 - 4*ccY*Ay + 2*Ay**2 + 2*ccX*Bx - Bx**2 + \
+        2*ccY*By - By**2 + 2*ccX*Cx - Cx**2 + 2*ccY*Cy - Cy**2
+
+assert 0 == i**2*t1 + j**2*t2 + k**2*t3 + i*t4 + j*t5 + k*t6 + t7
+
+M = Matrix([
+    [t1, 1, 0, 0, 0, 0, 0],
+    [t2, 0, 1, 0, 0, 0, 0],
+    [t3, 0, 0, 1, 0, 0, 0],
+    [t4, 0, 0, 0, 1, 0, 0],
+    [t5, 0, 0, 0, 0, 1, 0],
+    [t6, 0, 0, 0, 0, 0, 1],
+    [t7, 0, 0, 0, 0, 0, 0],
+])
+
+print(M.LLL()[0][-3:])
+```
+
+<br>
+
+Part 3 - Incenter:
