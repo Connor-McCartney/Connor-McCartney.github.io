@@ -331,6 +331,82 @@ print(M.LLL()[0][-3:])
 
 <br>
 
-ETA - seems it was easier to leave it as two equations rather than combining them to one...
+ETA - leaving it as two equations rather than combining them to one is an alternative:
+
+```python
+from sympy import Point, Triangle
+
+def r():
+    return randint(0, 2**1000)
+
+i, j, k = [randint(0, 2**32) for _ in range(3)]
+print(i, j, k)
+
+Ax, Bx, Cx    = r(), r(), r()
+Ay, By, Cy    = r(), r(), r()
+Adx, Bdx, Cdx = r(), r(), r()
+Ady, Bdy, Cdy = r(), r(), r()
+
+x1, y1 = Ax + Adx*i, Ay + Ady*i
+x2, y2 = Bx + Bdx*j, By + Bdy*j
+x3, y3 = Cx + Cdx*k, Cy + Cdy*k
+
+triangle = Triangle(Point(x1, y1), 
+                    Point(x2, y2), 
+                    Point(x3, y3)) 
+
+ccX, ccY = triangle.circumcenter
+
+assert (ccX - x1)**2 + (ccY - y1)**2 == (ccX - x2)**2 + (ccY - y2)**2 == (ccX - x3)**2 + (ccY - y3)**2
+assert 0 == (ccX - x1)**2 + (ccY - y1)**2 - (ccX - x2)**2 - (ccY - y2)**2 
+assert 0 == (ccX - x1)**2 + (ccY - y1)**2 - (ccX - x3)**2 - (ccY - y3)**2
+
+assert 0 == (ccX-(Ax+Adx*i))**2 + (ccY-(Ay+Ady*i))**2 - (ccX-(Bx+Bdx*j))**2 - (ccY-(By+Bdy*j))**2 
+assert 0 == (ccX-(Ax+Adx*i))**2 + (ccY-(Ay+Ady*i))**2 - (ccX-(Cx+Cdx*k))**2 - (ccY-(Cy+Cdy*k))**2
+
+assert 0 == ccX**2 - 2*ccX*Ax - 2*ccX*Adx*i + Ax**2 + 2*Ax*Adx*i + Adx**2*i**2 + \
+            ccY**2 - 2*ccY*Ay - 2*ccY*Ady*i + Ay**2 + 2*Ay*Ady*i + Ady**2*i**2 - \
+            ccX**2 + 2*ccX*Bx + 2*ccX*Bdx*j - Bx**2 - 2*Bx*Bdx*j - Bdx**2*j**2 - \
+            ccY**2 + 2*ccY*By + 2*ccY*Bdy*j - By**2 - 2*By*Bdy*j - Bdy**2*j**2
+assert 0 == ccX**2 - 2*ccX*Ax - 2*ccX*Adx*i + Ax**2 + 2*Ax*Adx*i + Adx**2*i**2 + \
+            ccY**2 - 2*ccY*Ay - 2*ccY*Ady*i + Ay**2 + 2*Ay*Ady*i + Ady**2*i**2 - \
+            ccX**2 + 2*ccX*Cx + 2*ccX*Cdx*k - Cx**2 - 2*Cx*Cdx*k - Cdx**2*k**2 - \
+            ccY**2 + 2*ccY*Cy + 2*ccY*Cdy*k - Cy**2 - 2*Cy*Cdy*k - Cdy**2*k**2
+
+assert 0 == i**2 * (Adx**2 + Ady**2) + \
+            j**2 * (-Bdx**2 - Bdy**2) + \
+            i    * ( 2*Ax*Adx - 2*ccX*Adx + 2*Ay*Ady - 2*ccY*Ady) + \
+            j    * (-2*Bx*Bdx + 2*ccX*Bdx - 2*By*Bdy + 2*ccY*Bdy) + \
+            Ax**2 + Ay**2 - Bx**2 - By**2 - 2*ccX*Ax - 2*ccY*Ay + 2*ccX*Bx + 2*ccY*By
+assert 0 == i**2 * (Adx**2 + Ady**2) + \
+            k**2 * (-Cdx**2 - Cdy**2) + \
+            i    * ( 2*Ax*Adx - 2*ccX*Adx + 2*Ay*Ady - 2*ccY*Ady) + \
+            k    * (-2*Cx*Cdx + 2*ccX*Cdx - 2*Cy*Cdy + 2*ccY*Cdy) + \
+            Ax**2 + Ay**2 - Cx**2 - Cy**2 - 2*ccX*Ax - 2*ccY*Ay + 2*ccX*Cx + 2*ccY*Cy
+
+u1 = Adx**2 + Ady**2
+u2 = -Bdx**2 - Bdy**2
+u3 = 2*(Ax*Adx-ccX*Adx+Ay*Ady-ccY*Ady)
+u4 = 2*(-Bx*Bdx+ccX*Bdx-By*Bdy+ccY*Bdy)
+u5 = Ax**2 + Ay**2 - Bx**2 - By**2 + 2*(ccX*Bx+ccY*By-ccX*Ax-ccY*Ay)
+u6 = -Cdx**2 - Cdy**2
+u7 = 2*(-Cx*Cdx+ccX*Cdx-Cy*Cdy+ccY*Cdy)
+u8 = Ax**2 + Ay**2 - Cx**2 - Cy**2 + 2*(ccX*Cx+ccY*Cy-ccX*Ax-ccY*Ay)
+
+assert 0 == i**2*u1 + j**2*u2 + i*u3 + j*u4 + u5
+assert 0 == i**2*u1 + k**2*u6 + i*u3 + k*u7 + u8
+
+M = Matrix([
+    [u1, u1, 1, 0, 0, 0, 0, 0],
+    [u2,  0, 0, 1, 0, 0, 0, 0],
+    [ 0, u6, 0, 0, 1, 0, 0, 0],
+    [u3, u3, 0, 0, 0, 1, 0, 0],
+    [u4,  0, 0, 0, 0, 0, 1, 0],
+    [ 0, u7, 0, 0, 0, 0, 0, 1],
+    [u5, u8, 0, 0, 0, 0, 0, 0],
+])
+
+print(M.LLL()[0][-3:])
+```
 
 Part 3 - Incenter:
