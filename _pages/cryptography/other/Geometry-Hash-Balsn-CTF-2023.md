@@ -408,5 +408,6 @@ M = Matrix([
 
 print(M.LLL()[0][-3:])
 ```
+<br>
 
 Part 3 - Incenter:
