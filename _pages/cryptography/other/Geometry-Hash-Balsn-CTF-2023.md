@@ -230,4 +230,4 @@ $$+ \ 2 \cdot ccX \cdot Cx - {Cx}^2 + 2 \cdot ccY \cdot Cy - {Cy}^2$$
 
 <br>
 
-$$0 = i^2 \cdot t1 + j^2 \cdot t2 + k^2 \cdot t3 +  i \cdot t4 + j t5 + k \cdot t6 + t7$$
+$$0 = i^2 \cdot t_1 + j^2 \cdot t_2 + k^2 \cdot t_3 +  i \cdot t_4 + j \cdot t_5 + k \cdot t_6 + t_7$$
