@@ -158,6 +158,57 @@ M = Matrix([
 print(M.LLL()[0])
 ```
 
+```python
+from sympy import Float, Triangle, Point
+import secrets
+
+class RandomLine:
+    def __init__(self):
+        self.x = randFloat()
+        self.y = randFloat()
+        self.dx = randFloat()
+        self.dy = randFloat()
+
+    def __getitem__(self, i):
+        return Point(self.x + self.dx * i, self.y + self.dy * i, evaluate=False)
+
+    def get(self):
+        return self.x, self.y, self.dx, self.dy
+
+def randFloat():
+    # return a random float between -1 and 1
+    PRECISION = 1337
+    return -1 + 2 * Float(secrets.randbits(PRECISION), PRECISION) / (1 << PRECISION)
+
+A = RandomLine()
+B = RandomLine()
+C = RandomLine()
+i, j, k = [randint(0, 2**32) for _ in range(3)]
+print(i, j, k)
+triangle = Triangle(A[i], B[j], C[k])
+
+Ax, Ay, Adx, Ady = A.get()
+Bx, By, Bdx, Bdy = B.get()
+Cx, Cy, Cdx, Cdy = C.get()
+centroidX, centroidY  = triangle.centroid
+
+# resize
+n = 10**1337
+Ax, Ay, Adx, Ady = int(Ax*n), int(Ay*n), int(Adx*n), int(Ady*n)
+Bx, By, Bdx, Bdy = int(Bx*n), int(By*n), int(Bdx*n), int(Bdy*n)
+Cx, Cy, Cdx, Cdy = int(Cx*n), int(Cy*n), int(Cdx*n), int(Cdy*n)
+centroidX, centroidY = int(centroidX*n), int(centroidY*n)
+
+M = Matrix([
+    [                       Adx,                        Ady, 1, 0, 0],
+    [                       Bdx,                        Bdy, 0, 1, 0],
+    [                       Cdx,                        Cdy, 0, 0, 1],
+    [Ax + Bx + Cx - 3*centroidX, Ay + By + Cy - 3*centroidY, 0, 0, 0],
+])
+
+print(M.LLL()[0][-3:])
+```
+
 <br>
 
 Part 2 - Circumcenter:
