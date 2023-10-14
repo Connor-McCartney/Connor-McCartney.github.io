@@ -380,6 +380,66 @@ M = Matrix([
 print(M.LLL()[0][-3:])
 ```
 
+```python
+from sympy import Float, Triangle, Point
+import secrets
+
+class RandomLine:
+    def __init__(self):
+        self.x = randFloat()
+        self.y = randFloat()
+        self.dx = randFloat()
+        self.dy = randFloat()
+
+    def __getitem__(self, i):
+        return Point(self.x + self.dx * i, self.y + self.dy * i, evaluate=False)
+
+    def get(self):
+        return self.x, self.y, self.dx, self.dy
+
+def randFloat():
+    # return a random float between -1 and 1
+    PRECISION = 1337
+    return -1 + 2 * Float(secrets.randbits(PRECISION), PRECISION) / (1 << PRECISION)
+
+A = RandomLine()
+B = RandomLine()
+C = RandomLine()
+i, j, k = [randint(0, 2**32) for _ in range(3)]
+print(i, j, k)
+triangle = Triangle(A[i], B[j], C[k])
+
+Ax, Ay, Adx, Ady = A.get()
+Bx, By, Bdx, Bdy = B.get()
+Cx, Cy, Cdx, Cdy = C.get()
+ccX, ccY = triangle.circumcenter
+
+t1 = 2*Adx**2 + 2*Ady**2
+t2 = -Bdx**2 - Bdy**2
+t3 = -Cdx**2 - Cdy**2
+t4 = -4*ccX*Adx + 4*Ax*Adx - 4*ccY*Ady + 4*Ay*Ady
+t5 = 2*ccX*Bdx - 2*Bx*Bdx + 2*ccY*Bdy - 2*By*Bdy
+t6 = 2*ccX*Cdx - 2*Cx*Cdx + 2*ccY*Cdy - 2*Cy*Cdy
+t7 = - 4*ccX*Ax + 2*Ax**2 - 4*ccY*Ay + 2*Ay**2 + 2*ccX*Bx - Bx**2 + \
+        2*ccY*By - By**2 + 2*ccX*Cx - Cx**2 + 2*ccY*Cy - Cy**2
+
+M = Matrix([
+    [t1, 1, 0, 0, 0, 0, 0],
+    [t2, 0, 1, 0, 0, 0, 0],
+    [t3, 0, 0, 1, 0, 0, 0],
+    [t4, 0, 0, 0, 1, 0, 0],
+    [t5, 0, 0, 0, 0, 1, 0],
+    [t6, 0, 0, 0, 0, 0, 1],
+    [t7, 0, 0, 0, 0, 0, 0],
+])
+
+# resize
+for i in range(M.nrows()):
+    M[i, 0] = int(M[i, 0] * 10**1337)
+
+print(M.change_ring(ZZ).LLL()[0][-3:])
+```
+
 <br>
 
 ETA - leaving it as two equations rather than combining them to one is an alternative:
