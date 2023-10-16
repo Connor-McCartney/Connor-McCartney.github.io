@@ -521,4 +521,78 @@ print(M.LLL()[0][-3:])
 ```
 <br>
 
+ETA2 - I wrote some ugly slow code to automate the process:
+
+```python
+from sympy import Point, Triangle
+from tqdm import tqdm
+
+def r():
+    return randint(0, 2**1000)
+
+i_, j_, k_ = [randint(0, 2**32) for _ in range(3)]
+print(i_, j_, k_)
+
+Ax, Bx, Cx    = r(), r(), r()
+Ay, By, Cy    = r(), r(), r()
+Adx, Bdx, Cdx = r(), r(), r()
+Ady, Bdy, Cdy = r(), r(), r()
+
+x1, y1 = Ax + Adx*i_, Ay + Ady*i_
+x2, y2 = Bx + Bdx*j_, By + Bdy*j_
+x3, y3 = Cx + Cdx*k_, Cy + Cdy*k_
+
+triangle = Triangle(Point(x1, y1), 
+                    Point(x2, y2), 
+                    Point(x3, y3)) 
+
+ccX, ccY = triangle.circumcenter
+
+
+def connors_shity_automatic_solver(equation):
+    v_ijk = []
+    for term in equation.operands()[::-1]:
+        v = []
+        for z in term.operands():
+            if "i" in str(z) or "j" in str(z) or "k" in str(z):
+                v.append(z)
+        if v not in v_ijk:
+            v_ijk.append(v)
+    v_ijk.pop(0)
+
+    constants = 0
+    ts = [0 for _ in range(len(v_ijk))]
+    for term in tqdm(equation.operands()):
+        vs = term.operands()
+        const = True
+        for idx, ijk in enumerate(v_ijk[::-1]):
+            if all(_ in vs for _ in ijk):
+                ts[idx] += int(term / prod(ijk))
+                const = False
+                break
+        if const:
+            constants += term
+
+    M = Matrix(ts).transpose()
+    M = M.augment(identity_matrix(len(ts)))
+    M = M.stack(vector([int(constants)] + [0 for _ in range(len(ts))]))
+    M = M.change_ring(ZZ).LLL()
+    for vv in [[i], [j], [k]]:
+        print(M[0][-1-v_ijk.index(vv)])
+
+
+i = var('i')
+j = var('j')
+k = var('k')
+x1, y1 = Ax + Adx*i, Ay + Ady*i
+x2, y2 = Bx + Bdx*j, By + Bdy*j
+x3, y3 = Cx + Cdx*k, Cy + Cdy*k
+equation = 2*(ccX-x1)^2 + 2*(ccY-y1)^2 - (ccX-x2)^2 - (ccY-y2)^2 - (ccX-x3)^2 - (ccY-y3)^2
+equation = equation.expand()
+print(equation(i=i_, j=j_, k=k_))
+connors_shity_automatic_solver(equation)
+```
+
+<br>
+
 Part 3 - Incenter:
