@@ -596,3 +596,9 @@ connors_shity_automatic_solver(equation)
 <br>
 
 Part 3 - Incenter:
+
+<br>
+
+![image](https://raw.githubusercontent.com/Connor-McCartney/Connor-McCartney.github.io/main/_pages/cryptography/other/images/incenter.png)
+
+<br>
