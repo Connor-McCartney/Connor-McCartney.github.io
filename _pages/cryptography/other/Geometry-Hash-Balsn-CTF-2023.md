@@ -542,4 +542,4 @@ tan is probably the best choice because there's no square roots to deal with but
 
 $$\cos (\angle CBI) = \cos (\angle ABI)$$
 
-$$\frac{\overrightarrow{BC} \cdot \overrightarrow{BI}}{||\overrightarrow{BC}|| \ ||\overrightarrow{BI}||}$$
+$$\frac{BC \cdot BI}{||BC|| \ ||BI||} = \frac{BA \cdot BI}{||BA|| \ ||BI||}$$
