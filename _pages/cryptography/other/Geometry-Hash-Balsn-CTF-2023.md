@@ -538,7 +538,7 @@ $$\cos \theta = \frac{\vec{v} \cdot \vec{w}}{||\vec{v}|| \ ||\vec{w}||} \ , \ \s
 
 <br>
 
-tan is probably the best choice because there's no square roots to deal with but I chose cos:
+Trying cos doesn't work:
 
 $$\cos (\angle CBI) = \cos (\angle ABI)$$
 
@@ -551,3 +551,18 @@ $$BA =\pmatrix{x_1-x_2 \\ y_1-y_2}, \ BC =\pmatrix{x_3-x_2 \\ y_3-y_2}, \ BI =\p
 $$\frac{(x_3-x_2)(I_x-x_2) + (y_3-y_2)(I_y-y_2)}{\sqrt{(x_3-x_2)^2 + (y_3-y_2)^2}} = \frac{(x_1-x_2)(I_x-x_2) + (y_1-y_2)(I_y-y_2)}{\sqrt{(x_1-x_2)^2 + (y_1-y_2)^2}}$$
 
 $$\frac{((x_3-x_2)(I_x-x_2) + (y_3-y_2)(I_y-y_2))^2}{(x_3-x_2)^2 + (y_3-y_2)^2} = \frac{((x_1-x_2)(I_x-x_2) + (y_1-y_2)(I_y-y_2))^2}{(x_1-x_2)^2 + (y_1-y_2)^2}$$
+
+```python
+lhs = ((x3-x2)*(Ix-x2)+(y3-y2)*(Iy-y2))^2 * ((x1-x2)^2 + (y1-y2)^2)
+rhs = ((x1-x2)*(Ix-x2)+(y1-y2)*(Iy-y2))^2 * ((x3-x2)^2 + (y3-y2)^2
+```
+
+<br>
+
+Trying sin doesn't work:
+
+$$\sin (\angle CBI) = \cos (\sin ABI)$$
+
+$$\frac{||BC \times BI||}{||BC|| \ ||BI||} = \frac{||BA \times BI||}{||BA|| \ ||BI||}$$
+
+$$\frac{||BC \times BI||}{||BC||} = \frac{||BA \times BI||}{||BA||}$$
