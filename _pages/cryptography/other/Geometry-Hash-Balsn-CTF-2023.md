@@ -581,3 +581,7 @@ rhs = ((x1-x2)*(Iy-y2)-(y1-y2)*(Ix-x2))^2 * ((x3-x2)^2 + (y3-y2)^2)
 But trying tan works! Maybe because there's no square roots to deal with?:
 
 $$\tan (\angle CBI) = \tan (\angle ABI)$$
+
+$$\frac{||BC \times BI||}{BC \cdot BI} = \frac{||BA \times BI||}{BC \cdot BI}$$
+
+$$\frac{(x_3-x_2)(I_y-y_2) - (y_3-y_2)(I_x-x_2)}{(x_3-x_2)(I_x-x_2) + (y_3-y_2)(I_y-y_2)} = \frac{(x_1-x_2)(I_y-y_2) - (y_1-y_2)(I_x-x_2)}{(x_1-x_2)(I_x-x_2) + (y_1-y_2)(I_y-y_2)}$$
