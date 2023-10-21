@@ -536,6 +536,8 @@ Then we have a choice of formulas to use for the angle between two vectors:
 
 $$\cos \theta = \frac{\vec{v} \cdot \vec{w}}{||\vec{v}|| \ ||\vec{w}||} \ , \ \sin \theta = \frac{||\vec{v} \times \vec{w}||}{||\vec{v}|| \ ||\vec{w}||} \ , \ \tan \theta = \frac{||\vec{v} \times \vec{w}||}{\vec{v} \cdot \vec{w}}$$
 
+$$BA =\pmatrix{x_1-x_2 \\ y_1-y_2}, \ BC =\pmatrix{x_3-x_2 \\ y_3-y_2}, \ BI =\pmatrix{I_x-x_2 \\ I_y-y_2}$$
+
 <br>
 
 Trying cos doesn't work:
@@ -545,8 +547,6 @@ $$\cos (\angle CBI) = \cos (\angle ABI)$$
 $$\frac{BC \cdot BI}{||BC|| \ ||BI||} = \frac{BA \cdot BI}{||BA|| \ ||BI||}$$
 
 $$\frac{BC \cdot BI}{||BC||} = \frac{BA \cdot BI}{||BA||}$$
-
-$$BA =\pmatrix{x_1-x_2 \\ y_1-y_2}, \ BC =\pmatrix{x_3-x_2 \\ y_3-y_2}, \ BI =\pmatrix{I_x-x_2 \\ I_y-y_2}$$
 
 $$\frac{(x_3-x_2)(I_x-x_2) + (y_3-y_2)(I_y-y_2)}{\sqrt{(x_3-x_2)^2 + (y_3-y_2)^2}} = \frac{(x_1-x_2)(I_x-x_2) + (y_1-y_2)(I_y-y_2)}{\sqrt{(x_1-x_2)^2 + (y_1-y_2)^2}}$$
 
