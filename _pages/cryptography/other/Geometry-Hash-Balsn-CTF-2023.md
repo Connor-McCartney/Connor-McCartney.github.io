@@ -543,3 +543,5 @@ tan is probably the best choice because there's no square roots to deal with but
 $$\cos (\angle CBI) = \cos (\angle ABI)$$
 
 $$\frac{BC \cdot BI}{||BC|| \ ||BI||} = \frac{BA \cdot BI}{||BA|| \ ||BI||}$$
+
+$$\frac{BC \cdot BI}{||BC||} = \frac{BA \cdot BI}{||BA||}$$
