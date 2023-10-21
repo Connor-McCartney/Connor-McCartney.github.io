@@ -1,6 +1,6 @@
 ---
-permalink: /cryptography/other/ASIS-CTF-2022
-title: ASIS CTF 2022
+permalink: /cryptography/other/Finding-a-subset-of-bytes-that-XOR-to-some-target
+title: Finding a subset of bytes that XOR to some target
 ---
 
 
