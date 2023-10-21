@@ -540,4 +540,6 @@ $$\cos \theta = \frac{\vec{v} \cdot \vec{w}}{||\vec{v}|| \ ||\vec{w}||} \ , \ \s
 
 tan is probably the best choice because there's no square roots to deal with but I chose cos:
 
-$$\cos \angle CBI = \cos \angle ABI$$
+$$\cos (\angle CBI) = \cos (\angle ABI)$$
+
+\frac{\vec{BC} \cdot \vec{BI}}{||\vec{BC}|| \ ||\vec{BI}||}
