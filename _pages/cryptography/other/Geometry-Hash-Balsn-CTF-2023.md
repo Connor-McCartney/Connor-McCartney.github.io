@@ -545,3 +545,5 @@ $$\cos (\angle CBI) = \cos (\angle ABI)$$
 $$\frac{BC \cdot BI}{||BC|| \ ||BI||} = \frac{BA \cdot BI}{||BA|| \ ||BI||}$$
 
 $$\frac{BC \cdot BI}{||BC||} = \frac{BA \cdot BI}{||BA||}$$
+
+$$BA =\pmatrix{x_1-x_2 \\ y_1-y_2}, \ BC =\pmatrix{x_3-x_2 \\ y_3-y_2}, \ BI =\pmatrix{I_x-x_2 \\ I_y-y_2}$$
