@@ -561,7 +561,7 @@ rhs = ((x1-x2)*(Ix-x2)+(y1-y2)*(Iy-y2))^2 * ((x3-x2)^2 + (y3-y2)^2)
 
 Trying sin doesn't work:
 
-$$\sin (\angle CBI) = \cos (\sin ABI)$$
+$$\sin (\angle CBI) = \sin (\angle ABI)$$
 
 $$\frac{||BC \times BI||}{||BC|| \ ||BI||} = \frac{||BA \times BI||}{||BA|| \ ||BI||}$$
 
@@ -580,4 +580,4 @@ rhs = ((x1-x2)*(Iy-y2)-(y1-y2)*(Ix-x2))^2 * ((x3-x2)^2 + (y3-y2)^2)
 
 But trying tan works! Maybe because there's no square roots to deal with?:
 
-$$\tan (\angle CBI) = \tan (\sin ABI)$$
+$$\tan (\angle CBI) = \tan (\angle ABI)$$
