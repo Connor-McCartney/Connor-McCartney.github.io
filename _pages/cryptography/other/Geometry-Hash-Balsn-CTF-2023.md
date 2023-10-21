@@ -548,4 +548,4 @@ $$\frac{BC \cdot BI}{||BC||} = \frac{BA \cdot BI}{||BA||}$$
 
 $$BA =\pmatrix{x_1-x_2 \\ y_1-y_2}, \ BC =\pmatrix{x_3-x_2 \\ y_3-y_2}, \ BI =\pmatrix{I_x-x_2 \\ I_y-y_2}$$
 
-$$\frac{(x_3-x_2)(I_x-x_2) + (y_3-y_2)(I_y-y_2)}{\sqrt{(x_3-x_2)^2 + (y_3-y_2)^2}} = \frac{BA \cdot BI}{||BA||}$$
+$$\frac{(x_3-x_2)(I_x-x_2) + (y_3-y_2)(I_y-y_2)}{\sqrt{(x_3-x_2)^2 + (y_3-y_2)^2}} = \frac{(x_1-x_2)(I_x-x_2) + (y_1-y_2)(I_y-y_2)}{\sqrt{(x_1-x_2)^2 + (y_1-y_2)^2}}$$
