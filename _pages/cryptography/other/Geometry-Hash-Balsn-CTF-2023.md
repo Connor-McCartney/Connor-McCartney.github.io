@@ -537,3 +537,7 @@ Then we have a choice of formulas to use for the angle between two vectors:
 $$\cos \theta = \frac{\vec{v} \cdot \vec{w}}{||\vec{v}|| \ ||\vec{w}||} \ , \ \sin \theta = \frac{||\vec{v} \times \vec{w}||}{||\vec{v}|| \ ||\vec{w}||} \ , \ \tan \theta = \frac{||\vec{v} \times \vec{w}||}{\vec{v} \cdot \vec{w}}$$
 
 <br>
+
+tan is probably the best choice because there's no square roots to deal with but I chose cos:
+
+$$\cos \angle CBI = \cos \angle ABI$$
