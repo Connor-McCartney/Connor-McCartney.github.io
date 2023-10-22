@@ -582,9 +582,9 @@ But trying tan works! Maybe because there's no square roots to deal with?:
 
 $$\tan (\angle CBI) = \tan (\angle ABI)$$
 
-$$\frac{||BC \times BI||}{BC \cdot BI} = \frac{||BA \times BI||}{BA \cdot BI}$$
+$$\frac{||BC \times BI||}{BC \cdot BI} = \frac{||BI \times BA||}{BA \cdot BI}$$
 
-$$\frac{(x_3-x_2)(I_y-y_2) - (y_3-y_2)(I_x-x_2)}{(x_3-x_2)(I_x-x_2) + (y_3-y_2)(I_y-y_2)} = \frac{(x_1-x_2)(I_y-y_2) - (y_1-y_2)(I_x-x_2)}{(x_1-x_2)(I_x-x_2) + (y_1-y_2)(I_y-y_2)}$$
+$$\frac{(x_3-x_2)(I_y-y_2) - (y_3-y_2)(I_x-x_2)}{(x_3-x_2)(I_x-x_2) + (y_3-y_2)(I_y-y_2)} = \frac{(y_1-y_2)(I_x-x_2) - (x_1-x_2)(I_y-y_2)}{(x_1-x_2)(I_x-x_2) + (y_1-y_2)(I_y-y_2)}$$
 
 ```python
 from sympy import Float, Triangle, Point
@@ -641,8 +641,7 @@ x2, y2 = Bx + Bdx*j, By + Bdy*j
 x3, y3 = Cx + Cdx*k, Cy + Cdy*k
 
 lhs = ((x3-x2)*(Iy-y2)-(y3-y2)*(Ix-x2)) * ((x1-x2)*(Ix-x2)+(y1-y2)*(Iy-y2))
-rhs = ((x1-x2)*(Iy-y2)-(y1-y2)*(Ix-x2)) * ((x3-x2)*(Ix-x2)+(y3-y2)*(Iy-y2))
-lhs = -lhs # cross product is negative for either lhs or rhs
+rhs = ((y1-y2)*(Ix-x2)-(x1-x2)*(Iy-y2)) * ((x3-x2)*(Ix-x2)+(y3-y2)*(Iy-y2))
 equation = lhs - rhs
 
 print(int(lhs(i=i_, j=j_, k=k_)) == int(rhs(i=i_, j=j_, k=k_)))
