@@ -16,3 +16,9 @@ pacman-key --refresh
 pacman-key --populate
 sudo pacman -Sy archlinux-keyring
 ```
+
+# Installing python packages
+
+```bash
+pip install --break-system-packages ...
+```
