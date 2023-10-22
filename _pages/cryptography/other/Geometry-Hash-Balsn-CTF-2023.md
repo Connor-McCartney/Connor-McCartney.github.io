@@ -585,3 +585,66 @@ $$\tan (\angle CBI) = \tan (\angle ABI)$$
 $$\frac{||BC \times BI||}{BC \cdot BI} = \frac{||BA \times BI||}{BA \cdot BI}$$
 
 $$\frac{(x_3-x_2)(I_y-y_2) - (y_3-y_2)(I_x-x_2)}{(x_3-x_2)(I_x-x_2) + (y_3-y_2)(I_y-y_2)} = \frac{(x_1-x_2)(I_y-y_2) - (y_1-y_2)(I_x-x_2)}{(x_1-x_2)(I_x-x_2) + (y_1-y_2)(I_y-y_2)}$$
+
+```python
+from sympy import Float, Triangle, Point
+import secrets
+from tqdm import tqdm
+
+class RandomLine:
+    def __init__(self):
+        self.x = randFloat()
+        self.y = randFloat()
+        self.dx = randFloat()
+        self.dy = randFloat()
+
+    def __getitem__(self, i):
+        return Point(self.x + self.dx * i, self.y + self.dy * i, evaluate=False)
+
+    def get(self):
+        return self.x, self.y, self.dx, self.dy
+
+def randFloat():
+    # return a random float between -1 and 1
+    PRECISION = 1337
+    return -1 + 2 * Float(secrets.randbits(PRECISION), PRECISION) / (1 << PRECISION)
+
+A = RandomLine()
+B = RandomLine()
+C = RandomLine()
+Ax, Ay, Adx, Ady = A.get()
+Bx, By, Bdx, Bdy = B.get()
+Cx, Cy, Cdx, Cdy = C.get()
+
+i_, j_, k_ = [randint(0, 2**32) for _ in range(3)]
+print(i_, j_, k_)
+triangle = Triangle(A[i_], B[j_], C[k_])
+Ix, Iy = triangle.incenter
+
+def solve(equation):
+    coeffs = Sequence([equation]).coefficient_matrix(sparse=False)[0][0]
+    M = Matrix(coeffs).transpose()
+    n = M.nrows()
+    M = M.augment(identity_matrix(n))
+    M[-1, -1] = 0
+
+    # resize
+    for i in range(n):
+        M[i, 0] = int(M[i, 0] * 10**1337)
+
+    M = M.change_ring(ZZ).LLL()
+    print(M[0][-4:])
+
+F.<i,j,k> = ZZ[]
+x1, y1 = Ax + Adx*i, Ay + Ady*i
+x2, y2 = Bx + Bdx*j, By + Bdy*j
+x3, y3 = Cx + Cdx*k, Cy + Cdy*k
+
+lhs = ((x3-x2)*(Iy-y2)-(y3-y2)*(Ix-x2)) * ((x1-x2)*(Ix-x2)+(y1-y2)*(Iy-y2))
+rhs = ((x1-x2)*(Iy-y2)-(y1-y2)*(Ix-x2)) * ((x3-x2)*(Ix-x2)+(y3-y2)*(Iy-y2))
+lhs = -lhs # cross product is negative for either lhs or rhs
+equation = lhs - rhs
+
+print(int(lhs(i=i_, j=j_, k=k_)) == int(rhs(i=i_, j=j_, k=k_)))
+solve(equation)
+```
