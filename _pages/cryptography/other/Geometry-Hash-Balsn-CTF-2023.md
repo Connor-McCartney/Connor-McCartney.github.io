@@ -587,63 +587,78 @@ $$\frac{||BC \times BI||}{BC \cdot BI} = \frac{||BI \times BA||}{BA \cdot BI}$$
 $$\frac{(x_3-x_2)(I_y-y_2) - (y_3-y_2)(I_x-x_2)}{(x_3-x_2)(I_x-x_2) + (y_3-y_2)(I_y-y_2)} = \frac{(y_1-y_2)(I_x-x_2) - (x_1-x_2)(I_y-y_2)}{(x_1-x_2)(I_x-x_2) + (y_1-y_2)(I_y-y_2)}$$
 
 ```python
-from sympy import Float, Triangle, Point
-import secrets
-from tqdm import tqdm
+from solvelinmod import solve_linear_mod
+from Crypto.Util.number import *
+from random import randint
 
-class RandomLine:
-    def __init__(self):
-        self.x = randFloat()
-        self.y = randFloat()
-        self.dx = randFloat()
-        self.dy = randFloat()
+p = getPrime(512)
+unknown_size = 2**32
+n = 15
+unknowns = [randint(0, unknown_size) for _ in range(n)]
+print(unknowns)
+xs = [var(f'x_{i}') for i in range(n)]
+bounds = {x: unknown_size for x in xs}
+#
 
-    def __getitem__(self, i):
-        return Point(self.x + self.dx * i, self.y + self.dy * i, evaluate=False)
+equations = []
+for x, u in zip(xs, unknowns):
+    b1, b2, b3 = [randint(0, n-1) for _ in range(3)]
+    a1, a2, a3 = [randint(0, 2**512) for _ in range(3)]
+    d1, d2, d3 = [randint(1, 5) for _ in range(3)]
+    
+    lhs = x#(x + a1+xs[b1]+xs[b2])^d1
+    rhs = u#(u + a1+unknowns[b1]+unknowns[b2])^d1
+    for _ in range(2):
+        a = randint(0, n-1)
+        b1, b2, b3 = [randint(0, n-1) for _ in range(3)]
+        lhs += (a + xs[b1]) #* xs[b2] #* xs[b3]
+        rhs += (a + unknowns[b1]) #* unknowns[b2] #* unknowns[b3]
 
-    def get(self):
-        return self.x, self.y, self.dx, self.dy
+    equations.append(lhs - (rhs % p))
 
-def randFloat():
-    # return a random float between -1 and 1
-    PRECISION = 1337
-    return -1 + 2 * Float(secrets.randbits(PRECISION), PRECISION) / (1 << PRECISION)
+def solve_nonlinear_mod(equations, bounds):
+    linearised_equations = []
+    linearised_bounds = {}
+    for e in equations:
+        d = e.polynomial(ZZ).dict()
+        variables = e.variables()
 
-A = RandomLine()
-B = RandomLine()
-C = RandomLine()
-Ax, Ay, Adx, Ady = A.get()
-Bx, By, Bdx, Bdy = B.get()
-Cx, Cy, Cdx, Cdy = C.get()
+        new_equation = 0
+        for t, coeff in d.items():
+            const = True
+            try:
+                _ = list(t)
+            except:
+                t = [t]
+            v = ""
+            b = 1
+            for j, i in enumerate(t):
+                if i != 0:
+                    v += str(variables[j]) + "__" + str(i)
+                    b *= bounds[variables[j]] ** i
+                    const = False
+            if const:
+                new_equation += coeff
+                continue
+            v = var(v)
+            linearised_bounds[v] = b
+            new_equation += coeff * v
+        linearised_equations.append((new_equation == 0, p)) 
 
-i_, j_, k_ = [randint(0, 2**32) for _ in range(3)]
-print(i_, j_, k_)
-triangle = Triangle(A[i_], B[j_], C[k_])
-Ix, Iy = triangle.incenter
+    solve = solve_linear_mod(linearised_equations, linearised_bounds)
+    if solve == None:
+        print('fail')
+        return
+    ret = [solve[var(f'x_{i}__1')] for i in range(len(equations))]
+    print(ret)
+    print(ret == unknowns)
+    """
+    for a, b in zip(solve.values(), linearised_bounds.values()):
+        print(Integer(a).nbits(), Integer(b).nbits())
+    print(linearised_bounds)
+    """
+    return ret
+    
 
-def solve(equation):
-    coeffs = Sequence([equation]).coefficient_matrix(sparse=False)[0][0]
-    M = Matrix(coeffs).transpose()
-    n = M.nrows()
-    M = M.augment(identity_matrix(n))
-    M[-1, -1] = 0
-
-    # resize
-    for i in range(n):
-        M[i, 0] = int(M[i, 0] * 10**1337)
-
-    M = M.change_ring(ZZ).LLL()
-    print(M[0][-4:])
-
-F.<i,j,k> = ZZ[]
-x1, y1 = Ax + Adx*i, Ay + Ady*i
-x2, y2 = Bx + Bdx*j, By + Bdy*j
-x3, y3 = Cx + Cdx*k, Cy + Cdy*k
-
-lhs = ((x3-x2)*(Iy-y2)-(y3-y2)*(Ix-x2)) * ((x1-x2)*(Ix-x2)+(y1-y2)*(Iy-y2))
-rhs = ((y1-y2)*(Ix-x2)-(x1-x2)*(Iy-y2)) * ((x3-x2)*(Ix-x2)+(y3-y2)*(Iy-y2))
-equation = lhs - rhs
-
-print(int(lhs(i=i_, j=j_, k=k_)) == int(rhs(i=i_, j=j_, k=k_)))
-solve(equation)
+solve_nonlinear_mod(equations, bounds)
 ```
