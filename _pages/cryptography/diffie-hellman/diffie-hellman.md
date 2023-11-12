@@ -20,3 +20,7 @@ __vulnerability: m < p (mod p^2)__
 
 <span style="font-size:2em;">   [MEWTWO - squeamishossifrage](/cryptography/diffie-hellman/MEWTWO-squeamishossifrage)       </span> <br>
 __vulnerability: isomorphism (mod p^2)__
+
+
+<span style="font-size:2em;">   [janken-vs-yoshiking-2 - Cake CTF 2023](/cryptography/janken-vs-yoshiking-2-CakeCTF-2023)       </span> <br>
+__vulnerability: discrete log of two matrices with smooth field order__
