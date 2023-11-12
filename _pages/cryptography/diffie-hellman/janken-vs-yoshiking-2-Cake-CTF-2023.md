@@ -1,6 +1,6 @@
 ---
-permalink: /cryptography
-title: 
+permalink: /cryptography/janken-vs-yoshiking-2-CakeCTF-2023
+title: janken-vs-yoshiking-2 - Cake CTF 2023
 ---
 
 <br>
