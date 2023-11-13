@@ -59,3 +59,12 @@ for _ in range(3):
 
 # CakeCTF{though_yoshiking_may_die_janken_will_never_perish}
 ```
+
+<br>
+
+Alternative:
+
+```python
+def dlog(M, A):
+    return discrete_log(A.determinant(), M.determinant())
+```
