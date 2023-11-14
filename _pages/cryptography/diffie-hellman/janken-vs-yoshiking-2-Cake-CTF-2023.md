@@ -66,5 +66,6 @@ Alternative:
 
 ```python
 def dlog(M, A):
+    # det(A^r) = det(A)^r
     return discrete_log(A.determinant(), M.determinant())
 ```
