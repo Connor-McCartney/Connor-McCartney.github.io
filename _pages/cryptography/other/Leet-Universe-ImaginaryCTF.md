@@ -3,6 +3,8 @@ permalink: /cryptography/other/Leet-Universe-ImaginaryCTF
 title: Leet Universe - Imaginary CTF
 ---
 
+<br>
+
 Challenge:
 
 ```python
@@ -17,6 +19,8 @@ x = int(input("x = "))
 g = gcd(x**13 + 37, (x + 42) ** 13 + 42)
 print(flag[:g])
 ```
+
+<br>
 
 Solve:
 
