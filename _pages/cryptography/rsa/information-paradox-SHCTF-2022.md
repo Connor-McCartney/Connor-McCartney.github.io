@@ -35,7 +35,7 @@ print(extract_hex)
 Next I searched that ASN.1 integer headers have the format 0282xxxx. <br>
 (02 means integer data type, 82 means the following 2 bytes represent <br>
 the size of the integer, and xxxx is the following 2 bytes.) <br>
-More info [here](https://letsencrypt.org/docs/a-warm-welcome-to-asn1-and-der/). <br>
+More info [here](https://letsencrypt.org/docs/a-warm-welcome-to-asn1-and-der/) or [here](https://www.cem.me/20141221-cert-binaries.html). <br>
 Note we don't find e in this, but it usually has a short encoding form, and it's header is just 02xx.
 
 
