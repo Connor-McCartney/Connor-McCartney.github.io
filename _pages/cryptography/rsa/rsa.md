@@ -57,5 +57,10 @@ __vulnerability: signature oracle__
 <span style="font-size:2em;">   [rsa_leak - ACTF 2022](/cryptography/rsa/rsa-leak-ACTF-2022)       </span> <br>
 __vulnerability: LSB attack__
 
+
 <span style="font-size:2em;">   [Refactor - ASIS quals 2023](/cryptography/rsa/Refactor-ASIS-quals-2023)       </span> <br>
 __vulnerability: multiple of phi known__
+
+
+<span style="font-size:2em;">   [Too Little Information - nbctf 2023](/cryptography/rsa/Too-Little-Information-nbctf-2023)       </span> <br>
+__vulnerability: MSB (p+q) known__
