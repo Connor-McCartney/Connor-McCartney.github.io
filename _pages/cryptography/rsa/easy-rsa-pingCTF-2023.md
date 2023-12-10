@@ -1,5 +1,5 @@
 ---
-permalink: easy-rsa-pingCTF-2023
+permalink: /cryptography/rsa/easy-rsa-pingCTF-2023
 title: easy-rsa - pingCTF 2023
 ---
 
