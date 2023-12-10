@@ -5,7 +5,10 @@ title: Mayday Mayday - HTB University CTF 2023 - Brains & Bytes
 
 <br>
 <br>
+
 Challenge:
+
+<br>
 
 ```python
 from Crypto.Util.number import getPrime, GCD, bytes_to_long
@@ -52,7 +55,10 @@ with open('output.txt', 'w') as f:
 ```
 
 <br>
+
 Output:
+
+<br>
 
 ```py
 N = 0x78fb80151a498704541b888b9ca21b9f159a45069b99b04befcb0e0403178dc243a66492771f057b28262332caecc673a2c68fd63e7c850dc534a74c705f865841c0b5af1e0791b8b5cc55ad3b04e25f20dedc15c36db46c328a61f3a10872d47d9426584f410fde4c8c2ebfaccc8d6a6bd1c067e5e8d8f107b56bf86ac06cd8a20661af832019de6e00ae6be24a946fe229476541b04b9a808375739681efd1888e44d41196e396af66f91f992383955f5faef0fc1fc7b5175135ab3ed62867a84843c49bdf83d0497b255e35432b332705cd09f01670815ce167aa35f7a454f8b26b6d6fd9a0006194ad2f8f33160c13c08c81fe8f74e13e84e9cdf6566d2f
