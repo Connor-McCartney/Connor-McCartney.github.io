@@ -64,3 +64,7 @@ __vulnerability: multiple of phi known__
 
 <span style="font-size:2em;">   [Too Little Information - nbctf 2023](/cryptography/rsa/Too-Little-Information-nbctf-2023)       </span> <br>
 __vulnerability: MSB (p+q) known__
+
+
+<span style="font-size:2em;">   [easy-rsa - pingCTF 2023](/cryptography/rsa/easy-rsa-pingCTF-2023)       </span> <br>
+__vulnerability: bit-by-bit bruteforce__
