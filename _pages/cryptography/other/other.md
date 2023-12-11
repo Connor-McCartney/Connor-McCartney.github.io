@@ -41,3 +41,4 @@ title: Other
 <span style="font-size:2em;">   [Leet Universe - Imaginary CTF](/cryptography/other/Leet-Universe-ImaginaryCTF) </span> <br>
 
 
+<span style="font-size:2em;">   [cyberyolk writeups](/cryptography/other/cyberyolk-writeups) </span> <br>
