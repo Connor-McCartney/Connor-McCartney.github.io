@@ -52,8 +52,8 @@ sol = {(0, 0)}
 for i in range(2048):
     cur_sol = set()
     for pp, qq in sol:
-        for b1 in range(2):
-            for b2 in range(2):
+        for b1 in [0, 1]:
+            for b2 in [0, 1]:
                 p = b1*2**i + pp
                 q = b2*2**i + qq
                 
