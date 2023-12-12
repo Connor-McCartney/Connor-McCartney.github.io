@@ -156,13 +156,9 @@ def recover_lcg_params(states):
     c = g2.univariate_polynomial().roots()[0][0] % a
     return a, b, c
 
-def nxt(io):
-    io.read()
-    io.sendline(b"1")
-
 def solve():
     #io = remote("0.tcp.ap.ngrok.io", "11985")
-    io = process(["python", "server.py"])
+    io = process(["python", "chall.py"])
 
     states = recover_states(io)
     a, b, c = recover_lcg_params(states)
