@@ -95,3 +95,13 @@ while True:
         print("Wrong!")
         exit()
 ```
+
+Solve:
+
+<br>
+
+First we use option 3 as an encryption oracle to do an AES-ECB padding attack and recover the first few LCG states.
+
+Then we can recover the LCG parameters and use those to send the next (11th) value and get the flag.
+
+<br>
