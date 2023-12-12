@@ -107,3 +107,85 @@ First we use option 3 as an encryption oracle to do an AES-ECB padding attack an
 Then we can recover the LCG parameters and use those to send the next (11th) value and get the flag.
 
 <br>
+
+```python
+from pwn import remote, process
+from string import digits
+from tqdm import tqdm
+
+def encryption_oracle(io, x):
+    io.read()
+    io.sendline(b"3")
+    io.read()
+    io.sendline(str(x).encode())
+    return io.readline().decode().split()[1][2:-1]
+
+def ecb_attack(io, l):
+    k = 32
+    n_of_zeros = k
+    n_known_bytes = 0
+    known_bytes = []
+    recovered = []
+    for _ in tqdm(range(l)):
+        for i in digits:
+            i = ord(i)
+            plaintext = (n_of_zeros -2 - 2*n_known_bytes)* "0" + "".join([str(item) for item in known_bytes]) + str(hex(i)).replace("0x","").zfill(2) + (n_of_zeros - 2 - 2*n_known_bytes) * "0"
+            ciphertext = encryption_oracle(io, bytes.fromhex(plaintext).decode())
+            block_1 = ciphertext[:k]
+            block_2 = ciphertext[k:k*2]
+            if(block_1 == block_2):
+                recovered.append(i)
+                n_known_bytes +=1
+                known_bytes.append(str(hex(i)).replace("0x","").zfill(2))
+                break
+    return int(bytes(recovered))
+
+def recover_states(io):
+    states = []
+    for _ in range(7):
+        s = ecb_attack(io, 16)
+        states.append(s)
+        io.read()
+        io.sendline(b"1")
+    return states
+
+def recover_lcg_params(states):
+    PR.<b,c> = PolynomialRing(ZZ)
+    g1, g2, a = Ideal([x1*b+c-x2 for x1, x2 in zip(states[:-1], states[1:])]).groebner_basis()
+    b = g1.univariate_polynomial().roots()[0][0] % a
+    c = g2.univariate_polynomial().roots()[0][0] % a
+    return a, b, c
+
+def nxt(io):
+    io.read()
+    io.sendline(b"1")
+
+def solve():
+    #io = remote("0.tcp.ap.ngrok.io", "11985")
+    io = process(["python", "server.py"])
+
+    states = recover_states(io)
+    a, b, c = recover_lcg_params(states)
+
+    x = states[0]
+    for _ in range(10):
+        x = (b*x+c) % a
+
+    io.read()
+    io.sendline(b"4")
+    io.read()
+    io.sendline(str(x).encode())
+    flag = io.read().decode()
+    if "Wrong" in flag:
+        error()
+    print(flag)
+
+while True:
+    try:
+        solve()
+        break
+    except:
+        pass
+
+# CBY{how_D1d_u_do_th4t_9514aff45418e1aa1eea6202c50800c1}
+```
