@@ -230,7 +230,7 @@ c = 4272902374800832257308607521326991009549573744371461824750536864371363647759
 
 Solve:
 
-e is slow and the padding is weird so we can factor with coppersmith.
+e is low and the padding is weird so we can factor with coppersmith.
 
 <br>
 
