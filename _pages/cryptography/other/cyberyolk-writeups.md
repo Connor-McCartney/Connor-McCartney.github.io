@@ -287,3 +287,7 @@ Solve:
 Adding c2 and c3:
 
 $$c1 + c2 \equiv (p+q)^e + (p-q)^e \text{ (mod n)}$$
+
+When expanding the binomials, the 'middle' terms dividing pq are all 0 mod n:
+
+$$c1 + c2 \equiv p^e + q^e + p^e - q^e \text{ (mod n)}$$
