@@ -286,12 +286,12 @@ Solve:
 
 Adding c2 and c3:
 
-$$c1 + c2 \equiv (p+q)^e + (p-q)^e \text{ (mod n)}$$
+$$c2 + c3 \equiv (p+q)^e + (p-q)^e \text{ (mod n)}$$
 
 When expanding the binomials, the 'middle' terms dividing pq are all 0 mod n:
 
-$$c1 + c2 \equiv p^e + q^e + p^e - q^e \text{ (mod n)}$$
+$$c2 + c3 \equiv p^e + q^e + p^e - q^e \text{ (mod n)}$$
 
-$$p^e \equiv \frac{c1 +c2}{2} \text{ (mod n)}$$
+$$p^e \equiv \frac{c2 +c3}{2} \text{ (mod n)}$$
 
 Now we have a multiple of p and and get p with gcd.
