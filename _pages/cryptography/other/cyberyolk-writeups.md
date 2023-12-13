@@ -294,7 +294,7 @@ $$c2 + c3 \equiv p^e + q^e + p^e - q^e \text{ (mod n)}$$
 
 $$p^e \equiv \frac{c2 +c3}{2} \text{ (mod n)}$$
 
-Now we have a multiple of p and and get p with gcd.
+Now we have a multiple of p and can get p with gcd.
 
 ```python
 from Crypto.Util.number import long_to_bytes
