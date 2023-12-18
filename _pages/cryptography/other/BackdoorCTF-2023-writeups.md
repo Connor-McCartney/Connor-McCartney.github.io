@@ -170,6 +170,8 @@ print(long_to_bytes(crt([p1%p,p2%q],[p,q])))
 # flag{pHUCk_150M0rPh15m_1n70_p2}
 ```
 
+<br>
+
 # Safe Curvy Curve
 
 ```python
@@ -211,13 +213,55 @@ print(long_to_bytes(crt([p1%p,p2%q],[p,q])))
 # flag{p+1_factor_AND_150M0rPh15m_1n70_p2}
 ```
 
+<br>
+
 # ColL3g10n
 
+```python
+from Crypto.Util.number import long_to_bytes
+from pwn import remote
+
+msk1 = "00000000000000000000000000000000000000000000000000000111011111110111111101111111"
+msk2 = "00000000000000000000000000111111011111110111111101111000000000000000000000000000"
+msk3 = "01111111011111110111111101000000000000000000000000000000000000000000000000000000"
+
+a1 = "4dc968ff0ee35c209572d4777b721587d36fa7b21bdc56b74a3dc0783e7b9518afbfa200a8284bf36e8e4b55b35f427593d849676da0d1555d8360fb5f07fea21248b3"
+a2 = "4dc968ff0ee35c209572d4777b721587d36fa7b21bdc56b74a3dc0783e7b9518afbfa202a8284bf36e8e4b55b35f427593d849676da0d1d55d8360fb5f07fea21248b3"
+b1 = "0e306561559aa787d00bc6f70bbdfe3404cf03659e704f8534c00ffb659c4c8740cc942feb2da115a3f4155cbb8607497386656d7d1f34a42059d78f5a8dd1ef09fea1"
+b2 = "0e306561559aa787d00bc6f70bbdfe3404cf03659e744f8534c00ffb659c4c8740cc942feb2da115a3f415dcbb8607497386656d7d1f34a42059d78f5a8dd1ef09fea1"
+c1 = "a5e9e01ddad7d0b9411e2b5d70aeb9b84634835ac1d1ed916206803dee282b56c1e9b30cd024e0b6ef3fc8b208ecd528f44151d37d203d98856961a67788504ff667212bc4c5395b3cfff3491a3d116e25f3c6a75d30f9eb062dfb864cdbecce15a7fbee2f8d5008fa68019a8a44ca7edd30181573c3d3b0db609180272a2f6d193349"
+c2 = "a5e9e01ddad7d0b9411e2b5d70aeb9b8463483dac1d1ed916206803dee282b56c1e9b30cd024e0b6ef3fc8b2086cd628f44151d37d203d98856961267788504ff667212bc4c5395b3cfff3491a3d116e25f3c6275d30f9eb062dfb864cdbecce15a7fbee2f8d5008fa68019a8ac4c97edd30181573c3d3b0db609100272a2f6d193349"
+
+
+io = remote("34.70.212.151", 8000)
+def query(m1, m2, msk):
+    io.read()
+    io.sendline(m1.encode())
+    io.read()
+    io.sendline(m2.encode())
+    io.read()
+    io.sendline(str(int(msk, 2)).encode())
+    return int(io.readline().decode().split()[-1])
+
+r1 = query(a1, a2, msk1)
+r2 = query(b1, b2, msk2)
+r3 = query(c1, c2, msk3)
+secret = long_to_bytes(r1|r2|r3)
+
+io.read()
+io.sendline(secret)
+print(io.read().decode())
+
+# flag{S0m3_b1ts_y0u_kn0w_S0m3_b1ts_y0u_d0nt}
+```
+<br>
 
 # Rebellious
 
+<br>
 
 # Secure_Matrix_Transmissions
 
+<br>
 
 # Secure_Matrix_Transmissions_v2
