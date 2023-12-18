@@ -58,6 +58,8 @@ print(long_to_bytes(pow(c, d, n)))
 
 # PRSA
 
+<https://www.whdl.org/sites/default/files/resource/academic/Freed-RSA%2520Encryption%2520Using%2520Polynomial%2520Rings-HP.pdf>
+
 ```python
 from Crypto.Util.number import long_to_bytes
 
