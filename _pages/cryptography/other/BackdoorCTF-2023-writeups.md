@@ -219,6 +219,9 @@ print(long_to_bytes(crt([p1%p,p2%q],[p,q])))
 
 # ColL3g10n
 
+You can append bytes to the end of a md5 collision and it is still a collision! <br>
+We can use this to brute some with the matching sha256 prefixes too.
+
 ```python
 from Crypto.Util.number import long_to_bytes
 from hashlib import sha256
