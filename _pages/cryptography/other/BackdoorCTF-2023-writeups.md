@@ -58,6 +58,25 @@ print(long_to_bytes(cbrt(c)))
 
 # mini_RSA_v2
 
+Looking at the challenge code:
+
+```python
+def check(p, q, n):
+    a_ = random.randint(1, 100)
+    b_ = random.randint(1, 100)
+    s = fast_exp(p, fast_exp(q, a_, (p - 1) * (q - 1)), n)
+    t = fast_exp(q, fast_exp(p, b_, (p - 1) * (q - 1)), n)
+    result = s + t
+    print(result)
+```
+
+$$s = p^{q^{a} \ \text{ (mod} \phi (n) \text{)}} \ \text{ (mod n)}$$
+
+$$t = q^{} \ \text{ (mod n)}$$
+
+<br>
+<br>
+
 ```python
 from Crypto.Util.number import long_to_bytes
 
