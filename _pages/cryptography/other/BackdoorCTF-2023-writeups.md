@@ -138,7 +138,7 @@ assert pow(p, q**a, q) == p % q
 
 Therefore the hint given, s+t, is p+q, which we can use to find phi:
 
-`phi = (p-1) * (q-1) = p*q - p - q + 1 = n - (p+q) + `
+`phi = (p-1) * (q-1) = p*q - p - q + 1 = n - (p+q) + 1`
 
 <br>
 
