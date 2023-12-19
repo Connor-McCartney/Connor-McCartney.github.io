@@ -30,6 +30,8 @@ print(long_to_bytes(cbrt(crt(ns, cs)[0])))
 
 # mini_RSA
 
+m^3 < n so we can take normal cube root of c.
+
 ```python
 from Crypto.Util.number import long_to_bytes
 from sympy import cbrt
