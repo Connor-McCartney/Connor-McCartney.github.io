@@ -70,9 +70,9 @@ def check(p, q, n):
     print(result)
 ```
 
-$$s = p^{q^{a} \ \text{ (mod} \phi (n) \text{)}} \ \text{ (mod n)}$$
+$$s = p^{q^{a} \ \text{ (mod }\ \phi (n) \text{)}} \ \text{ (mod n)}$$
 
-$$t = q^{} \ \text{ (mod n)}$$
+$$t = q^{p^{b} \ \text{ (mod }\ \phi (n) \text{)}} \ \text{ (mod n)}$$
 
 <br>
 <br>
