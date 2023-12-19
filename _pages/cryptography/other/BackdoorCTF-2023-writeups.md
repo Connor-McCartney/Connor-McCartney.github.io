@@ -75,6 +75,71 @@ $$s = p^{q^{a} \ \text{ (mod }\ \phi (n) \text{)}} \ \text{ (mod n)}$$
 $$t = q^{p^{b} \ \text{ (mod }\ \phi (n) \text{)}} \ \text{ (mod n)}$$
 
 <br>
+
+Now we can actually prove that s=p and similarly t=q:
+
+```python
+from Crypto.Util.number import getPrime
+from random import randint
+
+p = getPrime(256)
+q = getPrime(256)
+n = p*q
+phi = (p-1)*(q-1)
+a = randint(1, 100)
+
+# proving this:
+assert p == pow(p, pow(q, a, phi), n) 
+
+# rewrite q^a mod phi as q^a + k*(q-1) for some k
+k = (pow(q, a, phi) - q**a) // (q-1)
+assert p == pow(p, q**a + k*(q-1), n) 
+
+# expand exponents
+assert p == (pow(p, q**a, n) * pow(p, k*(q-1), q)) % n
+
+# p^(k * (q-1)) = (p^k)^(q-1)
+assert pow(p, k*(q-1), q) == pow(pow(p, k, q), q-1, q)
+
+# fermat's little theorem x^(q-1) ≡ 1 (mod q)
+assert pow(pow(p, k, q), q-1, q) == 1
+
+assert p == pow(p, q**a, n)
+
+# to show this is true mod n we can show it's true mod p and mod q
+assert p % p == pow(p, q**a, p)
+assert p % q == pow(p, q**a, q)
+
+# case mod p:
+assert p % p == 0
+assert pow(p, q**a, p) == 0 # p to any power will be divisible by p
+
+# case mod q:
+"""
+for this we use an extension of fermat's little theorem
+which can be proved by induction
+x^(q^a) ≡ x (mod q)
+
+base case a=1:
+x^(q^1) ≡ x^q ≡ x (mod q)
+
+inductive case a=k+1:
+x^(q^(k+1)) ≡ x^(q^k * q) ≡ (x^(q^k))^q ≡ x^(q^k) (mod q)
+
+subbing in our inductive assumption x ≡ x^(q^k):
+(x^(q^k))^q ≡ x^q ≡ x (mod q)
+
+so by induction x^(q^a) ≡ x (mod q) for all x
+"""
+assert pow(p, q**a, q) == p % q 
+```
+
+<br>
+
+Therefore the hint given, s+t, is p+q, which we can use to find phi:
+
+`phi = (p-1) * (q-1) = p*q - p - q + 1 = n - (p+q) + `
+
 <br>
 
 ```python
