@@ -13,6 +13,8 @@ title: BackdoorCTF 2023 writeups
 
 # Something_in_Common
 
+Flag can be solved directly with the chinese remainder theorem. 
+
 ```python
 from Crypto.Util.number import long_to_bytes
 from sympy.ntheory.modular import crt
