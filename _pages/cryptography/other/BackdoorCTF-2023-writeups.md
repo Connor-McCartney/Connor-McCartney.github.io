@@ -15,9 +15,9 @@ title: BackdoorCTF 2023 writeups
 
 m^e can be solved with the chinese remainder theorem. 
 
-$$m^e \equiv c_1 \ \text{(mod } n_1 \text{)}}$$
+$$m^e \equiv c_1 \ \text{(mod } n_1 \text{)}$$
 
-$$m^e \equiv c_2 \ \text{(mod } n_2 \text{)}}$$
+$$m^e \equiv c_2 \ \text{(mod } n_2 \text{)}$$
 
 ...
 
