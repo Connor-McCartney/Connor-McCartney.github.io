@@ -23,7 +23,7 @@ $$m^e \equiv c_3 \ \text{(mod } n_3 \text{)}$$
 
 $$\text{...}$$
 
-
+Then take the eth root to get m.
 
 <br>
 <br>
