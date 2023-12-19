@@ -22,6 +22,7 @@ fast discrete log - <https://gitlab.inria.fr/zimmerma/ecm>
 
 ## CTF
 
+Writeups <https://ctfwriteups.org> <br>
 Wayback Machine <http://archive.org> <br>
 CyberChef <https://gchq.github.io/CyberChef> <br>
 Cipher Identifier <https://www.dcode.fr/cipher-identifier> <br>
