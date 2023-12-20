@@ -212,21 +212,16 @@ s = 7929089016814
 brute = 1 # lmao
 subset = solve_subset(arr_, s, brute)
 
-secret = ""
-for i in arr_:
-    if i in subset:
-        secret += "1"
-    else:
-        secret += "0"
-secret = secret[::-1]
-secret = long_to_bytes(int(secret, 2))
-
+secret = 0
+for i, x in enumerate(arr_):
+    if x in subset:
+        secret += 2**i
+secret = long_to_bytes(secret)
 
 ct = bytes.fromhex('af95a58f4fbab33cd98f2bfcdcd19a101c04232ac6e8f7e9b705b942be9707b66ac0e62ed38f14046d1cd86b133ebda9')
 key = hashlib.sha256(secret).digest()[:16]
 cipher = AES.new(key, AES.MODE_ECB)
 print(cipher.decrypt(ct))
-# flag{N0t_r34dy_f0r_M3rkl3-H3llman}
 ```
 
 <br>
