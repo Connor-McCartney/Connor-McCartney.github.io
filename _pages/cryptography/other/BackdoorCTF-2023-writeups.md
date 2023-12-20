@@ -323,7 +323,7 @@ from random import randint
 def previous_basis(length):
     arr = [ randint(1,1000000000000) for _ in range(length) ]
     s = sum([i for i in arr if randint(0, 1) == 0])
-    M = identity_matrix(QQ, len(arr))
+    M = identity_matrix(len(arr))
     M = M.augment(vector(arr))
     M = M.stack(vector([0 for _ in range(len(arr))] + [-s]))
 
