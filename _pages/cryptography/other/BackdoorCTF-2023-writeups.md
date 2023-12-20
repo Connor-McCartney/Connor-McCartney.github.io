@@ -222,10 +222,158 @@ ct = bytes.fromhex('af95a58f4fbab33cd98f2bfcdcd19a101c04232ac6e8f7e9b705b942be97
 key = hashlib.sha256(secret).digest()[:16]
 cipher = AES.new(key, AES.MODE_ECB)
 print(cipher.decrypt(ct))
+# flag{N0t_r34dy_f0r_M3rkl3-H3llman}
 ```
 
 <br>
 
+
+Solving subset sum problem with LLL:
+
+<br>
+
+First write out the equation as:
+
+<br>
+
+`sum = arr_0 * b_0 + arr_1 * b_1 + arr_2 * b_2 + ... + arr_i * b_i`
+
+<br>
+
+where all b_i are either 0 or 1. 
+
+<br>
+
+Now we can write with vectors (I'll just do an example with array of length 4):
+
+<br>
+
+$$b_0 \begin{bmatrix} arr_0 \\ 0 \\ 0 \\ 0 \\ 1\end{bmatrix} + b_1 \begin{bmatrix} arr_1 \\ 0 \\ 0 \\ 1 \\ 0\end{bmatrix} + b_2 \begin{bmatrix} arr_2 \\ 0 \\ 1 \\ 0 \\ 0\end{bmatrix} + b_3 \begin{bmatrix} arr_3 \\ 1 \\ 0 \\ 0 \\ 0\end{bmatrix} + 1 \begin{bmatrix} -s \\ 0 \\ 0 \\ 0 \\ 0\end{bmatrix}   = \begin{bmatrix} 0 \\ b_3 \\ b_2 \\ b_1 \\ b_0\end{bmatrix}$$
+
+<br>
+
+The vectors on the LHS form our lattice basis:
+
+<br>
+
+```
+[1, 0, 0, 0, arr_0]
+[0, 1, 0, 0, arr_1]
+[0, 0, 1, 0, arr_2]
+[0, 0, 0, 1, arr_3]
+[0, 0, 0, 0, -s   ]
+```
+
+<br>
+Then we we reduce it with LLL we (hopefully) get 
+<br>
+one of the rows as the RHS vector (b0, b1, b2, b3, 0):
+
+<br>
+
+```python
+from random import randint
+
+arr = [ randint(1,1000000000000) for _ in range(4) ]
+s = sum([i for i in arr if randint(0, 1) == 0])
+
+M = Matrix([
+    [1, 0, 0, 0, arr[0]],
+    [0, 1, 0, 0, arr[1]],
+    [0, 0, 1, 0, arr[2]],
+    [0, 0, 0, 1, arr[3]],
+    [0, 0, 0, 0, -s    ],
+    ])
+
+for row in M.LLL():
+    if row[-1] == 0:
+        print(row)
+        subset = [arr[i] for i, x in enumerate(row[:-1]) if x==1]
+        print(sum(subset) == s)
+```
+
+<br>
+
+Now, an improvement we can make to our basis is to include our guesses for what all b_i are.
+<br>
+Since they're either 0 or 1 we'll take the average, 1/2. Our vector equation looks like this:
+<br>
+
+$$b_0 \begin{bmatrix} arr_0 \\ 0 \\ 0 \\ 0 \\ 1\end{bmatrix} + b_1 \begin{bmatrix} arr_1 \\ 0 \\ 0 \\ 1 \\ 0\end{bmatrix} + b_2 \begin{bmatrix} arr_2 \\ 0 \\ 1 \\ 0 \\ 0\end{bmatrix} + b_3 \begin{bmatrix} arr_3 \\ 1 \\ 0 \\ 0 \\ 0\end{bmatrix} + 1 \begin{bmatrix} -s \\ -1/2 \\ -1/2 \\ -1/2 \\ -1/2\end{bmatrix}   = \begin{bmatrix} 0 \\ b_3-1/2 \\ b_2-1/2 \\ b_1-1/2 \\ b_0-1/2\end{bmatrix}$$
+
+<br>
+This time our target vector has b_i - 1/2 so we have to add 1/2 to get b_i.
+<br>
+
+```
+[1   , 0   , 0   , 0   , arr_0]
+[0   , 1   , 0   , 0   , arr_1]
+[0   , 0   , 1   , 0   , arr_2]
+[0   , 0   , 0   , 1   , arr_3]
+[-1/2, -1/2, -1/2, -1/2,   -s]
+```
+
+<br>
+Let's run a test to see how much better the improved basis is versus the previous basis:
+<br>
+
+```python
+from random import randint
+
+def previous_basis(length):
+    arr = [ randint(1,1000000000000) for _ in range(length) ]
+    s = sum([i for i in arr if randint(0, 1) == 0])
+    M = identity_matrix(QQ, len(arr))
+    M = M.augment(vector(arr))
+    M = M.stack(vector([0 for _ in range(len(arr))] + [-s]))
+
+    for row in M.LLL():
+        for row in (row, -row):
+            if row[-1] == 0:
+                subset = [arr[i] for i, x in enumerate(row[:-1]) if x==1]
+                if sum(subset) == s:
+                    return True
+    return False
+
+
+def improved_basis(length):
+    arr = [ randint(1,1000000000000) for _ in range(length) ]
+    s = sum([i for i in arr if randint(0, 1) == 0])
+    M = identity_matrix(QQ, len(arr))
+    M = M.augment(vector(arr))
+    M = M.stack(vector([-1/2 for _ in range(len(arr))] + [-s]))
+
+    for row in M.LLL():
+        for row in (row, -row):
+            if row[-1] == 0:
+                subset = [arr[i] for i, x in enumerate(row[:-1]) if x+1/2==1]
+                if sum(subset) == s:
+                    return True
+    return False
+
+
+def test(f, length):
+    n = 100
+    count = 0
+    for _ in range(n):
+        if f(length):
+            count += 1
+    return f'{float(count/n):.2%}'
+
+
+for length in range(10, 40):
+    print(f"{length = }:")
+    print("prev", test(previous_basis, length))
+    print("impr", test(improved_basis, length))
+    print()
+```
+
+<br>
+By length 30 the previous one has fallen to ~25% success whilst the improved is still at ~95%!
+<br>
+Not bad :)
+
+<br>
 
 # Curvy_Curves
 
