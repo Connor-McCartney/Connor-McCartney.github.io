@@ -265,7 +265,7 @@ The vectors on the LHS form our lattice basis:
 ```
 
 <br>
-Then we we reduce it with LLL we (hopefully) get 
+Then when we reduce it with LLL we (hopefully) get 
 <br>
 one of the rows as the RHS vector (b0, b1, b2, b3, 0):
 
