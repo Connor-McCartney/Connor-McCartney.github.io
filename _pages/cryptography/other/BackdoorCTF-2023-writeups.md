@@ -95,28 +95,19 @@ assert p == pow(p, pow(q, a, phi), n)
 k = (pow(q, a, phi) - q**a) // (q-1)
 assert p == pow(p, q**a + k*(q-1), n) 
 
-# expand exponents
-assert p == (pow(p, q**a, n) * pow(p, k*(q-1), q)) % n
-
-# p^(k * (q-1)) = (p^k)^(q-1)
-assert pow(p, k*(q-1), q) == pow(pow(p, k, q), q-1, q)
-
-# fermat's little theorem x^(q-1) ≡ 1 (mod q)
-assert pow(pow(p, k, q), q-1, q) == 1
-
-assert p == pow(p, q**a, n)
-
 # to show this is true mod n we can show it's true mod p and mod q
-assert p % p == pow(p, q**a, p)
-assert p % q == pow(p, q**a, q)
+assert p % p == pow(p, q**a + k*(q-1), p) 
+assert p % q == pow(p, q**a + k*(q-1), q) 
 
-# case mod p:
-assert p % p == 0
-assert pow(p, q**a, p) == 0 # p to any power will be divisible by p
+# case mod p: 
+# trivial, 0 = p^x mod p
 
 # case mod q:
+assert p % q == (pow(p, q**a, q) * pow(p, k*(q-1), q)) % q          # expand exponents
+assert p % q == (pow(p, q**a, q) * pow(pow(p, k, q), q-1, q)) % q   # p^(k*(q-1)) = (p^k)^(q-1)
+assert p % q == pow(p, q**a, q) % q                                 # fermat's little theorem x^(q-1) ≡ 1 (mod q)
 """
-for this we use an extension of fermat's little theorem
+Now we use an extension of fermat's little theorem
 which can be proved by induction
 x^(q^a) ≡ x (mod q)
 
@@ -131,7 +122,6 @@ subbing in our inductive assumption x ≡ x^(q^k):
 
 so by induction x^(q^a) ≡ x (mod q) for all x
 """
-assert pow(p, q**a, q) == p % q 
 ```
 
 <br>
