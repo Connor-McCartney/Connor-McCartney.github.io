@@ -147,36 +147,43 @@ def generate_with_order(m, D=None, c=None):
     :return: a generator generating random elliptic curves
     """
 
-    def get_q(m, D):
-        # TODO: use qfbcornacchia when PARI 2.14.0 is released.
-        for t in set(map(lambda sol: int(sol[0]), pari.qfbsolve(pari.Qfb(1, 0, -D), 4 * m, 1))):
+    def get_q(m, D, factors):
+        for t in set(map(lambda sol: int(sol[0]), pari.qfbsolve(pari.Qfb(1, 0, -D), [4 * m, factors], 1))): 
             if is_prime(m + 1 - t):
                 return m + 1 - t
             if is_prime(m + 1 + t):
                 return m + 1 + t
+
     q = None
+    print('factoring...')
+    factors = factor(4*m)
+    print(factors)
     if D is None:
         for D in range(7, 4 * m):
             if not (D % 4 == 0 or D % 4 == 3):
                 continue
 
-            q = get_q(m, -D)
+            q = get_q(m, -D, factors)
             if q is not None:
                 break
 
         assert q is not None, "Unable to find appropriate D value for m."
         D = int(-D)
     else:
-        q = get_q(m, D)
+        q = get_q(m, D, factors)
         assert q is not None, "Invalid values for m and D."
 
     yield from generate_with_trace_q(q + 1 - m, q, D, c)
 
 
-p = getPrime(128)
-print(f"{p = }")
-
-for i in generate_with_order(p):
-    print(i)
+order = randint(0, 2**200)
+for E in generate_with_order(order):
+    print(E)
+    a = E.a4()
+    b = E.a6()
+    p = int(str(E.base()).split()[-1])
+    print(f"{a = }")
+    print(f"{b = }")
+    print(f"{p = }")
     break
 ```
