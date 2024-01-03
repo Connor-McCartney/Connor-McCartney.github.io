@@ -60,6 +60,8 @@ Again, [yeet into wolfram alpha](https://www.wolframalpha.com/input?i=%28%28tan%
 
 $$s = -\tan(9m)$$
 
+If anyone has any proofs for those two identities you can msg me and I'll add them here.
+
 <br>
 
 Rearranging:
@@ -72,6 +74,101 @@ $$0 = \arctan(s) + k\pi + 9m$$
 
 <br>
 
-Turning into vector equations for LLL:
+Turning into vector equations for LLL should spit out m directly:
 
 $$1 \begin{bmatrix} \arctan(s) \\ 1 \\ 0\end{bmatrix} + k \begin{bmatrix} \pi \\ 0 \\ 0\end{bmatrix} + m \begin{bmatrix} 9 \\ 0 \\ 1 \end{bmatrix}   = \begin{bmatrix} 0 \\ 1 \\ m \end{bmatrix}$$
+
+<br>
+```python
+from Crypto.Util.number import *
+
+precision = 1363
+s = 4.4061969948574999706381252707706339596595993989993753525157058049520620878450909599070901658740035834714697099225869545917495720287359577329698453888804452908560270310064490162218842432355207070730163222140239639986509963808182579875037244043013930898502696038143722917574699793054569551851806943599434585896730793457949140792425837528999663586881638690611528789842156130245622849852139290458664441887058153106
+at = arctan(s)
+pi = pi.n(precision)
+
+L = matrix(QQ, [
+    [9,  0, 1], 
+    [pi, 0, 0], 
+    [at, 1, 0]
+])
+W = diagonal_matrix([2**precision, 2**679, 1])
+L = (L*W).LLL() / W
+
+for row in L:
+    try:
+        _, _, m = row
+        print(long_to_bytes(int(m)).decode())
+    except:
+        continue
+
+# ASIS{tr190n0M3tr1c_fuNct10ns_pr0dUc3_r3suLts_1Z_h4rd_t0_r3v3rsE_1nt0_1ts_Or1g!n4l!!?}
+```
+
+---
+
+Alternative coppersmith solve:
+
+```python
+from Crypto.Util.number import *
+import itertools
+
+def defund_multivariate(f, bounds, m=1, d=None):
+    if not d:
+        d = f.degree()
+    R = f.base_ring()
+    N = R.cardinality()
+    #f /= f.coefficients().pop(0)
+    f = f.change_ring(ZZ)
+    G = Sequence([], f.parent())
+    for i in range(m+1):
+        base = N^(m-i) * f^i
+        for shifts in itertools.product(range(d), repeat=f.nvariables()):
+            g = base * prod(map(power, f.variables(), shifts))
+            G.append(g)
+    B, monomials = G.coefficient_matrix()
+    monomials = vector(monomials)
+    factors = [monomial(*bounds) for monomial in monomials]
+    for i, factor in enumerate(factors):
+        B.rescale_col(i, factor)
+    B = B.dense_matrix().LLL()
+    B = B.change_ring(QQ)
+    for i, factor in enumerate(factors):
+        B.rescale_col(i, 1/factor)
+    H = Sequence([], f.parent().change_ring(QQ))
+    for h in filter(None, B*monomials):
+        H.append(h)
+        I = H.ideal()
+        if I.dimension() == -1:
+            H.pop()
+        elif I.dimension() == 0:
+            roots = []
+            for root in I.variety(ring=ZZ):
+                root = tuple(R(root[var]) for var in f.variables())
+                roots.append(root)
+            return roots
+    return []
+
+precision = 1363
+s = 4.4061969948574999706381252707706339596595993989993753525157058049520620878450909599070901658740035834714697099225869545917495720287359577329698453888804452908560270310064490162218842432355207070730163222140239639986509963808182579875037244043013930898502696038143722917574699793054569551851806943599434585896730793457949140792425837528999663586881638690611528789842156130245622849852139290458664441887058153106
+at = arctan(s)
+pi = pi.n(precision)
+
+R = RealField(precision)
+PR.<x> = PolynomialRing(R)
+f =  (x^3 - 3*x) - s*(1-3*x^2)
+for t, _ in f.roots():
+    at = arctan(t)
+    M = 2**precision
+    PR.<x, k> = PolynomialRing(Zmod(2**precision))
+    f =  int(at*M) + k * int(pi*M) + x
+    roots = defund_multivariate(f, bounds=(2**679, 2**679), m=1, d=2)
+    if roots == []:
+        continue
+    k = R(roots[0][1])
+    x = int(k*pi + at)
+    m = x // 3 + 1
+    flag = long_to_bytes(m)
+    if b"ASIS" in flag:
+        print(flag)
+```
