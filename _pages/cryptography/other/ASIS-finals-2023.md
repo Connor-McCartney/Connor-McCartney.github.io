@@ -62,6 +62,8 @@ $$s = -\tan(9m)$$
 
 If anyone has any proofs for those two identities you can msg me and I'll add them here.
 
+ETA: found this <https://www.trans4mind.com/personal_development/mathematics/trigonometry/multipleAnglesRecursiveFormula.htm>
+
 <br>
 
 Rearranging:
