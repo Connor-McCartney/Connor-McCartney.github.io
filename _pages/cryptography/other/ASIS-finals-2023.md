@@ -79,6 +79,7 @@ Turning into vector equations for LLL should spit out m directly:
 $$1 \begin{bmatrix} \arctan(s) \\ 1 \\ 0\end{bmatrix} + k \begin{bmatrix} \pi \\ 0 \\ 0\end{bmatrix} + m \begin{bmatrix} 9 \\ 0 \\ 1 \end{bmatrix}   = \begin{bmatrix} 0 \\ 1 \\ m \end{bmatrix}$$
 
 <br>
+
 ```python
 from Crypto.Util.number import *
 
@@ -106,6 +107,8 @@ for row in L:
 ```
 
 ---
+
+<br>
 
 Alternative coppersmith solve:
 
