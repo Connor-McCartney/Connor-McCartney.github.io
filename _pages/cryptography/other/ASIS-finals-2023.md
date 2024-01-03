@@ -60,9 +60,28 @@ Again, [yeet into wolfram alpha](https://www.wolframalpha.com/input?i=%28%28tan%
 
 $$s = -\tan(9m)$$
 
+<br>
+
+---
+
 If anyone has any proofs for those two identities you can msg me and I'll add them here.
 
 ETA: found this <https://www.trans4mind.com/personal_development/mathematics/trigonometry/multipleAnglesRecursiveFormula.htm>
+
+$$t = \frac{1 - \cos(6m) + y \cdot\sin(6m)}{\sin(6m) + y \cdot (\cos(6m) + 1)}$$
+
+$$= \frac{1-(1-2\sin^2(3m))+y\sin(6m)}{2\sin(3m)\cos(3m)+y(\cos(6m)+1)}$$
+
+$$= \frac{2\sin^2(3m)+y(2sin(3m)cos(3m))}{2\sin(3m)\cos(3m)+y(2\cos^2(3m))}$$
+
+$$= \frac{2\sin(3m)(\sin(3m)+y\cos(3m))}{2\cos(3m)(\sin(3m)+y\cos(3m))}$$
+
+$$= \frac{\sin(3m)}{\cos(3m)}$$
+
+$$= \tan{3m}$$
+
+---
+
 
 <br>
 
