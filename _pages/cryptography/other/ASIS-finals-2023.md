@@ -68,6 +68,8 @@ If anyone has any proofs for those two identities you can msg me and I'll add th
 
 ETA: found this <https://www.trans4mind.com/personal_development/mathematics/trigonometry/multipleAnglesRecursiveFormula.htm>
 
+<br> And this <https://math.stackexchange.com/questions/1430837/how-to-express-tan-kx-as-a-function-of-tan-x>
+
 $$t = \frac{1 - \cos(6m) + y \cdot\sin(6m)}{\sin(6m) + y \cdot (\cos(6m) + 1)}$$
 
 $$= \frac{1-(1-2\sin^2(3m))+y\sin(6m)}{2\sin(3m)\cos(3m)+y(\cos(6m)+1)}$$
