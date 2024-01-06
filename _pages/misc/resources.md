@@ -63,7 +63,7 @@ Private Duck Address <https://duckduckgo.com/email> <br>
 Text to Speech <https://ttsmp3.com/> <br>
 Mint dual boot <https://www.youtube.com/watch?v=lOg_u5R0si4> <br>
 Older Windows ISOs <https://github.com/AveYo/MediaCreationTool.bat> <br>
-LLL talk <https://www.youtube.com/playlist?list=PL8Vt-7cSFnw2OmpCmPLLwSx0-Yqb2ptqO>
+LLL talk <https://www.youtube.com/playlist?list=PL8Vt-7cSFnw2OmpCmPLLwSx0-Yqb2ptqO> <br>
 Multithreading vs Multiprocessing <https://builtin.com/data-science/multithreading-multiprocessing> <br>
 
 ## Blogs
