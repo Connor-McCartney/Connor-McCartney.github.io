@@ -28,3 +28,7 @@ __vulnerability: small nonces (relative to curve order)__
 
 <span style="font-size:2em;">   [Blocky Noncense - CSAW 2023](/cryptography/ecc/Blocky-Noncense-CSAW-2023)       </span> <br>
 __vulnerability: nonces determined by polynomial congruential generator__
+
+
+<span style="font-size:2em;">   [manykey - IrisCTF 2024](/cryptography/ecc/manykey-IrisCTF-2024)       </span> <br>
+__vulnerability: __
