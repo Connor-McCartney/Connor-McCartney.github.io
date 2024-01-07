@@ -48,3 +48,6 @@ title: Other
 
 
 <span style="font-size:2em;">   [ASIS finals 2023](/cryptography/other/ASIS-finals-2023) </span> <br>
+
+
+<span style="font-size:2em;">   [Accessible Sesamum Indicum - IrisCTF 2024](/cryptography/other/Accessible-Sesamum-Indicum-IrisCTF-2024) </span> <br>
