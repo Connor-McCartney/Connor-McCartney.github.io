@@ -82,3 +82,22 @@ if __name__ == "__main__":
 Solve:
 
 <br>
+
+We want to find a sequence that contains as many pins as possible, check out the [De Bruijn sequence](https://en.wikipedia.org/wiki/De_Bruijn_sequence)
+
+```python
+from sage.combinat.debruijn_sequence import debruijn_sequence
+from pwn import remote
+
+io = remote("accessible-sesasum-indicum.chal.irisc.tf", "10104")
+seq = "".join([f"{i:x}" for i in debruijn_sequence(16, 4)])
+
+for _ in range(16):
+    io.sendline(seq.encode())
+    io.read()
+
+print(io.read().decode())
+print(io.read().decode())
+
+# irisctf{de_bru1jn_s3quenc3s_c4n_mass1vely_sp33d_up_bru7e_t1me_f0r_p1ns}
+```
