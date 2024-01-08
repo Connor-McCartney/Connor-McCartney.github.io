@@ -31,4 +31,4 @@ __vulnerability: nonces determined by polynomial congruential generator__
 
 
 <span style="font-size:2em;">   [manykey - IrisCTF 2024](/cryptography/ecc/manykey-IrisCTF-2024)       </span> <br>
-__vulnerability: __
+__vulnerability: chosen generator and privkey__
