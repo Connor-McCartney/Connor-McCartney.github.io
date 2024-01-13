@@ -45,3 +45,7 @@ Now let's let:
 
 $$x_1 = a_1 \ p, \ \ \ \ x_2 = a_2 \ p, \ \ \ \ x_3 = a_3 \ p$$
 
+We can get 3 new equations:
+
+
+$$(h_2 \ x_1 - h_1 \ x_2) = 0 \text{ (mod n)}$$
