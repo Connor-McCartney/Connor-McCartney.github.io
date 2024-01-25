@@ -72,3 +72,7 @@ __vulnerability: MSB (p+q) known__
 
 <span style="font-size:2em;">   [easy-rsa - pingCTF 2023](/cryptography/rsa/easy-rsa-pingCTF-2023)       </span> <br>
 __vulnerability: bit-by-bit bruteforce__
+
+
+<span style="font-size:2em;">   [pprintable - Fall GoN Open Qual CTF 2022](/cryptography/rsa/pprintable-Fall-GoN-Open-Qual-CTF-2022)       </span> <br>
+__vulnerability: byte-by-byte bruteforce__
