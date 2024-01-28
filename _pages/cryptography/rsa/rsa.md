@@ -76,3 +76,8 @@ __vulnerability: bit-by-bit bruteforce__
 
 <span style="font-size:2em;">   [pprintable - Fall GoN Open Qual CTF 2022](/cryptography/rsa/pprintable-Fall-GoN-Open-Qual-CTF-2022)       </span> <br>
 __vulnerability: byte-by-byte bruteforce__
+
+
+<span style="font-size:2em;">   [Various Scattered Bits Challs](/cryptography/rsa/scattered-known-bits)       </span> <br>
+__vulnerability: random known bits__
+
