@@ -44,7 +44,7 @@ print(flag)
 
 <br>
 
-# 
+# RSA_over_and_over
 
 <br>
 
@@ -53,7 +53,7 @@ print(flag)
 
 <br>
 
-# 
+# RSA_ish
 
 <br>
 
@@ -62,30 +62,10 @@ print(flag)
 
 <br>
 
-# 
+# RSA_Xor
 
 <br>
 
 ```python
 ```
-
-<br>
-
-# 
-
-<br>
-
-```python
-```
-
-<br>
-
-# 
-
-<br>
-
-```python
-```
-
-<br>
 
