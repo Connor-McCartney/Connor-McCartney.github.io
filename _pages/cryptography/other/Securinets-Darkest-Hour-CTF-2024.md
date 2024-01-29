@@ -91,7 +91,12 @@ print(long_to_bytes((pow(c, pow(65537, -1, (p-1)*(q-1)), n))))
 # Securinets{a1e24760cfb3da9e701bd5229293e7e7}
 ```
 
+Alternative:
+
+`p = gcd(n, hint>>1024)`
+
 <br>
+
 
 # RSA_Xor
 
