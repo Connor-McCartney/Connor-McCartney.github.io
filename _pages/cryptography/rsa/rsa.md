@@ -50,6 +50,10 @@ __vulnerability: e=1__
 __vulnerability: low Hamming weight__
 
 
+<span style="font-size:2em;">   [LUDICOLO - squeamishossifrage](/cryptography/rsa/LUDICOLO-squeamishossifrage)       </span> <br>
+__vulnerability: ROCA attack__
+
+
 <span style="font-size:2em;">   [Can't Login - Incognito CTF 2022](/cryptography/rsa/can't-login-ICTF-2022)       </span> <br>
 __vulnerability: common ssh-key password__
 
