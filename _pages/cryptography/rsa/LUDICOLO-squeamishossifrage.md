@@ -19,4 +19,4 @@ We then have a folder of 1000 certificates which contains 1000 RSA modulii.
 
 Each modulus is of the form:
 
-$$n = (k_1 \cdot M + (g^{a_1} \text{ (mod } M \text{)}) (k_2 \cdot M + (g^{a_2} \text{ (mod } M \text{)})$$
+$$n = (k_1 \cdot M + (g^{a_1} \text{ (mod } M \text{)})) (k_2 \cdot M + (g^{a_2} \text{ (mod } M \text{)}))$$
