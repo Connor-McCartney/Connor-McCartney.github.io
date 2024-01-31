@@ -17,6 +17,7 @@ The description says "We have a bunch of certificates and a flag that is encrypt
 
 We then have a folder of 1000 certificates which contains 1000 RSA modulii. 
 
-Each modulus is of the form:
+Each modulus is of the form (for unknown g, M and random k's, a's):
 
 $$n = (k_1 \cdot M + (g^{a_1} \text{ (mod } M \text{)})) \cdot (k_2 \cdot M + (g^{a_2} \text{ (mod } M \text{)}))$$
+
