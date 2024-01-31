@@ -23,4 +23,8 @@ $$n = (k_1 \cdot M + (g^{a_1} \text{ (mod } M \text{)})) \cdot (k_2 \cdot M + (g
 
 # Reading the certs
 
-`git clone https://github.com/zerosumsecurity/squeamishossifrage && mv ./squeamishossifrage/LUDICOLO ./LUDICOLO`
+`git clone https://github.com/zerosumsecurity/squeamishossifrage && mv ./squeamishossifrage/LUDICOLO ./LUDICOLO && cd LUDICOLO`
+
+There's 2 non-unicode filenames, we'll just rename them:
+
+`cd certificates && mv 'NO'$'\353''LLE.crt' 'NOELLE.crt' && mv 'DANI'$'\353''LLE.crt' 'DANIELLE.crt'`
