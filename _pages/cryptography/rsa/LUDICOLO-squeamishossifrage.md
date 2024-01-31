@@ -21,3 +21,6 @@ Each modulus is of the form (for unknown g, M and random k's, a's):
 
 $$n = (k_1 \cdot M + (g^{a_1} \text{ (mod } M \text{)})) \cdot (k_2 \cdot M + (g^{a_2} \text{ (mod } M \text{)}))$$
 
+# Reading the certs
+
+`git clone https://github.com/zerosumsecurity/squeamishossifrage && mv ./squeamishossifrage/LUDICOLO ./LUDICOLO`
