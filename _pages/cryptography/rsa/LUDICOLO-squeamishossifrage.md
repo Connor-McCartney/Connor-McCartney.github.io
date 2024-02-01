@@ -44,4 +44,8 @@ You can observe that e = `215584882345398898379387706359713309034898391467668952
 
 for every cert, but e won't be used to factor any of the moduli.
 
-# Dealing with unknown m
+# Handling unknown g and M
+
+The code used to create the vulnerable primes is not given to us so it's basically impossible to bruteforce what the real value of g is. 
+
+So, we'll have to create our own new valid g.
