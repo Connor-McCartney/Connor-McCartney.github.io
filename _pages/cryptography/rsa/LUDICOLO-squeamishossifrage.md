@@ -23,8 +23,19 @@ $$n = (k_1 \cdot M + (g^{a_1} \text{ (mod } M \text{)})) \cdot (k_2 \cdot M + (g
 
 # Reading the certs
 
-`git clone https://github.com/zerosumsecurity/squeamishossifrage && mv ./squeamishossifrage/LUDICOLO ./LUDICOLO && cd LUDICOLO`
+`git clone https://github.com/zerosumsecurity/squeamishossifrage && mv ./squeamishossifrage/LUDICOLO ./LUDICOLO`
 
 There's 2 non-unicode filenames, we'll just rename them:
 
-`cd certificates && mv 'NO'$'\353''LLE.crt' 'NOELLE.crt' && mv 'DANI'$'\353''LLE.crt' 'DANIELLE.crt'`
+`cd ./LUDICOLO/certificates && mv 'NO'$'\353''LLE.crt' 'NOELLE.crt' && mv 'DANI'$'\353''LLE.crt' 'DANIELLE.crt' && cd ..`
+
+Then we can read them:
+
+```python
+from Crypto.PublicKey import RSA
+from os import listdir
+
+for cert in listdir("certificates"):
+    key = RSA.import_key(open(f"certificates/{cert}", "rb").read())
+    print(f"{cert}\n{key.n = }\n{key.e = }\n\n")
+```
