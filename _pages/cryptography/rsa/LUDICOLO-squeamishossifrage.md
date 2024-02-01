@@ -62,3 +62,21 @@ All the n's are 1024 bits, so M is some primorial 0 < M < 2**512. For now let's 
 Now since we've shown n is a power of g mod M, we can choose g to be one of the n's!
 
 The ideal g will have the highest order mod M and pass the discrete log test for all n's:
+
+```python
+from Crypto.PublicKey import RSA
+from os import listdir
+
+ns = []
+for cert in listdir("certificates"):
+    key = RSA.import_key(open(f"certificates/{cert}", "rb").read())
+    ns.append(key.n)
+
+M = prod(Primes()[:44])
+orders = [(Zmod(M)(g).multiplicative_order(), g) for g in ns]
+g = max(orders)[1]
+print(f"{g = }")
+```
+
+This spits out: `g = 124487484906862841716197271099288982418112339712300503532811587529290282070741393095312005224387582755588498588422611085050656924777128366585922973222106128294698530803880136848394814736494132569717601758206266058059480149764779347375471688251307463397885640587176752552571821368775747843170717099871242658691`
+
