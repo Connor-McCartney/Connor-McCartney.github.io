@@ -52,4 +52,6 @@ So, we'll have to create our own new valid g.
 
 Expanding our equation for n yields:
 
-$$n \equiv  (g^{a_1 + a_2}  \text{ (mod } M \text{)}$$
+$$n \equiv  g^{a_1 + a_2}  \text{ (mod } M \text{)}$$
+
+As such, testing whether or not the discrete log `Zmod(M)(n).log(g)` exists is a good way to test if the paramaters are suitable.
