@@ -57,5 +57,8 @@ $$n \equiv  g^{a_1 + a_2}  \text{ (mod } M \text{)}$$
 As such, testing whether or not the discrete log `Zmod(M)(n).log(g)` exists is a good way to test if the paramaters are suitable.
 
 All the n's are 1024 bits, so M is some primorial 0 < M < 2**512. For now let's just set M as primorial(44) which is 257 bits, <br>
-(it's probably bigger but meh we're just going to test the discrete log for possible g's and then we'll come back to M).
+(it's probably bigger but meh we're just going to use it to find a good g and then we'll come back to M).
 
+Now since we've shown n is a power of g mod M, we can choose g to be one of the n's!
+
+The ideal g will have the highest order mod M and pass the discrete log test for all of the n's:
