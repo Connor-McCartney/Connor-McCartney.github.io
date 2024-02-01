@@ -100,7 +100,7 @@ It fails on primorial(75), making me guess the author used M = primorial(74).
 
 # Optimising M'
 
-To reduce the search space for the ROCA attack, we can choose M' = some factor of M.
+To reduce the search space for the ROCA attack, we can choose M' = some divisor of M.
 
 The ideal M' will have a small order (for a smaller searchspace to brute) but also be big enough <br>
 for coppersmith to succeed.
