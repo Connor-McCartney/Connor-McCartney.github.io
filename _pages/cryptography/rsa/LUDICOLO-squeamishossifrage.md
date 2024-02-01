@@ -61,4 +61,4 @@ All the n's are 1024 bits, so M is some primorial 0 < M < 2**512. For now let's 
 
 Now since we've shown n is a power of g mod M, we can choose g to be one of the n's!
 
-The ideal g will have the highest order mod M and pass the discrete log test for all of the n's:
+The ideal g will have the highest order mod M:
