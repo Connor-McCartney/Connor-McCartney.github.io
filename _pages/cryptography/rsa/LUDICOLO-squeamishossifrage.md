@@ -39,3 +39,9 @@ for cert in listdir("certificates"):
     key = RSA.import_key(open(f"certificates/{cert}", "rb").read())
     print(f"{cert}\n{key.n = }\n{key.e = }\n\n")
 ```
+
+You can observe that e = `21558488234539889837938770635971330903489839146766895224490179041465516193145582266963154883831707522081140734421052039099233464837201660281606980530249` 
+
+for every cert, but e won't be used to factor any of the modulii.
+
+# Dealing with unknown m
