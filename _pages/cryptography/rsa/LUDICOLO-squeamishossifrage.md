@@ -55,3 +55,7 @@ Expanding our equation for n yields:
 $$n \equiv  g^{a_1 + a_2}  \text{ (mod } M \text{)}$$
 
 As such, testing whether or not the discrete log `Zmod(M)(n).log(g)` exists is a good way to test if the paramaters are suitable.
+
+All the n's are 1024 bits, so M is some primorial 0 < M < 2**512. For now let's just set M as primorial(44) which is 257 bits, <br>
+(it's probably bigger but meh we're just going to test the discrete log for possible g's and then we'll come back to M).
+
