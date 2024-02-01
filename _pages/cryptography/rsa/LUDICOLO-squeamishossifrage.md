@@ -99,3 +99,12 @@ print(i)
 It fails on primorial(75), making me guess the author used M = primorial(74).
 
 # Optimising M'
+
+To reduce the search space for the ROCA attack, we can choose M' = some factor of M.
+
+The ideal M' will have a small order (for a smaller searchspace to brute) but also be big enough <br>
+for coppersmith to succeed.
+
+Additionally, a bigger lattice dimension (m) is necessary for smaller M', but will cause <br>
+LLL to take longer to complete, so there is a tradeoff between searchspace and LLL computation time to consider. 
+
