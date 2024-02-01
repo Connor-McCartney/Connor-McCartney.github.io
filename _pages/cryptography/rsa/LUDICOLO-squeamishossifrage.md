@@ -49,3 +49,7 @@ for every cert, but e won't be used to factor any of the moduli.
 The code used to create the vulnerable primes is not given to us so it's basically impossible to bruteforce what the real value of g is. 
 
 So, we'll have to create our own new valid g.
+
+Expanding our equation for n yields:
+
+$$n \equiv  (g^{a_1 + a_2}  \text{ (mod } M \text{)}$$
