@@ -208,7 +208,7 @@ def maximal_divisor_M(M, order_M_prime, g):
     return M_prime
 
 def optimal_M_prime(M, g, p_size, ntrials=100, nn=20, reliability=0.8):
-    bit_threshold = p_size//2 + 10
+    bit_threshold = p_size//2 + 15
     order_M = Zmod(M)(g).multiplicative_order()
     print('search space: ', len(divisors(order_M)))
     M_primes = []
