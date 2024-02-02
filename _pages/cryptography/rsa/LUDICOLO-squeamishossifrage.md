@@ -108,3 +108,127 @@ for coppersmith to succeed.
 Additionally, a bigger lattice dimension (m) is necessary for smaller M', but will cause <br>
 LLL to take longer to complete, so there is a tradeoff between searchspace and LLL computation time to consider. 
 
+
+
+```python
+from tqdm import tqdm
+import time
+
+def coppersmith(f, X, beta=1.0, m=None):
+    N = f.parent().characteristic()
+    delta = f.degree()
+    if m is None:
+        epsilon = RR(beta^2/f.degree() - log(2*X, N))
+        m = max(beta**2/(delta * epsilon), 7*beta/delta).ceil()
+    t = int((delta*m*(1/beta - 1)).floor())
+    f = f.monic().change_ring(ZZ)
+    P,(x,) = f.parent().objgens()
+    g  = [x**j * N**(m-i) * f**i for i in range(m) for j in range(delta)]
+    g.extend([x**i * f**m for i in range(t)]) 
+    B = Matrix(ZZ, len(g), delta*m + max(delta,t))
+    for i in range(B.nrows()):
+        for j in range(g[i].degree()+1):
+            B[i,j] = g[i][j]*X**j
+    B = B.LLL()
+    f = sum([ZZ(B[0,i]//X**i)*x**i for i in range(B.ncols())])
+    roots = set([f.base_ring()(r) for r,m in f.roots() if abs(r) <= X])
+    return [root for root in roots if N.gcd(ZZ(f(root))) >= N**beta]
+
+def get_test_prime(p_size, M, g):
+    o = Zmod(M)(g).multiplicative_order()
+    k_size = p_size - M.nbits()
+    a_size = o.nbits()
+    while True:
+        k = randint(1, 2**k_size-1)
+        a = randint(1, 2**a_size-1)
+        if a % o == 0:
+            continue
+        p = k * M + pow(g, a, M)
+        if is_prime(p):
+            return p, a
+
+def roca_attack(n, g, M, m=1, a=None):
+    order_M = Zmod(M)(g).multiplicative_order()
+    c_prime = Zmod(M)(n).log(g)
+    P.<k> = PolynomialRing(Zmod(n))
+
+    if a: # cheat
+        r = range(a, a+1)
+    else:
+        r = range(c_prime//2, (c_prime + order_M)//2)
+    for a in r:
+        f = k*M + int(pow(g, a, M)) 
+        X = 2**(n.nbits()//2 - M.nbits() + 0)
+        t_start = time.time()
+        roots = coppersmith(f, X=X, beta=0.4, m=m)
+        t_end = time.time()
+        if roots != []:
+            k = roots[0]
+            p = int(f(k))
+            if is_prime(p):
+                return p, t_end - t_start
+
+def primorial(n):
+    M = 1
+    p = 1
+    for i in range(n):
+        p = next_prime(p)
+        M *= p
+    return M
+
+def maximal_divisor_M(M, order_M_prime, g):
+    M_prime = M
+    for P, e in factor(M):
+        order_P = Zmod(P)(g).multiplicative_order()
+        if order_M_prime % order_P != 0: 
+            M_prime //= P
+    return M_prime
+
+def optimal_M_prime(M, g, p_size, ntrials=100, nn=20, reliability=0.8):
+    bit_threshold = p_size//2 + 10
+    order_M = Zmod(M)(g).multiplicative_order()
+    print('search space: ', len(divisors(order_M)))
+    M_primes = []
+    for order_M_divisor in tqdm(reversed(divisors(order_M))):
+        M_prime = maximal_divisor_M(M, order_M_divisor, g)
+        if M_prime.nbits() >= bit_threshold:
+            o = Zmod(M_prime)(g).multiplicative_order()
+            M_primes.append((o, M_prime))
+    M_primes = list(set(M_primes))
+    M_primes.sort()
+    print(M_primes[:nn])
+
+    best_time = 2**999999999 # inf
+    for i in range(nn):
+        M_prime = Integer(M_primes[i][1])
+        o = Zmod(M_prime)(g).multiplicative_order()
+        print(f'### {i} {M_prime.nbits()} {o.nbits()}')
+
+        for m in range(1, 10):
+            success = 0
+            for _ in range(ntrials):
+                tst_p, tst_a = get_test_prime(p_size, M_prime, g)
+                tst_q, _ = get_test_prime(p_size, M_prime, g)
+                tst_n = tst_p*tst_q
+                out = roca_attack(tst_n, g, M_prime, m=m, a=tst_a%o)
+                if out is not None:
+                    _, duration = out
+                    success += 1
+
+            if success > 0:
+                apprx_time = duration * (o/2)
+                print(f"{m=}: {float(success/ntrials):.1%}, approx time: {apprx_time:.2f} seconds")
+                if success/ntrials >= reliability and apprx_time < best_time:
+                    best_M = M_prime
+                    best_m = m
+                    best_time = apprx_time
+
+    print(f"M_prime = {best_M}")
+    print(f"m = {best_m}")
+    return best_M, best_m
+
+
+g = 124487484906862841716197271099288982418112339712300503532811587529290282070741393095312005224387582755588498588422611085050656924777128366585922973222106128294698530803880136848394814736494132569717601758206266058059480149764779347375471688251307463397885640587176752552571821368775747843170717099871242658691
+M =  2562050762925653677328453030125662986159243532827792161255140060416517133784758421124051417870
+optimal_M_prime(M, g, 512, ntrials=10, nn=5, reliability=0.9)
+```
