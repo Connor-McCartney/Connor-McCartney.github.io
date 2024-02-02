@@ -263,3 +263,75 @@ m = 4
 ```
 
 # Final solve script
+
+```python
+from Crypto.PublicKey import RSA
+from Crypto.Cipher import AES
+from os import listdir
+from tqdm import tqdm
+
+def coppersmith(f, X, beta=1.0, m=None):
+    N = f.parent().characteristic()
+    delta = f.degree()
+    if m is None:
+        epsilon = RR(beta^2/f.degree() - log(2*X, N))
+        m = max(beta**2/(delta * epsilon), 7*beta/delta).ceil()
+    t = int((delta*m*(1/beta - 1)).floor())
+    f = f.monic().change_ring(ZZ)
+    P,(x,) = f.parent().objgens()
+    g  = [x**j * N**(m-i) * f**i for i in range(m) for j in range(delta)]
+    g.extend([x**i * f**m for i in range(t)]) 
+    B = Matrix(ZZ, len(g), delta*m + max(delta,t))
+    for i in range(B.nrows()):
+        for j in range(g[i].degree()+1):
+            B[i,j] = g[i][j]*X**j
+    B = B.LLL()
+    f = sum([ZZ(B[0,i]//X**i)*x**i for i in range(B.ncols())])
+    roots = set([f.base_ring()(r) for r,m in f.roots() if abs(r) <= X])
+    return [root for root in roots if N.gcd(ZZ(f(root))) >= N**beta]
+
+def roca_attack(n, g, M, m=1):
+    order_M = Zmod(M)(g).multiplicative_order()
+    c_prime = Zmod(M)(n).log(g)
+    P.<k> = PolynomialRing(Zmod(n))
+
+    for a in  range(c_prime//2, (c_prime + order_M)//2):
+        f = k*M + int(pow(g, a, M)) 
+        X = 2**(n.nbits()//2 - M.nbits() + 1)
+        roots = coppersmith(f, X=X, beta=0.4, m=m)
+        if roots != []:
+            k = roots[0]
+            p = int(f(k))
+            if is_prime(p):
+                return p, n//p
+
+def decrypt(d, n):
+    enc_key = 0x63cd3cc036a3059eaba99faa4d295c1ad826f018c62d405c19c6149e826f7a1ba488534a52fa0647427d67efdbe1620fa13729d584bd193715b88c5013b1c8df084b16fad33b3a60f1c946228d27fa0260a06dcf8d032d7d92acea43e897f37df7cc917b30ad37c2de49edb1ce40ecb7f435db4dbad20671b9c6465a1cdbfd43
+    enc_data = bytes.fromhex("379fb5383b1c35c774a45b13148cc7cea90f27e78150540be8a292024e5cec2cd0ebd7bfe92c9c452402777297d155fb")
+    iv = bytes.fromhex("b789660c2ba7f7d7b77fa480a7a70bf6")
+    key = bytes.fromhex(hex(pow(enc_key, d, n))[-64:])
+    cipher = AES.new(key, AES.MODE_CBC, iv)  
+    try:
+        print(cipher.decrypt(enc_data).decode().strip())
+    except:
+        pass
+
+def main():
+    g = 124487484906862841716197271099288982418112339712300503532811587529290282070741393095312005224387582755588498588422611085050656924777128366585922973222106128294698530803880136848394814736494132569717601758206266058059480149764779347375471688251307463397885640587176752552571821368775747843170717099871242658691
+    M_prime = 180537903712182739447634935500952314074429576908277933036643046670837592164271750889410
+    for cert in tqdm(listdir("certificates")):
+        if cert != "LUC.crt":
+            continue
+        key = RSA.import_key(open(f"certificates/{cert}", "rb").read())
+        n = Integer(key.n)
+        e = key.e
+        
+        f = roca_attack(n, g, M_prime, m=4)
+        if f is not None:
+            p, q = f
+            d = pow(e, -1, (p-1)*(q-1))
+            decrypt(d, n)
+
+if __name__ == "__main__":
+    main()
+```
