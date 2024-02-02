@@ -64,29 +64,6 @@ Now since we've shown n is a power of g mod M, we can choose g to be one of the 
 The ideal g will have the highest order mod M and pass the discrete log test for all n's:
 
 ```python
-p_size = 512
-pp = 1
-rs = []
-for p in Primes():
-    pp *= p
-    if pp > 2**p_size:
-        break
-    o = 1
-    for n in ns:
-        o = lcm(o, Mod(n, p).multiplicative_order())
-    rs.append((o, p))
- 
-ps = []
-for _, p in sorted(rs):
-    ps.append(p)
-    if prod(ps) > 2**(p_size * 0.6):
-        break
-M = prod(ps)
-print(M)
-```
-
-
-```python
 from Crypto.PublicKey import RSA
 from os import listdir
 
@@ -131,6 +108,28 @@ for coppersmith to succeed.
 Additionally, a bigger lattice dimension (m) is necessary for smaller M', but will cause <br>
 LLL to take longer to complete, so there is a tradeoff between searchspace and LLL computation time to consider. 
 
+
+```python
+p_size = 512
+pp = 1
+rs = []
+for p in Primes():
+    pp *= p
+    if pp > 2**p_size:
+        break
+    o = 1
+    for n in ns:
+        o = lcm(o, Mod(n, p).multiplicative_order())
+    rs.append((o, p))
+ 
+ps = []
+for _, p in sorted(rs):
+    ps.append(p)
+    if prod(ps) > 2**(p_size * 0.6):
+        break
+M = prod(ps)
+print(M)
+```
 
 
 ```python
@@ -181,7 +180,7 @@ def roca_attack(n, g, M, m=1, a=None):
         r = range(c_prime//2, (c_prime + order_M)//2)
     for a in r:
         f = k*M + int(pow(g, a, M)) 
-        X = 2**(n.nbits()//2 - M.nbits() + 0)
+        X = 2**(n.nbits()//2 - M.nbits() + 1)
         t_start = time.time()
         roots = coppersmith(f, X=X, beta=0.4, m=m)
         t_end = time.time()
@@ -207,8 +206,8 @@ def maximal_divisor_M(M, order_M_prime, g):
             M_prime //= P
     return M_prime
 
-def optimal_M_prime(M, g, p_size, ntrials=100, nn=20, reliability=0.8):
-    bit_threshold = p_size//2 + 15
+def optimal_M_prime(M, g, p_size, ntrials=20, nn=20, reliability=0.8, t=0, m_range=range(3,8)):
+    bit_threshold = p_size//2 + t
     order_M = Zmod(M)(g).multiplicative_order()
     print('search space: ', len(divisors(order_M)))
     M_primes = []
@@ -227,7 +226,7 @@ def optimal_M_prime(M, g, p_size, ntrials=100, nn=20, reliability=0.8):
         o = Zmod(M_prime)(g).multiplicative_order()
         print(f'### {i} {M_prime.nbits()} {o.nbits()}')
 
-        for m in range(1, 10):
+        for m in m_range:
             success = 0
             for _ in range(ntrials):
                 tst_p, tst_a = get_test_prime(p_size, M_prime, g)
@@ -253,5 +252,14 @@ def optimal_M_prime(M, g, p_size, ntrials=100, nn=20, reliability=0.8):
 
 g = 124487484906862841716197271099288982418112339712300503532811587529290282070741393095312005224387582755588498588422611085050656924777128366585922973222106128294698530803880136848394814736494132569717601758206266058059480149764779347375471688251307463397885640587176752552571821368775747843170717099871242658691
 M =  2562050762925653677328453030125662986159243532827792161255140060416517133784758421124051417870
-optimal_M_prime(M, g, 512, ntrials=10, nn=5, reliability=0.9)
+optimal_M_prime(M, g, 512, nn=5, t=15)
 ```
+
+This finds:
+
+```python
+M_prime = 180537903712182739447634935500952314074429576908277933036643046670837592164271750889410
+m = 4
+```
+
+# Final solve script
