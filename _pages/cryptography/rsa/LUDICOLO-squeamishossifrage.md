@@ -295,7 +295,7 @@ def roca_attack(n, g, M, m=1):
     c_prime = Zmod(M)(n).log(g)
     P.<k> = PolynomialRing(Zmod(n))
 
-    for a in  range(c_prime//2, (c_prime + order_M)//2):
+    for a in range(c_prime//2, (c_prime + order_M)//2):
         f = k*M + int(pow(g, a, M)) 
         X = 2**(n.nbits()//2 - M.nbits() + 1)
         roots = coppersmith(f, X=X, beta=0.4, m=m)
