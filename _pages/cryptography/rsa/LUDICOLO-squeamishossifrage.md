@@ -64,6 +64,29 @@ Now since we've shown n is a power of g mod M, we can choose g to be one of the 
 The ideal g will have the highest order mod M and pass the discrete log test for all n's:
 
 ```python
+p_size = 512
+pp = 1
+rs = []
+for p in Primes():
+    pp *= p
+    if pp > 2**p_size:
+        break
+    o = 1
+    for n in ns:
+        o = lcm(o, Mod(n, p).multiplicative_order())
+    rs.append((o, p))
+ 
+ps = []
+for _, p in sorted(rs):
+    ps.append(p)
+    if prod(ps) > 2**(p_size * 0.6):
+        break
+M = prod(ps)
+print(M)
+```
+
+
+```python
 from Crypto.PublicKey import RSA
 from os import listdir
 
