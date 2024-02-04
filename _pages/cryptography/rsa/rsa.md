@@ -42,6 +42,10 @@ __vulnerability: partial OpenSSH private key__
 __vulnerability: upper bits of p given__
 
 
+<span style="font-size:2em;">   [DELIBIRD - squeamishossifrage](/cryptography/rsa/DELIBIRD-squeamishossifrage)       </span> <br>
+__vulnerability: common modulus attack__
+
+
 <span style="font-size:2em;">   [MAGIKARP - squeamishossifrage](/cryptography/rsa/MAGIKARP-squeamishossifrage)       </span> <br>
 __vulnerability: e=1__
 
