@@ -1,11 +1,11 @@
 ---
-permalink: /cryptography/rsa/MAGIKARP-squeamishossifrage
-title: MAGIKARP - squeamishossifrage
+permalink: /cryptography/rsa/DELIBIRD-squeamishossifrage
+title: DELIBIRD - squeamishossifrage
 ---
 
 <br>
 
-[Challenge](https://github.com/zerosumsecurity/squeamishossifrage/tree/main/MAGIKARP)
+[Challenge](https://github.com/zerosumsecurity/squeamishossifrage/tree/main/DELIBIRD)
 
 <br>
 
