@@ -32,3 +32,7 @@ __vulnerability: nonces determined by polynomial congruential generator__
 
 <span style="font-size:2em;">   [manykey - IrisCTF 2024](/cryptography/ecc/manykey-IrisCTF-2024)       </span> <br>
 __vulnerability: chosen generator and privkey__
+
+
+<span style="font-size:2em;">   [yaonet - DiceCTF 2024](/cryptography/ecc/yaonet-DiceCTF-2024)       </span> <br>
+__vulnerability: corrupted OpenSSH key__
