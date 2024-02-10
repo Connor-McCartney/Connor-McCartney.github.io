@@ -11,3 +11,5 @@ title: L4ugh - 0xl4ughCTF 2024
 
 A nice challenge written by my friend mindflayer and Bebo!
 
+This was a 3-part challenge, finding d_good, finding d_evil, and a CBC bit flipping attack.
+
