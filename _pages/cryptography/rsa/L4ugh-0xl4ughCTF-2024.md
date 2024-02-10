@@ -9,3 +9,5 @@ title: L4ugh - 0xl4ughCTF 2024
 
 <br>
 
+A nice challenge written by my friend mindflayer and Bebo!
+
