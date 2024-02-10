@@ -29,9 +29,9 @@ assert e*d - k*N - (1 + k*(-p-q+1)) == 0
 
 Only two pairs are needed to find d:
 
-$$e_1\cdot d - k_1 \cdot N_1 - x_1 = 0$$
+$$e_1\cdot d - k_1 \cdot N_1 = x_1$$
 
-$$e_2\cdot d - k_2 \cdot N_2 - x_2 = 0$$
+$$e_2\cdot d - k_2 \cdot N_2 = x_2$$
 
 Rewriting as vector equations for LLL:
 
