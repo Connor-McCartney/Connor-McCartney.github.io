@@ -89,3 +89,6 @@ __vulnerability: byte-by-byte bruteforce__
 <span style="font-size:2em;">   [Various Scattered Bits Challs](/cryptography/rsa/scattered-known-bits)       </span> <br>
 __vulnerability: random known bits__
 
+
+<span style="font-size:2em;">   [L4ugh - 0xl4ughCTF 2024](/cryptography/rsa/L4ugh-0xl4ughCTF-2024)       </span> <br>
+__vulnerability: common d__
