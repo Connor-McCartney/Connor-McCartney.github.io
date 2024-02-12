@@ -105,3 +105,25 @@ Note the vulnerable gets() function used, which we'll use to overflow buf and ed
 
 > EIP is a register in x86 architectures (32bit). It holds the "Extended Instruction Pointer" for the stack. In other words, it tells the computer where to go next to execute the next command and controls the flow of a program.
 
+Decompiling with IDA:
+
+```
+int vuln()
+{
+  int return_address; // eax
+  char v2[36]; // [esp+0h] [ebp-28h] BYREF
+
+  gets(v2);
+  return_address = get_return_address();
+  return printf("Okay, time to return... Fingers Crossed... Jumping to 0x%x\n", return_address);
+}
+```
+
+The return_address int is 4 bytes, plus the char buffer is 36 bytes, plus the EBP is 4 bytes.
+
+After those 44 we are overwriting the return address. Let's verify it:
+
+```python
+>>> 'A'*44 + 'BBBB'
+'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBB'
+```
