@@ -164,3 +164,16 @@ Invalid address 0x42424242
 And you can see `*EIP  0x42424242 ('BBBB')` we can control EIP by changing BBBB :) 
 
 Now let's find the address of the win function. 
+
+```
+pwndbg> file vuln
+Reading symbols from vuln...
+Downloading separate debug info for /home/connor/Desktop/vuln
+(No debugging symbols found in vuln)                                                                       
+pwndbg> disassemble win
+Dump of assembler code for function win:
+   0x080491f6 <+0>:     endbr32
+...
+```
+
+We get `080491f6`, then converting to little endian, is `f6910408`.
