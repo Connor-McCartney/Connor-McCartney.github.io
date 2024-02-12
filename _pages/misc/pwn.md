@@ -160,3 +160,7 @@ Invalid address 0x42424242
 
 ...
 ```
+
+And you can see `*EIP  0x42424242 ('BBBB')` we can control EIP by changing BBBB :) 
+
+Now let's find the address of the win function. 
