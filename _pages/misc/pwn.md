@@ -91,3 +91,18 @@ set debuginfod enabled on
 # source /home/connor/Documents/pwndbg/gdbinit.py
 ```
 
+```c
+void vuln(){
+  char buf[BUFSIZE];
+  gets(buf);
+
+  printf("Okay, time to return... Fingers Crossed... Jumping to 0x%x\n", get_return_address());
+}
+```
+
+Note the vulnerable gets() function used, which we'll use to overflow buf and edit the EIP register to point to the win function. 
+
+```
+EIP is a register in x86 architectures (32bit). It holds the "Extended Instruction Pointer" for the stack. In other words, it tells the computer where to go next to execute the next command and controls the flow of a program.
+```
+
