@@ -298,7 +298,7 @@ void win(unsigned int arg1, unsigned int arg2) {
 }
 ```
 
-We want to overwrite arg1 and arg2. 64-bit programs take function paramaters from registers, <br>
+We want to overwrite arg1 and arg2. 64-bit programs take function parameters from registers, <br>
 but for 32-bit they're just read off the stack. 
 
 Editing the payload:
