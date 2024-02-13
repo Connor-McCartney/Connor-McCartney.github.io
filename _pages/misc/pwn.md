@@ -396,11 +396,4 @@ Please create 'canary.txt' in this directory with your own debugging canary.
 
 [~/Desktop] 
 $ echo "TEST" > canary.txt
-
-[~/Desktop] 
-$ ./vuln 
-How Many Bytes will You Write Into the Buffer?
-> 2
-Input> aa
-Ok... Now Where's the Flag?
 ```
