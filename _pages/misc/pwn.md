@@ -297,3 +297,6 @@ void win(unsigned int arg1, unsigned int arg2) {
   printf(buf);
 }
 ```
+
+We want to overwrite arg1 and arg2. 64-bit programs take function paramaters from registers, <br>
+but for 32-bit they're just read off the stack. 
