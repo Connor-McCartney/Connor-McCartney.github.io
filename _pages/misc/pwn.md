@@ -339,3 +339,68 @@ io.sendline(payload)
 io.read()
 print(io.read())
 ```
+
+
+
+
+
+<br>
+<br>
+<br>
+
+# buffer overflow 3 - picoCTF 2022
+
+<https://play.picoctf.org/practice/challenge/260>
+
+```c
+#define BUFSIZE 64
+#define FLAGSIZE 64
+#define CANARY_SIZE 4
+
+char global_canary[CANARY_SIZE];
+
+void vuln(){
+   char canary[CANARY_SIZE];
+   char buf[BUFSIZE];
+   char length[BUFSIZE];
+   int count;
+   int x = 0;
+   memcpy(canary,global_canary,CANARY_SIZE);
+   printf("How Many Bytes will You Write Into the Buffer?\n> ");
+   while (x<BUFSIZE) {
+      read(0,length+x,1);
+      if (length[x]=='\n') break;
+      x++;
+   }
+   sscanf(length,"%d",&count);
+
+   printf("Input> ");
+   read(0,buf,count);
+
+   if (memcmp(canary,global_canary,CANARY_SIZE)) {
+      printf("***** Stack Smashing Detected ***** : Canary Value Corrupt!\n"); // crash immediately
+      fflush(stdout);
+      exit(0);
+   }
+   printf("Ok... Now Where's the Flag?\n");
+   fflush(stdout);
+}
+```
+
+They've used a custom canary to try prevent buffer overflow, it's 4 bytes and checks if it's value is the same as at the start of the program. 
+
+```
+[~/Desktop] 
+$ ./vuln 
+Please create 'canary.txt' in this directory with your own debugging canary.
+
+[~/Desktop] 
+$ echo "TEST" > canary.txt
+
+[~/Desktop] 
+$ ./vuln 
+How Many Bytes will You Write Into the Buffer?
+> 2
+Input> aa
+Ok... Now Where's the Flag?
+```
