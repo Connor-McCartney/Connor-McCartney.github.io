@@ -387,7 +387,7 @@ void vuln(){
 }
 ```
 
-They've used a custom canary to try prevent buffer overflow, it's 4 bytes and checks if it's value is the same as at the start of the program. 
+They've used a custom canary to try prevent buffer overflow, it's 4 bytes and checks if its value is the same as at the start of the program. 
 
 ```
 [~/Desktop] 
