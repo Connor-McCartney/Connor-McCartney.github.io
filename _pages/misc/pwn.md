@@ -424,7 +424,6 @@ Input> AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAX
 ```
 
 ```
-pwndbg> disassemble win
-Dump of assembler code for function win:
-   0x08049336 <+0>:     endbr32
+pwndbg> p win
+$1 = {<text variable, no debug info>} 0x8049336 <win>
 ```
