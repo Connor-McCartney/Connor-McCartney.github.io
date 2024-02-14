@@ -422,3 +422,9 @@ Input> AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAX
 ***** Stack Smashing Detected ***** : Canary Value Corrupt!
 [Inferior 1 (process 107001) exited normally]
 ```
+
+```
+pwndbg> disassemble win
+Dump of assembler code for function win:
+   0x08049336 <+0>:     endbr32
+```
