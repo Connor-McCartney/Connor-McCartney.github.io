@@ -142,3 +142,7 @@ print(a, b)
 ```
 
 Interesting, a=0 and b=0. So the curve equation is y^2 = x^3, and we have an elliptic cusp. 
+
+It was kinda similar to [this chall](https://jsur.in/posts/2021-09-26-ductf-2021-writeups#yadlp) but we need a way to take discrete logs with the cusp.
+
+The second answer here is helpful: <https://crypto.stackexchange.com/questions/61302/how-to-solve-this-ecdlp/61434#61434> 
