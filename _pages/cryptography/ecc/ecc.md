@@ -36,3 +36,7 @@ __vulnerability: chosen generator and privkey__
 
 <span style="font-size:2em;">   [yaonet - DiceCTF 2024](/cryptography/ecc/yaonet-DiceCTF-2024)       </span> <br>
 __vulnerability: corrupted OpenSSH key__
+
+
+<span style="font-size:2em;">   [budget bag - LA CTF 2024](/cryptography/ecc/budget-bag-LACTF-2024)       </span> <br>
+__vulnerability: elliptic cusp__
