@@ -170,6 +170,6 @@ xs = [var(f"x_{i}") for i in range(len(points))]
 eq = (sum(x*i for x, i in zip(xs, logs)) == cusp_log(s, G, p))
 bounds = {x: 1024 for x in xs}
 sol = solve_linear_mod([(eq, p)], bounds)
-print("lactf{%s}" % bytes([i%256 for i in sol.values()]).decode())
+print(f"lactf{{{bytes([i%256 for i in sol.values()]).decode()}}}")
 # lactf{im_w4y_t00_br0k3!}
 ```
