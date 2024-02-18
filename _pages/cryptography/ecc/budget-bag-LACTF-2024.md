@@ -128,3 +128,4 @@ points = [(488682442753429457132920684502864933068421096526128730488528508615273
 
 Solve:
 
+First we'll assume the given p is the curve p, then solve the curve parameters a and b. 
