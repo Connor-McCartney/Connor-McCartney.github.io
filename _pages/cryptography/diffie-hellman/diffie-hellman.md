@@ -24,3 +24,7 @@ __vulnerability: isomorphism (mod p^2)__
 
 <span style="font-size:2em;">   [janken-vs-yoshiking-2 - Cake CTF 2023](/cryptography/janken-vs-yoshiking-2-CakeCTF-2023)       </span> <br>
 __vulnerability: discrete log of two matrices with smooth field order__
+
+
+<span style="font-size:2em;">   [Too Many Leaks - GCC CTF 2024](/cryptography/diffie-hellman/Too-Many-Leaks-GCC-CTF-2024)       </span> <br>
+__vulnerability: partial secrets given__
