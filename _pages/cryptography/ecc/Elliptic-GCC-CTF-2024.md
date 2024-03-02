@@ -1,3 +1,4 @@
+---
 permalink: /cryptography/ecc/Elliptic-GCC-CTF-2024
 title: Elliptic - GCC CTF 2024
 ---
