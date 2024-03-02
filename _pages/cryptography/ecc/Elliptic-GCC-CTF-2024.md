@@ -6,7 +6,7 @@ title: Elliptic - GCC CTF 2024
 
 Challenge:
 
-```sagemath
+```python
 from Crypto.Util.number import isPrime, bytes_to_long
 import json
 from flag import flag
