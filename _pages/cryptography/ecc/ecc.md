@@ -40,3 +40,7 @@ __vulnerability: corrupted OpenSSH key__
 
 <span style="font-size:2em;">   [budget bag - LA CTF 2024](/cryptography/ecc/budget-bag-LACTF-2024)       </span> <br>
 __vulnerability: elliptic cusp__
+
+
+<span style="font-size:2em;">   [Elliptic - GCC CTF 2024](/cryptography/ecc/Elliptic-GCC-CTF-2024)       </span> <br>
+__vulnerability: chosen parameters__
