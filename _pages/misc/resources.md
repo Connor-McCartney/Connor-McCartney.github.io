@@ -86,3 +86,6 @@ Multithreading vs Multiprocessing <https://builtin.com/data-science/multithreadi
 <https://tl2cents.github.io> <br>
 <https://giacomopope.com> <br>
 <https://rbtree.blog> <br>
+<https://www.xorminds.com> <br>
+<https://tsumiiiiiiii.github.io> <br>
+
