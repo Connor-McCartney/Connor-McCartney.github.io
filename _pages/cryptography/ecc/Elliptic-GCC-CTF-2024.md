@@ -159,3 +159,7 @@ b'plz_enjoy_it_smh'
 
 real    46m48.489s
 ```
+
+
+
+Author's solution: <https://github.com/GCC-ENSIBS/GCC-CTF-2024/blob/main/Crypto/Elliptic/write-up/solve.sage>
