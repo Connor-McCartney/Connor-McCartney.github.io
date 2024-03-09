@@ -46,3 +46,4 @@ k = [[99396025589121458513229218640916932983677041346942306109123907817452209949
 
 Solve:
 
+Each element of k is a list with values of m and n, and the final value is sum(h).
