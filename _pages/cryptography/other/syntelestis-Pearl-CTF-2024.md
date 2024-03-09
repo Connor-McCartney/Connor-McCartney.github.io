@@ -49,6 +49,6 @@ Solve:
 Each element of k is a list with values of m and n, and the final value is sum(h) mod p.
 
 
-$$e \equiv \left( \frac{1}{c} + \frac{1}{d} \right)^2$$
+$$e \equiv \left( \frac{1}{c} + \frac{1}{d} \right)^2 \equiv \frac{(c+d)^2}{c^2 \cdot d^2}$$
 
 $$f \equiv m^2 \cdot n^2 \cdot \frac{1}{c} \cdot \frac{1}{d}$$
