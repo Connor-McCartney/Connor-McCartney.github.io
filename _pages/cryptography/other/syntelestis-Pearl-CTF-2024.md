@@ -65,4 +65,4 @@ $$e \cdot \frac{1}{f} \equiv \frac{(c+d)^2}{(c \cdot d)^2} \cdot \frac{c \cdot d
 so `len(flag.hex().encode())` is 74.
 
 
-$$s_1 \equiv \frac{(a_1 \cdot m_1 + b_1 \cdot n_1)^2}{a_1 \cdot b_1 \cdot m_1^3 \cdot {n_1}^3}$$
+$$s_1 \equiv \frac{(a_1 \cdot m_1 + b_1 \cdot n_1)^2}{a_1 \cdot b_1 \cdot {m_1}^3 \cdot {n_1}^3} + \frac{(a_2 \cdot m_2 + b_2 \cdot n_2)^2}{a_2 \cdot b_2 \cdot {m_2}^3 \cdot {n_2}^3}$$
