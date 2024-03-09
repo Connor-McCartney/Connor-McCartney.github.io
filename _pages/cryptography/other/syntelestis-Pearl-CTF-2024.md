@@ -54,3 +54,5 @@ $$e \equiv \left( \frac{1}{c} + \frac{1}{d} \right)^2 \equiv \frac{(c+d)^2}{(c \
 $$f \equiv m^2 \cdot n^2 \cdot \frac{1}{c} \cdot \frac{1}{d} \equiv \frac{m^2 \cdot n^2}{c \cdot d}$$
 
 $$e \cdot \frac{1}{f} \equiv \frac{(c+d)^2}{(c \cdot d)^2} \cdot \frac{c \cdot d}{m^2 \cdot n^2} \equiv \frac{(c+d)^2}{c \cdot d \cdot m^2 \cdot n^2}$$
+
+$$\equiv \frac{(a \cdot m + b \cdot n)^2}{a \cdot b \cdot m^3 \cdot n^3}$$
