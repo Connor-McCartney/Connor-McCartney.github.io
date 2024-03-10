@@ -69,7 +69,7 @@ $$s_1 \equiv \frac{(a_1 \cdot m_1 + b_1 \cdot n_1)^2}{a_1 \cdot b_1 \cdot {m_1}^
 
 $$s_2 \equiv \frac{(a_1 \cdot m_{38} + b_1 \cdot n_{38})^2}{a_1 \cdot b_1 \cdot {m_{38}}^3 \cdot {n_{38}}^3} + \frac{(a_2 \cdot m_{39} + b_2 \cdot n_{39})^2}{a_2 \cdot b_2 \cdot {m_{39}}^3 \cdot {n_{39}}^3} + \ ... \ + \frac{(a_{37} \cdot m_{74} + b_{37} \cdot n_{74})^2}{a_{37} \cdot b_{37} \cdot {m_{74}}^3 \cdot {n_{74}}^3}$$
 
-$$...$$$
+$$...$$
 
 $$...$$
 
