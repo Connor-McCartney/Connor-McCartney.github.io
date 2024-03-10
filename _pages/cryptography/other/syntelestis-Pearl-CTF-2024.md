@@ -64,4 +64,4 @@ $$e \cdot \frac{1}{f} \equiv \frac{(c+d)^2}{(c \cdot d)^2} \cdot \frac{c \cdot d
 
 so `len(flag.hex().encode())` is 54+20=74.
 
-You can see there are 54 equations with 74 unknowns. But using the flag format we can get 14 unknowns then brute 6 more to solve the system directly. 
+You can see there are 54 equations with 74 unknowns. But using the flag format `pearl{...}` we can get 14 unknowns then brute 6 more to solve the system directly. 
