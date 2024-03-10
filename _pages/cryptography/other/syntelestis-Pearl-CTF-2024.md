@@ -75,4 +75,4 @@ $$...$$
 
 $$...$$
 
-$$s_{54} \equiv$$
+$$s_{54} \equiv \frac{(a_1 \cdot m_{1962} + b_1 \cdot n_{1962})^2}{a_1 \cdot b_1 \cdot {m_{1962}}^3 \cdot {n_{1962}}^3} + \frac{(a_2 \cdot m_{1963} + b_2 \cdot n_{1963})^2}{a_2 \cdot b_2 \cdot {m_{1963}}^3 \cdot {n_{1963}}^3} + \ ... \ + \frac{(a_{37} \cdot m_{1998} + b_{37} \cdot n_{1998})^2}{a_{37} \cdot b_{37} \cdot {m_{1998}}^3 \cdot {n_{1998}}^3}$$
