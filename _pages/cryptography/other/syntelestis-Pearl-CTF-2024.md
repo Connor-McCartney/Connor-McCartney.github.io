@@ -65,6 +65,6 @@ $$e \cdot \frac{1}{f} \equiv \frac{(c+d)^2}{(c \cdot d)^2} \cdot \frac{c \cdot d
 so `len(flag.hex().encode())` is 74.
 
 
-$$s_1 \equiv \frac{(a_1 \cdot m_1 + b_1 \cdot n_1)^2}{a_1 \cdot b_1 \cdot {m_1}^3 \cdot {n_1}^3} + \frac{(a_2 \cdot m_2 + b_2 \cdot n_2)^2}{a_2 \cdot b_2 \cdot {m_2}^3 \cdot {n_2}^3} + ... + \frac{(a_37 \cdot m_37 + b_37 \cdot n_37)^2}{a_37 \cdot b_37 \cdot {m_37}^3 \cdot {n_37}^3}$$
+$$s_1 \equiv \frac{(a_1 \cdot m_1 + b_1 \cdot n_1)^2}{a_1 \cdot b_1 \cdot {m_1}^3 \cdot {n_1}^3} + \frac{(a_2 \cdot m_2 + b_2 \cdot n_2)^2}{a_2 \cdot b_2 \cdot {m_2}^3 \cdot {n_2}^3} + \ ... \ + \frac{(a_37 \cdot m_{37} + b_37 \cdot n_{37})^2}{a_37 \cdot b_37 \cdot {m_{37}}^3 \cdot {n_{37}}^3}$$
 
-$$s_2 \equiv \frac{(a_1 \cdot m_38 + b_1 \cdot n_38)^2}{a_1 \cdot b_1 \cdot {m_38}^3 \cdot {n_38}^3} + \frac{(a_2 \cdot m_39 + b_2 \cdot n_39)^2}{a_2 \cdot b_2 \cdot {m_39}^3 \cdot {n_39}^3} + ... + \frac{(a_37 \cdot m_74 + b_37 \cdot n_74)^2}{a_37 \cdot b_37 \cdot {m_74}^3 \cdot {n_74}^3}$$
+$$s_2 \equiv \frac{(a_1 \cdot m_{38} + b_1 \cdot n_{38})^2}{a_1 \cdot b_1 \cdot {m_{38}}^3 \cdot {n_{38}}^3} + \frac{(a_2 \cdot m_{39} + b_2 \cdot n_{39})^2}{a_2 \cdot b_2 \cdot {m_{39}}^3 \cdot {n_{39}}^3} + \ ... \ + \frac{(a_{37} \cdot m_{74} + b_{37} \cdot n_{74})^2}{a_{37} \cdot b_{37} \cdot {m_{74}}^3 \cdot {n_{74}}^3}$$
