@@ -64,17 +64,4 @@ $$e \cdot \frac{1}{f} \equiv \frac{(c+d)^2}{(c \cdot d)^2} \cdot \frac{c \cdot d
 
 so `len(flag.hex().encode())` is 54+20=74.
 
-
-$$s_1 \equiv \frac{(a_1 \cdot m_1 + b_1 \cdot n_1)^2}{a_1 \cdot b_1 \cdot {m_1}^3 \cdot {n_1}^3} + \frac{(a_2 \cdot m_2 + b_2 \cdot n_2)^2}{a_2 \cdot b_2 \cdot {m_2}^3 \cdot {n_2}^3} + \ ... \ + \frac{(a_{37} \cdot m_{37} + b_{37} \cdot n_{37})^2}{a_{37} \cdot b_{37} \cdot {m_{37}}^3 \cdot {n_{37}}^3}$$
-
-$$s_2 \equiv \frac{(a_1 \cdot m_{38} + b_1 \cdot n_{38})^2}{a_1 \cdot b_1 \cdot {m_{38}}^3 \cdot {n_{38}}^3} + \frac{(a_2 \cdot m_{39} + b_2 \cdot n_{39})^2}{a_2 \cdot b_2 \cdot {m_{39}}^3 \cdot {n_{39}}^3} + \ ... \ + \frac{(a_{37} \cdot m_{74} + b_{37} \cdot n_{74})^2}{a_{37} \cdot b_{37} \cdot {m_{74}}^3 \cdot {n_{74}}^3}$$
-
-$$...$$
-
-$$...$$
-
-$$...$$
-
-$$s_{54} \equiv \frac{(a_1 \cdot m_{1962} + b_1 \cdot n_{1962})^2}{a_1 \cdot b_1 \cdot {m_{1962}}^3 \cdot {n_{1962}}^3} + \frac{(a_2 \cdot m_{1963} + b_2 \cdot n_{1963})^2}{a_2 \cdot b_2 \cdot {m_{1963}}^3 \cdot {n_{1963}}^3} + \ ... \ + \frac{(a_{37} \cdot m_{1998} + b_{37} \cdot n_{1998})^2}{a_{37} \cdot b_{37} \cdot {m_{1998}}^3 \cdot {n_{1998}}^3}$$
-
-You can see there are 54 equations with 74 unknowns.
+You can see there are 54 equations with 74 unknowns. But using the flag format we can get 14 unknowns then brute 6 more to solve the system directly. 
