@@ -65,3 +65,93 @@ $$e \cdot \frac{1}{f} \equiv \frac{(c+d)^2}{(c \cdot d)^2} \cdot \frac{c \cdot d
 so `len(flag.hex().encode())` is 54+20=74.
 
 You can see there are 54 equations with 74 unknowns. But using the flag format `pearl{...}` we can get 14 unknowns then brute 6 more to solve the system directly. 
+
+Some testing code without any bruteforce:
+
+```python
+from Crypto.Util.number import getPrime, inverse
+flag = b"0123456789abcdefghijklmnopqrstuvwxyzA"
+
+p = getPrime(256)
+k = list()
+flag = flag.hex().encode()
+for i in range(len(flag)): # -20
+    g = []
+    h = []
+    for j in range(0, len(flag), 2):
+        a, b = flag[j], flag[j + 1]
+        m, n = randint(0, p - 1), randint(0, p - 1)
+        c, d = m * a, n * b
+        e, f = pow(inverse(c, p) + inverse(d, p), 2, p), (m ** 2 * inverse(c, p) * n ** 2 * inverse(d, p)) % p
+        g += [m, n]
+        h.append(e * inverse(f, p) % p)
+    g.append(sum(h) % p)
+    k.append(g)
+
+assert len(flag) == 74
+M = []
+T = []
+for i in range(len(k)):
+    x = []
+    y = []
+    C = []
+    X = []
+    Y = []
+    s = 0
+    for j in range(0, len(flag), 2):
+        a, b = flag[j], flag[j + 1]
+        m, n = k[i][j], k[i][j + 1]
+
+        c, d = m * a, n * b
+        e, f = pow(inverse(m*a, p) + inverse(d, p), 2, p), (m ** 2 * inverse(c, p) * n ** 2 * inverse(d, p)) 
+        z = e*inverse(f, p)
+        s += z
+        assert z % p == (   a*pow(b, -1, p)*pow(m*n^3, -1, p) + b*pow(a, -1, p)*pow(n*m^3, -1, p) + 2*pow(m^2*n^2, -1, p)) % p
+
+        X.append( pow(m*n^3, -1, p) )
+        Y.append( pow(n*m^3, -1, p) )
+        C.append( 2*pow(m^2*n^2, -1, p) )
+        x.append( a*pow(b, -1, p) )
+        y.append( b*pow(a, -1, p) )
+
+    assert (vector(X+Y)*vector(x+y)) % p == (s - sum(C)) % p
+    M.append(X+Y)
+    T.append(s - sum(C))
+
+
+sol = Matrix(GF(p), M).solve_right(vector(GF(p), T))
+assert sol == vector(GF(p), x+y)
+
+flag = ""
+for v in sol[:len(sol)//2]:
+    for a in b"0123456789abcdef":
+        for b in b"0123456789abcdef":
+            if a!=b and a * pow(b, -1, p) == v:
+                try:
+                    flag += bytes.fromhex(bytes([a, b]).decode()).decode()
+                except:
+                    pass
+print(flag)
+
+
+
+"""
+
+[X1_1 X2_1 ... Y1_1 Y2_1 ...     ]    [x1] = [s1 - C1]      
+[X1_2 X2_2 ... Y1_2 Y2_2 ...     ]    [x2] = [s2 - C2]
+
+[................................]    [..] = [.........]
+
+[X1_38 X2_38 ... Y1_38 Y2_38 ... ]    [y1] = [s38 - C38]
+[X1_38 X2_39 ... Y1_39 Y2_39 ... ]    [y2] = [s39 - C39]
+
+[................................]    [..] = [.........]
+
+"""
+```
+
+Actual solve script:
+
+```python
+
+```
