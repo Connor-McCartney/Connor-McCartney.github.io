@@ -22,3 +22,8 @@ sudo pacman -Sy archlinux-keyring
 ```bash
 pip install --break-system-packages ...
 ```
+
+
+# In kde6 show desktop grid has been scrapped in favour of 'Toggle Grid View'
+
+<https://bbs.archlinux.org/viewtopic.php?id=293656>
