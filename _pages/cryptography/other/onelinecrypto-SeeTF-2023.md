@@ -19,7 +19,5 @@ Author's (neobeo) <https://demo.hedgedoc.org/s/DnzmwnCd7>
 
 <https://nush.app/blog/2023/06/21/see-tf-2023/>
 
-<https://nush.app/blog/2023/06/21/see-tf-2023/>
-
 <https://blog.maple3142.net/2023/06/12/seetf-2023-writeups/>
 
