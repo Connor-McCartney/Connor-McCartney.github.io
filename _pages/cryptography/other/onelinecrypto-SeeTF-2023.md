@@ -93,3 +93,13 @@ y
 z
 >>>
 ```
+
+```python
+>>> ord('0')
+48
+>>> ord('z')
+122
+>>> 
+```
+
+So all the flag characters are in the range 48 to 122. Not all in this range are valid but most are.
