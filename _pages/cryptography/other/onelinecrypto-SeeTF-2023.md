@@ -103,3 +103,6 @@ z
 ```
 
 So all the flag characters are in the range 48 to 122. Not all in this range are valid but most are.
+
+
+I'll start with the actual flag  `SEE{luQ5xmNUKgEEDO_c5LoJCum}` and just writing out some asserts
