@@ -106,3 +106,19 @@ So all the flag characters are in the range 48 to 122. Not all in this range are
 
 
 I'll start with the actual flag  `SEE{luQ5xmNUKgEEDO_c5LoJCum}` and just writing out some asserts
+
+```python
+from Crypto.Util.number import *
+import re
+
+flag = b"SEE{luQ5xmNUKgEEDO_c5LoJCum}"
+assert bytes_to_long(flag) % 13**37 == 0
+
+
+C = bytes_to_long(b"SEE{" + bytes(23) + b"}")
+
+f = C
+for i, c in zip(range(23, 0, -1), b"luQ5xmNUKgEEDO_c5LoJCum"):
+    f += c*256**i
+assert flag == long_to_bytes(int(f)) 
+```
