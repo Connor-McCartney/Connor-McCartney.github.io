@@ -122,3 +122,53 @@ for i, c in zip(range(23, 0, -1), b"luQ5xmNUKgEEDO_c5LoJCum"):
     f += c*256**i
 assert flag == long_to_bytes(f) 
 ```
+
+
+With a kinda regular lattice attack we can find some flags with the correct length and a multiple of 13**37, but are unlucky with matching regex:
+
+
+```python
+from Crypto.Util.number import *
+
+flag = b"SEE{luQ5xmNUKgEEDO_c5LoJCum}"
+C = bytes_to_long(b"SEE{" + bytes(23) + b"}")
+k = bytes_to_long(flag) // (13**37)
+
+a = 85 # (ord('0') + ord('z'))/2
+M = (identity_matrix(23)
+    .augment(vector([0]*23))
+    .augment(vector([256**i for i in range(23, 0, -1)]))
+    .stack(vector([-a]*23 + [1, C]))
+    .stack(vector([0]*23 + [0, -13**37]))
+)
+#print(M.change_ring(Zmod(10)))
+
+# testing Matrix validity with actual flag
+v = vector([c for c in b"luQ5xmNUKgEEDO_c5LoJCum"] + [1, k])
+assert list(v*M) == [c-a for c in b"luQ5xmNUKgEEDO_c5LoJCum"] + [1, 0]
+
+W = diagonal_matrix([1]*24 + [128])
+for row in (M*W).LLL()/W:
+    row = list(row)
+    if row[-2:] == [1, 0]:
+        print([i+a for i in row[:-2]])
+        f = b"SEE{%s}" % bytes([i+a for i in row[:-2]])
+        print(bytes_to_long(f) % 13**37, f)
+
+
+"""
+
+   [. ]     [.    ]     [.    ]     [.    ]     [.    ]     [.    ]     [.    ]     [.    ]   [.  ]   [. ]   [x0-a ]
+   [. ]     [.    ]     [.    ]     [.    ]     [.    ]     [.    ]     [.    ]     [.    ]   [.  ]   [. ]   [..   ]
+   [1 ]     [.    ]     [.    ]     [.    ]     [.    ]     [.    ]     [.    ]     [.    ]   [.  ]   [. ]   [..   ]
+   [0 ]     [1    ]     [0    ]     [0    ]     [0    ]     [0    ]     [0    ]     [0    ]   [-a ]   [0 ]   [x17-a] 
+   [0 ]     [0    ]     [1    ]     [0    ]     [0    ]     [0    ]     [0    ]     [0    ]   [-a ]   [0 ]   [x18-a] 
+..*[0 ]+x17*[0    ]+x18*[0    ]+x19*[1    ]+x20*[0    ]+x21*[0    ]+x22*[0    ]+x23*[0    ]+1*[-a ]-k*[0 ] = [x19-a] 
+   [0 ]     [0    ]     [0    ]     [0    ]     [1    ]     [0    ]     [0    ]     [0    ]   [-a ]   [0 ]   [x20-a] 
+   [0 ]     [0    ]     [0    ]     [0    ]     [0    ]     [1    ]     [0    ]     [0    ]   [-a ]   [0 ]   [x21-a]
+   [0 ]     [0    ]     [0    ]     [0    ]     [0    ]     [0    ]     [1    ]     [0    ]   [-a ]   [0 ]   [x22-a] 
+   [0 ]     [0    ]     [0    ]     [0    ]     [0    ]     [0    ]     [0    ]     [1    ]   [-a ]   [0 ]   [x23-a] 
+   [0 ]     [0    ]     [0    ]     [0    ]     [0    ]     [0    ]     [0    ]     [0    ]   [1  ]   [0 ]   [1    ]
+   [..]     [256^7]     [256^6]     [256^5]     [256^4]     [256^3]     [256^2]     [256^1]   [C  ]   [-M]   [0    ]
+"""
+```
