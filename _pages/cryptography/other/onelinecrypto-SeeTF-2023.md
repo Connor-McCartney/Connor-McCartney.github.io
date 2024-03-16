@@ -172,3 +172,53 @@ for row in (M*W).LLL()/W:
    [..]     [256^7]     [256^6]     [256^5]     [256^4]     [256^3]     [256^2]     [256^1]   [C  ]   [-M]   [0    ]
 """
 ```
+
+
+
+With lots of lattice enumeration this basis can find the flag:
+
+```python
+from Crypto.Util.number import *
+import re
+
+def lattice_enumeration(L, bound, sol_cnt=1_000_000):
+    from fpylll import IntegerMatrix, LLL
+    from fpylll.fplll.gso import MatGSO
+    from fpylll.fplll.enumeration import Enumeration
+    A = IntegerMatrix.from_matrix(L)
+    LLL.reduction(A)
+    M = MatGSO(A)
+    M.update_gso()
+    size = int(L.nrows())
+    enum = Enumeration(M, sol_cnt)
+    answers = enum.enumerate(0, size, (size * bound**2), 0, pruning=None)
+    for _, s in answers:
+        v = IntegerMatrix.from_iterable(1, A.nrows, map(int, s))
+        sv = v * A
+        if abs(sv[0, size - 1]) <= bound:
+            yield sv[0]
+
+
+flag = b"SEE{luQ5xmNUKgEEDO_c5LoJCum}"
+C = bytes_to_long(b"SEE{" + bytes(23) + b"}")
+k = bytes_to_long(flag) // (13**37)
+
+a = 85 # (ord('0') + ord('z'))/2
+M = (identity_matrix(23)
+    .augment(vector([0]*23))
+    .augment(vector([256**i for i in range(23, 0, -1)]))
+    .stack(vector([-a]*23 + [1, C]))
+    .stack(vector([0]*23 + [0, -13**37]))
+)
+
+for row in lattice_enumeration(M.change_ring(ZZ), 37, sol_cnt=500_000):
+    for k in [1, -1]:
+        row = [k*i for i in row]
+        if row[-2:] != [1, 0]:
+            continue
+        try:
+            f = b"SEE{" + bytes([i+a for i in row[:-2]]) + b"}"
+            print(bytes_to_long(f) % 13**37, f, '<--- WIN' if re.fullmatch(r'\w+', f.decode()[4:-1]) else '')
+        except:
+            continue
+```
