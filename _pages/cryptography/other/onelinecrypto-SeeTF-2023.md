@@ -152,7 +152,7 @@ for row in (M*W).LLL()/W:
     row = list(row)
     if row[-2:] == [1, 0]:
         print([i+a for i in row[:-2]])
-        f = b"SEE{%s}" % bytes([i+a for i in row[:-2]])
+        f = b"SEE{" + bytes([i+a for i in row[:-2]]) + b"}"
         print(bytes_to_long(f) % 13**37, f)
 
 
