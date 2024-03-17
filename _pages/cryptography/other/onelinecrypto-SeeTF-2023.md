@@ -222,3 +222,69 @@ for row in lattice_enumeration(M.change_ring(ZZ), 37, sol_cnt=500_000):
         except:
             continue
 ```
+
+
+I rewrote Maple's solver which works better:
+
+```python
+import string
+import re
+from Crypto.Util.number import *
+
+def lattice_enumeration(L, bound, sol_cnt):
+    from fpylll import IntegerMatrix, LLL
+    from fpylll.fplll.gso import MatGSO
+    from fpylll.fplll.enumeration import Enumeration
+    A = IntegerMatrix.from_matrix(L)
+    LLL.reduction(A)
+    M = MatGSO(A)
+    M.update_gso()
+    size = int(L.nrows())
+    enum = Enumeration(M, sol_cnt)
+    answers = enum.enumerate(0, size, (size * bound**2), 0, pruning=None)
+    for _, s in answers:
+        v = IntegerMatrix.from_iterable(1, A.nrows, map(int, s))
+        sv = v * A
+        if abs(sv[0, -1]) <= bound:
+            yield sv[0]
+
+def linear_solver(xx, target, M, avg, bound=None, sol_cnt=5000):
+    if bound is None:
+        bound = avg//2
+
+    P = PolynomialRing(ZZ, "ap", len(xx))
+    aps = P.gens()
+    aa = [ap + avg for ap in aps]
+    f = sum([a * x for a, x in zip(aa, xx)]) - target
+
+    L = matrix(f.coefficients()).T
+    L = block_matrix([[M, 0], [L, 1]])
+    L[:, 0] *= avg #2**100
+
+    for row in lattice_enumeration(L.change_ring(ZZ), bound, sol_cnt):
+        neg = row[-1]
+        if neg not in (-1, 1):
+            continue
+        sol = [neg * row[i+1] for i in range(len(xx))]
+        assert f(*sol) % M == 0
+        sol = [x + avg for x in sol]
+        yield sol
+
+
+xx = [256**i for i in range(23, 0, -1)]
+chrs = (string.ascii_letters + string.digits + "_").encode()
+avg = sorted(chrs)[len(chrs) // 2] - 1
+bound = max([x - avg for x in sorted(chrs)])  # within [-37, 37]
+M = 13**37
+target = -bytes_to_long(b"SEE{" + bytes(23) + b"}")
+
+for sol in linear_solver(xx, target, M, avg, bound):
+    flag = b"SEE{" + bytes(sol) + b"}"
+    assert bytes_to_long(flag) % M == 0
+    try:
+        if re.fullmatch(r"SEE{\w{23}}", flag.decode()):
+            print(flag)
+            break
+    except UnicodeDecodeError:
+        pass
+```
