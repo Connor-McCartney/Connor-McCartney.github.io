@@ -153,6 +153,10 @@ target = fnv64(inp)
 solve(target, len(inp), sol_cnt=2_500_000)
 ```
 
+This code works well for up to 8 chars (the lattice enumeration is not even necessary), for 9 chars lattice enumeration seemed to work but was very slow...
+
+I decided to experiment with the FindInstance function from Wolfram
+
 
 <br>
 
