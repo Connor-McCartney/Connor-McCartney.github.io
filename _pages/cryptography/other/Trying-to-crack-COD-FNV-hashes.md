@@ -6,6 +6,40 @@ title: Trying to crack COD FNV hashes
 <br>
 
 
+I was sent the following code from HalfInchPunisher, working with some others reverse engineering Call of Duty.
+
+```c
+#define ull unsigned long long
+
+ull fnv64(const char* string) {
+    ull hash = 0xCBF29CE484222325;
+    ull prime = 0x100000001B3;
+
+    for (int i = 0; string[i]; ++i) {
+        char cur = string[i];
+        if ((unsigned char)(cur - 'A') <= 25)
+            cur |= 0x20;
+
+        if (cur == '\\')
+            cur = '/';
+
+        hash ^= cur;
+        hash *= prime;
+    }
+
+    return hash;
+}
+```
+
+Along with a few example hashes:
+
+```
+0xC5BE054CB26B3829
+0x233B0E2B30E00445
+0x92A366D1A86FD4D5
+0x50B2F8C43DA48808
+```
+
 
 
 # Using Wolfram Language
