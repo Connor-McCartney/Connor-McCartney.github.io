@@ -44,7 +44,7 @@ Along with a few example hashes:
 
 Translating to sage code:
 
-```
+```python
 def fnv64(string):
     string=string.lower().replace("\\","/")
     hsh = 0xCBF29CE484222325
