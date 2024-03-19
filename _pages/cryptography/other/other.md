@@ -5,6 +5,9 @@ title: Other
 
 <br>
 
+<span style="font-size:2em;">   [Trying to crack COD FNV hashes](/cryptography/other/Trying-to-crack-COD-FNV-hashes) </span> <br>
+
+
 <span style="font-size:2em;">   [Cube - Grey Cat The Flag 2022](/cryptography/other/cube-greyCTF-2022) </span> <br>
 
 
