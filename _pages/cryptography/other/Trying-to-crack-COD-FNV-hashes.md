@@ -85,6 +85,7 @@ def linear_solver(xx, target, M, avg, bound, sol_cnt=10_000):
     f = sum([a * x for a, x in zip(aa, xx)]) - target
     L = matrix(f.coefficients()).T
     L = block_matrix([[M, 0], [L, 1]])
+    L[:, 0] *= 2**100
     if sol_cnt > 100_000:
         rows = tqdm(lattice_enumeration(L.change_ring(ZZ), bound, sol_cnt))
     else:
@@ -140,22 +141,15 @@ def solve(target, n, sol_cnt=10_000):
 # one of the actual examples
 solve(0xC5BE054CB26B3829, 8)
 
-inp = "abcdefg" # 7 char input
-target = fnv64(inp)
-solve(target, len(inp))
-
-inp = "abcdefgh" # 8 char input
-target = fnv64(inp)
-solve(target, len(inp))
-
-inp = "abcdefghi" # 9 char input
-target = fnv64(inp)
-solve(target, len(inp), sol_cnt=2_500_000)
+solve(fnv64("abcdefg"), 7)
+solve(fnv64("abcdefgh"), 8)
+solve(fnv64("abcdefghi"), 9, sol_cnt=20_000)
+#print(solve(fnv64("abcdefghij"), 10, sol_cnt=1_000_000))
 ```
 
-This code works well for up to 8 chars (the lattice enumeration is not even necessary), for 9 chars lattice enumeration seemed to work but was very slow...
+This code works well for up to 9 chars, but at 10 there seems to be too many possibilities...
 
-I decided to experiment with the FindInstance function from Wolfram
+I decided to experiment with the FindInstance function from Wolfram anyways.
 
 
 <br>
