@@ -40,6 +40,22 @@ Along with a few example hashes:
 0x50B2F8C43DA48808
 ```
 
+Translating to sage code:
+
+```
+def fnv64(string):
+    string=string.lower().replace("\\","/")
+    hsh = 0xCBF29CE484222325
+    prime = 0x100000001B3
+    for c in string.encode():
+        hsh = (hsh^^c)*prime
+    return hsh % 2**64
+```
+
+Each xor operation with one of the input characters can be described as +/- some value from -128 to 128. 
+
+Then it's a linear system mod 2**64 to solve, with n unknowns for an input string of length n.
+
 
 
 # Using Wolfram Language
