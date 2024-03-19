@@ -40,6 +40,8 @@ Along with a few example hashes:
 0x50B2F8C43DA48808
 ```
 
+<br>
+
 Translating to sage code:
 
 ```
@@ -57,6 +59,7 @@ Each xor operation with one of the input characters can be described as +/- some
 Then it's a linear system mod 2**64 to solve, with n unknowns for an input string of length n.
 
 
+<br>
 
 # Using Wolfram Language
 
