@@ -164,6 +164,7 @@ You need to install the [Wolfram Engine](https://www.wolfram.com/engine/) and [W
 sudo dpkg -i WolframScript_14.0.0_LINUX64_amd64.deb
 sudo ./WolframEngine_14.0.0_LINUX.sh
 wolframscript
+pip install wolframclient
 ```
 
 Some other documentation:
@@ -173,5 +174,10 @@ Some other documentation:
 <https://support.wolfram.com/45743>
 
 <https://reference.wolfram.com/language/ref/FindInstance.html>
+
+<https://reference.wolfram.com/language/WolframClientForPython/>
+
+<https://blog.wolfram.com/2019/05/16/announcing-the-wolfram-client-library-for-python/>
+
 
 
