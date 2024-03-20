@@ -144,7 +144,7 @@ solve(0xC5BE054CB26B3829, 8)
 solve(fnv64("abcdefg"), 7)
 solve(fnv64("abcdefgh"), 8)
 solve(fnv64("abcdefghi"), 9, sol_cnt=20_000)
-#print(solve(fnv64("abcdefghij"), 10, sol_cnt=1_000_000))
+#print(solve(fnv64("abcdefghij"), 10, sol_cnt=1_000_000))    # didn't find anything
 ```
 
 This code works well for up to 9 chars, but at 10 there seems to be too many possibilities...
@@ -181,3 +181,63 @@ Some other documentation:
 
 
 
+```python
+from wolframclient.evaluation import WolframLanguageSession
+from wolframclient.language import wlexpr
+session = WolframLanguageSession()
+
+def find_instances(xx, LB, UB, target, M, sol_cnt=1000):
+    n = len(xx)
+    expr = 'FindInstance[{'
+    expr += '+'.join(f'{xx[i]}*x{i}' for i in range(n)) + f'+ k*{{{M}}} == {target}'
+    expr += ','  + ','.join(f'x{i}<{UB},x{i}>{LB}' for i in range(n))
+    expr += '},{' + ','.join(f'x{i}' for i in range(n)) + f',k}},Integers, {sol_cnt}]'
+    for sol in session.evaluate(wlexpr(expr)):
+        yield [x[1] for x in sol[:-1]]
+
+def fnv64(string):
+    string=string.lower().replace("\\","/")
+    hsh = 0xCBF29CE484222325
+    prime = 0x100000001B3
+    for c in string.encode():
+        hsh = (hsh^c)*prime
+    return hsh % 2**64
+
+def rev(sol):
+    hsh = 0xCBF29CE484222325
+    p = 0x100000001B3
+    ret = ""
+    a = hsh
+    b = hsh
+    for s in sol:
+        a += s
+        for x in range(128):
+            if a == b^x:
+                ret += chr(x)
+                b ^= x
+                break
+        a *= p
+        b *= p
+    return ret.encode()
+
+def solve(target, n, sol_cnt=1):
+    hsh = 0xCBF29CE484222325
+    p = 0x100000001B3
+    rets = []
+    for sol in find_instances([p**(n - i) for i in range(n)], -128, 128, target - hsh*p**n, 2**64, sol_cnt=sol_cnt):
+        ret = rev(sol)
+        if len(ret) == n:
+            rets.append(ret)
+    return rets
+
+# one of the actual examples
+print(solve(0xC5BE054CB26B3829, 8))
+
+print(solve(fnv64("abcdefg"), 7))
+print(solve(fnv64("abcdefgh"), 8))
+print(solve(fnv64("abcdefghi"), 9, sol_cnt=500))
+print(solve(fnv64("abcdefghij"), 10, sol_cnt=50_000))
+#print(solve(fnv64("abcdefghijk"), 11, sol_cnt=2))    # doesn't seem to work
+
+session.terminate()
+```
