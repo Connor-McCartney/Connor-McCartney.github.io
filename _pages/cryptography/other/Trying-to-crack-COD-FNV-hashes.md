@@ -241,3 +241,7 @@ print(solve(fnv64("abcdefghij"), 10, sol_cnt=50_000))
 
 session.terminate()
 ```
+
+In conclusion we get a slight improvement with the proprietary software, it solves a length 9 one 
+
+faster, solves a length 10 one where the previous couldn't, but fails to crack a length 11 one.
