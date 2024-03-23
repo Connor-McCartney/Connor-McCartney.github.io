@@ -15,11 +15,11 @@ while True:
     t = a*x + b*y
     assert x*a + y*b - t == 0
     B = Matrix([
-        [ a, 1, 0],
-        [ b, 0, 1],
-        [-t, 0, 0],
+        [1, 0,  a],
+        [0, 1,  b],
+        [0, 0, -t],
     ])
-    target = vector([0, x, y])
+    target = vector([x, y, 0])
     assert vector([x, y, 1]) * B == target
     assert target in B.LLL()
 ```
