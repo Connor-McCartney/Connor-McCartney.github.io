@@ -743,3 +743,91 @@ pwndbg> x $ebp+4
 pwndbg> x $ebp+8
 0xffffd630:     0xdeadbeef
 ```
+
+
+Now finding the address of our input:
+
+```
+$ gdb bof
+
+...
+
+pwndbg> break func
+Breakpoint 1 at 0x56555632
+pwndbg> r
+Starting program: /home/connor/Desktop/bof 
+...
+
+pwndbg> n
+
+pwndbg> n
+
+pwndbg> n
+
+pwndbg> n
+
+pwndbg> n
+
+pwndbg> n
+
+pwndbg> n
+
+pwndbg> n
+AAAA
+0x56555654 in func ()
+LEGEND: STACK | HEAP | CODE | DATA | RWX | RODATA
+───────────────[ REGISTERS / show-flags off / show-compact-regs off ]───────────────
+ EAX  0xffffd5fc ◂— 'AAAA'
+ EBX  0xf7f93e2c (_GLOBAL_OFFSET_TABLE_) ◂— 0x21fd4c
+*ECX  0xf7f958ac (_IO_stdfile_0_lock) ◂— 0x0
+ EDX  0x0
+ EDI  0xf7ffcb60 (_rtld_global_ro) ◂— 0x0
+ ESI  0x565556b0 (__libc_csu_init) ◂— push ebp
+ EBP  0xffffd628 —▸ 0xffffd648 ◂— 0x0
+ ESP  0xffffd5e0 —▸ 0xffffd5fc ◂— 'AAAA'
+*EIP  0x56555654 (func+40) ◂— cmp dword ptr [ebp + 8], 0xcafebabe
+─────────────────────────[ DISASM / i386 / set emulate on ]─────────────────────────
+   0x5655563d <func+17>    mov    dword ptr [esp], 0x5655578c
+   0x56555644 <func+24>    call   puts                    <puts>
+ 
+   0x56555649 <func+29>    lea    eax, [ebp - 0x2c]
+   0x5655564c <func+32>    mov    dword ptr [esp], eax
+   0x5655564f <func+35>    call   gets                    <gets>
+ 
+ ► 0x56555654 <func+40>    cmp    dword ptr [ebp + 8], 0xcafebabe
+   0x5655565b <func+47>    jne    func+63                    <func+63>
+    ↓
+   0x5655566b <func+63>    mov    dword ptr [esp], 0x565557a3
+   0x56555672 <func+70>    call   puts                    <puts>
+ 
+   0x56555677 <func+75>    mov    eax, dword ptr [ebp - 0xc]
+   0x5655567a <func+78>    xor    eax, dword ptr gs:[0x14]
+─────────────────────────────────────[ STACK ]──────────────────────────────────────
+00:0000│ esp 0xffffd5e0 —▸ 0xffffd5fc ◂— 'AAAA'
+01:0004│-044 0xffffd5e4 —▸ 0xffffd8cb —▸ 0xffa04e16 ◂— 0x0
+02:0008│-040 0xffffd5e8 ◂— 0x0
+03:000c│-03c 0xffffd5ec ◂— 0x1c
+04:0010│-038 0xffffd5f0 —▸ 0xf7ffcfd0 (_GLOBAL_OFFSET_TABLE_) ◂— 0x33f18
+05:0014│-034 0xffffd5f4 ◂— 0x30 /* '0' */
+06:0018│-030 0xffffd5f8 ◂— 0x0
+07:001c│ eax 0xffffd5fc ◂— 'AAAA'
+───────────────────────────────────[ BACKTRACE ]────────────────────────────────────
+ ► 0 0x56555654 func+40
+   1 0x5655569f main+21
+   2 0xf7d94af9 __libc_start_call_main+121
+   3 0xf7d94bbd __libc_start_main+141
+   4 0x56555561 _start+49
+────────────────────────────────────────────────────────────────────────────────────
+pwndbg> search AAAA
+Searching for value: 'AAAA'
+[heap]          0x565585b0 'AAAA\n'
+[stack]         0xffffd5fc 'AAAA'
+pwndbg>
+```
+
+so 0xffffd5fc in my case. 
+
+```python
+>>> 0xffffd630 - 0xffffd5fc
+52
+```
