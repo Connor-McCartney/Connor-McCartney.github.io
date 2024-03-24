@@ -683,3 +683,33 @@ bof: ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), dynamically li
 
 It's a 32-bit binary. so I'll try the same technique from buffer overflow 2 - picoCTF 2022
 
+
+```
+$ gdb ./bof
+
+...
+
+pwndbg> info functions
+All defined functions:
+
+Non-debugging symbols:
+0x00000474  _init
+0x000004c0  gets@plt
+0x000004d0  __stack_chk_fail@plt
+0x000004e0  __cxa_finalize@plt
+0x000004f0  puts@plt
+0x00000500  system@plt
+0x00000510  __gmon_start__@plt
+0x00000520  __libc_start_main@plt
+0x00000530  _start
+0x00000570  __do_global_dtors_aux
+0x000005f0  frame_dummy
+0x00000627  __i686.get_pc_thunk.bx
+0x0000062c  func
+0x0000068a  main
+0x000006b0  __libc_csu_init
+0x00000720  __libc_csu_fini
+0x00000730  __do_global_ctors_aux
+0x00000768  _fini
+pwndbg> 
+```
