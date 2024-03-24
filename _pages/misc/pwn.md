@@ -543,3 +543,26 @@ good job :)
 mommy! I think I know what a file descriptor is!!
 fd@pwnable:~$ 
 ```
+
+<br>
+
+# collision - pwnable.kr
+
+```python
+unsigned long check_password(const char* p){
+        int* ip = (int*)p;
+        int i;
+        int res=0;
+        for(i=0; i<5; i++){
+            printf("%c\n", p[i]);
+            printf("%d\n", ip[i]);
+            res += ip[i];
+        }
+        return res;
+}
+```
+
+We can see that a char array is converted to an int array. 
+
+The size of ints in c is 2^32. The size of a char is 2^8. So each integer is comprised of 4 ints. 
+
