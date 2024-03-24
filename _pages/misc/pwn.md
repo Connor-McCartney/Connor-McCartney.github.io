@@ -713,3 +713,33 @@ Non-debugging symbols:
 0x00000768  _fini
 pwndbg> 
 ```
+
+The key is currently 0xdeadbeef, let's set a breakpoint at func and then try find it on the stack. 
+
+'x' is used to examine an address, you can see more with x/2, x/3 etc
+
+```
+pwndbg> break func
+pwndbg> r
+
+pwndbg> x/10 $ebp
+0xffffd628:     -10680  1448433311      -559038737      0
+0xffffd638:     0       0       0       0
+0xffffd648:     0       -136754439
+pwndbg> x/10x $ebp
+0xffffd628:     0xffffd648      0x5655569f      0xdeadbeef      0x00000000
+0xffffd638:     0x00000000      0x00000000      0x00000000      0x00000000
+0xffffd648:     0x00000000      0xf7d94af9
+pwndbg>
+```
+
+So we can see 0xdeadbeef is at $ebp+8
+
+```
+pwndbg> x $ebp
+0xffffd628:     0xffffd648
+pwndbg> x $ebp+4
+0xffffd62c:     0x5655569f
+pwndbg> x $ebp+8
+0xffffd630:     0xdeadbeef
+```
