@@ -672,7 +672,7 @@ int main(int argc, char* argv[]){
 }
 ```
 
-My goal is to change 0xcafebabe to 0xdeadbeef.
+My goal is to change the key to 0xcafebabe.
 
 ```
 $ wget http://pwnable.kr/bin/bof
