@@ -626,3 +626,9 @@ I can convert back and forth like so:
 >>> long_to_bytes(1684234849)[::-1]
 b'abcd'
 ```
+
+
+```python
+>>> 0x06C5CEC8 * 4 + 0x06C5CECC == 0x21DD09EC
+True
+```
