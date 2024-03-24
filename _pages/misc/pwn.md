@@ -566,3 +566,4 @@ We can see that a char array is converted to an int array.
 
 The size of ints in c is 2^32. The size of a char is 2^8. So each integer is comprised of 4 ints. 
 
+In c they are also converted in little endian:
