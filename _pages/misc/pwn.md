@@ -831,3 +831,10 @@ so 0xffffd5fc in my case.
 >>> 0xffffd630 - 0xffffd5fc
 52
 ```
+
+Testing our payload we can see it works:
+
+```
+pwndbg> x $ebp+8
+0xffffd630:     0x42424242
+```
