@@ -674,3 +674,12 @@ int main(int argc, char* argv[]){
 
 My goal is to change 0xcafebabe to 0xdeadbeef.
 
+```
+$ wget http://pwnable.kr/bin/bof
+
+$ file bof
+bof: ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, for GNU/Linux 2.6.24, BuildID[sha1]=ed643dfe8d026b7238d3033b0d0bcc499504f273, not stripped
+```
+
+It's a 32-bit binary. so I'll try the same technique from buffer overflow 2 - picoCTF 2022
+
