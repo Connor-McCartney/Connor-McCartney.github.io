@@ -863,3 +863,37 @@ super.pl
 $ cat flag
 daddy, I just pwned a buFFer :)
 ```
+
+
+# flag - pwnable.kr
+
+> Ultimate Packer for Executables (UPX) is an open-source packer that can reduce the file size of an executable drastically (better than Zip files)
+
+```
+$ wget http://pwnable.kr/bin/flag
+$ upx -d flag
+$ chmod +x flag
+$ ./flag 
+I will malloc() and strcpy the flag there. take it.
+```
+
+The flag should just be in memory then, we can find it with gdb.
+
+```
+$ gdb flag
+pwndbg> break main
+pwndbg> r
+pwndbg> n
+pwndbg> n
+pwndbg> n
+pwndbg> n
+pwndbg> n
+pwndbg> n
+0x000000000040118b in main ()
+LEGEND: STACK | HEAP | CODE | DATA | RWX | RODATA
+───────────────────────────────────────────────────[ REGISTERS / show-flags off / show-compact-regs off ]────────────────────────────────────────────────────
+ RAX  0x6c96b0 ◂— 0x0
+ RBX  0x401ae0 (__libc_csu_fini) ◂— push rbx
+ RCX  0x8
+*RDX  0x496628 ◂— push rbp /* 'UPX...? sounds like a delivery service :)' */
+```
