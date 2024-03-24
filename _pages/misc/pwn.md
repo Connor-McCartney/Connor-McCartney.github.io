@@ -617,3 +617,12 @@ Type "help", "copyright", "credits" or "license" for more information.
 ```
 
 <br>
+
+I can convert back and forth like so:
+
+```python
+>>> int.from_bytes(b"abcd", 'little')
+1684234849
+>>> long_to_bytes(1684234849)[::-1]
+b'abcd'
+```
