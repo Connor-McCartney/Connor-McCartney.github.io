@@ -632,3 +632,18 @@ b'abcd'
 >>> 0x06C5CEC8 * 4 + 0x06C5CECC == 0x21DD09EC
 True
 ```
+
+
+```python
+>>> from Crypto.Util.number import *
+>>> def f(x):
+...     return long_to_bytes(x)[::-1]
+... 
+>>> f(0x06C5CEC8)*4 + f(0x06C5CECC)
+b'\xc8\xce\xc5\x06\xc8\xce\xc5\x06\xc8\xce\xc5\x06\xc8\xce\xc5\x06\xcc\xce\xc5\x06'
+```
+
+```
+col@pwnable:~$ ./col $(echo -e '\xc8\xce\xc5\x06\xc8\xce\xc5\x06\xc8\xce\xc5\x06\xc8\xce\xc5\x06\xcc\xce\xc5\x06')
+daddy! I just managed to create a hash collision :)
+```
