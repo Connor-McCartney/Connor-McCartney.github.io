@@ -567,3 +567,53 @@ We can see that a char array is converted to an int array.
 The size of ints in c is 2^32. The size of a char is 2^8. So each integer is comprised of 32/8=4 chars. 
 
 In c they are also converted in little endian:
+
+
+```c
+#include <stdio.h>
+
+unsigned long check_password(const char* p){
+        int* ip = (int*)p;
+        int i;
+        int res=0;
+        for(i=0; i<5; i++){
+            printf("%d\n", ip[i]);
+            res += ip[i];
+        }
+        return res;
+}
+
+int main() {
+    char* s = "aabbccddeeffgghhiijj";
+    unsigned long x = check_password(s);
+    //printf("%lu\n", x);
+}
+```
+
+```
+[~/Desktop] 
+$ gcc x.c && ./a.out
+1650614625
+1684300643
+1717986661
+1751672679
+1785358697
+
+[~/Desktop] 
+$ python
+Python 3.11.8 (main, Feb 12 2024, 14:50:05) [GCC 13.2.1 20230801] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> int.from_bytes(b"aabb", 'little')
+1650614625
+>>> int.from_bytes(b"ccdd", 'little')
+1684300643
+>>> int.from_bytes(b"eeff", 'little')
+1717986661
+>>> int.from_bytes(b"gghh", 'little')
+1751672679
+>>> int.from_bytes(b"iijj", 'little')
+1785358697
+>>> 
+```
+
+<br>
