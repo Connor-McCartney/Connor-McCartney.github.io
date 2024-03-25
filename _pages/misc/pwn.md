@@ -977,6 +977,15 @@ The first interesting thing to note, is that scanf isn't being used normally, th
         scanf("%d", passcode2);
 ```
 
+So, our plan of attack:
+
+1. overflowing `scanf("%100s", name);` we can edit the value of passcode1 to the address of the fflush function.
+
+2. When `scanf("%d", passcode1);` is called, we can edit fflush to point somewhere else.
+
+3. We'll point it to the line `system("/bin/cat flag");`
+
+
 
 
 <br>
