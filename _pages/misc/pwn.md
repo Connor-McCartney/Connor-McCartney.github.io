@@ -915,3 +915,29 @@ LEGEND: STACK | HEAP | CODE | DATA | RWX | RODATA
  RCX  0x8
 *RDX  0x496628 ◂— push rbp /* 'UPX...? sounds like a delivery service :)' */
 ```
+
+
+
+# random - pwnable.kr
+
+> rand() is automatically seeded with the a value of 1 if you do not call srand()
+
+
+```
+        printf("%d\n", random);
+```
+
+gives 1804289383 every time. 
+
+
+```python
+>>> 0xdeadbeef ^ 1804289383
+3039230856
+```
+
+```
+random@pwnable:~$ ./random 
+3039230856
+Good!
+Mommy, I thought libc random is unpredictable...
+```
