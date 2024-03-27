@@ -987,8 +987,12 @@ So, our plan of attack:
 
 To compile the 32-bit code I had to install `lib32-glibc` and `lib32-gcc-libs`, then use the `-m32` flag for gcc.
 
+I found that the address of `passcode1` is at `ebp - 0x10`.
+
 
 <br>
+
+
 
 # random - pwnable.kr
 
