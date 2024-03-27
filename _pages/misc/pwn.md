@@ -985,7 +985,7 @@ So, our plan of attack:
 
 3. We'll point it to the line `system("/bin/cat flag");`
 
-
+To compile the 32-bit code I had to install `lib32-glibc` and `lib32-gcc-libs`, then use the `-m32` flag for gcc.
 
 
 <br>
