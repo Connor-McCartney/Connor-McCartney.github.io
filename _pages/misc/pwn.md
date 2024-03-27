@@ -1004,6 +1004,23 @@ pwndbg> x $ebp-0x10
 0xffffd618:     0x42424242
 ```
 
+Finding the address of fflush (`0x804a004`):
+
+```
+[~/Desktop] 
+$ scp -P2222 passcode@pwnable.kr:/home/passcode/passcode ./passcode 
+passcode@pwnable.kr's password: 
+passcode                                                                                                                   100% 7485    15.0KB/s   00:00    
+
+[~/Desktop] 
+$ gdb passcode
+...
+pwndbg> x fflush
+0x8048430 <fflush@plt>: 0xa00425ff
+pwndbg> disass fflush
+Dump of assembler code for function fflush@plt:
+   0x08048430 <+0>:     jmp    DWORD PTR ds:0x804a004
+```
 
 <br>
 
