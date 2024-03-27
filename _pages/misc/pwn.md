@@ -979,7 +979,7 @@ The first interesting thing to note, is that scanf isn't being used normally, th
 
 So, our plan of attack:
 
-1. overflowing `scanf("%100s", name);` we can edit the value of passcode1 to the address of the fflush function.
+1. from our input to `scanf("%100s", name);` we can edit the value of passcode1 to the address of the fflush function.
 
 2. When `scanf("%d", passcode1);` is called, we can edit fflush to point somewhere else.
 
