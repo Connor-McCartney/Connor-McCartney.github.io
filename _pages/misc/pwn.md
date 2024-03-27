@@ -1015,8 +1015,6 @@ passcode                                                                        
 [~/Desktop] 
 $ gdb passcode
 ...
-pwndbg> x fflush
-0x8048430 <fflush@plt>: 0xa00425ff
 pwndbg> disass fflush
 Dump of assembler code for function fflush@plt:
    0x08048430 <+0>:     jmp    DWORD PTR ds:0x804a004
