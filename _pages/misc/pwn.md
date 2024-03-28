@@ -1086,3 +1086,15 @@ random@pwnable:~$ ./random
 Good!
 Mommy, I thought libc random is unpredictable...
 ```
+
+# input - pwnable.kr
+
+Stage 1 can be passed with:
+
+```
+input2@pwnable:~$ ./input 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 $'\x00' $'\x20\x0a\x0d' 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+Welcome to pwnable.kr
+Let's see if you know how to give input to program
+Just give me correct inputs then you will get the flag :)
+Stage 1 clear!
+```
