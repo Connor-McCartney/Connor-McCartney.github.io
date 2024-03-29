@@ -180,6 +180,7 @@ Some other documentation:
 <https://blog.wolfram.com/2019/05/16/announcing-the-wolfram-client-library-for-python/>
 
 
+NB: the html parser removes any double curly backets, copy the actual code from <https://github.com/Connor-McCartney/Connor-McCartney.github.io/blob/main/_pages/cryptography/other/Trying-to-crack-COD-FNV-hashes.md> 
 
 ```python
 from wolframclient.evaluation import WolframLanguageSession
