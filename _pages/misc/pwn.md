@@ -1087,6 +1087,9 @@ Good!
 Mommy, I thought libc random is unpredictable...
 ```
 
+<br>
+
+
 # input - pwnable.kr
 
 Stage 1 can be passed with:
@@ -1097,4 +1100,12 @@ Welcome to pwnable.kr
 Let's see if you know how to give input to program
 Just give me correct inputs then you will get the flag :)
 Stage 1 clear!
+```
+
+For stage 2:
+
+```
+echo -e "\x00\x0a\x00\xff" > mystdin
+echo -e "\x00\x0a\x02\xff" > mystderr
+./input ... <mystdin 2<mystderr
 ```
