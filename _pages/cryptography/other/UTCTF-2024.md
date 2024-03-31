@@ -369,3 +369,10 @@ print(flag)
 # Study Music
 
 <https://youtu.be/1Cbaa6dO2Yk>
+
+
+About 3 hours in there is morse code of `utflag{l0v3th4tdanc3}`:
+
+![image](https://github.com/Connor-McCartney/Connor-McCartney.github.io/assets/89777327/f47a06d8-3d8a-4331-8a78-9199b3ffedc8)
+
+
