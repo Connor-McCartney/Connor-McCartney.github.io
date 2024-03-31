@@ -44,6 +44,8 @@ print(bytes.fromhex(f"{flag:02x}").decode())
 # utflag{just_send_plaintext}
 ```
 
+<br>
+<br>
 
 # Beginner: Anti-dcode.fr
 
@@ -57,6 +59,8 @@ print('utflag' + flag)
 # utflag{rip_dcode}
 ```
 
+<br>
+<br>
 
 # numbers go brrr
 
@@ -92,6 +96,9 @@ for seed in trange(10**6):
         break
 # utflag{deep_seated_and_recurring_self-doubts}
 ```
+
+<br>
+<br>
 
 # numbers go brrr 2
 
@@ -141,6 +148,9 @@ print(io.recv())
 # utflag{ok_you_are_either_really_lucky_or_you_solved_it_as_intended_yay}
 ```
 
+<br>
+<br>
+
 # bits and pieces
 
 n1 can be factored with Fermat's method, then n2 and n3 have a common factor.
@@ -178,6 +188,8 @@ print(part1 + part2 + part3)
 ```
 
 
+<br>
+<br>
 
 # simple signature
 
@@ -226,6 +238,8 @@ Enter a signature: 1743595276691438791129148537684067071344675928018267793157501
 Congrats! Here is the flag: utflag{a1m05t_t3xtb00k_3x3rc153}
 ```
 
+<br>
+<br>
 
 # Cryptordle
 
@@ -288,6 +302,9 @@ while True:
 
 # utflag{sometimes_pure_guessing_is_the_strat}
 ```
+
+<br>
+<br>
 
 # Insanity Check: Reimagined
 
@@ -365,6 +382,9 @@ flag = flag[:6] + '{' + flag[7:] + '}'
 print(flag)
 # UTFLAG{UTCTF_USES_SVG_TO_ITS_FULLEST}
 ```
+
+<br>
+<br>
 
 # Study Music
 
