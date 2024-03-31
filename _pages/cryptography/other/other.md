@@ -66,3 +66,6 @@ title: Other
 
 
 <span style="font-size:2em;">   [onelinecrypto - SeeTF 2023](/cryptography/other/onelinecrypto-SeeTF-2023) </span> <br>
+
+
+<span style="font-size:2em;">   [UTCTF 2024](/cryptography/other/UTCTF-2024) </span> <br>
