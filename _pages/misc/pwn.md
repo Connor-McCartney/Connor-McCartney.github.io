@@ -1110,8 +1110,26 @@ echo -e "\x00\x0a\x02\xff" > mystderr
 ./input ... <mystdin 2<mystderr
 ```
 
+For stage 3 you usually set environment variables like `export x=5` in that shell session but 
+
+I couldn't get it to work with bytes. So, I tried just running a c script to set it temporarily. 
+
+using the [setenv function](https://pubs.opengroup.org/onlinepubs/9699919799/functions/setenv.html).
+
+
+
+
+
 For stage 4:
 
 ```
 echo -e "\x00\x00\x00\x00" > $'\n'
+```
+
+For stage 5, choose some random port in the arguments, then it sets up a listener we can send bytes to:
+
+```python
+from pwn import remote
+io = remote("127.0.0.1", 1234)
+io.sendline(b"\xde\xad\xbe\xef")
 ```
