@@ -1118,7 +1118,7 @@ using the [setenv function](https://pubs.opengroup.org/onlinepubs/9699919799/fun
 
 `Environment variables set with the setenv() function will only exist for the life of the program, and are not saved before program termination.`
 
-
+For this reason I decide to redo everything with pwntools at the end. 
 
 
 
