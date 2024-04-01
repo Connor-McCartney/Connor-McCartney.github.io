@@ -1135,3 +1135,58 @@ from pwn import remote
 io = remote("127.0.0.1", 1234)
 io.sendline(b"\xde\xad\xbe\xef")
 ```
+
+
+```
+input2@pwnable:~$ mkdir /tmp/y
+input2@pwnable:~$ ls
+flag  input  input.c
+input2@pwnable:~$ ln -s ~/flag /tmp/y/flag
+input2@pwnable:~$ cd /tmp/y
+input2@pwnable:/tmp/y$ vim solve.py 
+input2@pwnable:/tmp/y$ cat solve.py 
+from pwn import process, remote
+import os
+
+# stage 1
+argv = ["/home/input2/input"] + ["0"]*64 + [b"\x00", b"\x20\x0a\x0d", "1234"] + ["0"]*32
+
+# stage 2
+r1, w1 = os.pipe()
+r2, w2 = os.pipe()
+os.write(w1, b'\x00\x0a\x00\xff')
+os.write(w2, b'\x00\x0a\x02\xff')
+
+# stage 3
+env = {'\xde\xad\xbe\xef' :'\xca\xfe\xba\xbe'}
+
+# stage 4
+open(b'\x0a', 'wb').write(b'\x00\x00\x00\x00')
+
+io = process(argv=argv, stdin=r1, stderr=r2, env=env)
+
+# stage 5
+io2 = remote('127.0.0.1', 1234)
+io2.sendline(b"\xde\xad\xbe\xef")
+
+print(io.recv().decode())
+print(io.recv().decode())
+
+input2@pwnable:/tmp/y$ python solve.py 
+[+] Starting local process '/home/input2/input': pid 306485
+[+] Opening connection to 127.0.0.1 on port 1234: Done
+Welcome to pwnable.kr
+Let's see if you know how to give input to program
+Just give me correct inputs then you will get the flag :)
+Stage 1 clear!
+Stage 2 clear!
+Stage 3 clear!
+Stage 4 clear!
+Stage 5 clear!
+
+Mommy! I learned how to pass various input in Linux :)
+
+[*] Closed connection to 127.0.0.1 port 1234
+[*] Process '/home/input2/input' stopped with exit code 0 (pid 306485)
+input2@pwnable:/tmp/y$
+```
