@@ -1114,7 +1114,9 @@ For stage 3 you usually set environment variables like `export x=5` in that shel
 
 I couldn't get it to work with bytes. So, I tried just running a c script to set it temporarily,
 
-using the [setenv function](https://pubs.opengroup.org/onlinepubs/9699919799/functions/setenv.html).
+using the [setenv function](https://pubs.opengroup.org/onlinepubs/9699919799/functions/setenv.html). I later learned 
+
+`Environment variables set with the setenv() function will only exist for the life of the program, and are not saved before program termination.`
 
 
 
