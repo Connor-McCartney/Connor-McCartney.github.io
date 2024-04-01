@@ -1109,3 +1109,9 @@ echo -e "\x00\x0a\x00\xff" > mystdin
 echo -e "\x00\x0a\x02\xff" > mystderr
 ./input ... <mystdin 2<mystderr
 ```
+
+For stage 4:
+
+```
+echo -e "\x00\x00\x00\x00" > $'\n'
+```
