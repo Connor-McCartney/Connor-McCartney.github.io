@@ -1112,7 +1112,7 @@ echo -e "\x00\x0a\x02\xff" > mystderr
 
 For stage 3 you usually set environment variables like `export x=5` in that shell session but 
 
-I couldn't get it to work with bytes. So, I tried just running a c script to set it temporarily. 
+I couldn't get it to work with bytes. So, I tried just running a c script to set it temporarily,
 
 using the [setenv function](https://pubs.opengroup.org/onlinepubs/9699919799/functions/setenv.html).
 
