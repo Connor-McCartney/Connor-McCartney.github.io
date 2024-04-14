@@ -72,3 +72,6 @@ title: Other
 
 
 <span style="font-size:2em;">   [France Cybersecurity Challenge 2024](/cryptography/other/FCSC-2024) </span> <br>
+
+
+<span style="font-size:2em;">   [b01lers CTF 2024](/cryptography/other/b01lers-CTF-2024) </span> <br>
