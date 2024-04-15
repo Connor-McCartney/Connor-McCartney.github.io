@@ -353,6 +353,20 @@ to
     a, b, c =  M**(iters % 1000000008) * vector([1, 2, 3])
 ```
 
+(the multiplicative order):
+
+```
+sage: MOD = 1000000007
+....: M = matrix(GF(MOD), [
+....:     [1, 54, 87],
+....:     [0, 34, 55],
+....:     [0, 55, 89]
+....: ])
+....: print(M.multiplicative_order())
+1000000008
+```
+
+
 and it still works. Now the problem remaining is calculating iters mod 1000000008
 
 The integer division `iters = limit//15` poses a small challenge, when we do modular division we'll  have to brute a bit below to get the correct value.
