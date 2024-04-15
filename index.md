@@ -1,3 +1,3 @@
-Hi I'm Connor from Brisbane Australia. 
+Hi I'm Connor from Cairns Australia. 
 
 Here you'll find some CTF writeups and other notes. 
