@@ -246,3 +246,13 @@ session.terminate()
 In conclusion we get a slight improvement with the proprietary software, it solves a length 9 one 
 
 faster, solves a length 10 one where the previous couldn't, but fails to crack a length 11 one.
+
+
+---
+
+
+ETA! :
+
+@Blupper wrote a great script comprarable to Mathematica, using BKZ preprocessing and then cpm
+
+<https://gist.github.com/TheBlupper/58f6bc59ccf96f40d422d6ea445c0b17>
