@@ -1,6 +1,6 @@
 ---
 permalink: /cryptography/other/La-Seine-404ctf-2024
-title: La-Seine-404ctf-2024
+title: La Seine - 404ctf 2024
 ---
 
 <br> 
