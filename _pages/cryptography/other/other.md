@@ -75,3 +75,6 @@ title: Other
 
 
 <span style="font-size:2em;">   [b01lers CTF 2024](/cryptography/other/b01lers-CTF-2024) </span> <br>
+
+
+<span style="font-size:2em;">   [La Seine - 404ctf 2024](/cryptography/other/La-Seine-404ctf-2024) </span> <br>
