@@ -34,6 +34,10 @@ __vulnerability: e | (p-1) and e | (q-1)__
 __vulnerability: partial PEM private key__
 
 
+<span style="font-size:2em;">   [Key Recovery - UMD CTF 2024](/cryptography/rsa/Key-Recovery-UMD-CTF-2024)       </span> <br>
+__vulnerability: partial PEM private key__
+
+
 <span style="font-size:2em;">   [Key Recovery - San Diego CTF 2022](/cryptography/rsa/key-recovery-SDCTF-2022)    </span> <br>
 __vulnerability: partial OpenSSH private key__ 
 
