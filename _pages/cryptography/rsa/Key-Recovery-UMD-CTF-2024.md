@@ -10,6 +10,8 @@ title: Key Recovery - UMD CTF 2024
 
 [Challenge Files](https://github.com/Connor-McCartney/CTF_Files/tree/main/2024/UMD%20CTF/Key%20Recovery)
 
+<https://github.com/UMD-CSEC/UMDCTF-2024-Challenges/tree/main/crypto/key-recovery>
+
 <br>
 
 So, this is our corrupted RSA private key we need to fix:
