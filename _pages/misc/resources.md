@@ -92,3 +92,5 @@ Multithreading vs Multiprocessing <https://builtin.com/data-science/multithreadi
 <https://project-euphoria.dev/tags/ctf> <br>
 <https://yx7.cc/ctf> <br>
 <https://blog.y011d4.com> <br>
+<https://ariana1729.github.io/writeups.html> <br>
+<https://soon.haari.me> <br>
