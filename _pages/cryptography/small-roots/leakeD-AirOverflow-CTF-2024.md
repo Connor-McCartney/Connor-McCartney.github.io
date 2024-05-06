@@ -159,6 +159,8 @@ bruting 10 bits with m=29 will take 47489.22 seconds (single-threaded)
 
 It's clear this will take way too long. 
 
-So I searched for another paper:
+So I searched for another paper (Boneh, D., Durfee, G., Frankel, Y):
 
+<https://www.iacr.org/cryptodb/data/paper.php?pubkey=144>
 
+<https://link.springer.com/content/pdf/10.1007/3-540-49649-1_3.pdf>
