@@ -19,3 +19,12 @@ d_low = 304396137621618469511558829077391527579792487144760612351691499649968808
 # Testing
 
 I'm just going to guess that phi is (p-1)(q-1) and not lcm(p-1, q-1). 
+
+```python
+sage: n.nbits()
+1023
+sage: d_low.nbits()
+251
+```
+
+I'll also guess that p and q are 512 bits, and d_low is d % (2**251).
