@@ -163,6 +163,8 @@ So I searched for another paper (Boneh, D., Durfee, G., Frankel, Y):
 
 Corollary 1: Given n/4 bits of p_low you can factor n.
 
+It seems they use bivariate instead of univariate??
+
 ```python
 p = random_prime(2**512)
 q = random_prime(2**512)
