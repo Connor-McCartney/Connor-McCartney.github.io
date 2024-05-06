@@ -158,4 +158,20 @@ So I searched for another paper (Boneh, D., Durfee, G., Frankel, Y):
 <https://link.springer.com/content/pdf/10.1007/3-540-49649-1_3.pdf>
 
 
+<br>
+
+
 Corollary 1: Given n/4 bits of d_low you can factor n.
+
+```python
+p = random_prime(2**512)
+q = random_prime(2**512)
+N = p*q
+e = 65537
+d = pow(e, -1, (p-1)*(q-1))
+
+n = N.nbits()
+r = 2**(n//4)
+d_low = int(d % r)
+
+```
