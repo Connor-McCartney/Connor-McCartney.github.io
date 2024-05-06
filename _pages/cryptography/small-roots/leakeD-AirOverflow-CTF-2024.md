@@ -72,7 +72,7 @@ Solving p_low (or q_low):
     var('pp')
     f = pp*(1-e*d_low) + k*(n*pp - pp**2 - n + pp) 
     def test():
-        for p_low_rec in tqdm(solve_mod(f, 2**251)):
+        for p_low_rec in tqdm(solve_mod(f, 2**251)[::2]):
             p_low_rec = int(p_low_rec[0])
             if p_low_rec == p % 2**251 or p_low_rec == q % 2**251:
                 return True
