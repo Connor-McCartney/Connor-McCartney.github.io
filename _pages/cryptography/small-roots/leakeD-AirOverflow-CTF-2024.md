@@ -3,6 +3,9 @@ permalink: /cryptography/small-roots/leakeD-AirOverflow-CTF-2024
 title: leakeD - AirOverflow CTF 2024
 ---
 
+(0 solve)
+
+<br>
 <br>
 
 # Challenge Files
@@ -264,3 +267,8 @@ print(roots)
 As expected, it's a bit worse than univariate. The paper probably only cares about 
 
 the theoretical polynomial time bound for coppersmith which isn't always practical near the limit. 
+
+
+Then it seems to describe my previous idea of bruting over k and solving with p_low which'll take too long. 
+
+Maybe it's unsolvable. 
