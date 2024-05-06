@@ -79,3 +79,70 @@ Solving p_low (or q_low):
         return False
     print(test())
 ```
+
+
+Timing how long to solve with 251 lower bits:
+
+```
+from Crypto.Util.number import *
+import time
+from subprocess import check_output
+from re import findall
+
+def flatter(M):
+    z = "[[" + "]\n[".join(" ".join(map(str, row)) for row in M) + "]]"
+    ret = check_output(["flatter"], input=z.encode())
+    return matrix(M.nrows(), M.ncols(), map(int, findall(b"-?\\d+", ret)))
+
+def small_roots(f, X, beta=1.0, m=None):
+    N = f.parent().characteristic()
+    delta = f.degree()
+    if m is None:
+        epsilon = RR(beta^2/f.degree() - log(2*X, N))
+        m = max(beta**2/(delta * epsilon), 7*beta/delta).ceil()
+    t = int((delta*m*(1/beta - 1)).floor())
+    
+    f = f.monic().change_ring(ZZ)
+    P,(x,) = f.parent().objgens()
+    g  = [x**j * N**(m-i) * f**i for i in range(m) for j in range(delta)]
+    g.extend([x**i * f**m for i in range(t)]) 
+    B = Matrix(ZZ, len(g), delta*m + max(delta,t))
+
+    for i in range(B.nrows()):
+        for j in range(g[i].degree()+1):
+            B[i,j] = g[i][j]*X**j
+
+    B =  flatter(B)
+    f = sum([ZZ(B[0,i]//X**i)*x**i for i in range(B.ncols())])
+    roots = set([f.base_ring()(r) for r,m in f.roots() if abs(r) <= X])
+    return [root for root in roots if N.gcd(ZZ(f(root))) >= N**beta]
+
+
+def recover(p_low, n, m, p_bits=512):
+    p_low_bits = len(bin(p_low)) - 2
+    PR.<x> = PolynomialRing(Zmod(n))
+    f = x * 2**p_low_bits + p_low
+    x = small_roots(f, X=2**(p_bits-p_low_bits), beta=0.5, m=m)
+    if x == []:
+        return None
+    p = int(f(x[0]))
+    if is_prime(p):
+        return p
+    return None
+
+p = getPrime(512) 
+q = getPrime(512)
+n = p*q
+
+m = 1
+for bits in range(15, -1, -1):
+    p_low = int(p % 2**(251 + bits))
+    while True:
+        starttime = time.time()
+        p = recover(p_low, n, m=m)
+        t = time.time() - starttime
+        if p is not None:
+            print(f"bruting {bits} bits with m={m} will take {round(2**bits * t, 2)} seconds (single-threaded)")
+            break
+        m += 1
+```
