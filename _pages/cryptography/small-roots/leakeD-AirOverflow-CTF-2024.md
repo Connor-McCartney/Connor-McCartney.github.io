@@ -17,3 +17,5 @@ d_low = 304396137621618469511558829077391527579792487144760612351691499649968808
 <br>
 
 # Testing
+
+I'm just going to guess that phi is (p-1)(q-1) and not lcm(p-1, q-1). 
