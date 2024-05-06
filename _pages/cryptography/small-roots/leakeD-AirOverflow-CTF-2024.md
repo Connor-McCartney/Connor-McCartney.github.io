@@ -3,7 +3,7 @@ permalink: /cryptography/small-roots/leakeD-AirOverflow-CTF-2024
 title: leakeD - AirOverflow CTF 2024
 ---
 
-(0 solve)
+(0 solves)
 
 <br>
 <br>
