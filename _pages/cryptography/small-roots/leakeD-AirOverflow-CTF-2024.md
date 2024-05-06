@@ -83,7 +83,7 @@ Solving p_low (or q_low):
 
 Timing how long to solve with 251 lower bits:
 
-```
+```python
 from Crypto.Util.number import *
 import time
 from subprocess import check_output
@@ -146,3 +146,19 @@ for bits in range(15, -1, -1):
             break
         m += 1
 ```
+
+```
+$ sage test.sage
+bruting 15 bits with m=16 will take 208295.83 seconds (single-threaded)
+bruting 14 bits with m=16 will take 108042.45 seconds (single-threaded)
+bruting 13 bits with m=18 will take 92173.73 seconds (single-threaded)
+bruting 12 bits with m=29 will take 181708.96 seconds (single-threaded)
+bruting 11 bits with m=29 will take 102365.96 seconds (single-threaded)
+bruting 10 bits with m=29 will take 47489.22 seconds (single-threaded)
+```
+
+It's clear this will take way too long. 
+
+So I searched for another paper:
+
+
