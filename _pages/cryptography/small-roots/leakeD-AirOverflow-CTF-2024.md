@@ -166,6 +166,9 @@ Corollary 1: Given n/4 bits of p_low you can factor n.
 It seems they use bivariate instead of univariate??
 
 ```python
+load('https://raw.githubusercontent.com/Connor-McCartney/coppersmith/main/coppersmith.sage')
+
+
 def bivariate(f, bounds, m=1, d=None):
     if d is None:
         d = f.degree()
@@ -199,7 +202,8 @@ def bivariate(f, bounds, m=1, d=None):
     for i, factor in enumerate(factors):
         B.rescale_col(i, factor)
 
-    B = B.dense_matrix().LLL(algorithm='NTL:LLL_XD')
+    #B = B.dense_matrix().LLL(algorithm='NTL:LLL_XD')
+    B, _ = do_LLL_flatter(B)
 
     B = B.change_ring(QQ)
     for i, factor in enumerate(factors):
@@ -208,6 +212,7 @@ def bivariate(f, bounds, m=1, d=None):
     H = [h for h in B * monomials if not h.is_zero()]
 
     # resultant solver (stolen from maple3142, great for bivariate)
+    #H = H[:20] #optional
     print(comb(len(H), 2))
     for f1, f2 in tqdm(itertools.combinations(H, r=2)):
         x, y = f.parent().gens()
@@ -221,16 +226,40 @@ def bivariate(f, bounds, m=1, d=None):
             x = rs[0][0]
             y = f1.subs(x=x).univariate_polynomial().roots()[0][0]
             return (x, y)
-```
 
 
-```python
+from tqdm import *
+from math import comb
+import itertools, random
+
+
 p = random_prime(2**512)
 q = random_prime(2**512)
 N = p*q
+e = 65537
+d = pow(e, -1, (p-1)*(q-1))
 
 n = N.nbits()
-r = 2**(n//4)
-p_low = int(p % r)
+t = 290
+r = 2**t
 
+p_low = int(p % r)
+p_high = p >> t
+assert p == p_high * r + p_low
+
+q_low = int(q % r)
+q_high = q >> t
+assert q == q_high * r + q_low
+
+assert 0 == (p_high * r + p_low) * (q_high * r + q_low) - N
+print(f"{p_high = }")
+print(f"{q_high = }")
+
+P.<x, y> = PolynomialRing(Zmod(N))
+f = (x*r + p_low) * (y*r + q_low) - N
+roots = bivariate(f, (2^(512-t), 2^(512-t)), d=2, m=5)
+print(roots)
 ```
+
+As expected, it's a bit worse than univariate. The paper probably only cares about 
+the theoretical polynomial time bound for coppersmith which isn't always practical near the limit. 
