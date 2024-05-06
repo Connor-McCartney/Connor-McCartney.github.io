@@ -28,3 +28,5 @@ title: Coppersmith's Small Roots
 <span style="font-size:2em;">   [grhkm's babyRSA - Bauhinia CTF 2023](/cryptography/small-roots/babyRSA-Bauhinia-CTF-2023)       </span> <br>
 
 <span style="font-size:2em;">   [Mayday Mayday - HTB University CTF 2023 - Brains & Bytes](/cryptography/small-roots/Mayday-Mayday-HTB-University-CTF-2023-Brains-&-Bytes)       </span> <br>
+
+<span style="font-size:2em;">   [leakeD - AirOverflow CTF 2024](/cryptography/small-roots/leakeD-AirOverflow-CTF-2024)       </span> <br>
