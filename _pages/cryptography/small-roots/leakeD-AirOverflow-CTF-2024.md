@@ -166,6 +166,65 @@ Corollary 1: Given n/4 bits of p_low you can factor n.
 It seems they use bivariate instead of univariate??
 
 ```python
+def bivariate(f, bounds, m=1, d=None):
+    if d is None:
+        d = f.degree()
+
+    R = f.base_ring()
+    N = R.cardinality()
+    f_ = (f // f.lc()).change_ring(ZZ)
+    f = f.change_ring(ZZ)
+    l = f.lm()
+
+    M = []
+    for k in range(m+1):
+        M_k = set()
+        T = set((f^(m-k)).monomials())
+        for mon in (f^m).monomials():
+            if mon//l^k in T: 
+                for extra in itertools.product(range(d), repeat=f.nvariables()):
+                    g = mon * prod(map(power, f.variables(), extra))
+                    M_k.add(g)
+        M.append(M_k)
+    M.append(set())
+
+    shifts = Sequence([], f.parent())
+    for k in range(m+1):
+        for mon in M[k] - M[k+1]:
+            g = mon//l^k * f_^k * N^(m-k)
+            shifts.append(g)
+
+    B, monomials = shifts.coefficients_monomials()
+    factors = [monomial(*bounds) for monomial in monomials]
+    for i, factor in enumerate(factors):
+        B.rescale_col(i, factor)
+
+    B = B.dense_matrix().LLL(algorithm='NTL:LLL_XD')
+
+    B = B.change_ring(QQ)
+    for i, factor in enumerate(factors):
+        B.rescale_col(i, 1/factor)
+    B = B.change_ring(ZZ)
+    H = [h for h in B * monomials if not h.is_zero()]
+
+    # resultant solver (stolen from maple3142, great for bivariate)
+    print(comb(len(H), 2))
+    for f1, f2 in tqdm(itertools.combinations(H, r=2)):
+        x, y = f.parent().gens()
+        x = f1.parent()(x)
+        y = f1.parent()(y)
+        res = f1.resultant(f2,y).univariate_polynomial()
+        if res == 0:
+            continue
+        rs = res.roots()
+        if rs:
+            x = rs[0][0]
+            y = f1.subs(x=x).univariate_polynomial().roots()[0][0]
+            return (x, y)
+```
+
+
+```python
 p = random_prime(2**512)
 q = random_prime(2**512)
 N = p*q
