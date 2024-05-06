@@ -156,3 +156,6 @@ So I searched for another paper (Boneh, D., Durfee, G., Frankel, Y):
 <https://www.iacr.org/cryptodb/data/paper.php?pubkey=144>
 
 <https://link.springer.com/content/pdf/10.1007/3-540-49649-1_3.pdf>
+
+
+Corollary 1: Given n/4 bits of d_low you can factor n.
