@@ -253,6 +253,21 @@ faster, solves a length 10 one where the previous couldn't, but fails to crack a
 
 ETA! :
 
+<br>
+
 @Blupper wrote a great script comparable to Mathematica, using BKZ preprocessing and then cpm
 
+Just some issues with very big numbers, cpm will overflow if they don't reduce to less than 2**64. 
+
 <https://gist.github.com/TheBlupper/58f6bc59ccf96f40d422d6ea445c0b17>
+
+
+<br>
+
+<br>
+
+<br>
+
+The c++ code Nico (HalfInchPunisher) and I wrote, which uses LLL to solve 8 chars at a time, plus bruteforce to find more. 
+
+<https://github.com/Nico-Posada/fnv-hash-cracking>
