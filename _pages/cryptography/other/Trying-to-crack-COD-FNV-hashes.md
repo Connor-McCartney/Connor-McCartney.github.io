@@ -268,6 +268,6 @@ Just some issues with very big numbers, cpm will overflow if they don't reduce t
 
 <br>
 
-The c++ code Nico (HalfInchPunisher) and I wrote, which uses LLL to solve 8 chars at a time, plus bruteforce to find more. 
+The fast c++ code Nico (HalfInchPunisher) and I wrote, which uses LLL to solve 8 chars at a time, plus bruteforce to find more. 
 
 <https://github.com/Nico-Posada/fnv-hash-cracking>
