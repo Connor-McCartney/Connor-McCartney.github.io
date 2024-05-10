@@ -32,3 +32,7 @@ __vulnerability: discrete log of two matrices with smooth field order__
 
 <span style="font-size:2em;">   [Too Many Leaks - GCC CTF 2024](/cryptography/diffie-hellman/Too-Many-Leaks-GCC-CTF-2024)       </span> <br>
 __vulnerability: partial secrets given__
+
+
+<span style="font-size:2em;">   [Strong Primes - DDC 2024](/cryptography/diffie-hellman/Strong-Primes-DDC2024)       </span> <br>
+__vulnerability: oracle encrypting same message multiple times__
