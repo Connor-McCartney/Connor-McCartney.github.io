@@ -28,3 +28,7 @@ __vulnerability: discrete log of two matrices with smooth field order__
 
 <span style="font-size:2em;">   [Too Many Leaks - GCC CTF 2024](/cryptography/diffie-hellman/Too-Many-Leaks-GCC-CTF-2024)       </span> <br>
 __vulnerability: partial secrets given__
+
+
+<span style="font-size:2em;">   [Rookie Mistake - HTB](/cryptography/diffie-hellman/Rookie-Mistake-HTB)       </span> <br>
+__vulnerability: non-prime field with smooth order__
