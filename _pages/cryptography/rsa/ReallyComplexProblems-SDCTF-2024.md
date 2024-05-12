@@ -7,6 +7,9 @@ title: ReallyComplexProblems - SDCTF 2024
 
 [Challenge Files](https://github.com/Connor-McCartney/CTF_Files/tree/main/2024/SDCTF/ReallyComplexProblems)
 
+<br>
+
+Given Ni, Nr, MSB of pi and MSB of pr, we have to factor N_. 
 
 ```python
     Nr = int(N.real)
@@ -25,3 +28,5 @@ title: ReallyComplexProblems - SDCTF 2024
     assert is_prime(p_) and is_prime(q_)
     assert p_ * q_ == N_
 ```
+
+
