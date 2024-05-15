@@ -265,9 +265,8 @@ ETA 2:
 
 Updated repo - <https://github.com/TheBlupper/linineq>
 
-```
-solver (default 'ortools') is one of 'ortools' and 'ppl' and decides which integer programming solver to use. ortools is faster and usually preferred, but as it only supports 64-bit numbers it is sometimes insufficient. In those cases pplis used automatically and a warning is emitted.
-```
+`solver (default 'ortools') is one of 'ortools' and 'ppl' and decides which integer programming solver to use. ortools is faster and usually preferred, but as it only supports 64-bit numbers it is sometimes insufficient. In those cases pplis used automatically and a warning is emitted.`
+
 
 
 <br>
