@@ -88,3 +88,8 @@ sudo dnf install iosevka-fixed-ss03-fonts.noarch
 ```
 
 I like the semibold
+
+
+## Maximise everything
+
+Go to Settings -> Window Management -> Window Behaviour -> Advance and there you have a general setting for window placement and sizing.
