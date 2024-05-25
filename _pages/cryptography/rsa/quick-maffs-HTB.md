@@ -57,7 +57,7 @@ c1, c2, c3 = [406419564400641116058579781386002763492063534998434419104758706158
 hint = 2674558878275613295915981392537201653631411909654166620884912623530781
 
 def solve(e):
-    print(f"e = {e}:")
+    print(f"{e = }:")
     PR.<m1,m2,m3> = PolynomialRing(Zmod(N), 3)
 
     f1 = m1**e - c1
@@ -66,8 +66,9 @@ def solve(e):
     f4 = m1+m2+m3 - hint
 
     try:
-        aa, bb, cc = Ideal([f1, f2, f3, f4]).groebner_basis()
-        flag = long_to_bytes(int(N-(aa-m1))) + long_to_bytes(int(N-(bb-m2))) + long_to_bytes(int(N-(cc-m3)))
+        flag = b""
+        for eq in Ideal([f1, f2, f3, f4]).groebner_basis():
+            flag += long_to_bytes(int(eq.univariate_polynomial().change_ring(ZZ).roots()[0][0] % N))
         print(flag)
     except:
         return
@@ -75,7 +76,7 @@ def solve(e):
     quit()
 
 def main(): 
-    e = 2 
+    e = 2 # 41
     while True:
         solve(e)
         e = next_prime(e)
