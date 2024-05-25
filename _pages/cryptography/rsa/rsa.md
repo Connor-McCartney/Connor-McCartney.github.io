@@ -19,7 +19,7 @@ __vulnerability: affine padding (allowing Franklin-Reiter attack)__
 
 
 <span style="font-size:2em;">   [DeLorean - HTB](/cryptography/rsa/DeLoreanHTB)       </span> <br>
-__vulnerability: non-prime e and gcd(e, phi) is power of 2__
+__vulnerability: gcd(e, phi) != 1__
 
 
 <span style="font-size:2em;">   [easyRSA - DASCTF 2022](/cryptography/rsa/easyrsa-DASCTF2022)       </span> <br>
@@ -100,3 +100,11 @@ __vulnerability: common d__
 
 <span style="font-size:2em;">   [ReallyComplexProblems - SDCTF 2024](/cryptography/rsa/ReallyComplexProblems-SDCTF-2024)       </span> <br>
 __vulnerability: complex Coppersmith?!__
+
+
+<span style="font-size:2em;">   [BLAHAJ - angstrom CTF 2024](/cryptography/rsa/BLAHAJ-angstrom-CTF-2024)       </span> <br>
+__vulnerability: hint given__
+
+
+<span style="font-size:2em;">   [quick maffs - HTB](/cryptography/rsa/quick-maffs-HTB)       </span> <br>
+__vulnerability: hint given__
