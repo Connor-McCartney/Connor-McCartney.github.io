@@ -109,3 +109,8 @@ h2 = a * p + q
 
 assert (q*h1 + p*h2 - h1*h2) % n == 0
 ```
+
+Now you can just use Robert Xiao's solver for easy LLL
+
+<https://github.com/nneonneo/pwn-stuff/blob/36f0ecd80b05859acca803d4ddfb53454b448329/math/solvelinmod.py>
+
