@@ -76,3 +76,29 @@ print(a * p + q)
 <br>
 
 
+
+To start we can chuck the 3 equtions we know into groebner and see if we get something we can use:
+
+```python
+PR.<p, q, n, a, b, h1, h2> = PolynomialRing(ZZ)
+
+f1 = p*q - n
+f2 = p + b*q - h1
+f3 = q + a*p - h2
+
+for eq in Ideal([f1, f2, f3]).groebner_basis():
+    print(eq)
+```
+
+```
+n*a*b + q*h1 + p*h2 - h1*h2 - n
+p^2 + n*b - p*h1
+p*q - n
+q^2 + n*a - q*h2
+p*a + q - h2
+q*b + p - h1
+```
+
+<br>
+
+We'll use the first equation. 
