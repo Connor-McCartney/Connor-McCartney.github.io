@@ -77,7 +77,7 @@ print(a * p + q)
 
 
 
-To start we can chuck the 3 equtions we know into groebner and see if we get something we can use:
+To start we can chuck the 3 equations we know into groebner and see if we get something we can use:
 
 ```python
 PR.<p, q, n, a, b, h1, h2> = PolynomialRing(ZZ)
