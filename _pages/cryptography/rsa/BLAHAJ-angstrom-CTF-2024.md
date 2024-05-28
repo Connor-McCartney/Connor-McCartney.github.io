@@ -101,4 +101,11 @@ q*b + p - h1
 
 <br>
 
-We'll use the first equation. 
+We'll use the first equation, mod n.
+
+```python
+h1 = p + b * q
+h2 = a * p + q
+
+assert (q*h1 + p*h2 - h1*h2) % n == 0
+```
