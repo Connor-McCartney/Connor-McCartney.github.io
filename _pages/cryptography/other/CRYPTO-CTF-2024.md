@@ -161,6 +161,8 @@ b'\xe2\x94\x83 Good job, try the next step 20\n'
 b"\xe2\x94\x83 Congratz! You got the flag: b'CCTF{A_funCti0nal_3qu4tiOn_iZ_4_7yPe_oF_EquAtioN_tHaT_inv0lVe5_an_unKnOwn_funCt!on_r4tH3r_thAn_juS7_vArIabl3s!!}'\n"
 ```
 
+# Duzly
+
 # Forghan
 
 ```
@@ -169,8 +171,15 @@ b"\xe2\x94\x83 Congratz! You got the flag: b'CCTF{A_funCti0nal_3qu4tiOn_iZ_4_7yP
 
 # RM2
 
+# Joe-19
 
+# Honey
 
+# Vantuk
+
+# Ally
+
+# Melek
 
 # Solmaz
 
