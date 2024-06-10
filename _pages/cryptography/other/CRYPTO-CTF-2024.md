@@ -178,3 +178,9 @@ m = Q.log(P)
 print(bytes.fromhex(f'{m:02x}'))
 # 3cC_d1ViSibil!7Y
 ```
+
+
+# Rehawk
+
+<https://gitlab.inria.fr/capsule/code-for-module-lip/-/blob/main/attack/attack_Hawk_totally_real.sage>
+
