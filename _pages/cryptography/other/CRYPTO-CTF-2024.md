@@ -46,7 +46,7 @@ Then you can just send a bunch of md5 collisions, so that xor(h1, h2) is b'\x00\
 
 # Ahoo
 
-No source provided.
+(No source provided.)
 
 ```
 $ nc 00.cr.yp.toc.tf 17371
@@ -71,7 +71,7 @@ Check:
 
 # Soufia
 
-(No source chall)
+(No source provided.)
 
 @ctfguy's Solution:
 
