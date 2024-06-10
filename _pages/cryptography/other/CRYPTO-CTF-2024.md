@@ -15,6 +15,7 @@ title: CRYPTO CTF 2024
 
 # Beheaded
 
+This was like the famous ECB penguin, you could rescale it in gimp or use a block where all pixels are the same colour without needing to find the key. 
 
 # Mashy
 
