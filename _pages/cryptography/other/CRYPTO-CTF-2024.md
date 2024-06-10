@@ -12,6 +12,13 @@ title: CRYPTO CTF 2024
 
 # Alibos
 
+```python
+	c = (pkey + d ** 2 * m) % (10 ** d)
+```
+
+Rearranging for m:
+
+
 
 # Beheaded
 
