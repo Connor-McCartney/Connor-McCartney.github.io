@@ -171,6 +171,42 @@ b"\xe2\x94\x83 Congratz! You got the flag: b'CCTF{A_funCti0nal_3qu4tiOn_iZ_4_7yP
 
 # RM2
 
+```python
+from pwn import *
+from Crypto.Util.number import *
+from gensafeprime import generate
+
+io = remote('01.cr.yp.toc.tf', 13371)
+io.read()
+
+def get_super_safe_prime():
+    while True:
+        x = generate(1024)
+        if isPrime(2*x+1):
+            return x
+
+#p = get_super_safe_prime()
+#q = get_super_safe_prime()
+p = 176190361114405660140775371642244103546320715334539918001492645857771593552107955448402648350633693638480545186750598651678784235721661177218038230550079910726963779269165803404500415338229375745350440434088252741915552117559295023850055262211395546349293984582637753204891730267351496766430177371001101202579
+q = 174673912453530565721373096945468158471423845542688334400192438665743138238497195281153045123700977896509756132766346293652660746134615199680910832008097698850013139496501456054035329932355735673848807210672424697329408424184179185667926436594508177456167574196681896497806043904509301791431726034346952707019
+
+io.sendline(f'{p},{q}'.encode())
+c1 = int(io.readline().decode().split('= ')[1])
+c2 = int(io.readline().decode().split('= ')[1])
+
+# 	c1, c2 = pow(m1, e, (p - 1) * (q - 1)), pow(m2, e, (2*p + 1) * (2*q + 1))
+e = 65537
+m1=pow(c1, pow(e, -1, ((p-1)//2-1) * ((q-1)//2-1)), (p-1)*(q-1))
+m2=pow(c2, pow(e, -1, 4*p*q), (2*p+1)*(2*q+1))
+
+secret_string = long_to_bytes(m1) + long_to_bytes(m2)
+io.read()
+io.sendline(secret_string)
+print(io.read().decode())
+
+# CCTF{i_l0v3_5UpeR_S4fE_Pr1m3s!!}
+```
+
 # Joe-19
 
 ```python
