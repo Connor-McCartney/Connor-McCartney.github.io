@@ -44,28 +44,7 @@ Guessy trash, had to guess that sh was `a483b30944cbf762d4a3afc154aad825`.
 
 Then you can just send a bunch of md5 collisions, so that xor(h1, h2) is b'\x00\x00 ...'
 
-# Ahoo
 
-(No source provided.)
-
-```
-$ nc 00.cr.yp.toc.tf 17371
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ Welcome to Ahoo task! Given integer n, find the smallest positive   ┃
-┃ integer c such that n * c has the minimum number of 1 bits in its   ┃
-┃ binary representation. Completing all steps will reveal the flag :) ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-┃ Please send the number of 1 bits in n * c and the integer c for
-┃ n = 3823, separated by comma: 
-```
-
-Had to pass several rounds of this.
-
-Check:
-
-<https://arxiv.org/pdf/2002.02731>
-
-<https://github.com/FinnLidbetter/sturdy-numbers>
 
 
 
@@ -145,6 +124,29 @@ for i in trange(len(e_digits)-154):
 ```
 
 # Honey
+
+# Ahoo
+
+(No source provided.)
+
+```
+$ nc 00.cr.yp.toc.tf 17371
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Welcome to Ahoo task! Given integer n, find the smallest positive   ┃
+┃ integer c such that n * c has the minimum number of 1 bits in its   ┃
+┃ binary representation. Completing all steps will reveal the flag :) ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+┃ Please send the number of 1 bits in n * c and the integer c for
+┃ n = 3823, separated by comma: 
+```
+
+Had to pass several rounds of this.
+
+Check:
+
+<https://arxiv.org/pdf/2002.02731>
+
+<https://github.com/FinnLidbetter/sturdy-numbers>
 
 # Vantuk
 
