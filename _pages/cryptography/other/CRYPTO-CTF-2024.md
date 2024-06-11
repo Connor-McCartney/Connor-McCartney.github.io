@@ -199,6 +199,36 @@ for i in trange(len(e_digits)-154):
 
 # Ally
 
+Credit @ctfguy
+
+<https://www.imo-official.org/problems/IMO2012SL.pdf>
+
+Check N4^
+
+```python
+from pwn import remote
+from Crypto.Util.number import getPrime
+
+def get_special_prime(nbit):
+    while True:
+        p = getPrime(nbit)
+        if p%4 == 1:
+            return p
+
+io = remote('01.cr.yp.toc.tf', '13777')
+for _ in range(20):
+    io.recvuntil(b'your ')
+    nbit = int(io.recvuntil(b'-').decode()[:-1])
+    p = get_special_prime(nbit)
+    io.sendline(str(p).encode())
+    k = (p-1)//4
+    x, y = 2*k+1, k
+    io.sendline(f"{x},{y}".encode())
+io.interactive()
+
+# CCTF{Di0phaNtinE_eQuaT1on_iZ_4n_equ4tion_wiTh_int3ger_solu7Ions_0nly!}
+```
+
 # Melek
 
 # Solmaz
