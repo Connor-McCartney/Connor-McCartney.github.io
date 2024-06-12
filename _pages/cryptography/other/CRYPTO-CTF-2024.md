@@ -257,6 +257,55 @@ io.interactive()
 
 Credit @ctfguy
 
+We are given a function 
+
+$$f: \mathbb{Z} \to \mathbb{Z}$$ 
+
+and the functional equation:
+
+$$f(t \cdot x) + t \cdot f(y) = f(f(x + y))$$
+
+for all integers `x`  and `y`, where `t` is a constant integer. 
+
+We are provided with `f(0)` and some `f(a)`, and we are asked to determine `f(b)`.
+
+Let's solve this step by step:
+
+1. **Interchanging x and y:**
+   By swapping x and $ y $, we obtain:
+   $$ f(t \cdot y) + t \cdot f(x) = f(f(x + y)) $$
+
+2. **Equating the two equations:**
+   From the original and swapped equations, we have:
+   $$f(t \cdot x) + t \cdot f(y) = f(t \cdot y) + t \cdot f(x)$$
+   This simplifies to:
+   $$f(t \cdot x) - t \cdot f(x) = f(t \cdot y) - t \cdot f(y)$$
+   Let this be some constant $ c $:
+   $$f(t \cdot x) - t \cdot f(x) = c$$
+
+3. **Expressing $ f(t \cdot x) $ in terms of $ f(x) $:**
+   Rearrange the above equation:
+   $$ f(t \cdot x) = t \cdot f(x) + c $$
+
+4. **Substituting back into the original equation:**
+   Replace $ f(t \cdot x) $ in the original equation:
+   $$ f(f(x + y)) = t \cdot f(x) + t \cdot f(y) + c $$
+   By setting $ y = 0 $, we get:
+   $$ f(f(x)) = t \cdot f(x) + t \cdot f(0) + c $$
+
+5. **Substituting $ f(f(x)) $ into the equation:**
+   Replace $ f(f(x)) $ back into the equation:
+   $$ t \cdot f(x + y) + t \cdot f(0) + c = t \cdot f(x) + t \cdot f(y) + c $$
+   Simplify this to:
+   $$ f(x + y) = f(x) + f(y) $$
+
+6. **Conclusion:**
+   Since $ f $ satisfies the Cauchy functional equation $ f(x + y) = f(x) + f(y) $ over the integers, $ f $ must be a linear function. Therefore, $ f(x) $ is of the form:
+   $$ f(x) = kx + c $$
+   where $ k $ and $ c $ are an integer constant.
+
+Thus, $ f $ is a linear function in $ \mathbb{Z} $.
+
 ```python
 from pwn import *
 
