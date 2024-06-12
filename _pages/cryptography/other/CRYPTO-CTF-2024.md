@@ -107,6 +107,19 @@ First find f, g same as 'Find the Lattice' from cryptohack:
     f, g = M.LLL()[0]
 ```
 
+Then decryption:
+
+```python
+    assert c == (r * h + m + r) % q
+
+    assert (c*f) % q == (f*r*h + f*m + f*r) % q  # *f
+    assert (c*f) % q == (g*r + f*m + f*r) % q # sub g=hf
+    assert g*r + f*m + f*r < q
+    assert (c*f) % q == g*r + f*m + f*r # m and r are unknown
+    assert (c*f) % q == r*(g+f) + f*m # factor
+    assert (c*f) % q % (g+f) == f*m % (g+f) # get rid of r
+    assert m == ((c*f) % q * pow(f, -1, g+f)) % (g+f) # /f
+```
 
 # Nabat
 
