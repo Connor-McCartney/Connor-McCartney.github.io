@@ -34,11 +34,13 @@ print(long_to_bytes(int(str(m)[:108])))
 ```
 
 <br>
+
 # Beheaded
 
 This was like the famous ECB penguin, you could rescale it in gimp or use a block where all pixels are the same colour without needing to find the key. 
 
 <br>
+
 # Mashy
 
 Guessy trash, had to guess that sh was `a483b30944cbf762d4a3afc154aad825`. 
@@ -50,7 +52,7 @@ Then you can just send a bunch of md5 collisions, so that xor(h1, h2) is b'\x00\
 
 
 
-
+<br>
 
 # Forghan
 
@@ -76,6 +78,7 @@ for p in range(100):
 ```
 
 
+<br>
 
 # RM2
 
@@ -114,6 +117,8 @@ print(io.read().decode())
 
 # CCTF{i_l0v3_5UpeR_S4fE_Pr1m3s!!}
 ```
+
+<br>
 
 # Alilbols
 
@@ -167,9 +172,15 @@ for d in range(1000):
 # CCTF{4_c0N9rU3n7!aL_Pu81iC_k3Y_cRyp70_5ySTeM_1N_CCTF!!}
 ```
 
+<br>
+
 # Nabat
 
+<br>
+
 # Nazdone
+
+<br>
 
 # Joe-19
 
@@ -193,7 +204,11 @@ for i in trange(len(e_digits)-154):
 # CCTF{ASIS_h1r3_7aL3nT5_t0_cO1La8orAt3_!N_Crypto_CTF!}
 ```
 
+<br>
+
 # Honey
+
+<br>
 
 # Ahoo
 
@@ -218,7 +233,11 @@ Check:
 
 <https://github.com/FinnLidbetter/sturdy-numbers>
 
+<br>
+
 # Vantuk
+
+<br>
 
 # Ally
 
@@ -251,6 +270,8 @@ io.interactive()
 
 # CCTF{Di0phaNtinE_eQuaT1on_iZ_4n_equ4tion_wiTh_int3ger_solu7Ions_0nly!}
 ```
+
+<br>
 
 # Soufia
 
@@ -389,7 +410,11 @@ b'\xe2\x94\x83 Good job, try the next step 20\n'
 b"\xe2\x94\x83 Congratz! You got the flag: b'CCTF{A_funCti0nal_3qu4tiOn_iZ_4_7yPe_oF_EquAtioN_tHaT_inv0lVe5_an_unKnOwn_funCt!on_r4tH3r_thAn_juS7_vArIabl3s!!}'\n"
 ```
 
+<br>
+
 # Melek
+
+<br>
 
 # Tesvir
 
@@ -424,6 +449,8 @@ print(bytes.fromhex(f'{int(flag, 2):02x}'))
 # CCTF{9j_h0W_dO_yUo_5oLvE_tH!s_m1X3D_5eMi_H4rD_T4Sk!!!?}
 ```
 
+<br>
+
 # Solmaz
 
 ```python
@@ -442,6 +469,8 @@ print(bytes.fromhex(f'{m:02x}'))
 # 3cC_d1ViSibil!7Y
 ```
 
+
+<br>
 
 # Rehawk
 
