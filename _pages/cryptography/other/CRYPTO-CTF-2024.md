@@ -53,6 +53,9 @@ Then you can just send a bunch of md5 collisions, so that xor(h1, h2) is b'\x00\
 
 # Forghan
 
+I think intended is find primes that are both p-1 and p+1 smooth. 
+But the flag is small enough that you don't need to. 
+
 ```
 ...::::: CCTF{f!nD1N9_7wIn_5m0OtH_1nT3GErS!!!} :::::...
 ```
