@@ -53,7 +53,10 @@ Then you can just send a bunch of md5 collisions, so that xor(h1, h2) is b'\x00\
 
 # Forghan
 
+`n = (p^2 - 1)(q^2 - 1) = (p-1)(p+1)(q-1)(q+1)`
+
 I think intended is find primes that are both p-1 and p+1 smooth. 
+
 But the flag is small enough that you don't need to. 
 
 ```
