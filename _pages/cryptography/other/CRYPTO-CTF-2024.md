@@ -72,6 +72,60 @@ for p in range(100):
         print(is_prime((p+1)//2), euler_phi(p+1) == (p-1)//2)
 ```
 
+```python
+from Crypto.Util.number import *
+from pwn import remote
+
+def get_pr():
+    while True:
+        p = getPrime(256)
+        if isPrime((p+1)//2):
+            return p
+
+
+def solve():
+    #p = get_pr()
+    #q = get_pr()
+    p = 103324310827731387858898612794187090070009196324984411183894052950789734406661
+    q = 110770244583604777325663981197391176452423648810117191163122603417313145192501
+
+    io = remote('00.cr.yp.toc.tf', 13337)
+    io.read()
+    io.sendline(b'S')
+    io.read()
+    io.sendline(f'{p},{q}'.encode())
+
+    io.read()
+    io.sendline(b'G')
+    cp = int(io.readline().decode().split()[-1])
+    cq = int(io.readline().decode().split()[-1])
+
+    io.read()
+    io.sendline(b'P')
+    gp = int(io.readline().decode().split()[-1])
+    gq = int(io.readline().decode().split()[-1])
+    yp = int(io.readline().decode().split()[-1])
+    yq = int(io.readline().decode().split()[-1])
+    io.close()
+
+    try:
+        phip = (p-1)//2
+        dp = pow(yp, -1, phip)
+        flagp = pow(cp, dp, p+1)
+
+        phiq = (q-1)//2
+        dq = pow(yq, -1, phiq)
+        flagq = pow(cq, dq, q+1)
+    except ZeroDivisionError:
+        return False
+
+    print(long_to_bytes(flagp) + long_to_bytes(flagq))
+    return True
+
+while True:
+    if solve():
+        break
+```
 
 ```
 ...::::: CCTF{f!nD1N9_7wIn_5m0OtH_1nT3GErS!!!} :::::...
