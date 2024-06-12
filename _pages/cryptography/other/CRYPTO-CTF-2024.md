@@ -97,6 +97,17 @@ print(io.read().decode())
 
 # Alilbols
 
+First find f, g same as 'Find the Lattice' from cryptohack:
+
+```python
+    M = Matrix([
+        [1, h],
+        [0, q]
+    ])
+    f, g = M.LLL()[0]
+```
+
+
 # Nabat
 
 # Nazdone
