@@ -59,9 +59,22 @@ I think intended is find primes that are both p-1 and p+1 smooth.
 
 But the flag is small enough that you don't need to. 
 
+Let's decrypt just mod p+1. So we need phi(p+1).
+
+We can choose a p such that p+1 = 2*p_, then phi(p+1) is (p-1)/2. 
+
+```python
+for p in range(100):
+    if is_prime(p):
+        print(is_prime((p+1)//2), euler_phi(p+1) == (p-1)//2)
+```
+
+
 ```
 ...::::: CCTF{f!nD1N9_7wIn_5m0OtH_1nT3GErS!!!} :::::...
 ```
+
+
 
 # RM2
 
