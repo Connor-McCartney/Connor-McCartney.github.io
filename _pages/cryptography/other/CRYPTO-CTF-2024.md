@@ -33,11 +33,12 @@ print(long_to_bytes(int(str(m)[:108])))
 # CCTF{h0M3_m4De_cRyp70_5ySTeM_1N_CryptoCTF!!!}
 ```
 
-
+<br>
 # Beheaded
 
 This was like the famous ECB penguin, you could rescale it in gimp or use a block where all pixels are the same colour without needing to find the key. 
 
+<br>
 # Mashy
 
 Guessy trash, had to guess that sh was `a483b30944cbf762d4a3afc154aad825`. 
