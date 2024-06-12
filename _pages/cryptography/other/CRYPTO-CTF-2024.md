@@ -282,7 +282,7 @@ b"\xe2\x94\x83 Congratz! You got the flag: b'CCTF{A_funCti0nal_3qu4tiOn_iZ_4_7yP
 def solve_subset_mod(arr, target, m):
     M = (identity_matrix(QQ, len(arr)+1)
          .augment(vector(arr + [-target]))
-         .stack(vector([0 for _ in range(len(arr))] + [0, m]))
+         .stack(vector([0 for _ in range(len(arr)+1)] + [m]))
     )
 
     for row in M.LLL():
