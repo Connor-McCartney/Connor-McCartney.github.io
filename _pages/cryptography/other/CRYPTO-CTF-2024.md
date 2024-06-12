@@ -287,7 +287,7 @@ def solve_subset_mod(arr, target, m):
 
     for row in M.LLL():
         for row in (row, -row):
-            sol = [i for i in row][:-1]
+            sol = [i for i in row][:-2]
             if not all([i in (0, 1) for i in sol]):
                 continue
             subset = [xx for xx, k in zip(arr, sol) if k]
