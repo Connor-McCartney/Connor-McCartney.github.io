@@ -490,6 +490,16 @@ b"\xe2\x94\x83 Congratz! You got the flag: b'CCTF{A_funCti0nal_3qu4tiOn_iZ_4_7yP
 
 # Melek
 
+```python
+enc = ...
+e, p, pts = enc
+F.<x> = PolynomialRing(GF(p))
+flag = GF(p)(F.lagrange_polynomial(pts)(0)).nth_root(e)
+print(bytes.fromhex(f'{int(flag):02x}'))
+
+# CCTF{SSS_iZ_4n_3fF!ciEn7_5ecr3T_ShArIn9_alGorItHm!}
+```
+
 <br>
 
 # Tesvir
