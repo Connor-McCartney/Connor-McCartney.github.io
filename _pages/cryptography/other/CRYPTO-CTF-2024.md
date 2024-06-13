@@ -626,3 +626,30 @@ Sooo we've solved p, q, a, and looking at the order factorisations you can see E
 However, the s we get doesn't solve the other log, `Hq == s*Gq`
 
 What's going on?
+
+We can try add + k*Gp.order(), turns out we find k=2 works. 
+
+Then another problem, gcd(ss, p-1) != 1 and gcd(ss, q-1) != 1 so we solve like [this chall](https://connor-mccartney.github.io/cryptography/rsa/baby-rsa-DICECTF-2022)
+
+```python
+...
+for k in range(1, 99999):
+    ss = s + k*Gp.order()
+    assert Hp == ss*Gp
+    if Hq == ss*Gq:
+        print(f'{k = }')
+        break
+
+print(gcd(ss, p-1), gcd(ss, q-1))
+p_roots = mod(c, p).nth_root(ss, all=True)
+q_roots = mod(c, q).nth_root(ss, all=True)
+for pp in p_roots:
+    for qq in q_roots:
+        flag = crt([Integer(pp), Integer(qq)], [p,q])
+        try:
+            print(bytes.fromhex(f'{int(flag):02x}').decode())
+        except:
+            pass
+
+# CCTF{m1X!n9__3cC__&_R54_!}
+```
