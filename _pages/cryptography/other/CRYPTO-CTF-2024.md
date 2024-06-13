@@ -574,3 +574,55 @@ assert 0 == (Hpx**3 + a*Hpx - Hpy**2) % p
 # eliminate a
 assert 0 == (Gpx**3*Hpx - Hpx**3*Gpx + Hpy**2*Gpx - Gpy**2*Hpx) % p
 ```
+
+<br>
+
+```python
+Gpx, Gpy = (2024, 77522466419731346352388161327659294096)
+Hpx, Hpy = (187001239996895215821259450553198409012, 158495938026527642884038157170741730943)
+Gqx, Gqy = (2024, 92609909821520263487623088269239797003)
+Hqx, Hqy = (191534442430060308634251661645421139195, 102273233384427938890774177710170123915)
+c  = 15084463560924811262750235394027264639346464192638172940901706702947534963652
+
+# solve p
+A = Gpx**3*Hpx - Hpx**3*Gpx + Hpy**2*Gpx - Gpy**2*Hpx
+p = 243678574849421895808521345944938402807
+assert A % p == 0
+
+# solve q
+B = Gqx**3*Hqx - Hqx**3*Gqx + Hqy**2*Gqx - Gqy**2*Hqx
+q = 278451262698064898668334196027031252819
+assert B % q == 0
+
+# solve a
+a = (Gpy^2 - Gpx^3) * pow(Gpx, -1, p) % p
+
+Ep = EllipticCurve(GF(p), [a, 0])
+Eq = EllipticCurve(GF(q), [a, 0])
+Gp = Ep(Gpx, Gpy)
+Gq = Eq(Gqx, Gqy)
+Hp = Ep(Hpx, Hpy)
+Hq = Eq(Hqx, Hqy)
+
+print(factor(Ep.order()))
+print(factor(Eq.order()))
+s = Hp.log(Gp)
+print(f'{s = }')
+assert Hp == s*Gp
+print(Hq == s*Gq)
+```
+
+<br>
+
+```
+2^3 * 439 * 2609 * 462181063 * 228465631117 * 251857991531
+2^2 * 5 * 11 * 233 * 331 * 503 * 101385043 * 321810878759529563693
+s = 50295274560999838770579032062844522666
+False
+```
+
+Sooo we've solved p, q, a, and looking at the order factorisations you can see Ep is smooth enough to solve the discrete log. 
+
+However, the s we get doesn't solve the other log, `Hq == s*Gq`
+
+What's going on?
