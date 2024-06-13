@@ -562,3 +562,15 @@ print(bytes.fromhex(f'{m:02x}'))
 
 <https://gitlab.inria.fr/capsule/code-for-module-lip/-/blob/main/attack/attack_Hawk_totally_real.sage>
 
+
+<br>
+
+# Chochol
+
+```python
+assert 0 == (Gpx**3 + a*Gpx - Gpy**2) % p
+assert 0 == (Hpx**3 + a*Hpx - Hpy**2) % p
+
+# eliminate a
+assert 0 == (Gpx**3*Hpx - Hpx**3*Gpx + Hpy**2*Gpx - Gpy**2*Hpx) % p
+```
