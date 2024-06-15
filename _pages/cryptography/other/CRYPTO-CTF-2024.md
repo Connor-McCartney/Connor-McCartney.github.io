@@ -653,3 +653,150 @@ for pp in p_roots:
 
 # CCTF{m1X!n9__3cC__&_R54_!}
 ```
+
+
+<br>
+
+# O7R
+
+credit @alvin09041
+
+I uploaded the images with the challenge pdf
+
+```python
+from collections import defaultdict
+from Crypto.Util.number import long_to_bytes
+import numpy as np
+from PIL import Image
+
+num_map = {
+    0: [0,1,2,4,5,6],
+    1: [2,5],
+    2: [0,2,3,4,6],
+    3: [0,2,3,5,6],
+    4: [1,2,3,5],
+    5: [0,1,3,5,6],
+    6: [0,1,3,4,5,6],
+    7: [0,2,5],
+    8: [0,1,2,3,4,5,6],
+    9: [0,1,2,3,5,6],
+}
+
+assert len(set([tuple(d) for d in num_map.values()])) == 10
+
+possible_nums = defaultdict(list)
+for k,v in num_map.items():
+    if k not in possible_nums[tuple(v)]:
+        possible_nums[tuple(v)].append(k)
+    for i in v:
+        new = v[:]
+        new.remove(i)
+        if k in possible_nums[tuple(sorted(new))]:
+            continue
+        possible_nums[tuple(sorted(new))].append(k)
+
+def parse_image(im_p, n_rows=4, n_digits=40):
+    height = im_p.shape[0]
+    width = im_p.shape[1]
+    n_digits = 40
+    #n_rows = 4
+    numblock_width = (width+3.5)/40
+    numblock_width
+    num_left_offset = 2
+    num_right_offset = 29
+    numblock_height = (height+37)/n_rows
+    numblock_width, numblock_height
+    num_top_offset = 2
+    num_middle_offset = 29
+    num_bottom_offset = 56
+    
+    
+    p_nums = []
+    for i in range(n_rows):
+        for j in range(n_digits):
+            index0 = im_p[round(i*numblock_height) + num_top_offset, round(j*numblock_width) + round(numblock_width/2)][0] == 0
+            index1 = im_p[round(i*numblock_height) + (num_top_offset + num_middle_offset)//2, round(j*numblock_width) + num_left_offset][0] == 0
+            index2 = im_p[round(i*numblock_height) + (num_top_offset + num_middle_offset)//2, round(j*numblock_width) + num_right_offset][0] == 0
+            index3 = im_p[round(i*numblock_height) + num_middle_offset, round(j*numblock_width) + round(numblock_width/2)][0] == 0
+            index4 = im_p[round(i*numblock_height) + (num_middle_offset + num_bottom_offset)//2, round(j*numblock_width) + num_left_offset][0] == 0
+            index5 = im_p[round(i*numblock_height) + (num_middle_offset + num_bottom_offset)//2, round(j*numblock_width) + num_right_offset][0] == 0
+            index6 = im_p[round(i*numblock_height) + num_bottom_offset, round(j*numblock_width) + round(numblock_width/2)][0] == 0
+            res = [index0, index1, index2, index3, index4, index5, index6]
+            res = [idx for idx, boolean in enumerate(res) if boolean]
+            p_nums.append(res)
+    #p_nums = p_nums[:-6]
+    #len(p_nums)
+    return p_nums
+
+p_nums = parse_image(np.array(Image.open('p.png')))
+q_nums = parse_image(np.array(Image.open('q.png')))
+n_nums = parse_image(np.array(Image.open('n.png')), n_rows=8)
+n_sq_1_nums = parse_image(np.array(Image.open('n_sq_1.png')), n_rows=9)
+n_sq_2_nums = parse_image(np.array(Image.open('n_sq_2.png')), n_rows=7)
+c_nums = parse_image(np.array(Image.open('c.png')), n_rows=8)
+
+p_nums = p_nums[:-6]
+q_nums = q_nums[:-6]
+c_nums = c_nums[:-13]
+n_nums = n_nums[:-12]
+n_sq_nums = n_sq_1_nums + n_sq_2_nums[:-24]
+
+print('calculating n...')
+queue = ['273']
+while queue:
+    n = queue.pop()
+    if len(n) == 40*8-12:
+        n = int(n)
+        print('n = ', n)
+        break
+    n_idx = len(n)
+    #print('n_idx', n_idx)
+    n_cands = possible_nums[tuple(n_nums[-(n_idx+1)])]
+    if len(n_cands) == 1:
+        n = str(n_cands[0]) + n
+        queue.append(n)
+        continue
+    nsq = (int(n) ** 2) % (10 ** n_idx)
+    nsq_cands = possible_nums[tuple(n_sq_nums[-(n_idx+1)])]
+
+    for n_digit in n_cands:
+        for n_sq_digit in nsq_cands:
+            n_test = str(n_digit) + n
+            if (int(n_test) ** 2) % (10 ** (n_idx+1)) == nsq + n_sq_digit * 10 ** n_idx:
+                queue.append(n_test)
+
+
+#p = '7'
+#q = '9'
+queue = [('7', '9')]
+while queue:
+    p,q = queue.pop()
+    if len(p) == 154:
+        p,q = int(p), int(q)
+        print('p,q are', p, q)
+        break
+    p_idx = len(p)
+    p_cands = possible_nums[tuple(p_nums[-(p_idx+1)])]
+    q_cands = possible_nums[tuple(q_nums[-(p_idx+1)])]
+    if len(p_cands) == 1 and len(q_cands) == 1:
+        p = str(p_cands[0]) + p
+        q = str(q_cands[0]) + q
+        queue.append((p, q))
+        continue
+    n_temp = (int(p) * int(q)) % (10 ** p_idx)
+    n_required = n % (10 ** (p_idx+1))
+    for p_digit in p_cands:
+        for q_digit in q_cands:
+            p_test = str(p_digit) + p
+            q_test = str(q_digit) + q
+            n_test = int(p_test) * int(q_test)
+            if n_test % (10 ** (p_idx+1)) == n_required:
+                queue.append((p_test, q_test))
+
+assert n % p == 0 and n % q == 0
+num_map_inv = {tuple(v):k for k,v in num_map.items()}
+c = int(''.join([str(num_map_inv[tuple(cc)]) for cc in c_nums]))
+e = 65537
+d = pow(e, -1, (p-1)*(q-1))
+print(long_to_bytes(pow(c, d, n)))
+```
