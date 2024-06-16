@@ -108,3 +108,7 @@ __vulnerability: hint given__
 
 <span style="font-size:2em;">   [quick maffs - HTB](/cryptography/rsa/quick-maffs-HTB)       </span> <br>
 __vulnerability: hint given__
+
+
+<span style="font-size:2em;">   [Sqursa_xx - hspace CTF 2024](/cryptography/rsa/Sqursa_xx-hspace-CTF-2024)       </span> <br>
+__vulnerability: strange prime structure__
