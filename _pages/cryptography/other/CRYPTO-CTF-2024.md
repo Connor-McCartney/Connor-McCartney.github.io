@@ -700,7 +700,7 @@ for pp in p_roots:
 
 credit @alvin09041
 
-I uploaded the images with the challenge pdf
+[I uploaded the images with the challenge pdf](https://github.com/Connor-McCartney/CTF_Files/tree/main/2024/CRYPTO%20CTF/Hard/O7R)
 
 ```python
 from collections import defaultdict
