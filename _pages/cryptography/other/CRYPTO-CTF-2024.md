@@ -228,13 +228,6 @@ for d in range(1000):
 
 <br>
 
-# Nabat
-
-<br>
-
-# Nazdone
-
-<br>
 
 # Joe-19
 
