@@ -313,6 +313,14 @@ Check:
 
 # Vantuk
 
+To solve a:
+
+```python
+assert A == a + Rational((5 * a - 4*a)/(a ** 2 + (4*a)**2))
+assert An * (a ** 2 + (4*a)**2) == Ad * a * (a ** 2 + (4*a)**2) + Ad*(5 * a - 4*a)
+```
+
+
 <br>
 
 # Ally
