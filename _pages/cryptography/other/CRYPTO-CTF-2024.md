@@ -845,12 +845,3 @@ print(long_to_bytes(pow(c, d, n)))
 
 <br>
 
-# Latifa
-
-```python
-c = ...
-b = 39719
-m = 2*c//b
-print(bytes.fromhex(f'{int(m):x}'))
-# CCTF{h4Lf_7T}
-```
