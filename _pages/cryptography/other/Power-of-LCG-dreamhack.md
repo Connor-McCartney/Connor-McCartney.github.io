@@ -100,3 +100,42 @@ First we see this discrete log problem to deal with, p-1 is smooth except for 1 
 
 So let's define `m = (p-1)/q` and work mod m. 
 
+```python
+from sympy.ntheory.residue_ntheory import discrete_log
+
+BITS = 1024
+p = 0xd6911ad7da2912f38bd2d04c150be9b7fee1f5770e6a8ea7ffc0a559069b24ebfcd3d535b3ce2696f0b6ad7270bc76e023212bdaf6fa16da726098606dfc8d90246f4a94516a8fbd6290a96323b515995ecb66765fe1f66c39c928bf03ac1cbcbc8294aeed908e97d9d24f16f4ec88a98a4fd4ffa1c98d307521ba08a5b2a52b
+q = 437783772190199073880149177995377542774868874003257679907195250599458950046958305407675539673116198429241134455385589287589308835951942117013730609199201
+m = (p-1)//q
+
+class LCG:
+    def __init__(self, mod):
+        self.mod = mod
+        self.vs = [randint(0, 2**(BITS//3)) for _ in range(6)]
+        self.bs = [randint(0, 2**BITS) for _ in range(6)]
+        self.c = randint(0, 2**BITS)
+    
+    def get(self):
+        new_v = (sum(v * b for v, b in zip(self.vs, self.bs)) + self.c) % self.mod
+        self.vs = self.vs[1:] + [new_v]
+        return new_v
+
+
+a = randint(0, 2**(BITS//8))
+lcg = LCG(p - 1)
+
+states = []
+output = []
+for i in range(20):
+    state = lcg.get()
+    states.append(state)
+    output.append(pow(a, state, p))
+
+
+xx = []
+g = 2 #random base
+for o in output:
+    _g = pow(g, q, p)
+    _o = pow(o, q, p)
+    xx.append(int(discrete_log(p, _o, _g, order=m)))
+```
