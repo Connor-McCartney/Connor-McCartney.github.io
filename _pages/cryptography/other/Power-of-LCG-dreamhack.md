@@ -85,3 +85,18 @@ print(hashed_flag)
 <br>
 
 Solve:
+
+
+```python
+for i in range(20):
+    print(pow(a, lcg.get(), p))
+```
+
+First we see this discrete log problem to deal with, p-1 is smooth except for 1 large factor I'll call q:
+
+```
+437783772190199073880149177995377542774868874003257679907195250599458950046958305407675539673116198429241134455385589287589308835951942117013730609199201
+```
+
+So let's define `m = (p-1)/q` and work mod m. 
+
