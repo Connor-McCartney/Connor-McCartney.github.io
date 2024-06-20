@@ -175,4 +175,21 @@ assert k*(av[9]-av[8]) % m == (k*bs[0]*(av[3]-av[2]) + k*bs[1]*(av[4]-av[3]) + k
 
 <br>
 
-And now we want to rearrange for the original vs (av[0] through av[5]). 
+And now we want to rearrange for v[i]:
+
+```python
+assert k*bs[0]*av[0] % m == (-k*av[7] + k*av[6] + k*bs[0]*av[1] + k*bs[1]*av[2] - k*bs[1]*av[1] + k*bs[2]*av[3] - k*bs[2]*av[2] + k*bs[3]*av[4] - k*bs[3]*av[3] + k*bs[4]*av[5] - k*bs[4]*av[4] + k*bs[5]*av[6] - k*bs[5]*av[5]) % m
+assert k*bs[0]*av[0] % m == (k*av[7]*(-1) + k*av[6]*(bs[5]+1) + k*av[5]*(bs[4]-bs[5]) + k*av[4]*(bs[3]-bs[4]) + k*av[3]*(bs[2]-bs[3]) + k*av[2]*(bs[1]-bs[2]) + k*av[1]*(bs[0]-bs[1])) % m
+
+ib = pow(bs[0], -1, m)
+s7 = (ib * (-1)) % m
+s6 = (ib * (bs[5]+1)) % m
+s5 = (ib * (bs[4]-bs[5])) % m
+s4 = (ib * (bs[3]-bs[4])) % m
+s3 = (ib * (bs[2]-bs[3])) % m
+s2 = (ib * (bs[1]-bs[2])) % m
+s1 = (ib * (bs[0]-bs[1])) % m
+for i in range(20-7):
+    assert k*av[i] % m == (s7*k*av[i+7] + s6*k*av[i+6] + s5*k*av[i+5] + s4*k*av[i+4] + s3*k*av[i+3] + s2*k*av[i+2] + s1*k*av[i+1]) % m
+```
+
