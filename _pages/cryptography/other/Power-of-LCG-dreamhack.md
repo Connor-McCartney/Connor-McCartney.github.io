@@ -189,7 +189,7 @@ s4 = (ib * (bs[3]-bs[4])) % m
 s3 = (ib * (bs[2]-bs[3])) % m
 s2 = (ib * (bs[1]-bs[2])) % m
 s1 = (ib * (bs[0]-bs[1])) % m
-for i in range(20-7):
+for i in range(7):
     assert k*av[i] % m == (s7*k*av[i+7] + s6*k*av[i+6] + s5*k*av[i+5] + s4*k*av[i+4] + s3*k*av[i+3] + s2*k*av[i+2] + s1*k*av[i+1]) % m
 ```
 
@@ -293,7 +293,7 @@ s4 = (ib * (bs[3]-bs[4])) % m
 s3 = (ib * (bs[2]-bs[3])) % m
 s2 = (ib * (bs[1]-bs[2])) % m
 s1 = (ib * (bs[0]-bs[1])) % m
-for i in range(6):
+for i in range(7):
     assert k*av[i] % m == (s7*k*av[i+7] + s6*k*av[i+6] + s5*k*av[i+5] + s4*k*av[i+4] + s3*k*av[i+3] + s2*k*av[i+2] + s1*k*av[i+1]) % m
 """
 
