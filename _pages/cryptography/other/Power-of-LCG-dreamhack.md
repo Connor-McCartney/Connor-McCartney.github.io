@@ -163,3 +163,16 @@ assert (xx[9]-xx[8]) % m == (bs[0]*(xx[3]-xx[2]) + bs[1]*(xx[4]-xx[3]) + bs[2]*(
 ```
 
 <br>
+
+Or,
+
+```python
+assert k*(av[7]-av[6]) % m == (k*bs[0]*(av[1]-av[0]) + k*bs[1]*(av[2]-av[1]) + k*bs[2]*(av[3]-av[2]) + k*bs[3]*(av[4]-av[3]) + k*bs[4]*(av[5]-av[4]) + k*bs[5]*(av[6]-av[5])) % m
+assert k*(av[8]-av[7]) % m == (k*bs[0]*(av[2]-av[1]) + k*bs[1]*(av[3]-av[2]) + k*bs[2]*(av[4]-av[3]) + k*bs[3]*(av[5]-av[4]) + k*bs[4]*(av[6]-av[5]) + k*bs[5]*(av[7]-av[6])) % m
+assert k*(av[9]-av[8]) % m == (k*bs[0]*(av[3]-av[2]) + k*bs[1]*(av[4]-av[3]) + k*bs[2]*(av[5]-av[4]) + k*bs[3]*(av[6]-av[5]) + k*bs[4]*(av[7]-av[6]) + k*bs[5]*(av[8]-av[7])) % m
+...
+```
+
+<br>
+
+And now we want to rearrange for the original vs (av[0] through av[5]). 
