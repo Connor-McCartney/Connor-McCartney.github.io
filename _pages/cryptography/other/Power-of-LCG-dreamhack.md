@@ -193,3 +193,115 @@ for i in range(20-7):
     assert k*av[i] % m == (s7*k*av[i+7] + s6*k*av[i+6] + s5*k*av[i+5] + s4*k*av[i+4] + s3*k*av[i+3] + s2*k*av[i+2] + s1*k*av[i+1]) % m
 ```
 
+Now s is solved directly, and the original vs are solved with LLL:
+
+```python
+from sympy.ntheory.residue_ntheory import discrete_log
+from tqdm import *
+
+BITS = 1024
+p = 0xd6911ad7da2912f38bd2d04c150be9b7fee1f5770e6a8ea7ffc0a559069b24ebfcd3d535b3ce2696f0b6ad7270bc76e023212bdaf6fa16da726098606dfc8d90246f4a94516a8fbd6290a96323b515995ecb66765fe1f66c39c928bf03ac1cbcbc8294aeed908e97d9d24f16f4ec88a98a4fd4ffa1c98d307521ba08a5b2a52b
+q = 437783772190199073880149177995377542774868874003257679907195250599458950046958305407675539673116198429241134455385589287589308835951942117013730609199201
+m = (p-1)//q
+
+class LCG:
+    def __init__(self, mod):
+        self.mod = mod
+        self.vs = [randint(0, 2**(BITS//3)) for _ in range(6)]
+        self.original_vs = self.vs.copy()
+        self.all_vs = self.vs.copy()
+        self.bs = [randint(0, 2**BITS) for _ in range(6)]
+        self.c = randint(0, 2**BITS)
+    
+    def get(self):
+        new_v = (sum(v * b for v, b in zip(self.vs, self.bs)) + self.c) % self.mod
+        self.all_vs.append(new_v)
+        self.vs = self.vs[1:] + [new_v]
+        return new_v
+
+
+a = randint(0, 2**(BITS//8))
+lcg = LCG(p - 1)
+
+states = []
+output = []
+for i in range(20):
+    state = lcg.get()
+    states.append(state)
+    output.append(pow(a, state, p))
+
+xx = []
+g = 2 #random base
+for o in tqdm(output):
+    _g = pow(g, q, p)
+    _o = pow(o, q, p)
+    xx.append(int(discrete_log(p, _o, _g, order=m)))
+
+bs = lcg.bs
+
+assert (xx[7]-xx[6]) % m == (bs[0]*(xx[1]-xx[0]) + bs[1]*(xx[2]-xx[1]) + bs[2]*(xx[3]-xx[2]) + bs[3]*(xx[4]-xx[3]) + bs[4]*(xx[5]-xx[4]) + bs[5]*(xx[6]-xx[5])) % m
+assert (xx[8]-xx[7]) % m == (bs[0]*(xx[2]-xx[1]) + bs[1]*(xx[3]-xx[2]) + bs[2]*(xx[4]-xx[3]) + bs[3]*(xx[5]-xx[4]) + bs[4]*(xx[6]-xx[5]) + bs[5]*(xx[7]-xx[6])) % m
+assert (xx[9]-xx[8]) % m == (bs[0]*(xx[3]-xx[2]) + bs[1]*(xx[4]-xx[3]) + bs[2]*(xx[5]-xx[4]) + bs[3]*(xx[6]-xx[5]) + bs[4]*(xx[7]-xx[6]) + bs[5]*(xx[8]-xx[7])) % m
+...
+
+av = lcg.all_vs
+assert states[0] == av[6]
+assert states[1] == av[7]
+assert states[2] == av[8]
+...
+
+assert av[6] == (bs[5]*av[5] + bs[4]*av[4] + bs[3]*av[3] + bs[2]*av[2] + bs[1]*av[1] + bs[0]*av[0] + lcg.c) % lcg.mod
+assert av[7] == (bs[5]*av[6] + bs[4]*av[5] + bs[3]*av[4] + bs[2]*av[3] + bs[1]*av[2] + bs[0]*av[1] + lcg.c) % lcg.mod
+assert av[8] == (bs[5]*av[7] + bs[4]*av[6] + bs[3]*av[5] + bs[2]*av[4] + bs[1]*av[3] + bs[0]*av[2] + lcg.c) % lcg.mod
+...
+
+for i in range(20):
+    try:
+        k = xx[i] * pow(states[i], -1, m) % m
+        break
+    except:
+        continue
+
+
+assert k*av[6] % m == (bs[5]*k*av[5] + bs[4]*k*av[4] + bs[3]*k*av[3] + bs[2]*k*av[2] + bs[1]*k*av[1] + bs[0]*k*av[0] + k*lcg.c) % m
+assert k*av[7] % m == (bs[5]*k*av[6] + bs[4]*k*av[5] + bs[3]*k*av[4] + bs[2]*k*av[3] + bs[1]*k*av[2] + bs[0]*k*av[1] + k*lcg.c) % m
+assert k*av[8] % m == (bs[5]*k*av[7] + bs[4]*k*av[6] + bs[3]*k*av[5] + bs[2]*k*av[4] + bs[1]*k*av[3] + bs[0]*k*av[2] + k*lcg.c) % m
+...
+
+assert k*(av[7]-av[6]) % m == (k*bs[0]*(av[1]-av[0]) + k*bs[1]*(av[2]-av[1]) + k*bs[2]*(av[3]-av[2]) + k*bs[3]*(av[4]-av[3]) + k*bs[4]*(av[5]-av[4]) + k*bs[5]*(av[6]-av[5])) % m
+assert k*(av[8]-av[7]) % m == (k*bs[0]*(av[2]-av[1]) + k*bs[1]*(av[3]-av[2]) + k*bs[2]*(av[4]-av[3]) + k*bs[3]*(av[5]-av[4]) + k*bs[4]*(av[6]-av[5]) + k*bs[5]*(av[7]-av[6])) % m
+assert k*(av[9]-av[8]) % m == (k*bs[0]*(av[3]-av[2]) + k*bs[1]*(av[4]-av[3]) + k*bs[2]*(av[5]-av[4]) + k*bs[3]*(av[6]-av[5]) + k*bs[4]*(av[7]-av[6]) + k*bs[5]*(av[8]-av[7])) % m
+...
+
+
+assert k*bs[0]*av[0] % m == (-k*(av[7]-av[6]) + k*bs[0]*av[1] + k*bs[1]*(av[2]-av[1]) + k*bs[2]*(av[3]-av[2]) + k*bs[3]*(av[4]-av[3]) + k*bs[4]*(av[5]-av[4]) + k*bs[5]*(av[6]-av[5])) % m
+assert k*bs[0]*av[1] % m == (-k*(av[8]-av[7]) + k*bs[0]*av[2] + k*bs[1]*(av[3]-av[2]) + k*bs[2]*(av[4]-av[3]) + k*bs[3]*(av[5]-av[4]) + k*bs[4]*(av[6]-av[5]) + k*bs[5]*(av[7]-av[6])) % m
+assert k*bs[0]*av[2] % m == (-k*(av[9]-av[8]) + k*bs[0]*av[3] + k*bs[1]*(av[4]-av[3]) + k*bs[2]*(av[5]-av[4]) + k*bs[3]*(av[6]-av[5]) + k*bs[4]*(av[7]-av[6]) + k*bs[5]*(av[8]-av[7])) % m
+...
+
+assert k*bs[0]*av[0] % m == (-k*av[7] + k*av[6] + k*bs[0]*av[1] + k*bs[1]*av[2] - k*bs[1]*av[1] + k*bs[2]*av[3] - k*bs[2]*av[2] + k*bs[3]*av[4] - k*bs[3]*av[3] + k*bs[4]*av[5] - k*bs[4]*av[4] + k*bs[5]*av[6] - k*bs[5]*av[5]) % m
+assert k*bs[0]*av[0] % m == (k*av[7]*(-1) + k*av[6]*(bs[5]+1) + k*av[5]*(bs[4]-bs[5]) + k*av[4]*(bs[3]-bs[4]) + k*av[3]*(bs[2]-bs[3]) + k*av[2]*(bs[1]-bs[2]) + k*av[1]*(bs[0]-bs[1])) % m
+
+"""
+ib = pow(bs[0], -1, m)
+s7 = (ib * (-1)) % m
+s6 = (ib * (bs[5]+1)) % m
+s5 = (ib * (bs[4]-bs[5])) % m
+s4 = (ib * (bs[3]-bs[4])) % m
+s3 = (ib * (bs[2]-bs[3])) % m
+s2 = (ib * (bs[1]-bs[2])) % m
+s1 = (ib * (bs[0]-bs[1])) % m
+for i in range(20-7):
+    assert k*av[i] % m == (s7*k*av[i+7] + s6*k*av[i+6] + s5*k*av[i+5] + s4*k*av[i+4] + s3*k*av[i+3] + s2*k*av[i+2] + s1*k*av[i+1]) % m
+"""
+
+
+s = Matrix(Zmod(m), [xx[i+1:i+8] for i in range(7)]).solve_right(vector(xx[:7]))
+
+for i in range(6):
+    xx = [s * vector(xx[:7])] + xx.copy()
+vs = Matrix(ZZ, [xx[:6]]).stack(identity_matrix(6) * m).LLL()[1]
+
+vs = [abs(v // gcd(vs)) for v in vs]
+print(vs == lcg.original_vs)
+```
