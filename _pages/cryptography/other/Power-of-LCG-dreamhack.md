@@ -155,6 +155,7 @@ print(xx[2] * pow(states[2], -1, m) % m)
 Now we subtract groups of 2 equations to eliminate c, we get:
 
 ```python
+bs = lcg.bs
 assert (xx[7]-xx[6]) % m == (bs[0]*(xx[1]-xx[0]) + bs[1]*(xx[2]-xx[1]) + bs[2]*(xx[3]-xx[2]) + bs[3]*(xx[4]-xx[3]) + bs[4]*(xx[5]-xx[4]) + bs[5]*(xx[6]-xx[5])) % m
 assert (xx[8]-xx[7]) % m == (bs[0]*(xx[2]-xx[1]) + bs[1]*(xx[3]-xx[2]) + bs[2]*(xx[4]-xx[3]) + bs[3]*(xx[5]-xx[4]) + bs[4]*(xx[6]-xx[5]) + bs[5]*(xx[7]-xx[6])) % m
 assert (xx[9]-xx[8]) % m == (bs[0]*(xx[3]-xx[2]) + bs[1]*(xx[4]-xx[3]) + bs[2]*(xx[5]-xx[4]) + bs[3]*(xx[6]-xx[5]) + bs[4]*(xx[7]-xx[6]) + bs[5]*(xx[8]-xx[7])) % m
