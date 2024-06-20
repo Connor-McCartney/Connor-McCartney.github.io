@@ -139,3 +139,15 @@ for o in output:
     _o = pow(o, q, p)
     xx.append(int(discrete_log(p, _o, _g, order=m)))
 ```
+
+<br>
+
+Now all xx is some multiple of states mod p, you can see it if the inverse exists:
+
+```python
+print(xx[0] * pow(states[0], -1, m) % m)
+print(xx[1] * pow(states[1], -1, m) % m)
+print(xx[2] * pow(states[2], -1, m) % m)
+```
+
+<br>
