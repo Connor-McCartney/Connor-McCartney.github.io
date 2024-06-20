@@ -300,7 +300,7 @@ for i in range(7):
 
 s = Matrix(Zmod(m), [xx[i+1:i+8] for i in range(7)]).solve_right(vector(xx[:7]))
 
-for i in range(6):
+for _ in range(6):
     xx = [s * vector(xx[:7])] + xx.copy()
 vs = Matrix(ZZ, [xx[:6]]).stack(identity_matrix(6) * m).LLL()[1]
 
