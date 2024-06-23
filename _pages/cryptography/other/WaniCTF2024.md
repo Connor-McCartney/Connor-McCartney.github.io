@@ -90,3 +90,5 @@ $$\frac{x_0 - z_0}{y_0} = \frac{x_1 - z_1}{y_1} = \frac{x_2 - z_2}{y_2} = \frac{
 Then, 
 
 $$y_1 \cdot (x_0 - z_0) = y_0 \cdot (x_1 - z_1)$$
+
+$$y_1 \cdot x_0 - y_0 \cdot x_1 = y_1 \cdot z_0 - y_0 \cdot z_1$$
