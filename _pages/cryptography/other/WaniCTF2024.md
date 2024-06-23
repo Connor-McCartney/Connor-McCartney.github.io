@@ -85,13 +85,6 @@ For small z0, z1, z2, z3.
 
 Next can eliminate m, 
 
-$$\frac{x_0 - z_0}{y_0}$$
-```
-(x0 - z0)/y0 = (x1 - z1)/y1 = (x2 - z2)/y2 = (x3 - z3)/y3
-```
+$$\frac{x_0 - z_0}{y_0} = \frac{x_1 - z_1}{y_1} = \frac{x_2 - z_2}{y_2} = \frac{x_3 - z_3}{y_3}$$
 
-And now use some approximations:
 
-```
-xi/x0 ~= yi/y0
-```
