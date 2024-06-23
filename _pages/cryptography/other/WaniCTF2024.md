@@ -71,3 +71,15 @@ assert m == gcd([x0, x1, x2, x3])
 <br>
 
 If we uncomment them again then the lsb of each x has been corrupted. 
+
+We can represent this as:
+
+```
+x0 = y0*m + z0
+x1 = y1*m + z1
+x2 = y2*m + z2
+x3 = y3*m + z3
+```
+
+For small z0, z1, z2, z3.
+```
