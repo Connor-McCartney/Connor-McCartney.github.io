@@ -94,3 +94,5 @@ $$y_1 \cdot (x_0 - z_0) = y_0 \cdot (x_1 - z_1)$$
 $$y_1 \cdot x_0 \approx y_0 \cdot x_1$$
 
 $$y_1 \cdot x_0 - y_0 \cdot x_1 = y_1 \cdot z_0 - y_0 \cdot z_1$$
+
+Note that on the LHS we have gotten rid of all the unknown z's, and the value is small compared to the x's, so we can put these in our target vector. 
