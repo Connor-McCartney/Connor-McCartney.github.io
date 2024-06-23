@@ -121,3 +121,17 @@ If bi is 0 we have to have some `zi` and `si = pow(zi, 2, n)`
 Else if bi is 1 we have to have some `zi` and `si = pow(zi, 2, n) * pow(c, -1, n) % n`
 
 But note that b depends on s and the suspicious hash function. 
+
+---
+
+If we try to find an si that can be the same regardless of bi, we see,
+
+`si = pow(zi, 2, n) = pow(zi, 2, n) * pow(c, -1, n) % n`
+
+`si*c = si mod n`
+
+The only solution is si=0. 
+
+But, `if gcd(si, n) != 1: return False` prevents us from using this solution...
+
+---
