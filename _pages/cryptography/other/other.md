@@ -81,3 +81,6 @@ title: Other
 
 
 <span style="font-size:2em;">   [CRYPTO CTF 2024!](/cryptography/other/CRYPTO-CTF-2024) </span> <br>
+
+
+<span style="font-size:2em;">   [Google CTF 2024](/cryptography/other/Google-CTF-2024) </span> <br>
