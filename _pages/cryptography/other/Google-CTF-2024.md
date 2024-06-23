@@ -99,3 +99,19 @@ c = 2360018222727391009935813359437291258291977319917927382982883955723011794360
 ```
 
 <br>
+
+Solve:
+
+There seems to be nothing suspicious in generate.py
+
+They make us send n and c but that's kinda redundant, we don't get any choice we have to send the same n and c provided to us. 
+
+We can choose any length 128 array for s and z though. 
+
+```python
+    for si, zi, bi in zip(s, z, b):
+        if gcd(si, n) != 1: return False
+        if pow(zi, 2, n) != si * pow(c, bi, n) % n: return False
+```
+
+Every bi is either 0 or 1. 
