@@ -101,6 +101,6 @@ We can fix x0 and y0 (or another if you like) and repeat with the other equation
 
 ```
 y1*x0 - y0*x1 
-y2*x0 - y2*x1
-y3*x0 - y3*x1
+y2*x0 - y0*x2
+y3*x0 - y0*x3
 ```
