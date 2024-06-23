@@ -105,4 +105,4 @@ y2*x0 - y0*x2
 y3*x0 - y0*x3
 ```
 
-Now our vector equation:
+Now our vector equations:
