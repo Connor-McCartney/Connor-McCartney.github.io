@@ -135,3 +135,7 @@ The only solution is si=0.
 But, `if gcd(si, n) != 1: return False` prevents us from using this solution...
 
 ---
+
+
+
+https://mystiz.hk/posts/2024/2024-06-24-google-ctf-2/
