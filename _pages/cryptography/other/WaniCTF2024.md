@@ -96,3 +96,11 @@ $$y_1 \cdot x_0 \approx y_0 \cdot x_1$$
 $$y_1 \cdot x_0 - y_0 \cdot x_1 = y_1 \cdot z_0 - y_0 \cdot z_1$$
 
 Note that on the LHS we have gotten rid of all the unknown z's, and the value is small compared to the x's, so we can put these in our target vector. 
+
+We can fix x0 and y0 (or another if you like) and repeat with the other equations:
+
+```
+y1*x0 - y0*x1 
+y2*x0 - y2*x1
+y3*x0 - y3*x1
+```
