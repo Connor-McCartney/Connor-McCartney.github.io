@@ -87,4 +87,6 @@ Next can eliminate m,
 
 $$\frac{x_0 - z_0}{y_0} = \frac{x_1 - z_1}{y_1} = \frac{x_2 - z_2}{y_2} = \frac{x_3 - z_3}{y_3}$$
 
+Then, 
 
+$$y1 \cdot (x_0 - z_0) = y0 \cdot (x_1 - z_1)$$
