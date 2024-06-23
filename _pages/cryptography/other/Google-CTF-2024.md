@@ -115,3 +115,9 @@ We can choose any length 128 array for s and z though.
 ```
 
 Every bi is either 0 or 1. 
+
+If bi is 0 we have to have some `zi` and `si = pow(zi, 2, n)`
+
+Else if bi is 1 we have to have some `zi` and `pow(zi, 2, n) * pow(c, -1, n) % n`
+
+But note that b depends on s and the suspicious hash function. 
