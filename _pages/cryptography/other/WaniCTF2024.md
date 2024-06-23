@@ -69,3 +69,5 @@ assert m == gcd([x0, x1, x2, x3])
 ```
 
 <br>
+
+If we uncomment them again then the lsb of each x has been corrupted. 
