@@ -106,3 +106,65 @@ y3*x0 - y0*x3
 ```
 
 Now our vector equations:
+
+$$y_1 \begin{bmatrix} 0\\x_0\\0\\0 \end{bmatrix} + y_2 \begin{bmatrix} 0\\0\\x_0\\0 \end{bmatrix} + y_3 \begin{bmatrix} 0\\0\\0\\x_0 \end{bmatrix} - y_0 \begin{bmatrix} 1\\x_1\\x_2\\x_3 \end{bmatrix} = 
+ \begin{bmatrix} -y0\\y1 \cdot x0 - y0 \cdot x1\\y2 \cdot x0 - y0 \cdot x2\\y3 \cdot x0 - y0 \cdot x3 \end{bmatrix}$$
+
+ Testing:
+
+```python
+import os
+from secrets import randbits
+from Crypto.Util.number import bytes_to_long
+
+FLAG = b'A'*100
+m = bytes_to_long(FLAG)
+assert m.bit_length() >= 512
+
+def encrypt(m: int, n: int = 512) -> int:
+    x = 0
+    for i in range(n):
+        x <<= 1
+        x += m * randbits(1)
+        #if i >= n // 2:
+        #    x ^= randbits(1)
+    return x
+
+
+x0, x1, x2, x3 = [encrypt(m) for _ in range(4)]
+
+assert m == gcd([x0, x1, x2, x3])
+
+y0 = x0//m
+y1 = x1//m
+y2 = x2//m
+y3 = x3//m
+
+z0 = randint(0, 2**50)
+z1 = randint(0, 2**50)
+z2 = randint(0, 2**50)
+z3 = randint(0, 2**50)
+
+x0 += z0
+x1 += z1
+x2 += z2
+x3 += z3
+
+assert x0 == y0*m + z0
+assert x1 == y1*m + z1
+assert x2 == y2*m + z2
+assert x3 == y3*m + z3
+
+
+assert y1*x0 - y0*x1 == y1*z0 - y0*z1
+
+M = Matrix([
+    [1, x1, x2, x3],
+    [0, 0 , 0 , x0],
+    [0, 0 , x0, 0 ],
+    [0, x0, 0 , 0 ]
+])
+
+print(M.LLL()[0])
+print([-y0, y1*x0-y0*x1, y2*x0-y0*x2, y3*x0-y0*x3])
+```
