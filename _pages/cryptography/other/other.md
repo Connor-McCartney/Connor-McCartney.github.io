@@ -87,3 +87,6 @@ title: Other
 
 
 <span style="font-size:2em;">   [Wani CTF 2024](/cryptography/other/WaniCTF2024) </span> <br>
+
+
+<span style="font-size:2em;">   [DUCTF 2024](/cryptography/other/DUCTF-2024) </span> <br>
