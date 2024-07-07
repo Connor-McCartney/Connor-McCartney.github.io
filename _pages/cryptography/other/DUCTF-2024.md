@@ -37,6 +37,7 @@ if __name__ == '__main__':
 
 ```
 
+<br>
 
 Solve:
 
@@ -134,6 +135,8 @@ if __name__ == "__main__":
 
 ```
 
+<br>
+
 Solve:
 
 
@@ -153,6 +156,6 @@ for x in sys.stdin.buffer.read(): sys.stdout.buffer.write(bytes([q[y % 16] ^ x])
 
 ```
 
-
+<br>
 
 Solve:
