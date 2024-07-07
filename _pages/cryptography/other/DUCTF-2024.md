@@ -358,7 +358,7 @@ recover_key[ord('T') % 16] =  ord('F') ^ c[flag_index+4]
 recover_key[ord('F') % 16] =  ord('{') ^ c[flag_index+5]
 
 for word in [b' the ', b' of ', b' and ', b' to ', b' a ', b' is ', b' for ', b' in ', b' on ', b' that ', b' by ', b' this ', b' with ', b' you ', b' it ', b' not ', b' or ', b' be ', b' are ', b' from ', b' at ', b' as ', b' your ', b' all ', b' have ', b' an ', b' was ', b' we ', b' will ', b' can ', b' about ', b' if ', b' my ', b' has ', b' free ', b' but ', b' our ', b' one ', b' other ', b' do ', b' no ', b' time ', b' they ', b' he ', b' up ', b' may ', b' what ', b' which ', b' their ', b' out ', b' use ', b' any ', b' there ', b' see ', b' only ', b' so ', b' his ', b' when ', b' here ', b' who ', b' also ', b' now ', b' get ' b' first ', b' am ', b' been ', b' would ', b' how ', b' were ', b' some ', b' these ', b' like ', b' than ']:
-    for idx in range(len(c)-4):
+    for idx in range(len(c)):
         valid = True
         for i in range(len(word)-1):
             if recover_key[word[i]%16] != 0:
