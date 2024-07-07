@@ -286,6 +286,7 @@ assert c[flag_index+4] == key[ord('T') % 16] ^ ord('F')
 assert c[flag_index+5] == key[ord('F') % 16] ^ ord('{')
 ```
 
+<br>
 
 Let's see if any are the same:
 
@@ -303,6 +304,8 @@ F 6
 { 11
 ```
 
+<br>
+
 We see 'D' and 'T' have the same. 
 
 This can help narrow down where the flag index is. 
@@ -317,8 +320,11 @@ for find_flag_index in range(len(c)-4):
         print(find_flag_index)
 ```
 
+<br>
+
 
 We can get 5/16 key values from the flag format:
+
 ```python
 print([i for i in key])
 
@@ -333,6 +339,7 @@ recover_key[ord('F') % 16] =  ord('{') ^ c[flag_index+5]
 print(recover_key)
 ```
 
+<br>
 
 For the rest we can try some common words:
 
