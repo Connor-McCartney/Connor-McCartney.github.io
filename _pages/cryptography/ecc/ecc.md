@@ -44,3 +44,7 @@ __vulnerability: elliptic cusp__
 
 <span style="font-size:2em;">   [Elliptic - GCC CTF 2024](/cryptography/ecc/Elliptic-GCC-CTF-2024)       </span> <br>
 __vulnerability: chosen parameters__
+
+
+<span style="font-size:2em;">   [ECLCG - HITCON 2024](/cryptography/ecc/ECLCG-HITCON-2024)       </span> <br>
+__vulnerability: nonces related to lcg__
