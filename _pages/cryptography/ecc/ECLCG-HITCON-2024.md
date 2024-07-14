@@ -105,7 +105,7 @@ Additionally, we aren't even given p, so perhaps that's where we should start.
 Signature equations (for known s,r,z,q):
 
 $$
-d \equiv \frac{s \cdot k - z}{r}  \ (mod \ q)
+d \equiv \frac{s \cdot k - z}{r}  \ \text{ (mod q)}
 $$
 
 <br>
