@@ -7,6 +7,8 @@ title: ECLCG - HITCON 2024
 
 Challenge:
 
+<https://github.com/maple3142/My-CTF-Challenges/tree/master/HITCON%20CTF%202024/ECLCG>
+
 ```python
 from Crypto.Util.number import getPrime
 from Crypto.Cipher import AES
