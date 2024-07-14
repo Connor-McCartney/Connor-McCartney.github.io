@@ -102,7 +102,7 @@ Additionally, we aren't even given p, so perhaps that's where we should start.
 
 <br>
 
-Signature equations:
+Signature equations (for known s,r,z,q):
 
 $$
 \text{d} \equiv \frac{s \cdot k - z}{r}  \ (mod \ q)
