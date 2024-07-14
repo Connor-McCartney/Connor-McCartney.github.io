@@ -107,3 +107,19 @@ Signature equations (for known s,r,z,q):
 $$
 \text{d} \equiv \frac{s \cdot k - z}{r}  \ (mod \ q)
 $$
+
+<br>
+
+If you elimintate d:
+
+$$
+...
+$$
+
+<br>
+
+If you rearrange for k_next - k_current:
+
+$$
+...
+$$
