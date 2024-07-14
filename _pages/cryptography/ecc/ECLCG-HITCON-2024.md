@@ -113,7 +113,7 @@ $$
 If you elimintate d:
 
 $$
-k_n \equiv \frac{r_n s_c}{r_c s_n} \cdot k_c + \frac{r_c z_n - r_n z_c}{r_c s_n} \ (mod \ q)
+k_n \equiv \frac{r_n s_c}{r_c s_n} \cdot k_c + \frac{r_c z_n - r_n z_c}{r_c s_n} \ \text{ (mod q)}
 $$
 
 <br>
@@ -121,5 +121,5 @@ $$
 If you rearrange for k_next - k_current:
 
 $$
-k_n - k_c \equiv \frac{d r_n + z_n}{s_n} - \frac{d r_c+z_c)}{s_c}    \ (mod \ q)
+k_n - k_c \equiv \frac{d r_n + z_n}{s_n} - \frac{d r_c+z_c)}{s_c}    \ \text{ (mod q)}
 $$
