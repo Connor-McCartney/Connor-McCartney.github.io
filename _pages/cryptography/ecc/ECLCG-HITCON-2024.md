@@ -183,10 +183,10 @@ vs = []
 kks = []
 for (r_c, s_c, z_c, k_c), (r_n, s_n, z_n, k_n) in zip(sigs[:-1], sigs[1:]):
     u = int(Fq(r_n)/Fq(s_n) - Fq(r_c)/Fq(s_c))
-    v = Fq(z_n)/Fq(s_n) - Fq(z_c)/Fq(s_c)
+    v = int(Fq(z_n)/Fq(s_n) - Fq(z_c)/Fq(s_c))
     kk = int(Fq(k_n - k_c))
-    assert kk == u*d + v
+    assert kk == (u*d + v) % q
     us.append(u)
     vs.append(v)
-    kks.append(kk) 
+    kks.append(kk)
 ```
