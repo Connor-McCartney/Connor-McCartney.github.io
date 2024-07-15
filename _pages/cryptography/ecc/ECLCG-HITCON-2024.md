@@ -145,6 +145,16 @@ kk_i \equiv u_i \cdot d + v_i + y_i \cdot q
 $$
 
 
+$$x_0 \begin{bmatrix}u_0  \\ v_0 \\ u_1 \\ v_1 \\ 1 \\ 0 \\ 0 \\ ... \end{bmatrix} + 
+x_1 \begin{bmatrix}u_1  \\ v_1 \\ u_2 \\ v_2 \\ 0 \\ 1 \\ 0 \\ ... \end{bmatrix}  + 
+x_2 \begin{bmatrix}u_2  \\ v_2 \\ u_3 \\ v_3 \\ 0 \\ 0 \\ 1 \\ ... \end{bmatrix}  +
+\ ... \ + \
+y_0 \begin{bmatrix}q  \\ 0  \\ 0  \\0 \\0 \\ 0 \\ 0 \\ ... \end{bmatrix} + 
+y_1 \begin{bmatrix}0  \\ q  \\ 0  \\ 0 \\0 \\0 \\ 0 \\ ... \end{bmatrix} + 
+y_2 \begin{bmatrix}0  \\ 0  \\ q  \\ 0 \\0 \\0 \\ 0 \\ ... \end{bmatrix} + 
+y_3 \begin{bmatrix}0  \\ 0  \\ 0  \\ q \\0 \\0 \\ 0 \\ ... \end{bmatrix}  
+=  \begin{bmatrix}0  \\ 0  \\0 \\0 \\ x_1 \\ x_2 \\ x_3 \\ ... \end{bmatrix}$$
+
 ```python
 from Crypto.Util.number import getPrime
 from Crypto.Cipher import AES
@@ -167,6 +177,7 @@ q = secp256k1.q
 Fq = GF(q)
 msgs = [b"https://www.youtube.com/watch?v=kv4UD4ICd_0",    b"https://www.youtube.com/watch?v=IijOKxLclxE",    b"https://www.youtube.com/watch?v=GH6akWYAtGc",    b"https://www.youtube.com/watch?v=Y3JhUFAa9bk",    b"https://www.youtube.com/watch?v=FGID8CJ1fUY",    b"https://www.youtube.com/watch?v=_BfmEjHVYwM",    b"https://www.youtube.com/watch?v=zH7wBliAhT0",    b"https://www.youtube.com/watch?v=NROQyBPX9Uo",    b"https://www.youtube.com/watch?v=ylH6VpJAoME",    b"https://www.youtube.com/watch?v=hI34Bhf5SaY",    b"https://www.youtube.com/watch?v=bef23j792eE",    b"https://www.youtube.com/watch?v=ybvXNOWX-dI",    b"https://www.youtube.com/watch?v=dt3p2HtLzDA",    b"https://www.youtube.com/watch?v=1Z4O8bKoLlU",    b"https://www.youtube.com/watch?v=S53XDR4eGy4",    b"https://www.youtube.com/watch?v=ZK64DWBQNXw",    b"https://www.youtube.com/watch?v=tLL8cqRmaNE"]
 d = randbelow(q)
+print(f'{d = }\n')
 P = d * G
 p = getPrime(0x137)
 a, b, x = [randbelow(p) for _ in range(3)]
@@ -189,4 +200,39 @@ for (r_c, s_c, z_c, k_c), (r_n, s_n, z_n, k_n) in zip(sigs[:-1], sigs[1:]):
     us.append(u)
     vs.append(v)
     kks.append(kk)
+    
+M = (Matrix(us[:-2]).T
+     .augment(vector(vs[:-2]))
+     .augment(vector(us[1:-1]))
+     .augment(vector(vs[1:-1]))
+)
+M = block_matrix([
+    [M, 1],
+    [q, 0]
+])
+M[:, :4] *= 2**1000
+M = M.LLL()
+
+PR = PolynomialRing(ZZ, [f"kk_{i}" for i in range(15)])
+sym_delta_nonces = PR.gens()
+eqs_nonces = []
+
+for row in M[:11]: # somewhat arbitrary
+    comb = [int(x) for x in row[4:]]
+    assert 0 == (vector(comb) * vector(Fq, us[:-2])) % q
+    assert 0 == (vector(comb) * vector(Fq, us[1:-1])) % q
+    for i in range(2):
+        eqs_nonces.append(
+            sum([a*b for a, b in zip(comb, sym_delta_nonces[i:i+14])])
+        )
+
+A, _ = Sequence(eqs_nonces).coefficients_monomials()
+ker = A.right_kernel().basis_matrix() 
+
+for mm in [-1, 1]:
+    recovered_nonces = mm * ker[0]
+    recovered_d = Fq(recovered_nonces[0] - vs[0]) / us[0]
+    print(kks[:-1] == [int(i%q) for i in recovered_nonces])
+    print(mm, recovered_d == d, recovered_d)
+    print()
 ```
