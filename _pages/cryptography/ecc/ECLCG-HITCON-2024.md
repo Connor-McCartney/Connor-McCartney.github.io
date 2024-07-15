@@ -139,3 +139,7 @@ I'll just rewrite as some new variables for convenience, every:
 $$
 kk_i \equiv u_i \cdot d + v_i    \ \text{ (mod q)}
 $$
+
+$$
+kk_i \equiv u_i \cdot d + v_i + y_i \cdot q
+$$
