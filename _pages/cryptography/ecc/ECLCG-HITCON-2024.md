@@ -118,6 +118,8 @@ $$
 k_n \equiv \frac{r_n s_c}{r_c s_n} \cdot k_c + \frac{r_c z_n - r_n z_c}{r_c s_n} \ \text{ (mod q)}
 $$
 
+Thank you to [genni](https://genni21.github.io/) for sharing his solution!
+
 <br>
 
 If you rearrange for k_next - k_current (is useful):
@@ -147,7 +149,7 @@ $$
 
 Now make a lattice basis like Stern's algorithm, annihilating each kk_i. 
 
-Then you can take the LLL outputs and directly solve the same system of equations. 
+Then you can take the LLL outputs and directly solve the same system of equations, recovering every kk_i. 
 
 (The LCG relation is handled implicitly)
 
