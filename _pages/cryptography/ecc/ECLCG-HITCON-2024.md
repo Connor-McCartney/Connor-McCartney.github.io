@@ -149,6 +149,8 @@ Now make a lattice basis like Stern's algorithm, annihilating each kk_i.
 
 Then you can take the LLL outputs and directly solve the same system of equations. 
 
+(The LCG relation is handled implicitly)
+
 $$x_0 \begin{bmatrix}u_0  \\ v_0 \\ u_1 \\ v_1 \\ 1 \\ 0 \\ 0 \\ ... \end{bmatrix} + 
 x_1 \begin{bmatrix}u_1  \\ v_1 \\ u_2 \\ v_2 \\ 0 \\ 1 \\ 0 \\ ... \end{bmatrix}  + 
 x_2 \begin{bmatrix}u_2  \\ v_2 \\ u_3 \\ v_3 \\ 0 \\ 0 \\ 1 \\ ... \end{bmatrix}  +
