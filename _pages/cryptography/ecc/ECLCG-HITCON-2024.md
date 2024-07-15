@@ -228,7 +228,9 @@ eqs_nonces = []
 for row in M[:11]: # somewhat arbitrary
     comb = [int(x) for x in row[4:]]
     assert 0 == (vector(comb) * vector(Fq, us[:-2])) % q
+    assert 0 == (vector(comb) * vector(Fq, vs[:-2])) % q
     assert 0 == (vector(comb) * vector(Fq, us[1:-1])) % q
+    assert 0 == (vector(comb) * vector(Fq, vs[1:-1])) % q
     for i in range(2):
         eqs_nonces.append(
             sum([a*b for a, b in zip(comb, sym_delta_nonces[i:i+14])])
