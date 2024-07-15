@@ -143,3 +143,50 @@ $$
 $$
 kk_i \equiv u_i \cdot d + v_i + y_i \cdot q
 $$
+
+
+```python
+from Crypto.Util.number import getPrime
+from Crypto.Cipher import AES
+from fastecdsa.curve import secp256k1
+from hashlib import sha256
+from secrets import randbelow
+
+def sign(d, z, k):
+    r = (k * G).x
+    s = (z + r * d) * pow(k, -1, q) % q
+    return r, s
+
+def lcg(a, b, p, x):
+    while True:
+        x = (a * x + b) % p
+        yield x
+
+G = secp256k1.G
+q = secp256k1.q
+Fq = GF(q)
+msgs = [b"https://www.youtube.com/watch?v=kv4UD4ICd_0",    b"https://www.youtube.com/watch?v=IijOKxLclxE",    b"https://www.youtube.com/watch?v=GH6akWYAtGc",    b"https://www.youtube.com/watch?v=Y3JhUFAa9bk",    b"https://www.youtube.com/watch?v=FGID8CJ1fUY",    b"https://www.youtube.com/watch?v=_BfmEjHVYwM",    b"https://www.youtube.com/watch?v=zH7wBliAhT0",    b"https://www.youtube.com/watch?v=NROQyBPX9Uo",    b"https://www.youtube.com/watch?v=ylH6VpJAoME",    b"https://www.youtube.com/watch?v=hI34Bhf5SaY",    b"https://www.youtube.com/watch?v=bef23j792eE",    b"https://www.youtube.com/watch?v=ybvXNOWX-dI",    b"https://www.youtube.com/watch?v=dt3p2HtLzDA",    b"https://www.youtube.com/watch?v=1Z4O8bKoLlU",    b"https://www.youtube.com/watch?v=S53XDR4eGy4",    b"https://www.youtube.com/watch?v=ZK64DWBQNXw",    b"https://www.youtube.com/watch?v=tLL8cqRmaNE"]
+d = randbelow(q)
+P = d * G
+p = getPrime(0x137)
+a, b, x = [randbelow(p) for _ in range(3)]
+rng = lcg(a, b, p, x)
+
+sigs = []
+for m, k in zip(msgs, rng):
+    z = int.from_bytes(sha256(m).digest(), "big") % q
+    r, s = sign(d, z, k)
+    sigs.append((r, s, z, k))
+
+us = []
+vs = []
+kks = []
+for (r_c, s_c, z_c, k_c), (r_n, s_n, z_n, k_n) in zip(sigs[:-1], sigs[1:]):
+    u = int(Fq(r_n)/Fq(s_n) - Fq(r_c)/Fq(s_c))
+    v = Fq(z_n)/Fq(s_n) - Fq(z_c)/Fq(s_c)
+    kk = int(Fq(k_n - k_c))
+    assert kk == u*d + v
+    us.append(u)
+    vs.append(v)
+    kks.append(kk) 
+```
