@@ -131,5 +131,5 @@ k_n - k_c \equiv \frac{d r_n}{s_n} + \frac{z_n}{s_n} - \frac{d r_c}{s_c} + \frac
 $$
 
 $$
-k_n - k_c \equiv \left \frac{r_n}{s_n} - \frac{r_c}{s_c} \right \cdot d + \frac{z_n}{s_n} + \frac{z_c}{s_c}    \ \text{ (mod q)}
+k_n - k_c \equiv \left( \frac{r_n}{s_n} - \frac{r_c}{s_c} \right) \cdot d + \frac{z_n}{s_n} + \frac{z_c}{s_c}    \ \text{ (mod q)}
 $$
