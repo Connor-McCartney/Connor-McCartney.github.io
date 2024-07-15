@@ -100,7 +100,7 @@ Our LCG equations are mod p and our signature equations are mod q,
 
 working with both mod p and mod q appears to be a difficult component of this challenge. 
 
-Additionally, we aren't even given p, so perhaps that's where we should start. 
+Additionally, we aren't even given p!
 
 <br>
 
