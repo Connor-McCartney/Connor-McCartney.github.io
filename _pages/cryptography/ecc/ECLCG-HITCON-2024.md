@@ -133,3 +133,9 @@ $$
 $$
 k_n - k_c \equiv \left( \frac{r_n}{s_n} - \frac{r_c}{s_c} \right) \cdot d + \frac{z_n}{s_n} - \frac{z_c}{s_c}    \ \text{ (mod q)}
 $$
+
+I'll just rewrite as some new variables for convenience, every:
+
+$$
+kk_i \equiv u_i \cdot d + v_i    \ \text{ (mod q)}
+$$
