@@ -125,3 +125,7 @@ If you rearrange for k_next - k_current (is useful):
 $$
 k_n - k_c \equiv \frac{d r_n + z_n}{s_n} - \frac{d r_c+z_c}{s_c}    \ \text{ (mod q)}
 $$
+
+$$
+k_n - k_c \equiv \frac{d r_n}{s_n} + \frac{z_n}{s_n} - \frac{d r_c} + \frac{z_c}{s_c}    \ \text{ (mod q)}
+$$
