@@ -149,6 +149,9 @@ $$
 
 Now make a lattice basis like Stern's algorithm, annihilating each kk_i. 
 
+<https://sci-hub.se/10.1007/11506157_5>
+
+
 Then you can take the LLL outputs and directly solve the same system of equations, recovering every kk_i. 
 
 (The LCG relation is handled implicitly)
