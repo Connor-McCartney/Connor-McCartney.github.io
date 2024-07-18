@@ -38,4 +38,6 @@ douitashimashite - you're welcome
 
 douzo - here you are/please
 
+wakatta - understood/ok
 
+oyasumi - goodnight
