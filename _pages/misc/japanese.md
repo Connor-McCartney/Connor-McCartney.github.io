@@ -41,3 +41,5 @@ douzo - here you are/please
 wakatta - understood/ok
 
 oyasumi - goodnight
+
+otsukaresama - good work
