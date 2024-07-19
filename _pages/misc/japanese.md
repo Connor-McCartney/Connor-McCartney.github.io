@@ -43,3 +43,5 @@ wakatta - understood/ok
 oyasumi - goodnight
 
 otsukaresama - good work
+
+tashikani - that's true
