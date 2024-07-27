@@ -40,6 +40,17 @@ iv = b'+\xd5}\xd8\xa7K\x88j\xb5\xf7\x8b\x95)n53'
 
 <br>
 
+<br>
+
+$$x_0^{c_0} \cdot x_1^{c_1} \cdot x_2^{c_2} \cdot ... \equiv x_0 \cdot c_0 + x_1 \cdot c_1 + x_2 \cdot c_2 \text{  (mod P)}$$
+
+
+
+
+
+<br>
+
+<br>
 
 # Password Guesser Revenge
 
