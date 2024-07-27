@@ -65,3 +65,12 @@ if __name__ == "__main__":
 <br>
 
 Solve:
+
+We essentially have the following system of equations:
+
+```
+o1 = x1 *p1 + x2 *p2 + x3 *p3
+o2 = x4 *p1 + x5 *p2 + x6 *p3
+o3 = x7 *p1 + x8 *p2 + x9 *p3
+o4 = x10*p1 + x11*p2 + x12*p3
+```
