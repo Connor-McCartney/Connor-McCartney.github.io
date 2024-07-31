@@ -30,3 +30,5 @@ title: Coppersmith's Small Roots
 <span style="font-size:2em;">   [Mayday Mayday - HTB University CTF 2023 - Brains & Bytes](/cryptography/small-roots/Mayday-Mayday-HTB-University-CTF-2023-Brains-&-Bytes)       </span> <br>
 
 <span style="font-size:2em;">   [leakeD - AirOverflow CTF 2024](/cryptography/small-roots/leakeD-AirOverflow-CTF-2024)       </span> <br>
+
+<span style="font-size:2em;">   [Random Challenge from Neobeo](/cryptography/small-roots/random-neobeo)       </span> <br>
