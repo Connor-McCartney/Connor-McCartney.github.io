@@ -8,7 +8,7 @@ title: Random Challenge from Neobeo
 
 Challenge:
 
-```
+```python
 # can you recover my secret if I tell you its square?
 secret = mod(randrange(2^200), 2^1024+7)/randrange(2^200) + 420^69 # this is sage, obviously
 print(hex(secret^2))
