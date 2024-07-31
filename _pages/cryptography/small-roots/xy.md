@@ -1,6 +1,6 @@
 ---
-permalink: /cryptography/small-roots/random-neobeo
-title: Random Challenge from Neobeo
+permalink: /cryptography/small-roots/xy
+title: xy
 ---
 
 <br>
