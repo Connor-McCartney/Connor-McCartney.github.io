@@ -90,3 +90,23 @@ o2 = x4 *p1 + x5 *p2 + x6 *p3
 o3 = x7 *p1 + x8 *p2 + x9 *p3
 o4 = x10*p1 + x11*p2 + x12*p3
 ```
+
+<br>
+
+Small combination:
+
+```python
+M = Matrix([
+    [o1, 1, 0, 0, 0],
+    [o2, 0, 1, 0, 0],
+    [o3, 0, 0, 1, 0],
+    [o4, 0, 0, 0, 1]
+])
+W = diagonal_matrix([2**1000, 1, 1, 1, 1])
+u1, u2, u3, u4 = ((M*W).LLL() / W)[0][1:] 
+assert u1*o1 + u2*o2 + u3*o3 + u4*o4 == 0
+```
+
+<br>
+
+Re-subbing:
