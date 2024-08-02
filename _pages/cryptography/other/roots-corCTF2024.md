@@ -81,3 +81,12 @@ There is some resemblance to the Nguyen-Stern algorithm except over integers, or
 We find a small random integer combination (u1,u2,u3,u4), solve with right_kernel(), then do LLL enumeration. 
 
 Let's do a test:
+
+```python
+x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, p1, p2, p3 = [randint(0, 2**64) for _ in range(15)]
+
+o1 = x1 *p1 + x2 *p2 + x3 *p3
+o2 = x4 *p1 + x5 *p2 + x6 *p3
+o3 = x7 *p1 + x8 *p2 + x9 *p3
+o4 = x10*p1 + x11*p2 + x12*p3
+```
