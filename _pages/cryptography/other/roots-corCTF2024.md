@@ -79,3 +79,5 @@ o4 = x10*p1 + x11*p2 + x12*p3
 There is some resemblance to the Nguyen-Stern algorithm except over integers, or also [this chall](https://connor-mccartney.github.io/cryptography/ecc/ECLCG-HITCON-2024).
 
 We find a small random integer combination (u1,u2,u3,u4), solve with right_kernel(), then do LLL enumeration. 
+
+Let's do a test:
