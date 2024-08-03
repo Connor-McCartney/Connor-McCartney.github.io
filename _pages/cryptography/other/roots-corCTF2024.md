@@ -110,3 +110,53 @@ assert u1*o1 + u2*o2 + u3*o3 + u4*o4 == 0
 <br>
 
 However... now let's test with some irrational p's:
+
+```python
+from decimal import Decimal, getcontext
+getcontext().prec = int(2024)
+
+x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12 = [randint(0, 2**64) for _ in range(12)]
+p1, p2, p3 = [Decimal(int(random_prime(2**128))).sqrt() for _ in range(3)]
+#print(x1, x2, x3)
+#print(x4, x5, x6)
+#print(x7, x8, x9)
+#print(x10, x11, x12)
+
+
+R = RealField(10_000)
+o1 = R(x1 *p1 + x2 *p2 + x3 *p3)
+o2 = R(x4 *p1 + x5 *p2 + x6 *p3)
+o3 = R(x7 *p1 + x8 *p2 + x9 *p3)
+o4 = R(x10*p1 + x11*p2 + x12*p3)
+
+M = Matrix(QQ, [
+    [o1, 1, 0, 0, 0],
+    [o2, 0, 1, 0, 0],
+    [o3, 0, 0, 1, 0],
+    [o4, 0, 0, 0, 1]
+])
+W = diagonal_matrix([2**1000, 1, 1, 1, 1])
+u1, u2, u3, u4 = ((M*W).LLL() / W)[0][1:] 
+print(u1*o1 + u2*o2 + u3*o3 + u4*o4 == 0)
+
+print(u1*x1 + u2*x4 + u3*x7 + u4*x10 == 0)
+print(u1*x2 + u2*x5 + u3*x8 + u4*x11 == 0)
+print(u1*x3 + u2*x6 + u3*x9 + u4*x12 == 0)
+```
+
+```
+False
+True
+True
+True
+```
+
+You can see that, introducing the irrational p's means `u1*o1 + u2*o2 + u3*o3 + u4*o4 == 0`
+
+there is no integer solution for this, and LLL instead finds us integer combinations of
+
+```
+u1*x1 + u2*x4 + u3*x7 + u4*x10 == 0
+u1*x2 + u2*x5 + u3*x8 + u4*x11 == 0
+u1*x3 + u2*x6 + u3*x9 + u4*x12 == 0
+```
