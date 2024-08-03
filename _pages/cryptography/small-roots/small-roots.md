@@ -32,3 +32,6 @@ title: Coppersmith's Small Roots
 <span style="font-size:2em;">   [leakeD - AirOverflow CTF 2024](/cryptography/small-roots/leakeD-AirOverflow-CTF-2024)       </span> <br>
 
 <span style="font-size:2em;">   [xy](/cryptography/small-roots/xy)       </span> <br>
+
+
+<span style="font-size:2em;">   [Bigger and better - crew CTF 2024](/cryptography/small-roots/Bigger-and-better-crew-CTF-2024)       </span> <br>
