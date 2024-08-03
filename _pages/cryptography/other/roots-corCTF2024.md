@@ -151,9 +151,9 @@ True
 True
 ```
 
-You can see that, introducing the irrational p's means `u1*o1 + u2*o2 + u3*o3 + u4*o4 == 0`
+You can see that, introducing the irrational p's means 
 
-there is no integer solution for this, and LLL instead finds us integer combinations of
+that `u1*o1 + u2*o2 + u3*o3 + u4*o4 == 0` has no integer combination, and LLL instead finds us integer combinations of
 
 ```
 u1*x1 + u2*x4 + u3*x7 + u4*x10 == 0
