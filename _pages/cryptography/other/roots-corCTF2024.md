@@ -168,3 +168,55 @@ Now we can just solve `u1*? + u2*? + u3*? + u4*? == 0` to find all the x's.
 
 To get more solutions we can use LLL enumeration. 
 
+
+```python
+from decimal import Decimal, getcontext
+getcontext().prec = int(2024)
+
+x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12 = [randint(0, 2**64) for _ in range(12)]
+p1, p2, p3 = [Decimal(int(random_prime(2**128))).sqrt() for _ in range(3)]
+
+R = RealField(10_000)
+o1 = R(x1 *p1 + x2 *p2 + x3 *p3)
+o2 = R(x4 *p1 + x5 *p2 + x6 *p3)
+o3 = R(x7 *p1 + x8 *p2 + x9 *p3)
+o4 = R(x10*p1 + x11*p2 + x12*p3)
+
+M = Matrix(QQ, [
+    [o1, 1, 0, 0, 0],
+    [o2, 0, 1, 0, 0],
+    [o3, 0, 0, 1, 0],
+    [o4, 0, 0, 0, 1]
+])
+W = diagonal_matrix([2**1000, 1, 1, 1, 1])
+u1, u2, u3, u4 = ((M*W).LLL() / W)[0][1:] 
+
+def lattice_enumeration(M, W, bound, enum):
+    from itertools import product
+    from tqdm import tqdm
+    M = (M*W).LLL() / W
+    for coord in tqdm(product(range(-enum, enum), repeat=M.nrows())):
+        v = vector(ZZ, coord) * M
+        if all([abs(i)<bound for i in v]):
+            yield v
+
+M = Matrix(ZZ, [
+    [u1, 1, 0, 0, 0],
+    [u2, 0, 1, 0, 0],
+    [u3, 0, 0, 1, 0],
+    [u4, 0, 0, 0, 1]
+])
+W = diagonal_matrix([2**1000, 1, 1, 1, 1])
+
+poss_sols = []
+for row in lattice_enumeration(M, W, bound=2**64, enum=6):
+    if row[0] == 0:
+        poss_sols.append(row[1:])
+
+sol1 = vector([x1, x4, x7, x10])
+sol2 = vector([x2, x5, x8, x11])
+sol3 = vector([x3, x6, x9, x12])
+print(sol1 in poss_sols or -sol1 in poss_sols)
+print(sol2 in poss_sols or -sol2 in poss_sols)
+print(sol3 in poss_sols or -sol3 in poss_sols)
+```
