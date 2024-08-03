@@ -162,3 +162,9 @@ u1*x3 + u2*x6 + u3*x9 + u4*x12 == 0
 which is more useful for us in this chall :)
 
 It's quite interesting... the first time I've seen LLL be used like this. 
+
+
+Now we can just solve `u1*? + u2*? + u3*? + u4*? == 0` to find all the x's. 
+
+To get more solutions we can use LLL enumeration. 
+
