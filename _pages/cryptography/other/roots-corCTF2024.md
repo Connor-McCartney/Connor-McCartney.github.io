@@ -220,3 +220,9 @@ print(sol1 in poss_sols or -sol1 in poss_sols)
 print(sol2 in poss_sols or -sol2 in poss_sols)
 print(sol3 in poss_sols or -sol3 in poss_sols)
 ```
+
+```
+True
+True
+True
+```
