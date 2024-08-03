@@ -72,7 +72,7 @@ Solve:
 
 We have to find the roots of a multivariate polynomial (5 unknowns).
 
-
+The real unknown size is 239 bits. 
 
 Here's a solver for a modified, 3 unknowns chall:
 
