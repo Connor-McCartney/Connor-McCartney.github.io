@@ -160,3 +160,5 @@ u1*x1 + u2*x4 + u3*x7 + u4*x10 == 0
 u1*x2 + u2*x5 + u3*x8 + u4*x11 == 0
 u1*x3 + u2*x6 + u3*x9 + u4*x12 == 0
 ```
+
+which is more useful for us in this chall :)
