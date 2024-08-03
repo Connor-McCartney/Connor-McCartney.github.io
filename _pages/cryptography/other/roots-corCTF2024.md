@@ -109,4 +109,4 @@ assert u1*o1 + u2*o2 + u3*o3 + u4*o4 == 0
 
 <br>
 
-Re-subbing:
+However... now let's test with some irrational p's:
