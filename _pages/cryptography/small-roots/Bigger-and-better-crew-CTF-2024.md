@@ -164,3 +164,51 @@ for row in M:
 
 And a final solver:
 
+```python
+from hashlib import sha256
+from Crypto.Cipher import AES
+
+# output
+print('loading output...')
+load('https://raw.githubusercontent.com/Connor-McCartney/CTF_Files/main/2024/CrewCTF/bigger-and-beter/output.sage')
+print('done')
+
+coeffs = list(pol.dict().values())
+mons = list(pol.dict().keys())
+bounds = [(2**239)**sum(i) for i in mons]
+S = max(bounds)
+weights = diagonal_matrix(ZZ, [S//i for i in bounds] + [S * 2**(len(bounds)+len(pol.parent().gens())+1)])
+
+M = (identity_matrix(len(coeffs))
+     .augment(vector(coeffs))
+     .stack(vector([0]*len(coeffs) + [n]))
+)
+print('LLL...')
+M = (M*weights).LLL() / weights
+print('done')
+
+roots = []
+for row in M:
+    for row in [-row, row]:
+        if row[-1] != 0:
+            continue
+        sol = row[:-2]
+        #print(row)
+
+        eqs_groebner = []
+        for (mon, s) in zip(mons, sol):
+            eqs_groebner.append(int(s) - prod(v**m for v, m in zip(PP.gens(), mon)))
+        for eq in Ideal(eqs_groebner).groebner_basis():
+            if eq == 1:
+                continue
+            if not eq.is_univariate():
+                continue
+            roots.append(eq.univariate_polynomial().change_ring(ZZ).roots()[0][0] % n)
+
+key = b''.join([bytes.fromhex(f"{int(i):02x}") for i in roots])
+key = sha256(key).digest()
+cipher = AES.new(key, AES.MODE_ECB)
+print(cipher.decrypt(bytes.fromhex(c)))
+
+# crew{LLL1ne4r1z4ti0n_15_c0oLLL}
+```
