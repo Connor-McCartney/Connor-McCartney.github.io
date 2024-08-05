@@ -219,3 +219,36 @@ print(cipher.decrypt(bytes.fromhex(c)))
 ETA
 
 Author's writeup: <https://gist.github.com/Babafaba/b561e663299bfaa0bb6002b1b4946b0f>
+
+
+---
+
+ETA 2
+
+<br>
+
+Solver using rkm's repo (credit InYaDreamz)
+
+```python
+load("https://raw.githubusercontent.com/rkm0959/Inequality_Solving_with_CVP/main/solver.sage")
+
+coeffs = pol.coefficients()[:-1]
+l = len(coeffs)
+M = Matrix(ZZ , l  + 1, l + 1)
+for i in range(l):
+    M[i , 0] = int(coeffs[i])
+M[l , 0] = -n 
+for i in range(l):
+    M[i , i+1] = 1
+
+sum_of_powers = [sum(m) for m in pol.exponents()]
+m_low = 2**235
+m_high = 2**240
+lb = [int(-pol.coefficients()[-1])] + [m_low**i for i in sum_of_powers[:-1]]
+ub = [int(-pol.coefficients()[-1])] + [m_high**i for i in sum_of_powers[:-1]]
+solve = list((solve(M , lb , ub))[2][:-1])
+print(solve)
+
+expected = [int(i(V, W , X , Y , Z)) for i in pol.monomials()[:-1]]
+print(solve == expected)
+```
