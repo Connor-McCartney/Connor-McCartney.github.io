@@ -212,3 +212,10 @@ print(cipher.decrypt(bytes.fromhex(c)))
 
 # crew{LLL1ne4r1z4ti0n_15_c0oLLL}
 ```
+
+
+---
+
+ETA
+
+Author's writeup: <https://gist.github.com/Babafaba/b561e663299bfaa0bb6002b1b4946b0f>
