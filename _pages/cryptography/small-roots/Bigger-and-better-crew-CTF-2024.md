@@ -72,9 +72,15 @@ Solve:
 
 We have to find the roots of a multivariate polynomial (5 unknowns).
 
-The real unknown size is 239 bits. 
+Each unknown is of size ~239 bits. 
 
-Here's a solver for a modified, 3 unknowns chall:
+5-variate coppersmith was an idea but bad in practice. 
+
+Instead, because the modulus is so big we can just linearise and solve with LLL!
+
+We must weight our basis carefully in accordance with the size each monomial. 
+
+My testing:
 
 ```python
 from Crypto.Util.number import getPrime, long_to_bytes, bytes_to_long
@@ -87,48 +93,74 @@ from string import ascii_letters, digits
 
 key = "".join([choice(ascii_letters + digits) for i in range(150)]).encode()
 
-#blocklen = len(key)//5
-#polsize = 25
+blocklen = len(key)//5
+polsize = 25
 maxexp = 3
 
-# tweaked for easier testing
-blocklen = len(key)//50
-polsize = 7
-
-V, W, X = [bytes_to_long(b) for b in [key[blocklen*i:blocklen*i+blocklen] for i in range(3)]]
+V, W, X, Y, Z = [bytes_to_long(b) for b in [key[blocklen*i:blocklen*i+blocklen] for i in range(5)]]
 print(f'{V = }')
 print(f'{W = }')
 print(f'{X = }')
+print(f'{Y = }')
+print(f'{Z = }')
+print()
 
 #n = getPrime(4096)*getPrime(4096)*getPrime(4096)*getPrime(4096)
-# random precomputed n for testing only:
+# random n for speedup
 n = 0x48c7b647909a1f91634e6993d146a10f52a193a09589820a75c16af68a5d381bd7714003039cfff3dcb091f8cc7eab92c697eeff53e12fdaf774cc6c9ba4f32b0b1e2a7cc3839d978148cb934928200b952ca59431d9652b7bd95255d236f66d8fd5cf896243887ccfff6af58ffbbab1afe6d5107fbacfaa2f01461e6d8ebe3a76f90e4217094dc4bf6e8c289ec7e2d60e4d4b9c698e3f79a7a7782e78bebadf8c7e9551fcc29910f1cb258bc21546e8895036c547cf61da503e5defba2a985e2ff90bf359411e49ed524dfd80437d8c4bb9a85bd47dcde1b5843022ee622bee59afc5fd48c717c2991f06fc3d13da6390bdeff63c2d5d0ee6dbc4b2a225654f98a771d4aaa80729de4b4f7a11005041d345c6197fb5e9ba8479998e67d03a73e4aae99d264d9b522206fd16d5526f5f61bfebcb641698eee5bbba2987ee64cb0a51c341e618d27277814c6c91e39b4fe2c1467b7025e8d201287c346d49b1706a88c51046b344d10eab5e3db3804d5f7f477fb3baf5ba05212531886e9a75571c6c24a9b6d609f6130eebd59892abd3224b11ca8ec60fc1627213350e4ac5eb6dc77b18f4e3e7c3f64a2e57423c451347c71d8ca969f9577ef7fd602fff0123f7d0c20a86eda7fda7c9e0af9b29c0589a53345c0b045c6bcd5e5fd3676ba3ce7e80c9994cddda7b524e42294507495dca638c470ed469e989ae93cb7bf2e162fca55932c4bc6a1c4d3a5d8a4a94e8f777e7d6ae0c8abd29eee5ead38ae944245255cc3cc9c4ba522a9a3fe61668fb9201cf369ae0a72650304cb83c78e7f2d4435411cab7343367767a24b24ad718b0bb31a0ae18c5c2a6fff5a95b6ed794a12145892a80476eae69262067a798202c4e0046ec84f16b4bddd155b83bdf84a6dc27c5874d0a8f588ae9f9ebdfffd405efeb9ebdaac1236a096482d708a269fa082e964b105f1472af1e434c2cfa1a8a7e85436c0b080bb27dce866a7ba568c87dd3f3cd44efb5de571d95bd447305ffb79d6af27c3c08baa108879aedcf8da7dc049ff806100db2506eb439f29dcf3eb527a95ba1cc29d823fbc0b96610ae3f8bc0a38df146c427118d45809e7a6cd5e08e9e9f65ca3348669876482adf82d538fa17d295226b7a696701575c2d3ec0e5fc87eacf81dc3e16a722c8cf93a54a7ac9ddbc501596528f8bb9eadb5cf123bc7698f609c77d61ca1e6fa7866eb9c1fc4e4aed1824ff52dc64009fdae5fae1ee3fdd453f2c9f324592103b9e307086088d64490e3edf35d838ac57454832a3fa21a92c0e4446181c73b7cb0846069dee248a2592a5ddf6fce669d0c783c9cc0871c6266403c31190a1c9f7b2afbd312fefbe01a7adf494b154240501cfbd8a82882c2d3faaebed2436d86df2cf06193100e6574bff218f9dd042f3ce90e8e6bf5ec8c144bf9a01274bbe840add496c23181f53697bc94fc3e8f371eb2584ff8c3403baaed0cbdc12e3f9991213b53036119da7192b3f8444f9f73497f0549be0a3d3d1baeda34c96a94aa38bac07215c6cba3ec23ffee1133c238987fd5446a51265f42fc3c131e39eeb407a0c3f4bc291b467ab6f7361ef957b3363478b0684965f0d18b57fa4e6ef2b28af7b3c77ce47c78018d0b18c423b5ce6da9fdcf457f54f7610d9593628f09a8199caa9794ae92cddc84437458f76fb8733c7b75fbb787fa585f1cf5affb70d30841b36248557254577af5df561c153c7688b223e8f40c96d4c8d89b7daedb40dbcdcdb6af4161e99bdf3019b455300d0ae3c26ef756a964b45321ddca00799d1c6f3a97be2f65a651d22183acbc77f9f068b841ec519bf1e2387ca9bcf2df1e5008bd8f736232d689e7276674341f9564e6b8a4957da78f4921c508f33b0ea90cfd609805ab351d78c3ed2930c1dff8fa2d53ab6e6889a815e5842c7f62d33506169afc760347523b6529d2235a36dfb01327698e8add916b8692d2d0dc80c1d7fce0ce8ae24d1d54d106afcaf83fe37c53eb3f63c677cf2bfb2c3f32852b4160a4edb5356470f2b8630a16131db986729f3a2bab4367728786557f26c6adaf80f6ccd039fba0619364d7610ac376d6509c80e15086c1e493d4faab7955ef09a357a5aa9c0533f3d1f9f6dfc48882e92083e49c4f19fd733163bf4741ed26ed8792f866a94e86a5cf2f4078f0bc75e1e08ce1220202eae5ea6a499df48ca5d4186af8efccf99f96243a09aaccb445574f7dcb3fac2337274175d9fe544d759a02280bae4cc1d593941373769369fc76e26acdc63a812b1d3a87b64569f3a0a9ff16189a13fba18ed69abf968993d5f1d8f9c53c764da2ff5727875a97005e256da854701771824375ad9d918591a85230da77d0db12db58c214a65c0f1416bc927903b6e9f3044868a54a316abd4a5405bedb7e4469e74144446b362ac7014c6df0c3018c9720d1d94ae23bc539bd80f480ee582a0cd40c30d9091609e56dc1dd814a40718fadea1c2257242e990681010436c3c222f1923cf58b501002baccf6a7147caa14d3ade4d4982e8b99ca00509e63f3d6d3315a6751270a2605df6c8ec1f6caef6f0b58418629a4232327d658d0dd599896a05c5ed61bfe9dcfb94d724341def97e1c83095e1026ee8cd77d87d07bd08aa524a100c9aa951cb3b91ad1f7ec085aa5461c1ebd08a31866779dc76ef603ec3876f53e2f8e2228a1e2b6d997ea256e4066b1f4a2be93523290cba41e8ab59427cf788c19c0da3279638be1f29b32033947b64f8077773ca55faa326b0389df81602bde446d1b28026faf4395a489aba4ee338cf49657dadd6f306461630991cf3baac2d14431240651bff047289d1904511b80aec83254a9a782e2ed971a1aab145d00b8d8626182e70d567347b95
 n = n^2
 
 K = Zmod(n)
-PP.<v, w, x> = PolynomialRing(K)
+PP.<v, w, x, y, z> = PolynomialRing(K)
 
 coeffs = [K.random_element() for i in range(polsize)]
 
 pol = 0
 for l in range(polsize):
     while True:
-        i, j, k = [randbelow(maxexp) for _ in range(3)]
-        if i == j == k == 0: continue
-        pol = pol + coeffs[l] * v^i * w^j * x^k
+        i, j, k, s, t = [randbelow(maxexp) for _ in range(5)]
+        if i == j == k == s == t == 0: continue
+        pol = pol + coeffs[l] * v^i * w^j * x^k * y^s * z^t
         if len(pol.coefficients()) == l + 1:
             break
 
-c = pol(V, W, X)
+c = pol(V, W, X, Y, Z)
 pol = pol - c
-assert pol(V, W, X) == 0
+assert pol(V, W, X, Y, Z) == 0
 
+coeffs = list(pol.dict().values())
+mons = list(pol.dict().keys())
+bounds = [(2**239)**sum(i) for i in mons]
+S = max(bounds)
+weights = diagonal_matrix(ZZ, [S//i for i in bounds] + [S * 2**(len(bounds)+len(pol.parent().gens())+1)])
 
-load('https://raw.githubusercontent.com/Connor-McCartney/coppersmith/main/coppersmith.sage')
-bounds = [2**V.bit_length(), 2**W.bit_length(), 2**X.bit_length()]
-f = pol.change_ring(Zmod(isqrt(n)))
-print(multivariate(f, bounds, implementation="shift_polynomials", algorithm="jacobian", m=1, d=1))
+M = (identity_matrix(len(coeffs))
+     .augment(vector(coeffs))
+     .stack(vector([0]*len(coeffs) + [n]))
+)
+M = (M*weights).LLL() / weights
+
+for row in M:
+    for row in [-row, row]:
+        if row[-1] != 0:
+            continue
+        sol = row[:-2]
+        #print(row)
+
+        eqs_groebner = []
+        for (mon, s) in zip(mons, sol):
+            eqs_groebner.append(int(s) - prod(v**m for v, m in zip(PP.gens(), mon)))
+        for eq in Ideal(eqs_groebner).groebner_basis():
+            if eq == 1:
+                continue
+            if not eq.is_univariate():
+                continue
+            print(list(eq.dict().keys())[0])
+            print(eq.univariate_polynomial().change_ring(ZZ).roots()[0][0] % n)
 ```
 
+
 <br>
+
+And a final solver:
 
