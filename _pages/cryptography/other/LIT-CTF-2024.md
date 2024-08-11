@@ -23,3 +23,14 @@ print(xor(encoded_with_xor, key))
 <br>
 
 # privatekey
+
+<br>
+
+# pope shuffle
+
+```python
+ct = [ord(i) for i in '࠴࠱࠼ࠫ࠼࠮ࡣࡋࡍࠨ࡛ࡍ࡚ࡇ࡛ࠩࡔࡉࡌࡥ']
+key = ord('L') - ct[0]
+print(''.join([chr(i+key) for i in ct]))
+# LITCTF{ce@ser_sAlad}
+```
