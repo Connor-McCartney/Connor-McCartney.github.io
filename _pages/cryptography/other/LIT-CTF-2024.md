@@ -151,7 +151,7 @@ for _ in range(4):
 
 <br>
 
-We will use this property which is true for all x:
+We will use this property which is true for all abs(x)<p:
 
 ```python
 >>> pow(x, p, n) % p == x
