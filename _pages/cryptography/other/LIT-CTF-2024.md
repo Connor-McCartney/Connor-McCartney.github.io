@@ -34,6 +34,86 @@ We can do the [Boneh-Durfee Attack](https://cryptohack.gitbook.io/cryptobook/unt
 
 <br>
 
+
+```python
+import itertools
+from Crypto.Util.number import long_to_bytes
+
+def bivariate(f, bounds, m=1, d=None):
+    if d is None:
+        d = f.degree()
+
+    R = f.base_ring()
+    N = R.cardinality()
+    f_ = (f // f.lc()).change_ring(ZZ)
+    f = f.change_ring(ZZ)
+    l = f.lm()
+
+    M = []
+    for k in range(m+1):
+        M_k = set()
+        T = set((f^(m-k)).monomials())
+        for mon in (f^m).monomials():
+            if mon//l^k in T: 
+                for extra in itertools.product(range(d), repeat=f.nvariables()):
+                    g = mon * prod(map(power, f.variables(), extra))
+                    M_k.add(g)
+        M.append(M_k)
+    M.append(set())
+
+    shifts = Sequence([], f.parent())
+    for k in range(m+1):
+        for mon in M[k] - M[k+1]:
+            g = mon//l^k * f_^k * N^(m-k)
+            shifts.append(g)
+
+    B, monomials = shifts.coefficients_monomials()
+    factors = [monomial(*bounds) for monomial in monomials]
+    for i, factor in enumerate(factors):
+        B.rescale_col(i, factor)
+
+    B = B.dense_matrix().LLL()
+
+    B = B.change_ring(QQ)
+    for i, factor in enumerate(factors):
+        B.rescale_col(i, 1/factor)
+    B = B.change_ring(ZZ)
+    H = [h for h in B * monomials if not h.is_zero()]
+
+    for f1, f2 in itertools.combinations(H, r=2):
+        x, y = f.parent().gens()
+        x = f1.parent()(x)
+        y = f1.parent()(y)
+        res = f1.resultant(f2,y).univariate_polynomial()
+        if res == 0:
+            continue
+        rs = res.roots()
+        if rs:
+            x = rs[0][0]
+            y = f1.subs(x=x).univariate_polynomial().roots()
+            if y != []:
+                return (x, y[0][0])
+
+
+N = 91222155440553152389498614260050699731763350575147080767270489977917091931170943138928885120658877746247611632809405330094823541534217244038578699660880006339704989092479659053257803665271330929925869501196563443668981397902668090043639708667461870466802555861441754587186218972034248949207279990970777750209
+e = 89367874380527493290104721678355794851752244712307964470391711606074727267038562743027846335233189217972523295913276633530423913558009009304519822798850828058341163149186400703842247356763254163467344158854476953789177826969005741218604103441014310747381924897883873667049874536894418991242502458035490144319
+c = 71713040895862900826227958162735654909383845445237320223905265447935484166586100020297922365470898490364132661022898730819952219842679884422062319998678974747389086806470313146322055888525887658138813737156642494577963249790227961555514310838370972597205191372072037773173143170516757649991406773514836843206
+
+A = (N+1)//2
+PR.<x, y> = PolynomialRing(Zmod(e), 2)
+f = x*(A+y) + 1
+delta = .10 # guess
+roots = bivariate(f, (2*floor(N^delta), isqrt(N)), m=2, d=2)
+d = f.change_ring(ZZ)(*roots)/e
+flag = pow(c, d, N)
+print(long_to_bytes(flag))
+# LITCTF{w13n3r_15_4n_unf0rtun4t3_n4m3}
+```
+
+<br>
+
+<br>
+
 # pope shuffle
 
 ```python
