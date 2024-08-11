@@ -97,5 +97,3 @@ title: Other
 
 <span style="font-size:2em;">   [DeadSec CTF 2024](/cryptography/other/DeadSecCTF2024) </span> <br>
 
-
-<span style="font-size:2em;">   [LIT CTF 2024](/cryptography/other/LIT-CTF-2024) </span> <br>
