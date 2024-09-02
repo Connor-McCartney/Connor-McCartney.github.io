@@ -2,7 +2,7 @@
 permalink: /misc/
 title: Misc
 ---
-
+ 
 <br>
 
 <span style="font-size:2em;">   [pwn](/misc/pwn)   </span>
