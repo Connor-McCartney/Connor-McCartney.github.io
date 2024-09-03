@@ -15,7 +15,7 @@ assert __import__('re').fullmatch(r'SEE{\w{23}}',flag:=input()) and not int.from
 Other writeups:
 
 
-Author's (neobeo) <https://demo.hedgedoc.org/s/DnzmwnCd7>
+Author's (neobeo) <https://web.archive.org/web/20240412075022/https://demo.hedgedoc.org/s/DnzmwnCd7>
 
 <https://nush.app/blog/2023/06/21/see-tf-2023/>
 
