@@ -94,7 +94,7 @@ $$
 x \begin{bmatrix}0    \\ 1 \\ 0 \\ 0 \\ 0 \\ 0 \\ a \\ b \\ e \\ f\end{bmatrix}  + 
 x^2 \begin{bmatrix}0  \\ 0 \\ 1 \\ 0 \\ 0 \\ 0 \\ 1 \\ a \\ d \\ e\end{bmatrix}  +
 x^3 \begin{bmatrix}0  \\ 0 \\ 0 \\ 1 \\ 0 \\ 0 \\ 0 \\ 1 \\ c \\ d\end{bmatrix} + 
-x^4 \begin{bmatrix}0  \\ 0 \\ 0 \\ 0 \\ 1 \\ 0 \\ 0 \\ 0 \\ 1 \\ d\end{bmatrix} + 
+x^4 \begin{bmatrix}0  \\ 0 \\ 0 \\ 0 \\ 1 \\ 0 \\ 0 \\ 0 \\ 1 \\ c\end{bmatrix} + 
 x^5 \begin{bmatrix}0  \\ 0 \\ 0 \\ 0 \\ 0 \\ 1 \\ 0 \\ 0 \\ 0 \\ 1\end{bmatrix} +
 y_0 \begin{bmatrix}0  \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ n \\ 0 \\ 0 \\ 0\end{bmatrix} + 
 y_1 \begin{bmatrix}0  \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ n \\ 0 \\ 0\end{bmatrix} + 
