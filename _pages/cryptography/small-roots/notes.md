@@ -102,3 +102,48 @@ y_2 \begin{bmatrix}0  \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ n^2 \\ 0\end{bmatrix
 y_3 \begin{bmatrix}0  \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ n^2\end{bmatrix}  
 = \begin{bmatrix}1  \\ x \\ x^2 \\ x^3 \\ x^4 \\ x^5 \\ 0 \\ 0 \\ 0 \\ 0\end{bmatrix}
 $$
+
+
+```python
+p = random_prime(2**1024)
+q = random_prime(2**1024)
+n = p*q
+
+
+# f(x) = x^2 + ax + b
+a = randint(1, n)
+X = 2**800
+x0 = randint(0, X)
+b = randint(0, n)*n - (x0^2 + a*x0)
+
+PR.<x> = PolynomialRing(Zmod(n))
+f = x^2 + a*x + b
+assert f(x=x0) == 0
+print(f.small_roots(X=X))
+
+
+PR.<x> = PolynomialRing(ZZ)
+f = x^2 + a*x + b
+f, e, d, c, _ = (f^2).coefficients()
+assert (x0^4 + c*x0^3 + d*x0^2 + e*x0 + f) % n^2 == 0
+
+M = Matrix(QQ, [
+    [1, 0, 0, 0, 0, 0, b, 0, f,   0  ],
+    [0, 1, 0, 0, 0, 0, a, b, e,   f  ],
+    [0, 0, 1, 0, 0, 0, 1, a, d,   e  ],
+    [0, 0, 0, 1, 0, 0, 0, 1, c,   d  ],
+    [0, 0, 0, 0, 1, 0, 0, 0, 1,   c  ],
+    [0, 0, 0, 0, 0, 1, 0, 0, 0,   1  ],
+    [0, 0, 0, 0, 0, 0, n, 0, 0,   0  ],
+    [0, 0, 0, 0, 0, 0, 0, n, 0,   0  ],
+    [0, 0, 0, 0, 0, 0, 0, 0, n^2, 0  ],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0,   n^2],
+])
+
+
+W = diagonal_matrix(QQ, [1, 1/X, 1/X^2, 1/X^3, 1/X^4, 1/X^5] + [1, 1, 1, 1])
+M = (M*W).LLL() / W
+for row in M:
+    if list(row[-4:]) == [0, 0, 0, 0]:
+        print(row[1])
+```
