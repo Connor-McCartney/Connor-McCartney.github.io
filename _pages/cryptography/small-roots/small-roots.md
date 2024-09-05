@@ -6,6 +6,7 @@ title: Coppersmith's Small Roots
 <br>
 
 
+<span style="font-size:2em;">   [Notes](/cryptography/small-roots/notes)       </span> <br>
 
 <span style="font-size:2em;">   [delta - CrewCTF 2022](/cryptography/small-roots/delta-CrewCTF-2022)       </span> <br>
 
