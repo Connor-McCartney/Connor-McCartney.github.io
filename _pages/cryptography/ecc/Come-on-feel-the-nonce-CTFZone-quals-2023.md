@@ -96,6 +96,8 @@ k_i - t_i \cdot d - a_i \equiv 0 \ \ (\text{mod } q)
 $$
 
 
+---
+
 Here is the first lattice I came up with (CVP):
 
 $$
@@ -168,6 +170,8 @@ enc = "hOtHc2dafgWuv2nHQDGsoGoF+BmDhy3N0seYgY9kVnw="
 d = attack()
 print(decrypt(enc, d))
 ```
+
+---
 
 <br>
 
