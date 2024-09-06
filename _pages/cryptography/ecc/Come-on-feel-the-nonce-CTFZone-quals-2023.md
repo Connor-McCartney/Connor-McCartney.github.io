@@ -82,7 +82,7 @@ print(decrypt(enc, d))
 <br>
 
 
-The above lattice used an SVP approach, but I will try show both both a CVP and SVP approach now.
+The above lattice used an SVP approach taken directly from the paper, but I will try show both both a CVP and SVP approach now.
 
 
 $$
