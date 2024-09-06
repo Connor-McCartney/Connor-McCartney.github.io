@@ -139,7 +139,7 @@ def attack():
     M = (M*W).LLL() / W
     for row in M:
         print(row)
-    k = abs(M[2][0])
+    k = M[2][0]
     d = (s1*Mod(k, q) - h1) * pow(r1, -1, q)
     return d
 
