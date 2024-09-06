@@ -176,3 +176,34 @@ print(decrypt(enc, d))
 <br>
 
 <br>
+
+Another approach from the youtube video (CVP):
+
+```python
+def attack():
+    t1 = r1 * pow(s1, -1, q)
+    t2 = r2 * pow(s2, -1, q)
+    t3 = r3 * pow(s3, -1, q)
+    a1 = h1 * pow(s1, -1, q)
+    a2 = h2 * pow(s2, -1, q)
+    a3 = h3 * pow(s3, -1, q)
+
+    target = vector([a1, a2, a3])
+    M = Matrix([
+        [q,  0,   0],
+        [0,  q,   0],
+        [0,  0,   q],
+        [t1, t2, t3],
+    ])
+    from sage.modules.free_module_integer import IntegerLattice
+    close_vector = IntegerLattice(M.LLL()).babai(target)
+    k1, k2, k3 = target - close_vector
+    d = (s1*Mod(k1, q) - h1) * pow(r1, -1, q)
+    return d
+```
+
+<br>
+
+---
+
+<br>
