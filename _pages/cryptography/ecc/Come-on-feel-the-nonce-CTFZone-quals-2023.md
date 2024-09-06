@@ -88,3 +88,9 @@ The above lattice used an SVP approach, but I will try show both both a CVP and 
 $$
 k_i - \frac{r_i}{s_i} \cdot d - \frac{h_i}{s_i} \equiv 0 \ \ (\text{mod } q)
 $$
+
+
+
+$$
+k_i - t_i \cdot d - a_i \equiv 0 \ \ (\text{mod } q)
+$$
