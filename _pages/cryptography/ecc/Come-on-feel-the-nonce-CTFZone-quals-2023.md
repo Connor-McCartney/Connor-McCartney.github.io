@@ -20,6 +20,8 @@ k := new(big.Int).SetUint64(nonce)
 ```
 
 <br>
+
+
 <br>
 
 ```python
@@ -72,3 +74,17 @@ enc = "hOtHc2dafgWuv2nHQDGsoGoF+BmDhy3N0seYgY9kVnw="
 d = attack()
 print(decrypt(enc, d))
 ```
+
+
+
+<br>
+
+<br>
+
+
+The above lattice used an SVP approach, but I will try show both both a CVP and SVP approach now.
+
+
+$$
+
+$$
