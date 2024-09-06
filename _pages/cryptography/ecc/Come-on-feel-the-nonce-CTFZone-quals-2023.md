@@ -98,7 +98,7 @@ $$
 
 ---
 
-Here is the first lattice I came up with (CVP):
+Here is the first lattice I came up with:
 
 $$
 k_1 \begin{bmatrix}1  \\ 0 \\ 0 \\ 1 \\ 0 \\ 0\end{bmatrix}  + 
