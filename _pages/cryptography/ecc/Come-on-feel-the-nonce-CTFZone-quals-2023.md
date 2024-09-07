@@ -82,7 +82,7 @@ print(decrypt(enc, d))
 <br>
 
 
-The above lattice used an SVP approach taken directly from the paper, but I will try show both both a CVP and SVP approach now.
+The above lattice used a Kanan SVP approach taken directly from the paper, but I will try show both both a CVP and SVP approach now.
 
 
 $$
@@ -98,7 +98,7 @@ $$
 
 ---
 
-Here is the first lattice I came up with:
+Here is the first lattice I came up with (SVP):
 
 $$
 k_1 \begin{bmatrix}1  \\ 0 \\ 0 \\ 1 \\ 0 \\ 0\end{bmatrix}  + 
