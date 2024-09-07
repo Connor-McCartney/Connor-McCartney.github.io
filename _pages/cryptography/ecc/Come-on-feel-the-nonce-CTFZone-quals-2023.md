@@ -246,3 +246,28 @@ def attack():
     d = (s1*Mod(k, q) - h1) * pow(r1, -1, q)
     return d
 ```
+
+<br>
+
+But if you want to weight the target vector, you need to include another 1 in it:
+
+$$
+y_1 \begin{bmatrix}q  \\ 0 \\ 0 \\ 0\end{bmatrix} +
+y_2 \begin{bmatrix}0  \\ q \\ 0 \\ 0\end{bmatrix} +
+y_3 \begin{bmatrix}0  \\ 0 \\ q \\ 0\end{bmatrix} +
+d \begin{bmatrix}t_1  \\ t_2 \\ t_3 \\ 0\end{bmatrix} +
+1 \begin{bmatrix}a_1  \\ a_2 \\ a_3 \\ 1\end{bmatrix} 
+=   \begin{bmatrix}k_1  \\ k_2  \\ k_3 \\ 1\end{bmatrix}
+$$
+
+```python
+    M = Matrix(QQ, [ 
+          [q,    0,    0 ,  0],
+          [0,    q,    0 ,  0],
+          [0,    0,    q ,  0],
+          [t1,   t2,   t3,  0],
+          [a1,   a2,   a3,  1]
+    ])
+    W = diagonal_matrix([1/B, 1/B, 1/B, 1]) # or W = diagonal_matrix([1, 1, 1, B])
+    M = (M*W).LLL() / W
+```
