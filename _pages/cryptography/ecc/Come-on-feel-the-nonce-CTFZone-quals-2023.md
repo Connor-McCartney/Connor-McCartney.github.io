@@ -249,7 +249,7 @@ def attack():
 
 <br>
 
-But if you want to weight the target vector, you need to include another 1 in it:
+But if you want to be able to weight the target vector, you need to include another 1 in it:
 
 $$
 y_1 \begin{bmatrix}q  \\ 0 \\ 0 \\ 0\end{bmatrix} +
