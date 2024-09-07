@@ -151,3 +151,7 @@ for row in M:
     if list(row[-4:]) == [0, 0, 0, 0]:
         print(row[1])
 ```
+
+<br>
+
+See ["Finding Small Roots of Univariate Modular Equations Revisited - Nicholas Howgrave-Graham, 1997"](https://sci-hub.se/10.1007/bfb0024458)
