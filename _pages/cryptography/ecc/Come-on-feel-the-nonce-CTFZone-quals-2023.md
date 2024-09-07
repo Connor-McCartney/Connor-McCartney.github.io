@@ -207,3 +207,42 @@ def attack():
 ---
 
 <br>
+
+
+You can also turn the previous CVP into a simple SVP:
+
+$$
+y_1 \begin{bmatrix}q  \\ 0 \\ 0\end{bmatrix} +
+y_2 \begin{bmatrix}0  \\ q \\ 0\end{bmatrix} +
+y_3 \begin{bmatrix}0  \\ 0 \\ q\end{bmatrix} +
+d \begin{bmatrix}t_1  \\ t_2 \\ t_3\end{bmatrix} +
+1 \begin{bmatrix}a_1  \\ a_2 \\ a_3\end{bmatrix} 
+=   \begin{bmatrix}k_1  \\ k_2  \\ k_3\end{bmatrix}
+$$
+
+<br>
+
+```python
+def basis():
+    t1 = r1 * pow(s1, -1, q)
+    t2 = r2 * pow(s2, -1, q)
+    t3 = r3 * pow(s3, -1, q)
+    a1 = h1 * pow(s1, -1, q)
+    a2 = h2 * pow(s2, -1, q)
+    a3 = h3 * pow(s3, -1, q)
+    return Matrix([ 
+          [q,    0,    0 ],
+          [0,    q,    0 ],
+          [0,    0,    q ],
+          [t1,   t2,   t3],
+          [a1,   a2,   a3]
+    ])
+
+def attack():
+    M = basis()
+    for row in M.LLL():
+        print(row)
+    k = M.LLL()[2][0]
+    d = (s1*Mod(k, q) - h1) * pow(r1, -1, q)
+    return d
+```
