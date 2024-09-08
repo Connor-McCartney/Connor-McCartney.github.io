@@ -65,3 +65,5 @@ sage: var('a b c ten')
 sage: ((a*ten^200 + b*ten^100 + c) * (c*ten^200 + b*ten^100 + a)).expand()
 a*c*ten^400 + a*b*ten^300 + b*c*ten^300 + a^2*ten^200 + b^2*ten^200 + c^2*ten^200 + a*b*ten^100 + b*c*ten^100 + a*c
 ```
+
+Now factor out power of 10:
