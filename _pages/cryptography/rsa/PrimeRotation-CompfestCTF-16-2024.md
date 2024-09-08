@@ -46,9 +46,9 @@ Reading the code, we can see that the top and bottom third of p and q are swappe
 Split p and q into thirds, I'll use 3 variables a,b,c:
 
 $$
-p = a \cdot 10^{100} + b \cdot 10^100 + c
+p = a \cdot 10^{200} + b \cdot 10^{100} + c
 $$
 
 $$
-q = c \cdot 10^{100} + b \cdot 10^100 + a
+q = c \cdot 10^{200} + b \cdot 10^{100} + a
 $$
