@@ -112,3 +112,7 @@ __vulnerability: hint given__
 
 <span style="font-size:2em;">   [Sqursa_xx - hspace CTF 2024](/cryptography/rsa/Sqursa_xx-hspace-CTF-2024)       </span> <br>
 __vulnerability: strange prime structure__
+
+
+<span style="font-size:2em;">   [Prime Rotation - Compfest CTF 16 (2024)](/cryptography/rsa/PrimeRotation-CompfestCTF-16-2024)       </span> <br>
+__vulnerability: strange prime structure__
