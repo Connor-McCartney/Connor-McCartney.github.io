@@ -66,4 +66,28 @@ sage: ((a*ten^200 + b*ten^100 + c) * (c*ten^200 + b*ten^100 + a)).expand()
 a*c*ten^400 + a*b*ten^300 + b*c*ten^300 + a^2*ten^200 + b^2*ten^200 + c^2*ten^200 + a*b*ten^100 + b*c*ten^100 + a*c
 ```
 
-Now factor out power of 10:
+Now factor out powers of 10:
+
+$$
+n = (a \cdot c) \cdot 10^{400} + (a \cdot b + b \cdot c) \cdot 10^{300} + (a^2 + b^2 + c^2) \cdot 10^{200} + (a \cdot b + b \cdot c) \cdot 10^{100} + a \cdot c
+$$
+
+Let
+
+$$
+X = a \cdot c
+$$
+
+$$
+Y = a \cdot b + b \cdot c
+$$
+
+$$
+Z = a^2 + b^2 + c^2
+$$
+
+Thus, 
+
+$$
+n = X \cdot (10^{400} + 1) + Y \cdot (10^{300} + 10^{100}) + Z \cdot 10^{200}
+$$
