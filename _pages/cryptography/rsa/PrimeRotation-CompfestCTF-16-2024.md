@@ -41,7 +41,7 @@ n = 3381570839652460575710267563607955574806153836989773227397731191197686310649
 
 Solve:
 
-Reading the code, we can see that the top and bottom third of p and q are swapped. 
+Reading the code, we can see that the top and bottom third digits of p and q are swapped. 
 
 Split p and q into thirds, I'll use 3 variables a,b,c:
 
