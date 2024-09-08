@@ -95,3 +95,13 @@ $$
 $$
 n = X \cdot (10^{400} + 1) + Y \cdot (10^{300} + 10^{100}) + Z \cdot 10^{200}
 $$
+
+We can solve for X,Y,Z with LLL, I used [Blupper's repo for convenience](https://github.com/TheBlupper/linineq). 
+
+Then, we have 3 equations with 3 unknowns so we can solve a,b,c directly. 
+
+For this I just used sage's `solve` function with the sympy option. 
+
+Since we have to enumerate multiple solutions for X,Y,Z, when the wrong X,Y,Z is used to try solve a,b,c, 
+
+the sympy solver will just hang because there is no solution. So, I just added a simple alarm. 
