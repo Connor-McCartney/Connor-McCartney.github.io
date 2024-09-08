@@ -56,3 +56,5 @@ $$
 $$
 n = p \cdot q = (a \cdot 10^{200} + b \cdot 10^{100} + c) (c \cdot 10^{200} + b \cdot 10^{100} + a)
 $$
+
+If you are lazy to expand by hand use sage:
