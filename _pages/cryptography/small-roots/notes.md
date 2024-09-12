@@ -152,6 +152,8 @@ for row in M:
         print(row[1])
 ```
 
+---
+
 <br>
 
 See also ["Finding Small Roots of Univariate Modular Equations Revisited - Nicholas Howgrave-Graham, 1997"](https://sci-hub.se/10.1007/bfb0024458)
