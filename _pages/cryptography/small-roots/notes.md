@@ -157,3 +157,15 @@ for row in M:
 <br>
 
 See also ["Finding Small Roots of Univariate Modular Equations Revisited - Nicholas Howgrave-Graham, 1997"](https://sci-hub.se/10.1007/bfb0024458)
+
+Let's look at their example for the difference between Coppersmith's original method and the Howgrave-Graham reformulation.
+
+Their example polynomial is x^2 + 14x + 19 = 0 (mod 35) with solution x0=3.
+
+x f(x) = x^3 + 14x^2 + 19x
+
+f(x)^2 = x^4 + 28x^3 + 234x^2 + 532x + 361
+
+x f(x)^2 = x^5 + 28x^4 + 234x^3 + 532x^2 + 361x
+
+
