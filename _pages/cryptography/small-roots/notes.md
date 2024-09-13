@@ -169,3 +169,8 @@ f(x)^2 = x^4 + 28x^3 + 234x^2 + 532x + 361
 x f(x)^2 = x^5 + 28x^4 + 234x^3 + 532x^2 + 361x
 
 
+<br>
+
+Note that copying the previous approach exactly won't give the target vector (1, x, x^2, x^3, x^4, x^5, 0, 0, 0, 0) 
+
+because it will overflow above the modulus. Instead, it will contain some constants we can use to make a new poly over integers. 
