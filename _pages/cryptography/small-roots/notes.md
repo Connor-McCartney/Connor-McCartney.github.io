@@ -174,3 +174,79 @@ x f(x)^2 = x^5 + 28x^4 + 234x^3 + 532x^2 + 361x
 Note that copying the previous approach exactly won't give the target vector (1, x, x^2, x^3, x^4, x^5, 0, 0, 0, 0) 
 
 because it will overflow above the modulus. Instead, it will contain some constants we can use to make a new poly over integers. 
+
+Some code to supplement the paper:
+
+```python
+# Coppersmith's original approach
+
+n = 35
+a = 14
+b = 19
+c = 28
+d = 234
+e = 532
+f = 361
+X = 2
+
+M = Matrix([
+    [1, 0, 0, 0, 0, 0, b, 0, f,   0  ],
+    [0, 1, 0, 0, 0, 0, a, b, e,   f  ],
+    [0, 0, 1, 0, 0, 0, 1, a, d,   e  ],
+    [0, 0, 0, 1, 0, 0, 0, 1, c,   d  ],
+    [0, 0, 0, 0, 1, 0, 0, 0, 1,   c  ],
+    [0, 0, 0, 0, 0, 1, 0, 0, 0,   1  ],
+    [0, 0, 0, 0, 0, 0, n, 0, 0,   0  ],
+    [0, 0, 0, 0, 0, 0, 0, n, 0,   0  ],
+    [0, 0, 0, 0, 0, 0, 0, 0, n^2, 0  ],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0,   n^2],
+])
+
+H1_inv = Matrix([
+    [1, 0, 0, 0, 0, 0, b, 0, f,   0  ],
+    [0, 1, 0, 0, 0, 0, a, b, e,   f  ],
+    [0, 0, 0, 0, 0, 0, 1, a, d,   e  ],
+    [0, 0, 0, 0, 0, 0, 0, 1, c,   d  ],
+    [0, 0, 0, 0, 0, 0, 0, 0, 1,   c  ],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0,   1  ],
+    [0, 0, 1, 0, 0, 0, n, 0, 0,   0  ],
+    [0, 0, 0, 1, 0, 0, 0, n, 0,   0  ],
+    [0, 0, 0, 0, 1, 0, 0, 0, n^2, 0  ],
+    [0, 0, 0, 0, 0, 1, 0, 0, 0,   n^2],
+])
+
+H1 = H1_inv.inverse()
+M_bar = H1*M
+print(M_bar); print()
+
+M_bar = M_bar[5::-1, 5::-1]
+print(M_bar); print()
+
+W = diagonal_matrix(QQ, [1, X, X^2, X^3, X^4, X^5])
+M_bar *= W
+
+B2 = M_bar.LLL()
+
+H2 = B2 * M_bar.inverse()
+H2_inv = H2.inverse()
+# most of the columns in the paper are the same, just a different order
+# cause of varying LLL internals/implementations probably
+print(H2_inv); print() 
+
+
+
+var('x')
+p = x^2 + a*x + b
+cx = vector([1, x, -p/n, -(x*p)/n, (-p^2)/(n^2), (-x*p^2)/(n^2)])
+for col in H2_inv.T:
+    col = col[::-1]
+    f = cx*col #* n^2 
+    try:
+        for root, _ in f.roots():
+            if root.is_integer():
+                print(f'{col = }')
+                print(f'{root = }')
+    except RuntimeError:
+        # no roots
+        pass
+```
