@@ -277,7 +277,7 @@ M = Matrix([
 W = diagonal_matrix([1, X, X^2, X^3, X^4, X^5])
 M = (M*W).LLL() / W
 for row in M:
-    r0, r1, r2, r3, r4, r5 = row[::-1]
+    r0, r1, r2, r3, r4, r5 = row
     var('x')
     f = r5*x^5 + r4*x^4 + r3*x^3 + r2*x^2 + r1*x + r0
     try:
