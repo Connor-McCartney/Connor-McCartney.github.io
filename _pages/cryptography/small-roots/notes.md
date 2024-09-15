@@ -287,3 +287,44 @@ for row in M:
     except:
         pass
 ```
+
+<br>
+
+<br>
+
+The same example in more of an automated way:
+
+```python
+n = 35
+PR.<x> = PolynomialRing(Zmod(n))
+f = x^2 + 14*x + 19
+bounds = (2,)
+
+# polys
+R.<x> = PolynomialRing(ZZ, 1)
+f = R(f)
+polys = Sequence([n, n*x, f, f*x], f.parent())
+print(f'{polys = }')
+
+
+B, monomials = polys.coefficients_monomials()
+print(B)
+W = diagonal_matrix([mon(*bounds) for mon in monomials])
+B = (B*W).dense_matrix().LLL()/W
+H = B*monomials
+for root, _ in H[0].roots():
+    if root.is_integer():
+        print(f'{root = }')
+```
+
+```
+$ sage x.sage 
+polys = [35, 35*x, x^2 + 14*x + 19, x^3 + 14*x^2 + 19*x]
+[ 0  0  0 35]
+[ 0  0 35  0]
+[ 0  1 14 19]
+[ 1 14 19  0]
+root = 3
+```
+
+<br>
