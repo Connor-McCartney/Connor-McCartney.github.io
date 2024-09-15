@@ -250,3 +250,40 @@ for col in H2_inv.T:
         # no roots
         pass
 ```
+
+<br>
+
+```
+# Howgrave-Graham approach
+
+n = 35
+a = 14
+b = 19
+c = 28
+d = 234
+e = 532
+f = 361
+X = 2
+
+M = Matrix([
+    [n^2, 0,   0,   0, 0, 0],
+    [0,   n^2, 0,   0, 0, 0],
+    [b*n, a*n, n,   0, 0, 0],
+    [0,   b*n, a*n, n, 0, 0],
+    [f,   e,   d,   c, 1, 0],
+    [0,   f,   e,   d, c, 1]
+])
+
+W = diagonal_matrix([1, X, X^2, X^3, X^4, X^5])
+M = (M*W).LLL() / W
+for row in M:
+    r0, r1, r2, r3, r4, r5 = row[::-1]
+    var('x')
+    f = r5*x^5 + r4*x^4 + r3*x^3 + r2*x^2 + r1*x + r0
+    try:
+        for root, _ in f.roots():
+            if root.is_integer():
+                print(f'{root = }')
+    except:
+        pass
+```
