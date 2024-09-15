@@ -253,7 +253,7 @@ for col in H2_inv.T:
 
 <br>
 
-```
+```python
 # Howgrave-Graham approach
 
 n = 35
