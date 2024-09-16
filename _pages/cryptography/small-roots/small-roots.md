@@ -36,3 +36,6 @@ title: Coppersmith's Small Roots
 
 
 <span style="font-size:2em;">   [Bigger and better - crew CTF 2024](/cryptography/small-roots/Bigger-and-better-crew-CTF-2024)       </span> <br>
+
+
+<span style="font-size:2em;">   [Unbalanced - ICC Athens](/cryptography/small-roots/Unbalanced-ICCAthens)       </span> <br>
