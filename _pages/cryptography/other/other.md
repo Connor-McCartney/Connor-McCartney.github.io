@@ -103,3 +103,5 @@ title: Other
 
 <span style="font-size:2em;">   [Tan - ImaginaryCTF 2023](/cryptography/other/Tan-ImaginaryCTF2023) </span> <br>
 
+
+<span style="font-size:2em;">   [irritant - Angel CTF](/cryptography/other/irritant-AngelCTF) </span> <br>
