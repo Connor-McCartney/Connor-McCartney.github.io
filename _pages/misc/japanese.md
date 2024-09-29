@@ -47,3 +47,5 @@ otsukaresama - good work
 tashikani - that's true
 
 narubodo - I see
+
+あね😐、んね🙂‍↕️、たしかに😌、なるほど🧐
