@@ -48,4 +48,4 @@ tashikani - that's true
 
 narubodo - I see
 
-あね😐、んね🙂‍↕️、たしかに😌、なるほど🧐
+あね😐、んね🙂‍↕️ (agree)、たしかに😌、なるほど🧐
