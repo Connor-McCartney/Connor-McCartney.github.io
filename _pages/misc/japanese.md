@@ -49,3 +49,5 @@ tashikani - that's true
 narubodo - I see
 
 あね😐、んね🙂‍↕️ (agree)、たしかに😌、なるほど🧐
+
+soudane - that's right
