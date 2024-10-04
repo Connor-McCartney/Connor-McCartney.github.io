@@ -65,3 +65,5 @@ te-form + mo ii: give permission
 te-form + miru: I'll try
 
 replace masu with tai: to want/desire
+
+to change to masu: option 1 = if it ends in u, change to i (nomu -> nomimasu)   option 2 - if it ends in ru, remove ru (taberu -> tabemasu)
