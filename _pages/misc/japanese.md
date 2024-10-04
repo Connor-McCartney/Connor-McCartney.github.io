@@ -54,5 +54,7 @@ soudane - that's right
 
 
 
+"Ending a sentence with te-form does have a meaning by itself ー it’s the casual command form."
+
 Verb suffixes:
 
