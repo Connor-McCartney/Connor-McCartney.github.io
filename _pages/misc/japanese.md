@@ -54,7 +54,12 @@ soudane - that's right
 
 
 
+Verb suffixes:
+
 "Ending a sentence with te-form does have a meaning by itself ー it’s the casual command form."
 
-Verb suffixes:
+te-form + mo ii: give permission
+
+te-form + miru: I'll try
+
 
