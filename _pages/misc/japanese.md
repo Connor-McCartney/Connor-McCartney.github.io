@@ -51,3 +51,8 @@ narubodo - I see
 あね😐、んね🙂‍↕️ (agree)、たしかに😌、なるほど🧐
 
 soudane - that's right
+
+
+
+Verb suffixes:
+
