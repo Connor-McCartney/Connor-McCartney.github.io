@@ -64,4 +64,4 @@ te-form + mo ii: give permission
 
 te-form + miru: I'll try
 
-
+stem + tai: to want/desire
