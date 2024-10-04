@@ -52,6 +52,8 @@ narubodo - I see
 
 soudane - that's right
 
+tabun - maybe
+
 
 <br>
 <br>
