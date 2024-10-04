@@ -54,6 +54,9 @@ soudane - that's right
 
 tabun - maybe
 
+今日は何するの？- What will you do today?
+
+
 
 <br>
 <br>
