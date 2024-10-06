@@ -70,8 +70,8 @@ We can follow this link <https://crypto.stackexchange.com/questions/61302/how-to
 
 We use an isomorphism to transfer the ecdlp to discrete log in GF(p).
 
-The mapping is:
+The mapping function is:
 
-$$(x, y) \mapsto (x - 23796, y - 0)$$
+$$(x, y) \\mapsto \\frac{y + x\\sqrt{c}}{y - x\\sqrt{c}}\$$
 
 <br>
