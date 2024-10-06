@@ -63,3 +63,8 @@ Encrypted bytes :  b'BI\xd5\xfd\x8e\x1e(s\xb3vUhy\x96Y\x8f\xceRr\x0c\xe6\xf0\x1a
 <br>
 
 Solve:
+
+The curve parameters make a singular curve with an elliptic node. 
+
+We can follow this link <https://crypto.stackexchange.com/questions/61302/how-to-solve-this-ecdlp>
+
