@@ -75,3 +75,5 @@ The mapping function is:
 $$(x, y) \\mapsto \\frac{y + x\\sqrt{c}}{y - x\\sqrt{c}}\$$
 
 <br>
+
+The first point we're given equals Q times the initial state, so let's solve the initial state:
