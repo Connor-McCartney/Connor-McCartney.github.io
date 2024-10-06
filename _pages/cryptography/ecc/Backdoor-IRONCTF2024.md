@@ -68,3 +68,6 @@ The curve parameters make a singular curve with an elliptic node.
 
 We can follow this link <https://crypto.stackexchange.com/questions/61302/how-to-solve-this-ecdlp>
 
+We use an isomorphism to transfer the ecdlp to discrete log in GF(p).
+
+The mapping is:
