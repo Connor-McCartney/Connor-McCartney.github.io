@@ -113,3 +113,87 @@ def node_log(p, a, b, qx, qy, sx, sy):
 print(node_log(p, a, b, qx, qy, sx, sy))
 # 90590397774805613256408291471381126558
 ```
+
+
+Now that we have the initial state, re-run the PRNG to get the key and iv.
+
+```python
+from collections import namedtuple
+from Crypto.Util.number import *
+from Crypto.Cipher import AES
+
+Point = namedtuple("Point", "x y")
+O = 'Origin'
+p = 229054522729978652250851640754582529779
+a = -75 
+b = -250 
+
+def check_point(P):
+    if P == O:
+        return True
+    else:
+        return (P.y**2 - (P.x**3 + a*P.x + b)) % p == 0 and 0 <= P.x < p and 0 <= P.y < p
+
+def point_inverse(P):
+    if P == O:
+        return P
+    return Point(P.x, -P.y % p)
+
+def point_addition(P, Q):
+    if P == O:
+        return Q
+    elif Q == O:
+        return P
+    elif Q == point_inverse(P):
+        return O
+    else:
+        if P == Q:
+            lam = (3*P.x**2 + a)*inverse(2*P.y, p)
+            lam %= p
+        else:
+            lam = (Q.y - P.y) * inverse((Q.x - P.x), p)
+            lam %= p
+    Rx = (lam**2 - P.x - Q.x) % p
+    Ry = (lam*(P.x - Rx) - P.y) % p
+    R = Point(Rx, Ry)
+    assert check_point(R)
+    return R
+
+def mul(P, n):
+    Q = P
+    R = O
+    while n > 0:
+        if n % 2 == 1:
+            R = point_addition(R, Q)
+        Q = point_addition(Q, Q)
+        n = n // 2
+    assert check_point(R)
+    return R.x
+
+
+class Dual_EC:
+    def __init__(self):
+        self.P = Point(97396093570994028423863943496522860154 , 2113909984961319354502377744504238189)
+        self.Q = Point(137281564215976890139225160114831726699 , 111983247632990631097104218169731744696)
+        self.set_initial_state()
+
+    def set_initial_state(self):
+        self.state = 90590397774805613256408291471381126558 #???SECRET???
+
+    def set_next_state(self):
+        self.state = mul(self.P, self.state)
+
+    def gen_rand_num(self):
+        rand_num = mul(self.Q, self.state)
+        self.set_next_state()
+        return rand_num
+
+prng = Dual_EC()
+print("Here is a Sample Random Number to prove it to you : ", prng.gen_rand_num())
+key = long_to_bytes((prng.gen_rand_num() << 128) + prng.gen_rand_num())
+iv = long_to_bytes(prng.gen_rand_num())
+cipher = AES.new(key, AES.MODE_CBC, iv)
+enc = b'BI\xd5\xfd\x8e\x1e(s\xb3vUhy\x96Y\x8f\xceRr\x0c\xe6\xf0\x1a\x88x\xe2\xe9M#]\xad\x99H\x13+\x9e5\xfd\x9b \xe6\xf0\xe10w\x80q\x8d'
+print(cipher.decrypt(enc))
+# ironCTF{5h0uld_h4v3_1is7en3d_t0_d4v1d_a1r34dy}
+```
