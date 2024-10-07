@@ -114,8 +114,11 @@ print(node_log(p, a, b, qx, qy, sx, sy))
 # 90590397774805613256408291471381126558
 ```
 
+<br>
 
-Now that we have the initial state, re-run the PRNG to get the key and iv.
+<br>
+
+Now that we have the initial state, re-run the PRNG to get the key and iv:
 
 ```python
 from collections import namedtuple
