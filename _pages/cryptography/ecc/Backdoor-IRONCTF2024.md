@@ -72,7 +72,9 @@ We use an isomorphism to transfer the ecdlp to a discrete log mod p.
 
 The mapping function is:
 
-$$(x, y) \\mapsto \\frac{y + x\\sqrt{c}}{y - x\\sqrt{c}}\$$
+$$
+(x, y) \ \mapsto \ \frac{y + x\sqrt{c}}{y - x\sqrt{c}}
+$$
 
 <br>
 
