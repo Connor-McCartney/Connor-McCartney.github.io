@@ -77,3 +77,17 @@ $$(x, y) \\mapsto \\frac{y + x\\sqrt{c}}{y - x\\sqrt{c}}\$$
 <br>
 
 The first point we're given equals Q times the initial state, so let's solve the initial state:
+
+```python
+sage: var('x')
+x
+sage: a = -75
+sage: b = -250
+sage: f = x^3 + a*x + b
+sage: f.roots()
+[(10, 1), (-5, 2)]
+sage: f.subs(x=x-5).factor()
+(x - 15)*x^2
+```
+
+So, c=-15.
