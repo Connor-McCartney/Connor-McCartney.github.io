@@ -78,3 +78,36 @@ $$(x, y) \\mapsto \\frac{y + x\\sqrt{c}}{y - x\\sqrt{c}}\$$
 
 The first point we're given equals Q times the initial state, so let's solve the initial state:
 
+```python
+p = 229054522729978652250851640754582529779
+a = -75
+b = -250
+
+qx = 137281564215976890139225160114831726699
+qy = 111983247632990631097104218169731744696
+
+# given sample output
+sx = 222485190245526863452994827085862802196
+sy = GF(p)(sx^3 + a*sx + b).nth_root(2, all=True)[0] # try both
+
+def node_log(p, a, b, qx, qy, sx, sy):
+    PR.<x> = PolynomialRing(GF(p))
+    f = x^3 + a*x + b
+    double_root = [r for r, e in f.roots() if e==2][0]
+
+    # shifts
+    qx -= double_root
+    sx -= double_root 
+    f2 = f.subs(x=x+double_root)
+
+    c = f2.factor()[0][0].coefficients()[0]
+    sqrt_c = GF(p)(c).sqrt()
+
+    def mapping(x, y, sqrt_c):
+        return (y + x*sqrt_c) * pow(y - x*sqrt_c, -1, p)
+
+    return mapping(sx, sy, sqrt_c).log(mapping(qx, qy, sqrt_c))
+
+print(node_log(p, a, b, qx, qy, sx, sy))
+# 90590397774805613256408291471381126558
+```
