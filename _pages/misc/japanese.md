@@ -56,7 +56,7 @@ tabun - maybe
 
 今日は何するの？- What will you do today?
 
-ru - for yourself, re - for others (ganbaru - I'll do my best, ganbare - keep it up!)
+ru - for yourself, re - for others, ro - for both (ganbaru - I'll do my best, ganbare - keep it up!, ganbarou - let's do our best!)
 
 
 <br>
