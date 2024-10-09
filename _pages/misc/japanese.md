@@ -46,7 +46,7 @@ otsukaresama - good work
 
 tashikani - that's true
 
-narubodo - I see
+naruhodo - I see
 
 あね😐、んね🙂‍↕️ (agree)、たしかに😌、なるほど🧐
 
