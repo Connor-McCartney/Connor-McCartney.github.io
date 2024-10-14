@@ -59,6 +59,8 @@ tabun - maybe
 ru - for yourself, re - for others, ro - for both (ganbaru - I'll do my best, ganbare - keep it up!, ganbarou - let's do our best!)
 
 
+ato - lots of meanings: more, and, then, after, etc...
+
 <br>
 <br>
 
