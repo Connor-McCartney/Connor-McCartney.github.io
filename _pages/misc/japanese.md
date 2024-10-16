@@ -48,6 +48,8 @@ tashikani - that's true
 
 naruhodo - I see
 
+kyoomibukai - interesting 
+
 あね😐、んね🙂‍↕️ (agree)、たしかに😌、なるほど🧐
 
 soudane - that's right
