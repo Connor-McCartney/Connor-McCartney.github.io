@@ -86,7 +86,7 @@ $$
 
 
 $$
-(1 + \text{k} \cdot (\text{n} + 1 - (\text{hpq} + \text{y}))) \cdot (\text{h} + \text{x}) - \text{e} \equiv 0 \text{ (mod n)}
+/big(1 + \text{k} \cdot (\text{n} + 1 - (\text{hpq} + \text{y})) /big) \cdot (\text{h} + \text{x}) - \text{e} \equiv 0 \text{ (mod n)}
 $$
 
 Now x and y are solvable with bivariate coppersmith, although you have to bruteforce k...
