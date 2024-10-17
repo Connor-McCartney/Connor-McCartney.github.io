@@ -81,7 +81,7 @@ $$
 Now sub d and dinv into initial equation:
 
 $$
-(\frac{1 + \text{k} \cdot (\text{n} + 1 - (\text{hpq} + \text{y}))}{\text{e}}) \cdot (\text{h} + \text{x}) - 1 \equiv 0 \text{ (mod n)}
+\big(\frac{1 + \text{k} \cdot (\text{n} + 1 - (\text{hpq} + \text{y}))}{\text{e}} \big) \cdot (\text{h} + \text{x}) - 1 \equiv 0 \text{ (mod n)}
 $$
 
 
