@@ -1,5 +1,8 @@
 たいへん is not difficult. you can try it but it requirs hard way
 
+
+大丈夫？ -  are you ok?
+
 muzukashi - difficult
 
 kawaii - cute
