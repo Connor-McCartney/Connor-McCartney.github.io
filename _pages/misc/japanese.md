@@ -1,3 +1,5 @@
+いつも　is usually
+
 生理　せいり　period
 
 つかれた tired
