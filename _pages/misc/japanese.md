@@ -1,3 +1,6 @@
+おかえり welcome back
+ただいま I'm home
+
 たいへん is not difficult. you can try it but it requirs hard way
 
 
