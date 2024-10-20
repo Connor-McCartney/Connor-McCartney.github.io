@@ -6,13 +6,13 @@
 
 大丈夫？ -  are you ok?
 
-muzukashi - difficult
+muzukashii - difficult
 
 kawaii - cute
 
-kowaii - scary
+kowai - scary
 
-kireii - beautiful
+kirei - beautiful
 
 suki - like
 
