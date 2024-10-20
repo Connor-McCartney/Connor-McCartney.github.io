@@ -18,9 +18,9 @@ suki - like
 
 daisuki - love
 
-suiyoubi - today
+kyou - today
 
-mokuyoubi - tomorrow
+ashita - tomorrow
 
 kanojyo - girlfriend
 
