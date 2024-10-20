@@ -1,3 +1,8 @@
+生理　せいり　period
+
+つかれた tired
+つかれる tire
+
 おかえり welcome back
 ただいま I'm home
 
