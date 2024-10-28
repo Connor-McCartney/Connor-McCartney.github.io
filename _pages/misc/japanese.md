@@ -1,3 +1,7 @@
+sympathy:
+
+かわいそうに😢 残念だったね😢
+
 aru is existence (have)
 
 いつも　is usually
