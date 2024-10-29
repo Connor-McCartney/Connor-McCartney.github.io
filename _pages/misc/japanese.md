@@ -1,6 +1,6 @@
-sympathy:
+これなに？or なんて名前？what's this? what's name?
 
-かわいそうに😢 残念だったね😢
+sympathy: かわいそうに😢 残念だったね😢
 
 aru is existence (have)
 
