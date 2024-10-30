@@ -31,6 +31,7 @@ AI substitution cipher solvers <https://www.guballa.de/substitution-solver> <br>
 <http://quipqiup.com> <br>
 Hashcat Example Hashes <https://hashcat.net/wiki/doku.php?id=example_hashes> <br>
 <https://learn-cyber.net> <br>
+<https://github.com/Aeren1564/CTF/tree/main> <br>
 
 ## Challenges
 
