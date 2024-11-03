@@ -1,4 +1,4 @@
-りょうかい - ok (ri for short)
+りょうかい - ok (ri for short、some people say りょ！)
 
 これなに？or なんて名前？what's this? what's name?
 
