@@ -1,3 +1,5 @@
+りょうかい - ok (ri for short)
+
 これなに？or なんて名前？what's this? what's name?
 
 sympathy: かわいそうに😢 残念だったね😢
