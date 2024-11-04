@@ -238,3 +238,156 @@ For part 2 I followed [this paper](https://eprint.iacr.org/2024/1329.pdf), but I
 
 and utilise the additional hint of d mod the small prime blind. 
 
+
+
+
+### 1. Solve k through approximation
+
+$$\text{d} \cdot \text{e} = 1 + \text{k}\cdot\text{phi}$$
+
+$$\text{k} = \frac{\text{d} \cdot \text{e} - 1}{\text{phi}}$$
+
+$$\text{k} \approx \frac{\text{d\_high} \cdot \text{e} - 1}{\text{n}}$$
+
+Depending on the parameter sizes, you actually get k exactly
+
+### 2. Solve p_high through approximation
+
+First get an approximation of p+q
+
+$$\text{phi} = (p-1)(q-1) = n-p-q+1 = n+1-(p+q)$$
+
+$$p+q = n+1-\text{phi}$$
+
+$$p+q = n+1-\frac{\text{d} \cdot \text{e} - 1}{\text{k}}$$
+
+$$p+q \approx n+1-\frac{\text{d\_high} \cdot \text{e} - 1}{\text{k}}$$
+
+Now let s = p+q and consider this equation
+
+$$p^2 - s\cdot p + n = 0$$
+
+Solving the quadratic for p with the approximation of p+q gives us 
+
+an approximation of p where the high bits are correct.
+
+### 3. Solve for p+q mod e
+
+$$\text{d} \cdot \text{e} = 1 + \text{k}\cdot\text{phi}$$
+
+$$0 \equiv 1 + \text{k}\cdot  (n+1-(p+q)) \text{ (mod e)}$$
+
+### 4. Solve for p mod e
+
+Simply reuse this equation, but mod e, and using the value found in step 3
+
+$$p^2 - S\cdot p + n \equiv 0 \text{ (mod e)}$$
+
+### 5. Solve for p mod r
+
+$$p+q = n+1-\frac{\text{d} \cdot \text{e} - 1}{\text{k}}$$
+
+multiply by p
+
+$$p^2+p\cdot q = p\cdot n+p-\frac{p\cdot(\text{d} \cdot \text{e} - 1)}{\text{k}}$$
+
+$$0 = k \cdot p\cdot n + k \cdot p - p\cdot(\text{d} \cdot \text{e} - 1) - k\cdot p^2 - k \cdot n$$
+
+Replace d with h
+
+$$0 \equiv k \cdot p\cdot n + k \cdot p - p\cdot(\text{h} \cdot \text{e} - 1) - k\cdot p^2 - k \cdot n \text{ (mod r)}$$
+
+### 6. Let m = er, we combine p mod e and p mod r to get p mod m
+
+### 7. Solve p 
+
+$$p = \text{p\_mod\_m} + t\cdot m \ \ \ \ \text{    (for some integer t)}$$
+
+Rearrange for t to get an approximation of t_high, then do coppersmith to solve p mod n
+
+$$t = \frac{(p-\text{p\_mod\_m})}{m}$$
+
+$$\text{t\_high} \approx \frac{(\text{p\_high}-\text{p\_mod\_m})}{m}$$
+
+$$\text{p\_mod\_m} + t\cdot m \equiv 0  \ \ \ \ \text{ (mod p)}$$
+
+
+Tests:
+
+```python
+flag = int.from_bytes(b'REDACTED')
+p = random_prime(2**512)
+q = random_prime(2**512)
+e = random_prime(2**128)
+r = random_prime(2**40)
+n = p*q
+c = pow(flag, e, n)
+d = pow(e, -1, (p-1)*(q-1))
+b = 300
+d_high = (d>>b)<<b
+h = int(d%r)
+
+
+load('https://raw.githubusercontent.com/Connor-McCartney/coppersmith/refs/heads/main/coppersmith.sage')
+d_low = d - d_high
+assert d_low < 2**b
+assert d == d_high + d_low
+
+# 1
+phi = (p-1)*(q-1)
+k = (d*e-1) // phi
+assert k == (d_high*e-1)//phi + 1
+
+# 2
+s = n + 1 - (d_high*e-1)//k
+PR.<x> = PolynomialRing(RealField(1024))
+f = x^2 - s*x + n
+possible_p_high = [int(i) for i, _ in f.roots()]
+
+# 3
+PR.<x> = PolynomialRing(GF(e))
+f = 1 + k*(n+1-x)
+S = f.roots()[0][0] # p+q mod e
+
+# 4
+PR.<x> = PolynomialRing(GF(e))
+f = x^2 - S*x + n
+possible_p_mod_e = [i for i, _ in f.roots()]
+assert p%e in possible_p_mod_e
+
+# 5
+PR.<x> = PolynomialRing(GF(r))
+f = k*x*n + k*x - x*(h*e-1) - k*x^2 - k*n
+possible_p_mod_r = [i for i, _ in f.roots()]
+assert p%r in possible_p_mod_r
+
+# 6
+p_mod_e = p%e # testing only
+p_mod_r = p%r # testing only
+m = e*r
+p_mod_m = crt(p_mod_e, p_mod_r, e, r)
+assert p_mod_m == p % m
+
+# 7
+t = int(p - p_mod_m)//m #testing only
+def same(t_high):
+    # test only
+    count = 0
+    for x,y in zip(f'{t:b}', f'{t_high:b}'):
+        if x!=y:
+            return  count
+        count += 1
+
+for p_high in possible_p_high:
+    t_high = int(p_high - p_mod_m)//m
+    j = same(t_high)
+    if j<10:
+        continue
+    PR.<x> = PolynomialRing(Zmod(n))
+    f = m*(t_high+x) + p_mod_m 
+    roots = univariate(f, X=2**(len(f'{t:b}')-j), beta=0.49, m=10)
+    if roots == []:
+        continue
+    p = int(f(roots[0]))
+    print(is_prime(p) and n%p == 0)
+```
