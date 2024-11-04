@@ -210,15 +210,13 @@ For part 2 I followed [this paper](https://eprint.iacr.org/2024/1329.pdf), but I
 and utilise the additional hint of d mod the small prime blind. 
 
 
-
-
 ### 1. Solve k through approximation
 
 $$\text{d} \cdot \text{e} = 1 + \text{k}\cdot\text{phi}$$
 
 $$\text{k} = \frac{\text{d} \cdot \text{e} - 1}{\text{phi}}$$
 
-$$\text{k} \approx \frac{\text{d\_high} \cdot \text{e} - 1}{\text{n}}$$
+$$\text{k} \approx \frac{\text{d_high} \cdot \text{e} - 1}{\text{n}}$$
 
 Depending on the parameter sizes, you actually get k exactly
 
@@ -232,7 +230,7 @@ $$p+q = n+1-\text{phi}$$
 
 $$p+q = n+1-\frac{\text{d} \cdot \text{e} - 1}{\text{k}}$$
 
-$$p+q \approx n+1-\frac{\text{d\_high} \cdot \text{e} - 1}{\text{k}}$$
+$$p+q \approx n+1-\frac{\text{d_high} \cdot \text{e} - 1}{\text{k}}$$
 
 Now let s = p+q and consider this equation
 
@@ -272,15 +270,17 @@ $$0 \equiv k \cdot p\cdot n + k \cdot p - p\cdot(\text{h} \cdot \text{e} - 1) - 
 
 ### 7. Solve p 
 
-$$p = \text{p\_mod\_m} + t\cdot m \ \ \ \ \text{    (for some integer t)}$$
+$$p = \text{p_mod_m} + t\cdot m \ \ \ \ \text{    (for some integer t)}$$
 
 Rearrange for t to get an approximation of t_high, then do coppersmith to solve p mod n
 
-$$t = \frac{(p-\text{p\_mod\_m})}{m}$$
+$$t = \frac{(p-\text{p_mod_m})}{m}$$
 
-$$\text{t\_high} \approx \frac{(\text{p\_high}-\text{p\_mod\_m})}{m}$$
+$$\text{t_high} \approx \frac{(\text{p_high}-\text{p_mod_m})}{m}$$
 
-$$\text{p\_mod\_m} + t\cdot m \equiv 0  \ \ \ \ \text{ (mod p)}$$
+$$\text{p_mod_m} + t\cdot m \equiv 0  \ \ \ \ \text{ (mod p)}$$
+
+
 
 
 Tests:
