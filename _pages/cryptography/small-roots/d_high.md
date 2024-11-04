@@ -105,66 +105,35 @@ My solve script:
 ```python
 load('https://raw.githubusercontent.com/Connor-McCartney/coppersmith/refs/heads/main/coppersmith.sage')
 from pwn import *
+from Crypto.Util.number import *
+from tqdm import trange
+
 
 io1 = process(["python", "server.py"])
 io2 = process(["python", "server.py"])
 c_list = []
 
-def io1_func(io):
-    b_list =[]
-    b_list_2 =[]
-
-
-    public_key = io.recvuntil(b")\n")
-
-    for i in range(100):
-        buf=  io.sendafter(b'[-] b:',b'1\n')   
-        #print(buf)
-        # CX = int(buf.split()[3].decode())
-        # print(CX)
-        buf_res = io.recvline()
-        #print(buf_res)
-        if(b'correct' in buf_res):
-            b_list.append(b'1\n')
-            b_list_2.append(1)
-        else:
-            b_list.append(b'0\n')
-            b_list_2.append(0)
-        print(b_list_2)
-    return b_list
-
-def io2_func(io,b_list):
-    public_key = io.recvuntil(b")\n")
+def io_func(io1, io2):
+    io1.recvuntil(b")\n")
+    public_key = io2.recvuntil(b")\n")
     xx = public_key.decode().split()
     n = int(xx[-2][1:-1])
     e = int(xx[-1][:-1])
-    print("public_key",public_key)
-    print(io.recvline())
-    c = int(io.recvline().split()[-1])
     for i in range(100):
-        buf=  io.sendafter(b'[-] b:',b_list[i])   
-        #print(buf)
-        # CX = int(buf.split()[3].decode())
-        # print(CX)
-        buf_res = io.recvline()
-        #print(buf_res)
-    return n, e, c
+        buf =  io1.sendafter(b'[-] b:',b'1\n')   
+        buf_res = io1.recvline()
+        if(b'correct' in buf_res):
+            buf =  io2.sendafter(b'[-] b:',b'1\n')   
+        else:
+            buf =  io2.sendafter(b'[-] b:',b'0\n')   
+        buf_res = io2.recvline()
+    return n, e
         
 
-        
-
-b_list = io1_func(io1)   
-
-n, e, c = io2_func(io2,b_list)
-
-#io2.interactive()
+n, e = io_func(io1, io2)
 d_, blind = io2.recv().decode().split()[-1][1:-2].split(",")
 d_ = int(d_)
 blind = int(blind)
-
-
-from Crypto.Util.number import *
-from tqdm import trange
 
 
 def solve(blind, d_, n, e):
@@ -219,8 +188,10 @@ def solve(blind, d_, n, e):
 p = solve(blind, d_, n, e)
 q = n//p
 d = pow(e, -1, (p-1)*(q-1))
-token = pow(c, d, n)
 
+print(io2.recvuntil(b"encrypt token is: "))
+c = int(io2.recvline().decode())
+token = pow(c, d, n)
 print(io2.recv())
 io2.sendline(token.hex().encode())
 print(io2.recv())
