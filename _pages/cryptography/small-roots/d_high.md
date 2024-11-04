@@ -230,4 +230,11 @@ print(io2.recv())
 
 <br>
 
-Some exaplanations:
+Some explanations:
+
+Part 1 is impossible without opening 2 connections. 
+
+For part 2 I followed [this paper](https://eprint.iacr.org/2024/1329.pdf), but I also had to improvise 
+
+and utilise the additional hint of d mod the small prime blind. 
+
