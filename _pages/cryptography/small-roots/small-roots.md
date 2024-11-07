@@ -44,5 +44,3 @@ title: Coppersmith's Small Roots
 <span style="font-size:2em;">   [That one RSA challenge - TCP1P CTF 2024 International](/cryptography/small-roots/ThatoneRSAchallenge-TCP1PCTF2024International)       </span> <br>
 
 
-<span style="font-size:2em;">   [d_high](/cryptography/small-roots/d_high)       </span> <br>
-
