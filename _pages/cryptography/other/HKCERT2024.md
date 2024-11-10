@@ -94,6 +94,7 @@ if __name__ == '__main__':
     main()
 ```
 
+To solve, send r=1 and s=q. 
 
 <br>
 
