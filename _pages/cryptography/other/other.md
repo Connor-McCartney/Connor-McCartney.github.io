@@ -108,3 +108,6 @@ title: Other
 
 
 <span style="font-size:2em;">   [TCP51Prime - TCP1P CTF 2024 International](/cryptography/other/TCP51Prime-TCP1PCTF2024International) </span> <br>
+
+
+<span style="font-size:2em;">   [HKCERT 2024](/cryptography/other/HKCERT2024) </span> <br>
