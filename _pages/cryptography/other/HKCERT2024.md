@@ -83,6 +83,8 @@ For this one, the seed is only 16 bits and you can brute force it.
 
 <br>
 
+---
+
 # RSA LCG (1)
 
 ```python
@@ -159,6 +161,8 @@ In this one c=0.
 
 <br>
 
+---
+
 # RSA LCG (2)
 
 ```python
@@ -234,6 +238,8 @@ In this one a=1.
 <br>
 
 <br>
+
+---
 
 # RSA LCG (3)
 
