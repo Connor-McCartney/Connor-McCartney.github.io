@@ -157,6 +157,10 @@ c = 4453081559150295679912046424410371066362742789693235942669629648970485284667
 
 In this one c=0. 
 
+So each lcg output is just `a**x * s` for some x. 
+
+We can also write `p1 * p2 * p3 * p4 = n (mod m)`
+
 <br>
 
 <br>
