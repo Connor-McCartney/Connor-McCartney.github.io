@@ -466,3 +466,6 @@ if __name__ == '__main__':
         print(mask_expr(expr))
 ```
 
+<br>
+
+A variation on <https://github.com/OfficialCyberSpace/CSCTF-2024/tree/main/crypto/mask-rsa> with e changed from 3 to 65537. 
