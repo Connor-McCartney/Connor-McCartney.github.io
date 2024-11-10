@@ -167,7 +167,7 @@ The lower 256 bits of each prime is just some lcg output, so:
 (a**x1 * s) * (a**x2 * s) * (a**x3 * s) * (a**x4 * s) ≡ n (mod m)
 a**(x1+x2+x3+x4) * s**4 ≡ n (mod m)
 let t = x1+x2+x3+x4
-s**4 ≡ n  * a**(-t) 
+s**4 ≡ n * a**(-t) 
 ```
 
 Now you can brute t and solve for s with modular 4th root. 
