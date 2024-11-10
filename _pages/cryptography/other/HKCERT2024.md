@@ -159,7 +159,20 @@ In this one c=0.
 
 So each lcg output is just `a**x * s` for some x. 
 
-We can also write `p1 * p2 * p3 * p4 = n (mod m)`
+We can also write `p1 * p2 * p3 * p4 ≡ n (mod m)`
+
+The lower 256 bits of each prime is just some lcg output, so:
+
+```
+(a**x1 * s) * (a**x2 * s) * (a**x3 * s) * (a**x4 * s) ≡ n (mod m)
+a**(x1+x2+x3+x4) * s**4 ≡ n (mod m)
+let t = x1+x2+x3+x4
+s**4 ≡ n  * a**(-t) 
+```
+
+Now you can brute t and solve for s with modular 4th root. 
+
+In fact, you seem to be able to solve some of the primes with t less than the real t:
 
 <br>
 
