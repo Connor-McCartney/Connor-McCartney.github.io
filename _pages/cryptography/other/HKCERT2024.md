@@ -306,5 +306,5 @@ c = 1030622163199946338830217267072555058338941159822442297977445004007249410594
 
 <br>
 
-In this one the seed in generated as `seed = secrets.randbits(128)<<128 | 1`
+In this one the seed is created as `seed = secrets.randbits(128)<<128 | 1`
 
