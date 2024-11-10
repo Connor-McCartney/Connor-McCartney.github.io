@@ -172,7 +172,7 @@ s**4 ≡ n * a**(-t)
 
 Now you can brute t and solve for s with modular 4th root. 
 
-In fact, you seem to be able to solve some of the primes with t less than the real t:
+In fact, you seem to be able to solve some of the primes with t less than the real t and a seed different to the real seed:
 
 <br>
 
