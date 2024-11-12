@@ -1,3 +1,5 @@
+dou shiteru - how are you doing?
+
 dare to iru - who are you with?
 
 doko ni iru - where are you?
