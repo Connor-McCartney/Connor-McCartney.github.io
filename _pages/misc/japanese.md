@@ -1,12 +1,11 @@
-dou shiteru - how are you doing?
 
-dare to iru - who are you with?
+dare to iru no? - who are you with?
 
-doko ni iru - where are you?
+doko ni iru no? - where are you?
 
-douyuu imi - what do you mean?
+douyuu imi - what do you mean? (don't add の)
 
-nante yutta - what did you say?
+nante yutta no? - what did you say?
 
 Nihongo sukoshidake hanasemasu - i can speak a little Japanese 
 
