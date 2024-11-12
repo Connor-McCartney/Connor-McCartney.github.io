@@ -1,3 +1,5 @@
+kore, sore, are - that (kore is close to speaker, sore is close to other person, are is neither)
+
 ...から...まで  from ... til ...
 
 なう - now(casual, eg 8じなう ごはんなう 勉強なう)
