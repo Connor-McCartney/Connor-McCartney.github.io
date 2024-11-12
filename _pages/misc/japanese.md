@@ -1,3 +1,5 @@
+なう - now(casual, eg 8じなう ごはんなう 勉強なう)
+
 sorena - exactly/I agree
 
 りょうかい - ok (ri for short、some people say りょ！)
