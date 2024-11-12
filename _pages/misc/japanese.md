@@ -1,3 +1,5 @@
+...から...まで  from ... til ...
+
 なう - now(casual, eg 8じなう ごはんなう 勉強なう)
 
 sorena - exactly/I agree
