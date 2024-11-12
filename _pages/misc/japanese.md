@@ -1,3 +1,5 @@
+ganbatte - same as ganbaru, can be formal or casual
+
 kore, sore, are - that (kore is close to speaker, sore is close to other person, are is neither)
 
 ...から...まで  from ... til ...
