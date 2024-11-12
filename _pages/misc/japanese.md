@@ -1,3 +1,5 @@
+douyuu imi - what do you mean?
+
 nante yutta - what did you say?
 
 Nihongo sukoshidake hanasemasu - i can speak a little Japanese 
