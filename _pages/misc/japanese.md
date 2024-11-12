@@ -1,3 +1,5 @@
+dare to iru - who are you with?
+
 doko ni iru - where are you?
 
 douyuu imi - what do you mean?
