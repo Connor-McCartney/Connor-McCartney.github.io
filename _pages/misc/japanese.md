@@ -1,3 +1,5 @@
+doko ni iru - where are you?
+
 douyuu imi - what do you mean?
 
 nante yutta - what did you say?
