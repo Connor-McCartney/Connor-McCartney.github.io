@@ -1,3 +1,5 @@
+Nihongo sukoshidake hanasemasu - i can speak a little Japanese 
+
 ganbatte - same as ganbare, can be formal or casual
 
 kore, sore, are - that (kore is close to speaker, sore is close to other person, are is neither)
