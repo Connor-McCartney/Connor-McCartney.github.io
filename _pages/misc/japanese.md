@@ -3,7 +3,7 @@ dare to iru no? - who are you with?
 
 doko ni iru no? - where are you?
 
-douyuu imi - what do you mean? (don't add の)
+douyuu imi? - what do you mean? (don't add の)
 
 nante yutta no? - what did you say?
 
