@@ -1,3 +1,5 @@
+そう　and そうですか　is different
+
 musashikosugi - city manami lives in (can be abbreviated 2 ways,  むさこor小杉(こすぎ))
 
 
