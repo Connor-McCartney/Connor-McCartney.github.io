@@ -1,3 +1,5 @@
+musashikosugi - area near shibuya (can be abbreviated 2 ways,  むさこor小杉(こすぎ))
+
 
 dare to iru no? - who are you with?
 
