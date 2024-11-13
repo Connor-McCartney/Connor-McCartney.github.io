@@ -1,3 +1,5 @@
+それは何の意味があるの？ー what does that mean?
+
 そう　and そうですか　is different
 
 musashikosugi - city manami lives in (can be abbreviated 2 ways,  むさこor小杉(こすぎ))
