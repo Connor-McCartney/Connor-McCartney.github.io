@@ -6,7 +6,9 @@ kunai is for adjectives, janai is for nouns
 
 そう　and そうですか　is different
 
-musashikosugi - city manami lives in (can be abbreviated 2 ways,  むさこor小杉(こすぎ))
+Musashi-nakahara is near my location! - manamis city 
+
+musashikosugi - nearby city (can be abbreviated 2 ways,  むさこor小杉(こすぎ))
 
 
 dare to iru no? - who are you with?
