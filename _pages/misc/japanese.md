@@ -1,3 +1,5 @@
+kunai is for adjectives, janai is for nouns
+
 それは何の意味があるの？ー what does that mean?
 
 そう　and そうですか　is different
