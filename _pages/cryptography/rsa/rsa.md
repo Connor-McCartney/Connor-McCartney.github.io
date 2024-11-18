@@ -116,3 +116,7 @@ __vulnerability: strange prime structure__
 
 <span style="font-size:2em;">   [Prime Rotation - Compfest CTF 16 (2024)](/cryptography/rsa/PrimeRotation-CompfestCTF-16-2024)       </span> <br>
 __vulnerability: strange prime structure__
+
+
+<span style="font-size:2em;">   [krsa - INTIGRITI CTF 2024](/cryptography/rsa/krsa-INTIGRITICTF2024)       </span> <br>
+__vulnerability: meet in the middle attack__
