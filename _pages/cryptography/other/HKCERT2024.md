@@ -431,6 +431,68 @@ In this one a=1.
 
 So each lcg output is just `s + x*c` for some x.
 
+Some tests I made:
+
+```python
+import secrets
+
+class LCG:
+    def __init__(self, bits, a=None, c=None, seed=None):
+        self.seed = seed
+        if self.seed is None: self.seed = secrets.randbits(bits) | 1
+        self.a = a
+        if self.a is None: self.a = secrets.randbits(bits) | 1
+        self.c = c
+        if self.c is None: self.c = secrets.randbits(bits)
+        self.bits = bits
+        self.m = 2**bits
+
+    def next(self):
+        self.seed = (self.seed * self.a + self.c) % self.m
+        return self.seed
+
+def get_prime(lcg, bits):
+    i = 0
+    while True:
+        i += 1
+        p = 0
+        for _ in range(bits//lcg.bits):
+            p <<= lcg.bits
+            p |= lcg.next()
+        if p.bit_length() != bits: continue
+        if not is_prime(p): continue
+        return p, i
+
+
+c = 14258939715516539295587731120991968901228171455016001595761489750577784177213
+a = 1
+m = 2**256
+s =  secrets.randbits(256) | 1
+lcg = LCG(bits=256, seed=s, a=1, c=c)
+
+def f(x):
+    return (s + x*c) % m
+
+p1, i1 = get_prime(lcg, bits=1024)
+p2, i2 = get_prime(lcg, bits=1024)
+p3, i3 = get_prime(lcg, bits=1024)
+p4, i4 = get_prime(lcg, bits=1024)
+n = p1*p2*p3*p4
+print(f'{i1 = }\n{i2 = }\n{i3 = }\n{i4 = }')
+
+assert p1 % m == f((i1-1)*4+4)
+assert p2 % m == f((i1+i2-1)*4+4)
+assert p3 % m == f((i1+i2+i3-1)*4+4)
+assert p4 % m == f((i1+i2+i3+i4-1)*4+4)
+assert (p1*p2*p3*p4) % m == n % m
+
+x1 = (i1-1)*4+4
+x2 = (i1+i2-1)*4+4
+x3 = (i1+i2+i3-1)*4+4
+x4 = (i1+i2+i3+i4-1)*4+4
+assert n%m == (s + c*x1) * (s + c*x2) * (s + c*x3) * (s + c*x4) % m
+```
+
 <br>
 
 <br>
