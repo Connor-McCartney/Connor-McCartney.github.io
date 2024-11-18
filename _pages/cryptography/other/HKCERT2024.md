@@ -493,6 +493,8 @@ x4 = (i1+i2+i3+i4-1)*4+4
 assert n%m == (s + c*x1) * (s + c*x2) * (s + c*x3) * (s + c*x4) % m
 ```
 
+Now let's think about how to implement a meet in the middle attack. 
+
 <br>
 
 <br>
