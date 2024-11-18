@@ -429,6 +429,8 @@ c = 1266802300978184090854245674715079095836600894738822267313995030989656049200
 
 In this one a=1. 
 
+So each lcg output is just `s + x*c` for some x.
+
 <br>
 
 <br>
