@@ -480,17 +480,16 @@ p4, i4 = get_prime(lcg, bits=1024)
 n = p1*p2*p3*p4
 print(f'{i1 = }\n{i2 = }\n{i3 = }\n{i4 = }')
 
-assert p1 % m == f((i1-1)*4+4)
-assert p2 % m == f((i1+i2-1)*4+4)
-assert p3 % m == f((i1+i2+i3-1)*4+4)
-assert p4 % m == f((i1+i2+i3+i4-1)*4+4)
-assert (p1*p2*p3*p4) % m == n % m
-
-x1 = (i1-1)*4+4
-x2 = (i1+i2-1)*4+4
-x3 = (i1+i2+i3-1)*4+4
-x4 = (i1+i2+i3+i4-1)*4+4
-assert n%m == (s + c*x1) * (s + c*x2) * (s + c*x3) * (s + c*x4) % m
+x1 = i1*4
+x2 = (i1+i2)*4
+x3 = (i1+i2+i3)*4
+x4 = (i1+i2+i3+i4)*4
+assert p1 % m == f(x1)
+assert p2 % m == f(x2)
+assert p3 % m == f(x3)
+assert p4 % m == f(x4)
+assert n % m == (p1*p2*p3*p4) % m
+assert n % m == (s + c*x1) * (s + c*x2) * (s + c*x3) * (s + c*x4) % m
 ```
 
 Now let's think about how to implement a meet in the middle attack. 
