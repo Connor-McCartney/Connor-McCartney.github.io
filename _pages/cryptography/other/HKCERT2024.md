@@ -503,6 +503,9 @@ assert (n * pow(s + c*x1, -1, m) * pow(s + c*x2, -1, m)) % m == (s + c*x3) * (s 
 Some optimisations for looping include pick some max for x2 and x4, 
 and use the fact that `x1<x2`, `x3<x4`, `x3>x2_max`.
 
+Maybe it's over-optimising, but whatever. 
+
+
 <br>
 
 <br>
