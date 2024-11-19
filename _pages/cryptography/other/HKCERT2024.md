@@ -575,7 +575,14 @@ In this one the seed is created as `seed = secrets.randbits(128)<<128 | 1`
 
 It means that the seed mod 2^128 is just 1!
 
-So do a meet-in-the-middle attack mod 2^128. 
+So do a meet-in-the-middle attack mod 2^128, to recover x1, x2, x3, x4. 
+
+Then you form an equation g mod 2^256. 
+
+Currently, the beta version of sage is good at solving this, just do `.roots(multiplicities=False)`.
+
+If you don't have it yet, then lsb pruning is also fun/instructive:
+
 
 ```python
 from tqdm import trange
@@ -633,23 +640,10 @@ def f(x):
     return (pow(a, x, m) * s + c * sum([pow(a, i, m) for i in range(x)])) 
 
 g = f(x1) * f(x2) * f(x3) * f(x4) - n
-print(g)
-```
-
-<br>
 
 ```
-100%|████████████| 3200/3200 [00:03<00:00, 897.80it/s]
- 50%|█████▉      | 1597/3200 [00:11<00:11, 141.90it/s]
-2848 3158 595 1597
-108924944807510471527361265389033470153954812861966091885954214302108736726113*s^4 + 38992386920097947622863907343425192205880335011308745161116938232520565562976*s^3 + 2571816023115709059736316780072904940003910561877277204314754938902787170048*s^2 + 88822498322261174646976135916244140846808414037826320423728524010428411027456*s + 59007914126027716674986500776754835910017307110333784124911626365115906850367
-```
 
-Now we need to solve this equation mod 2^256. 
 
-Currently, the beta version of sage is good at this, just do `.roots(multiplicities=False)`.
-
-If you don't have it yet, then lsb pruning is also fun/instructive:
 
 <br>
 
