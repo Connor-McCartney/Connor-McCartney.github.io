@@ -585,7 +585,7 @@ If you don't have it yet, then lsb pruning is also fun/instructive:
 
 
 ```python
-from tqdm import trange
+from tqdm import trange, tqdm
 
 a = 14766004292360945258404852367497617471774948936126805425073927394403062559771
 c = 101392444572529008969348961056906071660419768871029068095780498478077435335658
@@ -605,6 +605,16 @@ class LCG:
         self.seed = (self.seed * self.a + self.c) % self.m
         self.counter += 1
         return self.seed
+
+def get_prime(lcg, bits):
+    while True:
+        p = 0
+        for _ in range(bits//lcg.bits):
+            p <<= lcg.bits
+            p |= lcg.next()
+        if p.bit_length() != bits: continue
+        if not is_prime(p): continue
+        return p
 
 def get_chunk(lcg, bits):
     p = 0
@@ -631,16 +641,42 @@ def mitm():
                 return (x1, x2, x3, x4)
 
 x1, x2, x3, x4 = mitm()
+#x1, x2, x3, x4 = [2848, 3158, 595, 1597]
 print(x1, x2, x3, x4)
-
 x1, x2, x3, x4 = (4*(x1+1), 4*(x2+1), 4*(x3+1), 4*(x4+1))
-PR.<s> = PolynomialRing(Zmod(2**256))
 
+m = 2**256 # now work mod 2**256
+PR.<s> = PolynomialRing(Zmod(m))
 def f(x):
     return (pow(a, x, m) * s + c * sum([pow(a, i, m) for i in range(x)])) 
-
 g = f(x1) * f(x2) * f(x3) * f(x4) - n
+g = g.change_ring(ZZ)
 
+sol = {0}
+for i in range(256):
+    cur_sol = set()
+    for rr in sol:
+        for b in [0, 1]:
+            r = b*2**i + rr
+            M = 2**(i+1)
+            if 0 != g(r) % M:
+                continue
+            cur_sol.add(r)
+        sol = cur_sol
+
+for seed in tqdm(sol):
+    if seed % 2**128 != 1:
+        continue
+    if seed.bit_length() != 256:
+        continue
+    lcg = LCG(bits=256, seed=seed, a=a, c=c)
+    p = get_prime(lcg, 1024) 
+    if n % p == 0:
+        break
+flag = pow(ct, pow(e, -1, p-1), p)
+print(bytes.fromhex(f'{flag:x}'))
+
+# hkcert24{i5_th1s_y3t_4n0th3r_l33tc0d3_f0ur_sum_qu3s71on?}
 ```
 
 
