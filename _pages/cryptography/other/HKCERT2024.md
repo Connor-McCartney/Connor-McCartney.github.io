@@ -573,6 +573,10 @@ c = 1030622163199946338830217267072555058338941159822442297977445004007249410594
 
 In this one the seed is created as `seed = secrets.randbits(128)<<128 | 1`
 
+It means that the seed mod 2^128 is just 1!
+
+So do a meet-in-the-middle attack mod 2^128. 
+
 <br>
 
 <br>
