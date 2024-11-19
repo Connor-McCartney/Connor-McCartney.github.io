@@ -492,18 +492,6 @@ assert n % m == (p1*p2*p3*p4) % m
 assert n % m == (s + c*x1) * (s + c*x2) * (s + c*x3) * (s + c*x4) % m
 ```
 
-Now let's think about how to implement a meet in the middle attack. 
-
-We can brute x1 and x2 in a pair, then x3 and x4 in a pair and look for an intersection. 
-
-```python
-assert (n * pow(s + c*x1, -1, m) * pow(s + c*x2, -1, m)) % m == (s + c*x3) * (s + c*x4) % m
-```
-
-Some optimisations for looping include pick some max for x2 and x4, 
-and use the fact that `x1<x2`, `x3<x4`, `x3>x2_max`.
-
-Maybe it's over-optimising, but whatever. 
 
 
 <br>
