@@ -578,7 +578,6 @@ It means that the seed mod 2^128 is just 1!
 So do a meet-in-the-middle attack mod 2^128. 
 
 ```python
-from re import error
 from tqdm import trange
 
 a = 14766004292360945258404852367497617471774948936126805425073927394403062559771
