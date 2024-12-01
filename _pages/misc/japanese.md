@@ -1,3 +1,5 @@
+nuigurumi - plushy
+
 futsuu - so-so/middle
 
 I've seen that ＝みたことある
