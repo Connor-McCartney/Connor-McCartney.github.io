@@ -1,3 +1,5 @@
+futsuu - so-so/middle
+
 I've seen that ＝みたことある
 
 kunai is for adjectives, janai is for nouns
