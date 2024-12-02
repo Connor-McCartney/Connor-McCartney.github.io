@@ -478,18 +478,79 @@ p2, i2 = get_prime(lcg, bits=1024)
 p3, i3 = get_prime(lcg, bits=1024)
 p4, i4 = get_prime(lcg, bits=1024)
 n = p1*p2*p3*p4
-print(f'{i1 = }\n{i2 = }\n{i3 = }\n{i4 = }')
+print(f'{i1 = }\n{i2 = }\n{i3 = }\n{i4 = }\n')
 
-x1 = i1*4
-x2 = (i1+i2)*4
-x3 = (i1+i2+i3)*4
-x4 = (i1+i2+i3+i4)*4
-assert p1 % m == f(x1)
-assert p2 % m == f(x2)
-assert p3 % m == f(x3)
-assert p4 % m == f(x4)
-assert n % m == (p1*p2*p3*p4) % m
-assert n % m == (s + c*x1) * (s + c*x2) * (s + c*x3) * (s + c*x4) % m
+x1 = i1*4 - 3
+x2 = (i1+i2)*4 - 3
+x3 = (i1+i2+i3)*4 - 3
+x4 = (i1+i2+i3+i4)*4 - 3
+
+assert p1 == f(x1+3) + f(x1+2)*2**256 + f(x1+1)*2**512 + f(x1)*2**768
+assert p2 == f(x2+3) + f(x2+2)*2**256 + f(x2+1)*2**512 + f(x2)*2**768
+assert p3 == f(x3+3) + f(x3+2)*2**256 + f(x3+1)*2**512 + f(x3)*2**768
+assert p4 == f(x4+3) + f(x4+2)*2**256 + f(x4+1)*2**512 + f(x4)*2**768
+
+# each f(x) is mod m, let's convert them to +k*m where k should be very small
+k1 = (f(x1) - (s + x1*c)) // m
+k2 = (f(x2) - (s + x2*c)) // m
+k3 = (f(x3) - (s + x3*c)) // m
+k4 = (f(x4) - (s + x4*c)) // m
+print(f'{k1 = }\n{k2 = }\n{k3 = }\n{k4 = }\n')
+
+assert f(x1) == s + x1*c + k1*m
+assert f(x2) == s + x2*c + k2*m
+assert f(x3) == s + x3*c + k3*m
+assert f(x4) == s + x4*c + k4*m
+
+
+# we also need to know f(x+1), f(x+2) and f(x+3)
+# from testing the k needed will all be the same or 1 smaller
+# so use some new variables j that are either 0 or -1
+j1_1 = (f(x1+1) - (s + (x1+1)*c)) // m - k1
+j1_2 = (f(x1+2) - (s + (x1+2)*c)) // m - k1
+j1_3 = (f(x1+3) - (s + (x1+3)*c)) // m - k1
+print(f'{j1_1 = }\n{j1_2 = }\n{j1_3 = }\n')
+j2_1 = (f(x2+1) - (s + (x2+1)*c)) // m - k2
+j2_2 = (f(x2+2) - (s + (x2+2)*c)) // m - k2
+j2_3 = (f(x2+3) - (s + (x2+3)*c)) // m - k2
+print(f'{j2_1 = }\n{j2_2 = }\n{j2_3 = }\n')
+j3_1 = (f(x3+1) - (s + (x3+1)*c)) // m - k3
+j3_2 = (f(x3+2) - (s + (x3+2)*c)) // m - k3
+j3_3 = (f(x3+3) - (s + (x3+3)*c)) // m - k3
+print(f'{j3_1 = }\n{j3_2 = }\n{j3_3 = }\n')
+j4_1 = (f(x4+1) - (s + (x4+1)*c)) // m - k4
+j4_2 = (f(x4+2) - (s + (x4+2)*c)) // m - k4
+j4_3 = (f(x4+3) - (s + (x4+3)*c)) // m - k4
+print(f'{j4_1 = }\n{j4_2 = }\n{j4_3 = }\n')
+
+
+assert f(x1+1) == (j1_1 + k1)*m + (s + (x1+1)*c)
+...
+
+
+assert p1 == ((j1_3 + k1)*m + s + (x1+3)*c) + \
+             ((j1_2 + k1)*m + s + (x1+2)*c)*2**256 + \
+             ((j1_1 + k1)*m + s + (x1+1)*c)*2**512 + \
+                ((0 + k1)*m + s + (x1+0)*c)*2**768
+
+assert p2 == ((j2_3 + k2)*m + s + (x2+3)*c) + \
+             ((j2_2 + k2)*m + s + (x2+2)*c)*2**256 + \
+             ((j2_1 + k2)*m + s + (x2+1)*c)*2**512 + \
+                ((0 + k2)*m + s + (x2+0)*c)*2**768
+
+
+assert p3 == ((j3_3 + k3)*m + s + (x3+3)*c) + \
+             ((j3_2 + k3)*m + s + (x3+2)*c)*2**256 + \
+             ((j3_1 + k3)*m + s + (x3+1)*c)*2**512 + \
+                ((0 + k3)*m + s + (x3+0)*c)*2**768
+
+assert p4 == ((j4_3 + k4)*m + s + (x4+3)*c) + \
+             ((j4_2 + k4)*m + s + (x4+2)*c)*2**256 + \
+             ((j4_1 + k4)*m + s + (x4+1)*c)*2**512 + \
+                ((0 + k4)*m + s + (x4+0)*c)*2**768
+
+# all j's can be bruted easily
+# it just leaves s (<2**256), k's (very small) and x's (very small)
 ```
 
 
