@@ -564,6 +564,14 @@ assert p3 == r + m*(j3_1*2**512 + j3_2*2**256 + j3_3) + q*(k3*m + s + x3*c)
 assert p4 == r + m*(j4_1*2**512 + j4_2*2**256 + j4_3) + q*(k4*m + s + x4*c)
 ```
 
+Well now what...
+
+if you create an equation by multiplying all p's in ZZ, you're going to get a non-linear equation...
+
+if you create an equation by multiplying all p's in GF(q), all your unknowns will just disappear...
+
+Mystiz actually works in GF(q)!
+
 <br>
 
 <br>
