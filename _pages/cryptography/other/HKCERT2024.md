@@ -540,12 +540,29 @@ assert p4 == q*(s + 4*x4*c - k4*m) + m*(-j4_2*2**512 - j4_3*2**256 - j4_4) + r
 # if you create an equation by multiplying all p’s in ZZ, you’re going to get a non-linear equation…
 # if you create an equation by multiplying all p’s in Zmod(q), all your unknowns will just disappear…
 # Mystiz actually works in Zmod(q**2)! It results in a nice linear equation we can perform LLL on!
+
 PR.<s,k1,k2,k3,k4,x1,x2,x3,x4> = PolynomialRing(Zmod(q**2))
 p1 = q*(s + 4*x1*c - k1*m) + m*(-j1_2*2**512 - j1_3*2**256 - j1_4) + r
 p2 = q*(s + 4*x2*c - k2*m) + m*(-j2_2*2**512 - j2_3*2**256 - j2_4) + r
 p3 = q*(s + 4*x3*c - k3*m) + m*(-j3_2*2**512 - j3_3*2**256 - j3_4) + r
 p4 = q*(s + 4*x4*c - k4*m) + m*(-j4_2*2**512 - j4_3*2**256 - j4_4) + r
 f = p1*p2*p3*p4 - n
+
+M = (
+    identity_matrix(QQ, 10)
+    .augment(vector(f.coefficients()))
+    .stack(vector([0]*10 + [q**2]))
+)
+M[:, 0] /= m
+M = M.LLL()
+M[:, 0] *= m
+
+for row in M:
+    seed = abs(row[0])
+    if row[-1] != 0 or abs(row[-2]) != 1 or seed % 2 != 1:
+        continue
+    p, _ = get_prime(LCG(a=1, c=c, seed=seed, bits=256), bits=1024)
+    print(n%p == 0)
 ```
 
 <br>
