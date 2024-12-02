@@ -431,8 +431,6 @@ In this one a=1.
 
 So each lcg output is just `s + x*c` for some x.
 
-Some tests I made:
-
 ```python
 import secrets
 
@@ -468,109 +466,87 @@ c = 1425893971551653929558773112099196890122817145501600159576148975057778417721
 a = 1
 m = 2**256
 s =  secrets.randbits(256) | 1
+print(f'{s = }')
 lcg = LCG(bits=256, seed=s, a=1, c=c)
-
-def f(x):
-    return (s + x*c) % m
 
 p1, i1 = get_prime(lcg, bits=1024)
 p2, i2 = get_prime(lcg, bits=1024)
 p3, i3 = get_prime(lcg, bits=1024)
 p4, i4 = get_prime(lcg, bits=1024)
 n = p1*p2*p3*p4
-print(f'{i1 = }\n{i2 = }\n{i3 = }\n{i4 = }\n')
 
-x1 = i1*4 - 3
-x2 = (i1+i2)*4 - 3
-x3 = (i1+i2+i3)*4 - 3
-x4 = (i1+i2+i3+i4)*4 - 3
+# each LCG output is some (s + x*c) % m
+x1 = i1 - 1
+x2 = i1 + i2 - 1
+x3 = i1 + i2 + i3 - 1
+x4 = i1 + i2 + i3 + i4 - 1
+print(f'{x1 = }\n{x2 = }\n{x3 = }\n{x4 = }\n')
 
-assert p1 == f(x1+3) + f(x1+2)*2**256 + f(x1+1)*2**512 + f(x1)*2**768
-assert p2 == f(x2+3) + f(x2+2)*2**256 + f(x2+1)*2**512 + f(x2)*2**768
-assert p3 == f(x3+3) + f(x3+2)*2**256 + f(x3+1)*2**512 + f(x3)*2**768
-assert p4 == f(x4+3) + f(x4+2)*2**256 + f(x4+1)*2**512 + f(x4)*2**768
+assert p1 ==  (s + (x1*4+4)*c) % m + \
+             ((s + (x1*4+3)*c) % m) * 2**256 + \
+             ((s + (x1*4+2)*c) % m) * 2**512 + \
+             ((s + (x1*4+1)*c) % m) * 2**768
 
-# each f(x) is mod m, let's convert them to +k*m where k should be very small
-k1 = (f(x1) - (s + x1*c)) // m
-k2 = (f(x2) - (s + x2*c)) // m
-k3 = (f(x3) - (s + x3*c)) // m
-k4 = (f(x4) - (s + x4*c)) // m
+# the mod m's are annoying so let's get rid of them
+# replace each with - k*m
+k1 = ((s + (x1*4+1)*c) - ((s + (x1*4+1)*c) % m)) // m
+k2 = ((s + (x2*4+1)*c) - ((s + (x2*4+1)*c) % m)) // m
+k3 = ((s + (x3*4+1)*c) - ((s + (x3*4+1)*c) % m)) // m
+k4 = ((s + (x4*4+1)*c) - ((s + (x4*4+1)*c) % m)) // m
 print(f'{k1 = }\n{k2 = }\n{k3 = }\n{k4 = }\n')
+assert (s + (x1*4+1)*c) % m == s + (x1*4+1)*c - k1*m
 
-assert f(x1) == s + x1*c + k1*m
-assert f(x2) == s + x2*c + k2*m
-assert f(x3) == s + x3*c + k3*m
-assert f(x4) == s + x4*c + k4*m
+# k might be different for consecutive lcg outputs, 
+# but through testing, only by a maximum difference of 1
+# so use some new variables j that are either 0 or 1
 
+j1_2 = ((s + (x1*4+2)*c) - ((s + (x1*4+2)*c) % m)) // m - k1
+j1_3 = ((s + (x1*4+3)*c) - ((s + (x1*4+3)*c) % m)) // m - k1
+j1_4 = ((s + (x1*4+4)*c) - ((s + (x1*4+4)*c) % m)) // m - k1
+#print(f'{j1_2 = }\n{j1_3 = }\n{j1_4 = }\n')
+assert (s + (x1*4+2)*c) % m == (s + (x1*4+2)*c) - (k1 + j1_2)*m
 
-# we also need to know f(x+1), f(x+2) and f(x+3)
-# from testing the k needed will all be the same or 1 smaller
-# so use some new variables j that are either 0 or -1
-j1_1 = (f(x1+1) - (s + (x1+1)*c)) // m - k1
-j1_2 = (f(x1+2) - (s + (x1+2)*c)) // m - k1
-j1_3 = (f(x1+3) - (s + (x1+3)*c)) // m - k1
-print(f'{j1_1 = }\n{j1_2 = }\n{j1_3 = }\n')
-j2_1 = (f(x2+1) - (s + (x2+1)*c)) // m - k2
-j2_2 = (f(x2+2) - (s + (x2+2)*c)) // m - k2
-j2_3 = (f(x2+3) - (s + (x2+3)*c)) // m - k2
-print(f'{j2_1 = }\n{j2_2 = }\n{j2_3 = }\n')
-j3_1 = (f(x3+1) - (s + (x3+1)*c)) // m - k3
-j3_2 = (f(x3+2) - (s + (x3+2)*c)) // m - k3
-j3_3 = (f(x3+3) - (s + (x3+3)*c)) // m - k3
-print(f'{j3_1 = }\n{j3_2 = }\n{j3_3 = }\n')
-j4_1 = (f(x4+1) - (s + (x4+1)*c)) // m - k4
-j4_2 = (f(x4+2) - (s + (x4+2)*c)) // m - k4
-j4_3 = (f(x4+3) - (s + (x4+3)*c)) // m - k4
-print(f'{j4_1 = }\n{j4_2 = }\n{j4_3 = }\n')
+j2_2 = ((s + (x2*4+2)*c) - ((s + (x2*4+2)*c) % m)) // m - k2
+j2_3 = ((s + (x2*4+3)*c) - ((s + (x2*4+3)*c) % m)) // m - k2
+j2_4 = ((s + (x2*4+4)*c) - ((s + (x2*4+4)*c) % m)) // m - k2
+#print(f'{j2_2 = }\n{j2_3 = }\n{j2_4 = }\n')
 
+j3_2 = ((s + (x3*4+2)*c) - ((s + (x3*4+2)*c) % m)) // m - k3
+j3_3 = ((s + (x3*4+3)*c) - ((s + (x3*4+3)*c) % m)) // m - k3
+j3_4 = ((s + (x3*4+4)*c) - ((s + (x3*4+4)*c) % m)) // m - k3
+#print(f'{j3_2 = }\n{j3_3 = }\n{j3_4 = }\n')
 
-assert f(x1+1) == (j1_1 + k1)*m + (s + (x1+1)*c)
-...
+j4_2 = ((s + (x4*4+2)*c) - ((s + (x4*4+2)*c) % m)) // m - k4
+j4_3 = ((s + (x4*4+3)*c) - ((s + (x4*4+3)*c) % m)) // m - k4
+j4_4 = ((s + (x4*4+4)*c) - ((s + (x4*4+4)*c) % m)) // m - k4
+#print(f'{j4_2 = }\n{j4_3 = }\n{j4_4 = }\n')
 
+# now sub all these variables into our expression for p
+assert p1 ==  (s + (x1*4+4)*c) - (k1+j1_4)*m + \
+             ((s + (x1*4+3)*c) - (k1+j1_3)*m) * 2**256 + \
+             ((s + (x1*4+2)*c) - (k1+j1_2)*m) * 2**512 + \
+             ((s + (x1*4+1)*c) - k1*m) * 2**768
 
-assert p1 == ((j1_3 + k1)*m + s + (x1+3)*c) + \
-             ((j1_2 + k1)*m + s + (x1+2)*c)*2**256 + \
-             ((j1_1 + k1)*m + s + (x1+1)*c)*2**512 + \
-                ((0 + k1)*m + s + (x1+0)*c)*2**768
-
-assert p2 == ((j2_3 + k2)*m + s + (x2+3)*c) + \
-             ((j2_2 + k2)*m + s + (x2+2)*c)*2**256 + \
-             ((j2_1 + k2)*m + s + (x2+1)*c)*2**512 + \
-                ((0 + k2)*m + s + (x2+0)*c)*2**768
-
-
-assert p3 == ((j3_3 + k3)*m + s + (x3+3)*c) + \
-             ((j3_2 + k3)*m + s + (x3+2)*c)*2**256 + \
-             ((j3_1 + k3)*m + s + (x3+1)*c)*2**512 + \
-                ((0 + k3)*m + s + (x3+0)*c)*2**768
-
-assert p4 == ((j4_3 + k4)*m + s + (x4+3)*c) + \
-             ((j4_2 + k4)*m + s + (x4+2)*c)*2**256 + \
-             ((j4_1 + k4)*m + s + (x4+1)*c)*2**512 + \
-                ((0 + k4)*m + s + (x4+0)*c)*2**768
-
-# all j's can be bruted easily
-# it just leaves s (<2**256), k's (very small) and x's (very small)
-```
-
-Now you can rearrange each p:
-
-```python
+# factor:
 q = 2**768 + 2**512 + 2**256 + 1
-r = c*(2**512 + 2*2**256 + 3)
-assert p1 == r + m*(j1_1*2**512 + j1_2*2**256 + j1_3) + q*(k1*m + s + x1*c)
-assert p2 == r + m*(j2_1*2**512 + j2_2*2**256 + j2_3) + q*(k2*m + s + x2*c)
-assert p3 == r + m*(j3_1*2**512 + j3_2*2**256 + j3_3) + q*(k3*m + s + x3*c)
-assert p4 == r + m*(j4_1*2**512 + j4_2*2**256 + j4_3) + q*(k4*m + s + x4*c)
+r = c*(2**768 + 2*2**512 + 3*2**256 + 4)
+assert p1 == q*(s + 4*x1*c - k1*m) + m*(-j1_2*2**512 - j1_3*2**256 - j1_4) + r
+assert p2 == q*(s + 4*x2*c - k2*m) + m*(-j2_2*2**512 - j2_3*2**256 - j2_4) + r
+assert p3 == q*(s + 4*x3*c - k3*m) + m*(-j3_2*2**512 - j3_3*2**256 - j3_4) + r
+assert p4 == q*(s + 4*x4*c - k4*m) + m*(-j4_2*2**512 - j4_3*2**256 - j4_4) + r
+
+
+# Well now what…
+# if you create an equation by multiplying all p’s in ZZ, you’re going to get a non-linear equation…
+# if you create an equation by multiplying all p’s in Zmod(q), all your unknowns will just disappear…
+# Mystiz actually works in Zmod(q**2)! It results in a nice linear equation we can perform LLL on!
+PR.<s,k1,k2,k3,k4,x1,x2,x3,x4> = PolynomialRing(Zmod(q**2))
+p1 = q*(s + 4*x1*c - k1*m) + m*(-j1_2*2**512 - j1_3*2**256 - j1_4) + r
+p2 = q*(s + 4*x2*c - k2*m) + m*(-j2_2*2**512 - j2_3*2**256 - j2_4) + r
+p3 = q*(s + 4*x3*c - k3*m) + m*(-j3_2*2**512 - j3_3*2**256 - j3_4) + r
+p4 = q*(s + 4*x4*c - k4*m) + m*(-j4_2*2**512 - j4_3*2**256 - j4_4) + r
+f = p1*p2*p3*p4 - n
 ```
-
-Well now what...
-
-if you create an equation by multiplying all p's in ZZ, you're going to get a non-linear equation...
-
-if you create an equation by multiplying all p's in Zmod(q), all your unknowns will just disappear...
-
-Mystiz actually works in Zmod(q**2)! It results in a nice linear equation we can perform LLL on!
 
 <br>
 
