@@ -553,6 +553,7 @@ assert p4 == ((j4_3 + k4)*m + s + (x4+3)*c) + \
 # it just leaves s (<2**256), k's (very small) and x's (very small)
 ```
 
+Now you can rearrange each p:
 
 
 <br>
