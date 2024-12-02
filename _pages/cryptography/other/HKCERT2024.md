@@ -570,7 +570,7 @@ if you create an equation by multiplying all p's in ZZ, you're going to get a no
 
 if you create an equation by multiplying all p's in GF(q), all your unknowns will just disappear...
 
-Mystiz actually works in GF(q)!
+Mystiz actually works in GF(q**2)!
 
 <br>
 
