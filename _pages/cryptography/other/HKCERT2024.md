@@ -570,7 +570,7 @@ if you create an equation by multiplying all p's in ZZ, you're going to get a no
 
 if you create an equation by multiplying all p's in Zmod(q), all your unknowns will just disappear...
 
-Mystiz actually works in Zmod(q**2)!
+Mystiz actually works in Zmod(q**2)! It results in a nice linear equation we can perform LLL on!
 
 <br>
 
