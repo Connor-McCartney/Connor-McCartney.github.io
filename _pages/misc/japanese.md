@@ -1,3 +1,5 @@
+oboeta/oboeru - remember
+
 nabe - pot meal
 
 tsumire - chicken/fish ball
