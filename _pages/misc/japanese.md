@@ -1,3 +1,13 @@
+nabe - pot meal
+
+tsumire - chicken/fish ball
+
+osoi - slow
+
+hayai - fast
+
+dashi - broth
+
 nuigurumi - plushy
 
 futsuu - so-so/middle
