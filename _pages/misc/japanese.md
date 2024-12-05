@@ -1,3 +1,5 @@
+かも means maybe
+
 oboeta/oboeru - remember
 
 nabe - pot meal
