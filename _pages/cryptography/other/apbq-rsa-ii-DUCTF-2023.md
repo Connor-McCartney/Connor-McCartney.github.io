@@ -193,3 +193,7 @@ assert k == a2^2*b1^2 - 2*a1*a2*b1*b2 + a1^2*b2^2
 ```
 
 Sub in x1 and x2:
+
+```python
+assert k == a2^2*b1^2 - 2*x1*x2 + a1^2*b2^2
+```
