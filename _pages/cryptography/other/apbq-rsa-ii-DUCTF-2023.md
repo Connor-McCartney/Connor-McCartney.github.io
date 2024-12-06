@@ -109,7 +109,7 @@ $$x_1 = a_1 \cdot b_1$$
 
 $$x_2 = a_2 \cdot b_2$$
 
-$$x_3 = ?$$
+$$x_3 = -a_1 \cdot b_2 - a_2 \cdot b_1$$
 
 Consider:
 
