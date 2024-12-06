@@ -210,3 +210,5 @@ assert x5 == (isqrt(k)-x3)//2 or x5 == (-isqrt(k)-x3)//2
 ```
 
 Finally we can take GCD and divide by some small factor :)
+
+
