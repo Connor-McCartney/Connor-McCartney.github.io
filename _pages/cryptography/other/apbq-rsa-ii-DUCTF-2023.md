@@ -156,4 +156,4 @@ It must be
 
 $$x_1 \cdot h_1 \cdot h_1 + x_2 \cdot h_2 \cdot h_2 + x_3 \cdot h_1 \cdot h_2 + k \cdot n = 0$$
 
-for some k. 
+for some k. We can easily solve this since it's the only unknown:
