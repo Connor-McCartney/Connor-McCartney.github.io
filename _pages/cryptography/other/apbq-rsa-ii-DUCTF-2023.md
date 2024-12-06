@@ -93,3 +93,13 @@ for row in M:
 ```
 
 <br>
+
+
+--- 
+
+Extension: 
+
+Can you do it with just 2 hints?!
+
+Yes!
+
