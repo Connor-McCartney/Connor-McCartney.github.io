@@ -192,8 +192,11 @@ So we have
 assert k == a2^2*b1^2 - 2*a1*a2*b1*b2 + a1^2*b2^2
 ```
 
-Sub in x1 and x2:
+Factor it:
 
 ```python
-assert k == a2^2*b1^2 - 2*x1*x2 + a1^2*b2^2
+x4 = a2*b1
+x5 = a1*b2
+assert k == (x4 - x5)^2
+assert isqrt(k) == x4-x5 or isqrt(k) == x5-x4
 ```
