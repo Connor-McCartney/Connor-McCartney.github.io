@@ -152,3 +152,8 @@ Remember
 
 $$x_1 \cdot h_1 \cdot h_1 + x_2 \cdot h_2 \cdot h_2 + x_3 \cdot h_1 \cdot h_2 \equiv 0 \pmod n$$
 
+It must be 
+
+$$x_1 \cdot h_1 \cdot h_1 + x_2 \cdot h_2 \cdot h_2 + x_3 \cdot h_1 \cdot h_2 + k \cdot n = 0$$
+
+for some k. 
