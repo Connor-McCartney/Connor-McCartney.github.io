@@ -145,3 +145,10 @@ while True:
     X1, X2, X3, _ = M[0]
     print(x1//X1, x2//X2, x3//X3)
 ```
+
+<br>
+
+Remember 
+
+$$x_1 \cdot h_1 \cdot h_1 + x_2 \cdot h_2 \cdot h_2 + x_3 \cdot h_1 \cdot h_2 \pmod n$$
+
