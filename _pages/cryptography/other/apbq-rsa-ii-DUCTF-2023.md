@@ -105,9 +105,9 @@ Yes!
 
 Let:
 
-$$x_1 = a_1 \cdot b_1$$
+$$x_1 = a_2 \cdot b_2$$
 
-$$x_2 = a_2 \cdot b_2$$
+$$x_2 = a_1 \cdot b_1$$
 
 $$x_3 = -a_1 \cdot b_2 - a_2 \cdot b_1$$
 
@@ -115,4 +115,19 @@ Consider:
 
 $$x_1 \cdot h_1 \cdot h_1 + x_2 \cdot h_2 \cdot h_2 + x_3 \cdot h_1 \cdot h_2$$
 
+It equals 0 mod n:
 
+```python
+p = random_prime(2**1024)
+q = random_prime(2**1024)
+n = p * q
+
+a1, a2, b1, b2 = [randint(0, 2**312) for _ in range(4)]
+h1 = a1 * p + b1 * q
+h2 = a2 * p + b2 * q
+
+x1 = a2*b2
+x2 = a1*b1
+x3 = -a1*b2 - a2*b1
+assert 0 == (x1*h1*h1 + x2*h2*h2 + x3*h1*h2) % n
+```
