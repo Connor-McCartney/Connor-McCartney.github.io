@@ -115,4 +115,4 @@ Consider:
 
 $$x_1 \cdot h_1 \cdot h_1 + x_2 \cdot h_2 \cdot h_2 + x_3 \cdot h_1 \cdot h_2$$
 
-If you expand it all out it can be seen to be equal to 0 mod n. 
+
