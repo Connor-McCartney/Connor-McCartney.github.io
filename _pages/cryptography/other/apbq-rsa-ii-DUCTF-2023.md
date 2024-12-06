@@ -202,3 +202,9 @@ assert isqrt(k) == x4-x5 or isqrt(k) == x5-x4
 ```
 
 We want to solve x5 and x4. We've already solved x3 so we can use that to help us do that:
+
+```python
+assert x3 == -x5 - x4
+assert x4 == -x5 - x3
+assert x5 == (isqrt(k)-x3)//2 or x5 == (-isqrt(k)-x3)//2
+```
