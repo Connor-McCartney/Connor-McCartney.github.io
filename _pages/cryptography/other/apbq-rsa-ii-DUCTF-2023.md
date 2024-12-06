@@ -165,8 +165,4 @@ assert 0 == (x1*h1*h1 + x2*h2*h2 + x3*h1*h2) + k*n
 
 Now what is k actually equal to in terms of our variables? 
 
-We can expand our expression...
-
-$$x_1 \cdot h_1 \cdot h_1 + x_2 \cdot h_2 \cdot h_2 + x_3 \cdot h_1 \cdot h_2$$
-
-$$= x_1 \cdot h_1 \cdot h_1 + x_2 \cdot h_2 \cdot h_2 + x_3 \cdot h_1 \cdot h_2$$
+We can expand our equation...
