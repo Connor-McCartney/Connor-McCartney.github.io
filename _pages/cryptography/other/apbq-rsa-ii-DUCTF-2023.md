@@ -115,21 +115,33 @@ Consider:
 
 $$x_1 \cdot h_1 \cdot h_1 + x_2 \cdot h_2 \cdot h_2 + x_3 \cdot h_1 \cdot h_2$$
 
-It equals 0 mod n:
+It equals 0 mod n, and using LLL you can get some divisor of x1 x2 and x3:
 
 ```python
-p = random_prime(2**1024)
-q = random_prime(2**1024)
-n = p * q
+while True:
+    p = random_prime(2**1024)
+    q = random_prime(2**1024)
+    n = p * q
 
-a1, a2, b1, b2 = [randint(0, 2**312) for _ in range(4)]
-h1 = a1 * p + b1 * q
-h2 = a2 * p + b2 * q
+    a1, a2, b1, b2 = [randint(0, 2**312) for _ in range(4)]
+    h1 = a1 * p + b1 * q
+    h2 = a2 * p + b2 * q
 
-x1 = a2*b2
-x2 = a1*b1
-x3 = -a1*b2 - a2*b1
-assert 0 == (x1*h1*h1 + x2*h2*h2 + x3*h1*h2) % n
+    x1 = a2*b2
+    x2 = a1*b1
+    x3 = -a1*b2 - a2*b1
+    assert 0 == (x1*h1*h1 + x2*h2*h2 + x3*h1*h2) % n
+
+    M = Matrix([
+        [1, 0, 0, h1 * h1],
+        [0, 1, 0, h2 * h2],
+        [0, 0, 1, h1 * h2],
+        [0, 0, 0, n]
+    ])
+
+    # target: [x1, x2, x3, 0]
+    W = diagonal_matrix([1, 1, 1, 2**(312 * 2)])
+    M = (M*W).LLL()/W
+    X1, X2, X3, _ = M[0]
+    print(x1//X1, x2//X2, x3//X3)
 ```
-
-Using LLL you can get some divisor of x1 x2 and x3:
