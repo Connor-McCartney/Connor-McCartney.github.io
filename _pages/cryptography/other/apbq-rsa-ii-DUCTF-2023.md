@@ -131,3 +131,5 @@ x2 = a1*b1
 x3 = -a1*b2 - a2*b1
 assert 0 == (x1*h1*h1 + x2*h2*h2 + x3*h1*h2) % n
 ```
+
+Using LLL you can get some multiple of x1 x2 and x3:
