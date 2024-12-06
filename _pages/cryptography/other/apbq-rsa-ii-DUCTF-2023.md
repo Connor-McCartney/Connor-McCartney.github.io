@@ -150,5 +150,5 @@ while True:
 
 Remember 
 
-$$x_1 \cdot h_1 \cdot h_1 + x_2 \cdot h_2 \cdot h_2 + x_3 \cdot h_1 \cdot h_2 \pmod n$$
+$$x_1 \cdot h_1 \cdot h_1 + x_2 \cdot h_2 \cdot h_2 + x_3 \cdot h_1 \cdot h_2 \equiv 0 \pmod n$$
 
