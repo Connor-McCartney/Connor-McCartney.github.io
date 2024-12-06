@@ -212,3 +212,49 @@ assert x5 == (isqrt(k)-x3)//2 or x5 == (-isqrt(k)-x3)//2
 Finally we can take GCD and divide by some small factor :)
 
 
+```python
+def solve(h1, h2, n):
+    M = Matrix([
+        [1, 0, 0, h1 * h1],
+        [0, 1, 0, h2 * h2],
+        [0, 0, 1, h1 * h2],
+        [0, 0, 0, n]
+    ])
+    W = diagonal_matrix([1, 1, 1, 2**(312 * 2)])
+    M = (M*W).LLL()/W
+    row = M[0]
+    if row[0] < 0:
+        row *= -1
+    for i in range(1, 1000):
+        x1, x2, x3, _ = row*i
+    
+        k = -(x1*h1*h1 + x2*h2*h2 + x3*h1*h2)//n
+        for x5 in [(isqrt(k)-x3)//2, (-isqrt(k)-x3)//2]:
+            x4 = -x5 - x3
+            for j in range(1, 1000):
+                a1 = gcd(x2, x5)//j
+                a2 = gcd(x1, x4)//j
+                b1 = x4 // a2
+                b2 = x5 // a1
+                p = int((a1 * h2 - a2 * h1) // isqrt(k))
+                if n%p == 0:
+                    return p, n//p
+
+    return 0, 0
+
+def main():
+    p = random_prime(2**1024)
+    q = random_prime(2**1024)
+    a1, a2, b1, b2 = [randint(0, 2**312) for _ in range(4)]
+
+    n = p * q
+    h1 = a1 * p + b1 * q
+    h2 = a2 * p + b2 * q
+
+    p, q = solve(h1, h2, n)
+    print(f'{p = }\n{q = }\n')
+    print(p*q == n)
+
+while True:
+    main()
+```
