@@ -166,3 +166,28 @@ assert 0 == (x1*h1*h1 + x2*h2*h2 + x3*h1*h2) + k*n
 Now what is k actually equal to in terms of our variables? 
 
 We can expand our equation...
+
+```python
+var('p q a1 a2 b1 b2 k')
+n = p * q
+h1 = a1 * p + b1 * q
+h2 = a2 * p + b2 * q
+
+x1 = a2*b2
+x2 = a1*b1
+x3 = -a1*b2 - a2*b1
+f = x1*h1*h1 + x2*h2*h2 + x3*h1*h2 + k*n
+print(f.expand())
+print((f/n).expand())
+```
+
+```python
+-a2^2*b1^2*p*q + 2*a1*a2*b1*b2*p*q - a1^2*b2^2*p*q + k*p*q
+-a2^2*b1^2 + 2*a1*a2*b1*b2 - a1^2*b2^2 + k
+```
+
+So we have
+
+```
+k = a2^2*b1^2 - 2*a1*a2*b1*b2 + a1^2*b2^2
+```
