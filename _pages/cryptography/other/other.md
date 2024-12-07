@@ -111,3 +111,6 @@ title: Other
 
 
 <span style="font-size:2em;">   [HKCERT 2024](/cryptography/other/HKCERT2024) </span> <br>
+
+
+<span style="font-size:2em;">   [L^3 - RCTF 2024](/cryptography/other/L3-RCTF2024) </span> <br>
