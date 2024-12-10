@@ -1,3 +1,5 @@
+nom nom - musha musha
+
 かも means maybe
 
 oboeta/oboeru - remember
