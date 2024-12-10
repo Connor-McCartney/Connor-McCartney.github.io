@@ -1,3 +1,5 @@
+気をつけてね - be careful
+
 nom nom - musha musha
 
 かも means maybe
