@@ -1,3 +1,5 @@
+お大事にね🥲 - take care of yourself 
+
 気をつけてね - be careful
 
 nom nom - musha musha
