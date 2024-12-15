@@ -1,3 +1,5 @@
+fukuro irimasuka - do you need a bag?
+
 お大事にね🥲 - take care of yourself 
 
 気をつけてね - be careful
