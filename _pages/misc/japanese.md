@@ -1,3 +1,10 @@
+
+焼く(やく yaku) is grill
+
+肉(niku) is meat
+
+焼肉(yakiniku)
+
 fukuro irimasuka - do you need a bag?
 
 お大事にね🥲 - take care of yourself 
