@@ -110,6 +110,9 @@ __vulnerability: hint given__
 __vulnerability: hint given__
 
 
+<span style="font-size:2em;">   [interns - CyberStudents' advent of ctf2024](/cryptography/rsa/interns-adventofctf2024)       </span> <br>
+__vulnerability: hints given__
+
 <span style="font-size:2em;">   [Sqursa_xx - hspace CTF 2024](/cryptography/rsa/Sqursa_xx-hspace-CTF-2024)       </span> <br>
 __vulnerability: strange prime structure__
 
