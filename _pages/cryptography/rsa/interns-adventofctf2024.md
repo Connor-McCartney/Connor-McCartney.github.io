@@ -1,6 +1,6 @@
 ---
 permalink: /cryptography/rsa/interns-adventofctf2024
-title: interns - CyberStudents' advent of ctf2024
+title: interns - CyberStudents' advent of ctf 2024
 ---
 
 <br>
