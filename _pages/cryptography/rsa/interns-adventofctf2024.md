@@ -130,6 +130,8 @@ for mask in possible_masks:
     print(mask == int(sha256(long_to_bytes(step3)).hexdigest()[:8], 16))
 ```
 
+<br>
+
 Final solver:
 
 ```python
@@ -152,13 +154,10 @@ for mask in possible_masks:
     step3 = mask ^^ ciphertext
     assert mask == int(sha256(long_to_bytes(step3)).hexdigest()[:8], 16)
     for step2 in Zmod(N)(step3).nth_root(5, all=True):
-        try:
-            step1 = (step2 - salt) % N
-            for m in Zmod(N)(step1).nth_root(3, all=True):
-                flag = long_to_bytes(int(m))
-                if b'csd' in flag:
-                    print(flag)
-        except:
-            continue
+        step1 = (step2 - salt) % N
+        for m in Zmod(N)(step1).nth_root(3, all=True):
+            flag = long_to_bytes(int(m))
+            if b'csd' in flag:
+                print(flag)
 # csd{dH4R_dh4r_4Nt1_P1R4cY_5CR33n}
 ```
