@@ -129,3 +129,36 @@ for mask in possible_masks:
     step3 = mask ^ ciphertext
     print(mask == int(sha256(long_to_bytes(step3)).hexdigest()[:8], 16))
 ```
+
+Final solver:
+
+```python
+from tqdm import trange
+from Crypto.Util.number import *
+from hashlib import sha256
+
+N = 20829189282001863372322428196733308195464709019397028562940874561583326274287129648306568901830962480022928679678123
+p = 196193902291230366369929504455328667247
+q = 330729152607130810754863800538364851519 
+r = 321006911433478242108053772673636286011 
+pari.addprimes([p, q, r])
+assert N == p*q*r
+salt = p + q
+assert salt % 100_000 == 18766
+ciphertext = 14148786803331853127777889559896138396417219981773502601578745985604370779076393473723769040986523787622227351205298
+
+possible_masks = [3306955427, 2186477323, 2523079120]
+for mask in possible_masks:
+    step3 = mask ^^ ciphertext
+    assert mask == int(sha256(long_to_bytes(step3)).hexdigest()[:8], 16)
+    for step2 in Zmod(N)(step3).nth_root(5, all=True):
+        try:
+            step1 = (step2 - salt) % N
+            for m in Zmod(N)(step1).nth_root(3, all=True):
+                flag = long_to_bytes(int(m))
+                if b'csd' in flag:
+                    print(flag)
+        except:
+            continue
+# csd{dH4R_dh4r_4Nt1_P1R4cY_5CR33n}
+```
