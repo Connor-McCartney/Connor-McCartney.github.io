@@ -122,3 +122,10 @@ fn main() {
 <br>
 
 There are multiple possibilities, I found these:
+
+```python
+possible_masks = [3306955427, 2186477323, 2523079120]
+for mask in possible_masks:
+    step3 = mask ^ ciphertext
+    print(mask == int(sha256(long_to_bytes(step3)).hexdigest()[:8], 16))
+```
