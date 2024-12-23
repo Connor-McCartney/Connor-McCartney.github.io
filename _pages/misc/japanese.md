@@ -1,3 +1,5 @@
+sentakuki - wahing machine (sentaku - wash clothes, ki - machine)
+
 uso - lie
 
 明日は何時から何時までスタバで働くの？
