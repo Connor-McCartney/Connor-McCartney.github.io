@@ -114,3 +114,6 @@ title: Other
 
 
 <span style="font-size:2em;">   [L^3 - RCTF 2024](/cryptography/other/L3-RCTF2024) </span> <br>
+
+
+<span style="font-size:2em;">   [0CTF 2024](/cryptography/other/0CTF2024) </span> <br>
