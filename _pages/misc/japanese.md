@@ -1,3 +1,5 @@
+いい夢見てね - sweet dreams 
+
 ちょっとしらべるからまって - wait I'll search it
 
 sentakuki - wahing machine (sentaku - wash clothes, ki - machine)
