@@ -46,3 +46,6 @@ here is my 7 xs can u get my private key ?
 
 Solve:
 
+I thought it was an amazing challenge. 
+
+[This paper](https://arxiv.org/pdf/1609.03305) is very helpful
