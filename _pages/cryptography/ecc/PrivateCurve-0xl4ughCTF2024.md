@@ -48,4 +48,6 @@ Solve:
 
 I thought it was an amazing challenge. 
 
-[This paper](https://arxiv.org/pdf/1609.03305) is very helpful
+[This paper](https://arxiv.org/pdf/1609.03305) is very helpful to recover the curve parameters. 
+
+After that, the curve order is smooth enough to solve the discrete log just by excluding the biggest factor. 
