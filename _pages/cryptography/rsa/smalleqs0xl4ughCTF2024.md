@@ -89,3 +89,52 @@ print(bytes.fromhex(f'{pow(c, pow(e, -1, p-1), p):x}'))
 
 <br>
 
+Some more generalised testing and speedup
+
+```python
+from Crypto.Util.number import getPrime, isPrime, bytes_to_long
+
+
+p=getPrime(512)
+while True:
+    w = getPrime(20)
+    assert w < 2**20
+    x=2*w*p-1
+    if isPrime(x):
+        break
+
+q=getPrime(512*2)
+n = p * q *x
+e = 65537
+m = bytes_to_long(b'redacted')
+c = pow(m, e, n)
+
+
+###
+
+from math import gcd
+from tqdm import tqdm
+from gmpy2 import next_prime, lucasv_mod
+
+def mlucas(v, a, n):
+    return lucasv_mod(v, 1, a, n) # faster
+
+primes = []
+p = next_prime(2**19)
+while p < 2**20:
+    primes.append(p)
+    p = next_prime(p)
+
+def factor(n):
+    for v in range(3, 100):
+        v = mlucas(v,2,n)
+        v = mlucas(v,n,n)
+        for p in tqdm(primes):
+            v = mlucas(v,p,n)
+            g = gcd(v - 2, n)
+            if g != 1:
+                return g
+
+p = factor(n)
+print(bytes.fromhex(f'{pow(c, pow(e, -1, p-1), p):x}'))
+```
