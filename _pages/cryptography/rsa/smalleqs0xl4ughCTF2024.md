@@ -43,6 +43,11 @@ c = 1617999293557620724157535537778741335004656286655134597579706838690566178453
 
 <https://en.wikipedia.org/wiki/Williams's_p_%2B_1_algorithm>
 
+This challenge is actually a special case, where p is a factor of n but also a factor of x+1. 
+
+So we can include the line v = mlucas(v,n,n) because n is a multiple of p.
+
+
 
 <br>
 
