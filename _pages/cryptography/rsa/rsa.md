@@ -14,6 +14,10 @@ __vulnerability: factorisation with Pollard's p-1 algorithm__
 __vulnerability: factorisation with Pollard's p-1 algorithm, but largest prime factor of p-1 and q-1 is the same__
 
 
+<span style="font-size:2em;">   [small eq’s - 0xl4ugh CTF 2024](/cryptography/rsa/smalleqs0xl4ughCTF2024)       </span> <br>
+__vulnerability: factorisation with William's p+1 algorithm__
+
+
 <span style="font-size:2em;">   [One Step Closer - HTB Cyber Apocalypse CTF 2022](/cryptography/rsa/one-step-closer-HTB-cyber-apocalypse-CTF-2022)       </span> <br>
 __vulnerability: affine padding (allowing Franklin-Reiter attack)__
 
