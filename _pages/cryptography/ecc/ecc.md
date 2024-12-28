@@ -58,6 +58,6 @@ __vulnerability: nonces related to lcg__
 __vulnerability: anomalous attack mod p**4__
 
 
-<span style="font-size:2em;">   [Easy? ECDLP - TSG CTF 2024](/cryptography/ecc/EasyECDLP-TSGCTF2024)       </span> <br>
+<span style="font-size:2em;">   [Private Curve - 0xl4ugh CTF 2024](/cryptography/ecc/PrivateCurve-0xl4ughCTF2024)       </span> <br>
 __challenge: curve parameter recovery given sequential points__
 
