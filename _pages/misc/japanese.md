@@ -1,3 +1,5 @@
+お大事に - take care
+
 いい夢見てね - sweet dreams 
 
 ちょっとしらべるからまって - wait I'll search it
