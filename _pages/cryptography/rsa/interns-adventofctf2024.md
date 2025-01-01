@@ -132,6 +132,10 @@ for mask in possible_masks:
 
 <br>
 
+
+Factor n with bruteforce, the author confirmed the hints were actually just red herrings...
+
+
 Final solver:
 
 ```python
