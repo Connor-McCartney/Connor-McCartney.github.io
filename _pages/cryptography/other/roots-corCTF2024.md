@@ -195,7 +195,7 @@ def lattice_enumeration(M, W, bound, enum):
     from itertools import product
     from tqdm import tqdm
     M = (M*W).LLL() / W
-    for coord in tqdm(product(range(-enum, enum), repeat=M.nrows())):
+    for coord in tqdm(product(range(-enum, enum+1), repeat=M.nrows())):
         v = vector(ZZ, coord) * M
         if all([abs(i)<bound for i in v]):
             yield v
