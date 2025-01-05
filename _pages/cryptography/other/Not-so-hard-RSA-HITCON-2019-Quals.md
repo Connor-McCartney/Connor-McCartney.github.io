@@ -246,3 +246,5 @@ for zbits in range(970, 980):
 
 <br>
 
+And time to finally use it on the challenge data:
+
