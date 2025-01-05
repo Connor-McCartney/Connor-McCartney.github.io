@@ -99,16 +99,18 @@ for _ in range(10):
 
 <br>
 
+
 $$
-k_1 \begin{bmatrix}n \\0\\0\\0\\0\\0\\0\\0\\0\\0 \end{bmatrix} +
-k_2 \begin{bmatrix}0 \\ n \\0\\0\\0\\0\\0\\0\\0\\0 \end{bmatrix} +
-k_3 \begin{bmatrix}0 \\0\\ n \\0\\0\\0\\0\\0\\0\\0 \end{bmatrix} +
+k_1 \begin{bmatrix}n_1 \\0\\0\\0\\0\\0\\0\\0\\0\\0 \end{bmatrix} +
+k_2 \begin{bmatrix}0 \\ n_2 \\0\\0\\0\\0\\0\\0\\0\\0 \end{bmatrix} +
+k_3 \begin{bmatrix}0 \\0\\ n_3 \\0\\0\\0\\0\\0\\0\\0 \end{bmatrix} +
 ... +
-k_{10} \begin{bmatrix}0 \\0\\0\\0\\0\\0\\0\\0\\0\\ n \end{bmatrix} +
+k_{10} \begin{bmatrix}0 \\0\\0\\0\\0\\0\\0\\0\\0\\ n_{10} \end{bmatrix} +
 
 d   \begin{bmatrix}-e_1  \\ -e_2 \\ -e_3 \\ -e_4 \\ -e_5 \\ -e_6 \\ -e_7 \\ -e_8 \\ -e_9 \\ -e_{10} \end{bmatrix}  
 =   \begin{bmatrix}z_1  \\ z_2  \\ z_3 \\ z_4 \\ z_5 \\ z_6 \\ z_7 \\ z_8 \\ z_9 \\ z_{10} \end{bmatrix}
 $$
+
 
 <br>
 
