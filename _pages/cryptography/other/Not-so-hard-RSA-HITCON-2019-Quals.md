@@ -11,6 +11,7 @@ Challenge:
 
 <br>
 
+```python
 from Crypto.Util.number import *
 from os import urandom
 from SECRET import d
@@ -34,3 +35,10 @@ print(d.bit_length())
 for _ in range(T):
     data = flag + urandom(40)
     print(encrypt(data))
+```
+
+<br>
+
+<br>
+
+Solve:
