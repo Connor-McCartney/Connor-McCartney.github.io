@@ -65,6 +65,8 @@ The fact that each plaintext is related is actually not so useful. We'll ignore 
 
 and recover d just with the n's and e's given. 
 
+I realised it is also similar to [this chall](https://connor-mccartney.github.io/cryptography/rsa/L4ugh-0xl4ughCTF-2024)
+
 <br>
 
 We can write 10 equations 
