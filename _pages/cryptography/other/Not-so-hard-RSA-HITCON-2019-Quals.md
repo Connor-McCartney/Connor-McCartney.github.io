@@ -67,3 +67,13 @@ and recover d just with the n's and e's given.
 
 <br>
 
+We can write 10 equations 
+
+```
+ei*di-1 == ki*phi
+```
+
+for all ki<d
+
+<br>
+
