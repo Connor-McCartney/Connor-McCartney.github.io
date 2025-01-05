@@ -194,3 +194,55 @@ We can also observe z.nbits() is roughly in the range 971-976
 
 <br>
 
+Now the improved solver is very effective:
+
+```python
+from Crypto.Util.number import *
+
+s = 465
+d = getPrime(s)
+print(f'{d = }')
+
+ns = []
+es = []
+for _ in range(10):
+    p, q = getPrime(512), getPrime(512)
+    n = p*q
+    assert 2*isqrt(n) < p+q < 3*isqrt(n)
+    phi = (p-1)*(q-1)
+    e = pow(d, -1, phi)
+    
+    ns.append(n)
+    es.append(e)
+
+    k = (e*d - 1) // phi
+    assert k<d
+    assert e*d - 1 == k*phi
+
+    assert phi == n - (p+q) + 1
+    assert e*d - 1 == k*(n - (p+q) + 1)
+    assert e*d - 1 == k*n - k*(p + q - 1)
+
+    b = (2*isqrt(n) + 3*isqrt(n)) // 2
+    assert e*d - 1 == k*n - k*(p + q - 1)
+    x = p + q - 1 - b
+    #print(ZZ(p+q).nbits(), x.nbits()) # bits we've saved :) 
+    assert e*d - 1 == k*n - k*(b + x)
+    z = k*x-1
+    print(z.nbits())
+    assert k*(n - b) - e*d == z
+
+M = (diagonal_matrix([n - ((2*isqrt(n) + 3*isqrt(n)) // 2) for n in ns])
+     .augment(vector(es))
+     .stack(vector([0]*10 + [1]))
+     .T
+)
+for zbits in range(970, 980):
+    print(f'{zbits = }')
+    W = diagonal_matrix(QQ, [1/(2**zbits) for n in ns] + [1/(2**s)])
+    M = (M*W).dense_matrix().LLL()/W
+    print(M[0][-1])
+```
+
+<br>
+
