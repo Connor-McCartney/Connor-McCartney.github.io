@@ -151,7 +151,8 @@ print(M[0][-1])
 
 <br>
 
-It doesn't seem to work for 465 bits, let's adjust it by bruting a better bound for zi. 
+But, it doesn't seem to for for 465 bits...
+
 
 <br>
 
