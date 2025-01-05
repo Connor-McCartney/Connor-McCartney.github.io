@@ -77,3 +77,20 @@ for all ki<d
 
 <br>
 
+```python
+d = random_prime(2**465)
+
+data = []
+for _ in range(10):
+    p, q = random_prime(2**512), random_prime(2**512)
+    n = p*q
+    phi = (p-1)*(q-1)
+    e = pow(d, -1, phi)
+    data.append((n, e))
+
+    k = (e*d-1) // phi
+    assert k<d
+    assert e*d-1 == k*phi
+```
+
+<br>
