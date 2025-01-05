@@ -190,7 +190,7 @@ replace `p+q` with `b+x`  (and for simplicity we can get rid of the -1 too, it c
 
 <br>
 
-We can also observe z.nbits() is roughly in the range 971-976
+We can also observe z.nbits() is roughly in the range 971-976 but we can probably just overweight it
 
 <br>
 
