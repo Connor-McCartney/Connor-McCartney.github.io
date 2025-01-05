@@ -178,5 +178,12 @@ Then once we arrive here:
 replace `p+q` with `b+x`  (and for simplicity we can get rid of the -1 too, it can be included in x)
 
 ```python
+    b = (2*isqrt(n) + 3*isqrt(n)) // 2
+    assert e*d - 1 == k*n - k*(p + q - 1)
+    x = p + q - 1 - b
+    print(ZZ(p+q).nbits(), x.nbits()) # bits we've saved :) 
     assert e*d - 1 == k*n - k*(b + x)
+    z = k*x-1
+    print(z.nbits())
+    assert k*(n - b) - e*d == z
 ```
