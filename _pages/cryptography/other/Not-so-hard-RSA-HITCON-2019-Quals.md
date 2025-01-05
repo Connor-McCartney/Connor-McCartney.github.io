@@ -159,3 +159,7 @@ The most straightforward fix would be to brute some bits of d.
 
 <br>
 
+But let's try another approach, including a better guess of p+q. 
+
+`2*isqrt(n) < p+q < 3*isqrt(n)` (noting you using getPrime not random_prime, as in the challenge)
+
