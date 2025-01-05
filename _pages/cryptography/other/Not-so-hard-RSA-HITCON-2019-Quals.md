@@ -61,3 +61,9 @@ Solve:
 
 The private key d is small with 465 bits. 
 
+The fact that each plaintext is related is actually not so useful. We'll ignore the ciphertexts given for now, 
+
+and recover d just with the n's and e's given. 
+
+<br>
+
