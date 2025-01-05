@@ -117,3 +117,6 @@ title: Other
 
 
 <span style="font-size:2em;">   [0CTF 2024](/cryptography/other/0CTF2024) </span> <br>
+
+
+<span style="font-size:2em;">   [Not so hard RSA - HITCON 2019 Quals](/cryptography/other/Not-so-hard-RSA-HITCON-2019-Quals) </span> <br>
