@@ -80,17 +80,21 @@ for all ki<d
 ```python
 d = random_prime(2**465)
 
-data = []
 for _ in range(10):
     p, q = random_prime(2**512), random_prime(2**512)
     n = p*q
     phi = (p-1)*(q-1)
     e = pow(d, -1, phi)
-    data.append((n, e))
 
-    k = (e*d-1) // phi
+    k = (e*d - 1) // phi
     assert k<d
-    assert e*d-1 == k*phi
+    assert e*d - 1 == k*phi
+
+    assert phi == n - (p+q) + 1
+    assert e*d - 1 == k*(n - (p+q) + 1)
+    assert e*d - 1 == k*n - k*(p + q - 1)
+    z = k*(p + q - 1) # ~= 2**465 * 2 * isqrt(n)
+    assert k*n - z - d*e + 1 == 0
 ```
 
 <br>
