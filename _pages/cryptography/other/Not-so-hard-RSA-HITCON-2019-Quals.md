@@ -119,7 +119,7 @@ $$
 
 <br>
 
-POC(slightly smaller d)
+POC (slightly smaller d)
 
 ```python
 s = 450 # 465
