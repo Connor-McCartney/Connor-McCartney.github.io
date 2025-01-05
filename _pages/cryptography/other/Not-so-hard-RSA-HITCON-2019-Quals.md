@@ -118,3 +118,42 @@ $$
 <br>
 
 <br>
+
+POC(slightly smaller d)
+
+```python
+s = 450 # 465
+d = random_prime(2**s)
+print(f'{d = }')
+
+ns = []
+es = []
+for _ in range(10):
+    p, q = random_prime(2**512), random_prime(2**512)
+    n = p*q
+    phi = (p-1)*(q-1)
+    e = pow(d, -1, phi)
+    
+    ns.append(n)
+    es.append(e)
+
+M = (diagonal_matrix(ns)
+     .augment(vector(es))
+     .stack(vector([0]*10 + [1]))
+     .T
+)
+
+W = diagonal_matrix(QQ, [1/(2**s * 2 * isqrt(n))]*10 + [1/(2**s)])
+M = (M*W).dense_matrix().LLL()/W
+
+print(M[0][-1])
+```
+
+<br>
+
+It doesn't seem to work for 465 bits, let's adjust it by bruting a better bound for zi. 
+
+<br>
+
+<br>
+
