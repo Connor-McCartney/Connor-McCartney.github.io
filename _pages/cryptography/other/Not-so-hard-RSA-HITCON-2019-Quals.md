@@ -58,3 +58,6 @@ data = [
 <br>
 
 Solve:
+
+The private key d is small with 465 bits. 
+
