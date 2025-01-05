@@ -187,3 +187,10 @@ replace `p+q` with `b+x`  (and for simplicity we can get rid of the -1 too, it c
     print(z.nbits())
     assert k*(n - b) - e*d == z
 ```
+
+<br>
+
+We can also observe z.nbits() is roughly in the range 971-976
+
+<br>
+
