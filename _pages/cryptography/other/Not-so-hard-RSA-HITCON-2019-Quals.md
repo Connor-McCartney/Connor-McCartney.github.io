@@ -94,7 +94,7 @@ for _ in range(10):
     assert e*d - 1 == k*(n - (p+q) + 1)
     assert e*d - 1 == k*n - k*(p + q - 1)
     z = k*(p + q - 1) # ~= 2**465 * 2 * isqrt(n)
-    assert k*n - z - d*e + 1 == 0
+    assert - d*e + 1 + k*n - z == 0
 ```
 
 <br>
