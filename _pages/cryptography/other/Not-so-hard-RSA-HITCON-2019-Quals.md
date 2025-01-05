@@ -163,3 +163,20 @@ But let's try another approach, including a better guess of p+q.
 
 `2*isqrt(n) < p+q < 3*isqrt(n)` (noting you using getPrime not random_prime, as in the challenge)
 
+Let's average it out:
+
+```python
+b = (2*isqrt(n) + 3*isqrt(n)) // 2
+```
+
+Then once we arrive here:
+
+```python
+    assert e*d - 1 == k*n - k*(p + q - 1)
+```
+
+replace `p+q` with `b+x`  (and for simplicity we can get rid of the -1 too, it can be included in x)
+
+```python
+    assert e*d - 1 == k*n - k*(b + x)
+```
