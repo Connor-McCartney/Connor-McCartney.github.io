@@ -153,6 +153,7 @@ print(M[0][-1])
 
 But, it doesn't seem to succeed for 465 bits...
 
+The most straightforward fix would be to brute some bits of d. 
 
 <br>
 
