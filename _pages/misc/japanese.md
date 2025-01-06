@@ -1,3 +1,7 @@
+多い - many
+
+sukunai - few
+
 hisashiburi - first time in a while
 
 お大事に - take care
