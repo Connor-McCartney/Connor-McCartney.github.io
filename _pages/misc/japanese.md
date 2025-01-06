@@ -1,3 +1,5 @@
+きもち - feelings
+
 多い - many
 
 sukunai - few
