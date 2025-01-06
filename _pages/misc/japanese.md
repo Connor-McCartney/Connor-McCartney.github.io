@@ -1,3 +1,5 @@
+oboete - remember 
+
 きもち - feelings
 
 多い - many
