@@ -1,3 +1,5 @@
+おすすめ osusume - recommend 
+
 buchake - not gonna lie,
 
 oboete - remember 
