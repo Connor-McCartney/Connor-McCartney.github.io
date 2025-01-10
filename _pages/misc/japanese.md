@@ -1,3 +1,5 @@
+buchake - not gonna lie,
+
 oboete - remember 
 
 きもち - feelings
