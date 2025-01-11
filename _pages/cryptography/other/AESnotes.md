@@ -44,3 +44,43 @@ assert p3 == xor(ECB_dec(c3), c2)
 assert p4 == xor(ECB_dec(c4), c3)
 ...
 ```
+
+<br>
+
+<br>
+
+# Padding attack
+
+```python
+from Crypto.Util.Padding import unpad
+from Crypto.Cipher import AES
+from os import urandom
+from pwn import xor
+
+def oracle(iv, ct):
+    cipher = AES.new(KEY, AES.MODE_CBC, iv=iv)
+    pt = cipher.decrypt(ct)  
+    try:
+        unpad(pt, 16)
+        return True
+    except:
+        return False
+
+def attack(c):
+    r = b''
+    for i in reversed(range(16)):
+        s = bytes([16 - i] * (16 - i))
+        for b in range(256):
+            iv_ = b'\x00'*i + xor(s, bytes([b]) + r)
+            if oracle(iv_, c):
+                r = bytes([b]) + r
+                break
+    return r
+
+plaintext = b'secret!!!!!!!!!!'
+KEY = urandom(16)
+iv = urandom(16)
+ct = AES.new(KEY, AES.MODE_CBC, iv=iv).encrypt(plaintext)
+assert attack(ct) == AES.new(KEY, AES.MODE_ECB).decrypt(ct)
+print(xor(iv, attack(ct)))
+```
