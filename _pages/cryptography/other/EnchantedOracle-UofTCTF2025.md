@@ -59,7 +59,7 @@ Solve:
 
 <br>
 
-So basically we need to do a ciphertext forgery. Maybe option 1 isn't needed. 
+So basically we need to do a ciphertext forgery. In fact, option 1 is not needed!
 
 <br>
 
@@ -100,6 +100,10 @@ print(unpad(AES.new(key=KEY, mode=AES.MODE_CBC, iv=forged_iv).decrypt(forged_ct)
 ```
 
 <br>
+
+<br>
+
+Now, just swap out the ECB_dec function for the classic CBC padding attack!
 
 <br>
 
