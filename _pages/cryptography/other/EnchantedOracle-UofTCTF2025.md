@@ -63,7 +63,7 @@ So basically we need to do a ciphertext forgery. Maybe option 1 isn't needed.
 
 <br>
 
-I split the plaintext into it's 4 16-bytes blocks (p1, p2, p3, p4) with corresponding ciphertext blocks (c1, c2, c3, c4).
+I split the plaintext into its 4 16-bytes blocks (p1, p2, p3, p4) with corresponding ciphertext blocks (c1, c2, c3, c4).
 
 We want to choose c4 at random and then work backwards. 
 
