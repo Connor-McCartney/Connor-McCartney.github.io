@@ -120,3 +120,6 @@ title: Other
 
 
 <span style="font-size:2em;">   [Not so hard RSA - HITCON 2019 Quals](/cryptography/other/Not-so-hard-RSA-HITCON-2019-Quals) </span> <br>
+
+
+<span style="font-size:2em;">   [AES notes](/cryptography/other/AESnotes) </span> <br>
