@@ -59,7 +59,7 @@ Solve:
 
 <br>
 
-So basically we need to do a ciphertext forgery. In fact, option 1 is not needed!
+So basically we need to do a ciphertext forgery. In fact, choice 1 is not needed!
 
 <br>
 
