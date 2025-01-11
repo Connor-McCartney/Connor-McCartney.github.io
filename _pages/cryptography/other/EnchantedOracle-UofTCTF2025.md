@@ -55,3 +55,11 @@ while True:
 
 <br>
 
+Solve:
+
+<br>
+
+So basically we need to do a ciphertext forgery. Maybe option 1 isn't needed. 
+
+<br>
+
