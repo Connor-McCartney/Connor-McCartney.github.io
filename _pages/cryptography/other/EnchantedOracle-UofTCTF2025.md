@@ -69,3 +69,37 @@ We want to choose c4 at random and then work backwards.
 
 <br>
 
+For example:
+
+```python
+from Crypto.Util.Padding import pad, unpad
+from Crypto.Cipher import AES
+from os import urandom
+from pwn import xor
+
+KEY = urandom(16)
+
+plaintext = b"I am an authenticated admin, please give me the flag"
+p1 = b'I am an authenti'
+p2 = b'cated admin, ple'
+p3 = b'ase give me the '
+p4 = pad(b'flag', 16)
+assert plaintext == unpad(p1+p2+p3+p4, 16)
+
+def ECB_dec(x):
+    return AES.new(KEY, AES.MODE_ECB).decrypt(x)
+
+c4 = urandom(16)
+c3 = xor(p4, ECB_dec(c4))
+c2 = xor(p3, ECB_dec(c3))
+c1 = xor(p2, ECB_dec(c2))
+forged_iv = xor(p1, ECB_dec(c1))
+forged_ct = c1+c2+c3+c4
+
+print(unpad(AES.new(key=KEY, mode=AES.MODE_CBC, iv=forged_iv).decrypt(forged_ct), 16))
+```
+
+<br>
+
+<br>
+
