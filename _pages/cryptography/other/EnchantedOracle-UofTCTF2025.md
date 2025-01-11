@@ -8,6 +8,9 @@ title: Enchanted Oracle - UofT CTF 2025
 
 <br>
 
+Challenge:
+
+
 ```python
 from base64 import b64encode, b64decode
 from Crypto.Cipher import AES
