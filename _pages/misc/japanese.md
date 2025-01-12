@@ -1,3 +1,5 @@
+daroune/soudayone - 'I guess so' (agreeing)
+
 おすすめ osusume - recommend 
 
 buchake - not gonna lie,
