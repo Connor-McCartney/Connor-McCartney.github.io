@@ -1,4 +1,4 @@
-daroune/soudayone - 'I guess so' (agreeing)
+daroune/soudayone - 'I guess so' (agreeing/understanding)
 
 おすすめ osusume - recommend 
 
