@@ -1,3 +1,9 @@
+kirai - dislike (strong)
+
+nigate - dislike (mild), or not good at
+
+nigai - bitter
+
 daroune/soudayone - 'I guess so' (agreeing/understanding)
 
 soudane vs soudayone: yo adds more empathy
