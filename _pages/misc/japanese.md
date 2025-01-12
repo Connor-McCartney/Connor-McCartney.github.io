@@ -1,5 +1,7 @@
 daroune/soudayone - 'I guess so' (agreeing/understanding)
 
+soudane vs soudayone: yo adds more empathy
+
 おすすめ osusume - recommend 
 
 buchake - not gonna lie,
