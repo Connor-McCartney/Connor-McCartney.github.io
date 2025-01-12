@@ -123,3 +123,6 @@ title: Other
 
 
 <span style="font-size:2em;">   [AES notes](/cryptography/other/AESnotes) </span> <br>
+
+
+<span style="font-size:2em;">   [Enchanted Oracle - UofT CTF 2025](/cryptography/other/EnchantedOracle-UofTCTF2025) </span> <br>
