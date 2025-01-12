@@ -105,5 +105,52 @@ print(unpad(AES.new(key=KEY, mode=AES.MODE_CBC, iv=forged_iv).decrypt(forged_ct)
 
 Now, just swap out the ECB_dec function for the classic CBC padding attack!
 
+And implement batched requests for a big speedup.
+
 <br>
 
+Final solver:
+
+```python
+from Crypto.Util.Padding import pad
+from base64 import b64encode
+from os import urandom
+from pwn import xor, process, remote
+from tqdm import trange
+
+def attack(c):
+    r = b''
+    for i in trange(15, -1, -1):
+        s = bytes([16 - i] * (16 - i))
+        payload = b''
+        for b in range(256):
+            iv_ = b'\x00'*i + xor(s, bytes([b]) + r)
+            payload += b'2\n'
+            payload += b64encode(iv_ + c) + b'\n'
+        io.send(payload)
+        out = io.recvlines(numlines=256*4)
+        b = out[::4].index(b'Your choice: Unknown command!')
+        r = bytes([b]) + r
+    return r
+
+p1 = b'I am an authenti'
+p2 = b'cated admin, ple'
+p3 = b'ase give me the '
+p4 = pad(b'flag', 16)
+
+#io = process(['python', 'aes-cbc.py'])
+io = remote('34.162.82.42', 5000)
+io.recv()
+
+c4 = urandom(16)
+c3 = xor(p4, attack(c4))
+c2 = xor(p3, attack(c3))
+c1 = xor(p2, attack(c2))
+forged_iv = xor(p1, attack(c1))
+forged_ct = c1+c2+c3+c4
+
+io.sendline(b'2')
+io.sendline(b64encode(forged_iv + forged_ct))
+io.interactive()
+# uoftctf{y3s_1_kn3w_y0u_w3r3_w0r7hy!!!}
+```
