@@ -1,3 +1,7 @@
+omou - think 
+
+omotta - thought (past)
+
 kirai - dislike (strong)
 
 nigate - dislike (mild), or not good at
