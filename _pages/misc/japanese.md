@@ -1,4 +1,6 @@
-nioi - smell
+nioi - smell (noun)
+
+niou - smell (verb)
 
 omou - think 
 
