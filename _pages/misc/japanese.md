@@ -1,3 +1,5 @@
+nioi - smell
+
 omou - think 
 
 omotta - thought (past)
