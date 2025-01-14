@@ -90,4 +90,29 @@ Let's bruteforce part of t, I'll choose the LSB.
 
 <br>
 
+```python
+from Crypto.Util.number import *
 
+while True:
+    p = getPrime(512)
+    q = getPrime(512)
+    e = getPrime(256)
+    n = p*q
+    d = inverse(e,(p-1)*(q-1))
+    d_m = ((d >> 512) << 512)
+
+    p_mod_e = int(p % e)
+    p_mod_e = int(p % e)
+    t = int(p - p_mod_e)//e 
+    assert p == e*t + p_mod_e
+    assert t < 2**257
+
+    BRUTE = 10 # adjustable
+    t_low = int(t % 2**BRUTE)
+    t_high = (t - t_low) >> BRUTE
+    assert t == t_high * 2**BRUTE + t_low
+
+    PR.<x> = PolynomialRing(Zmod(n))
+    f = e*(x*2**BRUTE + t_low) + p_mod_e
+    assert int(f(x=t_high)) % p == 0
+```
