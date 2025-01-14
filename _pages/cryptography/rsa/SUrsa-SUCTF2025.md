@@ -76,7 +76,6 @@ while True:
     d_m = ((d >> 512) << 512)
 
     p_mod_e = int(p % e)
-    p_mod_e = int(p % e)
     t = int(p - p_mod_e)//e 
     assert p == e*t + p_mod_e
     print(t.bit_length())
