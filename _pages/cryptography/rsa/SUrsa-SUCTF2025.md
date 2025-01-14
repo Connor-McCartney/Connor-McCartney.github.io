@@ -86,7 +86,7 @@ while True:
 
 The coppersmith bound is tight, p is 512 bits and we have 257 unknown bits.
 
-Let's bruteforce part of t, I'll choose the MSB.
+Let's bruteforce part of t, I'll choose the LSB.
 
 <br>
 
