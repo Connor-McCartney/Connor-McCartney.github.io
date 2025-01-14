@@ -34,3 +34,30 @@ assert flag[6:-1] == sha256(str(p).encode()).hexdigest()[:32]
 Solve:
 
 e is large and we're given the MSB of d. 
+
+
+First we can solve for p mod e
+
+```python
+from Crypto.Util.number import *
+
+p = getPrime(512)
+q = getPrime(512)
+e = getPrime(256)
+n = p*q
+d = inverse(e,(p-1)*(q-1))
+d_m = ((d >> 512) << 512)
+
+k = (d_m*e-1)//n + 1
+PR.<x> = PolynomialRing(GF(e))
+f = 1 + k*(n+1-x)
+S = f.roots()[0][0] # p+q mod e
+PR.<x> = PolynomialRing(GF(e))
+f = x^2 - S*x + n
+possible_p_mod_e = [i for i, _ in f.roots()]
+assert p%e in possible_p_mod_e
+```
+
+<br>
+
+<br>
