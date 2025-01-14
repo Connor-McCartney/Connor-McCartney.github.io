@@ -127,3 +127,7 @@ __vulnerability: strange prime structure__
 
 <span style="font-size:2em;">   [krsa - INTIGRITI CTF 2024](/cryptography/rsa/krsa-INTIGRITICTF2024)       </span> <br>
 __vulnerability: meet in the middle attack__
+
+
+<span style="font-size:2em;">   [SU_rsa - SUCTF 2025](/cryptography/rsa/SUrsa-SUCTF2025)       </span> <br>
+__vulnerability: known MSB of d__
