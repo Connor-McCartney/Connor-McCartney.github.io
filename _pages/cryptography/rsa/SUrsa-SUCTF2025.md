@@ -81,3 +81,13 @@ while True:
     print(t.bit_length())
     assert t < 2**257
 ```
+
+<br>
+
+The coppersmith bound is tight, p is 512 bits and we have 257 unknown bits.
+
+Let's bruteforce part of t, I'll choose the MSB.
+
+<br>
+
+
