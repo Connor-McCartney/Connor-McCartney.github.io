@@ -82,7 +82,7 @@ Success :)
 
 <br>
 
-Now how about if b.c was closed source, but you had a .so file and header file?
+Now how about if b.c was closed source, but you had an .so file and header file?
 
 I'll move b.c and b.h to a new folder, my_lib
 
