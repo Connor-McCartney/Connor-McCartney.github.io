@@ -57,7 +57,7 @@ Now you must make a header file, b.h, and then you can compile them like this:
 ```
 [~/Desktop] 
 $ ls
-a.c  b.c  b.h  tmp
+a.c  b.c  b.h 
 
 [~/Desktop] 
 $ cat b.h 
