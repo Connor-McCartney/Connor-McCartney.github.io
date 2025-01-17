@@ -27,3 +27,25 @@ This setup (header guard) stops the same thing being defined multiple times, and
 
 <br>
 
+---
+
+Imageine some file a.c
+
+```
+#include <stdio.h>
+
+int main() {
+	int x = my_add(1, 2);
+	printf("%d\n", x);
+}
+```
+
+<br>
+
+And you have my_add in b.c
+
+```
+int my_add(int a, int b) {
+	return a+b;
+}
+```
