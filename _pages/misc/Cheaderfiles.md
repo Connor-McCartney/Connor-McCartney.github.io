@@ -83,3 +83,7 @@ Success :)
 <br>
 
 Now how about if b.c was closed source, but you had a .so file and header file?
+
+I'll move b.c and b.h to a new folder, my_lib
+
+and in a.c, rename `#include "b.h"` to `#include "my_lib/b.h"`
