@@ -29,7 +29,7 @@ This setup (header guard) stops the same thing being defined multiple times, and
 
 ---
 
-Imageine some file a.c
+Imagine some file a.c
 
 ```c
 #include <stdio.h>
