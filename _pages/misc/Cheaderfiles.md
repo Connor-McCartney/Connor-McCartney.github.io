@@ -120,3 +120,16 @@ attempt to open /home/connor/Desktop/my_lib/libb.so failed
 <br>
 
 Of course, it does not find libb.so because we haven't created it yet.
+
+```
+[~/Desktop/my_lib] 
+$ ls
+b.c  b.h
+
+[~/Desktop/my_lib] 
+$ gcc -fPIC -shared b.c -o libb.so
+
+[~/Desktop/my_lib] 
+$ ls
+b.c  b.h  libb.so
+```
