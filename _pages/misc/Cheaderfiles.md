@@ -116,3 +116,7 @@ ld: mode elf_x86_64
 attempt to open /home/connor/Desktop/my_lib/libb.so failed
 <...SNIP...>
 ```
+
+<br>
+
+Of course, it does not find libb.so because we haven't created it yet.
