@@ -147,3 +147,16 @@ $ ./a.out
 
 Now compilation with linking succeeds but we need one final step to run it
 
+
+```
+[~/Desktop] 
+$ ldd a.out 
+        linux-vdso.so.1 (0x00007f3c2bf0a000)
+        libb.so => not found
+        libc.so.6 => /usr/lib/libc.so.6 (0x00007f3c2bce7000)
+        /lib64/ld-linux-x86-64.so.2 => /usr/lib64/ld-linux-x86-64.so.2 (0x00007f3c2bf0c000)
+
+[~/Desktop] 
+$ LD_LIBRARY_PATH=$(pwd)/my_lib ./a.out 
+3
+```
