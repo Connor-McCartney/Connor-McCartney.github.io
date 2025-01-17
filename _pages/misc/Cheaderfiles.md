@@ -21,7 +21,7 @@ title: C header files
 
 ifndef stands for if not defined. 
 
-This setup stops the same thing being defined multiple times, and avoids circular dependancies etc
+This setup (header guard) stops the same thing being defined multiple times, and avoids circular dependancies etc
 
 `#pragma once` does the exact same thing
 
