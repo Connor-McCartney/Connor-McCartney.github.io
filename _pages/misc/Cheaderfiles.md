@@ -133,3 +133,17 @@ $ gcc -fPIC -shared b.c -o libb.so
 $ ls
 b.c  b.h  libb.so
 ```
+
+<br>
+
+```
+[~/Desktop] 
+$ gcc a.c -L $(pwd)/my_lib -l b
+
+[~/Desktop] 
+$ ./a.out 
+./a.out: error while loading shared libraries: libb.so: cannot open shared object file: No such file or directory
+```
+
+Now compilation with linking succeeds but we need one final step to run it
+
