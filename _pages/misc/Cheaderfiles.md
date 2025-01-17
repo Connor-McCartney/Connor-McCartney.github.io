@@ -108,7 +108,7 @@ ld is giving us an error.
 you can debug with `ld --verbose`
 
 ```
-$ ld -L $(pwd)/my_lib -l libb --verbose
+$ ld -L $(pwd)/my_lib -l b --verbose
 <...SNIP...>
 
 ==================================================
