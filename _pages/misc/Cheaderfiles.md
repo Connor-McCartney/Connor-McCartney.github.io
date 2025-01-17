@@ -31,7 +31,7 @@ This setup (header guard) stops the same thing being defined multiple times, and
 
 Imageine some file a.c
 
-```
+```c
 #include <stdio.h>
 
 int main() {
@@ -44,8 +44,12 @@ int main() {
 
 And you have my_add in b.c
 
-```
+```c
 int my_add(int a, int b) {
 	return a+b;
 }
 ```
+
+<br>
+
+Now you must make a header file, b.h
