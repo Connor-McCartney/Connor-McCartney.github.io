@@ -113,6 +113,6 @@ $ ld -L $(pwd)/my_lib -l libb --verbose
 
 ==================================================
 ld: mode elf_x86_64
-attempt to open /home/connor/Desktop/my_lib/liblibb.so failed
+attempt to open /home/connor/Desktop/my_lib/libb.so failed
 <...SNIP...>
 ```
