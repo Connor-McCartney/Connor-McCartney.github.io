@@ -37,4 +37,6 @@ title: Misc
 
 <span style="font-size:2em;">   [My KDE Plasma Customisations](/misc/kde-plasma)   </span>
 
+<span style="font-size:2em;">   [C header files](/misc/Cheaderfiles)   </span>
+
 <span style="font-size:2em;">   [Resources](/misc/resources)   </span>
