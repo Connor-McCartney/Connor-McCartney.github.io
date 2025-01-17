@@ -52,4 +52,6 @@ int my_add(int a, int b) {
 
 <br>
 
-Now you must make a header file, b.h
+Now you must make a header file, b.h, and then you can compile them like this:
+
+
