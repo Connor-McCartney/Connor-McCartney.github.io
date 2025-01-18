@@ -2,6 +2,9 @@
 
 konnichiwa - kon + nichi (now + day, daytime greeeting)
 
+itterashai - goodbye (if you are staying)
+
+ittekimasu - abbreviation of ittekaettekimasu (goodbye if you are leaving, I'll go and come back, itte=go, kaette=come back)
 
 nioi - smell (noun)
 
