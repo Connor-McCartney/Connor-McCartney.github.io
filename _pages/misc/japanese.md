@@ -1,3 +1,8 @@
+今 - kon or ima
+
+konnichiwa - kon + nichi (now + day, daytime greeeting)
+
+
 nioi - smell (noun)
 
 niou - smell (verb)
