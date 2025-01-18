@@ -1,3 +1,5 @@
+te - apposition 
+
 今 - kon or ima
 
 konnichiwa - kon + nichi (now + day, daytime greeeting)
