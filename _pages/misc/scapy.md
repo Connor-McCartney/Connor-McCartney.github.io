@@ -38,8 +38,6 @@ if __name__ == "__main__":
 
 # HTTPS
 
-<br>
-
 ```python
 from scapy.all import sniff, IP
 from scapy.layers.http import HTTPRequest
