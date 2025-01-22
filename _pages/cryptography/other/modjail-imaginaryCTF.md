@@ -32,3 +32,10 @@ Solve:
 My idea is send `flag# ...<random bytes>` (except null '\x00')
 
 `M * 256**j + x ≡ r (mod p)`
+
+Choose j precisely so that we have exactly 128 bytes (size of p), rearrange for x, and hope that x has no null bytes. 
+
+If it does, then rety until it doesn't. 
+
+<br>
+
