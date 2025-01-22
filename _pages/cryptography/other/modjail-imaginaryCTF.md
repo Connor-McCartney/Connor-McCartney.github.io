@@ -192,3 +192,17 @@ We kinda need `n%p = bytes_to_long(str(n).encode()) % p`
 
 <br>
 
+```python
+def wild(num):
+    return bytes_to_long(repr(num).encode())
+
+def my_wild(num):
+    return sum([c*256**i for i,c in enumerate(str(num).encode()[::-1])])
+
+n = 12345
+assert wild(n) == my_wild(n)
+```
+
+
+<br>
+
