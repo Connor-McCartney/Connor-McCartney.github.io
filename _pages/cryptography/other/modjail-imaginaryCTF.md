@@ -156,3 +156,39 @@ while True:
 
 # ictf{a_c@R3fU1lY_Cr4fT3d_PayL04d!}
 ```
+
+
+<br>
+
+<br>
+
+# modjail3
+
+Challenge:
+
+```python
+#!/usr/bin/python3
+from Crypto.Util.number import getPrime, long_to_bytes, bytes_to_long
+from secret import flag
+
+def wild(num):
+    return bytes_to_long(repr(num).encode())
+
+p = getPrime(64)
+print(p)
+n = int(input())
+if n%p != wild(n)%p:
+    print('no')
+    exit()
+print(eval(long_to_bytes(n)))
+```
+
+
+<br>
+
+Solve:
+
+We kinda need `n%p = bytes_to_long(str(n).encode()) % p`
+
+<br>
+
