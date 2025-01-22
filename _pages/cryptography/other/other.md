@@ -126,3 +126,6 @@ title: Other
 
 
 <span style="font-size:2em;">   [Enchanted Oracle - UofT CTF 2025](/cryptography/other/EnchantedOracle-UofTCTF2025) </span> <br>
+
+
+<span style="font-size:2em;">   [modjail - imaginary CTF](/cryptography/other/modjail-imaginaryCTF) </span> <br>
