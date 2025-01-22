@@ -30,3 +30,5 @@ print(eval(long_to_bytes(n)))
 Solve:
 
 My idea is send `flag# ...<random bytes>` (except null '\x00')
+
+`M * 256**j + x ≡ r (mod p)`
