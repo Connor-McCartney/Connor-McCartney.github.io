@@ -112,3 +112,8 @@ For a valid message, we can send this for some x in range 1 to 127:
 ```py
     n = bytes_to_long(b'flag#' + <... any junk in a to z...> + bytes([x]))
 ```
+
+We should actually use LLL to find valid lsb in a to z!
+
+<br>
+
