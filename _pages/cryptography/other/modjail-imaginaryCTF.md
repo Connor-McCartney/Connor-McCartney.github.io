@@ -206,3 +206,8 @@ assert wild(n) == my_wild(n)
 
 <br>
 
+```python
+n = b'12345'
+print([x-48 for x in n])
+print(sum([(x-48)*10**i for i, x in enumerate(n[::-1])]))
+```
