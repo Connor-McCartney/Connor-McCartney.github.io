@@ -117,3 +117,42 @@ We should actually use LLL to find valid lsb in a to z!
 
 <br>
 
+```python
+from os import environ
+environ['TERM'] = 'konsole'
+from pwn import remote
+from Crypto.Util.number import *
+load('https://gist.githubusercontent.com/Connor-McCartney/952583ecac836f843f50b785c7cb283d/raw/5718ebd8c9b4f9a549746094877a97e7796752eb/solvelinmod.py')
+
+def main():
+    io = remote('155.248.210.243', '42115')
+    recv = io.recvline().split()
+    r = int(recv[0])
+    p = int(recv[2])
+
+    N = 150 # somewhat arbitrary
+    xs = [var(f'x{i}') for i in range(N)]
+    eq = bytes_to_long(b'flag#') * 256**N + sum(x*256**i for i, x in enumerate(xs)) == r
+    bounds = {x: (ord('a'), ord('z')) for x in xs}
+    sol = solve_linear_mod([(eq, p)], bounds)
+    if sol is None:
+        print('no solution, retry')
+        io.close()
+        return
+    else:
+        sol = list(sol.values())
+        print(f'{all([ord('a')<=i<=ord('z') for i in sol]) = }')
+        n = b'flag#' + bytes(sol[::-1])
+        print(n)
+    
+
+    io.sendline(str(bytes_to_long(n)).encode())
+    print(io.recv().decode())
+
+    io.close()
+
+while True:
+    main()
+
+# ictf{a_c@R3fU1lY_Cr4fT3d_PayL04d!}
+```
