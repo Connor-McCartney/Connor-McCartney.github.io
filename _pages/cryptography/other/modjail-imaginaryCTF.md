@@ -211,3 +211,45 @@ n = b'12345'
 print([x-48 for x in n])
 print(sum([(x-48)*10**i for i, x in enumerate(n[::-1])]))
 ```
+
+<br>
+
+```python
+from Crypto.Util.number import getPrime, long_to_bytes, bytes_to_long
+
+def wild(num):
+    return bytes_to_long(repr(num).encode())
+
+p = getPrime(64)
+nbytes = b'flag#abcde'
+n = bytes_to_long(nbytes)
+
+LHS = n%p 
+RHS = wild(n)%p
+
+
+def bytes_to_int(x):
+    return sum([c*256**i for i,c in enumerate(x[::-1])])
+
+def repr_to_int(x):
+    return sum([(c-48)*10**i for i,c in enumerate(x[::-1])])
+
+nrepr = str(n).encode()
+assert n == repr_to_int(nrepr)
+
+xs = [ord(i) for i in 'abcde']
+nbytes = [ord(i) for i in 'flag#'] + xs
+
+lhs = bytes_to_int(nbytes)
+rhs = bytes_to_int(nrepr)
+assert LHS == lhs % p
+assert RHS == rhs % p
+```
+
+<br>
+
+But the problem is from going from bytes/repr to int, you need some modulus operation which is annoying
+
+<br>
+
+
