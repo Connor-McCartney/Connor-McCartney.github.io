@@ -110,5 +110,5 @@ Solve:
 For a valid message, we can send this for some x in range 1 to 127:
 
 ```py
-    n = bytes_to_long(b'flag#' + bytes([x]))
+    n = bytes_to_long(b'flag#' + <... any junk in a to z...> + bytes([x]))
 ```
