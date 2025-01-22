@@ -107,3 +107,8 @@ print(eval(m))
 
 Solve:
 
+For a valid message, we can send this for some x in range 1 to 127:
+
+```py
+    n = bytes_to_long(b'flag#' + bytes([x]))
+```
