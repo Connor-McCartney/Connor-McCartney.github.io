@@ -360,3 +360,59 @@ print(f'{long_to_bytes(n) = }')
 and remote flag:
 
 
+```python
+from os import environ
+environ['TERM'] = 'konsole'
+from pwn import remote
+load('https://gist.githubusercontent.com/Connor-McCartney/952583ecac836f843f50b785c7cb283d/raw/5718ebd8c9b4f9a549746094877a97e7796752eb/solvelinmod.py')
+from Crypto.Util.number import * 
+
+def check(num):
+    return bytes_to_long(repr(num).encode()) % p == num % p
+
+io = remote('155.248.210.243', 42111)
+p = int(io.recvline())
+
+LEN = 50
+ys = [var(f'y{i}') for i in range(LEN)]
+bounds = {y: (0, 10) for y in ys}
+lhs = sum([c*10**i for i,c in enumerate(ys[::-1])])
+rhs = sum([(c+48)*256**i for i,c in enumerate(ys[::-1])])
+sol = solve_linear_mod([(lhs==rhs, p)], bounds)
+ys = list(sol.values())
+n = int(''.join([str(i) for i in ys]))
+
+# messy way to get some prefix
+l = len(long_to_bytes(n))
+n_ = bytes_to_long(b'flag#' + b'\xff'*(l - 5))
+ns_ = str(n_)
+l = len(ns_)
+i = l
+while True:
+    ns_ = ns_[:i] + '0'*(l-i)
+    n_ = int(ns_)
+    i -= 1
+    if b'flag#' not in long_to_bytes(n_):
+        break
+    ns__ = ns_
+    n__ = n_
+pre = [int(i) for i in ns__.split('00000')[0]] + [0]*10 # some arbitrary extra 0's
+
+# now try resolve with pre
+ys = [var(f'y{i}') for i in range(1 + LEN - len(pre))] # strange i have to add 1...
+bounds = {y: (0, 10) for y in ys}
+ys = pre + ys
+lhs = sum([c*10**i for i,c in enumerate(ys[::-1])])
+rhs = sum([(c+48)*256**i for i,c in enumerate(ys[::-1])])
+sol = solve_linear_mod([(lhs==rhs, p)], bounds)
+ys = pre + list(sol.values())
+n = int(''.join([str(i) for i in ys]))
+print(f'found {n = }')
+print(f'{check(n) = }')
+print(f'{long_to_bytes(n) = }')
+
+
+io.sendline(str(n).encode())
+print(io.recv())
+# ictf{tH3_B1t$iz3_of_T#e_bi7S1Ze_0F_7hE_Pr1m3_15_d3cRE@s!n6_L1ne4RLy...}
+```
