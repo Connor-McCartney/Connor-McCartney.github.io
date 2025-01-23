@@ -252,4 +252,12 @@ But the problem is from going from bytes/repr to int, you need some modulus oper
 
 <br>
 
+```python
+ys = [int(i) for i in str(n)]
+print(n%p)
+print(sum([c*10**i for i,c in enumerate(ys[::-1])]) % p)
+print(sum([(c+48)*256**i for i,c in enumerate(ys[::-1])]) % p)
+print(sum([(c)*256**i for i,c in enumerate(nbytes[::-1])]) % p)
+```
 
+<br>
