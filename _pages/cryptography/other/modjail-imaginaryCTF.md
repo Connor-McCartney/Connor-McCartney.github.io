@@ -261,3 +261,35 @@ print(sum([(c)*256**i for i,c in enumerate(nbytes[::-1])]) % p)
 ```
 
 <br>
+
+
+If you just want to solve for any n:
+
+```python
+load('https://gist.githubusercontent.com/Connor-McCartney/952583ecac836f843f50b785c7cb283d/raw/5718ebd8c9b4f9a549746094877a97e7796752eb/solvelinmod.py')
+from Crypto.Util.number import * 
+
+def check(num):
+    return bytes_to_long(repr(num).encode()) % p == num % p
+
+p = getPrime(64)
+
+LEN = 30
+ys = [var(f'y{i}') for i in range(LEN)]
+bounds = {y: (0, 10) for y in ys}
+lhs = sum([c*10**i for i,c in enumerate(ys[::-1])])
+rhs = sum([(c+48)*256**i for i,c in enumerate(ys[::-1])])
+sol = solve_linear_mod([(lhs==rhs, p)], bounds)
+print(sol)
+ys = list(sol.values())
+n = int(''.join([str(i) for i in ys]))
+print(f'found {n = }')
+print(f'{check(n) = }')
+```
+
+<br>
+
+Now my idea is to tweak the MSB of n so that we get 'flag#'
+
+<br>
+
