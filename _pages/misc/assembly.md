@@ -43,3 +43,6 @@ $ as x.s -o x.o && gcc -o x -nostdlib -static x.o
 $ ./x
 Segmentation fault (core dumped)
 ```
+
+It segfaults because there's no exit syscall, so let's make that. 
+
