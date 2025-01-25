@@ -91,3 +91,21 @@ $ echo $?
 
 <br>
 
+# Addition
+
+```asm
+.global _start
+.intel_syntax noprefix
+
+_start:
+	mov 	rax, 4
+	add 	rax, 2
+	# rax should now have 4+2=6
+
+	mov 	rax, 60 
+	mov 	rdi, 0 	
+	syscall
+```
+
+<br>
+
