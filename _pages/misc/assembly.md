@@ -67,3 +67,27 @@ But for this example I'll try 7.
 
 <br>
 
+```
+[~/Desktop] 
+$ cat x.s
+.global _start
+.intel_syntax noprefix
+
+_start:
+        mov     rax, 60 # system call for exit
+        mov     rdi, 7  # exit code 7
+        syscall
+
+[~/Desktop] 
+$ as x.s -o x.o && gcc -o x -nostdlib -static x.o
+
+[~/Desktop] 
+$ ./x
+
+[~/Desktop] 
+$ echo $?
+7
+```
+
+<br>
+
