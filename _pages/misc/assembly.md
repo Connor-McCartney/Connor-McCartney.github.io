@@ -56,3 +56,8 @@ _start:
 	mov 	rax, 60 # systemcall for exit
 	syscall
 ```
+
+Great, now let's check out choosing the exit code (note, they overflow if bigger than 256).
+
+We can check the exit code of the previous program in bash with `echo $?`
+
