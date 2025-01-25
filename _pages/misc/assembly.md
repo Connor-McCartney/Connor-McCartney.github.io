@@ -28,3 +28,18 @@ GCC actually automatically invokes GAS when compiling c code.
 <br>
 
 # BARE PROGRAM
+
+```
+[~/Desktop] 
+$ cat x.s
+.global _start
+
+_start:
+
+[~/Desktop] 
+$ as x.s -o x.o && gcc -o x -nostdlib -static x.o
+
+[~/Desktop] 
+$ ./x
+Segmentation fault (core dumped)
+```
