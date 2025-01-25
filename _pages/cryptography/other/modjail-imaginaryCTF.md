@@ -262,7 +262,6 @@ print(sum([(c)*256**i for i,c in enumerate(nbytes[::-1])]) % p)
 
 <br>
 
-Note that wild(a + b) and wild(a) + wild(b)
 
 If you just want to solve for any n:
 
