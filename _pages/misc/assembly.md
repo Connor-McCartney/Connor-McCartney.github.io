@@ -53,6 +53,6 @@ It segfaults because there's no exit syscall, so let's make that.
 .intel_syntax noprefix
 
 _start:
-	mov 	rax, 60 # syscall for exit
+	mov 	rax, 60 # systemcall for exit
 	syscall
 ```
