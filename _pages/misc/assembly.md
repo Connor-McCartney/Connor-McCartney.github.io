@@ -19,7 +19,7 @@ ARM assembly is another common one.
 
 I'll just focus on x86_64. 
 
-There are also many compilers, such as NASM. 
+There are also many compilers, such as NASM and GAS. 
 
 I'll use the GNU assembler (GAS, executable named 'as').
 
