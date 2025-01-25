@@ -19,3 +19,12 @@ ARM assembly is another common one.
 
 I'll just focus on x86_64. 
 
+There are also many compilers, such as NASM. 
+
+I'll use the GNU assembler (GAS, executable named 'as').
+
+GCC actually automatically invokes GAS when compiling c code. 
+
+<br>
+
+# BARE PROGRAM
