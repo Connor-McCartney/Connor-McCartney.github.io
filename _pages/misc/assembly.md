@@ -44,5 +44,15 @@ $ ./x
 Segmentation fault (core dumped)
 ```
 
+<br>
+
 It segfaults because there's no exit syscall, so let's make that. 
 
+```asm
+.global _start
+.intel_syntax noprefix
+
+_start:
+	mov 	rax, 60 # system call for exit
+	syscall
+```
