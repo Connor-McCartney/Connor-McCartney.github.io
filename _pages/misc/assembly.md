@@ -61,3 +61,9 @@ Great, now let's check out choosing the exit code (note, they overflow if bigger
 
 We can check the exit code of the previous program in bash with `echo $?`
 
+Typically you should use exit code 0 to indicate the program ran successfuly. 
+
+But for this example I'll try 7. 
+
+<br>
+
