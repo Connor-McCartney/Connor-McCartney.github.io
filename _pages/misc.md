@@ -39,6 +39,8 @@ title: Misc
 
 <span style="font-size:2em;">   [Scapy HTTP/HTTPS sniffing](/misc/scapy)   </span>
 
+<span style="font-size:2em;">   [Assembly](/misc/assembly)   </span>
+
 <span style="font-size:2em;">   [C header files](/misc/Cheaderfiles)   </span>
 
 <span style="font-size:2em;">   [Resources](/misc/resources)   </span>
