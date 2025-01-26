@@ -122,6 +122,11 @@ Then we're just left with the second equation.
 assert spq[0][1] == q*x1 - x1*y0 + p*y1 - x0*y1 - x1*y1 + z1
 ```
 
+Multiply by p to get rid of q:
+
+```python
+assert p*spq[0][1] == n*x1 - p*x1*y0 + p**2 * y1 - p*x0*y1 - p*x1*y1 + z1*p
+```
 
 <br>
 
