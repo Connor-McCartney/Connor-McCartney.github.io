@@ -48,7 +48,7 @@ Segmentation fault (core dumped)
 
 It segfaults because there's no exit syscall, so let's make that. 
 
-```assembly
+```
 .global _start
 .intel_syntax noprefix
 
@@ -93,7 +93,7 @@ $ echo $?
 
 # Addition
 
-```assembly
+```
 .global _start
 .intel_syntax noprefix
 
