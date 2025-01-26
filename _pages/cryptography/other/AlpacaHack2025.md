@@ -70,6 +70,46 @@ Observe the additive_share function is called 3 times, creating 6 total unknowns
 
 And of course, p and q are also unknown. 
 
+The reconstruction function also seems useless for us solvers. 
+
+```python
+def additive_share(a, t0, t1):
+    #t0, t1 = getRandomRange(-2**512, 2**512), getRandomRange(-2**512, 2**512)
+    t2 = a-t0-t1
+    return t0, t1, t2
+
+def replicated_share(a, t0, t1):
+    t = additive_share(a, t0, t1)
+    return [(t[i], t[(i+1)%3]) for i in range(3)]
+
+def multiply_shares(sa, sb):
+    def mul(t, u):
+        return t[0]*u[0]+t[0]*u[1]+t[1]*u[0]
+    r = additive_share(0, z0, z1)
+    z = [mul(sa[i], sb[i])+r[i] for i in range(3)]
+    w = [(z[i], z[(i+1)%3]) for i in range(3)]
+    return w
+
+var('p q')
+var('x0 x1 y0 y1 z0 z1')
+
+sp = replicated_share(p, x0, x1)
+sq = replicated_share(q, y0, y1)
+print("your share of p:", sp[0])
+print("your share of q:", sq[0])
+
+spq = multiply_shares(sp, sq)
+print("your share of pq:", spq[0])
+```
+
+That just leaves us with this information
+
+```
+your share of p: (x0, x1)
+your share of q: (y0, y1)
+your share of pq: (x0*y0 + x1*y0 + x0*y1 + z0,    (q - y0 - y1)*x1 + (p - x0 - x1)*y1 + x1*y1 + z1)
+```
+
 
 <br>
 
