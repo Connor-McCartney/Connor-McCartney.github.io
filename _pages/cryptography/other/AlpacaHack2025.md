@@ -124,3 +124,10 @@ We choose some c, receive `mod(c, n).nth_root(e)`, and must use this to get p or
 
 <br>
 
+
+My idea is choose c = e**e. 
+
+Then there's a chance we receive some m such that m ≡ e mod p.
+
+In that case, we can take p = gcd(m-e, n) :)
+
