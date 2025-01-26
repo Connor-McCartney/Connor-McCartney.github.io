@@ -110,6 +110,12 @@ your share of q: (y0, y1)
 your share of pq: (x0*y0 + x1*y0 + x0*y1 + z0,    (q - y0 - y1)*x1 + (p - x0 - x1)*y1 + x1*y1 + z1)
 ```
 
+We're given x0, x1, y0 and y1. We can also solve z0 easily from the first equation
+
+```python
+z0 = -(x0*y0 + x1*y0 + x0*y1)
+```
+
 
 <br>
 
