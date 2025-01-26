@@ -116,7 +116,7 @@ We're given x0, x1, y0 and y1. We can also solve z0 easily from the first equati
 assert z0 == spq[0][0] - (x0*y0 + x1*y0 + x0*y1 )
 ```
 
-Then we're just left with the second equation. We can sub in q=n/p, leaving us with 1 equation and 2 unknowns (p and z1) to try solve with LLL. 
+Then we're just left with the second equation. 
 
 
 
