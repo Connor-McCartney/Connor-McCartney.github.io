@@ -77,3 +77,27 @@ print("c:", c)
 
 <br>
 
+Observe the additive_share function is called 3 times, creating 6 total unknowns which I'll call x0, x1, y0, y1, z0, z1.
+
+And of course, p and q are also unknown. 
+
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+# addprimes
+
+<details>
+  <summary>chall.py </summary>
+
+  ```python
+...
+  ```
