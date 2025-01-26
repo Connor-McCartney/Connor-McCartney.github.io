@@ -247,3 +247,12 @@ for flag in Zmod(n)(ct).nth_root(e, all=True):
 
 # Alpaca{k3ym0on's_favori7e_73chn1que!_x.com/kymn_/status/1527738058744791042}
 ```
+
+
+<br>
+
+<br>
+
+---
+
+Author's writeup: <https://chocorusk.hatenablog.com/entry/2025/01/26/180123>
