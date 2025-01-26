@@ -127,7 +127,7 @@ print("plaintext:", m)
 padded_flag = FLAG + os.urandom(127-len(FLAG))
 print("encrypted flag:", pow(bytes_to_long(padded_flag), e, n))
   ```
-
+</details>
 
 <br>
 
