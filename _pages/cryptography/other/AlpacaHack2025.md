@@ -118,6 +118,9 @@ assert z0 == spq[0][0] - (x0*y0 + x1*y0 + x0*y1 )
 
 Then we're just left with the second equation. 
 
+```
+0 = q*x1 - x1*y0 + p*y1 - x0*y1 - x1*y1 - spq01 + z1
+```
 
 
 <br>
