@@ -11,7 +11,7 @@ title: AlpacaHack 2025
 <details>
   <summary>chall </summary>
 
-
+  ```python
   import os
 from Crypto.Util.number import getRandomRange, getPrime, bytes_to_long
 
@@ -56,7 +56,7 @@ e = 0x10001
 c = pow(bytes_to_long(FLAG + os.urandom(127-len(FLAG))), e, n)
 print("e:", e)
 print("c:", c)
-```
+  ```
     
 </details>
 
