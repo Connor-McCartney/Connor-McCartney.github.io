@@ -133,4 +133,7 @@ print("encrypted flag:", pow(bytes_to_long(padded_flag), e, n))
 
 <br>
 
+We choose some c, receive `mod(c, n).nth_root(e)`, and must use this to get p or q. 
+
+<br>
 
