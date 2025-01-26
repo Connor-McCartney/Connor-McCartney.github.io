@@ -12,7 +12,7 @@ title: AlpacaHack 2025
   <summary>chall </summary>
 
   ```python
-  import os
+import os
 from Crypto.Util.number import getRandomRange, getPrime, bytes_to_long
 
 FLAG = os.environ.get("FLAG", "fakeflag").encode()
