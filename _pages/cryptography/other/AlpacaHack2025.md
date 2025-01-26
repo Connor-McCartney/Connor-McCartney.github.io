@@ -178,3 +178,14 @@ ct = 817267821314005437124095399692811283453079520793677300416458862768574940043
 
 and now just decrypting:
 
+```python
+from Crypto.Util.number import *
+e = 37
+pari.addprimes(p)
+for flag in Zmod(n)(ct).nth_root(e, all=True):
+    flag = long_to_bytes(int(flag))
+    if b'Alpaca' in flag:
+        print(flag)
+
+# Alpaca{k3ym0on's_favori7e_73chn1que!_x.com/kymn_/status/1527738058744791042}
+```
