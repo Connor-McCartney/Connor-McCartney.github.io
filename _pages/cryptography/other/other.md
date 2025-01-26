@@ -129,3 +129,7 @@ title: Other
 
 
 <span style="font-size:2em;">   [modjail - imaginary CTF](/cryptography/other/modjail-imaginaryCTF) </span> <br>
+
+
+<span style="font-size:2em;">   [AlpacaHack 2025](/cryptography/other/AlpacaHack2025) </span> <br>
+
