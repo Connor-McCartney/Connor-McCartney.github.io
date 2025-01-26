@@ -128,6 +128,12 @@ Multiply by p to get rid of q:
 assert p*spq[0][1] == n*x1 - p*x1*y0 + p**2 * y1 - p*x0*y1 - p*x1*y1 + z1*p
 ```
 
+And now if we just let ignore z1 (eg let it be 0) we can solve for p and get a very very close approximation. 
+
+Final solver:
+
+
+
 <br>
 
 <br>
