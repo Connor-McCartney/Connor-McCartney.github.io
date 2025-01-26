@@ -125,9 +125,9 @@ We choose some c, receive `mod(c, n).nth_root(e)`, and must use this to get p or
 <br>
 
 
-My idea is choose c = e**e. 
+My idea is choose c = x**e for some random x. 
 
-Then there's a chance we receive some m such that m ≡ e mod p.
+Then there's a chance we receive some m such that m ≡ x mod p.
 
-In that case, we can take p = gcd(m-e, n) :)
+In that case, we can take p = gcd(m-x, n) :)
 
