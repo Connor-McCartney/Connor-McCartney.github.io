@@ -9,8 +9,9 @@ title: AlpacaHack 2025
 # RSAMPC
 
 <details>
-    <summary>chall.py</summary>
-    
+    <summary>chall </summary>
+
+    ```python
     import os
     from Crypto.Util.number import getRandomRange, getPrime, bytes_to_long
     
@@ -55,6 +56,7 @@ title: AlpacaHack 2025
     c = pow(bytes_to_long(FLAG + os.urandom(127-len(FLAG))), e, n)
     print("e:", e)
     print("c:", c)
+    ```
     
 </details>
 
