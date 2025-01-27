@@ -15,7 +15,7 @@ Intel and AMD commonly use the x86 architecture.
 
 64-bit CPUs commonly use x86_64 assembly.
 
-ARM assembly is another common one.
+RISC and ARM assembly are another common ones.
 
 I'll just focus on x86_64. 
 
