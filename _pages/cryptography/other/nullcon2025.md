@@ -73,3 +73,16 @@ And we can try solve this with LLL.
 <br>
 
 Solve script:
+
+
+
+
+
+
+<br>
+
+<br>
+
+# coinflip
+
+If we just keep betting 1 amount then we can collect many outputs and use that to determine some states. 
