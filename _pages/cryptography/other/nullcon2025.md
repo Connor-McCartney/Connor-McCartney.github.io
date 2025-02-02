@@ -56,13 +56,13 @@ Now let's introduce some new unknowns yi.
 
 Suppose we construct S as 
 
-$$S \equiv {s_0}^{y_0} + {s_1}^{y_1} + {s_2}^{y_2} + ... \pmod n$$
+$$S \equiv {s_0}^{y_0} \cdot {s_1}^{y_1} \cdot {s_2}^{y_2} \cdot ... \pmod n$$
 
 Now we just want to solve for these yi. 
 
 Substitute in our previous expressions for S and si:
 
-$$ a^d \cdot a^H \equiv a^d \cdot \left( a^{y_0 \cdot h_0} + a^{y_1 \cdot h_1} + a^{y_2 \cdot h_2} + ... \right) \pmod n$$
+$$ a^d \cdot a^H \equiv a^d \cdot \left( a^{y_0 \cdot h_0} \cdot a^{y_1 \cdot h_1} \cdot a^{y_2 \cdot h_2} \cdot ... \right) \pmod n$$
 
 
-$$ a^H \equiv a^{y_0 \cdot h_0} + a^{y_1 \cdot h_1} + a^{y_2 \cdot h_2} + ... \pmod n$$
+$$ a^H \equiv a^{y_0 \cdot h_0} \cdot a^{y_1 \cdot h_1} \cdot a^{y_2 \cdot h_2} \cdot ... \pmod n$$
