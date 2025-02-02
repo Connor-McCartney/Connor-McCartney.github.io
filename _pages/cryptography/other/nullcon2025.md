@@ -57,3 +57,9 @@ Now let's introduce some new unknowns yi.
 Suppose we construct S as 
 
 $$S \equiv {s_0}^{y_0} + {s_1}^{y_1} + {s_2}^{y_2} + ... \pmod n$$
+
+Now we just want to solve for these yi. 
+
+Substitute in our previous expressions for S and si:
+
+$$ a^d \cdot a^H \equiv {a^{h_0 \cdot d}}^{y_0} + {a^{h_1 \cdot d}}^{y_1} + {a^{h_2 \cdot d}}^{y_2}   ... \pmod n$$
