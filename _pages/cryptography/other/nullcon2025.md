@@ -63,3 +63,6 @@ Now we just want to solve for these yi.
 Substitute in our previous expressions for S and si:
 
 $$ a^d \cdot a^H \equiv a^d \cdot \left( a^{y_0 \cdot h_0} + a^{y_1 \cdot h_1} + a^{y_2 \cdot h_2} + ... \right) \pmod n$$
+
+
+$$ a^H \equiv a^{y_0 \cdot h_0} + a^{y_1 \cdot h_1} + a^{y_2 \cdot h_2} + ... \pmod n$$
