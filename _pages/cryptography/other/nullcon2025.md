@@ -62,4 +62,4 @@ Now we just want to solve for these yi.
 
 Substitute in our previous expressions for S and si:
 
-$$ a^d \cdot a^H \equiv {a^{h_0 \cdot d}}^{y_0} + {a^{h_1 \cdot d}}^{y_1} + {a^{h_2 \cdot d}}^{y_2}   ... \pmod n$$
+$$ a^d \cdot a^H \equiv a^d \cdot \left( a^{y_0 \cdot h_0} + a^{y_1 \cdot h_1} + a^{y_2 \cdot h_2} + ... \right) \pmod n$$
