@@ -64,3 +64,7 @@ Substitute in our previous expressions for S and si:
 
 $$ a^{d \cdot H} \equiv a^{d \cdot x_0 \cdot h_0} \cdot a^{d \cdot x_1 \cdot h_1} \cdot a^{d \cdot x_2 \cdot h_2} \cdot ... \pmod n$$
 
+$$ a^{d \cdot H} \equiv a^{d \cdot (x_0 \cdot h_0 + x_1 \cdot h_1 + x_2 \cdot h_2 + ...)} \pmod n$$
+
+$$ H = (x_0 \cdot h_0 + x_1 \cdot h_1 + x_2 \cdot h_2 + ...)$$
+
