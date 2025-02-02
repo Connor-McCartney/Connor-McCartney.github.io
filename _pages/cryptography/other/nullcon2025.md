@@ -86,3 +86,11 @@ Solve script:
 # coinflip
 
 If we just keep betting 1 amount then we can collect many outputs and use that to determine some states. 
+
+then if we can just solve a and m, we can predict future states. 
+
+```python
+            self.state = self.a * pow(self.state, 3, self.m) % self.m
+```
+
+$$s_{i+1} = a \cdot s_i^3 \pmod m$$
