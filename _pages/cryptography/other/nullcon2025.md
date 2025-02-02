@@ -129,3 +129,17 @@ assert ((s2 * s2**3) - (s3 * s1**3)) % m == 0
 mm = gcd((s1 * s1**3) - (s2 * s0**3), (s2 * s2**3) - (s3 * s1**3))
 print(f'{mm = }')
 ```
+
+<br>
+
+Final solve script:
+
+
+
+
+
+
+
+
+
+<br> <br> <br> <br>
