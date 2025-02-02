@@ -49,3 +49,11 @@ We can also collect as many signatures as we want.
 We receive some si and hi, where:
 
 $$s_i \equiv a^{h_i \cdot d} \pmod n$$
+
+<br>
+
+Now let's introduce some new unknowns yi. 
+
+Suppose we construct S as 
+
+$$S \equiv {s_0}^{y_0} + {s_1}^{y_1} + {s_2}^{y_2} + ... \pmod n$$
