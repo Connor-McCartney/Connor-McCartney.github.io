@@ -310,3 +310,176 @@ if __name__ == '__main__':
 <br>
 
 
+
+
+
+<br> <br> <br> <br> <br>
+
+# coinflip
+
+```python
+#!/usr/bin/env python3
+import os
+import sys
+from Crypto.Util.number import bytes_to_long, getRandomNBitInteger
+import math
+
+flag = open('flag','r').read().strip()
+N = 64
+
+def log(*err_messages):
+	'''function for debugging purposes'''
+	logs = open('err.log','a')
+	for msg in err_messages:
+		if type(msg) == bytes: msg = hexlify(msg).decode()
+		logs.write(msg)
+	logs.write('\n=====\n')
+	logs.close()
+
+class CRG(object):
+	"""Cubic Random Generator"""
+
+	def __init__(self, n):
+		'''n - bitlength of state'''
+		self.n = n
+		self.m = getRandomNBitInteger(n)
+		while True:
+			self.a = bytes_to_long(os.urandom(n >> 3)) % self.m # n/8 bytes
+			if math.gcd(self.a, self.m) == 1: break
+		while True:
+			self.state = bytes_to_long(os.urandom(n >> 3)) % self.m # n/8 bytes
+			if math.gcd(self.state, self.m) == 1: break
+		self.buffer = []
+
+	def next(self):
+		if self.buffer == []:
+			self.buffer = [int(bit) for bit in bin(self.state)[2:].zfill(self.n)]
+			self.state = self.a * pow(self.state, 3, self.m) % self.m
+			#log('new state: ', self.state)
+		return self.buffer.pop(0)
+
+def loop():
+	balance = 2
+	coin = ['head','tails']
+	crg = CRG(N)
+	while True:
+		if balance == 0:
+			print('I do not talk to broke people.')
+			return
+		if balance >= 1000000000:
+			print(f'Wow, here is your flag: {flag}')
+			return
+		print(f'How much do you want to bet? (you have {balance})')
+		sys.stdout.flush()
+		amount = int(sys.stdin.buffer.readline().strip())
+		if amount > balance or amount <= 0:
+			print('Ugh, cheater!')
+			return
+		print('What is your bet?')
+		sys.stdout.flush()
+		bet = sys.stdin.buffer.readline().strip().decode()
+		if bet == coin[crg.next()]:
+			print('you win')
+			balance += amount
+		else:
+			print('you lose')
+			balance -= amount
+
+if __name__ == '__main__':
+	try:
+		loop()
+	except Exception as err:
+		print('Something went wrong')
+		log('ERROR: ', repr(err))
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br> <br> <br> <br> <br>
+
+# Matrixfun
+
+```python
+import sys
+import pwn
+import pickle
+import base64
+import hashlib
+import random
+import numpy as np
+from numpy._typing import NDArray
+from gmpy2 import mpz
+from typing import Any
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.primitives import padding
+from cryptography.hazmat.backends import default_backend
+
+
+def mpow(a: NDArray[Any], e: int, p: mpz):
+    n = a.shape[0]
+    c: NDArray[Any] = np.identity(n, dtype=object) // mpz(1)
+    for i in range(e.bit_length(), -1, -1):
+        c = (c @ c) % p
+        if e & (1 << i):
+            c = (c @ a) % p
+    return c
+
+
+def dec(key: bytes, iv: bytes, ciphertext: bytes) -> str:
+    cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend())
+    decryptor = cipher.decryptor()
+    padded_data = decryptor.update(ciphertext) + decryptor.finalize()
+    unpadder = padding.PKCS7(algorithms.AES.block_size).unpadder()
+    plaintext = unpadder.update(padded_data) + unpadder.finalize()
+    return plaintext.decode()
+
+
+def main():
+    r = pwn.remote(sys.argv[1], int(sys.argv[2]))
+    r.send(base64.b64encode(b"g"))
+    r.send(b"\r\n")
+
+    msg = r.recv()
+    p, g, gorder = pickle.loads(base64.b64decode(msg))
+    print(gorder)
+    a = random.randint(0, gorder)
+    A = mpow(g, a, p)
+    r.send(base64.b64encode(pickle.dumps(A)))
+    r.send(b"\r\n")
+
+    msg = r.recv()
+    B, iv, cipher = pickle.loads(base64.b64decode(msg))
+
+    K = mpow(B, a, p)
+    h = hashlib.sha256()
+    h.update(str(K).encode())
+    digest = h.digest()
+    print(dec(digest, iv, cipher))
+
+    r.send(base64.b64encode(b"kthxbye"))
+    r.send(b"\r\n")
+    print(r.recv().decode("utf-8").strip()[::-1])
+
+
+if __name__ == "__main__":
+    main()
+```
+
+<br>
+
