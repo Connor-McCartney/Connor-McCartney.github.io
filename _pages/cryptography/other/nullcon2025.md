@@ -83,6 +83,9 @@ Solve script:
 
 <br>
 
+<br> <br> <br> <br>
+
+
 # coinflip
 
 If we just keep betting 1 amount then we can collect many outputs and use that to determine some states. 
