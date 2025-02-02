@@ -34,3 +34,18 @@ $$S^e \equiv a^H \pmod n$$
 Rearrange for S:
 
 $$S \equiv (a^H)^d \equiv a^d \cdot a^H \pmod n$$
+
+<br>
+
+We can also collect as many signatures as we want. 
+
+```python
+	def sign(self, msg):
+		if type(msg) == str: msg = msg.encode()
+		h = number.bytes_to_long(sha256(msg).digest())
+		return pow(self.a, h * self.d, self.n)
+```
+
+We receive some si and hi, where:
+
+$$s_i \equiv a^(h_i \cdot d) \pmod n$$
