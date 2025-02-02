@@ -52,17 +52,17 @@ $$s_i \equiv a^{h_i \cdot d} \pmod n$$
 
 <br>
 
-Now let's introduce some new unknowns yi. 
+Now let's introduce some new unknowns xi. 
 
 Suppose we construct S as 
 
-$$S \equiv {s_0}^{y_0} \cdot {s_1}^{y_1} \cdot {s_2}^{y_2} \cdot ... \pmod n$$
+$$S \equiv {s_0}^{x_0} \cdot {s_1}^{x_1} \cdot {s_2}^{x_2} \cdot ... \pmod n$$
 
-Now we just want to solve for these yi. 
+Now we just want to solve for these xi. 
 
 Substitute in our previous expressions for S and si:
 
-$$ a^d \cdot a^H \equiv a^d \cdot \left( a^{y_0 \cdot h_0} \cdot a^{y_1 \cdot h_1} \cdot a^{y_2 \cdot h_2} \cdot ... \right) \pmod n$$
+$$ a^d \cdot a^H \equiv a^d \cdot \left( a^{x_0 \cdot h_0} \cdot a^{x_1 \cdot h_1} \cdot a^{x_2 \cdot h_2} \cdot ... \right) \pmod n$$
 
 
-$$ a^H \equiv a^{y_0 \cdot h_0} \cdot a^{y_1 \cdot h_1} \cdot a^{y_2 \cdot h_2} \cdot ... \pmod n$$
+$$ a^H \equiv a^{x_0 \cdot h_0} \cdot a^{x_1 \cdot h_1} \cdot a^{x_2 \cdot h_2} \cdot ... \pmod n$$
