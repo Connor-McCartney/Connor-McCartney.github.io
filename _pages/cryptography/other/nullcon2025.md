@@ -33,7 +33,7 @@ $$S^e \equiv a^H \pmod n$$
 
 Rearrange for S:
 
-$$S \equiv (a^H)^d \equiv a^d \cdot a^H \pmod n$$
+$$S \equiv (a^H)^d \equiv a^{d \cdot H} \pmod n$$
 
 <br>
 
@@ -62,7 +62,5 @@ Now we just want to solve for these xi.
 
 Substitute in our previous expressions for S and si:
 
-$$ a^d \cdot a^H \equiv a^d \cdot \left( a^{x_0 \cdot h_0} \cdot a^{x_1 \cdot h_1} \cdot a^{x_2 \cdot h_2} \cdot ... \right) \pmod n$$
+$$ a^{d \cdot H} \equiv a^{d \cdot x_0 \cdot h_0} \cdot a^{d \cdot x_1 \cdot h_1} \cdot a^{d \cdot x_2 \cdot h_2} \cdot ... \pmod n$$
 
-
-$$ a^H \equiv a^{x_0 \cdot h_0} \cdot a^{x_1 \cdot h_1} \cdot a^{x_2 \cdot h_2} \cdot ... \pmod n$$
