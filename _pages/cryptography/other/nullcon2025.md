@@ -48,4 +48,4 @@ We can also collect as many signatures as we want.
 
 We receive some si and hi, where:
 
-$$s_i \equiv a^(h_i \cdot d) \pmod n$$
+$$s_i \equiv a^{h_i \cdot d} \pmod n$$
