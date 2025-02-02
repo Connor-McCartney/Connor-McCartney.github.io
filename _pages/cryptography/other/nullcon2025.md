@@ -66,5 +66,10 @@ $$ a^{d \cdot H} \equiv a^{d \cdot x_0 \cdot h_0} \cdot a^{d \cdot x_1 \cdot h_1
 
 $$ a^{d \cdot H} \equiv a^{d \cdot (x_0 \cdot h_0 + x_1 \cdot h_1 + x_2 \cdot h_2 + ...)} \pmod n$$
 
-$$ H = (x_0 \cdot h_0 + x_1 \cdot h_1 + x_2 \cdot h_2 + ...)$$
+$$ H = x_0 \cdot h_0 + x_1 \cdot h_1 + x_2 \cdot h_2 + ... $$
 
+And we can try solve this with LLL. 
+
+<br>
+
+Solve script:
