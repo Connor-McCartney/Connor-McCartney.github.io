@@ -94,3 +94,38 @@ then if we can just solve a and m, we can predict future states.
 ```
 
 $$s_{i+1} = a \cdot s_i^3 \pmod m$$
+
+
+We can try eliminate a and then get m with gcd like so
+
+```python
+from Crypto.Util.number import *
+
+n = 64
+m = getRandomNBitInteger(n)
+print(f'{m = }')
+
+while True:
+    a = bytes_to_long(os.urandom(n >> 3)) % m # n/8 bytes
+    if gcd(a, m) == 1: break
+while True:
+    s0 = bytes_to_long(os.urandom(n >> 3)) % m # n/8 bytes
+    if gcd(s0, m) == 1: break
+
+s1 = a * pow(s0, 3, m) % m
+s2 = a * pow(s1, 3, m) % m
+s3 = a * pow(s2, 3, m) % m
+...
+
+assert s1 * pow(s0, -3, m) % m == a % m
+assert s2 * pow(s1, -3, m) % m == a % m
+assert s3 * pow(s2, -3, m) % m == a % m
+...
+
+
+assert ((s1 * s1**3) - (s2 * s0**3)) % m == 0
+assert ((s2 * s2**3) - (s3 * s1**3)) % m == 0
+
+mm = gcd((s1 * s1**3) - (s2 * s0**3), (s2 * s2**3) - (s3 * s1**3))
+print(f'{mm = }')
+```
