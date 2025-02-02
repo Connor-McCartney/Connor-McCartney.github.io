@@ -29,4 +29,8 @@ n, a, e are given.
 
 Given some H, to verify, we must solve for a valid S, such that:
 
-$$S^d \equiv a^H \pmod n$$
+$$S^e \equiv a^H \pmod n$$
+
+Rearrange for S:
+
+$$S \equiv (a^H)^d \equiv a^d \cdot a^H \pmod n$$
