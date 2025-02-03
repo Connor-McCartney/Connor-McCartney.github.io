@@ -98,6 +98,10 @@ __vulnerability: byte-by-byte bruteforce__
 __vulnerability: random known bits__
 
 
+<span style="font-size:2em;">   [Various Cyclotomic Polynomial Challs](/cryptography/rsa/CyclotomicPolynomial)       </span> <br>
+__vulnerability: factors form cyclotimic polynoimal__
+
+
 <span style="font-size:2em;">   [L4ugh - 0xl4ughCTF 2024](/cryptography/rsa/L4ugh-0xl4ughCTF-2024)       </span> <br>
 __vulnerability: common d__
 
