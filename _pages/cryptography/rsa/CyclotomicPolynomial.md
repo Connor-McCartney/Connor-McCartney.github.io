@@ -101,3 +101,187 @@ $$ \Phi_{10}(x) = x^4 - x^3 + x^2 - x + 1 $$
 
 <br>
 
+<br>
+
+```python
+from Crypto.Util.number import *
+
+P.<x, y> = PolynomialRing(ZZ)
+R.<z> = PolynomialRing(ZZ)
+z = R.gens()[0]
+
+def calculate_eta_all(eta, aa, bb, m, k):
+    eta_all = []
+    for i in range(k):
+        temp = eta**(aa**i)
+        add = temp
+        for _ in range((m-1)//k - 1):
+            add = add**bb
+            temp += add
+        eta_all.append(temp)
+    return eta_all
+
+def calculate_irreducible_polynomial(eta_all, m, k):
+    h = 1
+    for i in range(k):
+        h *= (y - eta_all[i].lift())
+
+    d = sum([x**i for i in range(m)])
+    f_irreducible = h % d
+
+    return f_irreducible, d
+
+def pad_polynomial_coefficients(f, m):
+    tmp = f.list()
+    while len(tmp) < m:
+        tmp.append(0)
+    return tmp
+    
+def Factoring_with_Cyclotomic_Polynomials(k, n):
+    if k == 1:
+        print('k = 1')
+        a = 2
+        while True:
+            print('a =', a)
+            p = gcd(int(pow(a, n, n)-1), n)
+            if p > 2**20 and n % p == 0:
+                return p
+            a += 1
+    Phi = cyclotomic_polynomial(k)
+    Psi = (z**k-1)//(cyclotomic_polynomial(k))
+    #print('Cyclotomic_Polynomials Phi:', Phi)
+    #print('Psi:', Psi)
+    m = 1
+    while True:
+        useful = False
+        while not useful:
+            m += k
+            if not isPrime(m):
+                continue
+
+            aa = primitive_root(m)
+            ff = x**m - 1
+            Q = P.quo(ff)
+            eta = Q.gens()[0]
+            for bb in range(2, m):
+                if (bb**((m-1)//k)-1)//(bb-1) % m:
+                    continue
+                eta_all = calculate_eta_all(eta, aa, bb, m, k)
+                f_irreducible, d = calculate_irreducible_polynomial(eta_all, m, k)
+                if f_irreducible.subs(y=0) in ZZ:
+                    useful = True
+                    break
+
+        #print(aa, bb)
+        #print(m)
+
+        eta0 = eta_all[0]
+        eta0_pow = []
+        for i in range(2, k):
+            eta0_pow_i = (eta0**i).lift().subs(x=z)
+            constant_term = eta0_pow_i.list()[0]
+            if constant_term != 0:
+                dd = (d-1).subs(x=z)
+                eta0_pow_i = eta0_pow_i - constant_term - constant_term * dd
+            eta0_pow.append(eta0_pow_i)
+
+        coefficients = []
+        for i in range(k):
+            coefficients.append(pad_polynomial_coefficients(eta_all[i].lift().subs(x=z), m))
+
+        A = matrix(QQ, coefficients)
+        terget = [[-1]*k, [1] + [0]*(k-1)]
+        for i in range(k-2):
+            terget.append(A.solve_left(vector(pad_polynomial_coefficients(eta0_pow[i], m))))
+
+        B = matrix(QQ, terget)
+
+        U.<w> = PolynomialRing(QQ)
+        w = U.gens()[0]
+        eta1 = U(list((B**-1)[1]))
+        f = f_irreducible.subs(y=w)
+        V = U.quo(f)
+        eta1 = V(eta1)
+
+        C = matrix(QQ, k, k)
+        C[0, 0] = 1
+        for i in range(1, k):
+            tmp = eta1**i
+            C[i] = pad_polynomial_coefficients(tmp, k)
+
+        K.<s> = PolynomialRing(Zmod(n))
+        f_modulo = f_irreducible.subs(y=s)
+        K_quo = K.quo(f_modulo)
+
+        f_ZZ = f_irreducible.subs(y=z)
+        try:
+            sigma = matrix(Zmod(n), C)
+        except:
+            continue
+        while True:
+            g = R.random_element(k - 1)
+            try:
+                kk, _, h = xgcd(f_ZZ, g)
+                h = inverse_mod(int(kk), n) * h
+                break
+            except:
+                continue
+        g = g.subs(y=x)       
+        g_Q = K_quo(g)
+        h_Q = K_quo(h)
+        assert g_Q * h_Q == 1
+        
+        Psi_coefficients = Psi.coefficients()
+        Psi_monomials = Psi.monomials()[::-1]
+        if Psi_coefficients[0] < 0:
+            yy = h_Q**(-Psi_coefficients[0]) 
+        else:
+            yy = g_Q**(Psi_coefficients[0]) 
+
+        for i in range(1, len(Psi_monomials)):
+            if Psi_coefficients[i] < 0:
+                yy *= K_quo(list(vector(list(h_Q**(-Psi_coefficients[i]))) * Psi_monomials[i](sigma)))
+            else:
+                yy *= K_quo(list(vector(list(g_Q**(Psi_coefficients[i]))) * Psi_monomials[i](sigma)))
+        yy = yy**n
+        if gcd(yy[1], n) > 2**20:
+            return gcd(yy[1], n)
+
+
+def demo():
+    p = getPrime(512)
+    k = 4  # the k-th cyclotomic_polynomial
+    Phi = cyclotomic_polynomial(k)
+    q = Phi(p)
+    r = getPrime(512*3)
+    r = 1
+    n = p * q * r
+    pp = Factoring_with_Cyclotomic_Polynomials(k, n)
+    assert not n % pp
+    print('factor is found:', pp)
+
+
+def sus():
+    n = 1125214074953003550338693571791155006090796212726975350140792193817691133917160305053542782925680862373280169090301712046464465620409850385467397784321453675396878680853302837289474127359729865584385059201707775238870232263306676727868754652536541637937452062469058451096996211856806586253080405693761350527787379604466148473842686716964601958192702845072731564672276539223958840687948377362736246683236421110649264777630992389514349446404208015326249112846962181797559349629761850980006919766121844428696162839329082145670839314341690501211334703611464066066160436143122967781441535203415038656670887399283874866947000313980542931425158634358276922283935422468847585940180566157146439137197351555650475378438394062212134921921469936079889107953354092227029819250669352732749370070996858744765757449980454966317942024199049138183043402199967786003097786359894608611331234652313102498596516590920508269648305903583314189707679
+    k = 3
+    p = Factoring_with_Cyclotomic_Polynomials(k, n)
+
+    e = 65537
+    c = 27126515219921985451218320201366564737456358918573497792847882486241545924393718080635287342203823068993908455514036540227753141033250259348250042460824265354495259080135197893797181975792914836927018186710682244471711855070708553557141164725366015684184788037988219652565179002870519189669615988416860357430127767472945833762628172190228773085208896682176968903038031026206396635685564975604545616032008575709303331751883115339943537730056794403071865003610653521994963115230275035006559472462643936356750299150351321395319301955415098283861947785178475071537482868994223452727527403307442567556712365701010481560424826125138571692894677625407372483041209738234171713326474989489802947311918341152810838321622423351767716922856007838074781678539986694993211304216853828611394630793531337147512240710591162375077547224679647786450310708451590432452046103209161611561606066902404405369379357958777252744114825323084960942810
+    flag = pow(c, pow(e, -1, p-1), p)
+    print(bytes.fromhex(f'{flag:x}'))
+
+def Algebra_Dream():
+    n = 3164185460897401035918259127615186097823178494156307264478085881685382156081138594656420053878856346857798109372324486153432788171606646907665916817319819422179731188196702091131697561690230687755197831124052359978158762232553358055610065603985529495671303130559971928454049906961754845734718018264227255119491116409194632034948749954558891642982918130451334217860173159949301617201073475194505804055841057753845449928503028605615448526927691755957477597639778351246923707140955947640923654632060810323715612143049500037580854956781587196426013889986322632070490417877196671892407417452056796950078471878697805697334581681139041948673895025576371353355146653959110210081063906560163620706038149360751011457425062309243741538208487014892646455740436522470844596882901344844116401061650710707986469059251156622386477598039558601528195729868508971094568422145493808745194771492502343199787393345624987622172768307381831642647955
+    k = 10
+    p = Factoring_with_Cyclotomic_Polynomials(k, n)
+
+    c = 11989527504598759334533721342562249727584056507050324030819676033921138419236646872068151325178610475443757765295582460162078632811544873053759827406920770
+    flag = int(c)^^int(p)
+    print(bytes.fromhex(f'{flag:x}'))
+
+
+#demo()
+sus()
+Algebra_Dream()
+```
