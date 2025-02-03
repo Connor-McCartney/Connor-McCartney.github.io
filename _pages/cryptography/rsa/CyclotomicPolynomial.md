@@ -86,3 +86,18 @@ print(p*q*r)
 
 # Solution to both:
 
+Check out the wikipedia page
+
+<https://en.wikipedia.org/wiki/Cyclotomic_polynomial>
+
+We can use k=3 for sus
+
+$$ \Phi_3(x) = x^2 + x + 1 $$
+
+and k=10 for algebra dream
+
+$$ \Phi_{10}(x) = x^4 - x^3 + x^2 - x + 1 $$
+
+
+<br>
+
