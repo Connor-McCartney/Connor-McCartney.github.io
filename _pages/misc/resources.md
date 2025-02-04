@@ -69,7 +69,7 @@ Multithreading vs Multiprocessing <https://builtin.com/data-science/multithreadi
 Create your own operating system [blog](https://os.phil-opp.com) [youtube](https://www.youtube.com/watch?v=rH5jnbJ3tL4&list=PLib6-zlkjfXkdCjQgrZhmfJOWBk_C2FTY) <br>
 nmtui - decent TUI to connect to wifi with network manager <br>
 xorg virtual keyboard <https://manpages.opensuse.org/Tumbleweed/xvkbd/xvkbd.1.en.html#text> <br>
-better? xorg keyboard <https://man.archlinux.org/man/xte.1.en>
+better? xorg keyboard <https://man.archlinux.org/man/xte.1.en> <br>
 
 ## Blogs
 
