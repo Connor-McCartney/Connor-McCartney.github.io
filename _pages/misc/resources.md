@@ -67,7 +67,8 @@ Older Windows ISOs <https://github.com/AveYo/MediaCreationTool.bat> <br>
 LLL talk <https://www.youtube.com/playlist?list=PL8Vt-7cSFnw2OmpCmPLLwSx0-Yqb2ptqO> <br>
 Multithreading vs Multiprocessing <https://builtin.com/data-science/multithreading-multiprocessing> <br>
 Create your own operating system [blog](https://os.phil-opp.com) [youtube](https://www.youtube.com/watch?v=rH5jnbJ3tL4&list=PLib6-zlkjfXkdCjQgrZhmfJOWBk_C2FTY) <br>
-nmtui - decent TUI to connect to wifi with network manager
+nmtui - decent TUI to connect to wifi with network manager <br>
+xorg virtual keyboard <https://manpages.opensuse.org/Tumbleweed/xvkbd/xvkbd.1.en.html#text> <br>
 
 
 ## Blogs
