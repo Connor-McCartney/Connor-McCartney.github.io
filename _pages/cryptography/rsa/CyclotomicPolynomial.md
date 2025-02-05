@@ -16,7 +16,7 @@ And the accompanying code
 
 <br>
 
-Relates challs:
+Related challs:
 
 <https://hxp.io/blog/86/hxp-CTF-2021-f_cktoring-writeup/>
 
