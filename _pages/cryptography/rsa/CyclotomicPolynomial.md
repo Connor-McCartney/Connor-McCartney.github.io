@@ -16,7 +16,11 @@ And the accompanying code
 
 <br>
 
-A related chall <https://hxp.io/blog/86/hxp-CTF-2021-f_cktoring-writeup/>
+Relates challs:
+
+<https://hxp.io/blog/86/hxp-CTF-2021-f_cktoring-writeup/>
+
+<https://gist.github.com/maple3142/fcd734ffd71b068d0f8c9a9702ccb43b>
 
 I'll look at some others
 
