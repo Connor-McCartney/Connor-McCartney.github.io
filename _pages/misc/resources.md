@@ -101,3 +101,4 @@ Rossmann <https://wiki.futo.org> <br>
 <https://soon.haari.me> <br>
 <https://sourque.com> <br>
 <https://www.0xm4hm0ud.me> <br>
+<https://seall.dev> <br>
