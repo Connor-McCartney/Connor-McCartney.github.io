@@ -70,6 +70,7 @@ Create your own operating system [blog](https://os.phil-opp.com) [youtube](https
 nmtui - decent TUI to connect to wifi with network manager <br>
 xorg fake key inputs <https://man.archlinux.org/man/xte.1.en> <br>
 Rossmann <https://wiki.futo.org> <br>
+NTT <https://eprint.iacr.org/2024/585.pdf> <br>
 
 ## Blogs
 
