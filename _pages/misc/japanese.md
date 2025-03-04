@@ -1,3 +1,5 @@
+かゆい - itch
+
 iu - say
 
 itta (言った) - said
