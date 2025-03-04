@@ -1,3 +1,7 @@
+iu - say
+
+itta (言った) - said
+
 henshin - reply
 
 te - apposition 
