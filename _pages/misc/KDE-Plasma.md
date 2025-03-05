@@ -44,6 +44,10 @@ Screen locking > disable
 sudo dnf install kwalletmanager <br>
 Then go to System Settings>Account Details>KDE Wallet and uncheck "Enable the KDE wallet subsystem"
 
+Or:
+
+add `Enabled=false` to ~/.config/kwalletrc
+
 ## Grub Customizer
 
 Disable look for other operating systems. <br>
