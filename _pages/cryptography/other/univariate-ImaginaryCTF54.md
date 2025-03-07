@@ -130,4 +130,6 @@ for s in range(-100, 100):
 
 The final coefficient of f is a `- 2`
 
-So, `assert (int(f(x=n)) + 2) % p == 0`
+```python
+assert (f(n) + 2) % p == 0
+```
