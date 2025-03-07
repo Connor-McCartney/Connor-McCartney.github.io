@@ -138,11 +138,6 @@ $$
 f(n) + 2 = c_1 \cdot n^{136} + c_2 \cdot n^{135} + c_3 \cdot n^{134} + ...
 $$
 
-Every term is a multiple of n, so it must be a multiple of p, so `f(n)+2` is 0 mod p
-
-```python
-assert (f(n) + 2) % p == 0
-```
 
 <br>
 
