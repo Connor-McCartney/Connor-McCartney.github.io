@@ -176,6 +176,5 @@ assert q == gcd(n, pow(2, f(n)+2, n) - 4*w)
 
 # 4 
 
-
 ---
 
