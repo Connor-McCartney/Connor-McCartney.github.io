@@ -130,6 +130,14 @@ for s in range(-100, 100):
 
 The final coefficient of f is a `- 2`
 
+$$
+f(n) = c_1 \cdot n^{136} + c_2 \cdot n^{135} + c_3 \cdot n^{134} + ... - 2
+$$
+
+$$
+f(n) + 2 = c_1 \cdot n^{136} + c_2 \cdot n^{135} + c_3 \cdot n^{134} + ...
+$$
+
 ```python
 assert (f(n) + 2) % p == 0
 ```
