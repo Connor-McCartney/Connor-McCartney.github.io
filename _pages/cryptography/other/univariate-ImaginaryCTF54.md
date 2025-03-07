@@ -191,6 +191,19 @@ $$
 w \equiv 2^{k \cdot (p-1) + r} \pmod n
 $$
 
+$$
+w \equiv (2^{p-1})^k \cdot 2^r \pmod p
+$$
+
+By fermat's little theorem, 2^(p-1) mod p is 1
+
+$$
+w \equiv (1)^k \cdot 2^r \pmod p
+$$
+
+$$
+w \equiv 2^r \pmod p
+$$
 
 ---
 
