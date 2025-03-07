@@ -162,3 +162,20 @@ print(w % p == pow(2, f(n), p)) # False
 
 Can you see why mod q is true and mod p is false?
 
+Then you can do 
+
+```python
+assert (w * 2**2) % n == 2**2 * pow(2, f(p), n) % n
+assert 0 == (pow(2, f(n)+2, n) - 4*w) % q
+assert q == gcd(n, pow(2, f(n)+2, n) - 4*w)
+```
+
+<br>
+
+---
+
+# 4 
+
+
+---
+
