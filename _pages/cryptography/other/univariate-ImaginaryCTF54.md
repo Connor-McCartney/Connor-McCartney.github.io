@@ -74,3 +74,16 @@ w \equiv 2^{c_1 \cdot p^{136}} \cdot 2^{c_2 \cdot p^{135}} \cdot 2^{c_3 \cdot p^
 $$
 
 ---
+
+# 2
+
+What's also funny is it's solveable without the output f. 
+
+```python
+T = RealDistribution('gaussian', 2)
+while True:
+    coefs = [round(T.get_random_element()) for _ in range(len(terms))]
+    print(sum(coefs))
+```
+
+The sum is always going to be pretty small. 
