@@ -180,5 +180,17 @@ Split f(x) into k * (x-1) + r
 
 where r can be calculated as f mod (x-1)
 
+sub that in 
+
+$$
+w \equiv 2^{f(p)} \pmod n
+$$
+
+
+$$
+w \equiv 2^{k \cdot (p-1) + r} \pmod n
+$$
+
+
 ---
 
