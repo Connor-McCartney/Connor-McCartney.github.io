@@ -116,3 +116,12 @@ while True:
 ```
 
 The sum is always going to be pretty small. 
+
+```python
+for s in range(-100, 100):
+    p = gcd(n, pow(2, s, n) - w)
+    if p != 1:
+        break
+```
+
+---
