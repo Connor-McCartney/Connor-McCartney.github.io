@@ -125,3 +125,8 @@ for s in range(-100, 100):
 ```
 
 ---
+
+# 3 
+
+The final coefficient of f is a `- 2`
+
