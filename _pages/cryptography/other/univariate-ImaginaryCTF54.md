@@ -77,6 +77,13 @@ $$
 w \equiv \left(2^{p^{136}}\right)^{c_1} \cdot \left(2^{p^{135}}\right)^{c_2} \cdot \left(2^{p^{134}}\right)^{c_3} \cdot ... \pmod n
 $$
 
+Then if you work mod p, and apply fermat's little theorem, every 2^(p^i) just becomes 2. 
+
+$$
+w \equiv 2^{c_1} \cdot 2^{c_2} \cdot 2^{c_3} \cdot ... 
+$$
+
+
 ---
 
 # 2
