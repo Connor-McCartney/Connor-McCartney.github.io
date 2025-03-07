@@ -56,4 +56,10 @@ There are many approaches.
 
 # 1
 
+
+$$
+f(p) = c_1 \cdot p^{136} + c_2 \cdot p^{135} + c_3 \cdot p^{134} + ...
+$$
+
+
 ---
