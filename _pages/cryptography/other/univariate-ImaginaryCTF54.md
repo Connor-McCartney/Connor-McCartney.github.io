@@ -70,7 +70,7 @@ w \equiv 2^{c_1 \cdot p^{136} + c_2 \cdot p^{135} + c_3 \cdot p^{134} + ...} \pm
 $$
 
 $$
-w \equiv 2^{c_1 \cdot p^{136}} + 2^{c_2 \cdot p^{135}} + 2^{c_3 \cdot p^{134}} + ... \pmod n
+w \equiv 2^{c_1 \cdot p^{136}} \cdot 2^{c_2 \cdot p^{135}} \cdot 2^{c_3 \cdot p^{134}} \cdot ... \pmod n
 $$
 
 ---
