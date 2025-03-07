@@ -74,7 +74,7 @@ w \equiv 2^{c_1 \cdot p^{136}} \cdot 2^{c_2 \cdot p^{135}} \cdot 2^{c_3 \cdot p^
 $$
 
 $$
-w \equiv \left(2^{p^{136}}\right)^{c_1} \cdot 2^{c_2 \cdot p^{135}} \cdot 2^{c_3 \cdot p^{134}} \cdot ... \pmod n
+w \equiv \left(2^{p^{136}}\right)^{c_1} \cdot \left(2^{p^{135}}\right)^{c_2} \cdot \left(2^{p^{134}}\right)^{c_3} \cdot ... \pmod n
 $$
 
 ---
