@@ -79,8 +79,11 @@ $$
 
 Then if you work mod p, and apply fermat's little theorem, every 2^(p^i) just becomes 2. 
 
-$$w \equiv 2^{c_1} \cdot 2^{c_2} \cdot 2^{c_3} \cdot ... $$
+<br>
 
+$$w \equiv 2^{c_1} \cdot 2^{c_2} \cdot 2^{c_3} \cdot ...$$
+
+<br>
 
 ---
 
