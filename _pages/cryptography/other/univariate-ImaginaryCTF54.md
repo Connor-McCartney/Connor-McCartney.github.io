@@ -1,6 +1,6 @@
 ---
 permalink: /cryptography/other/univariate-ImaginaryCTF54
-title: univariate - Imaginary CTF 54
+title: univariate/bivariate - Imaginary CTF 54
 ---
 
 <br>
