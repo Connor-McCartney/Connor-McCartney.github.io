@@ -135,3 +135,6 @@ title: Other
 
 
 <span style="font-size:2em;">   [nullcon HackIM CTF Goa 2025](/cryptography/other/nullcon2025) </span> <br>
+
+
+<span style="font-size:2em;">   [univariate/bivariate - Imaginary CTF 54](/cryptography/other/univariate-ImaginaryCTF54) </span> <br>
