@@ -205,5 +205,11 @@ $$
 w \equiv 2^r \pmod p
 $$
 
+```python
+r = f % (x-1)
+assert p == gcd(n, pow(2, r, n) - w)
+```
+
+
 ---
 
