@@ -176,5 +176,9 @@ assert q == gcd(n, pow(2, f(n)+2, n) - 4*w)
 
 # 4 
 
+Split f(x) into k * (x-1) + r
+
+where r can be calculated as f mod (x-1)
+
 ---
 
