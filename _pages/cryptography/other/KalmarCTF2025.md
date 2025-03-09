@@ -177,7 +177,7 @@ flag = ""
 
 while '}' not in flag:
     try:
-        recipient = "_" * ((15 - len(prefix) - len(middle) - len(flag)) % 16)
+        recipient = "_" * ((15 - len(prefix + middle + flag)) % 16)
         original = send_batched(io, [recipient])[0]
         brute = send_batched(io, [recipient + middle + flag + c for c in charset])
         l = len(prefix + recipient + middle + flag) + 1
