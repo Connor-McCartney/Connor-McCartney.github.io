@@ -1,3 +1,5 @@
+tojiru - close
+
 かゆい - itch
 
 iu - say
