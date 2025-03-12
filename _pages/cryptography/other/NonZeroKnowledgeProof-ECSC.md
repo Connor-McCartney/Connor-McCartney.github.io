@@ -207,3 +207,53 @@ Solve:
 
 <https://crypto.stackexchange.com/questions/96060/rabin-cryptosystem-chosen-ciphertext-attack>
 
+
+<br>
+
+```python
+from os import environ
+environ['TERM'] = 'konsole'
+from Crypto.Util.number import *
+from pwn import *
+from tqdm import trange
+
+while True:
+    while True:
+        io = remote('nzkp.ecsc22.hack.cert.pl', 18665)
+        io.recvline()
+        n = int(io.recvline())
+        io.recvline()
+        r = randint(0, n)
+        c = pow(r, 2, n)
+        io.sendline(str(c).encode())
+        recv = io.recvline()
+        print(recv)
+        if b'Please provide only' in recv:
+            io.close()
+            continue
+        break
+
+    t = int(recv)
+    p = gcd(r-t, n)
+    print(f'{p = }')
+    if 1<p<n:
+        break
+    print('retrying......')
+
+q = n//p
+
+for _ in trange(31):
+    io.recvline()
+    io.sendline(str(c).encode())
+    io.recvline()
+
+
+flagenc = int(io.recvline())
+pari.addprimes([p, q])
+for flag in Zmod(n)(flagenc).sqrt(all=True):
+    flag = long_to_bytes(int(flag))
+    if b'ecsc' in flag:
+        print(flag)
+    
+# ecsc{H3y_R4bbi_Wh4tch4_D0in_l3ak1ng_fl4gs}
+```
