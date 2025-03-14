@@ -81,3 +81,10 @@ for AB_msb in range(AB_msb_-1000, AB_msb_):
                 flag = pow(c, pow(65537, -1, (p-1)*(q-1)), n)
                 print(bytes.fromhex(f'{flag:x}'))
 ```
+
+---
+
+
+similar chall: 
+
+<https://github.com/AustICCQuals/Challenges2025/tree/main/crypto/teddiursa>
