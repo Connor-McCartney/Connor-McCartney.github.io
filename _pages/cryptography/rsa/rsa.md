@@ -129,6 +129,10 @@ __vulnerability: strange prime structure__
 __vulnerability: strange prime structure__
 
 
+<span style="font-size:2em;">   [mirror - ecsc](/cryptography/rsa/mirror-ecsc)       </span> <br>
+__vulnerability: MSB and LSB of p and q are swapped__
+
+
 <span style="font-size:2em;">   [krsa - INTIGRITI CTF 2024](/cryptography/rsa/krsa-INTIGRITICTF2024)       </span> <br>
 __vulnerability: meet in the middle attack__
 
