@@ -48,6 +48,10 @@ Or:
 
 add `Enabled=false` to ~/.config/kwalletrc
 
+Or: 
+
+`sudo chmod 000 /usr/bin/kwalletmanager`
+
 ## Grub Customizer
 
 Disable look for other operating systems. <br>
