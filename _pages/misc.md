@@ -43,4 +43,6 @@ title: Misc
 
 <span style="font-size:2em;">   [C header files](/misc/Cheaderfiles)   </span>
 
+<span style="font-size:2em;">   [Simple X11 GUI Window in C](/misc/xguic)   </span>
+
 <span style="font-size:2em;">   [Resources](/misc/resources)   </span>
