@@ -144,3 +144,6 @@ title: Other
 
 
 <span style="font-size:2em;">   [Non Zero Knowledge Proof - ECSC](/cryptography/other/NonZeroKnowledgeProof-ECSC) </span> <br>
+
+
+<span style="font-size:2em;">   [Wolv CTF 2025](/cryptography/other/WolvCTF2025) </span> <br>
