@@ -100,3 +100,9 @@ WM_CLASS(STRING) = "myapp", "myapp"
 
 <br>
 
+# text
+
+<https://stackoverflow.com/questions/44476594/x11-why-i-cant-draw-any-text>
+
+<br>
+
