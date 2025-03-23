@@ -12,6 +12,8 @@ Doc: <https://www.x.org/releases/X11R7.7/doc/libX11/libX11/libX11.html>
 
 <br>
 
+# simple window
+
 ```c
 #include <X11/Xlib.h>
 
@@ -38,7 +40,7 @@ gcc x.c -lX11
 
 edit `attr.background_pixel`
 
-```python
+```c
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 
@@ -61,3 +63,40 @@ int main() {
     }
 }
 ```
+
+<br>
+
+# Class hint properties
+
+<https://tronche.com/gui/x/xlib/ICC/client-to-window-manager/wm-class.html#XClassHint>
+
+```c
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+
+int main() {
+    XEvent event;
+    Display* display = XOpenDisplay(NULL);
+    Window w = XCreateSimpleWindow(display, DefaultRootWindow(display), 50, 50, 250, 250, 1, BlackPixel(display, 0), WhitePixel(display, 0));
+    XMapWindow(display, w);
+
+
+    // set CLASS property
+    XClassHint* class_hint = XAllocClassHint();
+    class_hint->res_class = "myapp";
+    class_hint->res_name= "myapp";
+    XSetClassHint(display, w, class_hint);
+
+    while (1) {
+        XNextEvent(display, &event);
+    }
+}
+```
+
+```
+$ xprop | grep CLASS
+WM_CLASS(STRING) = "myapp", "myapp"
+```
+
+<br>
+
