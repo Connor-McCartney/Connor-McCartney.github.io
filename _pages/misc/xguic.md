@@ -29,3 +29,35 @@ int main() {
 ```
 gcc x.c -lX11
 ```
+
+
+
+<br>
+
+# translucent background
+
+edit `attr.background_pixel`
+
+```python
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+
+int main() {
+    XEvent event;
+    Display* display = XOpenDisplay(NULL);
+
+    XVisualInfo vinfo;
+    XMatchVisualInfo(display, DefaultScreen(display), 32, TrueColor, &vinfo);
+
+    XSetWindowAttributes attr;
+    attr.colormap = XCreateColormap(display, DefaultRootWindow(display), vinfo.visual, AllocNone);
+    attr.background_pixel = 0x00000000;
+
+    Window w = XCreateWindow(display, DefaultRootWindow(display), 0, 0, 300, 200, 0, vinfo.depth, InputOutput, vinfo.visual, CWColormap | CWBorderPixel | CWBackPixel, &attr);
+    XMapWindow(display, w);
+
+    while (1) {
+        XNextEvent(display, &event);
+    }
+}
+```
