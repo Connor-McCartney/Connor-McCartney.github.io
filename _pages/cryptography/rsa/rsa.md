@@ -139,3 +139,7 @@ __vulnerability: meet in the middle attack__
 
 <span style="font-size:2em;">   [SU_rsa - SUCTF 2025](/cryptography/rsa/SUrsa-SUCTF2025)       </span> <br>
 __vulnerability: known MSB of d__
+
+
+<span style="font-size:2em;">   [Verilicious - HTB Cyber Apocalypse CTF 2025](/cryptography/rsa/Verilicious-HTBCyberApocalypseCTF2025)       </span> <br>
+__vulnerability: Bleichenbacher's attack__
