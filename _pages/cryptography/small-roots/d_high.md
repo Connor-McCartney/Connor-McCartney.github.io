@@ -5,7 +5,9 @@ title: d_high
 
 <br>
 
-It's a chinese chall sent to me. It got 7 solves. 
+All the above related contents are issued after authorization by @Halois
+
+It's a chinese CTF chall sent to me by @Halois. It got 7 solves. 
 
 ```python
 from Crypto.Util.number import getPrime,bytes_to_long
