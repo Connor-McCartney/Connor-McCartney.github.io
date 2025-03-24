@@ -96,4 +96,4 @@ Then we have to solve the following hidden number problem:
 $$k_i - r_i \cdot m + 2 \cdot B \equiv 0 \pmod n$$
 
 
-Where all ki are some unknown < B, the ri are given in the output, and m is the padded flag (1024 bits).
+Where all ki are some unknown < B, the ri are given in the output, and m is the padded flag (1024 bits, same as n).
