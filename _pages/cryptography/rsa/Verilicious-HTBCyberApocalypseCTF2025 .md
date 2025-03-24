@@ -80,3 +80,8 @@ Modulus=D6995EC957DC3213D8B2DD404E38A951744954C2CFB4242CA6A0A240949EC6A09451A510
 
 <br>
 
+
+Now, the challege itself is about Bleichenbacher’s attack. 
+
+Read section 5.4 from <https://eprint.iacr.org/2023/032.pdf> for a fantastic explanation. 
+
