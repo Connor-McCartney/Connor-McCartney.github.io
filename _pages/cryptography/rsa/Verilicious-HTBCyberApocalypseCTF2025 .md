@@ -85,3 +85,12 @@ Now, the challege itself is about Bleichenbacher’s attack.
 
 Read section 5.4 from <https://eprint.iacr.org/2023/032.pdf> for a fantastic explanation. 
 
+To summarise:
+
+In this chall, n is 1024 bits
+
+We have `B = 2**(1024-16)`
+
+Then we have to solve the following hidden number problem:
+
+$$k_i - r_i \cdot m + 2 \cdot B \equiv 0 \pmod n$$
