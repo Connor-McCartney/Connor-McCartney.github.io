@@ -117,17 +117,16 @@ WM_CLASS(STRING) = "myapp", "myapp"
 int main() {
     Display* display = XOpenDisplay(NULL);
     int screen = DefaultScreen(display);
-	Window root = RootWindow(display, screen);
+    Window root = RootWindow(display, screen);
 
-	XSetWindowAttributes wa = {
-		.override_redirect = True,
-	};
+    XSetWindowAttributes wa = {
+	.override_redirect = True,
+    };
 
     Window w = XCreateWindow(display, root, 50, 50, 500, 500, 0, DefaultDepth(display, screen),
             InputOutput, DefaultVisual(display, screen),
             CWOverrideRedirect | CWBackPixel, &wa);
     XMapRaised(display, w);
-
 
     XClassHint ch = {"dwm", "dwm"};
     XSetClassHint(display, w, &ch);
