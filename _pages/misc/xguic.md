@@ -129,7 +129,7 @@ int main() {
     XMapRaised(display, w);
 
 
-	XClassHint ch = {"dwm", "dwm"};
+    XClassHint ch = {"dwm", "dwm"};
     XSetClassHint(display, w, &ch);
 
     XEvent event;
