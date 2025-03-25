@@ -106,3 +106,35 @@ WM_CLASS(STRING) = "myapp", "myapp"
 
 <br>
 
+
+# Create a window unaffected by dwm tiling
+
+```c
+#include <X11/X.h>
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+
+int main() {
+    Display* display = XOpenDisplay(NULL);
+    int screen = DefaultScreen(display);
+	Window root = RootWindow(display, screen);
+
+	XSetWindowAttributes wa = {
+		.override_redirect = True,
+	};
+
+    Window w = XCreateWindow(display, root, 50, 50, 500, 500, 0, DefaultDepth(display, screen),
+            InputOutput, DefaultVisual(display, screen),
+            CWOverrideRedirect | CWBackPixel, &wa);
+    XMapRaised(display, w);
+
+
+	XClassHint ch = {"dwm", "dwm"};
+    XSetClassHint(display, w, &ch);
+
+    XEvent event;
+    while (1) {
+        XNextEvent(display, &event);
+    }
+}
+```
