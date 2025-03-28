@@ -137,3 +137,74 @@ int main() {
     }
 }
 ```
+
+
+<br>
+
+# Images
+
+```python
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+
+// Window size
+int height = 256, width = 256;
+XVisualInfo vinfo;
+
+XImage *CreateTrueColorImage(Display *display, Visual *visual)
+{
+
+    int i, j;
+    char *image32=(char *)malloc(width*height*4);
+    char *p=image32;
+    for(i=0; i<width; i++)
+    {
+        for(j=0; j<height;j++)
+        {
+            *p++ = 0x00; // B
+            *p++ = 0x00; // G
+            *p++ = 0xff; // R
+            *p++ = 0xff; // alpha
+        }
+    }
+    return XCreateImage(display, vinfo.visual, vinfo.depth,
+        ZPixmap, 0, image32, width, height, 32, 0);
+}
+
+int main(int argc, char **argv)
+{
+    XImage *ximage;
+    Display *display = XOpenDisplay(NULL);
+    Visual *visual = DefaultVisual(display, 0);
+
+
+    XMatchVisualInfo(display, DefaultScreen(display), 32, TrueColor, &vinfo);
+
+    XSetWindowAttributes attr;
+    attr.colormap = XCreateColormap(display, DefaultRootWindow(display), 
+            vinfo.visual, AllocNone);
+    attr.border_pixel = 0;
+    attr.background_pixel = 0x00000000; 
+
+    Window window = XCreateWindow(display, DefaultRootWindow(display), 0, 0,
+            width, height, 0, vinfo.depth, InputOutput, vinfo.visual,
+            CWColormap | CWBorderPixel | CWBackPixel, &attr);
+
+    ximage = CreateTrueColorImage(display, vinfo.visual);
+    XSelectInput(display, window, ButtonPressMask|ExposureMask);
+    XMapWindow(display, window);
+    GC gc = XCreateGC(display, window, 0, 0);
+
+
+    XEvent event;
+    while (1) {
+        XNextEvent(display, &event);
+        XPutImage(display, window, gc, ximage, 0, 0, 0, 0, width, height);
+    }
+}
+```
+
+<br>
