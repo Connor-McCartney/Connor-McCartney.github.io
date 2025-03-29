@@ -40,4 +40,10 @@ for i in range(32 * 8):
 
 # Solve:
 
+Author's writeup: <https://github.com/soon-haari/my-ctf-challenges/tree/main/2025-codegate/crypto-thesewalls>
 
+<br>
+
+There are many steps to break down. 
+
+# 1. Getting curve parameters
