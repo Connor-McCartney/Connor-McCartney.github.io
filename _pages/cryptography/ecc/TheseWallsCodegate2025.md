@@ -50,4 +50,6 @@ There are many steps to break down.
 
 You can do something like this: <https://hackropole.fr/en/writeups/fcsc2021-crypto-lost-curve/984a2038-3039-42c2-af1b-8d671c8d5cb0/>
 
-
+```
+wget https://raw.githubusercontent.com/soon-haari/my-ctf-challenges/refs/heads/main/2025-codegate/crypto-thesewalls/prob/for_organizer/output.txt
+```
