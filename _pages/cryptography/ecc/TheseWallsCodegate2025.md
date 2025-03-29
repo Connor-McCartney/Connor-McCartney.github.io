@@ -264,3 +264,6 @@ For p3, and p4, technically MOV attack could work again but it's very slow.
 
 But p3 has a=0 and p4 has b=0, this allows for a better idea: distortion maps
 
+This is where the challenge name becomes a hint - (wall -> weil pairing)
+
+We don't actually compute any logs, just check if the pairings match.
