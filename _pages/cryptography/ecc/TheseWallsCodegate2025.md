@@ -214,5 +214,5 @@ print(k)
 
 The embedding degree is 2. 
 
-<br.
+<br>
 
