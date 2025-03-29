@@ -88,3 +88,4 @@ b = 1019677107437923899694222167124505095690346978308183445248968761304783914026
 
 # 2. Factor the modulus
 
+You can check the author's code how to do it, the result is:
