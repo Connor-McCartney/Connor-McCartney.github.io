@@ -111,6 +111,82 @@ same as <https://connor-mccartney.github.io/cryptography/ecc/Backdoor-IRONCTF202
 
 <br>
 
+```python
+from collections import namedtuple
+Point = namedtuple("Point", "x y")
+O = 'Origin'
+
+def point_inverse(P):
+    if P == O:
+        return P
+    return Point(P.x, -P.y % p)
+
+def point_addition(P, Q):
+    if P == O:
+        return Q
+    elif Q == O:
+        return P
+    elif Q == point_inverse(P):
+        return O
+    else:
+        if P == Q:
+            lam = (3*P.x**2 + a)*pow(2*P.y, -1, p)
+            lam %= p
+        else:
+            lam = (Q.y - P.y) * pow((Q.x - P.x), -1, p)
+            lam %= p
+    Rx = (lam**2 - P.x - Q.x) % p
+    Ry = (lam*(P.x - Rx) - P.y) % p
+    R = Point(Rx, Ry)
+    return R
+
+def mul(P, n):
+    Q = P
+    R = O
+    while n > 0:
+        if n % 2 == 1:
+            R = point_addition(R, Q)
+        Q = point_addition(Q, Q)
+        n = n // 2
+    return R.x
+
+
+def node_log(p, a, b, qx, qy, sx, sy):
+    PR.<x> = PolynomialRing(GF(p))
+    f = x^3 + a*x + b
+    double_root = [r for r, e in f.roots() if e==2][0]
+    qx -= double_root
+    sx -= double_root 
+    f2 = f.subs(x=x+double_root)
+    c = f2.factor()[0][0].coefficients()[0]
+    sqrt_c = GF(p)(c).sqrt()
+    def mapping(x, y, sqrt_c):
+        return (y + x*sqrt_c) * pow(y - x*sqrt_c, -1, p)
+    return mapping(sx, sy, sqrt_c).log(mapping(qx, qy, sqrt_c))
+
+points = [[int(i) for i in line.strip()[1:-1].split(', ')] for line in open('output.txt').readlines()[2:]]
+
+p = 3562548874780288796769030192977
+a = 59988839927984767712262022881015186528306823080680093817066551387449092966635391654583736371714324230765899668876056205191762535690049456590296016977519955444196107647233071737264095096436949854658419817766417617008402215963718256820349403830936535830427821814691174887502426870436662513573210000832221322398
+b = 101967710743792389969422216712450509569034697830818344524896876130478391402643388132308880397086156977788425616725940825720775848656512466204212492162471675713660761367404158291366066068856768564375952666036454337938403204290723496566781748665353311583138442143621327486984669015180894834194757115816809502955
+
+cache = set()
+#cache = set([2419208789977833651231607199477, 2583035536321228815355660114783, 1296865482336368230445011996195, 501301829518150467387924489803, 1596507685543054568030561590627, 1189472469521133536636628876539, 1688818121111580066310934554129, 3127040603798222765320841880913, 1313812976397865456124720849605, 2450964906071836807094736013303])
+for i in range(255):
+    P1 = Point(points[i][0], points[i][1])
+    P2 = Point(points[i+1][0], points[i+1][1])
+    log = None
+    for l in cache:
+        if mul(P1, l) == P2.x % p:
+            log = l
+            break
+    if log is None:
+        log = node_log(p, a, b, P1.x,P1.y, P2.x, P2.y)
+    cache.add(log)
+    print(log)
+```
+
+<br>
 
 
 ```
