@@ -329,4 +329,4 @@ res_p3_power = [False, True, True, False, True, True, False, True, True, True, T
 
 <br>
 
-# 3. p4 - supersingular curve, with a=0
+# 3. p4 - supersingular curve, with b=0
