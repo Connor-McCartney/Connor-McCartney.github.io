@@ -61,3 +61,8 @@ __vulnerability: anomalous attack mod p**4__
 <span style="font-size:2em;">   [Private Curve - 0xl4ugh CTF 2024](/cryptography/ecc/PrivateCurve-0xl4ughCTF2024)       </span> <br>
 __challenge: curve parameter recovery given sequential points__
 
+
+<span style="font-size:2em;">   [These Walls - Codegate 2025](/cryptography/ecc/TheseWallsCodegate2025)       </span> <br>
+__challenge: decisional discrete log__
+
+
