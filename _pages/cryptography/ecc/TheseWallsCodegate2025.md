@@ -267,3 +267,66 @@ But p3 has a=0 and p4 has b=0, this allows for a better idea: distortion maps
 This is where the challenge name becomes a hint - (wall -> weil pairing)
 
 We don't actually compute any logs, just check if the pairings match.
+
+
+```python
+from tqdm import trange
+
+points = [[int(i) for i in line.strip()[1:-1].split(', ')] for line in open('output.txt').readlines()[2:]]
+correct_idx = 2
+
+p3 = 2717597692908121319788497985451
+a = 59988839927984767712262022881015186528306823080680093817066551387449092966635391654583736371714324230765899668876056205191762535690049456590296016977519955444196107647233071737264095096436949854658419817766417617008402215963718256820349403830936535830427821814691174887502426870436662513573210000832221322398
+b = 101967710743792389969422216712450509569034697830818344524896876130478391402643388132308880397086156977788425616725940825720775848656512466204212492162471675713660761367404158291366066068856768564375952666036454337938403204290723496566781748665353311583138442143621327486984669015180894834194757115816809502955
+E = EllipticCurve(GF(p3), [a, b])
+o = E.order()
+assert E.is_supersingular()
+assert E.a1() == 0
+assert o == p3 + 1
+
+def dlog_power(P, Q, p, o, E):
+	EQp = E.change_ring(Qp(p))
+	Pmul = EQp(P) * o
+	Qmul = EQp(Q) * o
+	return ZZ((Qmul[0] / Qmul[1]) / (Pmul[0] / Pmul[1]))
+
+
+Fp2 = GF(p3^2)
+z = Fp2(1).nth_root(3)
+assert z != 1
+E = EllipticCurve(Fp2, [a, b])
+
+def distorsion_map(P):
+	x, y = P.xy()
+	return E(x * z, y)
+
+dat_p3 = [E(P) for P in points]
+assert dat_p3[0].order() == o
+dat_p3_distorsion = [distorsion_map(P) for P in dat_p3]
+
+res_p3 = [ dat_p3[correct_idx].weil_pairing(dat_p3_distorsion[i + 1], p3 + 1)
+		== dat_p3[correct_idx + 1].weil_pairing(dat_p3_distorsion[i], p3 + 1)
+		for i in trange(255)]
+
+print(f'{res_p3 = }')
+
+
+
+
+E = EllipticCurve(Zmod(p3^3), [a, b])
+dat_p3 = [E(P) for P in points]
+dlog_correct = dlog_power(dat_p3[correct_idx + 1], dat_p3[correct_idx], p3, o, E)
+res_p3_power = [dlog_power(dat_p3[i + 1], dat_p3[i], p3, o, E) == dlog_correct for i in trange(255)]
+print(f'{res_p3_power = }')
+```
+
+
+```
+res_p3 = [True, False, True, True, True, False, False, True, True, True, True, True, True, True, True, True, True, False, True, True, True, True, False, True, True, True, True, True, True, False, True, True, True, True, False, True, True, True, True, True, True, True, True, False, True, False, True, True, True, False, True, True, True, True, True, True, True, True, False, True, False, False, True, True, False, True, True, True, False, False, True, True, True, False, True, True, True, False, True, True, True, False, True, True, True, False, True, True, True, True, False, True, True, True, True, True, False, True, True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, False, False, True, True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, False, True, False, True, False, True, True, False, True, False, False, True, True, True, False, False, True, True, True, True, True, False, False, False, True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, False, True, True, True, False, True, True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, False, True, True, False, True, False, True, True, True, True, False, True, True, True, True, True, False, True, True, True, True, True, True, False, True, False, True, True, True, True, True, True, False, True, True, True, True, True, True, True, False, True, True, False, True, False, True, True, True, True, True, False, True]
+
+res_p3_power = [False, True, True, False, True, True, False, True, True, True, True, True, True, True, True, True, True, False, True, True, True, True, False, True, True, True, True, True, True, False, True, True, True, True, False, True, True, True, True, True, True, True, False, True, True, False, True, True, True, False, True, False, False, True, True, True, True, True, False, True, True, False, True, True, True, True, True, True, True, True, True, True, True, False, True, True, True, False, True, True, False, True, True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, True, False, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, True, True, True, True, False, True, False, True, True, False, True, True, True, True, False, False, True, True, True, True, True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, False, True, True, True, True, True, True, True, True, True, False, True, True, True, False, True, True, False, True, True, True, True, True, True, False, False, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, False, True, True, True, True, True, True, True, True, True]
+```
+
+<br>
+
+# 3. p4 - supersingular curve, with a=0
