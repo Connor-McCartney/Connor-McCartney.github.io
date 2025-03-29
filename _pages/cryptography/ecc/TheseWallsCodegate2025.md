@@ -101,3 +101,6 @@ assert modulus == p1 * p2**2 * p3**3 * p4**2
 
 <br>
 
+Now we'll split this into 4 different curves with the different primes. 
+
+# 3. p1 - singular curve (elliptic node)
