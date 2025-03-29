@@ -195,4 +195,4 @@ for i in range(255):
 
 <br>
 
-# 3. p2 - MOV attack
+# 3. p2 - supersingular curve (MOV attack)
