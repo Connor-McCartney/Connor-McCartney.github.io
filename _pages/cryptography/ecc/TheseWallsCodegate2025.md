@@ -47,3 +47,7 @@ Author's writeup: <https://github.com/soon-haari/my-ctf-challenges/tree/main/202
 There are many steps to break down. 
 
 # 1. Getting curve parameters
+
+You can do something like this: <https://hackropole.fr/en/writeups/fcsc2021-crypto-lost-curve/984a2038-3039-42c2-af1b-8d671c8d5cb0/>
+
+
