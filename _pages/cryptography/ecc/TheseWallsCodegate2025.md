@@ -256,6 +256,11 @@ $ time sage x.sage
 real    29m14.353s
 ```
 
+<br>
 
 # 3. p3 - supersingular curve, with a=0
+
+For p3, and p4, technically MOV attack could work again but it's very slow. 
+
+But p3 has a=0 and p4 has b=0, this allows for a better idea: distortion maps
 
