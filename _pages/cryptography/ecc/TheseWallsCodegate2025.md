@@ -281,7 +281,7 @@ b = 1019677107437923899694222167124505095690346978308183445248968761304783914026
 E = EllipticCurve(GF(p3), [a, b])
 o = E.order()
 assert E.is_supersingular()
-assert E.a1() == 0
+assert E.a4() == 0
 assert o == p3 + 1
 
 def dlog_power(P, Q, p, o, E):
