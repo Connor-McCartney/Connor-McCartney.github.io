@@ -195,7 +195,7 @@ for i in range(255):
 
 <br>
 
-# 3. p2 - supersingular curve (MOV attack)
+# 4. p2 - supersingular curve (MOV attack)
 
 ```python
 p2 = 3692983360407686094702508373879
@@ -258,7 +258,7 @@ real    29m14.353s
 
 <br>
 
-# 3. p3 - supersingular curve, with a=0
+# 5. p3 - supersingular curve, with a=0
 
 For p3, and p4, technically MOV attack could work again but it's very slow. 
 
@@ -329,4 +329,66 @@ res_p3_power = [False, True, True, False, True, True, False, True, True, True, T
 
 <br>
 
-# 3. p4 - supersingular curve, with b=0
+# 6. p4 - supersingular curve, with b=0
+
+
+
+```python
+from tqdm import trange
+
+points = [[int(i) for i in line.strip()[1:-1].split(', ')] for line in open('output.txt').readlines()[2:]]
+correct_idx = 2
+
+p4 = 324094280281900209908870811008292068290746348301400744740589987
+a = 59988839927984767712262022881015186528306823080680093817066551387449092966635391654583736371714324230765899668876056205191762535690049456590296016977519955444196107647233071737264095096436949854658419817766417617008402215963718256820349403830936535830427821814691174887502426870436662513573210000832221322398
+b = 101967710743792389969422216712450509569034697830818344524896876130478391402643388132308880397086156977788425616725940825720775848656512466204212492162471675713660761367404158291366066068856768564375952666036454337938403204290723496566781748665353311583138442143621327486984669015180894834194757115816809502955
+E = EllipticCurve(GF(p4), [a, b])
+o = E.order()
+assert E.is_supersingular() 
+assert o == p4 + 1
+
+def dlog_power(P, Q, p, o, E):
+	EQp = E.change_ring(Qp(p))
+	Pmul = EQp(P) * o
+	Qmul = EQp(Q) * o
+	return ZZ((Qmul[0] / Qmul[1]) / (Pmul[0] / Pmul[1]))
+
+
+Fp2 = GF(p4^2)
+z = Fp2(-1).nth_root(2)
+E = EllipticCurve(Fp2, [a, b])
+
+def distorsion_map(P):
+	x, y = P.xy()
+	return E(-x, y * z)
+
+dat_p4 = [E(P) for P in points]
+assert dat_p4[0].order() == o
+dat_p4_distorsion = [distorsion_map(P) for P in dat_p4]
+
+res_p4 = [ dat_p4[correct_idx].weil_pairing(dat_p4_distorsion[i + 1], p4 + 1)
+		== dat_p4[correct_idx + 1].weil_pairing(dat_p4_distorsion[i], p4 + 1)
+		for i in trange(255)]
+print(f'{res_p4 = }')
+
+
+E = EllipticCurve(Zmod(p4^2), [a, b])
+dat_p4 = [E(P) for P in points]
+dlog_correct = dlog_power(dat_p4[correct_idx + 1], dat_p4[correct_idx], p4, o, E)
+res_p4_power = [dlog_power(dat_p4[i + 1], dat_p4[i], p4, o, E) == dlog_correct for i in trange(255)]
+print(f'{res_p4_power = }')
+```
+
+
+<br>
+
+```
+res_p4 = [True, True, True, True, True, True, False, True, True, True, True, True, True, True, False, True, True, False, True, True, True, True, False, True, True, True, True, True, True, False, True, True, False, True, False, True, True, True, True, True, True, True, True, False, True, False, True, False, True, False, True, True, True, True, True, True, True, True, False, True, True, False, True, True, False, True, True, True, True, True, True, True, True, False, True, True, True, False, True, True, True, True, True, True, True, True, True, True, False, True, False, True, True, True, True, True, True, False, True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, True, False, True, True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, True, True, False, True, True, True, True, False, False, True, True, True, True, True, False, True, True, False, True, False, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, False, True, True, True, True, True, True, False, True, True, True, True, True, True, True, False, True, True, True, True, False, True, False, True, True, False, True, True, True, True, True, True, True, True, True, True, True, False, True, True, False, True, True, False, True, True, True, True, True, True]
+
+res_p4_power = [True, True, True, True, True, True, False, True, True, True, True, True, True, True, True, True, True, False, True, True, True, True, False, True, True, True, True, True, True, False, True, True, True, True, False, True, True, True, True, True, True, True, True, True, True, False, True, True, True, False, True, True, True, True, True, True, True, True, False, True, True, False, True, True, True, True, True, True, True, True, True, True, True, False, True, True, True, False, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, True, True, False, True, True, True, False, False, False, True, True, True, True, True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, False, True, True, True, True, True, True, False, True, True, True, True, True, True, True, True, False, True, True, True, True, True, False, True, False, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True, False, True, True, True, True, True, True, True, True, True]
+```
+
+<br>
+
+
+# 7. Combining everything
