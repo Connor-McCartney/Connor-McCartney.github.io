@@ -216,6 +216,6 @@ The embedding degree is 2.
 
 <br>
 
-You have about a 50% change of getting the correct s and not ones of the wrong ones. 
+You have about a 50% change of getting the correct s and not one of the wrong ones. 
 
 Index 2 happens to be correct. 
