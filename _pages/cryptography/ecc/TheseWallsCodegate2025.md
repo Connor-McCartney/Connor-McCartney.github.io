@@ -44,7 +44,7 @@ Author's writeup: <https://github.com/soon-haari/my-ctf-challenges/tree/main/202
 
 <br>
 
-There are many steps to break down. 
+<br>
 
 # 1. Getting curve parameters
 
