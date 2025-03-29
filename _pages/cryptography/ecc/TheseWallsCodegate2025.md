@@ -106,3 +106,8 @@ Now we'll split this into 4 different curves with the different primes.
 <br>
 
 # 3. p1 - singular curve (elliptic node)
+
+same as <https://connor-mccartney.github.io/cryptography/ecc/Backdoor-IRONCTF2024>
+
+<br>
+
