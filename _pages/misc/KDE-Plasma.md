@@ -52,6 +52,10 @@ Or:
 
 `sudo chmod 000 /usr/bin/kwalletmanager`
 
+Or:
+
+select 'classic' then enter blank password
+
 ## Grub Customizer
 
 Disable look for other operating systems. <br>
