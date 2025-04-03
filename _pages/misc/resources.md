@@ -34,6 +34,7 @@ learn-cyber <https://learn-cyber.net> <br>
 CTF library <https://github.com/Aeren1564/CTF/tree/main> <br>
 Lattices <https://github.com/cpeikert/LatticesInCryptography> <br>
 Multivariate polynomal substitution <https://gist.github.com/maple3142/0bb20789d7372b7e0e822d1b91ca7867> <br>
+Online decompiler <https://dogbolt.org> <br>
 
 ## Challenges
 
