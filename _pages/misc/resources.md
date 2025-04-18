@@ -43,6 +43,7 @@ pentesting <https://app.hackthebox.com/machines/list/active> <br>
 cryptography <https://cryptohack.org/challenges> <br>
 cryptography <https://squeamishossifrage.eu/index.html#challenges> <br>
 web <https://portswigger.net/web-security> <br>
+mixed <https://ringzer0ctf.com/challenges>
 
 ## Lookups
 
