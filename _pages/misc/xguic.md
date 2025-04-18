@@ -295,7 +295,7 @@ But the clangd couldn't find the GTK library
 
 TLDR you just need compile_commands.json in your project directory, which can be auto-created with `bear`
 
-Makfile:
+example Makefile:
 
 ```
 CC = gcc
