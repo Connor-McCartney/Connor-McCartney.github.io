@@ -109,4 +109,5 @@ NTT <https://eprint.iacr.org/2024/585.pdf> <br>
 <https://seall.dev> <br>
 <https://tangcuxiaojikuai.xyz> <br>
 <https://jonathke.github.io> <br>
-<https://hilb3r7.github.io>
+<https://hilb3r7.github.io> <br>
+<https://valter.wiki/blog> <br>
