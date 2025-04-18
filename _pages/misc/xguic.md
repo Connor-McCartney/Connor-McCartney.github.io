@@ -251,31 +251,17 @@ GTK is a c library for GUI, more high level than direct X11 or wayland
 ```c
 #include <gtk/gtk.h>
 
-static void
-activate (GtkApplication* app,
-          gpointer        user_data)
-{
-  GtkWidget *window;
-
-  window = gtk_application_window_new (app);
-  gtk_window_set_title (GTK_WINDOW (window), "Window");
-  gtk_window_set_default_size (GTK_WINDOW (window), 200, 200);
+static void on_activate (GtkApplication *app) {
+  // Create a new window
+  GtkWidget *window = gtk_application_window_new(app);
   gtk_window_present (GTK_WINDOW (window));
 }
 
-int
-main (int    argc,
-      char **argv)
-{
-  GtkApplication *app;
-  int status;
-
-  app = gtk_application_new ("org.gtk.example", G_APPLICATION_DEFAULT_FLAGS);
-  g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
-  status = g_application_run (G_APPLICATION (app), argc, argv);
-  g_object_unref (app);
-
-  return status;
+int main (int argc, char *argv[]) {
+  // Create a new application
+  GtkApplication *app = gtk_application_new("com.example.GtkApplication", G_APPLICATION_DEFAULT_FLAGS);
+  g_signal_connect(app, "activate", G_CALLBACK (on_activate), NULL);
+  return g_application_run(G_APPLICATION (app), argc, argv);
 }
 ```
 
@@ -285,7 +271,6 @@ Compile with
 
 `gcc $( pkg-config --cflags gtk4 ) -o example-0 example-0.c $( pkg-config --libs gtk4 )`
 
-I also like to add `-Wno-deprecated-declarations`
 
 But the clangd couldn't find the GTK library
 
@@ -303,7 +288,7 @@ CFLAGS = $(shell pkg-config --cflags gtk4)
 LDFLAGS = $(shell pkg-config --libs gtk4)
 
 install:
-	$(CC) main.c -o chess $(CFLAGS) $(LDFLAGS) -Wno-deprecated-declarations
+	$(CC) main.c -o chess $(CFLAGS) $(LDFLAGS)
 
 clean:
 	-rm chess
