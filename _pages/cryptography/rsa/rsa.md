@@ -98,6 +98,10 @@ __vulnerability: byte-by-byte bruteforce__
 __vulnerability: random known bits__
 
 
+<span style="font-size:2em;">   [xorsa - UMassCTF 2025](/cryptography/rsa/xorsa-UMassCTF-2025)       </span> <br>
+__vulnerability: p^q hint given__
+
+
 <span style="font-size:2em;">   [Various Cyclotomic Polynomial Challs](/cryptography/rsa/CyclotomicPolynomial)       </span> <br>
 __vulnerability: factors form cyclotimic polynoimal__
 
