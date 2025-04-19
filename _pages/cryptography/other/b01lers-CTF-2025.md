@@ -81,3 +81,45 @@ if __name__ == '__main__':
 
 <br>
 
+<br>
+
+
+Solve:
+
+Let's analyse how pesky_decrypt works. 
+
+```python
+from os import urandom
+from pwn import xor
+from Crypto.Cipher import AES
+
+def ECB_dec(x, key):
+    return AES.new(key, AES.MODE_ECB).decrypt(x)
+
+key1 = urandom(32)
+key2 = urandom(32)
+
+def pesky_decrypt(ciphertext):
+    iv1 = urandom(16)
+    iv2 = urandom(16)
+    c1 = AES.new(key1, AES.MODE_CBC, iv1)
+    c2 = AES.new(key2, AES.MODE_CBC, iv2)
+    return c1.decrypt(c2.decrypt(ciphertext))
+
+c1, c2, c3 = urandom(16), urandom(16), urandom(16)
+payload = c1 + c2 + c3
+recv = pesky_decrypt(payload)
+o1, o2, o3 = recv[:16], recv[16:32], recv[32:48]
+assert o3 == xor(ECB_dec(xor(ECB_dec(c3, key2), c2), key1), ECB_dec(c2, key2), c1) 
+```
+
+
+If we create some payload 3 blocks long, then the third received block is useful (the first 2 have the unknown iv1, iv2 in them)
+
+Sending any payload more than 3 blocks doesn't really give anything else useful
+
+```
+assert o3 == xor(ECB_dec(xor(ECB_dec(c3, key2), c2), key1), ECB_dec(c2, key2), c1)
+```
+
+Let's simplify this. 
