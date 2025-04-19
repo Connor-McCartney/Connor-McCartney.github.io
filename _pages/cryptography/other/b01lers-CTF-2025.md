@@ -162,4 +162,24 @@ for _ in range(8):
 
 <br>
 
+Now let's see how we can use our query. 
 
+---
+
+query(X, Y) = g1(g2(X) xor Y) xor g2(Y)
+
+We can rearrange for g1(g2(X) xor Y) = query(X, Y) xor g2(Y) (where we know g2(X) and g2(Y))
+
+---
+
+query(X, Y) = g1(g2(X) xor Y) xor g2(Y)
+
+We can rearrange for g2(Y) = query(X, Y) xor g1(g2(X) xor Y) 
+
+If we send Y = g2(X) xor Z, g1(g2(X) xor Y) becomes g1(g2(X) xor g2(X) xor Z) = g1(Z)
+
+so choose some Z and X where we know g2(X) and g1(Z)
+
+g2(g2(X) xor Z) = query(X, g2(X) xor Z) xor g1(Z) 
+
+```
