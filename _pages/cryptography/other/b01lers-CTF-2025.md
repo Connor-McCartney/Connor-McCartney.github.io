@@ -145,5 +145,5 @@ def query(X, Y):
     return recv[32:48]
 
 X, Y = urandom(16), urandom(16)
-assert query(X, Y) == xor(g1(xor(g2(X), Y)), g2(Y))  # g1(g2(X) xor y) xor g2(Y)
+assert query(X, Y) == xor(g1(xor(g2(X), Y)), g2(Y))  # g1(g2(X) xor Y) xor g2(Y)
 ```
