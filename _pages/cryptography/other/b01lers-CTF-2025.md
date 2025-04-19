@@ -118,7 +118,7 @@ If we create some payload 3 blocks long, then the third received block is useful
 
 Sending any payload more than 3 blocks doesn't really give anything else useful
 
-```
+```python
 assert o3 == xor(ECB_dec(xor(ECB_dec(c3, key2), c2), key1), ECB_dec(c2, key2), c1)
 ```
 
