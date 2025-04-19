@@ -123,3 +123,12 @@ assert o3 == xor(ECB_dec(xor(ECB_dec(c3, key2), c2), key1), ECB_dec(c2, key2), c
 ```
 
 Let's simplify this. 
+
+Firstly we can just set c1 to 0, then xoring with that doesn't change.
+
+let's call c3 X, and call c2 Y. 
+
+And also call g1(x) = ECB_dec(x, key1), g2(x) = ECB_dec(x, key2)
+
+Then it becomes this:
+
