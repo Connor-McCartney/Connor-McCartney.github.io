@@ -132,3 +132,15 @@ And also call g1(x) = ECB_dec(x, key1), g2(x) = ECB_dec(x, key2)
 
 Then it becomes this:
 
+```python
+def g1(x):
+    return ECB_dec(x, key1)
+
+def g2(x):
+    return ECB_dec(x, key2)
+
+Y, X = urandom(16), urandom(16)
+payload = b'\x00'*16 + Y + X
+recv = pesky_decrypt(payload)
+assert recv[32:48] == xor(g1(xor(g2(X), Y)), g2(Y))
+```
