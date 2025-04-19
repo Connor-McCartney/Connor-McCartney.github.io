@@ -143,9 +143,10 @@ title: Other
 <span style="font-size:2em;">   [Kalmar CTF 2025](/cryptography/other/KalmarCTF2025) </span> <br>
 
 
-<span style="font-size:2em;">   [France Cybersecurity Challenge 2025](/cryptography/other/FCSC-2025) </span> <br>
-
 <span style="font-size:2em;">   [Non Zero Knowledge Proof - ECSC](/cryptography/other/NonZeroKnowledgeProof-ECSC) </span> <br>
 
 
 <span style="font-size:2em;">   [Wolv CTF 2025](/cryptography/other/WolvCTF2025) </span> <br>
+
+
+<span style="font-size:2em;">   [France Cybersecurity Challenge 2025](/cryptography/other/FCSC-2025) </span> <br>
