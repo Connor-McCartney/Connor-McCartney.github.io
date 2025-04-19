@@ -150,3 +150,6 @@ title: Other
 
 
 <span style="font-size:2em;">   [France Cybersecurity Challenge 2025](/cryptography/other/FCSC-2025) </span> <br>
+
+
+<span style="font-size:2em;">   [b01lers CTF 2025](/cryptography/other/b01lers-CTF-2025) </span> <br>
