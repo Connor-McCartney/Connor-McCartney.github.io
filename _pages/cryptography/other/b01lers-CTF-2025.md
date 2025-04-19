@@ -144,6 +144,6 @@ def query(X, Y):
     recv = pesky_decrypt(payload)
     return recv[32:48]
 
-Y, X = urandom(16), urandom(16)
+X, Y = urandom(16), urandom(16)
 assert query(X, Y) == xor(g1(xor(g2(X), Y)), g2(Y)) 
 ```
