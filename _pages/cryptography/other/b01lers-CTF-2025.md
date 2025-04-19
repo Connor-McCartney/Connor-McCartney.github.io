@@ -184,3 +184,30 @@ g2(g2(X) xor Z) = query(X, g2(X) xor Z) xor g1(Z)
 
 ---
 
+```python
+g1_, g2_ = {}, {}
+for _ in range(8):
+    x = urandom(16)
+    g2_[x] = g2(x)
+
+def expand_g1(X, Y):
+    g1_[xor(g2_[X], Y)] = xor(query(X, Y),  g2_[Y])
+
+def expand_g2(X, Z):
+    g2_[xor(g2_[X], Z)] = xor(query(X, xor(g2_[X], Z)), g1_[Z])
+
+for _ in range(200):
+    expand_g1(random.choice(list(g2_.keys())), random.choice(list(g2_.keys())))
+    expand_g2(random.choice(list(g2_.keys())), random.choice(list(g1_.keys())))
+
+for x, g1x in g1_.items():
+    assert g1x == g1(x)
+
+for x, g2x in g2_.items():
+    assert g2x == g2(x)
+```
+
+<br>
+
+<br>
+
