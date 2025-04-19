@@ -182,4 +182,5 @@ so choose some Z and X where we know g2(X) and g1(Z)
 
 g2(g2(X) xor Z) = query(X, g2(X) xor Z) xor g1(Z) 
 
-```
+---
+
