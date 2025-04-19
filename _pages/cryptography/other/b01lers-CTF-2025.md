@@ -147,3 +147,19 @@ def query(X, Y):
 X, Y = urandom(16), urandom(16)
 assert query(X, Y) == xor(g1(xor(g2(X), Y)), g2(Y))  # g1(g2(X) xor Y) xor g2(Y)
 ```
+
+<br>
+
+And we start with 8 pairs of random x and g2(x). 
+
+```py
+
+g1_, g2_ = {}, {}
+for _ in range(8):
+    x = urandom(16)
+    g2_[x] = g2(x)
+```
+
+<br>
+
+
