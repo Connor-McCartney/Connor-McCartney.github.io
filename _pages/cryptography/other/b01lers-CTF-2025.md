@@ -139,8 +139,17 @@ def g1(x):
 def g2(x):
     return ECB_dec(x, key2)
 
+def g1(x):
+    return ECB_dec(x, key1)
+
+def g2(x):
+    return ECB_dec(x, key2)
+
+def query(X, Y):
+    payload = b'\x00'*16 + Y + X
+    recv = pesky_decrypt(payload)
+    return recv[32:48]
+
 Y, X = urandom(16), urandom(16)
-payload = b'\x00'*16 + Y + X
-recv = pesky_decrypt(payload)
-assert recv[32:48] == xor(g1(xor(g2(X), Y)), g2(Y))
+assert query(X, Y) == xor(g1(xor(g2(X), Y)), g2(Y)) 
 ```
