@@ -213,4 +213,126 @@ for x, g2x in g2_.items():
 
 
 
+---
 
+
+<br>
+
+Local solver:
+
+
+```python
+from os import urandom, environ
+environ['TERM'] = 'xterm'
+from pwn import xor
+from Crypto.Cipher import AES
+from Crypto.Util.number import *
+import random
+
+def ECB_dec(x, key):
+    return AES.new(key, AES.MODE_ECB).decrypt(x)
+
+key1 = urandom(32)
+key2 = urandom(32)
+
+def pesky_decrypt(ciphertext):
+    iv1 = urandom(16)
+    iv2 = urandom(16)
+    c1 = AES.new(key1, AES.MODE_CBC, iv1)
+    c2 = AES.new(key2, AES.MODE_CBC, iv2)
+    return c1.decrypt(c2.decrypt(ciphertext))
+
+def g1(x):
+    return ECB_dec(x, key1)
+
+def g2(x):
+    return ECB_dec(x, key2)
+
+def query(X, Y):
+    payload = b'\x00'*16 + Y + X
+    recv = pesky_decrypt(payload)
+    return recv[32:48]
+
+X, Y = urandom(16), urandom(16)
+assert query(X, Y) == xor(g1(xor(g2(X), Y)), g2(Y))  # g1(g2(X) xor y) xor g2(Y)
+
+g1_, g2_ = {}, {}
+for _ in range(8):
+    x = urandom(16)
+    g2_[x] = g2(x)
+
+def expand_g1(X, Y):
+    T = xor(g2_[X], Y)
+    g1_[T] = xor(query(X, Y),  g2_[Y])
+    return T
+
+def expand_g2(X, Z):
+    T = xor(g2_[X], Z)
+    g2_[T] = xor(query(X, xor(g2_[X], Z)), g1_[Z])
+    return T
+
+while True:
+    expand_g1(random.choice(list(g2_.keys())), random.choice(list(g2_.keys())))
+    expand_g2(random.choice(list(g2_.keys())), random.choice(list(g1_.keys())))
+    if len(g2_) > 128+20:
+        break
+
+for x, g1x in g1_.items():
+    assert g1x == g1(x)
+
+for x, g2x in g2_.items():
+    assert g2x == g2(x)
+
+
+def xor_subset(random_bytes, target):
+    def bytes_to_binary(b):
+        return [int(i) for i in f"{bytes_to_long(b):0128b}"]
+    vecs = [bytes_to_binary(b) for b in random_bytes]
+    M = Matrix(GF(2), vecs).transpose()
+    if M.rank() != len(random_bytes):
+        #print("all vectors not linearly independent")
+        return []
+    solve = M.solve_right(vector(bytes_to_binary(target)))
+    return [v for s, v in zip(solve, random_bytes) if s]
+
+cipher = AES.new(key2, AES.MODE_ECB)
+secret = urandom(16)
+print(f'          {secret = }')
+ciphertext = cipher.encrypt(secret)
+
+end_x = random.choice(list(g2_.keys()))
+start = random.choice(list(g1_.keys()))
+end = xor(g2_[end_x], ciphertext)
+g1_end_plus_secret = query(end_x, ciphertext)
+
+while True:
+    g2_values = random.sample(list(g2_.values()), k=int(128))
+    subset = xor_subset(g2_values, target=xor(start, end))
+    if subset != [] and len(subset)%2 == 0:
+        break
+
+reversed = {v: k for k, v in g2_.items()}
+current = start
+for i in range(0, len(subset), 2):
+    current = expand_g2(reversed[subset[i+0]], current)
+    current = expand_g1(reversed[subset[i+1]], current)
+
+assert current == end
+secret = xor(g1_end_plus_secret, g1_[end])
+print(f'recovered {secret = }')
+```
+
+<br>
+
+<br>
+
+
+Remote solver:
+
+<br>
+
+
+
+```
+bctf{neighbor_c5975dc61dbfd49a}
+```
