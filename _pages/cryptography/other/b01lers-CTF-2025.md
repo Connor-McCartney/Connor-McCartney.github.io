@@ -331,6 +331,86 @@ Remote solver:
 
 <br>
 
+```python
+from os import environ
+environ['TERM'] = 'xterm'
+from pwn import *
+from Crypto.Util.number import *
+from tqdm import trange
+
+def expand_g1(X, Y):
+    T = xor(g2_[X], Y)
+    g1_[T] = xor(query(X, Y),  g2_[Y])
+    return T
+
+def expand_g2(X, Z):
+    T = xor(g2_[X], Z)
+    g2_[T] = xor(query(X, xor(g2_[X], Z)), g1_[Z])
+    return T
+
+def query(X, Y):
+    payload = b'\x00'*16 + Y + X
+    io.recvuntil(b'2: guess secret\n>> ')
+    io.sendline(b'1')
+    io.recv()
+    io.sendline(payload.hex().encode())
+    return bytes.fromhex(io.recvline().decode())[32:48]
+
+def xor_subset(random_bytes, target):
+    def bytes_to_binary(b):
+        return [int(i) for i in f"{bytes_to_long(b):0128b}"]
+    vecs = [bytes_to_binary(b) for b in random_bytes]
+    M = Matrix(GF(2), vecs).transpose()
+    if M.rank() != len(random_bytes):
+        #print("all vectors not linearly independent")
+        return []
+    solve = M.solve_right(vector(bytes_to_binary(target)))
+    return [v for s, v in zip(solve, random_bytes) if s]
+
+#io = process(["python", "chall.py"])
+io = remote("peskycbc.atreides.b01lersc.tf", 8443, ssl=True)
+io.recvline()
+ciphertext = bytes.fromhex(io.recvline().decode())
+io.recvline()
+io.recvline()
+
+g1_, g2_ = {}, {}
+for _ in range(8):
+    g2x = bytes.fromhex(io.recvline().decode())
+    x = bytes.fromhex(io.recvline().decode())
+    g2_[x] = g2x
+
+for _ in trange(128+20):
+    expand_g1(random.choice(list(g2_.keys())), random.choice(list(g2_.keys())))
+    expand_g2(random.choice(list(g2_.keys())), random.choice(list(g1_.keys())))
+
+end_x = random.choice(list(g2_.keys()))
+start = random.choice(list(g1_.keys()))
+end = xor(g2_[end_x], ciphertext)
+g1_end_plus_secret = query(end_x, ciphertext)
+
+while True:
+    g2_values = random.sample(list(g2_.values()), k=int(128))
+    subset = xor_subset(g2_values, target=xor(start, end))
+    if subset != [] and len(subset)%2 == 0:
+        break
+
+reversed = {v: k for k, v in g2_.items()}
+current = start
+for i in range(0, len(subset), 2):
+    current = expand_g2(reversed[subset[i+0]], current)
+    current = expand_g1(reversed[subset[i+1]], current)
+
+assert current == end
+secret = xor(g1_end_plus_secret, g1_[end])
+print(f'recovered {secret = }')
+
+io.recv()
+io.sendline(b'2')
+io.recv()
+io.sendline(secret.hex().encode())
+print(io.recv().decode())
+```
 
 
 ```
