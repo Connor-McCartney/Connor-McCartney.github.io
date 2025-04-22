@@ -298,3 +298,13 @@ Then run `bear -- make`, you only have to run that to create compile_commands.js
 
 <br>
 
+
+---
+
+I found this cool simple minesweeper clone <https://github.com/MelonFruit7/MinesweeperRemake/>
+
+<br>
+
+---
+
+
