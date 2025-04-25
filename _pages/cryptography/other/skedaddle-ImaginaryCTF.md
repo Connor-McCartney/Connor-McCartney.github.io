@@ -35,6 +35,19 @@ Solve:
 
 
 
+```python
+def f(k):
+    k2 = k ^ (k>>33)
+    k3 = k2 * 0xff51afd7ed558ccd % 2**64
+    k4 = k3 ^ (k3>>33)
+    # we'll calculate lsb of k4 at this point
+    k5 = k4 * 0xc4ceb9fe1a85ec53 % 2**64
+    k6 = k5 ^ (k5>>33)
+    return k6
+```
+
+<br>
+
 
 
 
