@@ -216,7 +216,15 @@ Solve:
 First take a look at an observation from the previous chall, you can write 
 
 ```python
-C = pow(0xff51afd7ed558ccd * 0xc4ceb9fe1a85ec53, -1, 2**64)
-(x ^ (x>>33) ^ (x*C)) % 2**64 == 0
+k = 13621417624426829092
+
+k2 = k ^ (k>>33)
+k3 = k2 * 0xff51afd7ed558ccd % 2**64
+k4 = k3 ^ (k3>>33)
+
+
+C = 0xc4ceb9fe1a85ec53 * 0xff51afd7ed558ccd
+x = k4
+assert 0 == (x ^ (x*C) ^ (x>>33)) % 2**64
 ```
 
