@@ -264,4 +264,18 @@ assert (C*y*2**33+z*C) % 2**64 == (y*2**33+z+y) - 2*(y&z)
 
 <br>
 
+Factor out constants:
+
+```python
+A = 2**33*(1-C) + 1
+B = 1-C
+assert (A*y + B*z) % 2**64 == 2*(y&z)
+```
+
+<br>
+
+This will be our main equation, we can't really simplify it any further. 
+
+<br>
+
 
