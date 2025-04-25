@@ -228,3 +228,24 @@ x = k4
 assert 0 == (x ^ (x*C) ^ (x>>33)) % 2**64
 ```
 
+<br>
+
+Now split into MSB and LSB
+
+```python
+k = 13621417624426829092
+k2 = k ^ (k>>33)
+k3 = k2 * 0xff51afd7ed558ccd % 2**64
+k4 = k3 ^ (k3>>33)
+y = k4 >> 33 
+z = k4 % 2**33
+
+
+C = 0xc4ceb9fe1a85ec53 * 0xff51afd7ed558ccd
+assert 0 == ((y*2**33+z) ^ ((y*2**33+z)*C) ^ y) % 2**64
+```
+
+<br>
+
+
+
