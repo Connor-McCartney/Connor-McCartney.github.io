@@ -254,3 +254,8 @@ Then apply this identity: `a ^ b = a + b - 2 * (a & b)`
 assert (C*y*2**33+z*C) % 2**64 == (y*2**33+z+y) - 2 * ((y*2**33+z) & y)
 ```
 
+in `(y*2**33+z) & y` the msb gets discarded
+
+```python
+assert (C*y*2**33+z*C) % 2**64 == (y*2**33+z+y) - 2*(y&z)
+```
