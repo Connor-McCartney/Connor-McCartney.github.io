@@ -86,12 +86,30 @@ f(13621417624426829092)
 So you can brute k4_lsb (2^33) which gives you k4_msb
 
 
-
-
-
-
-
 <br>
+
+```c
+#include <stdio.h>
+#include <stdint.h>
+
+int main() {
+    for (uint64_t k4_lsb=1; k4_lsb<(1UL<<33); k4_lsb++) {
+        uint64_t k4_msb = (k4_lsb ^ (k4_lsb*0xc4ceb9fe1a85ec53*0xff51afd7ed558ccd)) & 0x1ffffffff;
+        uint64_t k4 = k4_msb * (1UL<<33) + k4_lsb;
+
+        uint64_t k5 = k4 * 0xc4ceb9fe1a85ec53;
+        uint64_t k6 = k5 ^ (k5 >> 33);
+
+        uint64_t k3 = k4 ^ (k4 >> 33);
+        uint64_t k2 = k3 * 5725274745694666757;
+        uint64_t k1 = k2 ^ (k2 >> 33);
+
+        if (k1 == k6) {
+            printf("ictf{%lu}\n", k1);
+        }
+    }
+}
+```
 
 <br>
 
