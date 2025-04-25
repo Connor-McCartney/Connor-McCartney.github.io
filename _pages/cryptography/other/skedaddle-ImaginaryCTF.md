@@ -243,7 +243,7 @@ z = k4 % 2**33
 
 C = 0xc4ceb9fe1a85ec53 * 0xff51afd7ed558ccd
 assert 0 == ((y*2**33+z) ^ ((y*2**33+z)*C) ^ y) % 2**64
-assert (C*y*2**33+z*C) % 2**64 == ((y*2**33+z) ^ y) % 2**64
+assert (C*y*2**33+z*C) % 2**64 == (y*2**33+z) ^ y
 ```
 
 <br>
