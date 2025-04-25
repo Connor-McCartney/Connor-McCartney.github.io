@@ -8,7 +8,7 @@ title: skedaddle - Imaginary CTF
 
 Challenge:
 
-```python
+```c
 #include <stdint.h>
 #include <stdio.h>
 
