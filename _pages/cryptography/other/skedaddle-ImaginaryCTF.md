@@ -40,7 +40,3 @@ C = pow(0xff51afd7ed558ccd * 0xc4ceb9fe1a85ec53, -1, 2**64)
 (x ^ (x>>33) ^ (x*C)) % 2**64 == 0
 ```
 
-
-
-brute x ^ (x>>33):
-
