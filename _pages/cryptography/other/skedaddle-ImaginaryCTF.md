@@ -42,5 +42,5 @@ C = pow(0xff51afd7ed558ccd * 0xc4ceb9fe1a85ec53, -1, 2**64)
 
 
 
-brute z:
+brute x ^ (x>>33):
 
