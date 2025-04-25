@@ -36,8 +36,8 @@ Solve:
 Consider:
 
 ```python
-C = pow(0xff51afd7ed558ccd * 0xc4ceb9fe1a85ec53, -1, 2**33)
-(x ^ (x>>33) ^ (x*C)) % 2**33 == 0
+C = pow(0xff51afd7ed558ccd * 0xc4ceb9fe1a85ec53, -1, 2**64)
+(x ^ (x>>33) ^ (x*C)) % 2**64 == 0
 ```
 
 brute x:
