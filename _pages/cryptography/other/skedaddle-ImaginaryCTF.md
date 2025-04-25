@@ -75,6 +75,7 @@ def f(k):
     # sub into top:
     assert k4_lsb == ((k4_lsb * 0xc4ceb9fe1a85ec53 * 0xff51afd7ed558ccd) ^ (k4>>33)) % 2**33
     assert (k4>>33) == k4_lsb ^ (k4_lsb * 0xc4ceb9fe1a85ec53 * 0xff51afd7ed558ccd % 2**33)
+    assert (k4>>33) == k4_lsb ^ (k4_lsb * 0xc4ceb9fe1a85ec53 * 0xff51afd7ed558ccd) & 0x1ffffffff
 
 
 
