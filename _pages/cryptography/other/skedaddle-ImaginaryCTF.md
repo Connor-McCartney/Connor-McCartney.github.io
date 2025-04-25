@@ -44,7 +44,7 @@ Rearrange:
 
 let z = x ^ (x>>33)
 
-(z ^ (x*C)) % 2**63 == 0
+(z ^ (x*C)) % 2**33 == 0
 
 
 brute z:
