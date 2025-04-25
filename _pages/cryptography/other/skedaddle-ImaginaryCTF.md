@@ -83,6 +83,7 @@ f(13621417624426829092)
 ```
 
 
+So you can brute k4_lsb (2^33) which gives you k4_msb
 
 
 
@@ -90,7 +91,9 @@ f(13621417624426829092)
 
 
 
+<br>
 
+<br>
 
 
 
