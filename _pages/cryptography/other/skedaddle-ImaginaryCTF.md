@@ -42,6 +42,9 @@ C = pow(0xff51afd7ed558ccd * 0xc4ceb9fe1a85ec53, -1, 2**63)
 
 Rearrange:
 
+let z = x ^ (x>>33)
+
+(z ^ (x*C)) % 2**63 == 0
 
 
 brute x:
