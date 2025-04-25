@@ -48,7 +48,36 @@ def f(k):
 
 <br>
 
+```python
+def f(k):
+    k2 = k ^ (k>>33)
+    k3 = k2 * 0xff51afd7ed558ccd % 2**64
+    k4 = k3 ^ (k3>>33) # midpoint
+    k5 = k4 * 0xc4ceb9fe1a85ec53 % 2**64
+    k6 = k5 ^ (k5>>33)
 
+    k2_lsb = k2 % 2**33
+    k4_lsb = k4 % 2**33
+    k5_lsb = k5 % 2**33
+
+    # from the top:
+    assert k4_lsb == ((k2_lsb * 0xff51afd7ed558ccd) ^ (k3>>33)) % 2**33
+
+    # from the bottom:
+    assert k4_lsb == k5_lsb * pow(0xc4ceb9fe1a85ec53, -1, 2**64) % 2**33
+
+    assert k5_lsb == k2_lsb
+    assert k3 >> 33 == k4 >> 33
+
+    # rearrange bottom:
+    assert k5_lsb == k4_lsb * 0xc4ceb9fe1a85ec53 % 2**33
+
+    # sub into top:
+    assert k4_lsb == ((k4_lsb * 0xc4ceb9fe1a85ec53 * 0xff51afd7ed558ccd) ^ (k4>>33)) % 2**33
+
+
+f(13621417624426829092)
+```
 
 
 
