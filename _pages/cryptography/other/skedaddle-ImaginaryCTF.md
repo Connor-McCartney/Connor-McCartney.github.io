@@ -213,7 +213,7 @@ Solve:
 
 <br>
 
-Consider
+First take a look at an observation from the previous chall, you can write 
 
 ```python
 C = pow(0xff51afd7ed558ccd * 0xc4ceb9fe1a85ec53, -1, 2**64)
