@@ -248,5 +248,5 @@ assert (C*y*2**33+z*C) % 2**64 == ((y*2**33+z) ^ y) % 2**64
 
 <br>
 
-
+Then apply this identity: `a ^ b = a + b - 2 * (a & b)`
 
