@@ -47,5 +47,5 @@ let z = x ^ (x>>33)
 (z ^ (x*C)) % 2**63 == 0
 
 
-brute x:
+brute z:
 
