@@ -33,6 +33,35 @@ int main() {
 
 Solve:
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
 Consider:
 
 ```python
