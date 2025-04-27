@@ -24,7 +24,7 @@ uint64_t fmix64(uint64_t k) {
 int main() {
     uint64_t i = 1;
     while (fmix64(i) != i) ++i;
-    printf("ictf{%lu}\n", i);
+    printf("ictf{ %lu }\n", i);
 }
 ```
 
@@ -105,7 +105,7 @@ int main() {
         uint64_t k1 = k2 ^ (k2 >> 33);
 
         if (k1 == k6) {
-            printf("ictf{%lu}\n", k1);
+            printf("ictf{ %lu }\n", k1);
         }
     }
 }
