@@ -39,3 +39,25 @@ int main() {
 
 <br>
 
+Curses/ncurses seems to be nice for TUIs
+
+```python
+from curses import wrapper, curs_set, COLOR_GREEN, init_pair, COLOR_BLACK, color_pair
+
+def main(stdsrc):
+    init_pair(1, COLOR_GREEN, COLOR_BLACK)
+    GREEN = color_pair(1)
+
+
+    height, width = stdsrc.getmaxyx()
+    curs_set(0)
+    stdsrc.clear()
+    stdsrc.addch(height-1, width-3, "漢", GREEN)
+    stdsrc.refresh()
+    stdsrc.getch()
+
+wrapper(main)
+```
+
+<br>
+
