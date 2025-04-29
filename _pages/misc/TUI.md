@@ -1,3 +1,7 @@
+---
+permalink: /misc/Matrix-TUI
+title: Matrix TUI
+---
 
 
 I wanted to make something like [The Matrix's opening scene](https://www.youtube.com/watch?v=Vb6bA4J1Gbg&t=30s)
