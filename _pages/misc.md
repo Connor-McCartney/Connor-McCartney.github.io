@@ -47,4 +47,6 @@ title: Misc
 
 <span style="font-size:2em;">   [Connecting Android phone to linux](/misc/ConnectingAndroidphonetolinux)   </span>
 
+<span style="font-size:2em;">   [Matrix TUI](/misc/Matrix-TUI)   </span>
+
 <span style="font-size:2em;">   [Resources](/misc/resources)   </span>
