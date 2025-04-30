@@ -247,7 +247,7 @@ I thought this was pretty cool
 
 <https://www.youtube.com/watch?v=M-RVBiAmXj0>
 
-```python
+```
 ORG 0x7C00
 
 start:
@@ -300,4 +300,33 @@ Actually, I'll start using NASM too, because that's what's used in this book <ht
 
 
 # Hello World
+
+```asm
+global _start
+
+;section .data
+message: db "hello, world!", 10 ; the 10 is ord('\n')
+
+;section .text
+_start:
+    mov rax, 1 ; syscall for write
+    mov rdi, 1 ; stdout
+    mov rsi, message ; string address
+    mov rdx, 14 ; string len
+    syscall
+
+    ; exit
+    mov rax, 60 
+    mov rdi, 0  
+    syscall
+```
+
+```
+$ nasm -f elf64 x.asm && ld x.o && ./a.out
+hello, world!
+```
+
+<br>
+
+<br>
 
