@@ -287,5 +287,9 @@ dw 0xAA55
 
 Actually, I'll start using NASM too, because that's what's used in this book <https://www.amazon.com/Low-Level-Programming-Assembly-Execution-Architecture/dp/1484224027>
 
+
+![image](https://github.com/user-attachments/assets/1a9cf889-03df-4c25-8b66-537046c86615)
+
+
 # Hello World
 
