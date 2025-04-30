@@ -48,7 +48,7 @@ Segmentation fault (core dumped)
 
 It segfaults because there's no exit syscall, so let's make that. 
 
-```
+```asm
 .global _start
 .intel_syntax noprefix
 
@@ -93,7 +93,7 @@ $ echo $?
 
 # Addition
 
-```
+```asm
 .global _start
 .intel_syntax noprefix
 
@@ -247,7 +247,7 @@ I thought this was pretty cool
 
 <https://www.youtube.com/watch?v=M-RVBiAmXj0>
 
-```
+```asm
 ORG 0x7C00
 
 start:
