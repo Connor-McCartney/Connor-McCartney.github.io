@@ -298,6 +298,8 @@ Actually, I'll start using NASM too, because that's what's used in this book <ht
 
 <br>
 
+<https://math.hws.edu/eck/cs220/f22/registers.html>
+
 
 # Hello World
 
