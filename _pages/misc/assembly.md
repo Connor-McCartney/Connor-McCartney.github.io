@@ -280,3 +280,12 @@ dw 0xAA55
 <br>
 
 
+---
+
+
+<br>
+
+Actually, I'll start using NASM too, because that's what's used in this book <https://www.amazon.com/Low-Level-Programming-Assembly-Execution-Architecture/dp/1484224027>
+
+# Hello World
+
