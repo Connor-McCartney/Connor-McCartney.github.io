@@ -53,7 +53,7 @@ It segfaults because there's no exit syscall, so let's make that.
 .intel_syntax noprefix
 
 _start:
-	mov 	rax, 60 # systemcall for exit
+	mov 	rax, 60 # systemcall for exit (linux)
 	syscall
 ```
 
@@ -309,7 +309,7 @@ message: db "hello, world!", 10 ; the 10 is ord('\n')
 
 ;section .text
 _start:
-    mov rax, 1 ; syscall for write
+    mov rax, 1 ; syscall for write (on linux)
     mov rdi, 1 ; stdout
     mov rsi, message ; string address
     mov rdx, 14 ; string len
