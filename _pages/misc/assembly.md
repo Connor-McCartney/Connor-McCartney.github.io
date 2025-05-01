@@ -371,7 +371,8 @@ _start:
     mov rcx, 64 ; alternatively just mov cl, 64
 
 .loop:
-    push rax
+    push rax ; save rax before our loop
+
     sub rcx, 4    ; rcx -= 4
     sar rax, cl   ;  Shift Arithmetic Right,    cl is the lowest 4 bits of rcx,   you can't bitshift more than 64 anyways
     and rax, 0xf  ; 15 (will perform mod 16)
@@ -380,12 +381,16 @@ _start:
     mov rax, 1 ; ?
 
     push rcx
-    syscall
+    syscall ; the write syscall will affect rcx so you have to save and restore with push and pop
     pop rcx
 
-    pop rax
-    test rcx, rcx ; checks if 0
-    jnz .loop
+    pop rax ; restore rax after our loop
+
+    test rcx, rcx ; TEST sets the zero flag, ZF, if they're equal (bitwise &) 
+    jnz .loop   ; jump if not zero (checks the zero flag)  (so break loop when rcx is 0)
+
+
+
 
     mov rax, 60; exit
     xor rdi, rdi
