@@ -368,13 +368,13 @@ _start:
 
     mov rdi, 1 ; write to stdout
     mov rdx, 1 ; string lens, always 1 at a time
-    mov rcx, 64 ; alternatively just mov cl, 64
+    mov rcx, 64 ;  0x1122334455667788 has 64 bits
 
 .loop:
     push rax ; save rax before our loop
 
     sub rcx, 4    ; rcx -= 4
-    sar rax, cl   ;  Shift Arithmetic Right,    cl is the lowest 4 bits of rcx,   you can't bitshift more than 64 anyways
+    sar rax, cl   ;  Shift Arithmetic Right,     rcx errors so u have to use cl (lowest 8 bits)
     and rax, 0xf  ; 15 (will perform mod 16)
 
     lea rsi, [codes + rax] ; string address
