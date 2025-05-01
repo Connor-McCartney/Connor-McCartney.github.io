@@ -588,3 +588,25 @@ B = 1-C
 
 assert (A*y + B*z) % 2**128 == 2*(y&z)
 ```
+
+<br>
+
+Sceleri's approach:
+
+```python
+x = 198082268170481019352909704385375310477
+C = 0xff51afd7ed558ccdff51afd7ed558ccd * 0xc4ceb9fe1a85ec53c4ceb9fe1a85ec53
+
+assert 0 == (x ^^ (x*C) ^^ (x>>65)) % 2**128
+assert x*C % 2**128 == x ^^ (x>>65)
+
+# subtract x
+assert x*(C-1) % 2**128 == (x ^^ (x>>65)) - x
+
+# (x ^^ (x>>65)) - x)) is small
+u1 = (x ^^ (x>>65)) - x
+assert u1 < 2**65
+assert x*(C-1) % 2**128 == u1
+```
+
+
