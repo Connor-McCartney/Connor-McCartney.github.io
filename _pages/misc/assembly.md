@@ -332,3 +332,62 @@ hello, world!
 
 <br>
 
+
+# base 10 to hex
+
+```python
+chars =  "0123456789ABCDEF"
+
+def convet_to_hex(n):
+    rcx = 64 # total bits
+    while True:
+        rax = n
+        rcx -= 4
+        rax >>= rcx
+
+        print(chars[rax % 16])
+
+        if rcx == 0:
+            break
+
+convet_to_hex(0x1122334455667788)
+```
+
+<br>
+
+```
+global _start
+
+codes:
+    db "1123456789ABCDEF"
+
+
+section .text
+_start:
+    mov rax, 0x1122334455667788
+
+    mov rdi, 1 ; write to stdout
+    mov rdx, 1 ; string lens, always 1 at a time
+    mov rcx, 64 ; alternatively just mov cl, 64
+
+.loop:
+    push rax
+    sub rcx, 4    ; rcx -= 4
+    sar rax, cl   ;  Shift Arithmetic Right,    cl is the lowest 4 bits of rcx,   you can't bitshift more than 64 anyways
+    and rax, 0xf  ; 15 (will perform mod 16)
+
+    lea rsi, [codes + rax] ; string address
+    mov rax, 1 ; ?
+
+    push rcx
+    syscall
+    pop rcx
+
+    pop rax
+    test rcx, rcx ; checks if 0
+    jnz .loop
+
+    mov rax, 60; exit
+    xor rdi, rdi
+    syscall
+```
