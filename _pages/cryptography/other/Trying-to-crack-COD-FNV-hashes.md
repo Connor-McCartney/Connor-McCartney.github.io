@@ -278,3 +278,9 @@ Updated repo - <https://github.com/TheBlupper/linineq>
 The fast c++ code Nico (HalfInchPunisher) and I wrote, which uses LLL to solve 8 chars at a time, plus bruteforce to find more. 
 
 <https://github.com/Nico-Posada/fnv-hash-cracking>
+
+<br>
+
+RESULTS:
+
+<https://gitlab.com/-/snippets/4839503>
