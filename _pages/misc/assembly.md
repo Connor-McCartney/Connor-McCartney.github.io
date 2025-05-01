@@ -336,7 +336,7 @@ hello, world!
 # base 10 to hex
 
 ```python
-chars =  "0123456789ABCDEF"
+codes =  "0123456789ABCDEF"
 
 def convet_to_hex(n):
     rcx = 64 # total bits
@@ -345,7 +345,7 @@ def convet_to_hex(n):
         rcx -= 4
         rax >>= rcx
 
-        print(chars[rax % 16])
+        print(codes[rax % 16])
 
         if rcx == 0:
             break
