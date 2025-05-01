@@ -355,7 +355,7 @@ convet_to_hex(0x1122334455667788)
 
 <br>
 
-```assembly
+```
 global _start
 
 codes:
