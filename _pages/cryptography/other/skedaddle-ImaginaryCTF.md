@@ -279,7 +279,7 @@ This will be our main equation, we can't really simplify it any further.
 <br>
 
 
-
+---
 
 
 
@@ -561,4 +561,30 @@ solution is x = 0x77140a2f515f7d36838035cbd1a4412c; reduce the problem to A*x_hi
 
 ```
 ictf{d1d_y0u_u53_l4tt1c3_3num3r4t10n_0r_s0m3th1ng_else?}
+```
+
+<br>
+
+```python
+def f(k):
+    k ^= k >> 65
+    k *= 0xff51afd7ed558ccdff51afd7ed558ccd
+    k &= 0xffffffffffffffffffffffffffffffff
+    k ^= k >> 65
+    k *= 0xc4ceb9fe1a85ec53c4ceb9fe1a85ec53
+    k &= 0xffffffffffffffffffffffffffffffff
+    k ^= k >> 65
+    return k
+
+k = 158282184008579085165054268258795143468 
+assert f(k) == k
+
+
+y = 5369030637032295174
+z = 2048148011573908109
+C = 0xff51afd7ed558ccdff51afd7ed558ccd * 0xc4ceb9fe1a85ec53c4ceb9fe1a85ec53
+A = 2**65*(1-C) + 1
+B = 1-C
+
+assert (A*y + B*z) % 2**128 == 2*(y&z)
 ```
