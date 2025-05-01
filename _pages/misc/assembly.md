@@ -378,9 +378,9 @@ _start:
     and rax, 0xf  ; 15 (will perform mod 16)
 
     lea rsi, [codes + rax] ; string address
+    mov rax, 1 ; write syscall
 
     push rcx
-    mov rax, 1 ; write syscall
     syscall ; the write syscall will affect rcx so you have to save and restore with push and pop
     pop rcx
 
