@@ -549,3 +549,16 @@ int main() {
   return 0;
 }
 ```
+
+<br>
+
+
+```
+solution is x = 0x77140a2f515f7d36838035cbd1a4412c; reduce the problem to A*x_hi + B*x_lo = 2*(x_hi&x_lo) → solve with hensel lifting + fast lattice enumeration (brute force takes ~1hr on a decent cpu) https://cybersharing.net/s/13bb2797db22f55736160614dbc17042
+```
+
+
+
+```
+ictf{d1d_y0u_u53_l4tt1c3_3num3r4t10n_0r_s0m3th1ng_else?}
+```
