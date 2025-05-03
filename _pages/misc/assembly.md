@@ -368,6 +368,8 @@ global _start
 
 ;section .data
 message: db "hello, world!", 10 ; the 10 is ord('\n')
+;len: equ $-message
+
 
 ;section .text
 _start:
