@@ -24,3 +24,18 @@ print(f"{c1 = }")
 print(f"{c2 = }")
 ```
 
+
+Solve:
+
+
+Part 1 - solve the logs to get the ks
+
+<https://math.stackexchange.com/questions/1863037/discrete-logarithm-modulo-powers-of-a-small-prime>
+
+<https://www2.eecs.berkeley.edu/Pubs/TechRpts/1984/CSD-84-186.pdf>
+
+
+<br>
+
+Part 2 is the franklin-reiter rsa attack. 
+
