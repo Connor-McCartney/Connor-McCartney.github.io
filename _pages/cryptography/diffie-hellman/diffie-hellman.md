@@ -36,3 +36,7 @@ __vulnerability: partial secrets given__
 
 <span style="font-size:2em;">   [Strong Primes - DDC 2024](/cryptography/diffie-hellman/Strong-Primes-DDC2024)       </span> <br>
 __vulnerability: oracle encrypting same message multiple times__
+
+
+<span style="font-size:2em;">   [rr - bi0sCTF 2024](/cryptography/diffie-hellman/rr-bi0sCTF2024)       </span> <br>
+__vulnerability: modulii of form p^s__
