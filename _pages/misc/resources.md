@@ -31,6 +31,7 @@ AI substitution cipher solvers <https://www.guballa.de/substitution-solver> <br>
 <http://quipqiup.com> <br>
 Hashcat Example Hashes <https://hashcat.net/wiki/doku.php?id=example_hashes> <br>
 learn-cyber <https://learn-cyber.net> <br>
+dreamhack <https://dreamhack.io> <br>
 CTF library <https://github.com/Aeren1564/CTF/tree/main> <br>
 Lattices <https://github.com/cpeikert/LatticesInCryptography> <br>
 Multivariate polynomal substitution <https://gist.github.com/maple3142/0bb20789d7372b7e0e822d1b91ca7867> <br>
