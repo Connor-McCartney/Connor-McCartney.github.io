@@ -642,3 +642,18 @@ pwndbg> n
 0x7fffffffe850 ... 100
 0x7fffffffe848 ... 110
 ```
+
+
+<br>
+
+<br>
+
+# Allocating memory (buffer)
+
+<br>
+
+option 1: use some builtin
+
+```
+message: db "hey", 10
+```
