@@ -664,6 +664,24 @@ Alternatively, you can do this:
 175727976
 ```
 
+```
+global _start
+
+_start:
+    push 175727976
+    mov rsi, rsp ; string pointer
+
+    mov rax, 1 ; syscall for write (on linux)
+    mov rdi, 1 ; stdout
+    mov rdx, 4 ; string len
+    syscall
+
+    ; exit
+    mov rax, 60 
+    mov rdi, 0  
+    syscall
+```
+
 <br>
 
 <br>
