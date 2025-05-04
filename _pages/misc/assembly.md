@@ -662,3 +662,10 @@ message: db "hey", 10
 <br>
 
 option 2: move the stack pointer
+
+
+<br>
+
+option 3: move the base pointer (kinda better practice than the stack pointer)
+
+<br>
