@@ -650,16 +650,27 @@ pwndbg> n
 
 # what is db doing?
 
-# Allocating memory (buffer/array)
 
 ```
 message: db "hey", 10
 ```
 
+db defines a variable of type bytes. 
+
+Alternatively, you can do this:
+
 ```python
 >>> int.from_bytes(b'hey\n', 'little')
 175727976
 ```
+
+<br>
+
+<br>
+
+# Allocating memory (buffer/array)
+
+
 
 <br>
 
