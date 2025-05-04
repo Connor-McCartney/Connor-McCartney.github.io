@@ -648,7 +648,7 @@ pwndbg> n
 
 <br>
 
-# Allocating memory (buffer)
+# Allocating memory (buffer/array)
 
 <br>
 
