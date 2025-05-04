@@ -458,3 +458,28 @@ _start:
     xor rdi, rdi
     syscall
 ```
+
+
+<br>
+
+
+# Looking at the stack
+
+The stack might look something like
+
+```
+...
+0x7fffffffe878 ... other stuff before your program executes
+0x7fffffffe870 ... other stuff before your program executes
+0x7fffffffe868 ... other stuff before your program executes
+--- program starts
+0x7fffffffe860 ... junk
+0x7fffffffe858 ... junk
+0x7fffffffe850 ... junk
+0x7fffffffe848 ... junk
+...
+```
+```
+
+
+
