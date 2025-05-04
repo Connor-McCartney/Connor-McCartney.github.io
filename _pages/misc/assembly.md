@@ -502,7 +502,9 @@ _start:
     syscall
 ```
 
-Everytime we push something, RSP will decrease by 8, and the value will be stored there
+Everytime we push something, RSP will decrease by 8 bytes, and the value will be stored there.
+
+The maximum register values is 2**64, which is 8 bytes, which is why it's in 8-byte sections (although the stack should usually be 16-byte alligned for various other reasons...)
 
 
 ```
