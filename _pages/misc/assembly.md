@@ -481,6 +481,131 @@ The stack might look something like
 0x000000000000 ... junk
 ```
 
+RBP (base pointer) is typically 0 initially
+
+in this example, RSP is 0x7fffffffe860 initially
+
+now suppose we push some stuff on the stack:
+
+```
+global _start
+
+_start:
+    push 90
+    push 100
+    push 110
 
 
+    ;exit
+    mov rdi, 0
+    mov rax,60
+    syscall
+```
+
+Everytime we push something, RSP will decrease by 8, and the value will be stored there
+
+
+```
+$ gdb ./a.out 
+pwndbg> break _start
+Breakpoint 1 at 0x401000
+pwndbg> r
+Starting program: /home/connor/t/a.out 
+
+Breakpoint 1, 0x0000000000401000 in _start ()
+...
+ RSP  0x7fffffffe860 ◂— 1
+ RIP  0x401000 (_start) ◂— push 0x5a
+─────────────────────────────────────────────────[ DISASM / x86-64 / set emulate on ]─────────────────────────────────────────────────
+ ► 0x401000 <_start>       push   0x5a
+   0x401002 <_start+2>     push   0x64
+   0x401004 <_start+4>     push   0x6e
+   0x401006 <_start+6>     mov    edi, 0                 EDI => 0
+   0x40100b <_start+11>    mov    eax, 0x3c              EAX => 0x3c
+   0x401010 <_start+16>    syscall  <SYS_exit>
+   0x401012                add    byte ptr [rax], al
+   0x401014                add    byte ptr [rax], al
+   0x401016                add    byte ptr [rax], al
+   0x401018                add    byte ptr [rax], al
+   0x40101a                add    byte ptr [rax], al
+──────────────────────────────────────────────────────────────[ STACK ]───────────────────────────────────────────────────────────────
+00:0000│ rsp 0x7fffffffe860 ◂— 1
+01:0008│     0x7fffffffe868 —▸ 0x7fffffffeb5b ◂— '/home/connor/t/a.out'
+02:0010│     0x7fffffffe870 ◂— 0
+03:0018│     0x7fffffffe878 —▸ 0x7fffffffeb70 ◂— 'SHELL=/bin/bash'
+
+pwndbg> n
+...
+
+*RSP  0x7fffffffe858 ◂— 0x5a /* 'Z' */
+*RIP  0x401002 (_start+2) ◂— push 0x64
+─────────────────────────────────────────────────[ DISASM / x86-64 / set emulate on ]─────────────────────────────────────────────────
+   0x401000 <_start>       push   0x5a
+ ► 0x401002 <_start+2>     push   0x64
+   0x401004 <_start+4>     push   0x6e
+   0x401006 <_start+6>     mov    edi, 0                 EDI => 0
+   0x40100b <_start+11>    mov    eax, 0x3c              EAX => 0x3c
+   0x401010 <_start+16>    syscall  <SYS_exit>
+   0x401012                add    byte ptr [rax], al
+   0x401014                add    byte ptr [rax], al
+   0x401016                add    byte ptr [rax], al
+   0x401018                add    byte ptr [rax], al
+   0x40101a                add    byte ptr [rax], al
+──────────────────────────────────────────────────────────────[ STACK ]───────────────────────────────────────────────────────────────
+00:0000│ rsp 0x7fffffffe858 ◂— 0x5a /* 'Z' */
+01:0008│     0x7fffffffe860 ◂— 1
+02:0010│     0x7fffffffe868 —▸ 0x7fffffffeb5b ◂— '/home/connor/t/a.out'
+03:0018│     0x7fffffffe870 ◂— 0
+04:0020│     0x7fffffffe878 —▸ 0x7fffffffeb70 ◂— 'SHELL=/bin/bash'
+
+pwndbg> n
+...
+
+*RSP  0x7fffffffe850 ◂— 0x64 /* 'd' */
+*RIP  0x401004 (_start+4) ◂— push 0x6e
+─────────────────────────────────────────────────[ DISASM / x86-64 / set emulate on ]─────────────────────────────────────────────────
+   0x401000 <_start>       push   0x5a
+   0x401002 <_start+2>     push   0x64
+ ► 0x401004 <_start+4>     push   0x6e
+   0x401006 <_start+6>     mov    edi, 0                 EDI => 0
+   0x40100b <_start+11>    mov    eax, 0x3c              EAX => 0x3c
+   0x401010 <_start+16>    syscall  <SYS_exit>
+   0x401012                add    byte ptr [rax], al
+   0x401014                add    byte ptr [rax], al
+   0x401016                add    byte ptr [rax], al
+   0x401018                add    byte ptr [rax], al
+   0x40101a                add    byte ptr [rax], al
+──────────────────────────────────────────────────────────────[ STACK ]───────────────────────────────────────────────────────────────
+00:0000│ rsp 0x7fffffffe850 ◂— 0x64 /* 'd' */
+01:0008│     0x7fffffffe858 ◂— 0x5a /* 'Z' */
+02:0010│     0x7fffffffe860 ◂— 1
+03:0018│     0x7fffffffe868 —▸ 0x7fffffffeb5b ◂— '/home/connor/t/a.out'
+04:0020│     0x7fffffffe870 ◂— 0
+05:0028│     0x7fffffffe878 —▸ 0x7fffffffeb70 ◂— 'SHELL=/bin/bash'
+
+pwndbg> n
+...
+
+*RSP  0x7fffffffe848 ◂— 0x6e /* 'n' */
+*RIP  0x401006 (_start+6) ◂— mov edi, 0
+─────────────────────────────────────────────────[ DISASM / x86-64 / set emulate on ]─────────────────────────────────────────────────
+   0x401000 <_start>       push   0x5a
+   0x401002 <_start+2>     push   0x64
+   0x401004 <_start+4>     push   0x6e
+ ► 0x401006 <_start+6>     mov    edi, 0                 EDI => 0
+   0x40100b <_start+11>    mov    eax, 0x3c              EAX => 0x3c
+   0x401010 <_start+16>    syscall  <SYS_exit>
+   0x401012                add    byte ptr [rax], al
+   0x401014                add    byte ptr [rax], al
+   0x401016                add    byte ptr [rax], al
+   0x401018                add    byte ptr [rax], al
+   0x40101a                add    byte ptr [rax], al
+──────────────────────────────────────────────────────────────[ STACK ]───────────────────────────────────────────────────────────────
+00:0000│ rsp 0x7fffffffe848 ◂— 0x6e /* 'n' */
+01:0008│     0x7fffffffe850 ◂— 0x64 /* 'd' */
+02:0010│     0x7fffffffe858 ◂— 0x5a /* 'Z' */
+03:0018│     0x7fffffffe860 ◂— 1
+04:0020│     0x7fffffffe868 —▸ 0x7fffffffeb5b ◂— '/home/connor/t/a.out'
+05:0028│     0x7fffffffe870 ◂— 0
+```
 
