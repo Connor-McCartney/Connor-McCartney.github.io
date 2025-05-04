@@ -478,8 +478,9 @@ The stack might look something like
 0x7fffffffe850 ... junk
 0x7fffffffe848 ... junk
 ...
+0x000000000000 ... junk
 ```
-```
+
 
 
 
