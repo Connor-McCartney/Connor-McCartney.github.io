@@ -688,7 +688,7 @@ _start:
 
 # what is lea doing?
 
-I think of it as syntactic sugar for indexing an array. 
+I think of it as syntactic sugar for indexing bytes. 
 
 instead of 
 
