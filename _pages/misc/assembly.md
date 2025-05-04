@@ -663,6 +663,10 @@ message: db "hey", 10
 
 option 2: copy the stack pointer
 
+```python
+>>> int.from_bytes(b'hey\n', 'little')
+175727976
+```
 
 <br>
 
