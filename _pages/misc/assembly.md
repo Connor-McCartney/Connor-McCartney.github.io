@@ -657,3 +657,8 @@ option 1: use some builtin
 ```
 message: db "hey", 10
 ```
+
+
+<br>
+
+option 2: move the stack pointer
