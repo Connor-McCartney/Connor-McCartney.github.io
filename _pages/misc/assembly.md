@@ -611,3 +611,34 @@ pwndbg> n
 05:0028│     0x7fffffffe870 ◂— 0
 ```
 
+```
+--- program starts
+0x7fffffffe860 ... 1
+0x7fffffffe858 ... junk
+0x7fffffffe850 ... junk
+0x7fffffffe848 ... junk
+```
+
+```
+--- program starts
+0x7fffffffe860 ... 1
+0x7fffffffe858 ... 90
+0x7fffffffe850 ... junk
+0x7fffffffe848 ... junk
+```
+
+```
+--- program starts
+0x7fffffffe860 ... 1
+0x7fffffffe858 ... 90
+0x7fffffffe850 ... 100
+0x7fffffffe848 ... junk
+```
+
+```
+--- program starts
+0x7fffffffe860 ... 1
+0x7fffffffe858 ... 90
+0x7fffffffe850 ... 100
+0x7fffffffe848 ... 110
+```
