@@ -506,7 +506,7 @@ Everytime we push something, RSP will decrease by 8 bytes, and the value will be
 
 The maximum register values is 2**64, which is 8 bytes, which is why it's in 8-byte sections (although the stack should usually be 16-byte alligned for various other reasons...)
 
-If ur getting stack allignment errors when calling function, you can subtract 8 from the rsp and then add it back after. 
+If ur getting stack allignment errors when calling function, you can subtract 8 from the rsp and then add it back after. <https://stackoverflow.com/questions/64729055/what-does-aligning-the-stack-mean-in-assembly>
 
 ```
 $ gdb ./a.out 
