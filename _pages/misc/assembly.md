@@ -743,4 +743,7 @@ option 2: copy the stack pointer
 
 option 3: move the base pointer (kinda better practice than the stack pointer)
 
+<https://stackoverflow.com/questions/13468991/how-do-i-use-a-buffer-in-an-assembly-procedure>
+
+
 <br>
