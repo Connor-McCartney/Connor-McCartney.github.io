@@ -686,6 +686,44 @@ _start:
 
 <br>
 
+# what is lea doing?
+
+I think of it as syntactic sugar for indexing an array. 
+
+instead of 
+
+```
+_start:
+    push 175727976
+
+    mov rsi, rsp
+    add rsi, 1
+
+    mov rax, 1 ; syscall for write (on linux)
+    mov rdi, 1 ; stdout
+    mov rdx, 3 ; string len
+    syscall
+```
+
+you can just do 
+
+```
+_start:
+    push 175727976
+
+    lea rsi, [rsp+1] 
+
+    mov rax, 1 ; syscall for write (on linux)
+    mov rdi, 1 ; stdout
+    mov rdx, 3 ; string len
+    syscall
+```
+
+<br>
+
+<br>
+
+
 # Allocating memory (buffer/array)
 
 
