@@ -710,3 +710,10 @@ for guess_diff_k in tqdm(range(-2**(nbits-1), 2**(nbits-1))):
     if (c * geuss_k) % (2**128) == geuss_k ^ (geuss_k >> 65):
         break
 ```
+
+
+<br>
+
+neobeo's (fastest):
+
+<https://gist.github.com/AdibSurani/b872d88022e7de10b5b705b3dd082fad>
