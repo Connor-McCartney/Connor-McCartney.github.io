@@ -343,6 +343,13 @@ dw 0xAA55
 
 <br>
 
+
+TempleOS uses 640x480 resolution, 16-color (mode 0x12 / 12H)
+
+<br>
+
+
+
 ---
 
 
