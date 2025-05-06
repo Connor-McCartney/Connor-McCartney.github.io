@@ -339,6 +339,9 @@ dw 0xAA55
 
 <br>
 
+<https://mendelson.org/wpdos/videomodes.txt>
+
+<br>
 
 ---
 
