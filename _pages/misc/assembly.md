@@ -740,7 +740,7 @@ option 1: use some builtin
 
 <br>
 
-option 2: copy the stack pointer
+option 2: decrease rsp (push does this automatically)
 
 
 
