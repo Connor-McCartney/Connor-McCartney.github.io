@@ -8,7 +8,7 @@ title: C
 
 # basic linked list 
 
-```python
+```c
 #include <stddef.h>
 #include <stdio.h>
 
