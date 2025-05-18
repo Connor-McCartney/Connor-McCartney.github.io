@@ -52,7 +52,7 @@ So here's a better one using malloc to create nodes on the heap:
 
 <br>
 
-```python
+```c
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
