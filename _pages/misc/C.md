@@ -43,3 +43,11 @@ int main() {
 }
 ```
 
+I'll leave the above for reference, but it kinda sucks because all your nodes have to already exist in the one function. 
+
+
+So here's a better one using malloc to save stuff on the heap. 
+
+<br>
+
+<br>
