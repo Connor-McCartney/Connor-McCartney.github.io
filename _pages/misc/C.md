@@ -99,6 +99,7 @@ void push_end(node_t *head, data_t next) {
 
 int main() {
     node_t *head = malloc(sizeof(node_t));
+    head->next = NULL;
 
     for (int i=0; i<10; i++) {
         data_t d = {i};
