@@ -128,10 +128,10 @@ For example:
 ```python
 from random import randint
 
-def random_leaf():
+def random_branch():
     return [randint(1, 9) for _ in range(3)]
 
-tree = [[[random_leaf(), random_leaf()]]]
+tree = [[[random_branch(), random_branch()]]]
 
 depth = 3
 for _ in range(depth):
@@ -140,7 +140,7 @@ for _ in range(depth):
         for branch in branches:
             new_branch = []
             for node in branch:
-                new_branch.append(random_leaf())
+                new_branch.append(random_branch())
             new_layer.append(new_branch)
     tree.append(new_layer)
 
