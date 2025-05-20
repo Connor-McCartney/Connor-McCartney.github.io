@@ -154,3 +154,48 @@ for layer in tree:
 To walk back up the tree, nodes can contain their parent's node in addition to their data. 
 
 
+```python
+from random import randint
+
+class Node:
+    def __init__(self, data, parent=None):
+        self.data = data
+        self.parent = parent
+
+def random_branch(parent):
+    return [Node(randint(1, 9), parent) for _ in range(3)]
+
+tree = [[[random_branch(None), random_branch(None)]]]
+
+depth = 3
+for _ in range(depth):
+    new_layer = []
+    for branches in tree[-1]:
+        for branch in branches:
+            new_branch = []
+            for node in branch:
+                new_branch.append(random_branch(parent=node))
+            new_layer.append(new_branch)
+    tree.append(new_layer)
+
+for layer in tree:
+    print([[[node.data for node in branch] for branch in branches] for branches in layer])
+    print()
+
+
+
+def walk_up_tree(node):
+    path = []
+    current = node
+    while current is not None:
+        path.append(current)
+        current = current.parent
+    return path[::-1]
+
+
+bottom_node = tree[-1][0][0][0] # arbitrary example
+print(bottom_node.data)
+path = walk_up_tree(bottom_node)
+print([node.data for node in path])
+```
+
