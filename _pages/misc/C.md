@@ -121,7 +121,7 @@ int main() {
 
 # Trees
 
-Trees contain branches which contain leafs which contain data. 
+Trees contain layers of branches, which contains nodes, which contain data.  
 
 For example: 
 
