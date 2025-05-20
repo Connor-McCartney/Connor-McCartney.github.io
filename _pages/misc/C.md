@@ -116,3 +116,37 @@ int main() {
 }
 ```
 
+
+<br>
+
+# Trees
+
+Trees contain branches which contain leafs which contain nodes. 
+
+For example: 
+
+```python
+from random import randint
+
+def random_leaf():
+    return [randint(1, 9) for _ in range(3)]
+
+tree = [[[random_leaf()]]]
+
+depth = 3
+for _ in range(depth):
+    new_branches = []
+    for branch in tree[-1]:
+        new_branch = []
+        for leaf in branch:
+            for item in leaf:
+                new_branch.append(random_leaf())
+        new_branches.append(new_branch)
+    tree.append(new_branches)
+
+for i in tree:
+    print(i[0])
+    print()
+```
+
+
