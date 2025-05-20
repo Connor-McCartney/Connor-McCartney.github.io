@@ -135,17 +135,17 @@ tree = [[[random_leaf(), random_leaf()]]]
 
 depth = 3
 for _ in range(depth):
-    new_branches = []
-    for branch in tree[-1]:
-        for leaf in branch:
+    new_layer = []
+    for branches in tree[-1]:
+        for branch in branches:
             new_branch = []
-            for item in leaf:
+            for node in branch:
                 new_branch.append(random_leaf())
-            new_branches.append(new_branch)
-    tree.append(new_branches)
+            new_layer.append(new_branch)
+    tree.append(new_layer)
 
-for i in tree:
-    print(i)
+for layer in tree:
+    print(layer)
     print()
 ```
 
