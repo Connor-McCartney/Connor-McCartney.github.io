@@ -149,4 +149,8 @@ for layer in tree:
     print()
 ```
 
+<br>
+
+To walk back up the tree, nodes can contain their parent's node in addition to their data. 
+
 
