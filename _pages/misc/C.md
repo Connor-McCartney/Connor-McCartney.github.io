@@ -204,6 +204,7 @@ print([node.data for node in path])
 ```c
 #include <stdlib.h>
 #include <stdio.h>
+#include <assert.h>
 
 typedef struct Data {
     int x; 
@@ -238,6 +239,7 @@ treenode_t *create_tree_node(data_t data, treenode_t *parent){
 }
 
 void push_end(treelistnode_t *head, treenode_t *next) {
+    assert(head != NULL);
     treelistnode_t *current = head;
     while (current->next != NULL) {
         current = current->next;
@@ -280,7 +282,8 @@ void destroy_treelist(treelistnode_t *head){
     free(current);
 }
 
-void add_branch(treelistnode_t *tree, treenode_t *parent) {
+
+void add_random_branch(treelistnode_t *tree, treenode_t *parent) {
     data_t d1 = {rand() % 10};
     data_t d2 = {rand() % 10};
     data_t d3 = {rand() % 10};
@@ -294,7 +297,7 @@ void add_branch(treelistnode_t *tree, treenode_t *parent) {
 
 
 int main() {
-    treelistnode_t *copy;
+    treelistnode_t *tmp;
     treelistnode_t *current;
     treelistnode_t *tree = malloc(sizeof(treelistnode_t));
     tree->next = NULL;
@@ -308,20 +311,32 @@ int main() {
     push_end(tree, r2);
 
     
+
     /*
     for (int d=1; d<3; d++) {
         printf("depth %d\n", d);
 
-        copy = copy_treelist(tree);
-        current = copy;
+        tmp = copy_treelist(tree);
+        current = tree;
         while (current->next != NULL) {
             current = current->next;
-            add_branch(tree, current->treenode->parent);
+            add_branch(tmp, current->treenode);
             printf("%d\n", current->treenode->data.x);
         }
-        destroy_treelist(copy);
+
+        tree = copy_treelist(tmp);
+        //destroy_treelist(tmp);
     }
     */
+
+    add_random_branch(tree, r1);
+    add_random_branch(tree, r2);
+    current = tree;
+    while (current->next != NULL) {
+        current = current->next;
+        printf("%d\n", current->treenode->data.x);
+    }
+
 
     destroy_treelist(tree);
 }
