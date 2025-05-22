@@ -201,7 +201,7 @@ print([node.data for node in path])
 
 <br>
 
-```python
+```c
 #include <stdlib.h>
 #include <stdio.h>
 
