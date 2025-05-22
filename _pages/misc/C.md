@@ -249,13 +249,17 @@ void push_end(treelistnode_t *head, treenode_t *next) {
 }
 
 treenode_t *copy_treenode(treenode_t *original){
+    assert(original!=NULL);
     treenode_t *copy = malloc(sizeof(treenode_t));
     copy->data = original->data;
     copy->parent = original->parent;
     return copy;
 }
 
+/*
 treelistnode_t *copy_treelist(treelistnode_t *head){
+    assert(head != NULL);
+
     treelistnode_t *copy = malloc(sizeof(treelistnode_t));
     copy->next = NULL;
 
@@ -268,8 +272,10 @@ treelistnode_t *copy_treelist(treelistnode_t *head){
 
     return copy;
 }
+*/
 
 void destroy_treelist(treelistnode_t *head){
+    assert(head != NULL);
     treelistnode_t *current = head;
     treelistnode_t *next = current;
     while (current->next != NULL) {
@@ -278,6 +284,8 @@ void destroy_treelist(treelistnode_t *head){
         free(current);
         current = next;
     }
+    assert(current != NULL);
+    assert(current->treenode != NULL);
     free(current->treenode);
     free(current);
 }
@@ -297,9 +305,7 @@ void add_random_branch(treelistnode_t *tree, treenode_t *parent) {
 
 
 int main() {
-    treelistnode_t *tmp;
-    treelistnode_t *current;
-    treelistnode_t *tree = malloc(sizeof(treelistnode_t));
+    treelistnode_t *current; treelistnode_t *tree = malloc(sizeof(treelistnode_t));
     tree->next = NULL;
 
 
@@ -310,34 +316,26 @@ int main() {
     push_end(tree, r1);
     push_end(tree, r2);
 
-    
-
-    /*
-    for (int d=1; d<3; d++) {
+    int max_depth = 1;
+    for (int d=0; d<max_depth; d++) {
         printf("depth %d\n", d);
 
-        tmp = copy_treelist(tree);
+        treelistnode_t *to_push = malloc(sizeof(treelistnode_t));
+        to_push->next = NULL;
         current = tree;
         while (current->next != NULL) {
+            add_random_branch(to_push, current->treenode);
             current = current->next;
-            add_branch(tmp, current->treenode);
-            printf("%d\n", current->treenode->data.x);
         }
-
-        tree = copy_treelist(tmp);
-        //destroy_treelist(tmp);
+        current = to_push;
+        while (current->next != NULL) {
+            current = current->next;
+            printf("%d\n", current->treenode->data.x);
+            push_end(tree, copy_treenode(current->treenode));
+        }
+        destroy_treelist(to_push);
     }
-    */
-
-    add_random_branch(tree, r1);
-    add_random_branch(tree, r2);
-    current = tree;
-    while (current->next != NULL) {
-        current = current->next;
-        printf("%d\n", current->treenode->data.x);
-    }
-
-
+    
     destroy_treelist(tree);
 }
 ```
