@@ -199,3 +199,123 @@ path = walk_up_tree(bottom_node)
 print([node.data for node in path])
 ```
 
+<br>
+
+```python
+#include <stdlib.h>
+#include <stdio.h>
+
+typedef struct Data {
+    int x; 
+} data_t;
+
+
+typedef struct TreeNode {
+    data_t data;
+    struct TreeNode *parent;
+} treenode_t;
+
+
+typedef struct TreeListNode {
+    treenode_t *treenode;
+    struct TreeListNode *next;
+} treelistnode_t;
+
+
+treelistnode_t *create_treelist_node(treenode_t *treenode){
+    treelistnode_t *new_node = malloc(sizeof(treelistnode_t));
+    new_node->treenode = treenode;
+    new_node->next = NULL;
+    return new_node;
+}
+
+
+
+treenode_t *create_tree_node(data_t data, treenode_t *parent){
+    treenode_t *new_node = malloc(sizeof(treenode_t));
+    new_node->data = data;
+    new_node->parent = parent;
+    return new_node;
+}
+
+void push_end(treelistnode_t *head, treenode_t *next) {
+    treelistnode_t *current = head;
+    while (current->next != NULL) {
+        current = current->next;
+    }
+    treelistnode_t *new_node = create_treelist_node(next);
+    current->next = new_node;
+}
+
+
+treelistnode_t *copy_treelist(treelistnode_t *head){
+    treelistnode_t *copy = malloc(sizeof(treelistnode_t));
+    copy->next = NULL;
+
+    treelistnode_t *current = head;
+    while (current->next != NULL) {
+        current = current->next;
+        push_end(copy, current->treenode);
+    }
+
+    return copy;
+}
+
+void destroy_treelist(treelistnode_t *head){
+    treelistnode_t *current = head;
+    treelistnode_t *next = current;
+    while (current->next != NULL) {
+        next = current->next;
+        free(current->treenode);
+        free(current);
+        current = next;
+    }
+    free(current->treenode);
+    free(current);
+}
+
+void add_branch(treelistnode_t *tree, treenode_t *parent) {
+    data_t d1 = {rand() % 10};
+    data_t d2 = {rand() % 10};
+    data_t d3 = {rand() % 10};
+    treenode_t *r1 = create_tree_node(d1, parent);
+    treenode_t *r2 = create_tree_node(d2, parent);
+    treenode_t *r3 = create_tree_node(d3, parent);
+    push_end(tree, r1);
+    push_end(tree, r2);
+    push_end(tree, r3);
+}
+
+
+int main() {
+    treelistnode_t *current;
+    treelistnode_t *tree = malloc(sizeof(treelistnode_t));
+    tree->next= NULL;
+
+
+    data_t d1 = {rand() % 10};
+    data_t d2 = {rand() % 10};
+    treenode_t *r1 = create_tree_node(d1, NULL);
+    treenode_t *r2 = create_tree_node(d2, NULL);
+    push_end(tree, r1);
+    push_end(tree, r2);
+
+    
+    for (int d=1; d<3; d++) {
+        printf("depth %d\n", d);
+
+        treelistnode_t *copy = copy_treelist(tree);
+        current = copy;
+        while (current->next != NULL) {
+            current = current->next;
+            add_branch(tree, current->treenode);
+            printf("%d\n", current->treenode->data.x);
+        }
+        destroy_treelist(copy);
+    }
+
+    destroy_treelist(tree);
+}
+```
+
+
