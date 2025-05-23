@@ -97,22 +97,44 @@ void push_end(node_t *head, data_t next) {
 }
 
 
-int main() {
-    node_t *head = malloc(sizeof(node_t));
-    head->next = NULL;
-
-    for (int i=0; i<10; i++) {
-        data_t d = {i};
-        push_end(head, d);
+node_t *reversed_list(node_t *head ) {
+    node_t *ret = NULL;
+    node_t *current = head->next;
+    node_t *prev;
+    while (current != NULL) {
+        prev = current->next;
+        current->next = ret;
+        ret = current;
+        current = prev;
     }
+    head->next = ret;
+    return head;
+}
 
+void print_list(node_t *head) {
     node_t *current = head;
     while (current->next != NULL) {
         current = current->next;
         printf("%d\n", current->data.x);
     }
+}
 
-    destroy_list(head);
+int main() {
+    node_t *my_list = malloc(sizeof(node_t));
+    my_list->next = NULL;
+
+    for (int i=1; i<10; i++) {
+        data_t d = {i};
+        push_end(my_list, d);
+    }
+
+    print_list(my_list);
+    
+    printf("\n");
+
+    print_list(reversed_list(my_list));
+
+    destroy_list(my_list);
 }
 ```
 
