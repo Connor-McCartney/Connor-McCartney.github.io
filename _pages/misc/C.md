@@ -327,6 +327,8 @@ void add_random_branch(treelistnode_t *tree, treenode_t *parent) {
 int main() {
     treelistnode_t *current; treelistnode_t *tree = malloc(sizeof(treelistnode_t));
     tree->next = NULL;
+    tree->treenode = NULL;
+
 
 
     data_t d1 = {rand() % 10};
@@ -342,6 +344,8 @@ int main() {
 
         treelistnode_t *to_push = malloc(sizeof(treelistnode_t));
         to_push->next = NULL;
+        to_push->treenode = NULL;
+
         current = tree;
         while (current->next != NULL) {
             add_random_branch(to_push, current->treenode);
