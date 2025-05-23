@@ -112,9 +112,7 @@ node_t *reversed_list(node_t *head ) {
 }
 
 void print_list(node_t *head) {
-    node_t *current = head;
-    while (current->next != NULL) {
-        current = current->next;
+    for (node_t *current = head->next; current != NULL; current = current->next) {
         printf("%d\n", current->data.x);
     }
 }
