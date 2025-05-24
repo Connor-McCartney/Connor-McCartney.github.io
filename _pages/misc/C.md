@@ -76,61 +76,58 @@ node_t *create_node(data_t data){
 }
 
 void destroy_list(node_t *head){
-    node_t *current = head;
-    node_t *next = current;
-    while (current->next != NULL) {
+    node_t *next;
+    for (node_t *current = head;  current != NULL;  current = next) {
         next = current->next;
         free(current);
-        current = next;
     }
-    free(current);
-
 }
 
-void push_end(node_t *head, data_t next) {
-    node_t *current = head;
-    while (current->next != NULL) {
-        current = current->next;
-    }
+node_t* push_end(node_t *head, data_t next) {
     node_t *new_node = create_node(next);
-    current->next = new_node;
+    node_t *current;
+
+    if (head==NULL) {
+        head = new_node;
+    } else {
+        for (current = head; current->next != NULL; current = current->next) {
+            ;
+        }
+        current->next = new_node;
+    }
+    return head;
 }
 
 
 node_t *reversed_list(node_t *head ) {
-    node_t *ret = NULL;
-    node_t *current = head->next;
-    node_t *prev;
-    while (current != NULL) {
-        prev = current->next;
-        current->next = ret;
-        ret = current;
-        current = prev;
+    node_t *prev = NULL;
+    node_t *next;
+    for (node_t *curr = head;  curr != NULL;  curr = next) {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
     }
-    head->next = ret;
-    return head;
+    return prev;
 }
 
 void print_list(node_t *head) {
-    for (node_t *current = head->next; current != NULL; current = current->next) {
+    for (node_t *current = head; current != NULL; current = current->next) {
         printf("%d\n", current->data.x);
     }
 }
 
 int main() {
-    node_t *my_list = malloc(sizeof(node_t));
-    my_list->next = NULL;
+    node_t *my_list = NULL;
 
     for (int i=1; i<10; i++) {
         data_t d = {i};
-        push_end(my_list, d);
+        my_list = push_end(my_list, d);
     }
 
     print_list(my_list);
-    
     printf("\n");
-
-    print_list(reversed_list(my_list));
+    my_list = reversed_list(my_list);
+    print_list(my_list);
 
     destroy_list(my_list);
 }
