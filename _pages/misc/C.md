@@ -247,25 +247,14 @@ treelistnode_t *create_treelist_node(treenode_t *treenode){
     return new_node;
 }
 
-
-treenode_t *create_tree_node(data_t data, treenode_t *parent){
+treenode_t *treenode_create(data_t data, treenode_t *parent){
     treenode_t *new_node = malloc(sizeof(treenode_t));
     new_node->data = data;
     new_node->parent = parent;
     return new_node;
 }
 
-void push_end(treelistnode_t *head, treenode_t *next) {
-    assert(head != NULL);
-    treelistnode_t *current = head;
-    while (current->next != NULL) {
-        current = current->next;
-    }
-    treelistnode_t *new_node = create_treelist_node(next);
-    current->next = new_node;
-}
-
-treenode_t *copy_treenode(treenode_t *original){
+treenode_t *treenode_copy(treenode_t *original){
     assert(original!=NULL);
     treenode_t *copy = malloc(sizeof(treenode_t));
     copy->data = original->data;
@@ -273,91 +262,74 @@ treenode_t *copy_treenode(treenode_t *original){
     return copy;
 }
 
-/*
-treelistnode_t *copy_treelist(treelistnode_t *head){
-    assert(head != NULL);
+treelistnode_t* treelist_push_end(treelistnode_t *head, treenode_t *next) {
+    treelistnode_t *new_node = create_treelist_node(next);
+    treelistnode_t *current;
 
-    treelistnode_t *copy = malloc(sizeof(treelistnode_t));
-    copy->next = NULL;
-
-    treelistnode_t *current = head;
-    while (current->next != NULL) {
-        current = current->next;
-        treenode_t *treenode_copy = copy_treenode(current->treenode);
-        push_end(copy, treenode_copy);
+    if (head==NULL) {
+        head = new_node;
+    } else {
+        for (current = head; current->next != NULL; current = current->next) {
+            ;
+        }
+        current->next = new_node;
     }
-
-    return copy;
-}
-*/
-
-void destroy_treelist(treelistnode_t *head){
-    assert(head != NULL);
-    treelistnode_t *current = head;
-    treelistnode_t *next = current;
-    while (current->next != NULL) {
-        next = current->next;
-        free(current->treenode);
-        free(current);
-        current = next;
-    }
-    assert(current != NULL);
-    assert(current->treenode != NULL);
-    free(current->treenode);
-    free(current);
+    return head;
 }
 
-
-void add_random_branch(treelistnode_t *tree, treenode_t *parent) {
+treelistnode_t *add_random_branch(treelistnode_t *tree, treenode_t *parent) {
     data_t d1 = {rand() % 10};
     data_t d2 = {rand() % 10};
     data_t d3 = {rand() % 10};
-    treenode_t *r1 = create_tree_node(d1, parent);
-    treenode_t *r2 = create_tree_node(d2, parent);
-    treenode_t *r3 = create_tree_node(d3, parent);
-    push_end(tree, r1);
-    push_end(tree, r2);
-    push_end(tree, r3);
+    treenode_t *r1 = treenode_create(d1, parent);
+    treenode_t *r2 = treenode_create(d2, parent);
+    treenode_t *r3 = treenode_create(d3, parent);
+    tree = treelist_push_end(tree, r1);
+    tree = treelist_push_end(tree, r2);
+    tree = treelist_push_end(tree, r3);
+    return tree;
 }
 
+void treelist_free(treelistnode_t *head){
+    treelistnode_t *next;
+    for (treelistnode_t *current = head;  current != NULL;  current = next) {
+        next = current->next;
+        free(current->treenode);
+        free(current);
+    }
+}
 
 int main() {
-    treelistnode_t *current; treelistnode_t *tree = malloc(sizeof(treelistnode_t));
-    tree->next = NULL;
-    tree->treenode = NULL;
-
-
+    treelistnode_t *current; 
+    treelistnode_t *next;
+    treelistnode_t *tree = NULL; 
+    treelistnode_t *to_push; 
 
     data_t d1 = {rand() % 10};
     data_t d2 = {rand() % 10};
-    treenode_t *r1 = create_tree_node(d1, NULL);
-    treenode_t *r2 = create_tree_node(d2, NULL);
-    push_end(tree, r1);
-    push_end(tree, r2);
+    treenode_t *r1 = treenode_create(d1, NULL);
+    treenode_t *r2 = treenode_create(d2, NULL);
+    tree = treelist_push_end(tree, r1);
+    tree = treelist_push_end(tree, r2);
 
-    int max_depth = 1;
+    int max_depth = 2;
     for (int d=0; d<max_depth; d++) {
+
         printf("depth %d\n", d);
-
-        treelistnode_t *to_push = malloc(sizeof(treelistnode_t));
-        to_push->next = NULL;
-        to_push->treenode = NULL;
-
-        current = tree;
-        while (current->next != NULL) {
-            add_random_branch(to_push, current->treenode);
-            current = current->next;
+        to_push = NULL;
+        for (current = tree;  current != NULL;  current = next) {
+            next = current->next;
+            to_push = add_random_branch(to_push, current->treenode);
         }
-        current = to_push;
-        while (current->next != NULL) {
-            current = current->next;
+        for (current = to_push; current != NULL; current = current->next) {
             printf("%d\n", current->treenode->data.x);
-            push_end(tree, copy_treenode(current->treenode));
+            tree = treelist_push_end(tree, treenode_copy(current->treenode));
         }
-        destroy_treelist(to_push);
+        treelist_free(to_push);
+
     }
     
-    destroy_treelist(tree);
+    treelist_free(tree);
 }
 ```
 
