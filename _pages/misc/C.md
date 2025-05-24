@@ -299,14 +299,88 @@ void treelist_free(treelistnode_t *head){
     }
 }
 
+treelistnode_t *treelist_reverse(treelistnode_t *head) {
+    treelistnode_t *prev = NULL;
+    treelistnode_t *next;
+    for (treelistnode_t *curr = head;  curr != NULL;  curr = next) {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+    }
+    return prev;
+}
+
+
+int treelist_length(treelistnode_t *head) {
+    treelistnode_t *current;
+    int length = 0;
+    for (current = head; current != NULL; current = current->next) {
+        length += 1;
+    }
+    return length;
+}
+
+treelistnode_t *walk_up_tree(treenode_t *node) {
+    treelistnode_t *path = NULL;
+    for (treenode_t* current = node; current != NULL; current = current->parent) {
+        path = treelist_push_end(path, treenode_copy(current));
+    }
+    path = treelist_reverse(path);
+    return path;
+}
+
+treelistnode_t *treelist_copy(treelistnode_t *head){
+    treelistnode_t *ret = NULL; 
+    for (treelistnode_t* current = head; current != NULL; current = current->next) {
+        ret = treelist_push_end(ret, treenode_copy(current->treenode));
+    }
+    return ret;
+}
+
+treelistnode_t *tree_get_max(treelistnode_t *head) {
+    // max depth prioritised first, max data prioritised second
+    // assumes the tree nodes are ordered by depth already
+    // returns a path from the root
+
+    int x;
+    int best_x = 0;
+    int depth;
+    int best_depth = 0;
+    treelistnode_t *ret = NULL; 
+    treelistnode_t *current; 
+    treelistnode_t *path; 
+
+    for (current = head; current != NULL; current = current->next) {
+        x = current->treenode->data.x;
+        path = walk_up_tree(current->treenode); 
+        depth = treelist_length(path);
+
+        if (depth > best_depth) {
+            best_x = x; // prioritise depth more than x
+        }
+        if (depth >= best_depth) {
+            if (x > best_x) {
+                treelist_free(ret);
+                ret = treelist_copy(path);
+                best_x = x;
+            }
+            best_depth = depth;
+        }
+        treelist_free(path);
+    }
+
+    assert(ret != NULL);
+    return ret;
+}
+
 int main() {
     treelistnode_t *current; 
     treelistnode_t *next;
     treelistnode_t *tree = NULL; 
     treelistnode_t *to_push; 
 
-    data_t d1 = {rand() % 10};
-    data_t d2 = {rand() % 10};
+    data_t d1 = {111};
+    data_t d2 = {222};
     treenode_t *r1 = treenode_create(d1, NULL);
     treenode_t *r2 = treenode_create(d2, NULL);
     tree = treelist_push_end(tree, r1);
@@ -314,7 +388,6 @@ int main() {
 
     int max_depth = 2;
     for (int d=0; d<max_depth; d++) {
-
         printf("depth %d\n", d);
         to_push = NULL;
         for (current = tree;  current != NULL;  current = next) {
@@ -326,10 +399,18 @@ int main() {
             tree = treelist_push_end(tree, treenode_copy(current->treenode));
         }
         treelist_free(to_push);
-
     }
+
+    treelistnode_t *max = tree_get_max(tree);
+    printf("max path: ");
+    for (current = max; current != NULL; current = current->next) {
+        printf("%d ", current->treenode->data.x);
+    }
+    treelist_free(max);
     
+
     treelist_free(tree);
+    return 0;
 }
 ```
 
