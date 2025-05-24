@@ -99,7 +99,7 @@ node_t* push_end(node_t *head, data_t next) {
 }
 
 
-node_t *reversed_list(node_t *head ) {
+node_t *reverse_list(node_t *head ) {
     node_t *prev = NULL;
     node_t *next;
     for (node_t *curr = head;  curr != NULL;  curr = next) {
@@ -126,7 +126,7 @@ int main() {
 
     print_list(my_list);
     printf("\n");
-    my_list = reversed_list(my_list);
+    my_list = reverse_list(my_list);
     print_list(my_list);
 
     destroy_list(my_list);
