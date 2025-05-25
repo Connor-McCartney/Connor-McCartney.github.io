@@ -418,7 +418,7 @@ int main() {
 
 <br>
 
-# TCP
+# TCP Client
 
 Let's write some code to replicate this functionality:
 
