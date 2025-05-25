@@ -415,3 +415,28 @@ int main() {
 ```
 
 
+
+<br>
+
+# TCP
+
+Let's write some code to replicate this functionality:
+
+```
+$ printf "HEAD / HTTP/1.0\n\n" | nc www.google.com 80
+
+HTTP/1.0 200 OK
+Content-Type: text/html; charset=ISO-8859-1
+Content-Security-Policy-Report-Only: object-src 'none';base-uri 'self';script-src 'nonce-XTpTnaBEuxqhU5t0SKJYTQ' 'strict-dynamic' 'report-sample' 'unsafe-eval' 'unsafe-inline' https: http:;report-uri https://csp.withgoogle.com/csp/gws/other-hp
+P3P: CP="This is not a P3P policy! See g.co/p3phelp for more info."
+Date: ...
+Server: gws
+X-XSS-Protection: 0
+X-Frame-Options: SAMEORIGIN
+Expires: ...
+Cache-Control: private
+Set-Cookie: ...
+Set-Cookie: ...
+```
+
+<br>
