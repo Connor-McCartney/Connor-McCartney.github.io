@@ -33,6 +33,8 @@ title: Misc
 
 <span style="font-size:2em;">   [Automating playing on lichess](/misc/lichess)   </span>
 
+<span style="font-size:2em;">   [Minimax chess algorithm](/misc/minimax-chess)   </span>
+
 <span style="font-size:2em;">   [How to host your website on the TOR network](/misc/host-tor-site)   </span>
 
 <span style="font-size:2em;">   [Hacking my own WiFi password](/misc/hackingmywifi)   </span>
