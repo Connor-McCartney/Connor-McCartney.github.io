@@ -606,3 +606,8 @@ def main(stdscr):
 if __name__ == "__main__":
     wrapper(main)
 ```
+
+
+<br>
+
+Perhaps copying the entire game_position struct is slowing it down and replacing it with an undo-move function would be an improvement...
