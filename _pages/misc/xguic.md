@@ -207,13 +207,101 @@ int main(int argc, char **argv)
 }
 ```
 
-<br>
 
 
 <br>
 
+
 <br>
 
+<br>
+
+# Transparant and unaffected by dwm tiling
+
+`-lX11 -lXrender`
+
+```c
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <X11/Xatom.h>
+#include <X11/extensions/Xrender.h>
+#include <stdio.h>
+#include <unistd.h>
+
+int main() {
+    Display* dpy = XOpenDisplay(NULL);
+    if (!dpy) {
+        fprintf(stderr, "Failed to open display\n");
+        return 1;
+    }
+
+    int screen = DefaultScreen(dpy);
+    Window root = RootWindow(dpy, screen);
+
+    // Find a 32-bit TrueColor visual (ARGB)
+    XVisualInfo vinfo;
+    if (!XMatchVisualInfo(dpy, screen, 32, TrueColor, &vinfo)) {
+        fprintf(stderr, "No 32-bit TrueColor visual available\n");
+        return 1;
+    }
+
+    // Setup window attributes
+    XSetWindowAttributes attrs;
+    attrs.colormap = XCreateColormap(dpy, root, vinfo.visual, AllocNone);
+    attrs.background_pixel = 0x00000000;
+    attrs.border_pixel = 0;
+    attrs.override_redirect = True;
+
+    const int win_w = 300;
+    const int win_h = 200;
+
+    int screen_height = DisplayHeight(dpy, screen);
+    Window win = XCreateWindow(
+        dpy, root,
+        0, screen_height- win_h, win_w, win_h,
+        0, vinfo.depth, InputOutput, vinfo.visual,
+        CWColormap | CWBackPixel | CWBorderPixel | CWOverrideRedirect,
+        &attrs
+    );
+
+    XMapWindow(dpy, win);
+
+    // Create XRender Picture for drawing
+    XRenderPictFormat* fmt = XRenderFindVisualFormat(dpy, vinfo.visual);
+    Picture pict = XRenderCreatePicture(dpy, win, fmt, 0, NULL);
+
+    XRenderColor background = {0, 0, 0, 0}; // transparant
+    //XRenderColor background = {0, 0xffff, 0, 0xffff};
+
+    XRenderColor red = {0xffff, 0x0000, 0x0000, 0xffff};  // solid red
+
+    int x = 0;
+    int speed = 4;
+
+    while (1) {
+        // Clear window to transparent
+        XRectangle clear_rect = {0, 0, win_w, win_h};
+        XRenderFillRectangles(dpy, PictOpSrc, pict, &background, &clear_rect, 1);
+
+        // Draw moving red rectangle
+        XRectangle red_rect = {x, win_h / 2 - 20, 40, 40};
+        XRenderFillRectangles(dpy, PictOpOver, pict, &red, &red_rect, 1);
+
+        XFlush(dpy);
+
+        // Update position
+        x += speed;
+        if (x < 0 || x > win_w - 40) speed = -speed;
+
+        usleep(16000);  // ~60 FPS
+    }
+
+    // Cleanup (never actually reached)
+    XRenderFreePicture(dpy, pict);
+    XCloseDisplay(dpy);
+    return 0;
+}
+```
 
 <br>
 
