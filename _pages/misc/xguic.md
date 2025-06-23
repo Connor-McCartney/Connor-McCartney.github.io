@@ -253,12 +253,13 @@ int main() {
     attrs.override_redirect = True;
 
     const int win_w = 300;
-    const int win_h = 200;
+    const int win_h = 60;
 
     int screen_height = DisplayHeight(dpy, screen);
+    int screen_width = DisplayWidth(dpy, screen);
     Window win = XCreateWindow(
         dpy, root,
-        0, screen_height- win_h, win_w, win_h,
+        screen_width-win_w, screen_height-win_h, win_w, win_h,
         0, vinfo.depth, InputOutput, vinfo.visual,
         CWColormap | CWBackPixel | CWBorderPixel | CWOverrideRedirect,
         &attrs
