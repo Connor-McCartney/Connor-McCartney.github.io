@@ -306,6 +306,115 @@ int main() {
 
 <br>
 
+With an image:
+
+```c
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <X11/Xatom.h>
+#include <X11/extensions/Xrender.h>
+#include <stdio.h>
+#include <unistd.h>
+
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
+
+int main() {
+    Display* dpy = XOpenDisplay(NULL);
+    if (!dpy) {
+        fprintf(stderr, "Failed to open display\n");
+        return 1;
+    }
+
+    int screen = DefaultScreen(dpy);
+    Window root = RootWindow(dpy, screen);
+
+    // Find a 32-bit TrueColor visual (ARGB)
+    XVisualInfo vinfo;
+    if (!XMatchVisualInfo(dpy, screen, 32, TrueColor, &vinfo)) {
+        fprintf(stderr, "No 32-bit TrueColor visual available\n");
+        return 1;
+    }
+
+    // Setup window attributes
+    XSetWindowAttributes attrs;
+    attrs.colormap = XCreateColormap(dpy, root, vinfo.visual, AllocNone);
+    attrs.background_pixel = 0x00000000;
+    attrs.border_pixel = 0;
+    attrs.override_redirect = True;
+
+    const int win_w = 800;
+    const int win_h = 800;
+
+    int screen_height = DisplayHeight(dpy, screen);
+    int screen_width = DisplayWidth(dpy, screen);
+    Window win = XCreateWindow(
+        dpy, root,
+        screen_width-win_w, screen_height-win_h, win_w, win_h,
+        0, vinfo.depth, InputOutput, vinfo.visual,
+        CWColormap | CWBackPixel | CWBorderPixel | CWOverrideRedirect,
+        &attrs
+    );
+
+    XMapWindow(dpy, win);
+
+    // Create XRender Picture for drawing
+    XRenderPictFormat* fmt = XRenderFindVisualFormat(dpy, vinfo.visual);
+    Picture pict = XRenderCreatePicture(dpy, win, fmt, 0, NULL);
+
+    //XRenderColor background = {0, 0, 0, 0}; // transparant
+    XRenderColor background = {0, 0xffff, 0, 0xffff};
+
+    //XRenderColor red = {0xffff, 0x0000, 0x0000, 0xffff};  // solid red
+
+
+    ///////////////////////////////
+    // load image
+    int img_w, img_h, img_channels;
+    unsigned char* data = stbi_load("tst.png", &img_w, &img_h, &img_channels, 4);
+    if (!data) {
+        fprintf(stderr, "Failed to load image\n");
+        return 1;
+    }
+
+    // Create Pixmap + XImage
+    Pixmap img_pixmap = XCreatePixmap(dpy, win, img_w, img_h, vinfo.depth);
+    XImage* ximage = XCreateImage(
+        dpy, vinfo.visual, vinfo.depth, ZPixmap, 0,
+        (char*)data, img_w, img_h, 32, 0
+    );
+
+    // Put image into pixmap
+    GC gc = XCreateGC(dpy, img_pixmap, 0, NULL);
+    XPutImage(dpy, img_pixmap, gc, ximage, 0, 0, 0, 0, img_w, img_h);
+
+    // Create Picture from pixmap
+    Picture img_picture = XRenderCreatePicture(dpy, img_pixmap, fmt, 0, NULL);
+    ////////////////////////////////////
+
+
+    while (1) {
+        // Clear window to transparent
+        XRectangle clear_rect = {0, 0, win_w, win_h};
+        XRenderFillRectangles(dpy, PictOpSrc, pict, &background, &clear_rect, 1);
+
+        // Draw image
+        XRenderComposite(dpy, PictOpOver, img_picture, None, pict,
+                         0, 0, 0, 0,     
+                         0, 0, 300, 300); // dest x,y + size
+
+        XFlush(dpy);
+
+        usleep(16000);  // ~60 FPS
+    }
+
+    // Cleanup (never actually reached)
+    XRenderFreePicture(dpy, pict);
+    XCloseDisplay(dpy);
+    return 0;
+}
+```
+
 <br>
 
 <br>
