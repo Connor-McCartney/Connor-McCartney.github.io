@@ -484,6 +484,81 @@ int main() {
 
 <br>
 
+Detect global input asynchronously (kinda hacky...)
+
+```c
+#include <stdio.h>
+#include <unistd.h>
+#include <X11/XKBlib.h>
+#include <X11/extensions/record.h>
+#include <sys/mman.h>
+
+int *any_key_pressed;
+
+void key_pressed_cb(XPointer arg, XRecordInterceptData *d) {
+    if (d->category != XRecordFromServer)
+        return;
+    
+    int key = ((unsigned char*) d->data)[1];
+    int type = ((unsigned char*) d->data)[0] & 0x7F;
+    int repeat = d->data[2] & 1;
+
+    if(!repeat) {
+        switch (type) {
+            case KeyPress:
+                *any_key_pressed = 1;
+                //printf("key press %d\n", key);
+                break;
+            case KeyRelease:
+                //printf("key release %d\n", key);
+                break;
+            case ButtonPress:
+                //printf("button press %d\n", key);
+                break;
+            case ButtonRelease:
+                //printf("button release %d\n", key);
+                break;
+            default:
+                break;
+        }
+    }
+    XRecordFreeData (d);
+}
+
+void scan() {
+    XRecordRange* rr;
+    XRecordClientSpec rcs;
+    XRecordContext rc;
+    Display *dpy = XOpenDisplay(NULL);
+    rr = XRecordAllocRange();
+    rr->device_events.first = KeyPress;
+    rr->device_events.last = ButtonReleaseMask;
+    rcs = XRecordAllClients;
+    rc = XRecordCreateContext (dpy, 0, &rcs, 1, &rr, 1);
+    XFree (rr);
+    XRecordEnableContext(dpy, rc, key_pressed_cb, NULL);
+}
+
+int main() {
+    any_key_pressed = mmap(NULL, sizeof(int), 
+                      PROT_READ | PROT_WRITE,
+                      MAP_SHARED | MAP_ANONYMOUS,
+                      -1, 0);
+    if (fork()) {
+        scan();
+    } else {
+        while (1) {
+            if (*any_key_pressed == 1) {
+                printf("pressed\n");
+                *any_key_pressed = 0;
+            }
+        }
+    }
+    return 0;
+}
+```
+
+
 <br>
 
 <br>
