@@ -420,6 +420,66 @@ int main() {
 
 <br>
 
+# Detect global X11 input
+
+<https://stackoverflow.com/questions/22749444/listening-to-keyboard-events-without-consuming-them-in-x11-keyboard-hooking>
+
+`-lX11 -lXtst`
+
+```c
+#include <stdio.h>
+#include <X11/XKBlib.h>
+#include <X11/extensions/record.h>
+
+void key_pressed_cb(XPointer arg, XRecordInterceptData *d) {
+    if (d->category != XRecordFromServer)
+        return;
+    
+    int key = ((unsigned char*) d->data)[1];
+    int type = ((unsigned char*) d->data)[0] & 0x7F;
+    int repeat = d->data[2] & 1;
+
+    if(!repeat) {
+        switch (type) {
+            case KeyPress:
+                printf("key press %d\n", key);
+                break;
+            case KeyRelease:
+                printf("key release %d\n", key);
+                break;
+            case ButtonPress:
+                printf("button press %d\n", key);
+                break;
+            case ButtonRelease:
+                printf("button release %d\n", key);
+                break;
+            default:
+                break;
+        }
+    }
+    XRecordFreeData (d);
+}
+
+void scan(int verbose) {
+    XRecordRange* rr;
+    XRecordClientSpec rcs;
+    XRecordContext rc;
+    Display *dpy = XOpenDisplay(NULL);
+    rr = XRecordAllocRange();
+    rr->device_events.first = KeyPress;
+    rr->device_events.last = ButtonReleaseMask;
+    rcs = XRecordAllClients;
+    rc = XRecordCreateContext (dpy, 0, &rcs, 1, &rr, 1);
+    XFree (rr);
+    XRecordEnableContext(dpy, rc, key_pressed_cb, NULL);
+}
+
+int main() {
+    scan(True);
+    return 0;
+}
+```
+
 <br>
 
 <br>
