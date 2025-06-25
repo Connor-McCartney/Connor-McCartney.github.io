@@ -77,7 +77,8 @@ c = pow(bytes_to_long(m.encode()), e, N)
 m += '.'
 c += pow(bytes_to_long(m.encode()), e, N)
 
-assert c == (pow(M, e, N) + pow(256*M + ord('.'), e, N)) 
+assert c == (pow(M, e, N) + pow(256*M + ord('.'), e, N))
+assert c == (pow(256*x + t, e, N) + pow(256*(256*x+t) + ord('.'), e, N)) 
 ```
 
 <br>
