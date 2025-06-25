@@ -142,3 +142,19 @@ Ferm4ts_littl3_polyn0mial_tr1ck
 
 real	2m46.949s
 ```
+
+
+Option 2: 
+
+a polynomial GCD trick, takes under a minute
+
+<https://adib.au/2025/lance-hard/#part-3-solve-the-polynomial>
+
+```python
+def solve(prime_factor):
+    PR.<X> = PolynomialRing(GF(prime_factor))
+    f = (256*X + t)**e + (256*(256*X+t) + ord('.'))**e - c
+    g = pow(X, prime_factor, f) - X
+    roots = [r for r, _ in f.gcd(g).roots()]
+    return roots
+```
