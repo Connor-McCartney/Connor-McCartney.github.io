@@ -91,3 +91,49 @@ We obtain 1 equation mod N with 1 unknown... just call .roots() right?
 
 No, with the binomials expanded to exponent 65537 it's too slow....
 
+Option 1: 
+
+pari's polrootsmod is not bad
+
+```python
+from Crypto.Util.number import *
+proof.all(False)
+
+c = 32104483815246305654072935180480116143927362174667948848821645940823281560338
+e = 65537
+N = 83839453754784827797201083929300181050320503279359875805303608931874182224243
+p = 302904819256337380397575865141537456903
+q = 276784813000398431755706235529589161781
+assert p*q == N
+t = 256**32 * bytes_to_long(b'The flag is maltactf{') + ord('}')
+
+def solve(prime_factor):
+    PR.<X> = PolynomialRing(GF(prime_factor))
+    f = (256*X + t)**e + (256*(256*X+t) + ord('.'))**e - c
+    coeffs = list(f.coefficients(sparse=False))
+    pari_f = pari(pari.Polrev(coeffs, 'x'))  
+    roots = pari_f.polrootsmod()
+    return roots
+
+roots_mod_p = solve(p)
+print(roots_mod_p)
+roots_mod_q = solve(q)
+print(roots_mod_q)
+
+for pp in roots_mod_p:
+    for qq in roots_mod_q:
+        flag = long_to_bytes(int(crt([Integer(pp), Integer(qq)], [p,q])))
+        try:
+            print(flag.decode())
+        except:
+            pass
+```
+
+```
+$ time sage solve.sage
+[Mod(53126147214111282958792288694359104369, 302904819256337380397575865141537456903), Mod(102676800749335072686760682938685158581, 302904819256337380397575865141537456903), Mod(279567651354133789096331775415225344056, 302904819256337380397575865141537456903)]~
+[Mod(57366902235977733831484439313893621575, 276784813000398431755706235529589161781), Mod(128540216454252556772445981320102598547, 276784813000398431755706235529589161781)]~
+Ferm4ts_littl3_polyn0mial_tr1ck
+
+real	2m46.949s
+```
