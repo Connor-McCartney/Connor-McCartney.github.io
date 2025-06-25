@@ -153,3 +153,6 @@ title: Other
 
 
 <span style="font-size:2em;">   [b01lers CTF 2025](/cryptography/other/b01lers-CTF-2025) </span> <br>
+
+
+<span style="font-size:2em;">   [grammar_nazi - Malta Quals 2025](grammar_nazi-MaltaQuals2025) </span> <br>
