@@ -56,3 +56,33 @@ Modulus is 256 bits, and neobeo makes an unknown section barely under that:
 ```
 
 
+```python
+from Crypto.Util.number import *
+
+FLAG = 'maltactf{???????????????????????????????}'
+assert len(FLAG) == 41
+m = f'The flag is {FLAG}'
+
+M = bytes_to_long(m.encode())
+t = 256**32 * bytes_to_long(b'The flag is maltactf{') + ord('}')
+x = bytes_to_long(b'???????????????????????????????')
+assert M == 256*x + t
+
+p = getPrime(128)
+q = getPrime(128)
+N = p * q
+e = 65537
+
+c = pow(bytes_to_long(m.encode()), e, N)
+m += '.'
+c += pow(bytes_to_long(m.encode()), e, N)
+
+assert c == (pow(M, e, N) + pow(256*M + ord('.'), e, N)) 
+```
+
+<br>
+
+We obtain 1 equation mod N with 1 unknown... just call .roots() right?
+
+No, with the binomials expanded to exponent 65537 it's too slow....
+
