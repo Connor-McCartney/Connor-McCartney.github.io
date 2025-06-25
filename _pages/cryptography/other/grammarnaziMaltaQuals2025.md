@@ -78,7 +78,11 @@ m += '.'
 c += pow(bytes_to_long(m.encode()), e, N)
 
 assert c == (pow(M, e, N) + pow(256*M + ord('.'), e, N))
-assert c == (pow(256*x + t, e, N) + pow(256*(256*x+t) + ord('.'), e, N)) 
+assert c == (pow(256*x + t, e, N) + pow(256*(256*x+t) + ord('.'), e, N))
+
+PR.<X> = PolynomialRing(Zmod(N))
+f = (256*X + t)**e + (256*(256*X+t) + ord('.'))**e - c
+assert f(X=x) == 0
 ```
 
 <br>
