@@ -1,5 +1,5 @@
 ---
-permalink: /cryptography/other/grammar_nazi-MaltaQuals2025
+permalink: /cryptography/other/grammarnaziMaltaQuals2025
 title: grammar_nazi - Malta Quals 2025
 ---
 
