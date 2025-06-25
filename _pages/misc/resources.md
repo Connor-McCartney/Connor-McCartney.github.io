@@ -79,6 +79,7 @@ NTT <https://eprint.iacr.org/2024/585.pdf> <br>
 
 ## Blogs
 
+<https://adib.au> <br>
 <https://mistsuu.github.io/Cryptsu> <br>
 <https://mystiz.hk> <br>
 <https://madaidans-insecurities.github.io> <br>
