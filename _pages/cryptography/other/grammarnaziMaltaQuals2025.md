@@ -91,9 +91,14 @@ We obtain 1 equation mod N with 1 unknown... just call .roots() right?
 
 No, with the binomials expanded to exponent 65537 it's too slow....
 
+<br>
+
+<br>
+
+
 Option 1: 
 
-pari's polrootsmod is not bad
+pari's polrootsmod is not bad, ~3 mins total to solve
 
 ```python
 from Crypto.Util.number import *
