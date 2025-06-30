@@ -1274,7 +1274,7 @@ LEGEND: STACK | HEAP | CODE | DATA | WX | RODATA
 07:0038│+038     0x7fffffffe758 ◂— 0xc2f5de7baf1e2ff4
 ```
 
-WHen main begins, RBP and RSP are 0x7fffffffe720
+When main begins, RBP and RSP are 0x7fffffffe720
 
 The arrow notation shows a chain of the previous frame address which lets it walk backwards until 0, which is the end. 
 
