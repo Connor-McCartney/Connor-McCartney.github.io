@@ -1242,5 +1242,6 @@ Congratulations! Here is your flag: testflag
 
 ---
 
+Let's analyse the stack during the entire program. 
 
 ---
