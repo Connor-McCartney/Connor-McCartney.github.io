@@ -1224,7 +1224,7 @@ void vulnerable_function()
 
 offset = 64 bytes for the buffer + 8 bytes for the saved RBP = 72
 
-```python
+```
 [~/t] 
 $ cat payload.py 
 from pwn import p64
