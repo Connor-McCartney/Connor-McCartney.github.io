@@ -1190,3 +1190,19 @@ Mommy! I learned how to pass various input in Linux :)
 [*] Process '/home/input2/input' stopped with exit code 0 (pid 306485)
 input2@pwnable:/tmp/y$
 ```
+
+
+<br>
+
+<br>
+
+# baby-pwn UofTCTF 2025
+
+<https://github.com/sajjadium/ctf-archives/tree/main/ctfs/UofTCTF/2025/pwn/baby-pwn>
+
+`setvbuf(stdout, NULL, _IONBF, 0);`
+
+not super relevant but setvbuf() should be used rather than the old setbuf() in order to detect errors
+
+_IONBF means IO no buffer, so things are printed immediately even if there is no \n
+
