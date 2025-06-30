@@ -1255,23 +1255,23 @@ Using host libthread_db library "/usr/lib/libthread_db.so.1".
 Breakpoint 1, 0x000000000040121b in main ()
 LEGEND: STACK | HEAP | CODE | DATA | WX | RODATA
 ───────────────────────────────────[ REGISTERS / show-flags off / show-compact-regs off ]────────────────────────────────────
- RAX  0x7ffff7f94e28 (environ) —▸ 0x7fffffffe858 —▸ 0x7fffffffeb52 ◂— 'SHELL=/bin/bash'
- RBX  0
- RCX  0x403df0 —▸ 0x401130 ◂— endbr64 
- RDX  0x7fffffffe858 —▸ 0x7fffffffeb52 ◂— 'SHELL=/bin/bash'
- RDI  1
- RSI  0x7fffffffe848 —▸ 0x7fffffffeb3a ◂— '/home/connor/t/baby-pwn'
- R8   0x7ffff7f8d680 (__exit_funcs) —▸ 0x7ffff7f8f000 (initial) ◂— 0
- R9   0x7ffff7f8f000 (initial) ◂— 0
- R10  0x7fffffffe460 ◂— 0x800000
- R11  0x203
- R12  0x7fffffffe848 —▸ 0x7fffffffeb3a ◂— '/home/connor/t/baby-pwn'
- R13  1
- R14  0x7ffff7ffd000 (_rtld_global) —▸ 0x7ffff7ffe310 ◂— 0
- R15  0x403df0 —▸ 0x401130 ◂— endbr64 
+
+...
+
  RBP  0x7fffffffe720 —▸ 0x7fffffffe7c0 —▸ 0x7fffffffe820 ◂— 0
  RSP  0x7fffffffe720 —▸ 0x7fffffffe7c0 —▸ 0x7fffffffe820 ◂— 0
  RIP  0x40121b (main+4) ◂— mov rax, qword ptr [rip + 0x2e1e]
+
+...
+
+00:0000│ rbp rsp 0x7fffffffe720 —▸ 0x7fffffffe7c0 —▸ 0x7fffffffe820 ◂— 0
+01:0008│+008     0x7fffffffe728 —▸ 0x7ffff7dce6b5 (__libc_start_call_main+117) ◂— mov edi, eax
+02:0010│+010     0x7fffffffe730 —▸ 0x7ffff7fc6000 ◂— 0x3010102464c457f
+03:0018│+018     0x7fffffffe738 —▸ 0x7fffffffe848 —▸ 0x7fffffffeb3a ◂— '/home/connor/t/baby-pwn'
+04:0020│+020     0x7fffffffe740 ◂— 0x1ffffe780
+05:0028│+028     0x7fffffffe748 —▸ 0x401217 (main) ◂— push rbp
+06:0030│+030     0x7fffffffe750 ◂— 0
+07:0038│+038     0x7fffffffe758 ◂— 0xc2f5de7baf1e2ff4
 ```
 
 WHen main begins, RBP and RSP are 0x7fffffffe720
