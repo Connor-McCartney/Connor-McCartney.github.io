@@ -1292,7 +1292,6 @@ pwndbg> bt
 
 you could break on _start if you want to see a bit further back on the stack
 
-(note that while data goes down the stack, the RBP addresses list/chain goes the opposite way)
 
 ```
 pwndbg> break _start
