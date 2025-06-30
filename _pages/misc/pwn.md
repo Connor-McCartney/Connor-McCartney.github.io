@@ -1244,4 +1244,52 @@ Congratulations! Here is your flag: testflag
 
 Let's analyse the stack during the entire program. 
 
+```
+pwndbg> break main
+Breakpoint 1 at 0x40121b
+pwndbg> r
+Starting program: /home/connor/t/baby-pwn 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+
+Breakpoint 1, 0x000000000040121b in main ()
+LEGEND: STACK | HEAP | CODE | DATA | WX | RODATA
+───────────────────────────────────[ REGISTERS / show-flags off / show-compact-regs off ]────────────────────────────────────
+ RAX  0x7ffff7f94e28 (environ) —▸ 0x7fffffffe858 —▸ 0x7fffffffeb52 ◂— 'SHELL=/bin/bash'
+ RBX  0
+ RCX  0x403df0 —▸ 0x401130 ◂— endbr64 
+ RDX  0x7fffffffe858 —▸ 0x7fffffffeb52 ◂— 'SHELL=/bin/bash'
+ RDI  1
+ RSI  0x7fffffffe848 —▸ 0x7fffffffeb3a ◂— '/home/connor/t/baby-pwn'
+ R8   0x7ffff7f8d680 (__exit_funcs) —▸ 0x7ffff7f8f000 (initial) ◂— 0
+ R9   0x7ffff7f8f000 (initial) ◂— 0
+ R10  0x7fffffffe460 ◂— 0x800000
+ R11  0x203
+ R12  0x7fffffffe848 —▸ 0x7fffffffeb3a ◂— '/home/connor/t/baby-pwn'
+ R13  1
+ R14  0x7ffff7ffd000 (_rtld_global) —▸ 0x7ffff7ffe310 ◂— 0
+ R15  0x403df0 —▸ 0x401130 ◂— endbr64 
+ RBP  0x7fffffffe720 —▸ 0x7fffffffe7c0 —▸ 0x7fffffffe820 ◂— 0
+ RSP  0x7fffffffe720 —▸ 0x7fffffffe7c0 —▸ 0x7fffffffe820 ◂— 0
+ RIP  0x40121b (main+4) ◂— mov rax, qword ptr [rip + 0x2e1e]
+```
+
+WHen main begins, RBP and RSP are 0x7fffffffe720
+
+The arrow notation shows a chain of the previous frame address which lets it walk backwards until 0, which is the end. 
+
+You can run backtrace (bt) to see it:
+
+```
+pwndbg> bt
+#0  0x000000000040121b in main ()
+#1  0x00007ffff7dce6b5 in __libc_start_call_main (main=main@entry=0x401217 <main>, argc=argc@entry=1, 
+    argv=argv@entry=0x7fffffffe848) at ../sysdeps/nptl/libc_start_call_main.h:58
+#2  0x00007ffff7dce769 in __libc_start_main_impl (main=0x401217 <main>, argc=1, argv=0x7fffffffe848, init=<optimized out>, 
+    fini=<optimized out>, rtld_fini=<optimized out>, stack_end=0x7fffffffe838) at ../csu/libc-start.c:360
+#3  0x00000000004010a5 in _start ()
+```
+
+
+
 ---
