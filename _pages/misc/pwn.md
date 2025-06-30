@@ -1210,7 +1210,7 @@ The binary prints `Address of secret: 0x401166` but u could also just get it wit
 
 `checksec --file=baby-pwn` shows no PIE, so it's always loaded at the same address
 
-The goal is to overwrite the return address of vulnerable_function with the address of the secret function.
+The goal is to overwrite the return address (RIP register) of vulnerable_function with the address of the secret function.
 
 ```python
 void vulnerable_function()
