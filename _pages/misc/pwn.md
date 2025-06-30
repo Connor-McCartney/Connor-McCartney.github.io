@@ -1206,3 +1206,5 @@ not super relevant but setvbuf() should be used rather than the old setbuf() in 
 
 _IONBF means IO no buffer, so things are printed immediately even if there is no \n
 
+The binary prints `Address of secret: 0x401166` but u could also just get it with `info functions` in gdb
+
