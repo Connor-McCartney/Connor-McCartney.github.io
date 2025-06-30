@@ -1211,3 +1211,15 @@ The binary prints `Address of secret: 0x401166` but u could also just get it wit
 `checksec --file=baby-pwn` shows no PIE, so it's always loaded at the same address
 
 The goal is to overwrite the return address of vulnerable_function with the address of the secret function.
+
+```python
+void vulnerable_function()
+{
+    char buffer[64];
+    printf("Enter some text: ");
+    fgets(buffer, 128, stdin);
+    printf("You entered: %s\n", buffer);
+}
+```
+
+offset = 64 bytes for the buffer + 8 bytes for the saved RBP = 72
