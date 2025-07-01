@@ -1340,9 +1340,10 @@ Then we reach leave and ret:
  ► 0x401216 <vulnerable_function+81>    ret                                <main+89>
 ```
 
-> leave is like
-> 
+leave is like
+
+```
 mov   rsp, rbp    
 pop   rbp
-
+```
  
