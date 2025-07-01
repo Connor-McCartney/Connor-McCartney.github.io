@@ -1318,4 +1318,8 @@ Skipping to vulnerable_function:
 00:0000│ rsp 0x7fffffffe6d0 —▸ 0x7fffffffe710 —▸ 0x7fffffffe720 —▸ 0x7fffffffe7c0 —▸ 0x7fffffffe820 ◂— ...
 ```
 
+Suppose u send `AAAAAAAABBBBBBBBCCCCCCCCDDDDDDDDEEEEEEEEFFFFFFFF`
+
+
+
 ---
