@@ -1334,4 +1334,14 @@ pwndbg> x 0x7fffffffe6f8
 0x7fffffffe6f8:	0x46464646
 ```
 
----
+Then we reach leave and ret:
+```
+  0x401215 <vulnerable_function+80>    leave  
+ ► 0x401216 <vulnerable_function+81>    ret                                <main+89>
+```
+
+> leave is like
+mov   rsp, rbp    
+pop   rbp
+
+ 
