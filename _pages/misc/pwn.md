@@ -1359,7 +1359,7 @@ And indeed, right after the leave command, rsp points to this:
 
 `*RSP  0x7fffffffe718 —▸ 0x401270 (main+89) ◂— lea rax, [rip + 0xe2b]`
 
-ret, under the hood, pops from top of stack (rsp should point to top of stack) and then rsp is incremented by 8. 
+ret, under the hood, pops from top of stack (rsp should point to top of stack) (pop automatically increments rsp by 8.) 
 
 
  
