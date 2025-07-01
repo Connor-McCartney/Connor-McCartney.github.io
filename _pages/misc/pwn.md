@@ -1311,4 +1311,11 @@ pwndbg> r
 07:0038│     0x7fffffffe878 —▸ 0x7fffffffebc2 ◂— 'DESKTOP_SESSION=dwm'        (envp[4])
 ```
 
+
+Skipping to vulnerable_function:
+
+```
+00:0000│ rsp 0x7fffffffe6d0 —▸ 0x7fffffffe710 —▸ 0x7fffffffe720 —▸ 0x7fffffffe7c0 —▸ 0x7fffffffe820 ◂— ...
+```
+
 ---
