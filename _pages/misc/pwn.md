@@ -1312,6 +1312,9 @@ pwndbg> r
 ```
 
 
+`call` pushes the return address (next instruction address) to the stack, then jumps to the function being called
+
+
 Skipping to vulnerable_function:
 
 ```
