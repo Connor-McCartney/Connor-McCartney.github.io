@@ -1373,8 +1373,8 @@ ret, under the hood, pops from top of stack (rsp should point to top of stack) (
                  0x7fffffffe6e8:	0x44444444
 		 0x7fffffffe6f0:	0x45454545
 		 0x7fffffffe6f8:	0x46464646   
-                 0x7fffffffe700   ?
-                 0x7fffffffe718   ?
+                 0x7fffffffe700:        0xa (leftover '\n' from fgets)
+                 0x7fffffffe708:        0x7ffff7ffe310 ◂— 0  (_rtld_global ?) 
 00:0000│ rbp rsp 0x7fffffffe710 —▸ 0x7fffffffe720 —▸ 0x7fffffffe7c0 —▸ 0x7fffffffe820 ◂— 0  (base pointer)
 01:0008│+008     0x7fffffffe718 —▸ 0x401270 (main+89) ◂— lea rax, [rip + 0xe2b]       (return address)
 02:0010│+010     0x7fffffffe720 —▸ 0x7fffffffe7c0 —▸ 0x7fffffffe820 ◂— 0
