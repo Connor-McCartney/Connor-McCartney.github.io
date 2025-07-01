@@ -1320,6 +1320,18 @@ Skipping to vulnerable_function:
 
 Suppose u send `AAAAAAAABBBBBBBBCCCCCCCCDDDDDDDDEEEEEEEEFFFFFFFF`
 
-
+```
+0x7fffffffe6d0:	0x41414141
+pwndbg> x 0x7fffffffe6d8
+0x7fffffffe6d8:	0x42424242
+pwndbg> x 0x7fffffffe6e0
+0x7fffffffe6e0:	0x43434343
+pwndbg> x 0x7fffffffe6e8
+0x7fffffffe6e8:	0x44444444
+pwndbg> x 0x7fffffffe6f0
+0x7fffffffe6f0:	0x45454545
+pwndbg> x 0x7fffffffe6f8
+0x7fffffffe6f8:	0x46464646
+```
 
 ---
