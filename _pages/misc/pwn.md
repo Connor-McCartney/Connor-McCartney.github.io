@@ -1346,4 +1346,14 @@ leave is like
 mov   rsp, rbp    
 pop   rbp
 ```
+
+```
+   0x40126b <main+84>     call   vulnerable_function         <vulnerable_function>
+ 
+   0x401270 <main+89>     lea    rax, [rip + 0xe2b]     RAX => 0x4020a2 ◂— 'Goodbye!'
+```
+
+vulnerable_function wants to return to the next instruction in main, at `0x401270`
+
+
  
