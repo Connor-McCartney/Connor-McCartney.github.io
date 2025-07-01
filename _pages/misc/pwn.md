@@ -1355,5 +1355,11 @@ pop   rbp
 
 vulnerable_function wants to return to the next instruction in main, at `0x401270`
 
+And indeed, right after the leave command, rsp points to this:
+
+`*RSP  0x7fffffffe718 —▸ 0x401270 (main+89) ◂— lea rax, [rip + 0xe2b]`
+
+ret, under the hood, pops from top of stack (rsp should point to top of stack) and then rsp is incremented by 8. 
+
 
  
