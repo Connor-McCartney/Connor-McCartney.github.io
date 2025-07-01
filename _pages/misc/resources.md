@@ -114,3 +114,4 @@ NTT <https://eprint.iacr.org/2024/585.pdf> <br>
 <https://hilb3r7.github.io> <br>
 <https://valter.wiki/blog> <br>
 <https://zayn.id.vn> <br>
+<https://vulnx.github.io/blog/posts/pwn-cheatsheet> <br>
