@@ -1301,14 +1301,14 @@ Breakpoint 1 at 0x401080
 pwndbg> r
 ...
 ──────────────────────────────────────────────────────────[ STACK ]──────────────────────────────────────────────────────────
-00:0000│ rsp 0x7fffffffe840 ◂— 1
-01:0008│     0x7fffffffe848 —▸ 0x7fffffffeb3a ◂— '/home/connor/t/baby-pwn'
-02:0010│     0x7fffffffe850 ◂— 0
-03:0018│     0x7fffffffe858 —▸ 0x7fffffffeb52 ◂— 'SHELL=/bin/bash'
-04:0020│     0x7fffffffe860 —▸ 0x7fffffffeb62 ◂— 'WINDOWID=31457294'
-05:0028│     0x7fffffffe868 —▸ 0x7fffffffeb74 ◂— 'COLORTERM=truecolor'
-06:0030│     0x7fffffffe870 —▸ 0x7fffffffeb88 ◂— 'XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0'
-07:0038│     0x7fffffffe878 —▸ 0x7fffffffebc2 ◂— 'DESKTOP_SESSION=dwm'
+00:0000│ rsp 0x7fffffffe840 ◂— 1                                              (argc)
+01:0008│     0x7fffffffe848 —▸ 0x7fffffffeb3a ◂— '/home/connor/t/baby-pwn'    (argv[0])
+02:0010│     0x7fffffffe850 ◂— 0                                              (argv[1] = NULL)
+03:0018│     0x7fffffffe858 —▸ 0x7fffffffeb52 ◂— 'SHELL=/bin/bash'            (envp[0])
+04:0020│     0x7fffffffe860 —▸ 0x7fffffffeb62 ◂— 'WINDOWID=31457294'          (envp[1])
+05:0028│     0x7fffffffe868 —▸ 0x7fffffffeb74 ◂— 'COLORTERM=truecolor'        (envp[2])
+06:0030│     0x7fffffffe870 —▸ 0x7fffffffeb88 ◂— 'XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0' (envp[3])
+07:0038│     0x7fffffffe878 —▸ 0x7fffffffebc2 ◂— 'DESKTOP_SESSION=dwm'        (envp[4])
 ```
 
 ---
