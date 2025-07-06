@@ -156,3 +156,6 @@ title: Other
 
 
 <span style="font-size:2em;">   [grammar_nazi - Malta Quals 2025](/cryptography/other/grammarnaziMaltaQuals2025) </span> <br>
+
+
+<span style="font-size:2em;">   [R3CTF 2025](/cryptography/other/R3CTF2025) </span> <br>
