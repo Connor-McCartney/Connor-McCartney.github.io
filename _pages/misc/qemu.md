@@ -181,3 +181,9 @@ Verify that the 'libvirtd' daemon is running.
 ```
 systemctl start libvirtd
 ```
+
+```
+Unable to connect to libvirt qemu:///system.
+
+authentication unavailable: no polkit agent available to authenticate action 'org.libvirt.unix.manage'
+```
