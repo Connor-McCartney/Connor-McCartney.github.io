@@ -170,6 +170,6 @@ Tips:
 # regular VMs
 
 ```
-paru -S --noconfirm qemu-full
+paru -S --noconfirm qemu-full virt-manager
 
 ```
