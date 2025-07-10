@@ -187,3 +187,7 @@ Unable to connect to libvirt qemu:///system.
 
 authentication unavailable: no polkit agent available to authenticate action 'org.libvirt.unix.manage'
 ```
+
+```
+sudo usermod -aG libvirt connor
+```
