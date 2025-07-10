@@ -201,3 +201,8 @@ Traceback (most recent call last):
     raise libvirtError('virDomainCreateXML() failed')
 libvirt.libvirtError: Requested operation is not valid: network 'default' is not active
 ```
+
+```
+paru -S --noconfirm bridge-utils dnsmasq
+systemctl restart libvirtd
+```
