@@ -205,4 +205,5 @@ libvirt.libvirtError: Requested operation is not valid: network 'default' is not
 ```
 paru -S --noconfirm bridge-utils dnsmasq
 systemctl restart libvirtd
+sudo virsh net-start default
 ```
