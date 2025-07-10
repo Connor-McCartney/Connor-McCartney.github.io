@@ -158,3 +158,18 @@ Tips:
 * update with `upgrade-nonroot`
 * CTRL+ALT to escape VM
 * default password is `changeme`
+
+
+
+<br>
+
+<br>
+
+<br>
+
+# regular VMs
+
+```
+paru -S --noconfirm qemu-full
+
+```
