@@ -191,3 +191,13 @@ authentication unavailable: no polkit agent available to authenticate action 'or
 ```
 sudo usermod -aG libvirt connor
 ```
+
+```
+Unable to complete install: 'Requested operation is not valid: network 'default' is not active'
+
+Traceback (most recent call last):
+...
+  File "/usr/lib/python3.13/site-packages/libvirt.py", line 4594, in createXML
+    raise libvirtError('virDomainCreateXML() failed')
+libvirt.libvirtError: Requested operation is not valid: network 'default' is not active
+```
