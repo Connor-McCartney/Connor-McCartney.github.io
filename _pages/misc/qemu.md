@@ -171,5 +171,9 @@ Tips:
 
 ```
 paru -S --noconfirm qemu-full virt-manager
+```
 
+```
+Unable to connect to libvirt qemu:///system.
+Verify that the 'libvirtd' daemon is running.
 ```
