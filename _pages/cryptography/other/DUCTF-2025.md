@@ -381,3 +381,70 @@ if all([hashok, signatureok, certok]):
 <br>
 
 Solve:
+
+```
+$ openssl x509 -in root.crt -text
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            7b:a7:f6:b4:ed:f8:bd:85:aa:87:f6:f3:f0:17:cd:51:d6:69:2b:c8
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=AU, ST=Some-State, O=DownUnderCTF, CN=DUCTF Root CA
+        Validity
+            Not Before: Jul  4 09:58:12 2025 GMT
+            Not After : Jul  4 09:58:12 2026 GMT
+        Subject: C=AU, ST=Some-State, O=DownUnderCTF, CN=DUCTF Root CA
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:d8:d7:4b:3f:d8:3b:00:ff:59:5f:76:70:a2:20:
+                    d7:f8:65:95:a0:b9:64:6c:74:da:3c:c4:a6:6a:9b:
+                    78:b4:86:55:ae:76:24:d5:32:58:51:87:c7:41:62:
+                    5d:18:38:0e:1b:c7:4e:a7:2f:a7:0e:05:3e:cd:11:
+                    5f:f0:a9:95:22:21:ca:43:82:d1:c0:5f:ff:99:58:
+                    fd:e9:e5:03:34:ae:69:39:9c:de:5b:dc:2f:23:22:
+                    98:ee:82:31:e2:7e:6a:28:48:26:11:04:5a:bd:84:
+                    a3:18:74:2b:28:81:83:f0:9c:83:4c:0c:9e:34:30:
+                    22:18:b0:ae:78:15:12:95:e4:f0:52:a0:2e:5b:12:
+                    32:75:2a:27:59:a0:61:8a:70:cb:1b:a3:04:f3:d5:
+                    1a:f3:e3:36:62:64:fe:2b:25:31:7e:b8:91:8b:75:
+                    a8:29:0c:1f:fd:7c:de:71:92:6a:13:4c:25:3a:83:
+                    6b:a8:48:ca:f4:fc:11:3e:af:1a:9d:0c:c3:38:d9:
+                    e7:1d:85:e7:4c:99:2a:75:17:ac:af:f3:c8:16:f6:
+                    fa:c8:34:49:d7:51:55:15:2b:61:05:6c:de:a5:8d:
+                    d0:0a:e2:43:c6:1c:21:18:2a:8b:6b:ba:e2:72:eb:
+                    a0:e9:62:b8:86:d6:6a:d7:66:61:d2:d4:e6:6d:48:
+                    2c:3f
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Subject Key Identifier:
+                D0:B7:8A:90:3E:4B:E3:30:3D:9A:6B:10:E0:FC:14:EB:97:93:FF:8B
+            X509v3 Authority Key Identifier:
+                D0:B7:8A:90:3E:4B:E3:30:3D:9A:6B:10:E0:FC:14:EB:97:93:FF:8B
+            X509v3 Basic Constraints: critical
+                CA:TRUE
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+        0c:a8:ea:ff:61:28:70:24:0d:3e:19:0f:c6:ad:11:e4:72:53:
+        5a:6a:60:e4:18:dc:2c:be:49:5b:4f:13:23:96:83:26:6c:c0:
+        89:5b:92:f4:f9:b8:25:f5:ce:51:93:74:3b:7c:69:3c:6d:66:
+        79:98:e6:9d:af:bc:50:52:a8:ee:04:71:c6:a0:a6:77:63:6b:
+        ff:43:a5:d2:27:c2:40:9f:12:11:ff:e1:c7:fb:37:8f:98:7c:
+        4e:5d:11:44:55:d5:5e:d6:e2:e5:20:c2:56:32:ed:26:b4:f6:
+        ef:cf:14:47:0c:7d:23:e2:dd:3d:76:07:0b:c0:4f:9d:7b:cf:
+        9c:50:86:bd:13:6c:83:fe:09:e7:b8:79:79:2f:d9:c7:5a:86:
+        4f:64:3b:b7:29:3a:21:45:f4:98:02:ec:77:b0:46:69:6c:09:
+        f0:3f:00:61:ed:b8:9c:1f:99:b1:1f:6e:c1:c7:64:91:10:b2:
+        00:e8:d8:15:8b:92:77:0c:76:c4:11:45:04:57:19:20:1f:3b:
+        bb:02:83:5a:f3:30:a0:57:4b:34:9f:fa:a3:98:5d:54:d4:33:
+        43:66:1d:44:92:93:14:50:0b:df:d4:21:51:1e:19:5c:33:72:
+        6e:a9:55:28:09:5b:87:0e:d6:3d:7d:41:87:31:06:d0:47:b6:
+        f6:75:f0:68
+```
+
+<br>
+
+<br>
+
