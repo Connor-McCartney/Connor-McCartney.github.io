@@ -281,3 +281,103 @@ Solve:
 
 <br>
 
+# certvalidated
+
+<br>
+
+Attatchments:
+
+<br>
+
+Dockerfile
+
+```
+FROM ubuntu:22.04
+
+RUN apt-get update \
+    && apt-get install -y wget socat python3-pip swig \
+    && rm -r /var/lib/apt/lists/*
+
+RUN pip install endesive==2.18.5
+
+USER 1000
+WORKDIR /home/ctf
+
+COPY ./flag.txt /home/ctf/
+COPY ./root.crt /home/ctf/
+COPY ./certvalidated.py /home/ctf/certvalidated.py
+
+COPY --chmod=755 entrypoint.sh /home/ctf/entrypoint.sh
+ENTRYPOINT ["/home/ctf/entrypoint.sh"]
+```
+
+<br>
+
+entrypoint.sh
+
+```bash
+#!/usr/bin/env bash
+socat -dd TCP-LISTEN:1337,reuseaddr,fork EXEC:./certvalidated.py
+```
+
+<br>
+
+root.crt
+
+```
+-----BEGIN CERTIFICATE-----
+MIIDgzCCAmugAwIBAgIUe6f2tO34vYWqh/bz8BfNUdZpK8gwDQYJKoZIhvcNAQEL
+BQAwUTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxFTATBgNVBAoM
+DERvd25VbmRlckNURjEWMBQGA1UEAwwNRFVDVEYgUm9vdCBDQTAeFw0yNTA3MDQw
+OTU4MTJaFw0yNjA3MDQwOTU4MTJaMFExCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApT
+b21lLVN0YXRlMRUwEwYDVQQKDAxEb3duVW5kZXJDVEYxFjAUBgNVBAMMDURVQ1RG
+IFJvb3QgQ0EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDY10s/2DsA
+/1lfdnCiINf4ZZWguWRsdNo8xKZqm3i0hlWudiTVMlhRh8dBYl0YOA4bx06nL6cO
+BT7NEV/wqZUiIcpDgtHAX/+ZWP3p5QM0rmk5nN5b3C8jIpjugjHifmooSCYRBFq9
+hKMYdCsogYPwnINMDJ40MCIYsK54FRKV5PBSoC5bEjJ1KidZoGGKcMsbowTz1Rrz
+4zZiZP4rJTF+uJGLdagpDB/9fN5xkmoTTCU6g2uoSMr0/BE+rxqdDMM42ecdhedM
+mSp1F6yv88gW9vrINEnXUVUVK2EFbN6ljdAK4kPGHCEYKotruuJy66DpYriG1mrX
+ZmHS1OZtSCw/AgMBAAGjUzBRMB0GA1UdDgQWBBTQt4qQPkvjMD2aaxDg/BTrl5P/
+izAfBgNVHSMEGDAWgBTQt4qQPkvjMD2aaxDg/BTrl5P/izAPBgNVHRMBAf8EBTAD
+AQH/MA0GCSqGSIb3DQEBCwUAA4IBAQAMqOr/YShwJA0+GQ/GrRHkclNaamDkGNws
+vklbTxMjloMmbMCJW5L0+bgl9c5Rk3Q7fGk8bWZ5mOadr7xQUqjuBHHGoKZ3Y2v/
+Q6XSJ8JAnxIR/+HH+zePmHxOXRFEVdVe1uLlIMJWMu0mtPbvzxRHDH0j4t09dgcL
+wE+de8+cUIa9E2yD/gnnuHl5L9nHWoZPZDu3KTohRfSYAux3sEZpbAnwPwBh7bic
+H5mxH27Bx2SRELIA6NgVi5J3DHbEEUUEVxkgHzu7AoNa8zCgV0s0n/qjmF1U1DND
+Zh1EkpMUUAvf1CFRHhlcM3JuqVUoCVuHDtY9fUGHMQbQR7b2dfBo
+-----END CERTIFICATE-----
+```
+
+<br>
+
+certvalidated.py
+
+```python
+#!/usr/bin/env python3
+
+import base64
+from endesive import plain
+
+TO_SIGN = 'just a random hex string: af17a1f2654d3d40f532e314c7347cfaf24af12be4b43c5fc95f9fb98ce74601'
+DUCTF_ROOT_CA = open('./root.crt', 'rb').read()
+
+print(f'Sign this! <<{TO_SIGN}>>')
+content_info = base64.b64decode(input('Your CMS blob (base64): '))
+
+hashok, signatureok, certok = plain.verify(content_info, TO_SIGN.encode(), [DUCTF_ROOT_CA])
+
+print(f'{hashok = }')
+print(f'{signatureok = }')
+print(f'{certok = }')
+
+if all([hashok, signatureok, certok]):
+    print(open('flag.txt', 'r').read())
+```
+
+<br>
+
+<br>
+
+<br>
+
+Solve:
