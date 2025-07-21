@@ -189,6 +189,25 @@ Next step is SHA256 length extension
 
 you can use <https://github.com/stephenbradshaw/hlextend/blob/master/hlextend.py>
 
+<br>
+
+```python
+import hlextend
+import hashlib
+from os import urandom
+
+secret = urandom(16)
+h_connor = hashlib.sha256(secret + b'user=connor').digest()
+
+extender = hlextend.sha256()
+m_admin = extender.extend(appendData=b'user=admin', knownData=b'user=connor', secretLength=16, startHash=h_connor.hex())
+h_admin = bytes.fromhex(extender.hexdigest())
+
+print(m_admin)
+assert hashlib.sha256(secret + m_admin).digest() == h_admin
+```
+
+<br>
 
 <br>
 
