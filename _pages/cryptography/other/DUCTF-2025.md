@@ -243,12 +243,12 @@ io = remote('chal.2025.ductf.net', 30010)
 n = int(io.recvline())
 n2 = n**2
 
-c = register(b'connor')
+mac = register(b'connor')
 
 # solve h
 h_connor = 0
 for b in trange(256):
-    if not verify(b'user=connor', c * pow(c*pow(n+1, -h_connor, n2), 2**(255-b), n2)):
+    if not verify(b'user=connor', mac * pow(mac*pow(n+1, -h_connor, n2), 2**(255-b), n2)):
         h_connor += 2**b
 h_connor = long_to_bytes(h_connor)
 
