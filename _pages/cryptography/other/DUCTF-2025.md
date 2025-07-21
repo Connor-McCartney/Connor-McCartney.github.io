@@ -183,8 +183,11 @@ print(recovered_h)
 assert h == recovered_h
 ```
 
+That'll solve us h = sha256(secret + b'user=connor')
 
+Next step is SHA256 length extension
 
+you can use <https://github.com/stephenbradshaw/hlextend/blob/master/hlextend.py>
 
 
 <br>
