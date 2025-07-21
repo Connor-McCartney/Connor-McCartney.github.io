@@ -5,6 +5,13 @@ title: DUCTF 2025
 
 
 <br>
+
+<br>
+
+<https://github.com/DownUnderCTF/Challenges_2025_Public/tree/main/crypto>
+
+<br>
+
 <br>
 
 
@@ -93,7 +100,88 @@ if __name__ == '__main__':
 
 Solve:
 
+<br>
 
+```python
+from os import urandom
+from Crypto.Util.number import bytes_to_long, getPrime
+from hashlib import sha256
+from random import randint
+from tqdm import trange
+
+def E(h):
+    r = randint(0, 2**1024)
+    mac = ((1 + h*n) * pow(r, n, n2)) % n2
+    return mac
+
+def D(c):
+    return ((pow(c, l, n2) - 1) // n) * mu % n
+
+def verify(mac):
+    return h == D(mac) % 2**256
+
+p, q = getPrime(512), getPrime(512)
+n = p*q
+n2 = n*n
+secret = urandom(16)
+l = (p - 1) * (q - 1)
+mu = pow(l, -1, n)
+h = bytes_to_long(sha256(secret + b'user=connor').digest())
+print(f'{h = }')
+mac = E(h)
+
+
+
+
+# paillier homomorphic properties
+x = randint(0, n)
+y = randint(0, n)
+assert (x+y) % n == D(E(x) * E(y))                              # (1)
+assert (x*y) % n == D(pow(E(x), y, n2))                         # (2)
+
+# add a non-encrypted integer
+assert y == D(pow(n+1, y, n2)) % n2 
+assert (x + y) % n == D(E(x) * pow(n+1, y, n2))                 # (3)
+
+
+
+
+# now to solve h bit-by-bit (lsb towards msb)
+# of course we need some way to compare our guess (h_lsb) with the actual h
+# use subtraction for comparison, h-h_lsb, the lower bits will be 0 if correct
+# but the oracle only tells us if the (lower 256 bits) of the decrypted value is equal to h
+# so the idea is to begin with h, 
+# then shift our comparison h-h_lsb towards the msb, 
+# and then add it so that the lsb of the comparison overlap with the msb of h
+# h + (h-h_lsb)*2**(255-b)
+
+
+for b in range(1, 256):
+    h_lsb = int(h % 2**b)
+    assert (h + (h-h_lsb)*2**(256-b)) % 2**256 == h
+
+    while True:
+        h_lsb = randint(0, 2**b-1)
+        if h_lsb != int(h % 2**b):
+            break
+    assert (h + (h-h_lsb)*2**(256-b)) % 2**256 != h
+
+
+for b in trange(1, 256):
+    h_lsb = int(h % 2**b)
+    assert h-h_lsb == D(E(h)*pow(n+1, -h_lsb, n2))                                                # using (3)
+    assert (h-h_lsb)*2**(256-b) == D(pow(E(h)*pow(n+1, -h_lsb, n2), 2**(256-b), n2))              # using (2)
+    assert h + (h-h_lsb)*2**(256-b) == D(E(h) * pow(E(h)*pow(n+1, -h_lsb, n2), 2**(256-b), n2))   # using (1)
+    assert h + (h-h_lsb)*2**(256-b) == D(mac * pow(mac*pow(n+1, -h_lsb, n2), 2**(256-b), n2))     # sub E(h) = mac
+
+
+recovered_h = 0
+for b in trange(256):
+    if not verify(mac * pow(mac*pow(n+1, -recovered_h, n2), 2**(255-b), n2)):
+        recovered_h += 2**b
+print(recovered_h)
+assert h == recovered_h
+```
 
 
 
