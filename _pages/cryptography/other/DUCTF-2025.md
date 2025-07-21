@@ -156,23 +156,23 @@ assert (x + y) % n == D(E(x) * pow(n+1, y, n2))                 # (3)
 # h + (h-h_lsb)*2**(255-b)
 
 
-for b in range(1, 256):
-    h_lsb = int(h % 2**b)
-    assert (h + (h-h_lsb)*2**(256-b)) % 2**256 == h
+for b in range(256):
+    h_lsb = int(h % 2**(b+1))
+    assert (h + (h-h_lsb)*2**(255-b)) % 2**256 == h
 
     while True:
-        h_lsb = randint(0, 2**b-1)
-        if h_lsb != int(h % 2**b):
+        h_lsb = randint(0, 2**(b+1)-1)
+        if h_lsb != int(h % 2**(b+1)):
             break
-    assert (h + (h-h_lsb)*2**(256-b)) % 2**256 != h
+    assert (h + (h-h_lsb)*2**(255-b)) % 2**256 != h
 
 
-for b in trange(1, 256):
-    h_lsb = int(h % 2**b)
+for b in trange(256):
+    h_lsb = int(h % 2**(b+1))
     assert h-h_lsb == D(E(h)*pow(n+1, -h_lsb, n2))                                                # using (3)
-    assert (h-h_lsb)*2**(256-b) == D(pow(E(h)*pow(n+1, -h_lsb, n2), 2**(256-b), n2))              # using (2)
-    assert h + (h-h_lsb)*2**(256-b) == D(E(h) * pow(E(h)*pow(n+1, -h_lsb, n2), 2**(256-b), n2))   # using (1)
-    assert h + (h-h_lsb)*2**(256-b) == D(mac * pow(mac*pow(n+1, -h_lsb, n2), 2**(256-b), n2))     # sub E(h) = mac
+    assert (h-h_lsb)*2**(255-b) == D(pow(E(h)*pow(n+1, -h_lsb, n2), 2**(255-b), n2))              # using (2)
+    assert h + (h-h_lsb)*2**(255-b) == D(E(h) * pow(E(h)*pow(n+1, -h_lsb, n2), 2**(255-b), n2))   # using (1)
+    assert h + (h-h_lsb)*2**(255-b) == D(mac * pow(mac*pow(n+1, -h_lsb, n2), 2**(255-b), n2))     # sub E(h) = mac
 
 
 recovered_h = 0
