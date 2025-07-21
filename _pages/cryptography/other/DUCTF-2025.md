@@ -209,6 +209,61 @@ assert hashlib.sha256(secret + m_admin).digest() == h_admin
 
 <br>
 
+Final remote solver:
+
+```python
+from pwn import remote
+from Crypto.Util.number import bytes_to_long, long_to_bytes
+from random import randint 
+from tqdm import trange
+import hlextend
+
+def register(username):
+    io.recvuntil(b'Login\n> ')
+    io.sendline(b'1')
+    io.recvuntil(b'Username: ')
+    io.sendline(username)
+    recv = bytes.fromhex(io.recvline().decode().split()[-1])
+    return bytes_to_long(recv[len('user=') + len(username) + 1:])
+
+def verify(msg, mac):
+    io.recvuntil(b'Login\n> ')
+    io.sendline(b'2')
+    token_payload = (msg + b'|' + long_to_bytes(mac)).hex()
+    io.recvuntil(b'Token: ')
+    io.sendline(token_payload.encode())
+    return b'Welcome' in io.recvline()
+
+def E(h):
+    r = randint(0, 2**1024)
+    mac = ((1 + h*n) * pow(r, n, n2)) % n2
+    return mac
+
+io = remote('chal.2025.ductf.net', 30010)
+n = int(io.recvline())
+n2 = n**2
+
+c = register(b'connor')
+
+# solve h
+h_connor = 0
+for b in trange(256):
+    if not verify(b'user=connor', c * pow(c*pow(n+1, -h_connor, n2), 2**(255-b), n2)):
+        h_connor += 2**b
+h_connor = long_to_bytes(h_connor)
+
+# length extension
+extender = hlextend.sha256()
+m_admin = extender.extend(appendData=b'user=admin', knownData=b'user=connor', secretLength=16, startHash=h_connor.hex())
+h_admin = int(extender.hexdigest(), 16)
+
+# profit
+assert verify(m_admin, E(h_admin))
+print(io.recvline())
+
+# DUCTF{now_that_youve_logged_in_its_time_to_lock_in}
+```
+
 <br>
 
 <br>
