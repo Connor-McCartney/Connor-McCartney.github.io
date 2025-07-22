@@ -342,3 +342,5 @@ $$\text{Now let's let } \ s = {s_0}^{x_0} \cdot {s_1}^{x_1} \cdot {s_2}^{x_2} \c
 Because n is large, assuming all the xs are small enough, the following is true even after getting rid of mod n
 
 $${m_0}^{x_0} \cdot {m_1}^{x_1} \cdot {m_2}^{x_2} \cdot {m_3}^{x_3} \cdot ... = \text{target}$$
+
+And then we can take floating logs, say base 2
