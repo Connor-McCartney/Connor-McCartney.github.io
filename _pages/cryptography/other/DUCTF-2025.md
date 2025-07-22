@@ -345,5 +345,5 @@ $${m_0}^{x_0} \cdot {m_1}^{x_1} \cdot {m_2}^{x_2} \cdot {m_3}^{x_3} \cdot ... = 
 
 And then we can take floating logs to linearise, say base 2
 
-$$\log_2{{m_0}^{x_0} \cdot {m_1}^{x_1} \cdot {m_2}^{x_2} \cdot {m_3}^{x_3} \cdot ...} = \log_2{\text{target}}$$
+$$\log_2{ \left( {m_0}^{x_0} \cdot {m_1}^{x_1} \cdot {m_2}^{x_2} \cdot {m_3}^{x_3} \cdot ... \right) } = \log_2{\text{target}}$$
 
