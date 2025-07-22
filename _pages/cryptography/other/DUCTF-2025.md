@@ -360,7 +360,7 @@ import random
 def f_log(x):
     return int(RealField(128)(log(x, 2)) * 2**128)
 
-def solve_xs(mm, ss):
+def solve_xs(mm):
     logs = [f_log(m) for m in mm]
     M = (Matrix(vector(logs + [-target_mid]))
         .stack(identity_matrix(nsamples+1))
@@ -396,7 +396,7 @@ while True:
     random_sample = random.sample(range(92), nsamples)
     mm = [mm_all[i] for i in random_sample]
     ss = [ss_all[i] for i in random_sample]
-    xs = solve_xs(mm, ss)
+    xs = solve_xs(mm)
     if xs is None:
         continue
     s = prod([pow(si, xi, n) for si, xi in zip(ss, xs)]) % n
