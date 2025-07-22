@@ -324,7 +324,7 @@ Solve:
 
 We have a bunch of signatures with m_i < 2**64
 
-$$s_i^e \pmod n = m_i$$
+$${s_i}^e \pmod n = m_i$$
 
 
 
