@@ -328,7 +328,7 @@ We have a bunch of signatures with small m_i < 2**64
 
 $${s_i}^e \pmod n = m_i$$
 
-If we let our target msb, t = bytes_to_long(b'challenge'), then the actual target should be shifted to as large as we can but still less than n. 
+If we let our target msb, t = H(N, bytes_to_long(b'challenge')), then the actual target should be shifted to as large as we can but still less than n. 
 
 n is 4096 bits, the msb is 64 bits, and also leave some extra wiggle room, say 8 bits
 
