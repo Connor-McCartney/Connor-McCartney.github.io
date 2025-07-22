@@ -334,4 +334,4 @@ shift = 2**(4096-64-8)
 
 Then our actual target can be anywhere between t*shift and (t+1)*shift
 
-$$s^e \pmod n = target$$
+$$s^e \pmod n = \text{target}$$
