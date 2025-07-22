@@ -10,6 +10,8 @@ title: DUCTF 2025
 
 <https://github.com/DownUnderCTF/Challenges_2025_Public/tree/main/crypto>
 
+<https://blog.tanglee.top/2025/07/20/DownUnderCTF-2025-Crypto-Writeup.html>
+
 <br>
 
 <br>
