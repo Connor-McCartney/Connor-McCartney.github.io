@@ -330,11 +330,11 @@ $${s_i}^e \pmod n = m_i$$
 
 If we let our target msb, t = H(N, bytes_to_long(b'challenge')), then the actual target should be shifted to as large as we can but still less than n. 
 
-n is 4096 bits, the msb is 64 bits, and also leave some extra wiggle room, say 8 bits
+n is 4096 bits, the msb is 64 bits, and also an extra 8 bits
 
 shift = 2**(4096-64-8)
 
-Then our actual target can be anywhere between t*shift and (t+1)*shift
+Then our actual target can be anywhere between `t*shift` and `(t+1)*shift`
 
 $$s^e \pmod n = \text{target}$$
 
