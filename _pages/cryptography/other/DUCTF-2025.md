@@ -350,3 +350,55 @@ And then we can take floating logs to linearise, say base 2
 $$\log_2{ \left( {m_0}^{x_0} \cdot {m_1}^{x_1} \cdot {m_2}^{x_2} \cdot {m_3}^{x_3} \cdot ... \right) } = \log_2{\text{target}}$$
 
 $$ x_0 \cdot \log_2{\left( m_0 \right)} \ + x_1 \cdot \log_2{\left( m_1 \right)} \ + x_2 \cdot \log_2{\left( m_2 \right)} \ + x_3 \cdot \log_2{\left( m_3 \right)} \ + ... = \log_2{\text{target}}$$
+
+<br>
+
+```python
+from Crypto.Util.number import *
+import random
+
+def f_log(x):
+    return int(RealField(128)(log(x, 2)) * 2**128)
+
+def solve_xs(mm, ss):
+    logs = [f_log(m) for m in mm]
+    M = (Matrix(vector(logs + [-target_mid]))
+        .stack(identity_matrix(nsamples+1))
+        .transpose()
+    )
+    W = diagonal_matrix([max_error] + [1]*nsamples + [1])
+    M = (M/W).dense_matrix().LLL()*W
+    for row in M:
+        if row[-1] != 1:
+            continue
+        error = row[0]
+        xs = row[1:-1]
+        if all([x>=0 for x in xs]) and abs(error) < max_error:
+            return xs
+
+p = getPrime(2048)
+q = getPrime(2048)
+n = p*q
+e = 65537
+d = pow(e, -1, (p-1)*(q-1))
+
+t = bytes_to_long(b'_TARGET_')
+target_min = f_log(t * 2**(4096-64-8))
+target_max = f_log((t+1) * 2**(4096-64-8))
+target_mid = (target_min + target_max) // 2
+max_error = (target_max - target_min) // 2
+
+mm_all = [randint(0, 2**64) for _ in range(92)]
+ss_all = [pow(m, d, n) for m in mm_all]
+
+nsamples = 25
+while True:
+    random_sample = random.sample(range(92), nsamples)
+    mm = [mm_all[i] for i in random_sample]
+    ss = [ss_all[i] for i in random_sample]
+    xs = solve_xs(mm, ss)
+    if xs is None:
+        continue
+    s = prod([pow(si, xi, n) for si, xi in zip(ss, xs)]) % n
+    print(long_to_bytes(int(pow(s, e, n)))[:8])
+```
