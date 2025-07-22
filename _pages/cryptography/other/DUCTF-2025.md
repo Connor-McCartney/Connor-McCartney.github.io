@@ -322,7 +322,7 @@ if __name__ == '__main__':
 
 Solve:
 
-We have a bunch of signatures with m_i < 2**64
+We have a bunch of signatures with small m_i < 2**64
 
 $${s_i}^e \pmod n = m_i$$
 
