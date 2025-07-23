@@ -565,6 +565,8 @@ int main() {
 
 Detect on both wayland/xorg: 
 
+<br>
+
 `evtest /dev/input/by-id/usb-*event-kbd`
 
 <https://github.com/freedesktop-unofficial-mirror/evtest/blob/master/evtest.c> 
@@ -613,7 +615,12 @@ int main () {
 
 <br>
 
+Wayland window: 
+
 <br>
+
+<https://www.youtube.com/watch?v=iIVIu7YRdY0>
+
 
 <br>
 
