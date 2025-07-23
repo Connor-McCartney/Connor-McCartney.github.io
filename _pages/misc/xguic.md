@@ -569,7 +569,7 @@ Detect on both wayland/xorg:
 
 <https://github.com/freedesktop-unofficial-mirror/evtest/blob/master/evtest.c> 
 
-```python
+```c
 #include <stdio.h>
 #include <linux/input.h>
 #include <string.h>
