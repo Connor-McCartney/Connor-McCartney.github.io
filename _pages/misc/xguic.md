@@ -625,7 +625,7 @@ Wayland window:
 
 <br>
 
-```python
+```c
 #include <wayland-client.h>
 #include "xdg-shell-client-protocol.h"
 #include <stdlib.h>
