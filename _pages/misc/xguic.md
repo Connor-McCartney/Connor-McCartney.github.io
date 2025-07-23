@@ -563,6 +563,10 @@ int main() {
 
 <br>
 
+Detect on both wayland/xorg: 
+
+`evtest /dev/input/by-id/usb-*event-kbd`
+
 <br>
 
 <br>
