@@ -569,6 +569,46 @@ Detect on both wayland/xorg:
 
 <https://github.com/freedesktop-unofficial-mirror/evtest/blob/master/evtest.c> 
 
+```python
+#include <stdio.h>
+#include <linux/input.h>
+#include <string.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+void capture(char* filename)
+{
+    int fd = open(filename, O_RDONLY);
+	struct input_event ev[64];
+	int i, rd;
+	while (1) {
+		rd = read(fd, ev, sizeof(ev));
+		for (i = 0; i < rd / sizeof(struct input_event); i++) {
+            printf("a key was pressed!\n");
+            fflush(stdout);
+		}
+
+	}
+}
+
+int main () {
+    FILE *fp;
+    fp = popen("/bin/echo /dev/input/by-path/*event-kbd", "r");
+    char devices[1000];
+    fgets(devices, sizeof(devices), fp);
+    devices[strlen(devices)-1] = '\0'; // just remove newline
+    pclose(fp);
+
+    char *device, *str;
+    str = strdup(devices);  
+    while ((device = strsep(&str, " "))) {
+        if (!fork()) {
+            capture(device);
+        }
+    }
+}
+```
+
 <br>
 
 <br>
