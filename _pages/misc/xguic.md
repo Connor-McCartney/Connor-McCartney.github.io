@@ -579,16 +579,16 @@ Detect on both wayland/xorg:
 void capture(char* filename)
 {
     int fd = open(filename, O_RDONLY);
-	struct input_event ev[64];
-	int i, rd;
-	while (1) {
-		rd = read(fd, ev, sizeof(ev));
-		for (i = 0; i < rd / sizeof(struct input_event); i++) {
+    struct input_event ev[64];
+    int i, rd;
+    while (1) {
+        rd = read(fd, ev, sizeof(ev));
+        for (i = 0; i < rd / sizeof(struct input_event); i++) {
             printf("a key was pressed!\n");
             fflush(stdout);
-		}
+        }
 
-	}
+    }
 }
 
 int main () {
