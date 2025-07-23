@@ -621,6 +621,7 @@ Wayland window:
 
 <https://www.youtube.com/watch?v=iIVIu7YRdY0>
 
+<https://github.com/willth7/wayland-client-example>
 
 <br>
 
