@@ -883,6 +883,158 @@ $ gcc xdg-shell-protocol.c a.c -lwayland-client
 
 <br>
 
+
+
+---
+
+
+<br>
+
+
+Wayland window unaffected by tiling:
+
+
+```c
+#define _POSIX_C_SOURCE 200809L
+#include <wayland-client.h>
+#include "zwlr-layer-shell-v1-client-protocol.h"
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/mman.h>
+#include <sys/stat.h>
+
+struct wl_display* display;
+struct wl_compositor* compositor;
+struct wl_shm* shm;
+struct zwlr_layer_shell_v1* layer_shell;
+struct wl_surface* surface;
+struct wl_buffer* buffer;
+struct zwlr_layer_surface_v1* layer_surface;
+uint8_t* pixels;
+
+int width = 1920;
+int height = 30;
+
+
+#include <errno.h>
+
+int create_shm(int size) {
+    char name[] = "/my-shmXXXXXX";
+    int retries = 100;
+    int fd = -1;
+
+    for (int i = 0; i < retries; ++i) {
+        for (int j = 0; j < 6; ++j)
+            name[8 + j] = 'A' + (rand() % 26);
+
+        fd = shm_open(name, O_RDWR | O_CREAT | O_EXCL, 0600);
+        if (fd >= 0) {
+            shm_unlink(name);
+            break;
+        } else if (errno != EEXIST) {
+            break;
+        }
+    }
+
+    if (fd >= 0)
+        ftruncate(fd, size);
+
+    return fd;
+}
+
+void draw_bar() {
+    memset(pixels, 0x33, width * height * 4);  // Dark gray
+    wl_surface_attach(surface, buffer, 0, 0);
+    wl_surface_damage_buffer(surface, 0, 0, width, height);
+    wl_surface_commit(surface);
+}
+
+void layer_surface_configure(void* data, struct zwlr_layer_surface_v1* ls, uint32_t serial, uint32_t w, uint32_t h) {
+    zwlr_layer_surface_v1_ack_configure(ls, serial);
+    draw_bar();
+}
+
+struct zwlr_layer_surface_v1_listener layer_listener = {
+    .configure = layer_surface_configure,
+    .closed = NULL
+};
+
+void shm_format(void* data, struct wl_shm* shm, uint32_t fmt) {}
+struct wl_shm_listener shm_listener = { .format = shm_format };
+
+void registry_global(void* data, struct wl_registry* reg, uint32_t name, const char* interface, uint32_t ver) {
+    if (strcmp(interface, wl_compositor_interface.name) == 0) {
+        compositor = wl_registry_bind(reg, name, &wl_compositor_interface, 4);
+    } else if (strcmp(interface, wl_shm_interface.name) == 0) {
+        shm = wl_registry_bind(reg, name, &wl_shm_interface, 1);
+        wl_shm_add_listener(shm, &shm_listener, NULL);
+    } else if (strcmp(interface, zwlr_layer_shell_v1_interface.name) == 0) {
+        layer_shell = wl_registry_bind(reg, name, &zwlr_layer_shell_v1_interface, 1);
+    }
+}
+
+void registry_remove(void* data, struct wl_registry* reg, uint32_t name) {}
+
+struct wl_registry_listener reg_listener = {
+    .global = registry_global,
+    .global_remove = registry_remove
+};
+
+int main() {
+    display = wl_display_connect(NULL);
+    struct wl_registry* registry = wl_display_get_registry(display);
+    wl_registry_add_listener(registry, &reg_listener, NULL);
+    wl_display_roundtrip(display);
+
+    surface = wl_compositor_create_surface(compositor);
+
+    layer_surface = zwlr_layer_shell_v1_get_layer_surface(
+        layer_shell, surface, NULL,
+        ZWLR_LAYER_SHELL_V1_LAYER_TOP,
+        "bar"
+    );
+
+    zwlr_layer_surface_v1_set_anchor(layer_surface,
+        ZWLR_LAYER_SURFACE_V1_ANCHOR_TOP |
+        ZWLR_LAYER_SURFACE_V1_ANCHOR_LEFT |
+        ZWLR_LAYER_SURFACE_V1_ANCHOR_RIGHT);
+
+    zwlr_layer_surface_v1_set_size(layer_surface, 0, height);
+    zwlr_layer_surface_v1_set_exclusive_zone(layer_surface, height);
+    zwlr_layer_surface_v1_add_listener(layer_surface, &layer_listener, NULL);
+
+    wl_surface_commit(surface);
+
+    int size = width * height * 4;
+    int fd = create_shm(size);
+    pixels = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+
+    struct wl_shm_pool* pool = wl_shm_create_pool(shm, fd, size);
+    buffer = wl_shm_pool_create_buffer(pool, 0, width, height, width * 4, WL_SHM_FORMAT_ARGB8888);
+    wl_shm_pool_destroy(pool);
+    close(fd);
+
+    while (wl_display_dispatch(display) != -1) {}
+
+    return 0;
+}
+```
+
+```
+gcc a.c zwlr-layer-shell-v1-protocol.c xdg-shell-protocol.c -lwayland-client
+```
+
+<br>
+
+
+
+
+
+<br>
+
 ---
 
 using GTK
