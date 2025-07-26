@@ -73,9 +73,9 @@ at = arctan(t)
 pi = pi.n(bits)
 
 M = Matrix(QQ, [
-    [pi, 0, pi],
-    [1,  0,  0],
-    [at, 1, at],
+    [pi, 0, 0],
+    [-1, 0, 1],
+    [at, 1, 0],
 ])
 
 W = diagonal_matrix([2**bits, 1, 1])
