@@ -49,6 +49,8 @@ title: Misc
 
 <span style="font-size:2em;">   [C header files](/misc/Cheaderfiles)   </span>
 
+<span style="font-size:2em;">   [Memory](/misc/Memory)   </span>
+
 <span style="font-size:2em;">   [GUI stuff](/misc/xguic)   </span>
 
 <span style="font-size:2em;">   [Connecting Android phone to linux](/misc/ConnectingAndroidphonetolinux)   </span>
