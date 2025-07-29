@@ -125,7 +125,7 @@ int main() {
 
 <br>
 
-Each program/process gets its own virtual memory!
+An operating system with virtual memory will provide each process with its own address space.
 
 You can check process id's with `ps -a` and check their memory layout with eg `cat /proc/892/maps`
 
