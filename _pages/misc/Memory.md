@@ -127,7 +127,7 @@ int main() {
 
 An operating system with virtual memory will provide each process with its own address space.
 
-You can check process id's with `ps -a` and check their memory layout with eg `cat /proc/892/maps`
+You can check process id's with `ps -a` and check their memory mappings with eg `cat /proc/892/maps`
 
 <img width="859" height="962" alt="image" src="https://github.com/user-attachments/assets/20d8cb6f-93b5-4a21-83ca-df201a73cfc6" />
 
