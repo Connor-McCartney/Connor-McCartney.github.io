@@ -78,6 +78,7 @@ By default, the type is some reference &T. In the above example, it would be &u8
 
 The main difference is just whether or not they're subject to all of rust's safety checks (ownership, lifetimes, concurrency etc)
 
+<br>
 
 # why do they all seem to start with 0x7f...... ?
 
@@ -90,6 +91,6 @@ only 47 bits are used for userspace memory.
 '0x7fffffffffff'
 ```
 
-Then the stack starts somewhere around this maximum and then grows downwards. 
+The stack starts somewhere around this maximum and then grows downwards. 
 
 ---
