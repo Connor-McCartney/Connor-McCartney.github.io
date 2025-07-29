@@ -216,7 +216,11 @@ Where is `DEFAULT_MAP_WINDOW` defined? <https://github.com/torvalds/linux/blob/m
 #define DEFAULT_MAP_WINDOW	((1UL << 47) - PAGE_SIZE)
 ```
 
-and Linux's page size is 4096 bytes. Finally we can calculate ELF_ET_DYN_BASE:
+and Linux's page size is 4096 bytes. Finally we can calculate ELF_ET_DYN_BASE as:
 
+```python
+>>> hex(2*(2**47 - 4096)//3)
+'0x555555554aaa'
+```
 
 ---
