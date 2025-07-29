@@ -210,7 +210,13 @@ In <https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/elf.h> th
 						  (DEFAULT_MAP_WINDOW / 3 * 2))
 ```
 
+Where is `DEFAULT_MAP_WINDOW` defined? <https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/page_64_types.h>
 
+```c
+#define DEFAULT_MAP_WINDOW	((1UL << 47) - PAGE_SIZE)
+```
+
+and Linux's page size is 4096 bytes. Finally we can calculate ELF_ET_DYN_BASE:
 
 
 ---
