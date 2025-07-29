@@ -11,7 +11,19 @@ title: Memory
 
 [C Programming and Memory Management - Boot dev (TJ DeVries)](https://www.youtube.com/watch?v=rJrd2QMVbGM)
 
+<br>
 
+<https://softwareengineering.stackexchange.com/questions/325704/how-is-stack-and-heap-are-assigned-to-each-processes>
+
+<https://softwareengineering.stackexchange.com/questions/386511/does-each-process-have-its-own-section-of-data-text-stack-and-heap-in-the-me>
+
+<https://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap>
+
+<https://icarus.cs.weber.edu/~dab/cs1410/textbook/4.Pointers/memory.html>
+
+<https://en.wikipedia.org/wiki/Virtual_memory>
+
+<https://www.cs.miami.edu/home/burt/learning/Csc521.101/notes/virtual-memory-notes.html>
 
 <br>
 
