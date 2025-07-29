@@ -35,6 +35,17 @@ int main() {
 
 <br>
 
-
+```rust
+fn main() {
+    let x: u8 = 10;
+    let pointer: *const u8 = &x;
+    println!("{}", x);                       // 10
+    println!("{:p}", pointer);               // 0x7ffeb1f9b937
+    unsafe {
+        let dereferenced: u8 = *pointer;
+        println!("{}", dereferenced);        // 10
+    }
+}
+```
 
 ---
