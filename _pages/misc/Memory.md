@@ -10,3 +10,31 @@ title: Memory
 [Visualizing memory layout of Rust's data types - Sreekanth](https://www.youtube.com/watch?v=7_o-YRxf_cc)
 
 [C Programming and Memory Management - Boot dev (TJ DeVries)](https://www.youtube.com/watch?v=rJrd2QMVbGM)
+
+
+
+<br>
+
+
+
+# Pointers
+
+
+```c
+#include <stdio.h>
+
+int main() {
+    int n = 10;
+    int* pointer = &n;
+    int dereferenced = *pointer;
+    printf("%p\n", pointer);       // 0x7fff46413d08
+    printf("%ld\n", pointer);      // 140734372068616
+    printf("%d\n", dereferenced);  // 10
+}
+```
+
+<br>
+
+
+
+---
