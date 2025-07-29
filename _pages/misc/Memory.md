@@ -198,5 +198,19 @@ If you run it many times you'll see 0x55... and 0x56...
 
 Where is this defined? Of course ASLR randomizes it but let's look for a rough base. 
 
+In <https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/elf.h> there is:
+
+```c
+/*
+ * This is the base location for PIE (ET_DYN with INTERP) loads. On
+ * 64-bit, this is above 4GB to leave the entire 32-bit address
+ * space open for things that want to use the area for 32-bit pointers.
+ */
+#define ELF_ET_DYN_BASE		(mmap_is_ia32() ? 0x000400000UL : \
+						  (DEFAULT_MAP_WINDOW / 3 * 2))
+```
+
+
+
 
 ---
