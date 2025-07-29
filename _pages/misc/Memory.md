@@ -93,4 +93,21 @@ only 47 bits are used for userspace memory.
 
 The stack starts somewhere around this maximum and then grows downwards. 
 
+
+# How big are pointers?
+
+Typically 8 bytes (64 bits) on 64-bit architectures. 
+
+```c
+#include <stdint.h>
+#include <stdio.h>
+int main() {
+    int n = 123;
+    printf("%lu\n", sizeof(&n));        // 8
+    printf("%lu\n", sizeof(int*));      // 8
+    printf("%lu\n", sizeof(intptr_t));  // 8
+    printf("%lu\n", sizeof(uintptr_t)); // 8
+}
+```
+
 ---
