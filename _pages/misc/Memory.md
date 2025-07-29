@@ -238,7 +238,7 @@ You can check with `ulimit -a`, the default stack size is 8 MiB.
 
 `readelf -S a.out`
 
-These include .text, .data and .bss
+These include .text .data and .bss
 
 <br>
 
