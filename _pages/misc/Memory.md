@@ -163,4 +163,40 @@ When the function exits, the stack pointer is restored to its previous value, ef
 
 <br>
 
+# heap range on linux
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+    for (int i=0; i<10; i++) {
+        void* my_memory = malloc(1);
+        printf("%p\n", my_memory);
+    }
+}
+```
+
+```
+[~/t]
+$ gcc x.c && ./a.out
+0x55cacf56e2a0
+0x55cacf56e6d0
+0x55cacf56e6f0
+0x55cacf56e710
+0x55cacf56e730
+
+[~/t]
+$ gcc x.c && ./a.out
+0x56524d7282a0
+0x56524d7286d0
+0x56524d7286f0
+0x56524d728710
+0x56524d728730
+```
+
+If you run it many times you'll see 0x55... and 0x56... 
+
+Where is this defined? Of course ASLR randomizes it but let's look for a rough base. 
+
+
 ---
