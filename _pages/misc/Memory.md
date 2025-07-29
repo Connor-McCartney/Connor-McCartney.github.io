@@ -19,7 +19,7 @@ title: Memory
 
 # Pointers
 
-Pointers typically refer to virtual addresses
+Pointers typically refer to virtual addresses (either on the stack or the heap)
 
 c:
 
