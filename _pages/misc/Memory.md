@@ -225,4 +225,9 @@ and Linux's page size is 4096 bytes. Finally we can calculate ELF_ET_DYN_BASE as
 '0x555555554aaa'
 ```
 
+
+# stack size on linux
+
+you can use `ulimit -a`, the default stack size is 8 MiB. 
+
 ---
