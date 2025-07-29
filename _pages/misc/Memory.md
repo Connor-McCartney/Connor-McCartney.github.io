@@ -56,7 +56,7 @@ fn main() {
 <br>
 
 
-rust: 
+rust 'regular' pointer: 
 
 ```rust
 fn main() {
