@@ -196,6 +196,8 @@ $ gcc x.c && ./a.out
 
 If you run it many times you'll see 0x55... and 0x56... 
 
+(note if you compile with -no-pie then the range is way bigger)
+
 Where is this defined? Of course ASLR randomizes it but let's look for a rough base. 
 
 In <https://github.com/torvalds/linux/blob/master/arch/x86/include/asm/elf.h> there is:
