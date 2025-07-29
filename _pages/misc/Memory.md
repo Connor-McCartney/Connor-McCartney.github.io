@@ -234,7 +234,7 @@ You can check with `ulimit -a`, the default stack size is 8 MiB.
 
 <br>
 
-# How to analyse section headers?
+# How to analyse a binary's section headers?
 
 `readelf -S a.out`
 
