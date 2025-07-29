@@ -125,7 +125,7 @@ int main() {
 
 <br>
 
-# 
+Each program/process gets its own virtual memory!
 
 <img width="859" height="962" alt="image" src="https://github.com/user-attachments/assets/20d8cb6f-93b5-4a21-83ca-df201a73cfc6" />
 
