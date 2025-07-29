@@ -131,7 +131,7 @@ In RAM/swap
 
 <br>
 
-
+# Virtual memory
 
 An operating system with virtual memory will provide each process with its own address space.
 
@@ -140,4 +140,11 @@ You can check process id's with `ps -a` and check their memory mappings with eg 
 <img width="859" height="962" alt="image" src="https://github.com/user-attachments/assets/20d8cb6f-93b5-4a21-83ca-df201a73cfc6" />
 
 
+<br>
+
+# What happens in multi-threaded applications?
+
+While it is one process, they have different threads. 
+
+Each thread has it's own stack, but all the threads share the heap. 
 ---
