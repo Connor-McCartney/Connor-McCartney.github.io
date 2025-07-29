@@ -125,6 +125,14 @@ int main() {
 
 <br>
 
+# Where are the stack and heap stored?
+
+In RAM/swap
+
+<br>
+
+
+
 An operating system with virtual memory will provide each process with its own address space.
 
 You can check process id's with `ps -a` and check their memory mappings with eg `cat /proc/892/maps`
