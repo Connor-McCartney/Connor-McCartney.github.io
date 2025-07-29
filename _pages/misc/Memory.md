@@ -70,5 +70,10 @@ fn main() {
 
 What's the difference between rust's 'regular' pointers and raw pointers? 
 
+They both contain the same address. 
+
+By default, the type is some reference &T. In the above example, it would be &u8  (`let pointer: &u8 = &x;`)
+
+The main difference is just whether or not they're subject to all of rust's safety checks (ownership, lifetimes, concurrency etc)
 
 ---
