@@ -68,7 +68,7 @@ fn main() {
 }
 ```
 
-What's the difference between rust's pointer and raw pointer? 
+What's the difference between rust's 'regular' pointers and raw pointers? 
 
 
 ---
