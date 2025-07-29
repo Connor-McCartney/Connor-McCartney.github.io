@@ -163,7 +163,7 @@ When the function exits, the stack pointer is restored to its previous value, ef
 
 <br>
 
-# heap range on linux
+# base address for PIE executables
 
 ```c
 #include <stdio.h>
