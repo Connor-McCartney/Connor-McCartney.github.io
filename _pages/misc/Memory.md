@@ -226,8 +226,21 @@ and Linux's page size is 4096 bytes. Finally we can calculate ELF_ET_DYN_BASE as
 ```
 
 
+<br>
+
 # stack size on linux
 
 You can check with `ulimit -a`, the default stack size is 8 MiB. 
+
+<br>
+
+# How to analyse section headers?
+
+`readelf -S a.out`
+
+These include .text, .data and .bss
+
+<br>
+
 
 ---
