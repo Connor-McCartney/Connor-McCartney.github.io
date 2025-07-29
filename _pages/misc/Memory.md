@@ -125,7 +125,7 @@ int main() {
 
 <br>
 
-# Where are the stack and heap stored?
+# Where are the stack and heap physically stored?
 
 In RAM/swap
 
