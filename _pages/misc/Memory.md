@@ -38,21 +38,6 @@ int main() {
 
 <br>
 
-rust: 
-
-```rust
-fn main() {
-    let x: u8 = 10;
-    let pointer = &x;
-    println!("{}", x);                       // 10
-    println!("{:p}", pointer);            
-    let dereferenced: u8 = *pointer;         // 0x7ffdf9b46647
-    println!("{}", dereferenced);            // 10
-}
-```
-
-<br>
-
 rust raw pointer: 
 
 ```rust
@@ -67,6 +52,23 @@ fn main() {
     }
 }
 ```
+
+<br>
+
+
+rust: 
+
+```rust
+fn main() {
+    let x: u8 = 10;
+    let pointer = &x;
+    println!("{}", x);                       // 10
+    println!("{:p}", pointer);            
+    let dereferenced: u8 = *pointer;         // 0x7ffdf9b46647
+    println!("{}", dereferenced);            // 10
+}
+```
+
 
 What's the difference between rust's 'regular' pointers and raw pointers? 
 
