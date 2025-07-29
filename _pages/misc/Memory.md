@@ -147,4 +147,6 @@ You can check process id's with `ps -a` and check their memory mappings with eg 
 While it is one process, they have different threads. 
 
 Each thread has it's own stack, but all the threads share the heap. 
+
+
 ---
