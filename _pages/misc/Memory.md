@@ -148,4 +148,13 @@ While it is one process, they have different threads.
 
 Each thread has it's own stack, but all the threads share the heap. As you may know, this is how race conditions can occur and why locking etc is needed. 
 
+
+# How long does stack/heap memory last?
+
+Heap memory must be manually allocataed and remains there until manually deallocated. 
+
+'Stack frames' are sections of the stack dedicated to a particular function call. 
+
+When the function exits, the stack pointer is restored to its previous value, effectively "freeing" the stack memory used by the function.
+
 ---
