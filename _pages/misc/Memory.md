@@ -142,12 +142,15 @@ You can check process id's with `ps -a` and check their memory mappings with eg 
 
 <br>
 
+<br>
+
 # What happens in multi-threaded applications?
 
 While it is one process, they have different threads. 
 
 Each thread has it's own stack, but all the threads share the heap. As you may know, this is how race conditions can occur and why locking etc is needed. 
 
+<br>
 
 # How long does stack/heap memory last?
 
@@ -156,5 +159,8 @@ Heap memory must be manually allocataed and remains there until manually dealloc
 'Stack frames' are sections of the stack dedicated to a particular function call. 
 
 When the function exits, the stack pointer is restored to its previous value, effectively "freeing" the stack memory used by the function.
+
+
+<br>
 
 ---
