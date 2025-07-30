@@ -84,8 +84,9 @@ fn main() {
 }
 ```
 
+<br>
 
-What's the difference between rust's 'regular' pointers and raw pointers? 
+# What's the difference between rust's 'regular' pointers and raw pointers? 
 
 They both contain the same address. 
 
@@ -179,6 +180,12 @@ pwndbg> x/b 0x7fffffffe65f
 0x7fffffffe65f:	0x11
 pwndbg>
 ```
+
+<br>
+
+# Can you dereference a null pointer?
+
+No! You must cast it first
 
 <br>
 
