@@ -128,6 +128,25 @@ int main() {
 
 <br>
 
+# How big is each address unit?
+
+The unit of addressability in almost all modern CPU architectures (x86, x86-64, ARM, etc.) is 1 byte (8 bits).
+
+Data types larger than 1 byte are groups of consecutive addresses.
+
+For example, an int is 4 bytes. 
+
+```c
+int main() {
+    int x = 0x11223344;
+}
+```
+
+If we pass it into gdb, we see:
+
+
+<br>
+
 # Where are the stack and heap physically stored?
 
 In RAM/swap
