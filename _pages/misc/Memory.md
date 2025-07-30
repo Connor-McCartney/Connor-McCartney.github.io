@@ -144,6 +144,41 @@ int main() {
 
 If we pass it into gdb, we see:
 
+```
+[~/t]
+$ cat x.c
+int main() {
+    int x = 0x11223344;
+}
+
+[~/t]
+$ gcc x.c
+
+[~/t]
+$ gdb a.out
+...
+pwndbg> b main
+Breakpoint 1 at 0x111d
+pwndbg> r
+...
+pwndbg> n
+...
+b+ 0x55555555511d <main+4>                        mov    dword ptr [rbp - 4], 0x11223344     [0x7fffffffe65c] <= 0x11223344
+...
+
+pwndbg> x 0x7fffffffe65c
+0x7fffffffe65c:	0x11223344
+
+pwndbg> x/b 0x7fffffffe65c
+0x7fffffffe65c:	0x44
+pwndbg> x/b 0x7fffffffe65d
+0x7fffffffe65d:	0x33
+pwndbg> x/b 0x7fffffffe65e
+0x7fffffffe65e:	0x22
+pwndbg> x/b 0x7fffffffe65f
+0x7fffffffe65f:	0x11
+pwndbg>
+```
 
 <br>
 
