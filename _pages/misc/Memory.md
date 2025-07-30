@@ -261,7 +261,7 @@ int main() {
 
 # Arrays as function arguments
 
-You must also pass the length of the array as another argument, as within the new function there's no way to get the length. 
+You must also pass the length of the array as another argument, because within the new function there's no way to get the length. 
 
 (Rust is different, you don't have to)
 
