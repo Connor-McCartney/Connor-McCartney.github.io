@@ -183,7 +183,7 @@ pwndbg>
 
 <br>
 
-# Can you dereference a null pointer?
+# Can you dereference a void pointer?
 
 No! You must cast it first
 
