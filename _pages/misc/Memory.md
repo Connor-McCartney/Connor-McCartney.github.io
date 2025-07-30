@@ -187,6 +187,8 @@ pwndbg>
 
 No! You must cast it first
 
+You can't do pointer arithmetic on void pointers either (add/subtract)
+
 <br>
 
 # Pointer arithmetic
