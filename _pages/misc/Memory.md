@@ -195,7 +195,7 @@ Eg:
 #include <stdint.h>
 
 int main() {
-    int x = 10;
+    int x = 0x11223344;
     int* ptr = &x;
 
     printf("%ld\n", sizeof(int));           // 4
@@ -206,6 +206,15 @@ int main() {
     intptr_t intptr = (intptr_t) ptr;      
     printf("%ld\n", intptr);                // 140727286628548
     printf("%ld\n", intptr+1);              // 140727286628549 (+1)
+
+
+
+    printf("%x\n", x);                        // 11223344
+    printf("%x\n", *ptr);                     // 11223344 
+    printf("%x\n", *((int8_t*) (intptr+0)));  // 44   
+    printf("%x\n", *((int8_t*) (intptr+1)));  // 33   
+    printf("%x\n", *((int8_t*) (intptr+2)));  // 22
+    printf("%x\n", *((int8_t*) (intptr+3)));  // 11
 }
 ```
 
