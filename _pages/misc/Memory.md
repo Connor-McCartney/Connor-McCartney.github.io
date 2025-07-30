@@ -182,6 +182,36 @@ pwndbg>
 
 <br>
 
+# Pointer arithmetic
+
+If you add 1 to a pointer, it doesn't actually add 1, it adds 1 * the size of the data type. 
+
+To actually add 1, that's where the intptr_t or uintptr_t type becomes useful.
+
+Eg:
+
+```c
+#include <stdio.h>
+#include <stdint.h>
+
+int main() {
+    int x = 10;
+    int* ptr = &x;
+
+    printf("%ld\n", sizeof(int));           // 4
+
+    printf("%ld\n", (long) ptr);            // 140727286628548
+    printf("%ld\n", (long) (ptr+1));        // 140727286628552 (+4)
+
+    intptr_t intptr = (intptr_t) ptr;      
+    printf("%ld\n", intptr);                // 140727286628548
+    printf("%ld\n", intptr+1);              // 140727286628549 (+1)
+}
+```
+
+
+<br>
+
 # Where are the stack and heap physically stored?
 
 In RAM/swap
