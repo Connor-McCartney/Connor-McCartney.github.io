@@ -259,6 +259,14 @@ int main() {
 
 <br>
 
+# Arrays as function arguments
+
+You must also pass the length of the array as another argument, as within the new function there's no way to get the length. 
+
+(Rust is different, you don't have to)
+
+<br>
+
 # Where are the stack and heap physically stored?
 
 In RAM/swap
