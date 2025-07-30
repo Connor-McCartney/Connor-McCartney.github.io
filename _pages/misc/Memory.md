@@ -324,7 +324,32 @@ int main() {
 
 <br>
 
+# function pointers
 
+```c
+#include <stdio.h>
+
+int add(int a, int b) {
+    return a+b;
+}
+
+int mul(int a, int b) {
+    return a*b;
+}
+
+int calc(int (*op)(int, int), int a, int b) {
+    return op(a, b);
+}
+
+int main() {
+    //int (*add_function_ptr)(int, int) = add;
+    //int (*mul_function_ptr)(int, int) = mul;
+    printf("%d\n", calc(add, 6, 2));
+    printf("%d\n", calc(mul, 6, 2));
+}
+```
+
+<br>
 
 
 
