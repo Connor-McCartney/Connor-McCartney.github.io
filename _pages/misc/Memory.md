@@ -301,6 +301,29 @@ int main() {
 <br>
 
 
+# Pointer as function return type example
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int* add(int* a, int* b) {
+    int* s = (int*) malloc(sizeof(int));
+    *s = *a + *b; 
+    return s;
+}
+
+int main() {
+    int a = 1;
+    int b = 2;
+    int* sum = add(&a, &b);
+    printf("%d\n", *sum);
+    free(sum);
+}
+```
+
+<br>
+
 
 
 
