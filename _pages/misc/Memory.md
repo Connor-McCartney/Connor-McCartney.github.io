@@ -263,6 +263,8 @@ int main() {
 
 You must also pass the length of the array as another argument, because within the new function there's no way to get the length. 
 
+(Strings are an exception/avoid this by using a null terminator)
+
 (Rust is different, you don't have to)
 
 <br>
