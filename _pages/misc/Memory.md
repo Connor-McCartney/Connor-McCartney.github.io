@@ -11,6 +11,9 @@ title: Memory
 
 [C Programming and Memory Management - Boot dev (TJ DeVries)](https://www.youtube.com/watch?v=rJrd2QMVbGM)
 
+<https://www.youtube.com/watch?v=MIL2BK02X8A>
+
+
 <br>
 
 <https://softwareengineering.stackexchange.com/questions/325704/how-is-stack-and-heap-are-assigned-to-each-processes>
