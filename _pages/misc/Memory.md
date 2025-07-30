@@ -154,7 +154,7 @@ Each thread has it's own stack, but all the threads share the heap. As you may k
 
 # How long does stack/heap memory last?
 
-Heap memory must be manually allocataed and remains there until manually deallocated. 
+Heap memory must be manually allocated and exists until manually deallocated. 
 
 'Stack frames' are sections of the stack dedicated to a particular function call. 
 
