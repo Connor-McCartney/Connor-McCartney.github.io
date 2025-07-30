@@ -267,6 +267,67 @@ You must also pass the length of the array as another argument, because within t
 
 (Rust is different, you don't have to)
 
+
+<br>
+
+# String initialisation
+
+This works as expected:
+
+```c
+#include <stdio.h>
+
+int main() {
+    char mystr[] = "hello";   // string gets stored on the stack, as a character array
+    mystr[0] = 'x';
+    printf("%s\n", mystr);
+}
+```
+
+<br>
+
+But beware initialising like this:
+
+```c
+#include <stdio.h>
+
+int main() {
+    char* mystr = "hello"; // gets stored as a compile time constant, probably in .text 
+    mystr[0] = 'x';  // segfault! can't modify constant
+    printf("%s\n", mystr);
+}
+```
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <br>
 
 # Where are the stack and heap physically stored?
