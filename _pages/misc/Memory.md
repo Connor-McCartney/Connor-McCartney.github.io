@@ -227,6 +227,35 @@ int main() {
 }
 ```
 
+<br>
+
+# A bizzare trick: `arr[i]` = `i[arr]` 🤯
+
+```c
+#include <stdio.h>
+
+int main() {
+    int arr[] = {11, 22, 33, 44, 55};
+
+    for (int i=0; i<5; i++) {
+        printf("%d\n", arr[i]);
+    }
+
+    printf("\n");
+
+    //int* p = &(arr[0]);
+    int* p = arr;
+    for (int i=0; i<5; i++) {
+        printf("%d\n", *(p+i));
+    }
+
+    printf("\n");
+
+    for (int i=0; i<5; i++) {
+        printf("%d\n", i[arr]); // i[arr] = *(i+arr) = *(arr+i) = arr[i]
+    }
+}
+```
 
 <br>
 
