@@ -28,6 +28,8 @@ title: Memory
 
 <https://www.cs.miami.edu/home/burt/learning/Csc521.101/notes/virtual-memory-notes.html>
 
+<https://fasterthanli.me/series/making-our-own-executable-packer/part-14>
+
 <br>
 
 
