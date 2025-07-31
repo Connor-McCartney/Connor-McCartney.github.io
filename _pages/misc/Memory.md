@@ -386,7 +386,7 @@ In RAM/swap
 
 # Virtual memory
 
-An operating system with virtual memory will provide each process with its own address space.
+An operating system with virtual memory will provide each process with its own virtual address space.
 
 You can check process id's with `ps -a` and check their memory mappings with eg `cat /proc/892/maps`
 
@@ -394,6 +394,17 @@ You can check process id's with `ps -a` and check their memory mappings with eg 
 
 
 <br>
+
+<br>
+
+The above image shows a rough/example of ELF64 segments. In reality there are more segments than just the .bss, .data and .text shown. 
+
+The text segment is also known as the code segment. It is read-only. 
+
+The data segment contains initialised static variables. They can be modified. 
+
+The bss segment stands for block start by symbol. 
+
 
 <br>
 
