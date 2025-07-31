@@ -403,9 +403,11 @@ The above image shows a rough/example of ELF64 segments. In reality there are mo
 
 The text segment is also known as the code segment. It is read-only. 
 
-The data segment contains initialised static variables. They can be modified. 
+The rodata segment contains read-only data. 
 
-The bss segment stands for block start by symbol. 
+The data segment contains initialised static variables. They can be modified (read/write data). 
+
+The bss segment stands for block start by symbol. It's a bit strange, somewhere along the line from the mainframe technology this was developed on, the meaning behind the naming of it has been lost. Nowadays to everyone it means zero-initialised data. 
 
 
 <br>
