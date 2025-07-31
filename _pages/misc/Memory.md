@@ -491,6 +491,8 @@ and Linux's page size is 4096 bytes. Finally we can calculate ELF_ET_DYN_BASE as
 '0x555555554aaa'
 ```
 
+/proc/.../maps will also show process-specific high and low stack and heap sizes. 
+
 
 <br>
 
