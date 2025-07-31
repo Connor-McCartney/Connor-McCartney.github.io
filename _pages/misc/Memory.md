@@ -520,5 +520,11 @@ These include .text .data and .bss
 
 <br>
 
+# How is more heap memory requested from the kernel?
+
+On linux, malloc calls the 'brk' or 'sbrk' system calls
+
+<br>
+
 
 ---
