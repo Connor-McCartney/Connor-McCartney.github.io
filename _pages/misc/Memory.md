@@ -499,6 +499,7 @@ and Linux's page size is 4096 bytes. Finally we can calculate ELF_ET_DYN_BASE as
 
 /proc/.../maps will also show process-specific high and low stack and heap sizes. 
 
+I later found this page: <https://stackoverflow.com/questions/61561331/why-does-linux-favor-0x7f-mappings> 
 
 <br>
 
