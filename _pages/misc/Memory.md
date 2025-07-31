@@ -431,6 +431,14 @@ When the function exits, the stack pointer is restored to its previous value, ef
 
 # base address for PIE executables
 
+```rust
+fn main() {
+    let x: Box<i32> = Box::new(123);
+    println!("value: {}", x);
+    println!("address: {:p}", x);
+}
+```
+
 ```c
 #include <stdio.h>
 #include <stdlib.h>
