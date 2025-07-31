@@ -496,6 +496,8 @@ and Linux's page size is 4096 bytes. Finally we can calculate ELF_ET_DYN_BASE as
 
 You can check with `ulimit -a`, the default stack size is 8 MiB. 
 
+If you use more than than you get a stackoverflow and the kernel terminates the process. 
+
 <br>
 
 # How to analyse a binary's section headers?
