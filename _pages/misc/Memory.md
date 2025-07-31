@@ -22,8 +22,6 @@ title: Memory
 
 <https://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap>
 
-<https://icarus.cs.weber.edu/~dab/cs1410/textbook/4.Pointers/memory.html>
-
 <https://en.wikipedia.org/wiki/Virtual_memory>
 
 <https://www.cs.miami.edu/home/burt/learning/Csc521.101/notes/virtual-memory-notes.html>
