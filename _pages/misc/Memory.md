@@ -11,8 +11,6 @@ title: Memory
 
 [C Programming and Memory Management - Boot dev (TJ DeVries)](https://www.youtube.com/watch?v=rJrd2QMVbGM)
 
-<https://www.youtube.com/watch?v=MIL2BK02X8A>
-
 
 <br>
 
