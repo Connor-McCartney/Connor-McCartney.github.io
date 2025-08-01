@@ -394,6 +394,8 @@ rm 'Login Data'
 rm 'Login Data-journal'
 ```
 
+Also check cookies aren't being blocked
+
 <br>
 
 Merge conflicts: `dispatch-conf` and enter 'u'
