@@ -11,6 +11,9 @@ title: idekCTF 2025
 
 Another nice chall by my friend Giap :)
 
+
+Challenge: 
+
 ```python
 from Crypto.Util.number import *
 
