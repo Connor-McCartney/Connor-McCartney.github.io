@@ -162,3 +162,7 @@ title: Other
 
 
 <span style="font-size:2em;">   [DUCTF 2025](/cryptography/other/DUCTF-2025) </span> <br>
+
+
+<span style="font-size:2em;">   [idekCTF 2025](/cryptography/other/idekCTF2025) </span> <br>
+
