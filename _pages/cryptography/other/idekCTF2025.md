@@ -138,10 +138,10 @@ load('https://raw.githubusercontent.com/TheBlupper/linineq/refs/heads/main/linin
 
 p = 170829625398370252501980763763988409583
 o = (p-1)//2
-mm = 4807895356063327854843653048517090061
+m = 4807895356063327854843653048517090061
 
 M = matrix([[256**i for i in reversed(range(20))]])
-b = [mm]
+b = [m]
 lb = [30]*20 
 ub = [128]*20 
 
