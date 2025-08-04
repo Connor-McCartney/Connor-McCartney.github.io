@@ -149,4 +149,17 @@ for sol in solve_bounded_mod_gen(M, b, lb, ub, o, solver='ortools'):
     print(bytes(sol))
 ```
 
-`b'tks_f0r_ur_t1ck3t_xD'`
+<br>
+
+```
+$ time sage solve.sage
+...
+b',uMCt7xQoGqB+=Vkz"X0'
+b'\x1f=\x7f6\\\'B+"ub\x1e/Bk[uWz('
+b'tks_f0r_ur_t1ck3t_xD'
+b'q8$\x7fS}7S~B\x80s>!|j#E\x80X'
+b'OH&F`@GGUpsVMHkX![hM'
+...
+
+real	1m2.611s
+```
