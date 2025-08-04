@@ -95,3 +95,7 @@ flag_chocolate = bytes_to_long(remain_bytes[-16:]) # 995847953167254339784926460
 
 <br>
 
+Let c = flag_chocolate, now we must solve:
+
+$$c \equiv a^m + b^m \pmod p$$
+
