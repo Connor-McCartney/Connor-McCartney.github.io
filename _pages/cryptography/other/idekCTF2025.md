@@ -99,3 +99,8 @@ Let c = flag_chocolate, now we must solve:
 
 $$c \equiv a^m + b^m \pmod p$$
 
+Let b = a^k:
+
+$$c \equiv a^m + (a^k)^m \pmod p$$
+
+$$c \equiv a^m + (a^m)^k \pmod p$$
