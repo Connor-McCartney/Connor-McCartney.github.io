@@ -90,7 +90,7 @@ e = bytes_to_long(b"idek{this_is_a_fake_flag_lolol}")
 
 _, k1, k2 = xgcd(e, 2)
 remain_bytes = long_to_bytes(pow(c1, k1, N) * pow(c2, k2, N) % N)
-flag_chocolate = bytes_to_long(remain_bytes[-16:]) 
+flag_chocolate = bytes_to_long(remain_bytes[-16:]) # 99584795316725433978492646071734128819
 ```
 
 <br>
