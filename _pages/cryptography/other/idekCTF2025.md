@@ -111,3 +111,42 @@ $$c \equiv X + X^k \pmod p$$
 
 Now X can be solved directly, you can use one of the .roots() speedups [here](https://connor-mccartney.github.io/cryptography/other/grammarnaziMaltaQuals2025)
 
+<br>
+
+```python
+p = 170829625398370252501980763763988409583
+a = 164164878498114882034745803752027154293
+b = 125172356708896457197207880391835698381
+
+c = 99584795316725433978492646071734128819
+k = GF(p)(b).log(a)
+
+PR.<x> = PolynomialRing(GF(p))
+f = x + x**k - c
+g = pow(x, p, f) - x
+X = [r for r in f.gcd(g).roots()][0][0]
+m = GF(p)(X).log(a)
+print(f'{m = }') # 4807895356063327854843653048517090061
+```
+
+<br>
+
+Now we have m mod (p-1)/2, to solve real m you can either just bruteforce, or use LLL on each flag char and blupper's repo solves it nicely:
+
+```python
+load('https://raw.githubusercontent.com/TheBlupper/linineq/refs/heads/main/linineq.py')
+
+p = 170829625398370252501980763763988409583
+o = (p-1)//2
+mm = 4807895356063327854843653048517090061
+
+M = matrix([[256**i for i in reversed(range(20))]])
+b = [mm]
+lb = [30]*20 
+ub = [128]*20 
+
+for sol in solve_bounded_mod_gen(M, b, lb, ub, o, solver='ortools'):
+    print(bytes(sol))
+```
+
+`b'tks_f0r_ur_t1ck3t_xD'`
