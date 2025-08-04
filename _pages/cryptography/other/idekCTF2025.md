@@ -104,3 +104,10 @@ Let b = a^k:
 $$c \equiv a^m + (a^k)^m \pmod p$$
 
 $$c \equiv a^m + (a^m)^k \pmod p$$
+
+Let X = a^m:
+
+$$c \equiv X + X^k \pmod p$$
+
+Now X can be solved directly, you can use one of the .roots() speedups [here](https://connor-mccartney.github.io/cryptography/other/grammarnaziMaltaQuals2025)
+
