@@ -552,7 +552,7 @@ int main() {
 
 <br>
 
-Changing fields from another function:
+Changing fields from another function (note the -> is syntactic sugar for `(*person).age += 1;` and used when you have a pointer to the struct)
 
 ```c
 #include <stdio.h>
