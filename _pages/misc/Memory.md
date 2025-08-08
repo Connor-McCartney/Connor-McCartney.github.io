@@ -527,3 +527,53 @@ On linux, malloc calls the 'brk' or 'sbrk' system calls
 
 
 ---
+
+
+
+<br>
+
+# C structs
+
+```c
+#include <stdio.h>
+
+struct Person {
+    char* name;
+    int age;
+};
+
+
+int main() {
+    struct Person connor = {"Connor", 22};
+    printf("%s\n", connor.name);
+    printf("%d\n", connor.age);
+}
+```
+
+<br>
+
+Changing fields from another function:
+
+```c
+#include <stdio.h>
+
+struct Person {
+    char* name;
+    int age;
+};
+
+void change_age(struct Person* person) {
+    person->age += 1; 
+}
+
+int main() {
+    struct Person connor = {"Connor", 22};
+    printf("%s\n", connor.name);
+    printf("%d\n", connor.age);
+
+    change_age(&connor);
+    printf("%d\n", connor.age);
+}
+```
+
+<br>
