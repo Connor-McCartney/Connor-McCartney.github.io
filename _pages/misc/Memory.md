@@ -589,3 +589,25 @@ You can also initialise like this:
 
 <br>
 
+Typedefs so you don't have to use the 'struct' keyword all the time:
+
+```c
+#include <stdio.h>
+
+typedef struct Person {
+    char* name;
+    int age;
+} person_t;
+
+int main() {
+    person_t connor = {
+        .name = "Connor", 
+        .age = 22
+    };
+    printf("%s\n", connor.name);
+    printf("%d\n", connor.age);
+}
+```
+
+<br>
+
