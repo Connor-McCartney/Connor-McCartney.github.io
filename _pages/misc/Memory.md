@@ -577,3 +577,15 @@ int main() {
 ```
 
 <br>
+
+You can also initialise like this:
+
+```c
+    struct Person connor = {
+        .name = "Connor", 
+        .age = 22
+    };
+```
+
+<br>
+
