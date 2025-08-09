@@ -637,3 +637,12 @@ int main() {
 
 <br>
 
+
+<br>
+
+# C unions
+
+A union can be one of several data types.
+
+
+
