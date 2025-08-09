@@ -450,6 +450,15 @@ Heap memory must be manually allocated and exists until manually deallocated.
 
 When the function exits, the stack pointer is restored to its previous value, effectively "freeing" the stack memory used by the function.
 
+<br>
+
+# What happens when you call a function?
+
+Once called, the stack pointer is move to make room for: 
+
+- The return address
+- Arguments to the function
+- Local variables in the function body
 
 <br>
 
