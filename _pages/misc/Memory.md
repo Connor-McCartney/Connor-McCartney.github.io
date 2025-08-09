@@ -257,6 +257,43 @@ int main() {
 
 <br>
 
+# swapping vars with pointers
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h> // where memcpy is
+
+void swap(char** s1, char** s2) {
+    char* tmp = *s1;
+    *s1 = *s2;
+    *s2 = tmp;
+}
+
+void generic_swap(void* a, void* b, size_t size) {
+    void* tmp = malloc(size);
+    memcpy(tmp, a, size);
+    memcpy(a, b, size);
+    memcpy(b, tmp, size);
+    free(tmp);
+}
+
+int main() {
+    char* s1 = "abc";
+    char* s2 = "defgh";
+    swap(&s1, &s2);
+    printf("s1 = %s\ns2 = %s\n", s1, s2);
+
+
+    void* a = "abc";
+    void* b = "defgh";
+    generic_swap(&a, &b, sizeof(char*));
+    printf("a = %s\nb = %s\n", a, b);
+}
+```
+
+<br>
+
 # Arrays as function arguments
 
 You must also pass the length of the array as another argument, because within the new function there's no way to get the length. 
