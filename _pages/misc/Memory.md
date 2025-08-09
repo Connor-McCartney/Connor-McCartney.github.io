@@ -642,7 +642,7 @@ int main() {
 
 # C unions
 
-A union can be one of several data types.
+A union can be one of several data types. If you try to access a field that doesn't exist you get undefined behaviour. 
 
 
 
