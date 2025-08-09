@@ -644,5 +644,27 @@ int main() {
 
 A union can be one of several data types. If you try to access a field that doesn't exist you get undefined behaviour. 
 
+```c
+#include <stdio.h>
 
+typedef union AgeOrName {
+    int age; 
+    char* name;
+} age_or_name_t;
+
+int main() {
+    age_or_name_t connor = {
+        .age = 22,
+    };
+    printf("age is %d\n", connor.age);
+
+    connor.name = "connor";
+    printf("name is %s\n", connor.name);
+    printf("age is %d\n", connor.age); // junk (overwritten)
+
+
+    connor.age = 22;
+    printf("age is %d\n", connor.age);
+}
+```
 
