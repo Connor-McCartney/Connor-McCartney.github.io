@@ -268,7 +268,29 @@ You must also pass the length of the array as another argument, because within t
 <br>
 
 
+# Array decay
 
+Arrays decay to pointers quite often, such as when you explicitly cast it or pass it to a function. 
+
+Arrays DON'T decay when first declared, using sizeof() or using &arr. 
+
+```c
+#include <stdio.h>
+
+void foo(int* arr_func) {
+    printf("%ld\n", sizeof(arr_func)); // decayed to a pointer, so the size of a pointer, 8 bytes
+}
+
+int main() {
+    int arr_main[] = {543, 234, 456, 678, 345, 657, 789, 344, 987, 654};
+    printf("%ld\n", sizeof(arr_main)); // 40 (10 ints * 4 bytes per int)
+
+    foo(arr_main);
+
+    int* arr_main2 = (int*) arr_main;
+    printf("%ld\n", sizeof(arr_main2)); // decayed to a pointer, so the size of a pointer, 8 bytes
+}
+```
 
 <br>
 
