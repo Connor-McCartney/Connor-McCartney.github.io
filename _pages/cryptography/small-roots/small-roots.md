@@ -45,3 +45,6 @@ title: Coppersmith's Small Roots
 
 
 <span style="font-size:2em;">   [d_high](/cryptography/small-roots/d_high)       </span> <br>
+
+
+<span style="font-size:2em;">   [Low Entropy - HCMUS CTF 2025](/cryptography/small-roots/LowEntropy-HCMUSCTF2025)       </span> <br>
