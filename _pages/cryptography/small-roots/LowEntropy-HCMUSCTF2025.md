@@ -52,7 +52,7 @@ c = 2296306025869549176576925273198461673059177642465145766188113010949469752952
 
 Solve:
 
-We have (for some q1, q1 < 2^512;   y1,y2 < 2^(2048 - 880 - 512);   and some p < 2^880 which isn't prime):
+We have (for some q1, q2 < 2^512;   y1,y2 < 2^(2048 - 880 - 512);   and some p < 2^880 which isn't prime):
 
 $$n_1 = q_1 \cdot (y_1 \cdot 2^{880} + p)$$
 
