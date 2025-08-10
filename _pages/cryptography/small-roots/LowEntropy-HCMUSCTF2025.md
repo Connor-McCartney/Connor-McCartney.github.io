@@ -146,3 +146,20 @@ assert is_prime(q1) and is_prime(q2) and is_prime(p1) and is_prime(p2)
 
 <br>
 
+```python
+from Crypto.Util.number import *
+
+phi1 = (p1-1)*(q1-1)
+phi2 = (p2-1)*(q2-1)
+
+d1 = pow(65537, -1, phi1)
+d2 = pow(65537, -1, phi2)
+
+c = pow(c, d2, n2)
+for k in range(10):
+    flag = long_to_bytes(pow(c + k*n2, d1, n1))
+    if b'HCMUS' in flag:
+        print(flag)
+
+# HCMUS-CTF{tOO_LLL0w_2_13r0t3ct_7he_f14g}
+```
