@@ -97,3 +97,6 @@ assert a2 % q1 == s1 % q1
 assert a2 % q2 == s2 % q2
 ```
 
+<br>
+
+Then we'll do bivariate coppersmith on `a1*x1 + a2*x2` mod `n1*n2` (actually  the factor `q1*q2`) to solve x1, x2 and we're done. 
