@@ -108,7 +108,7 @@ The smallest of r1,r2,s1,s2 is ~439 bits, so the bound of x1,x2 is (512-439) ~= 
 Curiously, my repo with jacobian-newton and groebner integer solvers doesn't work. And the only integer solver in Kiona's that works is the solve_root_triangulate. 
 
 ```python
-PR.<x1, y2> = PolynomialRing(Zmod(n1*n2), 2)
+PR.<x1, x2> = PolynomialRing(Zmod(n1*n2), 2)
 f = a1*x1 + a2*x2
 roots = coppersmith_linear(basepoly=f, bounds=(2**73, 2**73), beta=0.25)
 print(roots) # [[0, 0], [5238320523828960725382, -2672350630505452150681]]
