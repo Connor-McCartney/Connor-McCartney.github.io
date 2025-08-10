@@ -65,9 +65,9 @@ $$n_2 = q_2 \cdot (y_2 \cdot 2^{880} + p)$$
 
 Work mod 2^880:
 
-$$n_2 \cdot q_1 \cdot p = n_1 \cdot q_2 \cdot p \pmod{2^{880}}$$
+$$n_2 \cdot q_1 \cdot p \equiv n_1 \cdot q_2 \cdot p \pmod{2^{880}}$$
 
-$$n_2 \cdot q_1 = n_1 \cdot q_2 \pmod{2^{880}}$$
+$$n_2 \cdot q_1 \equiv n_1 \cdot q_2 \pmod{2^{880}}$$
 
 
 <br>
