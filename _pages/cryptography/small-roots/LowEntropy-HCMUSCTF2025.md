@@ -105,4 +105,5 @@ The smallest of r1,r2,s1,s2 is ~439 bits, so the bound of x1,x2 is (512-439) ~= 
 
 <br>
 
+Curiously, my repo with jacobian-newton and groebner doesn't work. And the only solver in Kiona's that works is the solve_root_triangulate. 
 
