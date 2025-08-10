@@ -66,5 +66,5 @@ $$n_2 = q_2 \cdot (y_2 \cdot 2^{880} + p)$$
 
 First, we can use LLL to find some small r1, r2 where 
 
-$$r_1 \cdot n_1 \equiv r_2 \cdot n_2 \pmod 2^{880}$$
+$$r_1 \cdot n_1 \equiv r_2 \cdot n_2 \pmod{2^{880}}$$
 
