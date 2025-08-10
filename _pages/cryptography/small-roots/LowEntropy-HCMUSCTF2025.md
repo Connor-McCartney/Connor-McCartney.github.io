@@ -75,5 +75,6 @@ $$n_2 \cdot q_1 \equiv n_1 \cdot q_2 \pmod{2^{880}}$$
 
 We can use LLL to find some small r1, r2 where 
 
-$$r_1 \cdot n_1 \equiv r_2 \cdot n_2 \pmod{2^{880}}$$
+$$n_2 \cdot r_1 \equiv n_1 \cdot r_2 \pmod{2^{880}}$$
+
 
