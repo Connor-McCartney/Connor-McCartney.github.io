@@ -79,3 +79,21 @@ $$n_2 \cdot r_1 \equiv n_1 \cdot r_2 \pmod{2^{880}}$$
 
 $$n_2 \cdot s_1 \equiv n_1 \cdot s_2 \pmod{2^{880}}$$
 
+```python
+# for some x1, x2:
+assert q1 == r1*x1 + s1*x2
+assert q2 == r2*x1 + s2*x2
+
+# you can use crt to constuct bigger coefficients:
+a1 = crt([r1, r2], [n1, n2])
+a2 = crt([s1, s2], [n1, n2])
+assert (a1*x1 + a2*x2) % (q1*q2) == 0
+
+# (because)
+assert a1 % q1 == r1 % q1
+assert a1 % q2 == r2 % q2
+
+assert a2 % q1 == s1 % q1
+assert a2 % q2 == s2 % q2
+```
+
