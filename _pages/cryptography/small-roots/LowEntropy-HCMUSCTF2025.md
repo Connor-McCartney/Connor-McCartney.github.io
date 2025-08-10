@@ -100,3 +100,9 @@ assert a2 % q2 == s2 % q2
 <br>
 
 Then we'll do bivariate coppersmith on `a1*x1 + a2*x2` mod `n1*n2` (actually  the factor `q1*q2`) to solve x1, x2 and we're done. 
+
+The smallest of r1,r2,s1,s2 is ~439 bits, so the bound of x1,x2 is (512-439) ~= 73 bits. 
+
+<br>
+
+
