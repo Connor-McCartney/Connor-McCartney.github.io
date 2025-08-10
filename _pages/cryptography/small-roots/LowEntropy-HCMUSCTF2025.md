@@ -63,8 +63,17 @@ $$n_2 = q_2 \cdot (y_2 \cdot 2^{880} + p)$$
 
 <br>
 
+Work mod 2^880:
 
-First, we can use LLL to find some small r1, r2 where 
+$$n_2 \cdot q_1 \cdot p = n_1 \cdot q_2 \cdot p \pmod{2^{880}}$$
+
+$$n_2 \cdot q_1 = n_1 \cdot q_2 \pmod{2^{880}}$$
+
+
+<br>
+
+
+We can use LLL to find some small r1, r2 where 
 
 $$r_1 \cdot n_1 \equiv r_2 \cdot n_2 \pmod{2^{880}}$$
 
