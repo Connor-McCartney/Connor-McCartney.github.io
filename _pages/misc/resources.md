@@ -12,6 +12,9 @@ KeePassXC - offline password manager <https://keepassxc.org> <br>
 Startpage - search engine <https://www.startpage.com> <br>
 Cybersecurity courses - <https://academy.tcm-sec.com/courses> <br>
 API Security - <https://university.apisec.ai> <br>
+Windows installer - <https://scoop.sh> <br>
+
+
 
 ## Libraries
 
