@@ -105,7 +105,7 @@ __vulnerability: p^q hint given__
 
 
 <span style="font-size:2em;">   [Various Cyclotomic Polynomial Challs](/cryptography/rsa/CyclotomicPolynomial)       </span> <br>
-__vulnerability: factors form cyclotimic polynoimal__
+__vulnerability: factors form cyclotomic polynoimal__
 
 
 <span style="font-size:2em;">   [L4ugh - 0xl4ughCTF 2024](/cryptography/rsa/L4ugh-0xl4ughCTF-2024)       </span> <br>
