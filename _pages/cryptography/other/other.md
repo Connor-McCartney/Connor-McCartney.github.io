@@ -161,6 +161,8 @@ title: Other
 <span style="font-size:2em;">   [R3CTF 2025](/cryptography/other/R3CTF2025) </span> <br>
 
 
+<span style="font-size:2em;">   [HITCON 2025](/cryptography/other/HITCON2025) </span> <br>
+
 <span style="font-size:2em;">   [DUCTF 2025](/cryptography/other/DUCTF-2025) </span> <br>
 
 
