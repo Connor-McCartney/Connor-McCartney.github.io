@@ -171,7 +171,9 @@ u \cdot \begin{bmatrix}   b_0 \\ b_1 \\ ... \\ b_m  \end{bmatrix}
 
 <br>
 
+BKZ with block size 15 and long double precision works:
 
+<br>
 
 
 ```python
