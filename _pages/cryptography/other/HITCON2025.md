@@ -218,7 +218,7 @@ row = vector([-523, 487, 487, 487, 30, -523, 487, 487, -523, 487, -523, 487, 487
 solve_left = M.solve_left(row)
 su = solve_left[:64]
 u = -solve_left[64]
-s = su.change_ring(GF(p)) / u
+s = su / u
 
 key = sha256(str(s).encode()).digest()[:24]
 aes = AES.new(key[:16], AES.MODE_CTR, nonce=key[-8:])
