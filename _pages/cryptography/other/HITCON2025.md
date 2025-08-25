@@ -69,9 +69,10 @@ $T_1 + k_1 \cdot n = 0$
 Eliminate n:
 
 $$\frac{-T_0}{k_0} = \frac{-T_1}{k_1}$$
-$$-T_0 \cdot k_1 = -T_1 \cdot k_0$$
-$$T_1 \cdot k_0 -T_0 \cdot k_1 = 0$$
 
+$$-T_0 \cdot k_1 = -T_1 \cdot k_0$$
+
+$$T_1 \cdot k_0 -T_0 \cdot k_1 = 0$$
 
 LLL time:
 
