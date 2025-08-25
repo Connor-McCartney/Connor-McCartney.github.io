@@ -188,7 +188,6 @@ print('BKZ...')
 for row in M.BKZ(block_size=15, fp='ld'):
     if len(set(row)) == 3:
         print(row)
-        break
 ```
 
 ```
