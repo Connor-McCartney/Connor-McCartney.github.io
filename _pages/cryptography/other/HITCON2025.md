@@ -219,7 +219,7 @@ u = int(M.solve_left(row)[-2])
 v = int(M.solve_left(row)[-1])
 
 e = [((i-v)*pow(u, -1, p))%p for i in row]
-s = A.solve_right(vector(b) - vector(GF(p), e))
+s = A.change_ring(GF(p)).solve_right(vector(b) - vector(e))
 
 key = sha256(str(s).encode()).digest()[:24]
 aes = AES.new(key[:16], AES.MODE_CTR, nonce=key[-8:])
