@@ -130,6 +130,23 @@ ct = b')c\xd7\x11.?j\xe0\x89>\xcf\x15u&\x00el\x86\xae{\xfdv\x97\xe4\xff\x905\x13
 
 Solve:
 
+
+<br>
+
+Usually when we want to find a small error in LWE we use this lattice setup:
+
+<br>
+
+$$s_0 \cdot \begin{bmatrix} A_{0,0} \\ A_{1, 0} \\ ... \\ A_{m, 0} \end{bmatrix} +
+  s_1 \cdot \begin{bmatrix} A_{0,1} \\ A_{1, 1} \\ ... \\ A_{m, 1} \end{bmatrix} +
+  \ ...\  +
+  s_n \cdot \begin{bmatrix} A_{0,n} \\ A_{1, n} \\ ... \\ A_{m, n} \end{bmatrix} -
+1 \cdot \begin{bmatrix}   b_0 \\ b_1 \\ ... \\ b_m  \end{bmatrix} =
+\begin{bmatrix}   e_0 \\   e_1 \\ ... \\ e_m   \end{bmatrix}$$
+
+<br>
+
+
 ```python
 from output import A, b
 
