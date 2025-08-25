@@ -77,7 +77,7 @@ LLL time:
 
 $$(k_0 \cdot a_? \cdot m_? + k_0 \cdot a_? \cdot m_? + \ ...) - (k_1 \cdot a_? \cdot m_? + k_1 \cdot a_? \cdot m_? + \ ...) = 0$$
 
-Note that LLL only seems to let us solve the overlapping terms in T0 and T1. 
+Note that LLL doesn't let us solve the diagonals, so brute them afterwards. 
 
 ---
 
