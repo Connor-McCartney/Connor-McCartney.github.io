@@ -56,7 +56,7 @@ $$M \cdot C - C \cdot M \equiv 0 \pmod n$$
 
 That is, if we let T = MC-CM, then each entry `T[x][y] + k_i*n = 0` for some very small k_i. 
 
-Picking different x,y will gives us different equations to use with different ms. 
+Picking different x,y gives us different equations to use with different ms. 
 
 
 Suppose we pick two entries of T, T0 and T1. 
