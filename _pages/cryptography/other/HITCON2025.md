@@ -141,6 +141,57 @@ for row in identity_matrix(len(a)).stack(vector(a)).T.LLL():
 Full solver:
 
 
+```python
+from out import C, ct
+from tqdm import trange
+from Crypto.Cipher import AES
+
+def solve(T0, T1, start, end):
+    a = T0.coefficients() + T1.coefficients()
+    for row in identity_matrix(len(a)).stack(vector(a)).T.LLL():
+        if row[-1] != 0:
+            continue
+        if any(i == 0 for i in row[:-1]):
+            continue
+        k1 = gcd(row[start:end])
+        if k1 == 1:
+            continue
+        return [abs(_)//k1 for _ in row[start:end]] 
+
+k = 16
+C = Matrix(ZZ, k, k, C)
+PR = PolynomialRing(ZZ, names=[f'm{i}' for i in range(k*k)])
+ms = PR.gens()[:k*k]
+M = Matrix(k, k, ms)
+T = M*C - C*M
+
+key1_to_15    = solve(T[0][1],  T[0][0],  1,  16)
+key16_to_31   = solve(T[1][1],  T[1][0],  1,  16) # excluding 17
+key16 = key16_to_31[0]
+key18_to_31 = key16_to_31[1:]
+key248_to_254 = solve(T[15][1], T[15][0], -9, -2)
+
+print(key1_to_15)
+print(key16_to_31)
+print(key248_to_254)
+
+#for key0 in trange(256):
+for key0 in range(168, 256):
+    for key17 in range(256):
+        for key255 in range(256):
+            key = bytes([key0] + key1_to_15 + [key16, key17] + key18_to_31)
+            nonce = bytes(key248_to_254 + [key255])
+            flag = AES.new(key=key, mode=AES.MODE_CTR, nonce=nonce).decrypt(ct)
+            if b'hitcon{' in flag:
+                print(flag)
+                exit()
+
+
+# hitcon{neither_e_nor_n_matters_here_lol}
+```
+
+
+<br>
 
 
 
