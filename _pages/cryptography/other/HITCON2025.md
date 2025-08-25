@@ -47,6 +47,99 @@ Solve:
 
 
 
+All m0 to m255 in M are small, between 0 and 256. 
+
+A nice trick is to use 
+
+
+$$M \cdot C - C \cdot M \equiv 0 \pmod n$$
+
+That is, if we let T = MC-CM, then each entry `T[x][y] + k_i*n = 0` for some very small k_i. 
+
+Picking different x,y will gives us different equations to use with different ms. 
+
+
+Suppose we pick two entries of T, T0 and T1. 
+
+$T_0 + k_0 \cdot n = 0$
+
+$T_1 + k_1 \cdot n = 0$
+
+
+Eliminate n:
+
+$$\frac{-T_0}{k_0} = \frac{-T_1}{k_1}$$
+$$-T_0 \cdot k_1 = -T_1 \cdot k_0$$
+$$T_1 \cdot k_0 -T_0 \cdot k_1 = 0$$
+
+
+LLL time:
+
+$$(k_0 \cdot a_? \cdot m_? + k_0 \cdot a_? \cdot m_? + \ ...) - (k_1 \cdot a_? \cdot m_? + k_1 \cdot a_? \cdot m_? + \ ...) = 0$$
+
+Note that LLL only seems to let us solve the overlapping terms in T0 and T1. 
+
+---
+
+Test:
+
+```python
+from Crypto.Util.number import *
+
+n = getPrime(1024) * getPrime(1024)
+k = 16
+e = 65537
+
+key = os.urandom(k * k)
+M = matrix(Zmod(n), k, k, key)
+print(M.list())
+C = M**e
+
+PR = PolynomialRing(ZZ, names=[f'm{i}' for i in range(k*k)])
+ms = PR.gens()[:k*k]
+M = Matrix(k, k, ms)
+C = C.change_ring(ZZ)
+
+T = M*C - C*M
+
+T0 = T[0][1]
+T1 = T[0][0]
+
+subs_dict = {s: k for s, k in zip(ms, key)}
+real_k0 = int(-T0.subs(subs_dict)) // n
+real_k1 = int(-T1.subs(subs_dict)) // n
+assert int(T0.subs(subs_dict)) + real_k0*n == 0
+assert int(T1.subs(subs_dict)) + real_k1*n == 0
+
+print()
+print(f'{real_k0 = }')
+print(f'{real_k1 = }')
+print()
+
+assert abs(real_k0) < 1000
+assert abs(real_k1) < 1000
+
+a = T0.coefficients() + T1.coefficients()
+for row in identity_matrix(len(a)).stack(vector(a)).T.LLL():
+    if row[-1] != 0:
+        continue
+    if any(i == 0 or abs(i) > 256*1000 for i in row[:-1]):
+        continue
+
+    k1 = gcd(row[1:16])
+    if k1 == 1:
+        continue
+    print(f'{k1 = }')
+    solve = [abs(_)//k1 for _ in row[1:16]] 
+    print(solve)
+    assert solve == list(key)[1:16]
+```
+
+
+<br>
+
+Full solver:
+
 
 
 
