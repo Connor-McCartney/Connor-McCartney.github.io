@@ -152,7 +152,7 @@ s_n \cdot \begin{bmatrix} A_{0,n} \\ A_{1, n} \\ ... \\ A_{m, n} \end{bmatrix} -
 
 But the errors in this chall are not small. However they come from a ternary distribution. 
 
-The cool trick is turn the target vector into `u*e + v*ones`, which is smaller than e:
+The cool trick is to insert a column of 1's and turn the target vector into `u*e - v`, which is smaller than e:
 
 <br>
 
