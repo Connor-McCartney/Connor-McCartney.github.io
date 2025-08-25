@@ -152,21 +152,21 @@ s_n \cdot \begin{bmatrix} A_{0,n} \\ A_{1, n} \\ ... \\ A_{m, n} \end{bmatrix} -
 
 But the errors in this chall are not small. However they come from a ternary distribution. 
 
-The cool trick is add a column of 1's, and we can get a smaller target vector:
+The cool trick is turn the target vector into `u*e + v*one`, which is smaller than e:
 
 <br>
 
-$$s_0 \cdot \begin{bmatrix} A_{0,0} \\ A_{1, 0} \\ ... \\ A_{m, 0} \end{bmatrix} +
-s_1 \cdot \begin{bmatrix} A_{0,1} \\ A_{1, 1} \\ ... \\ A_{m, 1} \end{bmatrix} +
+$$u \cdot s_0 \cdot \begin{bmatrix} A_{0,0} \\ A_{1, 0} \\ ... \\ A_{m, 0} \end{bmatrix} +
+u \cdot s_1 \cdot \begin{bmatrix} A_{0,1} \\ A_{1, 1} \\ ... \\ A_{m, 1} \end{bmatrix} +
 \ ...\  +
-s_n \cdot \begin{bmatrix} A_{0,n} \\ A_{1, n} \\ ... \\ A_{m, n} \end{bmatrix} -
-1 \cdot \begin{bmatrix}   b_0 \\ b_1 \\ ... \\ b_m  \end{bmatrix} 
-- t \cdot \begin{bmatrix} 1 \\ 1 \\ ... \\ 1 \end{bmatrix} 
+u \cdot s_n \cdot \begin{bmatrix} A_{0,n} \\ A_{1, n} \\ ... \\ A_{m, n} \end{bmatrix} -
+u \cdot \begin{bmatrix}   b_0 \\ b_1 \\ ... \\ b_m  \end{bmatrix} 
+- v \cdot \begin{bmatrix} 1 \\ 1 \\ ... \\ 1 \end{bmatrix} 
 + k_0 \cdot \begin{bmatrix} p \\ 0 \\ ... \\ 0 \end{bmatrix} 
 + k_1 \cdot \begin{bmatrix} 0 \\ p \\ ... \\ 0 \end{bmatrix} 
 + \ ... \
 + k_m \cdot \begin{bmatrix} 0 \\ 0 \\ ... \\ p \end{bmatrix} 
-= \begin{bmatrix}   e_0 - t \\   e_1 - t \\ ... \\ e_m - t   \end{bmatrix}$$
+= \begin{bmatrix}   u \cdot e_0 - v \\   u \cdot e_1 - v \\ ... \\ u \cdot e_m - v   \end{bmatrix}$$
 
 
 <br>
