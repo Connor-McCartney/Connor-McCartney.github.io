@@ -150,6 +150,11 @@ s_n \cdot \begin{bmatrix} A_{0,n} \\ A_{1, n} \\ ... \\ A_{m, n} \end{bmatrix} -
 
 <br>
 
+But the errors in this chall are not that small. However they come from a ternary distribution. 
+
+The cool trick is add a column of 1's, and we can get a smaller target vector:
+
+
 
 ```python
 from output import A, b
