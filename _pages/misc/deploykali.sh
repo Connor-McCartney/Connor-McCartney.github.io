@@ -32,3 +32,7 @@ mv /tmp/deploy-arch-hyprland/dotfiles/.fdignore /home/connor
 mv /tmp/deploy-arch-hyprland/dotfiles/.wallpapers /home/connor
 mv /tmp/deploy-arch-hyprland/dotfiles/.config/alacritty /home/connor/.config
 mv /tmp/deploy-arch-hyprland/dotfiles/.config/nvim /home/connor/.config
+
+
+sudo apt install -y --reinstall virtualbox-guest-x11
+
