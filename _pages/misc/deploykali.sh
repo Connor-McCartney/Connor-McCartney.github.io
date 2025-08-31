@@ -9,6 +9,7 @@ sudo apt install neovim xorg libxft-dev libxinerama-dev libxtst-dev feh picom fl
 cd /tmp
 git clone https://github.com/Connor-McCartney/deploy-arch-dwm
 mv /tmp/deploy-arch-dwm/suckless /home/connor
+mv /tmp/deploy-arch-dwm/dotfiles/.config/kitty /home/connor/.config
 cd /home/connor/suckless/dwm && sudo make clean install
 cd /home/connor/suckless/dmenu && sudo make clean install
 cd /home/connor/suckless/slstatus && sudo make clean install
