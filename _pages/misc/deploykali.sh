@@ -19,3 +19,12 @@ rm -rf /tmp/deploy-arch-dwm
 
 printf "feh --bg-scale /home/connor/.wallpapers/kuromi.png\npicom -b\nslstatus &\nexec dwm" > /home/connor/.xsession 
 chmod +x /home/connor/.xsession
+
+mkdir /home/connor/t
+
+cd /tmp
+git clone https://github.com/Connor-McCartney/deploy-arch-hyprland/
+
+mv /tmp/deploy-arch-hyprland/dotfiles/.bashrc /home/connor
+mv /tmp/deploy-arch-hyprland/dotfiles/.fdignore /home/connor
+mv /tmp/deploy-arch-hyprland/dotfiles/.wallpapers /home/connor
