@@ -25,7 +25,8 @@ mkdir /home/connor/t
 
 cd /tmp
 git clone https://github.com/Connor-McCartney/deploy-arch-hyprland/
-
 mv /tmp/deploy-arch-hyprland/dotfiles/.bashrc /home/connor
 mv /tmp/deploy-arch-hyprland/dotfiles/.fdignore /home/connor
 mv /tmp/deploy-arch-hyprland/dotfiles/.wallpapers /home/connor
+mv /tmp/deploy-arch-hyprland/dotfiles/.config/alacritty /home/connor/.config
+mv /tmp/deploy-arch-hyprland/dotfiles/.config/nvim /home/connor/.config
