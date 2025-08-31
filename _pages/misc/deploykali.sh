@@ -17,5 +17,5 @@ cd /home/connor/suckless/bongocat && sudo make install
 mv /tmp/deploy-arch-dwm/dotfiles/.config/picom /home/connor/.config
 rm -rf /tmp/deploy-arch-dwm
 
-printf "#xrandr --output LVDS-1 --off\n#sleep 1\n#xrandr --output VGA-1 --auto\nfeh --bg-scale /home/connor/.wallpapers/kuromi.png\npicom -b\nslstatus &\nexec dwm" > /home/connor/.xsession # needed to boot with lightdm
+printf "feh --bg-scale /home/connor/.wallpapers/kuromi.png\npicom -b\nslstatus &\nexec dwm" > /home/connor/.xsession 
 chmod +x /home/connor/.xsession
