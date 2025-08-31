@@ -2,7 +2,8 @@ set -e
 
 sudo apt update
 sudo apt upgrade -y
-sudo apt install neovim xorg libxft-dev libxinerama-dev libxtst-dev feh picom flameshot alsa-utils libasound2-dev thunar alacritty fzf -y
+sudo apt install neovim xorg libxft-dev libxinerama-dev libxtst-dev feh picom flameshot alsa-utils libasound2-dev thunar alacritty fzf fd-find -y
+# have to change fd to fdfind in bashrc
 
 # suckless
 cd /tmp
