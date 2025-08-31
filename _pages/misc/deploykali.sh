@@ -20,7 +20,7 @@ cd /home/connor/suckless/bongocat && sudo make install
 mv /tmp/deploy-arch-dwm/dotfiles/.config/picom /home/connor/.config
 rm -rf /tmp/deploy-arch-dwm
 
-printf "feh --bg-scale /home/connor/.wallpapers/kuromi.png\npicom -b\nslstatus &\nexec dwm" > /home/connor/.xsession 
+printf "feh --bg-scale /home/connor/.wallpapers/purple_eyes.png\npicom -b\nslstatus &\nexec dwm" > /home/connor/.xsession 
 chmod +x /home/connor/.xsession
 
 mkdir /home/connor/t
