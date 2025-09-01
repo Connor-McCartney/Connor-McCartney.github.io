@@ -5,6 +5,8 @@ sudo apt upgrade -y
 sudo apt install neovim xorg libxft-dev libxinerama-dev libxtst-dev feh picom flameshot alsa-utils libasound2-dev thunar kitty konsole fzf fd-find -y
 # have to change fd to fdfind in bashrc
 # alacritty is buggy in VM don't use
+# sudo visudo
+# %sudo ALL=(ALL:ALL) NOPASSWD: ALL
 
 # suckless
 cd /tmp
