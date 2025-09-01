@@ -43,9 +43,6 @@ fc-cache -fv
 
 
 
-
-chown connor ~/*
-chown connor ~/suckless/*
-chown connor ~/suckless/dwm/*
+sudo chown -R connor:connor ~
 
 printf "done :)"
