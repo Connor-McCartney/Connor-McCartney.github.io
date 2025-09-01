@@ -42,3 +42,10 @@ fc-cache -fv
 
 
 
+
+
+chown connor ~/*
+chown connor ~/suckless/*
+chown connor ~/suckless/dwm/*
+
+printf "done :)"
