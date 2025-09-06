@@ -762,3 +762,18 @@ option 3: move the base pointer (kinda better practice than the stack pointer)
 
 
 <br>
+
+
+
+
+
+
+
+
+
+
+# Calling convention
+
+<https://en.wikipedia.org/wiki/X86_calling_conventions#System_V_AMD64_ABI>
+
+<img width="493" height="209" alt="image" src="https://github.com/user-attachments/assets/f84059d0-4083-4151-8f57-29792f0f8d73" />
