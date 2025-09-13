@@ -37,3 +37,11 @@ n -  number of elements
 
 
 
+
+
+
+# commands list
+
+`disas/disass/disassemble`
+
+
