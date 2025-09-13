@@ -44,7 +44,7 @@ n -  number of elements
 
 # commands list
 
-`disas/disass/disassemble`
+`disas/disass/disassemble`, also use `set disassembly-flavor intel` beforehand
 
 `attach <PID>` - attach to some already running program
 
