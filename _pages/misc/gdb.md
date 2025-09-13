@@ -82,3 +82,5 @@ n -  number of elements
 `call`
 
 `jump`
+
+`finish` - runs until the current function returns
