@@ -12,3 +12,28 @@ title: gdb
 <https://web.archive.org/web/20250101052732/https://users.umiacs.umd.edu/~tdumitra/courses/ENEE757/Fall15/misc/gdb_tutorial.html>
 
 <https://www.brendangregg.com/blog/2016-08-09/gdb-example-ncurses.html>
+
+
+
+
+# install pwndbg
+
+```
+git clone https://github.com/pwndbg/pwndbg
+cd pwndbg
+./setup.sh
+```
+
+
+# x - examine
+
+x/<n><u><f> <address>
+
+u - unit size
+
+f - format
+
+n -  number of elements
+
+
+
