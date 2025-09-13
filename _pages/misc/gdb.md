@@ -46,4 +46,6 @@ n -  number of elements
 
 `disas/disass/disassemble`
 
+`attach <PID>` - attach to some already running program
 
+`core <PATH>` - analyse the coredump of some program that's finished running
