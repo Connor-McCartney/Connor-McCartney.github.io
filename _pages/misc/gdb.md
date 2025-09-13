@@ -73,3 +73,5 @@ n -  number of elements
 `f/frame`
 
 `p/print`
+
+`display` - displays something automatically everytime it stops  <https://sourceware.org/gdb/current/onlinedocs/gdb#Auto-Display>
