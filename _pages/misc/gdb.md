@@ -27,7 +27,7 @@ cd pwndbg
 
 # x - examine
 
-x/<n><u><f> <address>
+`x/<n><u><f> <address>`
 
 u - unit size
 
