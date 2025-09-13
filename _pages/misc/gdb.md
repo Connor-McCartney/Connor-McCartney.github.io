@@ -77,7 +77,7 @@ n -  number of elements
 
 `display` - displays something automatically everytime it stops  <https://sourceware.org/gdb/current/onlinedocs/gdb#Auto-Display>
 
-`set` - eg `set $my_var = ...`
+`set` - you can create your own variables `set $my_var = ...`, or you can also used it to change registers/memory values
 
 `call`
 
