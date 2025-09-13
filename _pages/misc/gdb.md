@@ -49,3 +49,13 @@ n -  number of elements
 `attach <PID>` - attach to some already running program
 
 `core <PATH>` - analyse the coredump of some program that's finished running
+
+`c/continue`
+
+`n/next`
+
+`b/break`
+
+`r/run`
+
+`start` - sets breakpoint at main, then runs it
