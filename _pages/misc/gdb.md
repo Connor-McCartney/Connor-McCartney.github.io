@@ -71,3 +71,5 @@ n -  number of elements
 `info <registers/breakpoints/functions/many more...>`, just run info with no arguments to see all possible subcommands
 
 `f/frame`
+
+`p/print`
