@@ -59,3 +59,7 @@ n -  number of elements
 `r/run`
 
 `start` - sets breakpoint at main, then runs it
+
+`starti` - sets breakpoint at _start (assembly), then runs it
+
+`info <registers/breakpoints/functions/many more...>`, just run info with no arguments to see all possible subcommands
