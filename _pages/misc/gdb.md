@@ -29,9 +29,9 @@ cd pwndbg
 
 `x/<n><u><f> <address>`
 
-u - unit size
+u - unit size (b: 1 byte, h: 2 bytes, 2: 4 bytes, g: 8 bytes)
 
-f - format
+f - format (d: decimal, x: hex, s: string, i: instructions)
 
 n -  number of elements
 
