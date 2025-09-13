@@ -61,7 +61,7 @@ n -  number of elements
 
 `si/stepi` - one assembly intsruction, but stepping into function calls
 
-`b/break`
+`b/break`, view with `info breakpoints`, delete with `del break <i>`
 
 `r/run`
 
