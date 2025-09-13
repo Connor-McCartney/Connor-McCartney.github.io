@@ -52,11 +52,13 @@ n -  number of elements
 
 `c/continue` 
 
-`n/next`
+`n/next` - one source line, but stepping over function calls
 
-`s/step` - one source line
+`ni/nexti` - one assembly intsruction, but stepping over function calls
 
-`si/stepi` - one assembly intsruction
+`s/step` - one source line, but stepping into function calls
+
+`si/stepi` - one assembly intsruction, but stepping into function calls
 
 `b/break`
 
