@@ -24,6 +24,7 @@ cd pwndbg
 ./setup.sh
 ```
 
+<br>
 
 # x - examine
 
