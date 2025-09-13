@@ -32,7 +32,7 @@ cd pwndbg
 
 u - unit size (b: 1 byte, h: 2 bytes, w: 4 bytes, g: 8 bytes)
 
-f - format (d: decimal, x: hex, s: string, i: instructions)
+f - format (d: decimal (signed), u: decimal (unsigned), x: hex, s: string, i: instructions)
 
 n -  number of elements
 
