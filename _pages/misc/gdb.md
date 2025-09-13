@@ -14,7 +14,7 @@ title: gdb
 <https://www.brendangregg.com/blog/2016-08-09/gdb-example-ncurses.html>
 
 
-
+<br>
 
 # install pwndbg
 
@@ -29,7 +29,7 @@ cd pwndbg
 
 `x/<n><u><f> <address>`
 
-u - unit size (b: 1 byte, h: 2 bytes, 2: 4 bytes, g: 8 bytes)
+u - unit size (b: 1 byte, h: 2 bytes, w: 4 bytes, g: 8 bytes)
 
 f - format (d: decimal, x: hex, s: string, i: instructions)
 
