@@ -50,9 +50,13 @@ n -  number of elements
 
 `core <PATH>` - analyse the coredump of some program that's finished running
 
-`c/continue`
+`c/continue` 
 
 `n/next`
+
+`s/step` - one source line
+
+`si/stepi` - one assembly intsruction
 
 `b/break`
 
@@ -63,3 +67,5 @@ n -  number of elements
 `starti` - sets breakpoint at _start (assembly), then runs it
 
 `info <registers/breakpoints/functions/many more...>`, just run info with no arguments to see all possible subcommands
+
+
