@@ -186,7 +186,7 @@ f =  (x^3 - 3*x) - s*(1-3*x^2)
 for t, _ in f.roots():
     at = arctan(t)
     M = 2**precision
-    PR.<x, k> = PolynomialRing(Zmod(2**precision))
+    PR.<x, k> = PolynomialRing(Zmod(2**precision), implementation='generic')
     f =  int(at*M) + k * int(pi*M) + x
     roots = defund_multivariate(f, bounds=(2**679, 2**679), m=1, d=2)
     if roots == []:
