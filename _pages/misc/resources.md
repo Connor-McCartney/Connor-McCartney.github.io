@@ -79,6 +79,7 @@ nmtui - decent TUI to connect to wifi with network manager <br>
 xorg fake key inputs <https://man.archlinux.org/man/xte.1.en> <br>
 Rossmann <https://wiki.futo.org> <br>
 NTT <https://eprint.iacr.org/2024/585.pdf> <br>
+Linux syscalls <https://x64.syscall.sh> <br>
 
 ## Blogs
 
