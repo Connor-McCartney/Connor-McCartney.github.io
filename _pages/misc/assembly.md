@@ -1132,7 +1132,7 @@ int mult(int a, int b) {
 }
 ```
 
-Let's continue. None of these instructions should affect rsp or rbp. 
+Let's continue. None of these instructions should affect rsp or rbp. But there's some local variables in the red zone of the stack. 
 
 ```asm
 mov    DWORD PTR [rbp-0x14],edi  
@@ -1141,4 +1141,22 @@ mov    eax,DWORD PTR [rbp-0x14]
 imul   eax,DWORD PTR [rbp-0x18]  
 mov    DWORD PTR [rbp-0x4],eax 
 mov    eax,DWORD PTR [rbp-0x4]
+```
+
+Stack:
+
+```asm
+0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)           
+0x7fffffffe628:	0x0000555555555162 (the instruction in main immediately after call triple)     
+0x7fffffffe620:	0x00007fffffffe630 (base pointer of main, saved when calling triple)          
+0x7fffffffe618:	0x0000000000000000
+0x7fffffffe610:	0x0000000000000000
+0x7fffffffe608:	0x0000000500000000                                                            
+0x7fffffffe600:	0x000055555555514c (the instruction in triple immediately after calling mult)  
+0x7fffffffe5f8: 0x00007fffffffe620 (base pointer of triple, saved when calling mult)           <- rbp, rsp
+--- red zone below ---
+0x7fffffffe5f0:	0x0000000f00000000  (ret = 15)
+0x7fffffffe5e8:	0x0000000000000000
+0x7fffffffe5e0:	0x0000000500000003  (a=5 and b=3)
+...
 ```
