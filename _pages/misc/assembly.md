@@ -939,3 +939,9 @@ RBP = 0x7fffffffe630
 RSP = 0x7fffffffe630 
 ```
 
+stack:
+
+```
+0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)                        <- rbp, rsp
+...
+```
