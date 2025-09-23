@@ -921,7 +921,7 @@ If I break right at *main, I see:
 
 ```
 RBP = 0x7fffffffe6d0 —▸ 0x7fffffffe730 ◂— 0
-RSP = 0x7fffffffe638 —▸ 0x7ffff7c27675 ◂— mov edi, eax   (instruction right after main returns in _start)
+RSP = 0x7fffffffe638 —▸ 0x7ffff7c27675 ◂— mov edi, eax   (instruction right after main returns?)
 ```
 
 
