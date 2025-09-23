@@ -1111,12 +1111,16 @@ After some research, it turns out there is a 128-byte 'red zone', which can be u
 A full look at the rest of mult:
 
 ```asm
-mov    DWORD PTR [rbp-0x14],edi
-mov    DWORD PTR [rbp-0x18],esi
-mov    eax,DWORD PTR [rbp-0x14]
-imul   eax,DWORD PTR [rbp-0x18]
-mov    DWORD PTR [rbp-0x4],eax
+# mul(rdi, rsi)  a is rdi, b is rsi
+mov    DWORD PTR [rbp-0x14],edi  # a = rdi
+mov    DWORD PTR [rbp-0x18],esi  # b = rsi
+mov    eax,DWORD PTR [rbp-0x14]  # tmp = a 
+imul   eax,DWORD PTR [rbp-0x18]  # tmp *= b
+
+# ret = tmp
+mov    DWORD PTR [rbp-0x4],eax 
 mov    eax,DWORD PTR [rbp-0x4]
+
 pop    rbp
 ret
 ```
