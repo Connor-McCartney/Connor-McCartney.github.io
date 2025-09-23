@@ -1132,7 +1132,7 @@ int mult(int a, int b) {
 }
 ```
 
-Let's continue. None of these instructions should affect the stack, rsp or rbp. 
+Let's continue. None of these instructions should affect rsp or rbp. 
 
 ```asm
 mov    DWORD PTR [rbp-0x14],edi  
