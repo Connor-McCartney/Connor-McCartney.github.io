@@ -895,3 +895,14 @@ End of assembler dump.
 ```
 
 
+Main:
+
+```asm
+push   rbp                # save base pointer from whatever initially calls main
+mov    rbp,rsp            # main's stack frame
+mov    edi,0x5            # argument to triple
+call   0x1136 <triple>    # call triple
+mov    eax,0x0            # main's return code
+pop    rbp                # restore base pointer to return to whatever initially called main
+ret                       # return
+```
