@@ -1255,3 +1255,17 @@ Stack (only 0x7fffffffe618 changed, which has rax returned by mult):
 <br>
 
 And now we arrive at the `leave` instruction. 
+
+Stack:
+
+```asm
+0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)            <- rbp
+0x7fffffffe628:	0x0000555555555162 (the instruction in main immediately after call triple)    <- rsp
+0x7fffffffe620:	old popped junk
+0x7fffffffe618:	old popped junk
+0x7fffffffe610:	old popped junk
+0x7fffffffe608:	old popped junk                                      
+0x7fffffffe600:	old popped junk
+0x7fffffffe5f8: old popped junk       
+...
+```
