@@ -1021,3 +1021,23 @@ mov    eax,DWORD PTR [rbp-0x4]
 leave                             # cleans up triple's stack frame before returning, equivalent to mov rsp, rbp (restore stack pointer) and then pop rbp (restore base pointer)
 ret
 ```
+
+Now let's continue:
+
+```
+mov    DWORD PTR [rbp-0x14],edi   
+mov    eax,DWORD PTR [rbp-0x14]
+mov    esi,0x3              
+mov    edi,eax             
+```
+
+rsp and rbp haven't changed, stack now looks like this (just the 5 is new):
+
+```
+0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)           
+0x7fffffffe628:	0x0000555555555166 (the instruction in main immediately after call triple)     
+0x7fffffffe620:	0x00007fffffffe630 (base pointer of main, saved when calling triple)          <- rbp
+0x7fffffffe618:	0x0000000000000000
+0x7fffffffe610:	0x0000000000000000
+0x7fffffffe608:	0x0000000500000000                                                            <- rsp
+```
