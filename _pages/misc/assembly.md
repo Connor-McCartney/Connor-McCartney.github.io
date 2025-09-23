@@ -1012,7 +1012,7 @@ mov    esi,0x3                    # rsi = 3
 mov    edi,eax                    # rdi = x
 call   0x1119 <mult>              # calling convention is mul(rdi, rsi)
 mov    DWORD PTR [rbp-0x4],eax
-mov    eax,DWORD PTR [rbp-0x4]    # ret
+mov    eax,DWORD PTR [rbp-0x4]    # calling convention says ret goes to rax
 leave                             # cleans up triple's stack frame before returning, equivalent to mov rsp, rbp (restore stack pointer) and then pop rbp (restore base pointer)
 ret
 ```
