@@ -1120,3 +1120,10 @@ mov    eax,DWORD PTR [rbp-0x4]
 pop    rbp
 ret
 ```
+
+```c
+int mult(int a, int b) {
+    int ret = a * b;
+    return ret;
+}
+```
