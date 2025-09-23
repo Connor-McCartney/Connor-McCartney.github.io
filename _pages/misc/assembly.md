@@ -799,10 +799,6 @@ option 3: move the base pointer (kinda better practice than the stack pointer)
 
 
 ```
-
-[~/t]
-$ v x.c
-
 [~/t]
 $ cat x.c
 int main() {}
@@ -821,3 +817,7 @@ Dump of assembler code for function main:
    0x0000000000001123 <+10>:	ret
 End of assembler dump.
 ```
+
+Here's a totally empty program, the `mov eax,0x0` is main's return code, and everything else is creating and destroying the main function's stack frame. 
+
+
