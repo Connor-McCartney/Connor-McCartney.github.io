@@ -951,8 +951,14 @@ Let's keep going, `mov    edi,0x5` does nothing, but `call  triple` is going to 
 
 call will always 'essentially' do this:
 
-```
+```asm
 sub     rsp, 8
 mov     [rsp], return_address
 jmp     target
+```
+
+we have set up triple's stack frame. 
+```
+RBP = 0x7fffffffe630                                               (base pointer of main, which called triple)
+RSP = 0x7fffffffe628 —▸ 0x555555555166 (main+14) ◂— mov eax, 0     (the instruction in main immediately after call triple)
 ```
