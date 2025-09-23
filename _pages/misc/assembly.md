@@ -1226,3 +1226,32 @@ Stack:
 
 Now we have returned back to triple. 
 
+Next is this so step twice:
+
+```
+# ret = rax
+mov    DWORD PTR [rbp-0x4],eax
+mov    eax,DWORD PTR [rbp-0x4]
+```
+
+Stack (only 0x7fffffffe618 changed, which has rax returned by mult):
+
+```asm
+0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)           
+0x7fffffffe628:	0x0000555555555162 (the instruction in main immediately after call triple)     
+0x7fffffffe620:	0x00007fffffffe630 (base pointer of main, saved when calling triple)           <- rbp
+0x7fffffffe618:	0x0000000f00000000 (ret = 15)
+0x7fffffffe610:	0x0000000000000000
+0x7fffffffe608:	0x0000000500000000                                                             <- rsp                                           
+0x7fffffffe600:	old popped junk
+0x7fffffffe5f8: old popped junk       
+...
+```
+
+
+
+<br>
+
+<br>
+
+And now we arrive at the `leave` instruction. 
