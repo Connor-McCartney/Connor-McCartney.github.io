@@ -1063,6 +1063,8 @@ jmp     target
 *RSP  0x7fffffffe600 —▸ 0x555555555150 (triple+26) ◂— mov dword ptr [rbp - 4], eax
 ```
 
+Stack:
+
 ```
 0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)           
 0x7fffffffe628:	0x0000555555555166 (the instruction in main immediately after call triple)     
@@ -1071,6 +1073,7 @@ jmp     target
 0x7fffffffe610:	0x0000000000000000
 0x7fffffffe608:	0x0000000500000000                                                            
 0x7fffffffe600:	0x0000555555555150 (the instruction in triple immediately after calling mult)  <- rsp
+...
 ```
 
 Finish setting up mult's stack frame (although like main there is no sub rsp, ..., but for a different reason you'll see below :) ):
@@ -1083,6 +1086,20 @@ mov    rbp,rsp
 ```
 RBP = 0x7fffffffe608
 RSP = 0x7fffffffe608
+```
+
+Stack:
+
+```
+0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)           
+0x7fffffffe628:	0x0000555555555166 (the instruction in main immediately after call triple)     
+0x7fffffffe620:	0x00007fffffffe630 (base pointer of main, saved when calling triple)          
+0x7fffffffe618:	0x0000000000000000
+0x7fffffffe610:	0x0000000000000000
+0x7fffffffe608:	0x0000000500000000                                                            
+0x7fffffffe600:	0x0000555555555150 (the instruction in triple immediately after calling mult)  
+0x7fffffffe5f8: 0x00007fffffffe620 (base pointer of triple, saved when calling mult)           <- rbp, rsp
+...
 ```
 
 <br>
