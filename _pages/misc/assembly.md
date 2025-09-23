@@ -821,3 +821,5 @@ End of assembler dump.
 Here's a totally empty program, the `mov eax,0x0` is main's return code, and everything else is creating and destroying the main function's stack frame. 
 
 
+Now let's look at something with some more functions. 
+
