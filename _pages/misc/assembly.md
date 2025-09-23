@@ -982,13 +982,17 @@ Next is this to finish setting up triple's stack frame
 
 ```
 push   rbp
-mov    rbp, rsp 
+mov    rbp, rsp
+sub    rsp, 24      (24 bytes allocated for triple's stack frame)
 ```
 
 ```
 0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)           
 0x7fffffffe628:	0x0000555555555166 (the instruction in main immediately after call triple)     
-0x7fffffffe620:	0x00007fffffffe630 (base pointer of main, saved when calling triple)        <- rbp, rsp
+0x7fffffffe620:	0x00007fffffffe630 (base pointer of main, saved when calling triple)          <- rbp
+0x7fffffffe618:	0x0000000000000000
+0x7fffffffe610:	0x0000000000000000
+0x7fffffffe608:	0x0000000000000000                                                            <- rsp
 ...
 ```
 
