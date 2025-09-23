@@ -837,7 +837,7 @@ Now let's look at something with some more functions.
 ```c
 int mult(int a, int b) {
     int ret = a * b;
-    return a * b;
+    return ret;
 }
 
 int triple(int x) {
@@ -853,53 +853,43 @@ int main() {
 <br>
 
 ```
-pwndbg> info functions
-All defined functions:
-
-Non-debugging symbols:
-0x0000000000001000  _init
-0x0000000000001020  _start
-0x0000000000001119  mult
-0x0000000000001136  triple
-0x0000000000001158  main
-0x0000000000001170  _fini
 pwndbg> disas main
 Dump of assembler code for function main:
-   0x0000555555555154 <+0>:	push   rbp
-   0x0000555555555155 <+1>:	mov    rbp,rsp
-   0x0000555555555158 <+4>:	mov    edi,0x5
-   0x000055555555515d <+9>:	call   0x555555555132 <triple>
-   0x0000555555555162 <+14>:	mov    eax,0x0
-   0x0000555555555167 <+19>:	pop    rbp
-   0x0000555555555168 <+20>:	ret
-End of assembler dump.
-pwndbg> disas mult
-Dump of assembler code for function mult:
-   0x0000555555555119 <+0>:	push   rbp
-   0x000055555555511a <+1>:	mov    rbp,rsp
-   0x000055555555511d <+4>:	mov    DWORD PTR [rbp-0x14],edi
-   0x0000555555555120 <+7>:	mov    DWORD PTR [rbp-0x18],esi
-   0x0000555555555123 <+10>:	mov    eax,DWORD PTR [rbp-0x14]
-   0x0000555555555126 <+13>:	imul   eax,DWORD PTR [rbp-0x18]
-   0x000055555555512a <+17>:	mov    DWORD PTR [rbp-0x4],eax
-   0x000055555555512d <+20>:	mov    eax,DWORD PTR [rbp-0x4]
-   0x0000555555555130 <+23>:	pop    rbp
-   0x0000555555555131 <+24>:	ret
+   0x0000000000001154 <+0>:	    push   rbp
+   0x0000000000001155 <+1>:	    mov    rbp,rsp
+   0x0000000000001158 <+4>:	    mov    edi,0x5
+   0x000000000000115d <+9>:	    call   0x1132 <triple>
+   0x0000000000001162 <+14>:	mov    eax,0x0
+   0x0000000000001167 <+19>:	pop    rbp
+   0x0000000000001168 <+20>:	ret
 End of assembler dump.
 pwndbg> disas triple
 Dump of assembler code for function triple:
-   0x0000000000001136 <+0>:	push   rbp
-   0x0000000000001137 <+1>:	mov    rbp,rsp
-   0x000000000000113a <+4>:	sub    rsp,0x18
-   0x000000000000113e <+8>:	mov    DWORD PTR [rbp-0x14],edi
-   0x0000000000001141 <+11>:	mov    eax,DWORD PTR [rbp-0x14]
-   0x0000000000001144 <+14>:	mov    esi,0x3
-   0x0000000000001149 <+19>:	mov    edi,eax
-   0x000000000000114b <+21>:	call   0x1119 <mult>
-   0x0000000000001150 <+26>:	mov    DWORD PTR [rbp-0x4],eax
-   0x0000000000001153 <+29>:	mov    eax,DWORD PTR [rbp-0x4]
-   0x0000000000001156 <+32>:	leave
-   0x0000000000001157 <+33>:	ret
+   0x0000000000001132 <+0>:	    push   rbp
+   0x0000000000001133 <+1>:	    mov    rbp,rsp
+   0x0000000000001136 <+4>:	    sub    rsp,0x18
+   0x000000000000113a <+8>:	    mov    DWORD PTR [rbp-0x14],edi
+   0x000000000000113d <+11>:	mov    eax,DWORD PTR [rbp-0x14]
+   0x0000000000001140 <+14>:	mov    esi,0x3
+   0x0000000000001145 <+19>:	mov    edi,eax
+   0x0000000000001147 <+21>:	call   0x1119 <mult>
+   0x000000000000114c <+26>:	mov    DWORD PTR [rbp-0x4],eax
+   0x000000000000114f <+29>:	mov    eax,DWORD PTR [rbp-0x4]
+   0x0000000000001152 <+32>:	leave
+   0x0000000000001153 <+33>:	ret
+End of assembler dump.
+pwndbg> disas mult
+Dump of assembler code for function mult:
+   0x0000000000001119 <+0>:	    push   rbp
+   0x000000000000111a <+1>:	    mov    rbp,rsp
+   0x000000000000111d <+4>:	    mov    DWORD PTR [rbp-0x14],edi
+   0x0000000000001120 <+7>:	    mov    DWORD PTR [rbp-0x18],esi
+   0x0000000000001123 <+10>:	mov    eax,DWORD PTR [rbp-0x14]
+   0x0000000000001126 <+13>:	imul   eax,DWORD PTR [rbp-0x18]
+   0x000000000000112a <+17>:	mov    DWORD PTR [rbp-0x4],eax
+   0x000000000000112d <+20>:	mov    eax,DWORD PTR [rbp-0x4]
+   0x0000000000001130 <+23>:	pop    rbp
+   0x0000000000001131 <+24>:	ret
 End of assembler dump.
 ```
 
@@ -910,7 +900,7 @@ Main:
 push   rbp                # save base pointer from whatever initially calls main
 mov    rbp,rsp            # main's stack frame
 mov    edi,0x5            # argument to triple
-call   0x1136 <triple>    # call triple
+call   0x1132 <triple>    # call triple
 mov    eax,0x0            # main's return code
 pop    rbp                # restore base pointer to return to whatever initially called main
 ret                       # return
@@ -966,14 +956,14 @@ jmp     target
 
 ```
 RBP = 0x7fffffffe630                                               (base pointer of main, which called triple)
-RSP = 0x7fffffffe628 —▸ 0x555555555166 (main+14) ◂— mov eax, 0     (the instruction in main immediately after call triple)
+RSP = 0x7fffffffe628 —▸ 0x555555555162 (main+14) ◂— mov eax, 0     (the instruction in main immediately after call triple)
 ```
 
 Stack:
 
 ```
 0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)             <- rbp
-0x7fffffffe628:	0x0000555555555166 (the instruction in main immediately after call triple)     <- rsp
+0x7fffffffe628:	0x0000555555555162 (the instruction in main immediately after call triple)     <- rsp
 ...
 ```
 
@@ -989,7 +979,7 @@ Stack:
 
 ```
 0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)           
-0x7fffffffe628:	0x0000555555555166 (the instruction in main immediately after call triple)     
+0x7fffffffe628:	0x0000555555555162 (the instruction in main immediately after call triple)     
 0x7fffffffe620:	0x00007fffffffe630 (base pointer of main, saved when calling triple)          <- rbp
 0x7fffffffe618:	0x0000000000000000
 0x7fffffffe610:	0x0000000000000000
@@ -1011,7 +1001,7 @@ mov    eax,DWORD PTR [rbp-0x14]
 
 mov    esi,0x3                    # rsi = 3
 mov    edi,eax                    # rdi = x
-call   0x1119 <mult>              # calling convention is mul(rdi, rsi)
+call   0x555555555119 <mult>      # calling convention is mul(rdi, rsi)
 
 # ret = rax
 mov    DWORD PTR [rbp-0x4],eax
@@ -1034,7 +1024,7 @@ rsp and rbp haven't changed, stack now looks like this (just the 5 is new):
 
 ```
 0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)           
-0x7fffffffe628:	0x0000555555555166 (the instruction in main immediately after call triple)     
+0x7fffffffe628:	0x0000555555555162 (the instruction in main immediately after call triple)     
 0x7fffffffe620:	0x00007fffffffe630 (base pointer of main, saved when calling triple)          <- rbp
 0x7fffffffe618:	0x0000000000000000
 0x7fffffffe610:	0x0000000000000000
@@ -1059,19 +1049,19 @@ jmp     target
 
 ```
  RBP  0x7fffffffe620 —▸ 0x7fffffffe630 —▸ 0x7fffffffe6d0 —▸ 0x7fffffffe730 ◂— 0
-*RSP  0x7fffffffe600 —▸ 0x555555555150 (triple+26) ◂— mov dword ptr [rbp - 4], eax
+*RSP  0x7fffffffe600 —▸ 0x55555555514c (triple+26) ◂— mov dword ptr [rbp - 4], eax
 ```
 
 Stack:
 
 ```
 0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)           
-0x7fffffffe628:	0x0000555555555166 (the instruction in main immediately after call triple)     
+0x7fffffffe628:	0x0000555555555162 (the instruction in main immediately after call triple)     
 0x7fffffffe620:	0x00007fffffffe630 (base pointer of main, saved when calling triple)           <- rbp
 0x7fffffffe618:	0x0000000000000000
 0x7fffffffe610:	0x0000000000000000
 0x7fffffffe608:	0x0000000500000000                                                            
-0x7fffffffe600:	0x0000555555555150 (the instruction in triple immediately after calling mult)  <- rsp
+0x7fffffffe600:	0x000055555555514c (the instruction in triple immediately after calling mult)  <- rsp
 ...
 ```
 
@@ -1082,32 +1072,20 @@ push   rbp
 mov    rbp,rsp
 ```
 
-```
-RBP = 0x7fffffffe608
-RSP = 0x7fffffffe608
-```
 
 Stack:
 
 ```
 0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)           
-0x7fffffffe628:	0x0000555555555166 (the instruction in main immediately after call triple)     
+0x7fffffffe628:	0x0000555555555162 (the instruction in main immediately after call triple)     
 0x7fffffffe620:	0x00007fffffffe630 (base pointer of main, saved when calling triple)          
 0x7fffffffe618:	0x0000000000000000
 0x7fffffffe610:	0x0000000000000000
 0x7fffffffe608:	0x0000000500000000                                                            
-0x7fffffffe600:	0x0000555555555150 (the instruction in triple immediately after calling mult)  
+0x7fffffffe600:	0x000055555555514c (the instruction in triple immediately after calling mult)  
 0x7fffffffe5f8: 0x00007fffffffe620 (base pointer of triple, saved when calling mult)           <- rbp, rsp
 ...
 ```
-
-<br>
-
-<br>
-
-
-
-
 
 
 
@@ -1133,12 +1111,12 @@ After some research, it turns out there is a 128-byte 'red zone', which can be u
 A full look at the rest of mult:
 
 ```asm
-   0x000055555555511d <+4>:	mov    DWORD PTR [rbp-0x14],edi
-   0x0000555555555120 <+7>:	mov    DWORD PTR [rbp-0x18],esi
-   0x0000555555555123 <+10>:	mov    eax,DWORD PTR [rbp-0x14]
-   0x0000555555555126 <+13>:	imul   eax,DWORD PTR [rbp-0x18]
-   0x000055555555512a <+17>:	mov    DWORD PTR [rbp-0x4],eax
-   0x000055555555512d <+20>:	mov    eax,DWORD PTR [rbp-0x4]
-   0x0000555555555130 <+23>:	pop    rbp
-   0x0000555555555131 <+24>:	ret
+mov    DWORD PTR [rbp-0x14],edi
+mov    DWORD PTR [rbp-0x18],esi
+mov    eax,DWORD PTR [rbp-0x14]
+imul   eax,DWORD PTR [rbp-0x18]
+mov    DWORD PTR [rbp-0x4],eax
+mov    eax,DWORD PTR [rbp-0x4]
+pop    rbp
+ret
 ```
