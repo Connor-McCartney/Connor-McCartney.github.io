@@ -1062,3 +1062,19 @@ jmp     target
  RBP  0x7fffffffe620 —▸ 0x7fffffffe630 —▸ 0x7fffffffe6d0 —▸ 0x7fffffffe730 ◂— 0
 *RSP  0x7fffffffe600 —▸ 0x555555555150 (triple+26) ◂— mov dword ptr [rbp - 4], eax
 ```
+
+```
+0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)           
+0x7fffffffe628:	0x0000555555555166 (the instruction in main immediately after call triple)     
+0x7fffffffe620:	0x00007fffffffe630 (base pointer of main, saved when calling triple)           <- rbp
+0x7fffffffe618:	0x0000000000000000
+0x7fffffffe610:	0x0000000000000000
+0x7fffffffe608:	0x0000000500000000                                                            
+0x7fffffffe600:	0x0000555555555150 (the instruction in triple immediately after calling mult)  <- rsp
+```
+
+
+<br>
+
+<br>
+
