@@ -1041,3 +1041,24 @@ rsp and rbp haven't changed, stack now looks like this (just the 5 is new):
 0x7fffffffe610:	0x0000000000000000
 0x7fffffffe608:	0x0000000500000000                                                            <- rsp
 ```
+
+
+
+<br>
+
+<br>
+
+Next we call ret mult. 
+
+Remember call will 'essentially' do this:
+
+```asm
+sub     rsp, 8
+mov     [rsp], return_address
+jmp     target
+```
+
+```
+ RBP  0x7fffffffe620 —▸ 0x7fffffffe630 —▸ 0x7fffffffe6d0 —▸ 0x7fffffffe730 ◂— 0
+*RSP  0x7fffffffe600 —▸ 0x555555555150 (triple+26) ◂— mov dword ptr [rbp - 4], eax
+```
