@@ -1174,7 +1174,7 @@ Pop will also always add 8 to rsp.
 
 Stack:
 
-```
+
 ```asm
 0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)           
 0x7fffffffe628:	0x0000555555555162 (the instruction in main immediately after call triple)     
