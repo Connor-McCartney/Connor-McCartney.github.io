@@ -980,7 +980,7 @@ Stack:
 
 Next is this to finish setting up triple's stack frame
 
-```
+```asm
 push   rbp
 mov    rbp, rsp
 sub    rsp, 24      (24 bytes allocated for triple's stack frame)
