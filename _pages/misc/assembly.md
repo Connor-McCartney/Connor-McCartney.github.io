@@ -1073,6 +1073,12 @@ jmp     target
 0x7fffffffe600:	0x0000555555555150 (the instruction in triple immediately after calling mult)  <- rsp
 ```
 
+Finish setting up mult's stack frame (although like main there is no sub rsp, ..., but for a different reason you'll see below :) ):
+
+```
+push   rbp
+mov    rbp,rsp
+```
 
 <br>
 
