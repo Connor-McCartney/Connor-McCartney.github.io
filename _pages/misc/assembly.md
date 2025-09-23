@@ -1129,3 +1129,18 @@ After some research, it turns out there is a 128-byte 'red zone', which can be u
 <br>
 
 <br>
+
+
+A full look at the rest of triple:
+
+```asm
+mov    DWORD PTR [rbp-0x14],edi
+mov    DWORD PTR [rbp-0x18],esi
+mov    eax,DWORD PTR [rbp-0x14]
+imul   eax,DWORD PTR [rbp-0x18]
+mov    DWORD PTR [rbp-0x4],eax
+mov    eax,DWORD PTR [rbp-0x14]
+imul   eax,DWORD PTR [rbp-0x18]
+pop    rbp
+ret
+```
