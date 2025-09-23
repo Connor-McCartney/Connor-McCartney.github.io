@@ -1174,7 +1174,6 @@ Pop will also always add 8 to rsp.
 
 Stack:
 
-
 ```asm
 0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)           
 0x7fffffffe628:	0x0000555555555162 (the instruction in main immediately after call triple)     
@@ -1183,6 +1182,38 @@ Stack:
 0x7fffffffe610:	0x0000000000000000
 0x7fffffffe608:	0x0000000500000000                                                            
 0x7fffffffe600:	0x000055555555514c (the instruction in triple immediately after calling mult)  <- rsp
+0x7fffffffe5f8: old popped junk       
+...
+```
+
+
+<br>
+
+<br>
+
+
+Next is `ret`
+
+Implicitly it will kinda do `pop rip`, returning back to the next instruction in triple immediately after calling mult. 
+
+And again the pop implicitly adds 8 to rsp. 
+
+```
+ RBP  0x7fffffffe620 —▸ 0x7fffffffe630 —▸ 0x7fffffffe6d0 —▸ 0x7fffffffe730 ◂— 0
+*RSP  0x7fffffffe608 ◂— 0x500000000
+*RIP  0x55555555514c (triple+26) ◂— mov dword ptr [rbp - 4], eax
+```
+
+Stack:
+
+```asm
+0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)           
+0x7fffffffe628:	0x0000555555555162 (the instruction in main immediately after call triple)     
+0x7fffffffe620:	0x00007fffffffe630 (base pointer of main, saved when calling triple)           <- rbp
+0x7fffffffe618:	0x0000000000000000
+0x7fffffffe610:	0x0000000000000000
+0x7fffffffe608:	0x0000000500000000                                                             <- rsp                                           
+0x7fffffffe600:	old popped junk
 0x7fffffffe5f8: old popped junk       
 ...
 ```
