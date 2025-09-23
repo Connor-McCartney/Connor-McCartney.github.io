@@ -823,3 +823,23 @@ Here's a totally empty program, the `mov eax,0x0` is main's return code, and eve
 
 Now let's look at something with some more functions. 
 
+
+```c
+int mult(int a, int b) {
+    int ret = a * b;
+    return a * b;
+}
+
+int triple(int x) {
+    int ret = mult(x, 3);
+    return ret;
+}
+
+int main() {
+    triple(5);
+}
+```
+
+<br>
+
+
