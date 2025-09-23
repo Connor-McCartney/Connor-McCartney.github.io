@@ -1090,7 +1090,7 @@ jmp     target
 
 You may note that mult does not subtract from rsp! why I wondered?????
 
-After some research, it turns out there is a 128-byte 'red zone', which can be used safely as long as the function doesn't call any other functions! A neat little optimisation. 
+After some research, it turns out there is a 128-byte 'red zone', which can be used safely as long as the function doesn't call any other functions! A neat little optimisation that's always done, even with -O0. 
 
 <https://stackoverflow.com/questions/38042188/where-exactly-is-the-red-zone-on-x86-64>
 
