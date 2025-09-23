@@ -1131,3 +1131,14 @@ int mult(int a, int b) {
     return ret;
 }
 ```
+
+Let's continue. None of these instructions should affect the stack, rsp or rbp. 
+
+```asm
+mov    DWORD PTR [rbp-0x14],edi  
+mov    DWORD PTR [rbp-0x18],esi 
+mov    eax,DWORD PTR [rbp-0x14]  
+imul   eax,DWORD PTR [rbp-0x18]  
+mov    DWORD PTR [rbp-0x4],eax 
+mov    eax,DWORD PTR [rbp-0x4]
+```
