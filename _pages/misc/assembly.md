@@ -1131,7 +1131,7 @@ After some research, it turns out there is a 128-byte 'red zone', which can be u
 <br>
 
 
-A full look at the rest of triple:
+A full look at the rest of mult:
 
 ```asm
 mov    DWORD PTR [rbp-0x14],edi
