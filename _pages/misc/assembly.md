@@ -1217,3 +1217,12 @@ Stack:
 0x7fffffffe5f8: old popped junk       
 ...
 ```
+
+
+<br>
+
+<br>
+
+
+Now we have returned back to triple. 
+
