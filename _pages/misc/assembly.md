@@ -1256,6 +1256,9 @@ Stack (only 0x7fffffffe618 changed, which has rax returned by mult):
 
 And now we arrive at the `leave` instruction. 
 
+You can see it implicitly clears/pops all the 24 bytes allocated at the start, and then also does a `pop rbp`
+
+
 Stack:
 
 ```asm
