@@ -865,27 +865,26 @@ Non-debugging symbols:
 0x0000000000001170  _fini
 pwndbg> disas main
 Dump of assembler code for function main:
-   0x0000000000001158 <+0>:	push   rbp
-   0x0000000000001159 <+1>:	mov    rbp,rsp
-   0x000000000000115c <+4>:	mov    edi,0x5
-   0x0000000000001161 <+9>:	call   0x1136 <triple>
-   0x0000000000001166 <+14>:	mov    eax,0x0
-   0x000000000000116b <+19>:	pop    rbp
-   0x000000000000116c <+20>:	ret
+   0x0000555555555154 <+0>:	push   rbp
+   0x0000555555555155 <+1>:	mov    rbp,rsp
+   0x0000555555555158 <+4>:	mov    edi,0x5
+   0x000055555555515d <+9>:	call   0x555555555132 <triple>
+   0x0000555555555162 <+14>:	mov    eax,0x0
+   0x0000555555555167 <+19>:	pop    rbp
+   0x0000555555555168 <+20>:	ret
 End of assembler dump.
 pwndbg> disas mult
 Dump of assembler code for function mult:
-   0x0000000000001119 <+0>:	push   rbp
-   0x000000000000111a <+1>:	mov    rbp,rsp
-   0x000000000000111d <+4>:	mov    DWORD PTR [rbp-0x14],edi
-   0x0000000000001120 <+7>:	mov    DWORD PTR [rbp-0x18],esi
-   0x0000000000001123 <+10>:	mov    eax,DWORD PTR [rbp-0x14]
-   0x0000000000001126 <+13>:	imul   eax,DWORD PTR [rbp-0x18]
-   0x000000000000112a <+17>:	mov    DWORD PTR [rbp-0x4],eax
-   0x000000000000112d <+20>:	mov    eax,DWORD PTR [rbp-0x14]
-   0x0000000000001130 <+23>:	imul   eax,DWORD PTR [rbp-0x18]
-   0x0000000000001134 <+27>:	pop    rbp
-   0x0000000000001135 <+28>:	ret
+   0x0000555555555119 <+0>:	push   rbp
+   0x000055555555511a <+1>:	mov    rbp,rsp
+   0x000055555555511d <+4>:	mov    DWORD PTR [rbp-0x14],edi
+   0x0000555555555120 <+7>:	mov    DWORD PTR [rbp-0x18],esi
+   0x0000555555555123 <+10>:	mov    eax,DWORD PTR [rbp-0x14]
+   0x0000555555555126 <+13>:	imul   eax,DWORD PTR [rbp-0x18]
+   0x000055555555512a <+17>:	mov    DWORD PTR [rbp-0x4],eax
+   0x000055555555512d <+20>:	mov    eax,DWORD PTR [rbp-0x4]
+   0x0000555555555130 <+23>:	pop    rbp
+   0x0000555555555131 <+24>:	ret
 End of assembler dump.
 pwndbg> disas triple
 Dump of assembler code for function triple:
@@ -1134,13 +1133,12 @@ After some research, it turns out there is a 128-byte 'red zone', which can be u
 A full look at the rest of mult:
 
 ```asm
-mov    DWORD PTR [rbp-0x14],edi
-mov    DWORD PTR [rbp-0x18],esi
-mov    eax,DWORD PTR [rbp-0x14]
-imul   eax,DWORD PTR [rbp-0x18]
-mov    DWORD PTR [rbp-0x4],eax
-mov    eax,DWORD PTR [rbp-0x14]
-imul   eax,DWORD PTR [rbp-0x18]
-pop    rbp
-ret
+   0x000055555555511d <+4>:	mov    DWORD PTR [rbp-0x14],edi
+   0x0000555555555120 <+7>:	mov    DWORD PTR [rbp-0x18],esi
+   0x0000555555555123 <+10>:	mov    eax,DWORD PTR [rbp-0x14]
+   0x0000555555555126 <+13>:	imul   eax,DWORD PTR [rbp-0x18]
+   0x000055555555512a <+17>:	mov    DWORD PTR [rbp-0x4],eax
+   0x000055555555512d <+20>:	mov    eax,DWORD PTR [rbp-0x4]
+   0x0000555555555130 <+23>:	pop    rbp
+   0x0000555555555131 <+24>:	ret
 ```
