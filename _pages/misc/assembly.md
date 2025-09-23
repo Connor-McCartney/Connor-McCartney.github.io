@@ -1272,3 +1272,44 @@ Stack:
 0x7fffffffe5f8: old popped junk       
 ...
 ```
+
+<br>
+
+<br>
+
+
+Nex it `ret`, which remember is kinda like `pop rip`
+
+Stack:
+
+```asm
+0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)            <- rbp, rsp
+0x7fffffffe628:	old popped junk
+0x7fffffffe620:	old popped junk
+0x7fffffffe618:	old popped junk
+0x7fffffffe610:	old popped junk
+0x7fffffffe608:	old popped junk                                      
+0x7fffffffe600:	old popped junk
+0x7fffffffe5f8: old popped junk       
+...
+```
+
+
+<br>
+
+Now we are back in main. 
+
+And if we execute the rest of main then 0x7fffffffe630 gets popped too. 
+
+
+```asm
+0x7fffffffe630:	old popped junk
+0x7fffffffe628:	old popped junk
+0x7fffffffe620:	old popped junk
+0x7fffffffe618:	old popped junk
+0x7fffffffe610:	old popped junk
+0x7fffffffe608:	old popped junk                                      
+0x7fffffffe600:	old popped junk
+0x7fffffffe5f8: old popped junk       
+...
+```
