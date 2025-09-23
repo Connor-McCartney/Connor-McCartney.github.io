@@ -798,3 +798,26 @@ option 3: move the base pointer (kinda better practice than the stack pointer)
 # disassembling some actual c code
 
 
+```
+
+[~/t]
+$ v x.c
+
+[~/t]
+$ cat x.c
+int main() {}
+
+[~/t]
+$ gcc x.c
+
+[~/t]
+$ gdb a.out
+pwndbg> disas main
+Dump of assembler code for function main:
+   0x0000000000001119 <+0>:	    push   rbp
+   0x000000000000111a <+1>:	    mov    rbp,rsp
+   0x000000000000111d <+4>:	    mov    eax,0x0
+   0x0000000000001122 <+9>:	    pop    rbp
+   0x0000000000001123 <+10>:	ret
+End of assembler dump.
+```
