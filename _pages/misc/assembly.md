@@ -1080,6 +1080,11 @@ push   rbp
 mov    rbp,rsp
 ```
 
+```
+RBP = 0x7fffffffe608
+RSP = 0x7fffffffe608
+```
+
 <br>
 
 <br>
