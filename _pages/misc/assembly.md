@@ -787,13 +787,23 @@ option 3: move the base pointer (kinda better practice than the stack pointer)
 
 
 
+<br>
 
-
+<br>
 
 <br>
 
 <br>
 
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+---
 
 # disassembling some actual c code
 
@@ -906,3 +916,26 @@ mov    eax,0x0            # main's return code
 pop    rbp                # restore base pointer to return to whatever initially called main
 ret                       # return
 ```
+
+If I break right at *main, I see:
+
+```
+RBP = 0x7fffffffe6d0 —▸ 0x7fffffffe730 ◂— 0
+RSP = 0x7fffffffe638 —▸ 0x7ffff7c27675 ◂— mov edi, eax
+```
+
+
+Then after executing 
+
+```asm
+push   rbp                
+mov    rbp,rsp            
+```
+
+we have set up main's stack frame. 
+
+```
+RBP = 0x7fffffffe630 
+RSP = 0x7fffffffe630 
+```
+
