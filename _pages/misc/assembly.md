@@ -945,3 +945,14 @@ stack:
 0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)             <- rbp, rsp
 ...
 ```
+
+
+Let's keep going, `mov    edi,0x5` does nothing, but `call  triple` is going to implicitly do some stuff. 
+
+call will always 'essentially' do this:
+
+```
+sub     rsp, 8
+mov     [rsp], return_address
+jmp     target
+```
