@@ -842,4 +842,56 @@ int main() {
 
 <br>
 
+```
+pwndbg> info functions
+All defined functions:
+
+Non-debugging symbols:
+0x0000000000001000  _init
+0x0000000000001020  _start
+0x0000000000001119  mult
+0x0000000000001136  triple
+0x0000000000001158  main
+0x0000000000001170  _fini
+pwndbg> disas main
+Dump of assembler code for function main:
+   0x0000000000001158 <+0>:	push   rbp
+   0x0000000000001159 <+1>:	mov    rbp,rsp
+   0x000000000000115c <+4>:	mov    edi,0x5
+   0x0000000000001161 <+9>:	call   0x1136 <triple>
+   0x0000000000001166 <+14>:	mov    eax,0x0
+   0x000000000000116b <+19>:	pop    rbp
+   0x000000000000116c <+20>:	ret
+End of assembler dump.
+pwndbg> disas mult
+Dump of assembler code for function mult:
+   0x0000000000001119 <+0>:	push   rbp
+   0x000000000000111a <+1>:	mov    rbp,rsp
+   0x000000000000111d <+4>:	mov    DWORD PTR [rbp-0x14],edi
+   0x0000000000001120 <+7>:	mov    DWORD PTR [rbp-0x18],esi
+   0x0000000000001123 <+10>:	mov    eax,DWORD PTR [rbp-0x14]
+   0x0000000000001126 <+13>:	imul   eax,DWORD PTR [rbp-0x18]
+   0x000000000000112a <+17>:	mov    DWORD PTR [rbp-0x4],eax
+   0x000000000000112d <+20>:	mov    eax,DWORD PTR [rbp-0x14]
+   0x0000000000001130 <+23>:	imul   eax,DWORD PTR [rbp-0x18]
+   0x0000000000001134 <+27>:	pop    rbp
+   0x0000000000001135 <+28>:	ret
+End of assembler dump.
+pwndbg> disas triple
+Dump of assembler code for function triple:
+   0x0000000000001136 <+0>:	push   rbp
+   0x0000000000001137 <+1>:	mov    rbp,rsp
+   0x000000000000113a <+4>:	sub    rsp,0x18
+   0x000000000000113e <+8>:	mov    DWORD PTR [rbp-0x14],edi
+   0x0000000000001141 <+11>:	mov    eax,DWORD PTR [rbp-0x14]
+   0x0000000000001144 <+14>:	mov    esi,0x3
+   0x0000000000001149 <+19>:	mov    edi,eax
+   0x000000000000114b <+21>:	call   0x1119 <mult>
+   0x0000000000001150 <+26>:	mov    DWORD PTR [rbp-0x4],eax
+   0x0000000000001153 <+29>:	mov    eax,DWORD PTR [rbp-0x4]
+   0x0000000000001156 <+32>:	leave
+   0x0000000000001157 <+33>:	ret
+End of assembler dump.
+```
+
 
