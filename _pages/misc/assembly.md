@@ -1006,13 +1006,18 @@ Stack:
 A full look at the rest of triple:
 
 ```asm
+# x = rdi
 mov    DWORD PTR [rbp-0x14],edi   
-mov    eax,DWORD PTR [rbp-0x14]   
+mov    eax,DWORD PTR [rbp-0x14]
+
 mov    esi,0x3                    # rsi = 3
 mov    edi,eax                    # rdi = x
 call   0x1119 <mult>              # calling convention is mul(rdi, rsi)
+
+# ret = rax
 mov    DWORD PTR [rbp-0x4],eax
-mov    eax,DWORD PTR [rbp-0x4]    # calling convention says ret goes to rax
+mov    eax,DWORD PTR [rbp-0x4]  
+
 leave                             # cleans up triple's stack frame before returning, equivalent to mov rsp, rbp (restore stack pointer) and then pop rbp (restore base pointer)
 ret
 ```
