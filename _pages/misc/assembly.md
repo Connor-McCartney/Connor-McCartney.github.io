@@ -929,7 +929,8 @@ Then after executing
 
 ```asm
 push   rbp                
-mov    rbp,rsp            
+mov    rbp,rsp
+# note here there's usually some 'sub rsp, ...' to actually allocate the stack size, but well in this code main doesn't need to store anything on the stack there aren't any variables etc so it's just empty like a sub rsp, 0
 ```
 
 we have set up main's stack frame. 
