@@ -1003,3 +1003,16 @@ Stack:
 
 <br>
 
+A full look at the rest of triple:
+
+```asm
+mov    DWORD PTR [rbp-0x14],edi
+mov    eax,DWORD PTR [rbp-0x14]
+mov    esi,0x3
+mov    edi,eax
+call   0x1119 <mult>
+mov    DWORD PTR [rbp-0x4],eax
+mov    eax,DWORD PTR [rbp-0x4]
+leave                                   # cleans up triple's stack frame before returning, equivalent to mov rsp, rbp (restore stack pointer) and then pop rbp (restore base pointer)
+ret
+```
