@@ -1418,3 +1418,14 @@ Dump of assembler code for function main:
    0x000000000000131a <+513>:	ret
 End of assembler dump.
 ```
+
+
+Note the sub rsp,0x88, which is 136 bytes. 
+
+The array will eat into the red zone (128 bytes) so only another 128 bytes is needed to be allocated as the stack frame, rather than 256. 
+
+Then an extra 8 bytes I presume for stack allignment. 
+
+so 128+8 = 136
+
+
