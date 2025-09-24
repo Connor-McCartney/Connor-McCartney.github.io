@@ -1433,6 +1433,25 @@ so 128+8 = 136
 <br>
 
 
+Let's take a slightly closer look at a smaller array. 
+
+```c
+int main() {
+   long my_list[3] = {0x5555555555555555, 0x7777777777777777, 0x9999999999999999};
+}
+```
+
+I think the first element (0x5555555555555555 in this case) has to start on a 16-byte boundary. 
+
+It's less than 128 bytes so main shouldn't have to decrease rsp at all and can just use the red zone directly. 
+
+
+
+
+<br>
+
+<br>
+
 # big arrays
 
 Now I'll show a 33 element one, which will have more than 256 bytes. 
