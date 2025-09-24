@@ -1320,3 +1320,12 @@ And if we execute the rest of main then 0x7fffffffe630 gets popped too.
 0x7fffffffe5f8: old popped junk       
 ...
 ```
+
+
+
+<br>
+
+
+# small arrays
+
+
