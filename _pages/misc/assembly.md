@@ -1328,4 +1328,93 @@ And if we execute the rest of main then 0x7fffffffe630 gets popped too.
 
 # small arrays
 
+There will be some threshold, it could depends on lots of things I think, the compiler, optimisation level, machine architecture, etc. 
 
+For me it was 32 bytes. 
+
+<= 32 will do individual mov's
+
+eg
+
+```c
+int main() {
+    long my_list[32] = {0xa0ea132a134ab585, 0x8989cef66ebfa45c, 0x0774a7e04c852a56, 0x73e0f28de99282b3, 0x88165aff92a45b5c, 0x61fcd6729de1bb3b, 0x72cf46c7f74ae700, 0x80b2f200841b42cd, 0xdf374c1064969103, 0x17ec045959b91f97, 0xd8991e9b771a7246, 0x006c7d8f8783ac93, 0x2105e92dfcc83f8b, 0x8b41ab5772b432a5, 0x5bf6da1b85402bcb, 0x7763fad3d0bfbe9d, 0x4317f367188618a3, 0x508c627dccea5a92, 0x5522325731b5ac35, 0xa10b3f70cba8c125, 0x399df0803ed3d5bc, 0xe91cc4906f648c3d, 0xfafef0acca375b7d, 0xf0d430c203eb9bc2, 0xfd223a24398d786b, 0x71a182c71b23339c, 0x1a0d12c7906671c1, 0x8e9d27004cc624df, 0x2e36326df69e1603, 0xaf655da066e45254, 0x6033b28ebfb41ee1, 0x90d8b4593ba9bb88};
+}
+```
+
+```
+$ gcc y.c -o y -fno-stack-protector; gdb y
+pwndbg> disas main
+Dump of assembler code for function main:
+   0x0000000000001119 <+0>:	    push   rbp
+   0x000000000000111a <+1>:	    mov    rbp,rsp
+   0x000000000000111d <+4>:	    sub    rsp,0x88
+   0x0000000000001124 <+11>:	movabs rax,0xa0ea132a134ab585
+   0x000000000000112e <+21>:	mov    QWORD PTR [rbp-0x100],rax
+   0x0000000000001135 <+28>:	movabs rax,0x8989cef66ebfa45c
+   0x000000000000113f <+38>:	mov    QWORD PTR [rbp-0xf8],rax
+   0x0000000000001146 <+45>:	movabs rax,0x774a7e04c852a56
+   0x0000000000001150 <+55>:	mov    QWORD PTR [rbp-0xf0],rax
+   0x0000000000001157 <+62>:	movabs rax,0x73e0f28de99282b3
+   0x0000000000001161 <+72>:	mov    QWORD PTR [rbp-0xe8],rax
+   0x0000000000001168 <+79>:	movabs rax,0x88165aff92a45b5c
+   0x0000000000001172 <+89>:	mov    QWORD PTR [rbp-0xe0],rax
+   0x0000000000001179 <+96>:	movabs rax,0x61fcd6729de1bb3b
+   0x0000000000001183 <+106>:	mov    QWORD PTR [rbp-0xd8],rax
+   0x000000000000118a <+113>:	movabs rax,0x72cf46c7f74ae700
+   0x0000000000001194 <+123>:	mov    QWORD PTR [rbp-0xd0],rax
+   0x000000000000119b <+130>:	movabs rax,0x80b2f200841b42cd
+   0x00000000000011a5 <+140>:	mov    QWORD PTR [rbp-0xc8],rax
+   0x00000000000011ac <+147>:	movabs rax,0xdf374c1064969103
+   0x00000000000011b6 <+157>:	mov    QWORD PTR [rbp-0xc0],rax
+   0x00000000000011bd <+164>:	movabs rax,0x17ec045959b91f97
+   0x00000000000011c7 <+174>:	mov    QWORD PTR [rbp-0xb8],rax
+   0x00000000000011ce <+181>:	movabs rax,0xd8991e9b771a7246
+   0x00000000000011d8 <+191>:	mov    QWORD PTR [rbp-0xb0],rax
+   0x00000000000011df <+198>:	movabs rax,0x6c7d8f8783ac93
+   0x00000000000011e9 <+208>:	mov    QWORD PTR [rbp-0xa8],rax
+   0x00000000000011f0 <+215>:	movabs rax,0x2105e92dfcc83f8b
+   0x00000000000011fa <+225>:	mov    QWORD PTR [rbp-0xa0],rax
+   0x0000000000001201 <+232>:	movabs rax,0x8b41ab5772b432a5
+   0x000000000000120b <+242>:	mov    QWORD PTR [rbp-0x98],rax
+   0x0000000000001212 <+249>:	movabs rax,0x5bf6da1b85402bcb
+   0x000000000000121c <+259>:	mov    QWORD PTR [rbp-0x90],rax
+   0x0000000000001223 <+266>:	movabs rax,0x7763fad3d0bfbe9d
+   0x000000000000122d <+276>:	mov    QWORD PTR [rbp-0x88],rax
+   0x0000000000001234 <+283>:	movabs rax,0x4317f367188618a3
+   0x000000000000123e <+293>:	mov    QWORD PTR [rbp-0x80],rax
+   0x0000000000001242 <+297>:	movabs rax,0x508c627dccea5a92
+   0x000000000000124c <+307>:	mov    QWORD PTR [rbp-0x78],rax
+   0x0000000000001250 <+311>:	movabs rax,0x5522325731b5ac35
+   0x000000000000125a <+321>:	mov    QWORD PTR [rbp-0x70],rax
+   0x000000000000125e <+325>:	movabs rax,0xa10b3f70cba8c125
+   0x0000000000001268 <+335>:	mov    QWORD PTR [rbp-0x68],rax
+   0x000000000000126c <+339>:	movabs rax,0x399df0803ed3d5bc
+   0x0000000000001276 <+349>:	mov    QWORD PTR [rbp-0x60],rax
+   0x000000000000127a <+353>:	movabs rax,0xe91cc4906f648c3d
+   0x0000000000001284 <+363>:	mov    QWORD PTR [rbp-0x58],rax
+   0x0000000000001288 <+367>:	movabs rax,0xfafef0acca375b7d
+   0x0000000000001292 <+377>:	mov    QWORD PTR [rbp-0x50],rax
+   0x0000000000001296 <+381>:	movabs rax,0xf0d430c203eb9bc2
+   0x00000000000012a0 <+391>:	mov    QWORD PTR [rbp-0x48],rax
+   0x00000000000012a4 <+395>:	movabs rax,0xfd223a24398d786b
+   0x00000000000012ae <+405>:	mov    QWORD PTR [rbp-0x40],rax
+   0x00000000000012b2 <+409>:	movabs rax,0x71a182c71b23339c
+   0x00000000000012bc <+419>:	mov    QWORD PTR [rbp-0x38],rax
+   0x00000000000012c0 <+423>:	movabs rax,0x1a0d12c7906671c1
+   0x00000000000012ca <+433>:	mov    QWORD PTR [rbp-0x30],rax
+   0x00000000000012ce <+437>:	movabs rax,0x8e9d27004cc624df
+   0x00000000000012d8 <+447>:	mov    QWORD PTR [rbp-0x28],rax
+   0x00000000000012dc <+451>:	movabs rax,0x2e36326df69e1603
+   0x00000000000012e6 <+461>:	mov    QWORD PTR [rbp-0x20],rax
+   0x00000000000012ea <+465>:	movabs rax,0xaf655da066e45254
+   0x00000000000012f4 <+475>:	mov    QWORD PTR [rbp-0x18],rax
+   0x00000000000012f8 <+479>:	movabs rax,0x6033b28ebfb41ee1
+   0x0000000000001302 <+489>:	mov    QWORD PTR [rbp-0x10],rax
+   0x0000000000001306 <+493>:	movabs rax,0x90d8b4593ba9bb88
+   0x0000000000001310 <+503>:	mov    QWORD PTR [rbp-0x8],rax
+   0x0000000000001314 <+507>:	mov    eax,0x0
+   0x0000000000001319 <+512>:	leave
+   0x000000000000131a <+513>:	ret
+End of assembler dump.
+```
