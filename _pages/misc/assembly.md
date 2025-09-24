@@ -1445,7 +1445,42 @@ I think the first element (0x5555555555555555 in this case) has to start on a 16
 
 It's less than 128 bytes so main shouldn't have to decrease rsp at all and can just use the red zone directly. 
 
+```
 
+[~/t]
+$ gcc x.c -fno-stack-protector; gdb a.out
+pwndbg> disas main
+Dump of assembler code for function main:
+   0x0000000000001119 <+0>:	push   rbp
+   0x000000000000111a <+1>:	mov    rbp,rsp
+   0x000000000000111d <+4>:	movabs rax,0x5555555555555555
+   0x0000000000001127 <+14>:	mov    QWORD PTR [rbp-0x20],rax
+   0x000000000000112b <+18>:	movabs rax,0x7777777777777777
+   0x0000000000001135 <+28>:	mov    QWORD PTR [rbp-0x18],rax
+   0x0000000000001139 <+32>:	movabs rax,0x9999999999999999
+   0x0000000000001143 <+42>:	mov    QWORD PTR [rbp-0x10],rax
+   0x0000000000001147 <+46>:	mov    eax,0x0
+   0x000000000000114c <+51>:	pop    rbp
+   0x000000000000114d <+52>:	ret
+End of assembler dump.
+
+pwndbg> break *main+46
+Breakpoint 1 at 0x1147
+
+pwndbg> r
+
+pwndbg> x/gx $rsp
+0x7fffffffe630:	0x00007fffffffe6d0
+pwndbg> x/gx $rsp-8
+0x7fffffffe628:	0x00007ffff7fe1e90
+pwndbg> x/gx $rsp-16
+0x7fffffffe620:	0x9999999999999999
+pwndbg> x/gx $rsp-24
+0x7fffffffe618:	0x7777777777777777
+pwndbg> x/gx $rsp-32
+0x7fffffffe610:	0x5555555555555555
+pwndbg>
+```
 
 
 <br>
