@@ -1482,6 +1482,16 @@ pwndbg> x/gx $rsp-32
 pwndbg>
 ```
 
+Stack:
+
+```
+0x7fffffffe630:	0x00007fffffffe6d0   (previous base ptr to whatever called main)                        <- rsp, rbp
+--- red zone below ---
+0x7fffffffe628:	0x00007ffff7fe1e90   (junk? just unused so that the array starts on 16-byte)
+0x7fffffffe620:	0x9999999999999999
+0x7fffffffe618:	0x7777777777777777
+0x7fffffffe610:	0x5555555555555555   (assert 0x7fffffffe610 % 16 == 0)
+```
 
 <br>
 
