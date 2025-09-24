@@ -1429,3 +1429,33 @@ Then an extra 8 bytes I presume for stack allignment.
 so 128+8 = 136
 
 
+
+# big arrays
+
+Now I'll show a 33 element one, which will have more than 256 bytes. 
+
+There are no more individual mov's. 
+
+```c
+int main() {
+    long my_list[33] = {0xdfa85653b8bf5ab7, 0xaa43138ceac13504, 0x73eedc4fe80b50d7, 0x3cfa4687bb1ca78a, 0xc22acd68104be153, 0x65dddff568e23a92, 0x8a50268201e5e33a, 0x7a2f8010e1bec750, 0x8b4cdbe70dee8d8c, 0x3f236ed9937edc08, 0xe4ebb800c63d7ddc, 0x4c75de6f34375d43, 0x211807eff3da1173, 0x9f23ae23044585e5, 0x7f8f718008171996, 0xdecb9c2d55e2a4af, 0x577ea761c77881c0, 0x342c5a943e2eccd2, 0x64016b46d7e67821, 0x5c2b0f12610987c9, 0x410a42cf94341054, 0xc20bf80d33baffbe, 0x6f7597d5cebc0e85, 0x6ecb9adda4afc993, 0xecbaf721e30b66a7, 0x0f95f4bfe4e032a7, 0xa5d590f5137c482a, 0xb60dcef80f26b847, 0xc5f3ad64183f3231, 0xbbf444878689bfbc, 0x25037d4586ff2adb, 0xf6a34861910e4554, 0xb4d1a674a823abd4};
+}
+```
+
+```
+pwndbg> disas main
+Dump of assembler code for function main:
+   0x0000000000001119 <+0>:	    push   rbp
+   0x000000000000111a <+1>:	    mov    rbp,rsp
+   0x000000000000111d <+4>:	    movabs rax,0x5555555555555555
+   0x0000000000001127 <+14>:	mov    QWORD PTR [rbp-0x20],rax
+   0x000000000000112b <+18>:	movabs rax,0x7777777777777777
+   0x0000000000001135 <+28>:	mov    QWORD PTR [rbp-0x18],rax
+   0x0000000000001139 <+32>:	movabs rax,0x9999999999999999
+   0x0000000000001143 <+42>:	mov    QWORD PTR [rbp-0x10],rax
+   0x0000000000001147 <+46>:	mov    eax,0x0
+   0x000000000000114c <+51>:	pop    rbp
+   0x000000000000114d <+52>:	ret
+End of assembler dump.
+```
+
