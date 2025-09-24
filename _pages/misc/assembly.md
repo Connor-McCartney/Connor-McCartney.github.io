@@ -1447,15 +1447,16 @@ pwndbg> disas main
 Dump of assembler code for function main:
    0x0000000000001119 <+0>:	    push   rbp
    0x000000000000111a <+1>:	    mov    rbp,rsp
-   0x000000000000111d <+4>:	    movabs rax,0x5555555555555555
-   0x0000000000001127 <+14>:	mov    QWORD PTR [rbp-0x20],rax
-   0x000000000000112b <+18>:	movabs rax,0x7777777777777777
-   0x0000000000001135 <+28>:	mov    QWORD PTR [rbp-0x18],rax
-   0x0000000000001139 <+32>:	movabs rax,0x9999999999999999
-   0x0000000000001143 <+42>:	mov    QWORD PTR [rbp-0x10],rax
-   0x0000000000001147 <+46>:	mov    eax,0x0
-   0x000000000000114c <+51>:	pop    rbp
-   0x000000000000114d <+52>:	ret
+   0x000000000000111d <+4>:	    sub    rsp,0x98
+   0x0000000000001124 <+11>:	lea    rax,[rbp-0x110]
+   0x000000000000112b <+18>:	lea    rdx,[rip+0xeee]        # 0x2020
+   0x0000000000001132 <+25>:	mov    ecx,0x21
+   0x0000000000001137 <+30>:	mov    rdi,rax
+   0x000000000000113a <+33>:	mov    rsi,rdx
+   0x000000000000113d <+36>:	rep movs QWORD PTR es:[rdi],QWORD PTR ds:[rsi]
+   0x0000000000001140 <+39>:	mov    eax,0x0
+   0x0000000000001145 <+44>:	leave
+   0x0000000000001146 <+45>:	ret
 End of assembler dump.
 ```
 
