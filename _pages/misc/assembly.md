@@ -1330,9 +1330,9 @@ And if we execute the rest of main then 0x7fffffffe630 gets popped too.
 
 There will be some threshold, it could depends on lots of things I think, the compiler, optimisation level, machine architecture, etc. 
 
-For me it was 32 bytes. 
+For me it was 32 elements * 8 bytes per element = 256 bytes. 
 
-<= 32 will do individual mov's
+<= 32 elements will do individual mov's
 
 eg
 
