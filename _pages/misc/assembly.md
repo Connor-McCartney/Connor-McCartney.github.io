@@ -780,9 +780,15 @@ option 3: move the base pointer (kinda better practice than the stack pointer)
 
 
 
+<br>
+
+<https://web.stanford.edu/class/archive/cs/cs107/cs107.1174/guide_x86-64.html>
 
 
+<img width="733" height="657" alt="image" src="https://github.com/user-attachments/assets/e9d9c6ca-bfd7-417e-a15d-055decb99e8c" />
 
+
+r12, r13, r14, r15 are good for normal variables that you don't want to get overwritten
 
 
 
