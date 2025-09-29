@@ -97,7 +97,6 @@ Linux syscalls <https://x64.syscall.sh> <br>
 <https://www.ghostccamm.com> <br>
 <https://kubie.xyz> <br>
 <https://willwam.me> <br>
-<https://grhkm21.github.io> <br>
 <https://chovid99.github.io> <br>
 <https://tl2cents.github.io> <br>
 <https://giacomopope.com> <br>
