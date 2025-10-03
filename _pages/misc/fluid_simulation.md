@@ -221,7 +221,7 @@ void draw_circle_at_mouse(Display* display, Window w, XImage* img) {
     }
 }
 
-void draw_border(Display* display, Window w, XImage* img) {
+void draw_border(XImage* img) {
     for (int x = gap; x < width-gap; x++) {
         XPutPixel(img, x, gap, solid_colour);
         XPutPixel(img, x, height-gap, solid_colour);
@@ -252,7 +252,7 @@ int main() {
 
     while (1) {
         memset(img->data, 255, img->bytes_per_line * img->height); // initialise white background every frame
-        draw_border(display, w, img);
+        draw_border(img);
         draw_circle_at_mouse(display, w, img);
 
 
