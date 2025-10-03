@@ -154,12 +154,8 @@ int main() {
     // window stuff
     Display* display = XOpenDisplay(NULL);
     int screen = DefaultScreen(display);
-    Window root = RootWindow(display, screen);
-    XSetWindowAttributes wa = {
-//        .override_redirect = True,
-    };
-    Window w = XCreateWindow(display, root, 100, 200, width, height, 0, DefaultDepth(display, screen), InputOutput, DefaultVisual(display, screen), CWOverrideRedirect | CWBackPixel, &wa);
-    XMapRaised(display, w);
+    Window w = XCreateSimpleWindow(display, DefaultRootWindow(display), 50, 50, width, height, 1, BlackPixel(display, 0), BlackPixel(display, 0));
+    XMapWindow(display, w);
     GC gc = XCreateGC(display, w, 0, NULL);
 
     // SHM stuf
@@ -180,5 +176,6 @@ int main() {
         usleep(16000); // ~60 FPS
     }
 }
+
 ```
 
