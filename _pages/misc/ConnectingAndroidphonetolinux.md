@@ -12,4 +12,6 @@ Then you have to go to USB preferences, and you want to choose 'This device' and
 
 Note that depending on your type of USB-c cable, you simply won't be able to do this ...
 
+`sudo pacman -S android-udev gvfs-mtp mtpfs libmtp`
+
 But if successful, you can try see it in your file manager or use the tool `gmtp`
