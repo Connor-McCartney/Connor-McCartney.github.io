@@ -99,3 +99,84 @@ Another unrelated effect just for fun, vertical lines:
         XSync(display, False);
     }
 ```
+
+
+
+<br>
+
+<br>
+
+
+# draw a circle
+
+```c
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <X11/extensions/XShm.h> 
+#include <sys/shm.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+static const int width = 600, height = 400;
+
+void draw_circle_at_mouse(Display* display, Window w, XImage* img) {
+    // get mouse coords
+    int mouse_x, mouse_y;
+    int root_x, root_y; 
+    Window root_return, child_return;
+    unsigned int mask_return;
+    XQueryPointer(display, w, &root_return, &child_return, &root_x, &root_y, &mouse_x, &mouse_y, &mask_return);
+    //printf("Mouse relative to window: %d %d\n", mouse_x, mouse_y);
+
+    // draw circle
+    int radius = 50;
+    unsigned long pixel_color = (0 << 16) | (0 << 8) | (255);
+    for (int x = mouse_x - radius; x < mouse_x + radius; x++) {
+        for (int y = mouse_y - radius; y < mouse_y + radius; y++) {
+            if (x >= 0 && x < width && y >= 0 && y < height) {
+                int dx = x - mouse_x;
+                int dy = y - mouse_y;
+                if (dx*dx + dy*dy <= radius*radius) {
+                    XPutPixel(img, x, y, pixel_color);
+                }
+            }
+
+        }
+    }
+
+}
+int main() {
+
+    // window stuff
+    Display* display = XOpenDisplay(NULL);
+    int screen = DefaultScreen(display);
+    Window root = RootWindow(display, screen);
+    XSetWindowAttributes wa = {
+//        .override_redirect = True,
+    };
+    Window w = XCreateWindow(display, root, 100, 200, width, height, 0, DefaultDepth(display, screen), InputOutput, DefaultVisual(display, screen), CWOverrideRedirect | CWBackPixel, &wa);
+    XMapRaised(display, w);
+    GC gc = XCreateGC(display, w, 0, NULL);
+
+    // SHM stuf
+    XShmSegmentInfo shminfo;
+    XImage* img = XShmCreateImage(display, DefaultVisual(display, screen), DefaultDepth(display, screen), ZPixmap, NULL, &shminfo, width, height);
+    shminfo.shmid = shmget(IPC_PRIVATE, img->bytes_per_line * img->height, IPC_CREAT | 0777);
+    shminfo.shmaddr = img->data = shmat(shminfo.shmid, 0, 0);
+    shminfo.readOnly = False;
+    XShmAttach(display, &shminfo);
+
+    while (1) {
+        memset(img->data, 255, img->bytes_per_line * img->height); // initialise white background every frame
+        draw_circle_at_mouse(display, w, img);
+
+
+        XShmPutImage(display, w, gc, img, 0, 0, 0, 0, width, height, False);
+        XSync(display, False);
+        usleep(16000); // ~60 FPS
+    }
+}
+```
+
