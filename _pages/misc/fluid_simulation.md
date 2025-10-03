@@ -59,3 +59,21 @@ int main() {
 }
 ```
 
+Or something like this for rgb
+
+
+```c
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                //unsigned long c = ((x + frame) ^ (y + frame)) & 0xFF;
+                //unsigned long pixel = (c << 16) | (c << 8) | c; // grayscale
+                int r = 0;
+                int g = 0;
+                int b = rand() % 255;
+                unsigned long pixel = (r << 16) | (g << 8) | (b);
+                XPutPixel(img, x, y, pixel); // macro that writes pixels directly into img->data
+            }
+        }
+```
+
+
