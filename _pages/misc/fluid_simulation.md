@@ -78,3 +78,24 @@ Or something like this for rgb
 
 
 In the fluid simulator I won't actually need to use the frame number. 
+
+
+Another unrelated effect just for fun, vertical lines:
+
+```c
+    int r, g, b;
+    while (1) {
+        for (int x = 0; x < width; x++) {
+            r = rand() % 255;
+            g = 0;
+            b = rand() % 255;
+            for (int y = 0; y < height; y++) {
+                unsigned long pixel = (r << 16) | (g << 8) | (b);
+                XPutPixel(img, x, y, pixel); // macro that writes pixels directly into img->data
+            }
+        }
+
+        XShmPutImage(display, w, gc, img, 0, 0, 0, 0, width, height, False);
+        XSync(display, False);
+    }
+```
