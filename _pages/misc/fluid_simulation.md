@@ -273,3 +273,7 @@ Let's assume incompressibility and zero viscocity to keep things simpler.
 We'll make float arrays with the horizontal and vertical (u and v) velocities for each pixel 
 
 <img width="621" height="513" alt="image" src="https://github.com/user-attachments/assets/530903a8-a6ba-4604-9da2-7636bf24a058" />
+
+There's 3 main steps in the simulation, make the fluid incompressible, move the velocity field (advection), and then move the smoke/dye field (advection again) for a better visual. 
+
+
