@@ -158,7 +158,7 @@ int main() {
     XMapWindow(display, w);
     GC gc = XCreateGC(display, w, 0, NULL);
 
-    // SHM stuf
+    // SHM stuff
     XShmSegmentInfo shminfo;
     XImage* img = XShmCreateImage(display, DefaultVisual(display, screen), DefaultDepth(display, screen), ZPixmap, NULL, &shminfo, width, height);
     shminfo.shmid = shmget(IPC_PRIVATE, img->bytes_per_line * img->height, IPC_CREAT | 0777);
