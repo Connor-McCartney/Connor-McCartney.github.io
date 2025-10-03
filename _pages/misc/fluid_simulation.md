@@ -109,6 +109,8 @@ Another unrelated effect just for fun, vertical lines:
 
 # draw a circle
 
+`gcc x.c -lX11 -lXext -Wall -Wextra -pedantic && ./a.out`
+
 ```c
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
