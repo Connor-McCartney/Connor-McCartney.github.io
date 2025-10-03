@@ -264,3 +264,9 @@ int main() {
 ```
 
 
+
+
+# eulerian (grid-based) fluid simulation
+
+Let's assume incompressibility and zero viscocity to keep things simpler. 
+
