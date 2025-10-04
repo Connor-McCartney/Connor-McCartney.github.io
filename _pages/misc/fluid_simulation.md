@@ -102,17 +102,25 @@ class Fluid {
         }
     }
 
-    extrapolate() {
-        var n = this.numY;
-        for (var i = 0; i < this.numX; i++) {
-            this.u[i*n + 0] = this.u[i*n + 1];
-            this.u[i*n + this.numY-1] = this.u[i*n + this.numY-2]; 
-        }
-        for (var j = 0; j < this.numY; j++) {
-            this.v[0*n + j] = this.v[1*n + j];
-            this.v[(this.numX-1)*n + j] = this.v[(this.numX-2)*n + j] 
-        }
+extrapolate() {
+    var n = this.numY;
+
+    // Top and bottom walls
+    for (var i = 0; i < this.numX; i++) {
+        this.u[i*n + 0] = this.u[i*n + 1];                // copy tangential
+        this.u[i*n + this.numY-1] = this.u[i*n + this.numY-2];
+        this.v[i*n + 0] = 0.0;                            // zero normal
+        this.v[i*n + this.numY-1] = 0.0;
     }
+
+    // Left and right walls
+    for (var j = 0; j < this.numY; j++) {
+        this.v[0*n + j] = this.v[1*n + j];                // copy tangential
+        this.v[(this.numX-1)*n + j] = this.v[(this.numX-2)*n + j];
+        this.u[0*n + j] = 0.0;                            // zero normal
+        this.u[(this.numX-1)*n + j] = 0.0;
+    }
+}
 
     sampleField(x, y, field) {
         var n = this.numY;
@@ -267,9 +275,9 @@ function setupScene(sceneNr=0)
     scene.sceneNr = sceneNr;
     scene.obstacleRadius = 0.15;
     scene.dt = 1.0 / 60.0;
-    scene.numIters = 40;
+    scene.numIters = 5;
 
-    var res = 100;
+    var res = 300;
     var domainHeight = 1.0;
     var domainWidth = (domainHeight/simHeight) * simWidth;
     var h = domainHeight / res;
@@ -476,6 +484,7 @@ update();
 </script> 
 </body>
 </html>
+
 
 ```
 
