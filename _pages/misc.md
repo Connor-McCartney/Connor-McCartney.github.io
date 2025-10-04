@@ -13,6 +13,8 @@ title: Misc
 
 <span style="font-size:2em;">   [Shortest Bash Code Challenges - Mystiko CTF 2022](/misc/shortest-bash-code-challs)   </span>
 
+<span style="font-size:2em;">   [Fluid Simulation](/misc/fluid)   </span>
+
 <span style="font-size:2em;">   [ASD 75th anniversary 50c coin](/misc/ASD50c)   </span>
 
 <span style="font-size:2em;">   [Generating Elliptic Curves with a given order](/misc/ecc-gen)   </span>
