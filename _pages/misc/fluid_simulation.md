@@ -1,3 +1,7 @@
+---
+permalink: /misc/fluid
+title: Fluid Simulation
+---
 
 # demo
 
