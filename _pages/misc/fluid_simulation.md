@@ -979,23 +979,7 @@ void draw_circle_at_mouse(Display* display, Window w, int is_solid[numX][numY], 
     XQueryPointer(display, w, &root_return, &child_return, &root_x, &root_y, &mouse_x, &mouse_y, &mask_return);
     //printf("Mouse relative to window: %d %d\n", mouse_x, mouse_y);
 
-
     setObstacle(mouse_x, mouse_y, is_solid, smoke, u, v);
-
-    // draw circle
-    int radius = 50;
-    for (int x = mouse_x - radius; x < mouse_x + radius; x++) {
-        for (int y = mouse_y - radius; y < mouse_y + radius; y++) {
-            if (x > 0 && x < numX && y > 0 && y < numY) {
-                int dx = x - mouse_x;
-                int dy = y - mouse_y;
-                if (dx*dx + dy*dy <= radius*radius) {
-                    is_solid[x][y] = 0;
-                }
-            }
-
-        }
-    }
 }
 
 void draw_border(int is_solid[numX][numY]) {
@@ -1334,5 +1318,5 @@ int main() {
 }
 ```
 
+<img width="972" height="1002" alt="image" src="https://github.com/user-attachments/assets/8d19d1fa-c718-48ea-af17-22af7e23ce32" />
 
-<img width="780" height="975" alt="image" src="https://github.com/user-attachments/assets/e1fe9b81-b033-4e95-9a53-468d1db8a5b8" />
