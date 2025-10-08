@@ -938,7 +938,6 @@ int main() {
 #include <X11/extensions/XShm.h> 
 #include <sys/shm.h>
 #include <unistd.h>
-#include <stdio.h>
 #include <string.h>
 #include <math.h>
 
@@ -954,14 +953,82 @@ int obstacleX = 0;
 int obstacleY = 0;
 int frameNr = 0;
 
-void setObstacle(int x, int y, int is_solid[numX][numY], float smoke[numX][numY], float u[numX][numY], float v[numX][numY]);
 
-
-enum fields { // todo get rid of this
+enum fields { 
     U_FIELD,
     V_FIELD,
     SMOKE_FIELD,
 };
+
+
+float max(float a, float b)
+{
+    return a > b ? a : b;
+}
+
+float min(float a, float b)
+{
+    return a < b ? a : b;
+}
+
+void setObstacle(int x, int y, int is_solid[numX][numY], float smoke[numX][numY], float u[numX][numY], float v[numX][numY]) {
+    int r = 50;
+
+    // Clamp obstacle inside the domain
+    x = max(x, r + h);
+    x = min(x, (numX - 1 - r) * h);
+    y = max(y, r + h);
+    y = min(y, (numY - 1 - r) * h);
+
+    float vx = 0.0;
+    float vy = 0.0;
+
+    vx = (x - obstacleX) / dt;
+    vy = (y - obstacleY) / dt;
+
+    obstacleX = x;
+    obstacleY = y;
+
+    for (int i = 1; i < numX-1; i++) {
+        for (int j = 1; j < numY-1; j++) {
+
+            is_solid[i][j] = 1; // fluid by default
+
+            float dx = (i + 0.5) * h - x;
+            float dy = (j + 0.5) * h - y;
+
+            if (dx * dx + dy * dy < r * r) {
+
+                is_solid[i][j] = 0; // mark as obstacle
+
+                smoke[i][j] = 0.5 + 0.5 * sin(0.1 * frameNr);
+
+                // Clamp array indices to avoid out-of-bounds
+                int uIdx1 = min(i+1, numX-1);
+                int vIdx1 = min(j+1, numY-1);
+
+                u[i][j] = vx;
+                u[uIdx1][j] = vx;
+                v[i][j] = vy;
+                v[i][vIdx1] = vy;
+            }
+        }
+    }
+}
+
+
+void draw_smoke(XImage* img, float smoke[numX][numY]) {
+    for (int i = 0; i < numX; i++) {
+        for (int j = 0; j < numY; j++) {
+            int px = i + gap;
+            int py = j + gap;
+            int val = (int)(smoke[i][j] * 255);
+            unsigned long pixel = (val<<16) | (val<<8) | val;
+            XPutPixel(img, px, py, pixel);
+        }
+    }
+}
+
 
 void draw_circle_at_mouse(Display* display, Window w, int is_solid[numX][numY], float smoke[numX][numY], float u[numX][numY], float v[numX][numY]) {
     // delete previous circle
@@ -1050,26 +1117,12 @@ void extrapolate(float u[numX][numY], float v[numX][numY]) {
     }
 }
 
-float max(float a, float b)
-{
-    return a > b ? a : b;
-}
-
-float min(float a, float b)
-{
-    return a < b ? a : b;
-}
 
 void copy_array(float a[numX][numY], float b[numX][numY]) {
-    for (int x = 0; x < numX; x++) {
-        for (int y = 0; y < numY; y++) {
-            a[x][y] = b[x][y];
-        }
-    }
+    memcpy(a, b, sizeof(float) * numX * numY);
 }
 
 float sampleField(float x, float y, int field, float f[numX][numY]) {
-    float h = 1.0f;
     float h1 = 1.0f;
     float h2 = 0.5f;
 
@@ -1079,22 +1132,18 @@ float sampleField(float x, float y, int field, float f[numX][numY]) {
     float dx = 0.0;
     float dy = 0.0;
 
-    //float f[numX][numY];
 
     switch (field) {
         case U_FIELD: 
             {
-                //copy_array(f, u);
                 dy = h2;
             }break;
         case V_FIELD: 
             {
-                //copy_array(f, v);
                 dx = h2; 
             }break;
         case SMOKE_FIELD: 
             {
-                //copy_array(f, smoke);
                 dx = h2; 
                 dy = h2; 
             }break;
@@ -1127,14 +1176,10 @@ float avgV(float v[numX][numY], int i, int j) {
         v[(i-1)][j+1] + v[i][j+1]) * 0.25;
 }
 
-void advectVel(float u[numX][numY], float v[numX][numY], int is_solid[numX][numY]) {
-    float newU[numX][numY];
-    float newV[numX][numY];
-
+void advectVel(float u[numX][numY], float v[numX][numY], int is_solid[numX][numY], float newU[numX][numY], float newV[numX][numY]) {
     copy_array(newU, u);
     copy_array(newV, v);
 
-    float h = 1.0f;
     float h2 = 0.5f;
 
     for (int i = 1; i < numX; i++) {
@@ -1173,11 +1218,9 @@ void advectVel(float u[numX][numY], float v[numX][numY], int is_solid[numX][numY
     copy_array(v, newV);
 }
 
-void advectSmoke(float u[numX][numY], float v[numX][numY], int is_solid[numX][numY], float smoke[numX][numY]) {
-    float new_smoke[numX][numY];
+void advectSmoke(float u[numX][numY], float v[numX][numY], int is_solid[numX][numY], float smoke[numX][numY], float new_smoke[numX][numY]) {
     copy_array(new_smoke, smoke);
 
-    float h = 1.0f;
     float h2 = 0.5f;
 
     for (int i = 1; i < numX-1; i++) {
@@ -1195,55 +1238,6 @@ void advectSmoke(float u[numX][numY], float v[numX][numY], int is_solid[numX][nu
     }
     copy_array(smoke, new_smoke);
 }
-
-
-void setObstacle(int x, int y, int is_solid[numX][numY], float smoke[numX][numY], float u[numX][numY], float v[numX][numY]) {
-
-    int r = 50;
-
-    // Clamp obstacle inside the domain
-    x = max(x, r + h);
-    x = min(x, (numX - 1 - r) * h);
-    y = max(y, r + h);
-    y = min(y, (numY - 1 - r) * h);
-
-    float vx = 0.0;
-    float vy = 0.0;
-
-    vx = (x - obstacleX) / dt;
-    vy = (y - obstacleY) / dt;
-
-    obstacleX = x;
-    obstacleY = y;
-
-    for (int i = 1; i < numX-1; i++) {
-        for (int j = 1; j < numY-1; j++) {
-
-            is_solid[i][j] = 1; // fluid by default
-
-            float dx = (i + 0.5) * h - x;
-            float dy = (j + 0.5) * h - y;
-
-            if (dx * dx + dy * dy < r * r) {
-
-                is_solid[i][j] = 0; // mark as obstacle
-
-                smoke[i][j] = 0.5 + 0.5 * sin(0.1 * frameNr);
-
-                // Clamp array indices to avoid out-of-bounds
-                int uIdx1 = min(i+1, numX-1);
-                int vIdx1 = min(j+1, numY-1);
-
-                u[i][j] = vx;
-                u[uIdx1][j] = vx;
-                v[i][j] = vy;
-                v[i][vIdx1] = vy;
-            }
-        }
-    }
-}
-
-
 
 int main() {
 
@@ -1273,6 +1267,11 @@ int main() {
     float smoke[numX][numY];
 
 
+     // temporary 
+    float newU[numX][numY];
+    float newV[numX][numY];
+    float new_smoke[numX][numY];
+
     // zero out the arrays
     for (int x = 0; x < numX; x++) {
         for (int y = 0; y < numY; y++) {
@@ -1283,33 +1282,19 @@ int main() {
         }
     }
 
+    draw_border(is_solid);
+
     while (1) {
         frameNr++;
-
-        memset(img->data, 255, img->bytes_per_line * img->height); // initialise white background every frame
-
-        // draw smoke
-        for (int i = 0; i < numX; i++) {
-            for (int j = 0; j < numY; j++) {
-                int px = i + gap;
-                int py = j + gap;
-                int val = (int)(smoke[i][j] * 255);
-                unsigned long pixel = (val<<16) | (val<<8) | val;
-                XPutPixel(img, px, py, pixel);
-            }
-        }
-
-        draw_border(is_solid);
+        draw_smoke(img,smoke);
         draw_circle_at_mouse(display, w, is_solid, smoke, u, v);
         draw_solids(img, is_solid);
-
 
         // simulation
         solve_incompressibility(u, v, is_solid);
         extrapolate(u, v);
-        advectVel(u, v, is_solid); 
-        advectSmoke(u, v, is_solid, smoke);
-
+        advectVel(u, v, is_solid, newU, newV); 
+        advectSmoke(u, v, is_solid, smoke, new_smoke);
 
         XShmPutImage(display, w, gc, img, 0, 0, 0, 0, width, height, False);
         XSync(display, False);
