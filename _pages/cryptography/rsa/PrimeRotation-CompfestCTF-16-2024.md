@@ -108,6 +108,7 @@ the sympy solver will just hang because there is no solution. So, I just added a
 
 
 ```python
+from Crypto.Util.number import *
 load('https://raw.githubusercontent.com/TheBlupper/linineq/main/linineq.py')
 
 n = 338157083965246057571026756360795557480615383698977322739773119119768631064965448629444858368455612367321181172346297206715981930133542614118983474663804909611201532833645460572467511167118907653891577684641980804552415671777685960512779105153093618092748148197835625397758340520102160357258334250293520469968267915267730466529829639830017519012622973967936476883318368260247264026111745427467952456821708517718723537977525795647439220142795157435101213559895031087961640507169858237537062387315301224943694997736792045576174622866155698202883578606065005204942324227724078229357430907077534468953279
@@ -117,7 +118,7 @@ for X, Y, Z in solve_bounded_gen(M=matrix([10^400+1, 10^300+10^100, 10^200]), b=
     alarm(1)
     try:
         var('a b c')
-        sols = solve([X==a*c, Y==a*b+b*c, Z==a^2+b^2+c^2], [a, b, c], algorithm='sympy')
+        sols = solve([X==a*c, Y==a*b+b*c, Z==a^2+b^2+c^2], [a, b, c], algorithm='sympy', solution_dict=True)
         cancel_alarm()
     except:
         continue
@@ -127,6 +128,8 @@ for X, Y, Z in solve_bounded_gen(M=matrix([10^400+1, 10^300+10^100, 10^200]), b=
         p = a*10^200 + b*10^100 + c
         if is_prime(p):
             flag = GF(p)(ct).nth_root(65537)
+            print(X, Y, Z)
+            print(sol)
             print(bytes.fromhex(f'{int(flag):x}'))
             exit()
 # COMPFEST16{numb3r_th30ry_1s_qu1t3_fun_1snt_1t_h3h3h3_th1s_fl4g_1s_qu1t3_l0ng_n0t_g0nn4_l1e_718109abe0}
