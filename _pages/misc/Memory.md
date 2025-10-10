@@ -690,6 +690,8 @@ int main() {
 
 A union can be one of several data types. If you try to access a field that doesn't exist you get undefined behaviour. 
 
+Each thing occupies the same space in memory (overlayed on top of each other).
+
 ```c
 #include <stdio.h>
 
