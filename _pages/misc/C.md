@@ -592,13 +592,16 @@ int main() {
 <br>
 
 
-# static variables
+# static keyword 
 
 
 Roughly it's like the opposite of extern, it contains things within some scope. 
 
 More specifically there's 3 main cases. 
 
+
+
+<br>
 
 # 1: static functions
 
@@ -611,9 +614,16 @@ static void foo() {
 ```
 
 
+<br>
+
 # 2: static global variables
 
 
+
+
+
+
+<br>
 
 
 # 3: static function variables
