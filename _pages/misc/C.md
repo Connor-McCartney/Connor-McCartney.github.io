@@ -619,7 +619,7 @@ static void foo() {
 # 2: static global variables
 
 
-
+Global variables that can't be accessed from other .c files. 
 
 
 
