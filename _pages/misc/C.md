@@ -586,3 +586,24 @@ int main() {
 
 <br>
 
+
+
+
+<br>
+
+
+# static variables
+
+
+Roughly it's like the opposite of extern, it contains things within some scope. 
+
+More specifically there's 3 main cases. 
+
+
+# 1: static functions
+
+
+# 2: static global variables
+
+
+# 3: static function variables
