@@ -602,6 +602,14 @@ More specifically there's 3 main cases.
 
 # 1: static functions
 
+The function can only be used within that file (although optimising compilers may inline it)
+
+```c
+static void foo() {
+
+}
+```
+
 
 # 2: static global variables
 
