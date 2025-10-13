@@ -595,7 +595,7 @@ int main() {
 # static keyword 
 
 
-Roughly it's like the opposite of extern, it contains things within some scope. 
+Roughly it's like the opposite of extern, it restricts things to within some scope. 
 
 More specifically there's 3 main cases. 
 
