@@ -631,7 +631,7 @@ Global variables that can't be accessed from other .c files.
 
 The variable continues to exist even after the function returns. 
 
-So it's only every initialised once. 
+So it's only ever initialised once. 
 
 A common use case is counters. Eg:
 
