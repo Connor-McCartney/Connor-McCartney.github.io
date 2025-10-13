@@ -614,4 +614,29 @@ static void foo() {
 # 2: static global variables
 
 
+
+
 # 3: static function variables
+
+
+The variable continues to exist even after the function returns. 
+
+So it's only every initialised once. 
+
+A common use case is counters. Eg:
+
+```c
+#include <stdio.h>
+
+void counter() {
+    static int count = 0;
+    count++;
+    printf("%d\n", count);
+}
+
+int main() {
+    for (int i=0; i<10; i++) {
+        counter();
+    }
+}
+```
