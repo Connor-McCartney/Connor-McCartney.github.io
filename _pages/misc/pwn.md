@@ -1371,6 +1371,7 @@ ret, under the hood, pops from top of stack (rsp should point to top of stack) (
 
  
 ```
+
                  0x7fffffffe6d0:	0x41414141
                  0x7fffffffe6d8:	0x42424242
                  0x7fffffffe6e0:	0x43434343
@@ -1383,3 +1384,4 @@ ret, under the hood, pops from top of stack (rsp should point to top of stack) (
                  0x7fffffffe718 —▸ 0x401270 (main+89) ◂— lea rax, [rip + 0xe2b]       (return address)
                  0x7fffffffe720 —▸ 0x7fffffffe7c0 —▸ 0x7fffffffe820 ◂— 0
 ...
+```
