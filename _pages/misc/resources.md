@@ -120,3 +120,4 @@ Linux syscalls <https://x64.syscall.sh> <br>
 <https://vulnx.github.io/blog/posts/pwn-cheatsheet> <br>
 <https://matthias-research.github.io/pages/tenMinutePhysics/index.html> <br>
 <https://gmogoat.fr> <br>
+<https://medium.com/@francomangone18> <br>
