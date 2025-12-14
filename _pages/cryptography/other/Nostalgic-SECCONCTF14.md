@@ -297,3 +297,4 @@ $$t_i = x_i \cdot r^2 + b \cdot r + k_i \cdot p + s + j_i \cdot m$$
 
 br + s is constant, if we subtract pairs of equations we can eliminate it:
 
+$$t_{i+1} - t_i = ((x_{i+1} - x_i) \cdot r^2 + (k_{i+1} - k_i) \cdot p + (j_{i+1} - j_i) \cdot m)$$
