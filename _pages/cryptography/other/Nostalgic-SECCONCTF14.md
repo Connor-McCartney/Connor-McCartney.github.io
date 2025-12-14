@@ -365,3 +365,7 @@ So we see jj_i is in a very small range. Now we switch the equation back to mod 
 
 
 $$tt_i = xx_i \cdot R + jj_i \cdot m \pmod p$$
+
+
+The first thing we want to solve is jj_i. 
+
