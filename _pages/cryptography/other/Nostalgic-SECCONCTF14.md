@@ -93,3 +93,7 @@ True
 
 <br>
 
+
+
+Now to look at the chall, if we just keep sending 'need', we can collect infinite sample of `print(f"my MIND was {enc(plaintext=None)[1].hex()}")`
+
