@@ -116,7 +116,7 @@ Here we see r and s are derived from the key and nonce. The key and nonce are st
 r and s come from 16 bytes, so they are both <2**128. Also note everything seems to use little endian. 
 
 
-In Crypto/Cipher/ChaCha20_Poly1305.py we see how the mac is computed,
+In Crypto/Cipher/ChaCha20_Poly1305.py we see how the ciphertext is modified:
 
 ```py
     def _compute_mac(self):
@@ -142,4 +142,4 @@ In Crypto/Cipher/ChaCha20_Poly1305.py we see how the mac is computed,
         return self._mac_tag
 ```
 
-(it also makes calls to the [c file](https://github.com/Legrandin/pycryptodome/blob/master/src/poly1305.c))
+We have no aad (additional associated data) in this chall so that is ignored. 
