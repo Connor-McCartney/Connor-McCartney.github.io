@@ -611,6 +611,6 @@ t2 = SPECIAL_MIND, x2 = forged_ct (what we are solving for)
 
 j = j2 - j1
 
-$$(t_2 - x_1) \equiv (x_2 - x_1) \cdot R + j \cdot m \pmod p$$
+$$(t_2 - t_1) \equiv (x_2 - x_1) \cdot R + j \cdot m \pmod p$$
 
-$$x_2 = ((t_2 - x_1) - j \cdot m) \cdot R^{-1} + x_1 \pmod p$$
+$$x_2 = (t_2 - t_1 - j \cdot m) \cdot R^{-1} + x_1 \pmod p$$
