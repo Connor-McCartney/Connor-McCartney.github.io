@@ -236,4 +236,4 @@ assert tag == reproduced_tag
 <br>
 
 
-In the challenge, since the plaintexts are all 15 bytes, the for loop that does the accumulation only loops once, so let's simplify it:
+In this challenge, the ciphertexts are always the same size and the for loop that does the accumulation only loops twice, so let's simplify it:
