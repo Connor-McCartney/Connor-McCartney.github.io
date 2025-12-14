@@ -160,3 +160,7 @@ msg = ct + b'\x00' * ((16 - len(ct) % 16) % 16) + (0).to_bytes(8,'little') + len
 <br>
 
 
+
+Next we delve into the [c code](https://github.com/Legrandin/pycryptodome/blob/master/src/poly1305.c)
+
+
