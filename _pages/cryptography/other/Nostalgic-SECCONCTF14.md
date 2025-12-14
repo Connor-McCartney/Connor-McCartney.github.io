@@ -63,3 +63,27 @@ Well don't let the ChaCha trick you into thinking this is about stream cipher sh
 
 This was the first chall I've tried that deals with Poly1305, so I had lots of research to do, here's a dump:
 
+<https://l3ak.team/2024/04/21/plaid24/>
+
+<https://zenn.dev/kurenaif/articles/2a005936de308a>
+
+<https://github.com/tl2cents/AEAD-Nonce-Reuse-Attacks>
+
+<https://github.com/kalmarunionenctf/kalmarctf/tree/main/2024/crypto/PolyCG1305>
+
+<https://datatracker.ietf.org/doc/html/rfc7539>
+
+<https://github.com/ph4r05/py-chacha20poly1305/blob/master/chacha20poly1305/poly1305.py>
+
+<https://github.com/Legrandin/pycryptodome/blob/master/lib/Crypto/Cipher/ChaCha20.py#L244>
+
+<https://github.com/Legrandin/pycryptodome/blob/master/src/poly1305.c>
+
+
+<img width="1280" height="720" alt="image" src="https://github.com/user-attachments/assets/2ca070db-ca30-43ef-bfa2-80a2e9d14d56" />
+
+
+
+---
+
+
