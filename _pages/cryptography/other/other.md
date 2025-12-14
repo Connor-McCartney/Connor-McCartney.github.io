@@ -168,3 +168,5 @@ title: Other
 
 <span style="font-size:2em;">   [idekCTF 2025](/cryptography/other/idekCTF2025) </span> <br>
 
+
+<span style="font-size:2em;">   [Nostalgic - SECCON CTF 14 (2025)](/cryptography/other/Nostalgic-SECCONCTF14) </span> <br>
