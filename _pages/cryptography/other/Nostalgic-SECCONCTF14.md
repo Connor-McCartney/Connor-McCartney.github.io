@@ -97,3 +97,6 @@ True
 
 Now to look at the chall, if we just keep sending 'need', we can collect infinite sample of `print(f"my MIND was {enc(plaintext=None)[1].hex()}")`
 
+That is, we have access to as many 16-byte MAC tags as we like.
+
+Now I needed to learn how these MAC tags are created. 
