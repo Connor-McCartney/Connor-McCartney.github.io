@@ -182,3 +182,9 @@ ct, tag = cipher.encrypt_and_digest(plaintext)
 
 print(tag.hex()) # can we reproduce this?
 ```
+
+
+<br>
+
+<br>
+
