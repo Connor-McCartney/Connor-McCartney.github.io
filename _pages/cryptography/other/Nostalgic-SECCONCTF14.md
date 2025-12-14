@@ -614,3 +614,83 @@ j = j2 - j1
 $$(t_2 - t_1) \equiv (x_2 - x_1) \cdot R + j \cdot m \pmod p$$
 
 $$x_2 \equiv (t_2 - t_1 - j \cdot m) \cdot R^{-1} + x_1 \pmod p$$
+
+
+
+If you are unlucky then x2 is bigger than 2**128 and we can't send it because it's more than 16 bytes. 
+
+But other than that, we are done!
+
+Another quick test script:
+
+
+```python
+from os import urandom
+from Crypto.Cipher import ChaCha20_Poly1305, ChaCha20
+
+def xor(a, b):
+    return bytes(x ^ y for x, y in zip(a, b))
+
+def enc(plaintext):
+    cipher = ChaCha20_Poly1305.new(key=key, nonce=nonce)
+    ct, tag = cipher.encrypt_and_digest(plaintext)
+    return ct, tag
+
+plaintext = urandom(15)
+key = urandom(32)
+nonce = urandom(12)
+
+ct, tag = enc(plaintext)
+keystream, _ = enc(b"\x00" * len(plaintext))
+
+
+# reproduce r, s
+rs = ChaCha20.new(key=key, nonce=nonce).encrypt(b'\x00'*32)
+r, s = rs[:16], rs[16:]
+r, s = int.from_bytes(r, 'little'), int.from_bytes(s, 'little')
+
+p = 2**130 - 5 
+m = 2**128
+r &= 0x0ffffffc0ffffffc0ffffffc0fffffff # clamped
+R = r**2
+
+
+SPECIAL_MIND = urandom(16) # given
+special_rain = urandom(16) # secret
+special_ct, special_tag = enc(plaintext=special_rain) # given
+
+
+t1 = int.from_bytes(special_tag, 'little')
+x1 = int.from_bytes(special_ct, 'little')
+t2 = int.from_bytes(SPECIAL_MIND, 'little')
+
+for j in range(-3, 4):
+    print(j)
+    x2 = ((t2 - t1 - j*m) * pow(R, -1, p) + x1) % p
+    if x2 > 2**128: 
+        continue
+    forged_ct = x2.to_bytes(16, 'little')
+    payload = xor(forged_ct, special_ct)
+    if enc(plaintext=xor(special_rain, payload))[1] == SPECIAL_MIND:
+        print(f"I feel the same!!.. The flag is ...")
+    else:
+        print("No... not the same...")
+```
+
+
+
+<br>
+
+
+<br>
+
+
+<br>
+
+
+---
+
+
+Final script:
+
+
