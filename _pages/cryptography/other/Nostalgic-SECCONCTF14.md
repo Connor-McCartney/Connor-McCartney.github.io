@@ -263,10 +263,11 @@ r, s = int.from_bytes(r, 'little'), int.from_bytes(s, 'little')
 
 
 p = 2**130 - 5 
+M = 2**128
 r &= 0x0ffffffc0ffffffc0ffffffc0fffffff # clamped
 x = int.from_bytes(ct + b'\x00' * ((16 - len(ct) % 16) % 16) + b'\x01', 'little') # unknown, msg[:16]
 b = int.from_bytes((0).to_bytes(8,'little') + len(ct).to_bytes(8,'little') + b'\x01', 'little') # known, msg[16:32]
-assert T == (((x*r**2 + b*r) % p) + s) % 2**128
+assert T == (((x*r**2 + b*r) % p) + s) % M
 
 # unknowns:
 assert r<2**124 # a bit less than 128 bc of clamping
@@ -283,8 +284,5 @@ assert x<2**129
 
 Alright now we've escaped the crypto stuff and it's just math equations to solve. 
 
-```py
-assert T == (((x*r**2 + b*r) % p) + s) % 2**128
-```
 
-
+$$T = (((x \cdot r^2 + b \cdot r) \pmod p) + s) \pmod M$$
