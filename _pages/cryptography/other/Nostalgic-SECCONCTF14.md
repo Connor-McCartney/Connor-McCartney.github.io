@@ -279,3 +279,12 @@ assert x<2**129
 
 <br>
 
+
+
+Alright now we've escaped the crypto stuff and it's just math equations to solve. 
+
+```py
+assert T == (((x*r**2 + b*r) % p) + s) % 2**128
+```
+
+
