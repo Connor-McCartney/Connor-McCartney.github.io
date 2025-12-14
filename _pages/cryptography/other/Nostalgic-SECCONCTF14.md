@@ -188,3 +188,52 @@ print(tag.hex()) # can we reproduce this?
 
 <br>
 
+And successfully reproduce it:
+
+```py
+from os import urandom
+from Crypto.Cipher import ChaCha20_Poly1305, ChaCha20
+
+plaintext = urandom(15)
+key = urandom(32)
+nonce = urandom(12)
+
+cipher = ChaCha20_Poly1305.new(key=key, nonce=nonce)
+ct, tag = cipher.encrypt_and_digest(plaintext)
+
+print(tag.hex()) # can we reproduce this?
+
+
+
+
+# reproduce r, s
+rs = ChaCha20.new(key=key, nonce=nonce).encrypt(b'\x00'*32)
+r, s = rs[:16], rs[16:]
+r, s = int.from_bytes(r, 'little'), int.from_bytes(s, 'little')
+
+def poly1305_mac(r, s, msg):
+    p = 2**130 - 5 
+    r &= 0x0ffffffc0ffffffc0ffffffc0fffffff # clamped
+    acc = 0
+    for i in range(0, len(msg), 16):
+        block = msg[i:i+16] + b'\x01'
+        block = int.from_bytes(block, 'little')
+        acc = (acc + block) * r % p
+    acc += s
+    acc = int(acc % 2**128)
+    return acc.to_bytes(16, 'little') 
+
+msg = ct + b'\x00' * ((16 - len(ct) % 16) % 16) + (0).to_bytes(8,'little') + len(ct).to_bytes(8,'little')
+reproduced_tag = poly1305_mac(r, s, msg)
+print(reproduced_tag.hex())
+assert tag == reproduced_tag
+```
+
+
+
+<br>
+
+<br>
+
+
+In the challenge, since the plaintexts are all 15 bytes, the for loop that does the accumulation only loops once, so let's simplify it:
