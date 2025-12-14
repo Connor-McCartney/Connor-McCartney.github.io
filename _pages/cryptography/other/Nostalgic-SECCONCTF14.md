@@ -285,7 +285,7 @@ assert x<2**120
 Alright now we've escaped the crypto stuff and it's just math equations to solve. 
 
 
-$$t_i = ((((256^16 + x_i) \cdot r^2 + b \cdot r) \pmod p) + s) \pmod m$$
+$$t_i = ((((256^{16} + x_i) \cdot r^2 + b \cdot r) \pmod p) + s) \pmod m$$
 
 
 Can get rid of the mods, introduce some new vars k_i and j_i:
