@@ -530,4 +530,9 @@ Now R is the only unknown left so that's trivial to rearrange for.
 
 $$R \equiv {xx_i}^{-1} \cdot (tt_i - jj_i \cdot m) \pmod p$$
 
-and r is one of the modular sqrts of R. 
+From here you could also solve r as one of the modular sqrts of R, and solve s too, but there's no need.
+
+R is sufficient, we can use this equation:
+
+$$tt_i = xx_i \cdot R + jj_i \cdot m \pmod p$$
+
