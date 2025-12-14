@@ -291,4 +291,4 @@ $$t_i = (((x_i \cdot r^2 + b \cdot r) \pmod p) + s) \pmod m$$
 Can get rid of the mods, introduce some new vars k_i and j_i:
 
 
-$$t_i = (((x_i \cdot r^2 + b \cdot r) + k_i \cdot p) + s) + j_i \cdot m$$
+$$t_i = x_i \cdot r^2 + b \cdot r + k_i \cdot p + s + j_i \cdot m$$
