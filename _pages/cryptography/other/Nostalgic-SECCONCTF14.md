@@ -148,4 +148,15 @@ We have no aad (additional associated data) in this chall so that is ignored.
 
 From [this writeup](https://l3ak.team/2024/04/21/plaid24/) we see the input is usually `AD || pad(AD) || C || pad(C) || len(AD) || len(C)` but `C || pad(C) || len(AD) || len(C)` with no aad. 
 
+As a one-liner, 
+
+```python
+msg = ct + b'\x00' * ((16 - len(ct) % 16) % 16) + (0).to_bytes(8,'little') + len(ct).to_bytes(8,'little')
+```
+
+
+<br>
+
+<br>
+
 
