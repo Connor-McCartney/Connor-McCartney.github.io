@@ -80,10 +80,6 @@ This was the first chall I've tried that deals with Poly1305, so I had lots of r
 <https://github.com/Legrandin/pycryptodome/blob/master/src/poly1305.c>
 
 
-<img width="1280" height="720" alt="image" src="https://github.com/user-attachments/assets/2ca070db-ca30-43ef-bfa2-80a2e9d14d56" />
-
-
-
 ---
 
 
