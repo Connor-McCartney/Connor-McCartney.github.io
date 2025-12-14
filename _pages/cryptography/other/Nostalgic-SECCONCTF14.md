@@ -109,3 +109,8 @@ That is, we have access to as many 16-byte MAC tags as we like.
 
 Now I needed to learn how these MAC tags are created. 
 
+<https://github.com/Legrandin/pycryptodome/blob/master/lib/Crypto/Cipher/ChaCha20.py#L244>
+
+Here we see r and s are derived from the key and nonce. The key and nonce are static in the chall, so r and s are both static too!
+
+r and s come from 16 bytes, so they are both <2**128. Also note everything seems to use little endian. 
