@@ -165,5 +165,5 @@ Next we delve into the [c code](https://github.com/Legrandin/pycryptodome/blob/m
 
 Note the poly1305_load_r function, it clamps r. 
 
-Finally, [this code](https://github.com/tl2cents/AEAD-Nonce-Reuse-Attacks/blob/main/chacha-poly1305/chacha_poly1305_forgery.py) was very helpful, I just had to edit r and s. 
+Finally, [this python implementation](https://github.com/tl2cents/AEAD-Nonce-Reuse-Attacks/blob/main/chacha-poly1305/chacha_poly1305_forgery.py) was very helpful, I just had to edit r and s. 
 
