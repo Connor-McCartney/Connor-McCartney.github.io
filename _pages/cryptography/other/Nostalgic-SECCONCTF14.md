@@ -114,3 +114,32 @@ Now I needed to learn how these MAC tags are created.
 Here we see r and s are derived from the key and nonce. The key and nonce are static in the chall, so r and s are both static too!
 
 r and s come from 16 bytes, so they are both <2**128. Also note everything seems to use little endian. 
+
+
+In Crypto/Cipher/ChaCha20_Poly1305.py we see how the mac is computed,
+
+```py
+    def _compute_mac(self):
+        """Finalize the cipher (if not done already) and return the MAC."""
+
+        if self._mac_tag:
+            assert(self._status == _CipherStatus.PROCESSING_DONE)
+            return self._mac_tag
+
+        assert(self._status != _CipherStatus.PROCESSING_DONE)
+
+        if self._status == _CipherStatus.PROCESSING_AUTH_DATA:
+            self._pad_aad()
+
+        if self._len_ct & 0x0F:
+            self._authenticator.update(b'\x00' * (16 - (self._len_ct & 0x0F)))
+
+        self._status = _CipherStatus.PROCESSING_DONE
+
+        self._authenticator.update(long_to_bytes(self._len_aad, 8)[::-1])
+        self._authenticator.update(long_to_bytes(self._len_ct, 8)[::-1])
+        self._mac_tag = self._authenticator.digest()
+        return self._mac_tag
+```
+
+(it also makes calls to the [c file](https://github.com/Legrandin/pycryptodome/blob/master/src/poly1305.c))
