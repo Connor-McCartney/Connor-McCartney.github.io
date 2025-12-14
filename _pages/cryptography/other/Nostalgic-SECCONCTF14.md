@@ -600,4 +600,17 @@ payload = forged_ct XOR special_ct
 
 Great, all that remains is to use R and calculate forged_ct that will result in the tag being SPECIAL_MIND. 
 
+$$tt_i \equiv xx_i \cdot R + jj_i \cdot m \pmod p$$
 
+
+Let:
+
+t1 = special_tag, x1 = special_ct
+
+t2 = SPECIAL_MIND, x2 = forged_ct (what we are solving for)
+
+j = j2 - j1
+
+$$(t_2 - x_1) \equiv (x_2 - x_1) \cdot R + j \cdot m \pmod p$$
+
+$$x_2 = ((t_2 - x_1) - j \cdot m) \cdot R^{-1} + x_1 \pmod p$$
