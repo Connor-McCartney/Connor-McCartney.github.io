@@ -367,5 +367,80 @@ So we see jj_i is in a very small range. Now we switch the equation back to mod 
 $$tt_i = xx_i \cdot R + jj_i \cdot m \pmod p$$
 
 
-The first thing we want to solve is jj_i. 
+The first thing we want to solve is jj_i:
+
+
+
+
+```python
+def find_ortho_mod(mod, *vecs):
+    assert len(set(len(v) for v in vecs)) == 1, "vectors have different lengths"
+    base = [[matrix(vecs).T, matrix.identity(len(vecs[0]))]]
+    if mod is not None:
+        base += [[ZZ(mod), 0]]
+    L = block_matrix(ZZ, base)
+    nv = len(vecs)
+    L[:, :nv] *= mod 
+    L = L.LLL()
+    ret = []
+    for row in L:
+        if row[:nv] == 0:
+            ret.append(row[nv:])
+    return matrix(ret)
+
+p = 2**130 - 5 
+m = 2**128
+
+r = randint(0, 2**124)
+s = randint(0, 2**128)
+R = r**2
+print(f'{R = }')
+
+N = 100
+xx = []
+tt = []
+jj = []
+for _ in range(N):
+    xx_2 = randint(0, 2**120)
+    xx_1 = randint(0, 2**120)
+    xx_i = xx_2 - xx_1
+    xx.append(xx_i)
+
+    tt_2 = ((xx_2*R) % p) % m
+    tt_1 = ((xx_1*R) % p) % m
+    tt_i = tt_2 - tt_1
+    tt.append(tt_i)
+
+    jj_2 = (tt_2 - ((xx_2*R) % p)) // m
+    jj_1 = (tt_1 - ((xx_1*R) % p)) // m
+    jj_i = jj_2 - jj_1  
+    jj.append(jj_i)
+
+print(f'{jj = }')
+
+
+
+
+orth1 = find_ortho_mod(p, tt).BKZ()[:-2]
+for o in orth1: 
+    assert o * vector(GF(p), tt) == 0
+
+    # tt_i = xx_i * R + jj_i*M
+    # when we find vectors orthogonal to tt_i, they also happen to be orthogonal to xx_i and jj_i (we  hope)
+    assert o * vector(GF(p), xx) == 0
+    assert o * vector(GF(p), jj) == 0
+
+
+orth2 = find_ortho_mod(p, *orth1)
+for o in orth2:
+    assert o * vector(GF(p), orth1[0]) == 0
+    assert o * vector(GF(p), orth1[1]) == 0
+    assert o * vector(GF(p), orth1[2]) == 0
+    ...
+
+print('solved jj (maybe negative):', orth2[0])
+```
+
+
+
 
