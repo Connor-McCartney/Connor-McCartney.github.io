@@ -341,13 +341,13 @@ R = r**2
 
 while True:
     xx_i = randint(0, 2**120)
-    ti = ((xx_i*r**2) % p) % m
+    tti = ((xx_i*r**2) % p) % m
 
-    jj_i = (ti - ((xx_i*r**2) % p)) // m
+    jj_i = (tti - ((xx_i*r**2) % p)) // m
     assert jj_i in [-3, -2, -1, 0]
     #print(jj_i)
-    assert ti == ((xx_i*r**2) % p) + jj_i*m
-    assert ti == (xx_i*r**2 + jj_i*m) % p
+    assert tti == ((xx_i*r**2) % p) + jj_i*m
+    assert tti == (xx_i*r**2 + jj_i*m) % p
 ```
 
 
