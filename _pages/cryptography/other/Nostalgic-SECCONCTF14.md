@@ -459,3 +459,70 @@ But we can easily just divide out the R:
 
 $$R^{-1} \cdot (tt_i - jj_i \cdot m) \equiv xx_i \pmod p$$
 
+
+And SVP:
+
+
+$$R^{-1} \cdot \begin{bmatrix} tt_0 - jj_0 \cdot m \\ tt_1 - jj_1 \cdot m \\ ... \\ tt_i - jj_i \cdot N \end{bmatrix} 
++ kk_0 \cdot \begin{bmatrix} p \\ 0 \\ ... \\ 0 \end{bmatrix} 
++ kk_1 \cdot \begin{bmatrix} 0 \\ p \\ ... \\ 0 \end{bmatrix} 
++ \ ... \
++ kk_N \cdot \begin{bmatrix} 0 \\ 0 \\ ... \\ p \end{bmatrix} 
+= \begin{bmatrix}   xx_0 \\   xx_1 \\ ... \\ xx_N   \end{bmatrix}$$
+
+
+
+<br>
+
+<br>
+
+
+<br>
+
+
+```py
+p = 2**130 - 5 
+m = 2**128
+
+r = randint(0, 2**124)
+s = randint(0, 2**128)
+R = r**2
+print(f'{R = }')
+
+N = 100
+xx = []
+tt = []
+jj = []
+for _ in range(N):
+    xx_2 = randint(0, 2**120)
+    xx_1 = randint(0, 2**120)
+    xx_i = xx_2 - xx_1
+    xx.append(xx_i)
+
+    tt_2 = ((xx_2*R) % p) % m
+    tt_1 = ((xx_1*R) % p) % m
+    tt_i = tt_2 - tt_1
+    tt.append(tt_i)
+
+    jj_2 = (tt_2 - ((xx_2*R) % p)) // m
+    jj_1 = (tt_1 - ((xx_1*R) % p)) // m
+    jj_i = jj_2 - jj_1  
+    jj.append(jj_i)
+
+
+print(f'{xx = }')
+jj_vec = vector(GF(p), jj)
+tt_vec = vector(GF(p), tt)
+
+
+# pow(R, -1, p) * (tt_i - jj_i*M) = xx_i (mod p)
+assert pow(R, -1, p) * (tt_vec - jj_vec*m) == vector(GF(p), xx)
+M = Matrix(ZZ, tt_vec - jj_vec*m).T.augment(diagonal_matrix([p]*N)).T
+print('solved xx (maybe negative)', M.LLL()[1])
+```
+
+
+<br>
+
+<br>
+
