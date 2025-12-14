@@ -457,5 +457,5 @@ Here `tt_i - jj_i * m` is just a constant now, but there is still 2 unknowns mul
 
 But we can easily just divide out the R:
 
-$$R^-1 \cdot (tt_i - jj_i \cdot m) \equiv xx_i \pmod p$$
+$$R^{-1} \cdot (tt_i - jj_i \cdot m) \equiv xx_i \pmod p$$
 
