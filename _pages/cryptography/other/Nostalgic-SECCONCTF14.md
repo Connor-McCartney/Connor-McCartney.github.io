@@ -577,4 +577,27 @@ assert ct == xor(plaintext, keystream)
 
 
 
+Key and nonce are fixed, so the keystream is also fixed. 
+
+We know that special_ct = special_rain XOR keystream
+
+And we will also have forged_ct = (special_rain XOR payload) XOR keystream
+
+So although special_rain and keystream are not known, they both disappear with XOR operations. 
+
+Rearranging for payload:
+
+payload = forged_ct XOR special_rain XOR keystream
+
+And sub in special_ct:
+
+payload = forged_ct XOR special_ct
+
+
+---
+
+<br>
+
+Great, all that remains is to use R and calculate forged_ct that will result in the tag being SPECIAL_MIND. 
+
 
