@@ -271,7 +271,7 @@ assert t == ((((256**16+x)*r**2 + b*r) % p) + s) % m
 
 # unknowns:
 assert r<2**124 # a bit less than 128 bc of clamping
-assert s<2**128 # a bit less than 128 bc of clamping
+assert s<2**128 
 assert x<2**120
 ```
 
