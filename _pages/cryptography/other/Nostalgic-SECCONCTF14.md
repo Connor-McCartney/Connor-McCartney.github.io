@@ -313,5 +313,15 @@ $$kk_i = k_{i+1} - k_i$$
 
 $$jj_i = j_{i+1} - j_i$$
 
-$$tt_i = xx_i \cdot r^2 + jj_i \cdot m + kk_i \cdot p$$
+$$R = r^2$$
+
+$$tt_i = xx_i \cdot R + jj_i \cdot m + kk_i \cdot p$$
+
+<br>
+
+And as a reminder, 
+
+knowns: `tt_i. m, p`
+
+unknowns: `xx_i, jj_i, kk_i, R`
 
