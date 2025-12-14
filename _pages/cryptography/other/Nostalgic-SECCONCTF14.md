@@ -251,7 +251,7 @@ nonce = urandom(12)
 
 cipher = ChaCha20_Poly1305.new(key=key, nonce=nonce)
 ct, tag = cipher.encrypt_and_digest(plaintext)
-T = int.from_bytes(tag, 'little')
+t = int.from_bytes(tag, 'little')
 
 
 # reproduce r, s
@@ -263,11 +263,11 @@ r, s = int.from_bytes(r, 'little'), int.from_bytes(s, 'little')
 
 
 p = 2**130 - 5 
-M = 2**128
+m = 2**128
 r &= 0x0ffffffc0ffffffc0ffffffc0fffffff # clamped
 x = int.from_bytes(ct + b'\x00' * ((16 - len(ct) % 16) % 16) + b'\x01', 'little') # unknown, msg[:16]
 b = int.from_bytes((0).to_bytes(8,'little') + len(ct).to_bytes(8,'little') + b'\x01', 'little') # known, msg[16:32]
-assert T == (((x*r**2 + b*r) % p) + s) % M
+assert t == (((x*r**2 + b*r) % p) + s) % m
 
 # unknowns:
 assert r<2**124 # a bit less than 128 bc of clamping
