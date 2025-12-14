@@ -532,7 +532,7 @@ $$R \equiv {xx_i}^{-1} \cdot (tt_i - jj_i \cdot m) \pmod p$$
 
 From here you could also solve r as one of the modular sqrts of R, and solve s too, but there's no need.
 
-R is sufficient, we can use this equation:
+R is sufficient, we can reuse this equation:
 
 $$tt_i = xx_i \cdot R + jj_i \cdot m \pmod p$$
 
