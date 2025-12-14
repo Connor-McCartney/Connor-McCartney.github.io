@@ -531,3 +531,25 @@ Now R is the only unknown left so that's trivial to rearrange for.
 $$R \equiv {xx_i}^{-1} \cdot (tt_i - jj_i \cdot m) \pmod p$$
 
 From here you could also solve r as one of the modular sqrts of R, and solve s too, but there's no need, R is sufficient.
+
+
+
+<br>
+
+Now let's think about the final forgery. I simplified the source a little. 
+
+```py
+SPECIAL_MIND = urandom(16) # given
+special_rain = urandom(16) # secret
+special_ct, special_tag = enc(plaintext=special_rain) # given
+
+
+payload = ...
+
+
+if enc(plaintext=xor(special_rain, payload))[1] == SPECIAL_MIND:
+    print(f"I feel the same!!.. The flag is ...")
+else:
+    print("No... not the same...")
+```
+
