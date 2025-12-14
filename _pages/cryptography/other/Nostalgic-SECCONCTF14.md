@@ -425,7 +425,7 @@ orth1 = find_ortho_mod(p, tt).BKZ()[:-2]
 for o in orth1: 
     assert o * vector(GF(p), tt) == 0
 
-    # tt_i = xx_i * R + jj_i*M (mod p)
+    # tt_i = xx_i * R + jj_i*m (mod p)
     # when we find vectors orthogonal to tt_i, they also happen to be orthogonal to xx_i and jj_i (hopefully)
     assert o * vector(GF(p), xx) == 0
     assert o * vector(GF(p), jj) == 0
