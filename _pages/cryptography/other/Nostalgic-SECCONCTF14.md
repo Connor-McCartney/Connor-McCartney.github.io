@@ -344,18 +344,18 @@ while True:
     xx_1 = randint(0, 2**120)
     xx_i = xx_2 - xx_1
 
-    tt2 = ((xx_2*R) % p) % m
-    tt1 = ((xx_1*R) % p) % m
+    tt_2 = ((xx_2*R) % p) % m
+    tt_1 = ((xx_1*R) % p) % m
 
-    jj_2 = (tt2 - ((xx_2*R) % p)) // m
-    jj_1 = (tt1 - ((xx_1*R) % p)) // m
+    jj_2 = (tt_2 - ((xx_2*R) % p)) // m
+    jj_1 = (tt_1 - ((xx_1*R) % p)) // m
 
     jj_i = jj_2 - jj_1  
-    tti = tt2 - tt1
+    tt_i = tt_2 - tt_1
 
     assert -3 <= jj_i <= 3 
     #print(jj_i)
-    assert tti % p == (xx_i*R + jj_i*m) % p
+    assert tt_i % p == (xx_i*R + jj_i*m) % p
 ```
 
 
