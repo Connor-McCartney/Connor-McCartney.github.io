@@ -167,3 +167,4 @@ Note the poly1305_load_r function, it clamps r.
 
 Finally, [this python implementation](https://github.com/tl2cents/AEAD-Nonce-Reuse-Attacks/blob/main/chacha-poly1305/chacha_poly1305_forgery.py) was very helpful, I just had to edit r and s. 
 
+So now we can make a test script for how the MAC tag is created:
