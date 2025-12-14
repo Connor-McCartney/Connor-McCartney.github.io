@@ -641,8 +641,6 @@ key = urandom(32)
 nonce = urandom(12)
 
 ct, tag = enc(plaintext)
-keystream, _ = enc(b"\x00" * len(plaintext))
-
 
 # reproduce r, s
 rs = ChaCha20.new(key=key, nonce=nonce).encrypt(b'\x00'*32)
