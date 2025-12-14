@@ -265,14 +265,14 @@ r, s = int.from_bytes(r, 'little'), int.from_bytes(s, 'little')
 p = 2**130 - 5 
 m = 2**128
 r &= 0x0ffffffc0ffffffc0ffffffc0fffffff # clamped
-x = int.from_bytes(ct + b'\x00' * ((16 - len(ct) % 16) % 16) + b'\x01', 'little') # unknown, msg[:16]
+x = int.from_bytes(ct, 'little') # unknown
 b = int.from_bytes((0).to_bytes(8,'little') + len(ct).to_bytes(8,'little') + b'\x01', 'little') # known, msg[16:32]
-assert t == (((x*r**2 + b*r) % p) + s) % m
+assert t == ((((256**16+x)*r**2 + b*r) % p) + s) % m
 
 # unknowns:
 assert r<2**124 # a bit less than 128 bc of clamping
 assert s<2**128 # a bit less than 128 bc of clamping
-assert x<2**129
+assert x<2**120
 ```
 
 
@@ -285,16 +285,15 @@ assert x<2**129
 Alright now we've escaped the crypto stuff and it's just math equations to solve. 
 
 
-$$t_i = (((x_i \cdot r^2 + b \cdot r) \pmod p) + s) \pmod m$$
+$$t_i = ((((256^16 + x_i) \cdot r^2 + b \cdot r) \pmod p) + s) \pmod m$$
 
 
 Can get rid of the mods, introduce some new vars k_i and j_i:
 
 
-$$t_i = x_i \cdot r^2 + b \cdot r + k_i \cdot p + s + j_i \cdot m$$
+$$t_i = 256^16 \cdot r^2 + x_i \cdot r^2 + b \cdot r + k_i \cdot p + s + j_i \cdot m$$
 
 
-
-br + s is constant, if we subtract pairs of equations we can eliminate it:
+`256^16 * r^2 + br + s` is constant, if we subtract pairs of equations we can eliminate it:
 
 $$t_{i+1} - t_i = (x_{i+1} - x_i) \cdot r^2 + (k_{i+1} - k_i) \cdot p + (j_{i+1} - j_i) \cdot m$$
