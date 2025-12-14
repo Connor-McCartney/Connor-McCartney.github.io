@@ -353,3 +353,7 @@ while True:
 
 <br>
 
+So we see jj_i is in a very small range. Now we switch the equation back to mod p and begin dealing with orthogonal lattice techniques. 
+
+
+$$tt_i = xx_i \cdot R + jj_i \cdot m \pmod p$$
