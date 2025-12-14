@@ -239,3 +239,43 @@ assert tag == reproduced_tag
 
 
 In this challenge, the ciphertexts are always the same size and the for loop that does the accumulation only loops twice, so let's simplify it:
+
+
+```python
+from os import urandom
+from Crypto.Cipher import ChaCha20_Poly1305, ChaCha20
+
+plaintext = urandom(15)
+key = urandom(32)
+nonce = urandom(12)
+
+cipher = ChaCha20_Poly1305.new(key=key, nonce=nonce)
+ct, tag = cipher.encrypt_and_digest(plaintext)
+T = int.from_bytes(tag, 'little')
+
+
+# reproduce r, s
+rs = ChaCha20.new(key=key, nonce=nonce).encrypt(b'\x00'*32)
+r, s = rs[:16], rs[16:]
+r, s = int.from_bytes(r, 'little'), int.from_bytes(s, 'little')
+
+
+
+
+p = 2**130 - 5 
+r &= 0x0ffffffc0ffffffc0ffffffc0fffffff # clamped
+x = int.from_bytes(ct + b'\x00' * ((16 - len(ct) % 16) % 16) + b'\x01', 'little') # unknown, msg[:16]
+b = int.from_bytes((0).to_bytes(8,'little') + len(ct).to_bytes(8,'little') + b'\x01', 'little') # known, msg[16:32]
+assert T == (((x*r**2 + b*r) % p) + s) % 2**128
+
+# unknowns:
+assert r<2**124 # a bit less than 128 bc of clamping
+assert s<2**128 # a bit less than 128 bc of clamping
+assert x<2**129
+```
+
+
+<br>
+
+<br>
+
