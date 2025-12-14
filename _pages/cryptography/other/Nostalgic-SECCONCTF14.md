@@ -536,7 +536,16 @@ From here you could also solve r as one of the modular sqrts of R, and solve s t
 
 <br>
 
-Now let's think about the final forgery. I simplified the source a little. 
+<br>
+
+<br>
+
+<br>
+
+---
+
+
+Now let's think about the final payload forgery. I simplified the source a little:
 
 ```py
 SPECIAL_MIND = urandom(16) # given
@@ -552,4 +561,20 @@ if enc(plaintext=xor(special_rain, payload))[1] == SPECIAL_MIND:
 else:
     print("No... not the same...")
 ```
+
+
+
+<br>
+
+
+Note that internally, we have ciphertext = plaintext XOR keystream:
+
+```py
+ct, tag = enc(plaintext)
+keystream, _ = enc(b"\x00" * len(plaintext))
+assert ct == xor(plaintext, keystream)
+```
+
+
+
 
