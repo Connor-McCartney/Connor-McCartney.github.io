@@ -82,4 +82,14 @@ This was the first chall I've tried that deals with Poly1305, so I had lots of r
 
 ---
 
+Well first I learned what the 1305 means:
+
+```py
+sage: p = 2**130 - 5
+sage: is_prime(p)
+True
+```
+
+
+<br>
 
