@@ -285,4 +285,4 @@ assert x<2**129
 Alright now we've escaped the crypto stuff and it's just math equations to solve. 
 
 
-$$T = (((x \cdot r^2 + b \cdot r) \pmod p) + s) \pmod M$$
+$$t_i = (((x_i \cdot r^2 + b \cdot r) \pmod p) + s) \pmod m$$
