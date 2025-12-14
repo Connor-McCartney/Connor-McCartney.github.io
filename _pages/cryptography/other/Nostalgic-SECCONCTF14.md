@@ -441,6 +441,21 @@ for o in orth2:
 print('solved jj (maybe negative):', orth2[0])
 ```
 
+Nice it worked, we found some orth1 orthogonal to jj_i and xx_i, then jj_i (the shortest) appeared in orth2. 
 
 
+
+Now we can use another lattice to solve for xx_i. 
+
+
+$$tt_i = xx_i \cdot R + jj_i \cdot m \pmod p$$
+
+
+$$tt_i - jj_i \cdot m \equiv xx_i \cdot R \pmod p$$
+
+Here `tt_i - jj_i * m` is just a constant now, but there is still 2 unknowns multiplied on the right hand side which is a little annoying. 
+
+But we can easily just divide out the R:
+
+$$R^-1 \cdot (tt_i - jj_i \cdot m) \equiv xx_i \pmod p$$
 
