@@ -143,3 +143,9 @@ In Crypto/Cipher/ChaCha20_Poly1305.py we see how the ciphertext is modified:
 ```
 
 We have no aad (additional associated data) in this chall so that is ignored. 
+
+<br>
+
+From [this writeup](https://l3ak.team/2024/04/21/plaid24/) we see the input is usually `AD || pad(AD) || C || pad(C) || len(AD) || len(C)` but `C || pad(C) || len(AD) || len(C)` with no aad. 
+
+
