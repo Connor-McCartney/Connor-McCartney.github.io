@@ -526,3 +526,8 @@ print('solved xx (maybe negative)', M.LLL()[1])
 
 <br>
 
+Now R is the only unknown left so that's trivial to rearrange for.
+
+$$R \equiv {xx_i}^{-1} \cdot tt_i - jj_i \cdot m \pmod p$$
+
+and r is one of the modular sqrts of R. 
