@@ -761,3 +761,49 @@ gcc x.c -nostdlib -static; ./a.out
 
 <br>
 
+
+
+
+<br>
+
+
+
+# dll's / so's
+
+
+To generate a shared library you first to compile your C code with the -fPIC (position independent code) flag. 
+
+`gcc -c -fPIC hello.c -o hello.o` generates object file
+
+`gcc hello.o -shared -o libhello.so` takes object file and makes .so
+
+`gcc -shared -o libhello.so -fPIC hello.c` does it in one step
+
+
+
+
+<br>
+
+```
+[~/t]
+$ cat my_lib.c
+int add(int a, int b) {
+    return a+b;
+}
+
+int main() {
+
+}
+
+[~/t]
+$ gcc -shared -o my_lib.so -fPIC my_lib.c
+```
+
+
+
+
+So now lets see different ways we can use the .so
+
+
+1. Link at compile time
+
