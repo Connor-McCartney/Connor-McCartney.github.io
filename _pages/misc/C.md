@@ -652,3 +652,46 @@ int main() {
     }
 }
 ```
+
+
+
+<br>
+
+---
+
+
+# inline asm
+
+There's 4 different types:
+
+```c
+int main() {
+    asm (
+        ""
+    );
+
+    asm volatile (
+        ""
+    );
+
+    asm inline (
+        ""
+    );
+
+    asm goto (
+        ""
+        :
+        :
+        :
+        :
+        label
+    );
+
+    label:
+        return 0;
+}
+```
+
+
+<br>
+
