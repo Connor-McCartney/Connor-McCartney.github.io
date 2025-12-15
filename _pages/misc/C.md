@@ -662,7 +662,7 @@ int main() {
 
 # inline asm
 
-There's 3 different types (afaik):
+There's 4 different types (afaik):
 
 ```c
 int main() {
@@ -671,6 +671,10 @@ int main() {
     );
 
     asm volatile (
+        ""
+    );
+
+    asm inline (
         ""
     );
 
@@ -707,7 +711,7 @@ eg
 
 asm volatile indicates to the compiler not to optimise/change/delete it at all
 
-
+asm inline, "for inlining purposes the size of the asm statement is taken as the smallest size possible" 
 
 <br>
 
