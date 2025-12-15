@@ -692,3 +692,93 @@ for j in range(-3, 4):
 Final script:
 
 
+```python
+from pwn import process, remote, xor
+
+def find_ortho_mod(mod, *vecs):
+    assert len(set(len(v) for v in vecs)) == 1, "vectors have different lengths"
+    base = [[matrix(vecs).T, matrix.identity(len(vecs[0]))]]
+    if mod is not None:
+        base += [[ZZ(mod), 0]]
+    L = block_matrix(ZZ, base)
+    nv = len(vecs)
+    L[:, :nv] *= mod 
+    L = L.LLL()
+    ret = []
+    for row in L:
+        if row[:nv] == 0:
+            ret.append(row[nv:])
+    return matrix(ret)
+
+p = 2**130 - 5 
+m = 2**128
+N = 100
+
+def attempt():
+    #io = process(["/home/connor/.p/bin/python", "chall.py"])
+    io = remote("nostalgic.seccon.games",  "5000")
+    SPECIAL_MIND = bytes.fromhex(io.recvline().decode().split()[-1])
+    special_ct = bytes.fromhex(io.recvline().decode().split()[-1])
+    special_tag = bytes.fromhex(io.recvline().decode().split()[-1])
+
+    io.recv()
+    io.send(b'need\n'*(N+1)) # batched request
+    recv = io.recvlines(N+1)
+    ts = [int.from_bytes(bytes.fromhex(line.decode().split()[-1]), 'little') for line in recv]
+    tt = [ts[i+1] - ts[i] for i in range(N)]
+
+
+    orth1 = find_ortho_mod(p, tt).BKZ()[:-2]
+    orth2 = find_ortho_mod(p, *orth1)
+    jj = orth2[0]
+    if not all(-4 <= i <= 4 for i in jj) or list(jj).count(0) > N//2 :
+        print('failed solving jj')
+        io.close()
+        return False
+    print(f'{jj = }')
+
+    for jj in [jj, -jj]:
+        jj_vec = vector(GF(p), jj)
+        tt_vec = vector(GF(p), tt)
+        M = Matrix(ZZ, tt_vec - jj_vec*m).T.augment(diagonal_matrix([p]*N)).T
+        xx = M.LLL()[1]
+        for xx in [-xx, xx]:
+            try:
+                R = (pow(xx[0], -1, p) * (tt[0] - jj[0]*m)) % p
+            except:
+                print('inverse error')
+                return False
+            if not GF(p)(R).is_square():
+                continue
+            t1 = int.from_bytes(special_tag, 'little')
+            x1 = int.from_bytes(special_ct, 'little')
+            t2 = int.from_bytes(SPECIAL_MIND, 'little')
+            for j in range(5):
+                try:
+                    x2 = ((t2 - t1 - j*m) * pow(R, -1, p) + x1) % p
+                except:
+                    print('inverse error')
+                    return False
+                if x2 > 2**128: 
+                    print('forged ct too big')
+                    continue
+                forged_ct = x2.to_bytes(16, 'little')
+                payload = xor(forged_ct, special_ct)
+                print(io.recv(), j)
+                io.sendline(payload.hex().encode())
+                flag = io.recv()
+                io.close()
+
+                print(flag)
+                if b'SECCON' in flag:
+                    return True
+                return False
+        io.close()
+        return False
+
+while True:
+    if attempt():
+        break
+
+# SECCON{Listening_to_the_murmuring_waves_and_the_capricious_passing_rain_it_feels_like_a_gentle_dream}
+```
