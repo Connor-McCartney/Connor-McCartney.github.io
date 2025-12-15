@@ -707,3 +707,17 @@ eg
 
 asm volatile indicates to the compiler not to optimise/change/delete it at all
 
+
+
+<br>
+
+
+The colons should be used to separate into 4 parts (5 for the goto, there is an extra one for the label)
+
+```c
+asm ( "assembly code"
+    : output_operands
+    : input_operands
+    : clobbered_registers
+);
+```
