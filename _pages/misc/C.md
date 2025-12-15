@@ -801,6 +801,12 @@ $ gcc -shared -fPIC my_lib.c -o my_lib.so
 So now lets see different ways we can use the .so
 
 
+<br>
+
+<br>
+
+---
+
 Option 1: Link at compile time
 
 
@@ -860,3 +866,31 @@ $ # 2nd way recommended, embed the runtime path
 [~/t]
 $
 ```
+
+
+<br>
+
+<br>
+
+<br>
+
+---
+
+
+Option 2: dlopen
+
+
+
+
+
+<br>
+
+<br>
+
+<br>
+
+---
+
+Option 3: dlsym
+
+
