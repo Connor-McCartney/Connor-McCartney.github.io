@@ -721,3 +721,8 @@ asm ( "assembly code"
     : clobbered_registers
 );
 ```
+
+
+<https://gcc.gnu.org/onlinedocs/gcc-13.3.0/gcc/Extended-Asm.html>
+
+
