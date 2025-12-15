@@ -730,3 +730,34 @@ asm ( "assembly code"
 <https://gcc.gnu.org/onlinedocs/gcc-13.3.0/gcc/Extended-Asm.html>
 
 
+<br>
+
+
+# no main
+
+
+```c
+int _start() {
+    asm (
+        ".intel_syntax noprefix\n\t"
+
+        "mov rax, 60\n\t"
+        "mov rdi, 0\n\t"
+        "syscall\n\t"
+
+        ".att_syntax prefix\n\t"
+        :
+        :
+        : "rax", "rdi"
+    );
+
+    return 0;
+}
+```
+
+```
+gcc x.c -nostdlib -static; ./a.out
+```
+
+<br>
+
