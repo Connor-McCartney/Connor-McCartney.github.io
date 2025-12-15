@@ -791,12 +791,8 @@ int add(int a, int b) {
     return a+b;
 }
 
-int main() {
-
-}
-
 [~/t]
-$ gcc -shared -o my_lib.so -fPIC my_lib.c
+$ gcc -shared -fPIC my_lib.c -o my_lib.so
 ```
 
 
@@ -805,5 +801,62 @@ $ gcc -shared -o my_lib.so -fPIC my_lib.c
 So now lets see different ways we can use the .so
 
 
-1. Link at compile time
+Option 1: Link at compile time
 
+
+```bash
+[~/t]
+$ l
+main.c  my_lib.c  my_lib.so
+
+[~/t]
+$
+
+[~/t]
+$ gcc main.c -L. -lmy_lib -o main
+/usr/bin/ld: cannot find -lmy_lib: No such file or directory
+collect2: error: ld returned 1 exit status
+
+[~/t]
+$
+
+[~/t]
+$ # have to rename, it expects it to start with 'lib'
+
+[~/t]
+$ l
+main.c  my_lib.c  my_lib.so
+
+[~/t]
+$ mv my_lib.so libmy_lib.so
+
+[~/t]
+$ gcc main.c -L. -lmy_lib -o main
+
+[~/t]
+$ ./main
+./main: error while loading shared libraries: libmy_lib.so: cannot open shared object file: No such file or directory
+
+[~/t]
+$ LD_LIBRARY_PATH=. ./main
+5
+
+[~/t]
+$
+
+[~/t]
+$ rm main
+
+[~/t]
+$ gcc main.c -L. -lmy_lib -Wl,-rpath='$ORIGIN' -o main
+
+[~/t]
+$ ./main
+5
+
+[~/t]
+$ # 2nd way recommended, embed the runtime path
+
+[~/t]
+$
+```
