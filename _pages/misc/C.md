@@ -804,7 +804,7 @@ So now lets see different ways we can use the .so
 Option 1: Link at compile time
 
 
-```bash
+```
 [~/t]
 $ l
 main.c  my_lib.c  my_lib.so
