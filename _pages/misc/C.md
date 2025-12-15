@@ -854,17 +854,12 @@ $ LD_LIBRARY_PATH=. ./main
 $ rm main
 
 [~/t]
-$ gcc main.c -L. -lmy_lib -Wl,-rpath='$ORIGIN' -o main
+$ gcc main.c -L. -lmy_lib -Wl,-rpath='$ORIGIN' -o main    # this way recommended, embed the runtime path
 
 [~/t]
 $ ./main
 5
 
-[~/t]
-$ # 2nd way recommended, embed the runtime path
-
-[~/t]
-$
 ```
 
 
