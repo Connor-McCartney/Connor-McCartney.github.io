@@ -804,6 +804,16 @@ So now lets see different ways we can use the .so
 Option 1: Link at compile time
 
 
+```c
+#include <stdio.h>
+
+int add(int, int);
+
+int main() {
+    printf("%d\n", add(2, 3));
+}
+```
+
 ```
 [~/t]
 $ l
@@ -818,14 +828,7 @@ $ gcc main.c -L. -lmy_lib -o main
 collect2: error: ld returned 1 exit status
 
 [~/t]
-$
-
-[~/t]
 $ # have to rename, it expects it to start with 'lib'
-
-[~/t]
-$ l
-main.c  my_lib.c  my_lib.so
 
 [~/t]
 $ mv my_lib.so libmy_lib.so
@@ -840,9 +843,6 @@ $ ./main
 [~/t]
 $ LD_LIBRARY_PATH=. ./main
 5
-
-[~/t]
-$
 
 [~/t]
 $ rm main
