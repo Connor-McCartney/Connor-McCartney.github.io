@@ -621,7 +621,9 @@ static void foo() {
 
 Global variables that can't be accessed from other .c files. 
 
-
+```py
+static int foo = 5;
+```
 
 <br>
 
