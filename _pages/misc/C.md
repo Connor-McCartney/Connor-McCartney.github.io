@@ -695,3 +695,19 @@ int main() {
 
 <br>
 
+gcc will do AT&T syntax by default, you can change it but you should change it back at the end
+
+
+eg
+
+```c
+    asm (
+        ".intel_syntax noprefix\n\t"
+        "mov rax, 1\n\t"
+        ".att_syntax prefix\n\t"
+    );
+```
+
+
+asm volatile indicates to the compiler not to optimise/change/delete it at all
+
