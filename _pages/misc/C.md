@@ -662,7 +662,7 @@ int main() {
 
 # inline asm
 
-There's 4 different types:
+There's 3 different types (afaik):
 
 ```c
 int main() {
@@ -671,10 +671,6 @@ int main() {
     );
 
     asm volatile (
-        ""
-    );
-
-    asm inline (
         ""
     );
 
