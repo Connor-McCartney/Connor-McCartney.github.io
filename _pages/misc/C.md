@@ -903,6 +903,11 @@ RTLD_NOW: resolve everything immediately (fail fast)
 
 int main() {
     void* lib = dlopen("/home/connor/t/libmy_lib.so", RTLD_NOW);
+    if (!lib) {
+        fprintf(stderr, "%s\n", dlerror());
+        return 1;
+    }
+
     printf("lib = %p\n", lib);
 
     int (*add)(int a, int b) = dlsym(lib, "add");
