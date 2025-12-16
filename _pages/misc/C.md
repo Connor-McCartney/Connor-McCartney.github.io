@@ -909,6 +909,7 @@ int main() {
     printf("add = %p\n", lib);
 
     printf("%d\n", add(2, 3));
+    dlclose(lib);
 }
 ```
 
