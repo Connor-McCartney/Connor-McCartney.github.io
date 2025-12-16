@@ -924,4 +924,22 @@ int main() {
 ---
 
 
-You can actually pass NULL as the path in dlopen, and it loads the program itself. 
+You can actually pass NULL as the path in dlopen, and it loads the program itself. Then load any library the program is linked with (check with ldd), eg libc:
+
+```c
+#include <stdio.h>
+#include <dlfcn.h>
+#include <stdlib.h>
+
+
+int main() {
+    void* lib = dlopen(NULL, RTLD_NOW);
+    printf("lib = %p\n", lib);
+
+    void* malloc_lib = dlsym(lib, "malloc");
+    printf("malloc (lib) = %p\n", malloc_lib);
+    printf("malloc = %p\n", malloc);
+}
+```
+
+
