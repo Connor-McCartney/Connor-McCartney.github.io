@@ -863,7 +863,20 @@ $ ./main
 ```
 
 
+
+
 <br>
+
+You can also inspect the librarys that have been linked, and you'll see our libmy_lib.so:
+
+```
+$ ldd main
+	linux-vdso.so.1 (0x00007f7e2fd5e000)
+	libmy_lib.so => /home/connor/t/libmy_lib.so (0x00007f7e2fd4c000)
+	libc.so.6 => /usr/lib/libc.so.6 (0x00007f7e2fa00000)
+	/lib64/ld-linux-x86-64.so.2 => /usr/lib64/ld-linux-x86-64.so.2 (0x00007f7e2fd60000)
+```
+
 
 <br>
 
@@ -942,4 +955,18 @@ int main() {
 }
 ```
 
+<br>
 
+---
+
+nm will list symbols from object files, eg you can see the add function in the first line:
+
+```
+$ nm libmy_lib.so
+00000000000010e9 T add
+                 w __cxa_finalize@GLIBC_2.2.5
+0000000000004000 d __dso_handle
+0000000000003e48 d _DYNAMIC
+0000000000001100 t _fini
+...
+```
