@@ -881,7 +881,7 @@ Option 2: dlopen/dlsym
 
 <br>
 
-
+It's nice for plugins, optional dependencies, only loading it if it exists/choosing whether to, hot-reloading, sandboxing. 
 
 
 
