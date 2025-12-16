@@ -970,3 +970,50 @@ $ nm libmy_lib.so
 0000000000001100 t _fini
 ...
 ```
+
+
+<br>
+
+
+You can even find functions within the code itself!
+
+
+```c
+#include <stdio.h>
+#include <dlfcn.h>
+
+void foo() {
+
+}
+
+int main() {
+    void* lib = dlopen(NULL, RTLD_NOW);
+
+    void* main_lib = dlsym(lib, "main");
+    printf("main_lib = %p\n", main_lib);
+    printf("main = %p\n", &main);
+
+    void* foo_lib = dlsym(lib, "foo");
+    printf("foo_lib = %p\n", foo_lib);
+    printf("foo = %p\n", &foo);
+}
+```
+
+
+You just need the -rdynamic flag which tells the linker to add all symbols, not only used ones, to the dynamic symbol table. 
+
+```
+[~/t]
+$ gcc main.c; ./a.out
+main_lib = (nil)
+main = 0x5590c303b160
+foo_lib = (nil)
+foo = 0x5590c303b159
+
+[~/t]
+$ gcc main.c -rdynamic; ./a.out
+main_lib = 0x55ff68c40160
+main = 0x55ff68c40160
+foo_lib = 0x55ff68c40159
+foo = 0x55ff68c40159
+```
