@@ -883,7 +883,9 @@ Option 2: dlopen/dlsym
 
 It's nice for plugins, optional dependencies, only loading it if it exists/choosing whether to, hot-reloading, sandboxing. 
 
+<https://man7.org/linux/man-pages/man3/dlopen.3.html>
 
+<https://man7.org/linux/man-pages/man3/dlsym.3.html>
 
 <br>
 
