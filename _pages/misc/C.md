@@ -894,4 +894,25 @@ RTLD_LAZY: resolve symbols on first call
 RTLD_NOW: resolve everything immediately (fail fast)
 
 
+<br>
+
+```c
+#include <stdio.h>
+#include <dlfcn.h>
+
+
+int main() {
+    void* lib = dlopen("/home/connor/t/libmy_lib.so", RTLD_NOW);
+    printf("lib = %p\n", lib);
+
+    int (*add)(int a, int b) = dlsym(lib, "add");
+    printf("add = %p\n", lib);
+
+    printf("%d\n", add(2, 3));
+}
+```
+
+
+<br>
+
 
