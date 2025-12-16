@@ -871,21 +871,22 @@ $ ./main
 
 ---
 
-
-Option 2: dlopen
-
-
-
-
-
 <br>
 
 <br>
 
 <br>
 
----
+Option 2: dlopen/dlsym
 
-Option 3: dlsym
+
+
+
+
+
+RTLD_LAZY: resolve symbols on first call
+
+RTLD_NOW: resolve everything immediately (fail fast)
+
 
 
