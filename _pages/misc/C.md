@@ -910,7 +910,7 @@ int main() {
 
     printf("lib = %p\n", lib);
 
-    int (*add)(int a, int b) = dlsym(lib, "add");
+    int (*add)(int a, int b) = dlsym(lib, "add"); // it will search for the function name in the .so
     printf("add = %p\n", lib);
 
     printf("%d\n", add(2, 3));
@@ -921,4 +921,7 @@ int main() {
 
 <br>
 
+---
 
+
+You can actually pass NULL as the path in dlopen, and it loads the program itself. 
