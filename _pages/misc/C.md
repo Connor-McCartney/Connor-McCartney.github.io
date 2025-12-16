@@ -924,7 +924,7 @@ int main() {
 ---
 
 
-You can actually pass NULL as the path in dlopen, and it loads the program itself. Then load any library the program is linked with (check with ldd), eg libc:
+You can actually pass NULL as the path in dlopen, and it loads the program itself. Then load any library the program is linked with at compile time (check with ldd), eg libc:
 
 ```c
 #include <stdio.h>
