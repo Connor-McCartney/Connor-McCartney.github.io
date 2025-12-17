@@ -55,6 +55,20 @@ MAC Address <https://maclookup.app> <br>
 SSID <https://wigle.net> <br>
 Certificates <https://crt.sh> <br>
 
+
+## Linux
+
+<https://www.supergrubdisk.org/super-grub2-disk> <br>
+<https://www.supergrubdisk.org/category/download/rescatuxdownloads/rescatux-stable/> <br>
+<https://www.commandlinefu.com/commands/browse> <br>
+<https://tldp.org/index.html> <br>
+<https://github.com/dylanaraps/pure-sh-bible> <br>
+<https://github.com/dylanaraps/pure-bash-bible> <br>
+<https://www.rodsbooks.com/gdisk/booting.html> <br>
+<https://www.brendangregg.com/linuxperf.html> <br>
+<https://github.com/tealdeer-rs/tealdeer> <br>
+
+
 ## Other
 
 Note taking: <https://obsidian.md> <br>
