@@ -105,6 +105,12 @@ Learn Azure <https://learn.microsoft.com/en-us/azure/?product=popular> <br>
 <https://www.youtube.com/watch?v=X82l37rAnP8> <br>
 <https://www.youtube.com/watch?v=YQvsBkz6Yqs> <br>
 
+## Not resources, just interesting
+
+The Raven Paradox - <https://www.youtube.com/watch?v=Ca_sxDTPo60> <br>
+Limits of Humanity - <https://www.youtube.com/watch?v=uzkD5SeuwzM> <br>
+Dyson Spheres - <https://www.youtube.com/watch?v=pP44EPBMb8A> <br>
+Make your games more fun - <https://www.youtube.com/watch?v=plj09H-aLOk> <br>
 
 
 ## Blogs
