@@ -25,8 +25,6 @@ fast discrete log - <https://gitlab.inria.fr/zimmerma/ecm>
 
 ## CTF
 
-Writeups <https://ctfwriteups.org> <br>
-Wayback Machine <http://archive.org> <br>
 CyberChef <https://gchq.github.io/CyberChef> <br>
 Cipher Identifier <https://www.dcode.fr/cipher-identifier> <br>
 AI substitution cipher solvers <https://www.guballa.de/substitution-solver> <br>
@@ -71,6 +69,7 @@ Certificates <https://crt.sh> <br>
 
 ## Other
 
+Wayback Machine <http://archive.org> <br>
 Note taking: <https://obsidian.md> <br>
 HTTP file server <https://www.rejetto.com/hfs/?f=dl> <br>
 MS office alternative <https://www.onlyoffice.com> <br>
