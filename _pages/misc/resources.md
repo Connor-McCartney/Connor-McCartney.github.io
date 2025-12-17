@@ -96,6 +96,7 @@ Rossmann <https://wiki.futo.org> <br>
 NTT <https://eprint.iacr.org/2024/585.pdf> <br>
 Linux syscalls <https://x64.syscall.sh> <br>
 Learn Azure <https://learn.microsoft.com/en-us/azure/?product=popular> <br>
+Arenas (Ryan Fleury, memory management) <https://www.youtube.com/watch?v=TZ5a3gCCZYo> <br>
 
 
 ## Operating systems
