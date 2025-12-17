@@ -191,3 +191,10 @@ if __name__ == "__main__":
     sleep(3)
     main()
 ```
+
+
+
+
+<br>
+
+bonus <https://medium.com/message/why-chess-will-destroy-your-mind-78ad1034521f>
