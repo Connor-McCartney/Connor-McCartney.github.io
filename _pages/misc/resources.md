@@ -40,6 +40,7 @@ Online decompiler <https://dogbolt.org>  <https://godbolt.org>  <br>
 
 ## Challenges
 
+coding <https://cses.fi/problemset> <br>
 coding <https://www.hackerrank.com/dashboard> <br>
 pentesting <https://app.hackthebox.com/machines/list/active> <br>
 pentesting <https://www.vulnhub.com> <br>
