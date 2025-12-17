@@ -100,10 +100,10 @@ Learn Azure <https://learn.microsoft.com/en-us/azure/?product=popular> <br>
 
 ## Operating systems
 
-<https://os.phil-opp.com> <https://www.youtube.com/watch?v=rH5jnbJ3tL4&list=PLib6-zlkjfXkdCjQgrZhmfJOWBk_C2FTY>
-<https://www.youtube.com/watch?v=MwPjvJ9ulSc&list=PLm3B56ql_akNcvH8vvJRYOc7TbYhRs19M>
-<https://www.youtube.com/watch?v=X82l37rAnP8>
-<https://www.youtube.com/watch?v=YQvsBkz6Yqs>
+<https://os.phil-opp.com> <https://www.youtube.com/watch?v=rH5jnbJ3tL4&list=PLib6-zlkjfXkdCjQgrZhmfJOWBk_C2FTY> <br>
+<https://www.youtube.com/watch?v=MwPjvJ9ulSc&list=PLm3B56ql_akNcvH8vvJRYOc7TbYhRs19M> <br>
+<https://www.youtube.com/watch?v=X82l37rAnP8> <br>
+<https://www.youtube.com/watch?v=YQvsBkz6Yqs> <br>
 
 
 
