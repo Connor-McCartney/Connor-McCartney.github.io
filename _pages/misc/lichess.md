@@ -197,4 +197,8 @@ if __name__ == "__main__":
 
 <br>
 
-bonus <https://medium.com/message/why-chess-will-destroy-your-mind-78ad1034521f>
+[bonus](https://medium.com/message/why-chess-will-destroy-your-mind-78ad1034521f)
+
+<br>
+
+[bonus 2](https://japanchess.org/en/2024/12/christmas-2024-res)
