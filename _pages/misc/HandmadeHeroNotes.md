@@ -40,3 +40,12 @@ cmd /c '"C:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Buil
 
 
 # Day 2 - Opening a Win32 Window
+
+
+Creates simple window with CreateWindowEx, and makes a switch statement handling messages received by it.
+
+PAINT message seems to be sent when it's created but also whenever it's resized. 
+
+He says he uses static function variables when debugging but tries to avoid them in production. 
+
+# Day 3 - Allocating a Backbuffer
