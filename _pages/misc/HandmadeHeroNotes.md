@@ -21,3 +21,17 @@ subst w: C:\Users\crm36\Documents\handmadehero
 cd w:
 ```
 
+
+
+vcvarsall.exe sets environment variables in a cmd shell so that you can use cl (MSVC compiler, not clang)
+
+I wanted to use powershell so I put this in $profile
+
+```powershell
+cmd /c '"C:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Build\vcvarsall.bat" x64 && set' |
+  ForEach-Object {
+    if ($_ -match '^(.*?)=(.*)$') {
+      Set-Item -Path "Env:$($matches[1])" -Value $matches[2]
+    }
+  }
+```
