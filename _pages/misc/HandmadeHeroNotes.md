@@ -35,3 +35,8 @@ cmd /c '"C:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Buil
     }
   }
 ```
+
+<br>
+
+
+# Day 2 - Opening a Win32 Window
