@@ -48,4 +48,7 @@ PAINT message seems to be sent when it's created but also whenever it's resized.
 
 He says he uses static function variables when debugging but tries to avoid them in production. 
 
+
+<br>
+
 # Day 3 - Allocating a Backbuffer
