@@ -91,3 +91,5 @@ just recap/refactoring
 # Day 6 - Gamepad and Keyboard Input
 
 xinput.h for controller input
+
+A good example of loading dll's dynamically, and using stubs etc
