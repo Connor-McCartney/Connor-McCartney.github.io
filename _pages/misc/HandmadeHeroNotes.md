@@ -58,3 +58,12 @@ He says he uses static function variables when debugging but tries to avoid them
 
 
 The `VOID **ppvBits` (`void* BitmapMemory`), from `CreateDIBSection`,  is the bitmap memory we receive from windows that we can draw to
+
+
+<br>
+
+48:09 
+
+Option 1: right before you allocate a new DIBSection, free the old DIBSection
+
+Option 2: wait and see if you can get the new one first, and if you can't, keep using the old one
