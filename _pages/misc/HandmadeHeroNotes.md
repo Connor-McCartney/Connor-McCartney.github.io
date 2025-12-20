@@ -77,3 +77,6 @@ Option 2: wait and see if you can get the new one first, and if you can't, keep 
 HeapAlloc: Similar in spirit to malloc, gives you the exact amount of memory you request (sub-allocates out of pages).
 
 VirtualAlloc: Lower level/more raw, allocates a certain (whole) number of memory pages. Eg if the page size is 4096 bytes, and you ask for less than that, it will still give you the entire page. 
+
+There's also VirtualProtect, eg if someone else had a stale pointer to the page and tries to write to it you get a use-after-free. 
+
