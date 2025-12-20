@@ -57,4 +57,4 @@ He says he uses static function variables when debugging but tries to avoid them
 "Since it's a 2D game and we want to render at probably fixed resolutions, eventually when the window is resized we'll probably only pick a size that corresponds to roughly how big the window is."
 
 
-The `VOID **ppvBits` (`void* BitmapMemory`) is the bitmap memory we receive from windows that we can draw to
+The `VOID **ppvBits` (`void* BitmapMemory`), from `CreateDIBSection`,  is the bitmap memory we receive from windows that we can draw to
