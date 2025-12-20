@@ -93,3 +93,5 @@ just recap/refactoring
 xinput.h for controller input
 
 A good example of loading dll's dynamically, and using stubs etc
+
+Note that xinput does not support ps5 controllers, my workaround was use the DS4Windows tool, it emulates an Xbox controller then no code changes are necessary
