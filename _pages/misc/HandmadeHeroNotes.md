@@ -80,3 +80,14 @@ VirtualAlloc: Lower level/more raw, allocates a certain (whole) number of memory
 
 There's also VirtualProtect, eg if someone else had a stale pointer to the page and tries to write to it you get a use-after-free. 
 
+<br>
+
+# Day 5 - Windows Graphics Review
+
+just recap/refactoring
+
+<br>
+
+# Day 6 - Gamepad and Keyboard Input
+
+xinput.h for controller input
