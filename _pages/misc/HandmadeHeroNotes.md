@@ -67,3 +67,13 @@ The `VOID **ppvBits` (`void* BitmapMemory`), from `CreateDIBSection`,  is the bi
 Option 1: right before you allocate a new DIBSection, free the old DIBSection
 
 Option 2: wait and see if you can get the new one first, and if you can't, keep using the old one
+
+
+<br>
+
+# Day 4 - Animating the Backbuffer
+
+
+HeapAlloc: Similar in spirit to malloc, gives you the exact amount of memory you request (sub-allocates out of pages).
+
+VirtualAlloc: Lower level/more raw, allocates a certain (whole) number of memory pages. Eg if the page size is 4096 bytes, and you ask for less than that, it will still give you the entire page. 
