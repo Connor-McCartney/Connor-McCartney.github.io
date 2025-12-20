@@ -52,3 +52,6 @@ He says he uses static function variables when debugging but tries to avoid them
 <br>
 
 # Day 3 - Allocating a Backbuffer
+
+
+"Since it's a 2D game and we want to render at probably fixed resolutions, eventually when the window is resized we'll probably only pick a size that corresponds to roughly how big the window is."
