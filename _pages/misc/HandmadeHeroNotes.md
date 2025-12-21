@@ -100,3 +100,10 @@ Note that xinput does not support playstation controllers, my workaround was use
 <br>
 
 # Day 7 - Initializing DirectSound
+
+windows makes sound such a pain
+
+<br>
+
+
+# Day 8 - Writing a Square Wave to DirectSound
