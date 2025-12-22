@@ -109,3 +109,6 @@ windows makes sound such a pain...
 # Day 8 - Writing a Square Wave to DirectSound
 
 Handling circular buffer, locks etc
+
+
+# Day 9 - Variable-Pitch Sine Wave Output
