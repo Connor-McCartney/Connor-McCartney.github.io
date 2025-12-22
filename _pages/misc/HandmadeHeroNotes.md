@@ -138,7 +138,9 @@ The old-fashioned way is a bunch of preprocessor stuff scattered everywhere like
 ```c
 #if LINUX
   ...
-#else
+#elif WINDOWS
+  ...
+#elif MACOS
   ...
 #endif
 ```
