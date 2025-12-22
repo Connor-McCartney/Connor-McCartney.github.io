@@ -115,3 +115,7 @@ Handling circular buffer, locks etc
 # Day 9 - Variable-Pitch Sine Wave Output
 
 Mostly refactoring
+
+<br>
+
+# Day 10 - QueryPerformanceCounter and RDTSC
