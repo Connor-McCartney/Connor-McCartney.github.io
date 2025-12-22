@@ -119,3 +119,8 @@ Mostly refactoring
 <br>
 
 # Day 10 - QueryPerformanceCounter and RDTSC
+
+
+RDTSC - assembly instruction that counts CPU cycles
+
+QueryPerformanceCounter - windows function that tries to measure wall (real) time as accurately as possible
