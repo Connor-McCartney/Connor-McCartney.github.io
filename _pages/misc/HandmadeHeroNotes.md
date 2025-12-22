@@ -129,3 +129,16 @@ QueryPerformanceCounter - windows function that tries to measure wall (real) tim
 <br>
 
 # Day 11 - The Basics of Platform API Design
+
+
+Thinking about how to code cross-platform support. 
+
+The old-fashioned way is a bunch of preprocessor stuff scattered everywhere like 
+
+```c
+#if LINUX
+  ...
+#else
+  ...
+#endif
+```
