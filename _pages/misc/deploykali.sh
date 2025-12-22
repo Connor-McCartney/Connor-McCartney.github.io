@@ -47,4 +47,10 @@ fc-cache -fv
 
 sudo chown -R connor:connor ~
 
+
+
+
+pip install basedpyright --break-system-packages
+sudo apt install clangd
+
 printf "done :)"
