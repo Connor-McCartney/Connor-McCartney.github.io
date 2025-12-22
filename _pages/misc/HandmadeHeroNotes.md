@@ -124,3 +124,8 @@ Mostly refactoring
 RDTSC - assembly instruction that counts CPU cycles
 
 QueryPerformanceCounter - windows function that tries to measure wall (real) time as accurately as possible
+
+
+<br>
+
+# Day 11 - The Basics of Platform API Design
