@@ -163,3 +163,6 @@ Option 2:
 
 <br>
 
+Option 3: 
+
+The game layer is providing services to the OS level, giving it the graphics/sound. 
