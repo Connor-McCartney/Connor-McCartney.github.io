@@ -169,3 +169,7 @@ The game layer is mostly providing services to the OS level, giving it the graph
 
 Have to isolate locations in the code where the platform layer wants services from the game, or the game wants services from the platform. 
 
+
+<br>
+
+# Day 12 - Platform-independent Sound Output
