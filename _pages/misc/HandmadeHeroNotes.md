@@ -165,4 +165,4 @@ Option 2:
 
 Option 3: 
 
-The game layer is providing services to the OS level, giving it the graphics/sound. 
+The game layer is providing services to the OS level, giving it the graphics/sound/user input. 
