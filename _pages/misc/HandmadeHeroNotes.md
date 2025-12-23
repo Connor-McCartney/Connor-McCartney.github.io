@@ -165,4 +165,7 @@ Option 2:
 
 Option 3: 
 
-The game layer is providing services to the OS level, giving it the graphics/sound/user input/network IO/file IO. 
+The game layer is mostly providing services to the OS level, giving it the graphics/sound/user input/network IO/file IO. 
+
+Have to isolate locations in the code where the platform layer wants services from the game, or the game wants services from the platform. 
+
