@@ -133,6 +133,9 @@ QueryPerformanceCounter - windows function that tries to measure wall (real) tim
 
 Thinking about how to code cross-platform support. 
 
+
+Option 1: 
+
 The old-fashioned way is a bunch of preprocessor stuff scattered everywhere like 
 
 ```c
@@ -146,3 +149,17 @@ The old-fashioned way is a bunch of preprocessor stuff scattered everywhere like
 ```
 
 Not only is it pretty unreadable, but it also dictates the control flow must be the same across all platforms...
+
+
+<br>
+
+<br>
+
+Option 2: 
+
+'virtualise the operating system out to the game', calling a bunch of PlatformLayerDoThis, PlatformLayerDoThat 
+
+<br>
+
+<br>
+
