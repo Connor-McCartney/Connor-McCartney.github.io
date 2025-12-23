@@ -157,7 +157,7 @@ Not only is it pretty unreadable, but it also dictates the control flow must be 
 
 Option 2: 
 
-'virtualise the operating system out to the game', calling a bunch of PlatformLayerDoThis(), PlatformLayerDoThat() functions
+'virtualise the operating system out to the game', calling from the game layer to the platform layer, a bunch of PlatformLayerDoThis(), PlatformLayerDoThat() functions
 
 <br>
 
