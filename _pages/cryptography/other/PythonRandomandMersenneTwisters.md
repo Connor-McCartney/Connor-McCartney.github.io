@@ -87,4 +87,6 @@ In /lib/python3.13/random.py,
 Basically on init it calls self.seed(x), if it's not already an int it'll convert it to one, and then it calls out to super().seed(a)
 
 
+
+Goto definition again took me to ~/.local/lib/python3.13/site-packages/basedpyright/dist/typeshed-fallback/stdlib/_random.pyi
 That goes to 
