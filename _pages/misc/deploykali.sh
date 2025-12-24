@@ -51,6 +51,6 @@ sudo chown -R connor:connor ~
 
 
 pip install basedpyright --break-system-packages
-sudo apt install clangd
+sudo apt install -y clangd
 
 printf "done :)"
