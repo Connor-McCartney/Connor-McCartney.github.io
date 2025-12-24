@@ -90,3 +90,5 @@ Basically on init it calls self.seed(x), if it's not already an int it'll conver
 Goto definition again took me to ~/.local/lib/python3.13/site-packages/basedpyright/dist/typeshed-fallback/stdlib/_random.pyi
 
 But .pyi files are just Type Hint stub files, so next we want to find the c code
+
+<https://github.com/python/cpython/blob/main/Modules/_randommodule.c#L294>
