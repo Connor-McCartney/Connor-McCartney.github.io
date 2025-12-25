@@ -2,7 +2,7 @@ set -e
 
 sudo apt update
 sudo apt upgrade -y
-sudo apt install neovim xorg libxft-dev libxinerama-dev libxtst-dev feh picom flameshot alsa-utils libasound2-dev thunar kitty konsole fzf fd-find tree-sitter-cli -y
+sudo apt install neovim htop gdb xorg libxft-dev libxinerama-dev libxtst-dev feh picom flameshot alsa-utils libasound2-dev thunar kitty konsole fzf fd-find tree-sitter-cli -y
 # have to change fd to fdfind in bashrc
 # alacritty is buggy in VM don't use
 # sudo visudo
@@ -40,6 +40,7 @@ sudo apt install -y --reinstall virtualbox-guest-x11
 
 cd /usr/share/fonts 
 sudo wget https://dtinth.github.io/comic-mono-font/ComicMono.ttf
+sudo wget https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/patched-fonts/Hack/Regular/HackNerdFontMono-Regular.ttf
 fc-cache -fv
 
 
