@@ -2,7 +2,7 @@ set -e
 
 sudo apt update
 sudo apt upgrade -y
-sudo apt install neovim xorg libxft-dev libxinerama-dev libxtst-dev feh picom flameshot alsa-utils libasound2-dev thunar kitty konsole fzf fd-find -y
+sudo apt install neovim xorg libxft-dev libxinerama-dev libxtst-dev feh picom flameshot alsa-utils libasound2-dev thunar kitty konsole fzf fd-find tree-sitter-cli -y
 # have to change fd to fdfind in bashrc
 # alacritty is buggy in VM don't use
 # sudo visudo
