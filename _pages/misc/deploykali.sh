@@ -22,7 +22,7 @@ mv /tmp/deploy-arch-dwm/dotfiles/.config/kitty /home/connor/.config
 mv /tmp/deploy-arch-dwm/dotfiles/.config/picom /home/connor/.config
 rm -rf /tmp/deploy-arch-dwm
 
-printf "sleep 5\nfeh --bg-scale /home/connor/.wallpapers/purple_eyes.png\npicom -b\nxclipboard &\nslstatus &\nexec dwm" > /home/connor/.xsession 
+printf "sleep 5\nfeh --bg-scale /home/connor/.wallpapers/purple_eyes.png\npicom -b\nxclip &\nslstatus &\nexec dwm" > /home/connor/.xsession 
 chmod +x /home/connor/.xsession
 
 mkdir /home/connor/t
