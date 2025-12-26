@@ -15,7 +15,7 @@ title: Python Random and Mersenne Twisters
 from random import Random
 
 seed = 123
-rand = Random(123)
+rand = Random(seed)
 print(rand.getstate())
 ```
 
