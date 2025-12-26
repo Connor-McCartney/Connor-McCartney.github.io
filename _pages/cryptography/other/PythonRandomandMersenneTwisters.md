@@ -92,3 +92,12 @@ Goto definition again took me to ~/.local/lib/python3.13/site-packages/basedpyri
 But .pyi files are just Type Hint stub files, so next we want to find the c code
 
 <https://github.com/python/cpython/blob/main/Modules/_randommodule.c#L294>
+
+
+
+<br>
+
+
+[Here](https://soon.haari.me/hammingdiet/) we can find [a nice python equivalent of the c code](https://github.com/soon-haari/my-ctf-challenges/blob/main/2025-hammingdiet/solve/state2seed.py#L5):
+
+
