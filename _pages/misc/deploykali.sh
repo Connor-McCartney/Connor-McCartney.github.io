@@ -3,6 +3,7 @@ set -e
 sudo apt update
 sudo apt upgrade -y
 sudo apt install neovim htop gdb ripgrep xorg libxft-dev libxinerama-dev libxtst-dev feh picom flameshot alsa-utils libasound2-dev thunar kitty konsole fzf fd-find tree-sitter-cli -y
+sudo apt install -y xsel # seems just having this installed is necessary for persistent copying?! (without it, when you close a window, you lose your paste u copied from)
 # have to change fd to fdfind in bashrc
 # alacritty is buggy in VM don't use
 # sudo visudo
@@ -22,7 +23,7 @@ mv /tmp/deploy-arch-dwm/dotfiles/.config/kitty /home/connor/.config
 mv /tmp/deploy-arch-dwm/dotfiles/.config/picom /home/connor/.config
 rm -rf /tmp/deploy-arch-dwm
 
-printf "sleep 5\nfeh --bg-scale /home/connor/.wallpapers/purple_eyes.png\npicom -b\nxclip &\nslstatus &\nexec dwm" > /home/connor/.xsession 
+printf "sleep 5\nfeh --bg-scale /home/connor/.wallpapers/purple_eyes.png\npicom -b\nslstatus &\nexec dwm" > /home/connor/.xsession 
 chmod +x /home/connor/.xsession
 
 mkdir /home/connor/t
