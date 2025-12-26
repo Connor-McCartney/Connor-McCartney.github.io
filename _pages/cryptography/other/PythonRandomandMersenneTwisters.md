@@ -101,3 +101,55 @@ But .pyi files are just Type Hint stub files, so next we want to find the c code
 [Here](https://soon.haari.me/hammingdiet/) we can find [a nice python equivalent of the c code](https://github.com/soon-haari/my-ctf-challenges/blob/main/2025-hammingdiet/solve/state2seed.py#L5):
 
 
+```py
+from random import Random
+
+
+def _seed(_n):
+	uint32_mask = 1 << 32
+
+	mt = [0 for _ in range(624)]
+
+	mt[0] = 0x12bd6aa
+	for i in range(1, 624):
+		mt[i] = (0x6c078965 * (mt[i - 1] ^ (mt[i - 1] >> 30)) + i) % uint32_mask
+
+	keys = []
+
+	while _n:
+		keys.append(_n % uint32_mask)
+		_n >>= 32
+
+	if len(keys) == 0:
+		keys.append(0)
+
+	i, j = 1, 0
+	for _ in range(max(624, len(keys))):
+		mt[i] = ((mt[i] ^ ((mt[i-1] ^ (mt[i-1] >> 30)) * 0x19660d)) + keys[j] + j) % uint32_mask
+		i += 1
+		j += 1
+		if i >= 624:
+			mt[0] = mt[623]
+			i = 1
+		j %= len(keys)
+
+	for _ in range(623):
+		mt[i] = ((mt[i] ^ ((mt[i-1] ^ (mt[i-1] >> 30)) * 0x5d588b65)) - i) % uint32_mask
+		i += 1
+		if i >= 624:
+			mt[0] = mt[623]
+			i = 1
+
+	mt[0] = 0x80000000
+
+	state = (3, tuple(mt + [624]), None)
+
+	return state
+
+
+seed = 123
+rand = Random(seed)
+initial_state = rand.getstate()
+reproduced_initial_state = _seed(seed)
+assert initial_state == reproduced_initial_state
+```
