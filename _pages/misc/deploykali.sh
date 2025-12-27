@@ -41,7 +41,7 @@ sudo apt install -y --reinstall virtualbox-guest-x11
 
 cd /usr/share/fonts 
 #sudo wget https://dtinth.github.io/comic-mono-font/ComicMono.ttf
-#sudo wget https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/patched-fonts/Hack/Regular/HackNerdFontMono-Regular.ttf
+sudo wget https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/patched-fonts/Hack/Regular/HackNerdFontMono-Regular.ttf
 sudo wget https://github.com/Connor-McCartney/deploy-arch-dwm/raw/refs/heads/main/dotfiles/ComicShannsMonoNerdFontMono-Regular.otf
 fc-cache -fv
 
