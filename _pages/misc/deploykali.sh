@@ -17,13 +17,15 @@ cd /home/connor/suckless/dwm && sudo make clean install
 cd /home/connor/suckless/dmenu && sudo make clean install
 cd /home/connor/suckless/slstatus && sudo make clean install
 # https://www.reddit.com/r/debian/comments/1dicswr/libasound2dev_not_working_with_compiler_in/
-cd /home/connor/suckless/bongocat && sudo make install
+#cd /home/connor/suckless/bongocat && sudo make install
+cd /home/connor/suckless/desktop_kirby && chmod +x build.sh && ./build.sh
 
 mv /tmp/deploy-arch-dwm/dotfiles/.config/kitty /home/connor/.config
 mv /tmp/deploy-arch-dwm/dotfiles/.config/picom /home/connor/.config
 rm -rf /tmp/deploy-arch-dwm
 
-printf "sleep 5\nfeh --bg-scale /home/connor/.wallpapers/purple_eyes.png\npicom -b\nslstatus &\nexec dwm" > /home/connor/.xsession 
+printf "sleep 5\nfeh --bg-scale /home/connor/.wallpapers/purple_eyes.png\npicom -b\n/home/connor/suckless/desktop_kirby/desktop_kirby &\n
+slstatus &\nexec dwm" > /home/connor/.xsession 
 chmod +x /home/connor/.xsession
 
 mkdir /home/connor/t
