@@ -909,7 +909,7 @@ End of assembler dump.
 
 Main:
 
-```asm
+```
 push   rbp                # save base pointer from whatever initially calls main
 mov    rbp,rsp            # main's stack frame
 mov    edi,0x5            # argument to triple
@@ -929,7 +929,7 @@ RSP = 0x7fffffffe638 —▸ 0x7ffff7c27675 ◂— mov edi, eax   (instruction ri
 
 Then after executing 
 
-```asm
+```
 push   rbp                
 mov    rbp,rsp
 # note here there's usually some 'sub rsp, ...' to actually allocate the stack size, but well in this code main doesn't need to store anything on the stack there aren't any variables etc so it's just empty like a sub rsp, 0
@@ -961,7 +961,7 @@ Let's keep going, `mov    edi,0x5` does nothing, but `call  triple` is going to 
 
 call will always 'essentially' do this:
 
-```asm
+```
 sub     rsp, 8
 mov     [rsp], return_address
 jmp     target
@@ -982,7 +982,7 @@ Stack:
 
 Next is this to finish setting up triple's stack frame
 
-```asm
+```
 push   rbp
 mov    rbp, rsp
 sub    rsp, 24      (24 bytes allocated for triple's stack frame)
@@ -1007,7 +1007,7 @@ Stack:
 
 A full look at the rest of triple:
 
-```asm
+```
 # x = rdi
 mov    DWORD PTR [rbp-0x14],edi   
 mov    eax,DWORD PTR [rbp-0x14]
@@ -1054,7 +1054,7 @@ Next we call ret mult.
 
 Remember call will 'essentially' do this:
 
-```asm
+```
 sub     rsp, 8
 mov     [rsp], return_address
 jmp     target
@@ -1123,7 +1123,7 @@ After some research, it turns out there is a 128-byte 'red zone', which can be u
 
 A full look at the rest of mult:
 
-```asm
+```
 # mul(rdi, rsi)  a is rdi, b is rsi
 mov    DWORD PTR [rbp-0x14],edi  # a = rdi
 mov    DWORD PTR [rbp-0x18],esi  # b = rsi
@@ -1147,7 +1147,7 @@ int mult(int a, int b) {
 
 Let's continue. None of these instructions should affect rsp or rbp. But there's some local variables in the red zone of the stack. 
 
-```asm
+```
 mov    DWORD PTR [rbp-0x14],edi  
 mov    DWORD PTR [rbp-0x18],esi 
 mov    eax,DWORD PTR [rbp-0x14]  
@@ -1158,7 +1158,7 @@ mov    eax,DWORD PTR [rbp-0x4]
 
 Stack:
 
-```asm
+```
 0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)           
 0x7fffffffe628:	0x0000555555555162 (the instruction in main immediately after call triple)     
 0x7fffffffe620:	0x00007fffffffe630 (base pointer of main, saved when calling triple)          
@@ -1187,7 +1187,7 @@ Pop will also always add 8 to rsp.
 
 Stack:
 
-```asm
+```
 0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)           
 0x7fffffffe628:	0x0000555555555162 (the instruction in main immediately after call triple)     
 0x7fffffffe620:	0x00007fffffffe630 (base pointer of main, saved when calling triple)           <- rbp
@@ -1219,7 +1219,7 @@ And again the pop implicitly adds 8 to rsp.
 
 Stack:
 
-```asm
+```
 0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)           
 0x7fffffffe628:	0x0000555555555162 (the instruction in main immediately after call triple)     
 0x7fffffffe620:	0x00007fffffffe630 (base pointer of main, saved when calling triple)           <- rbp
@@ -1249,7 +1249,7 @@ mov    eax,DWORD PTR [rbp-0x4]
 
 Stack (only 0x7fffffffe618 changed, which has rax returned by mult):
 
-```asm
+```
 0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)           
 0x7fffffffe628:	0x0000555555555162 (the instruction in main immediately after call triple)     
 0x7fffffffe620:	0x00007fffffffe630 (base pointer of main, saved when calling triple)           <- rbp
@@ -1274,7 +1274,7 @@ You can see it implicitly clears/pops all the 24 bytes allocated at the start, a
 
 Stack:
 
-```asm
+```
 0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)            <- rbp
 0x7fffffffe628:	0x0000555555555162 (the instruction in main immediately after call triple)    <- rsp
 0x7fffffffe620:	old popped junk
@@ -1295,7 +1295,7 @@ Nex it `ret`, which remember is kinda like `pop rip`
 
 Stack:
 
-```asm
+111
 0x7fffffffe630:	0x00007fffffffe6d0 (previous base pointer to whatever called main)            <- rbp, rsp
 0x7fffffffe628:	old popped junk
 0x7fffffffe620:	old popped junk
@@ -1315,7 +1315,7 @@ Now we are back in main.
 And if we execute the rest of main then 0x7fffffffe630 gets popped too. 
 
 
-```asm
+111
 0x7fffffffe630:	old popped junk
 0x7fffffffe628:	old popped junk
 0x7fffffffe620:	old popped junk
