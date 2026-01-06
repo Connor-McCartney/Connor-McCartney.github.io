@@ -1533,3 +1533,48 @@ Dump of assembler code for function main:
 End of assembler dump.
 ```
 
+
+
+# fork
+
+```
+global _start
+
+parent_message: db "this is the parent!", 10
+child_message: db "this is the child!", 10
+
+_start:
+    mov rax, 57          ; sys_fork
+    syscall              ; return value goes to rax, kernel clones current process, both continue from same instruction
+
+    cmp rax, 0
+    je child             ; rax == 0 -> child process
+    jmp parent           ; else parent
+
+parent:
+    ; write
+    mov rax, 1
+    mov rdi, 1
+    mov rsi, parent_message
+    mov rdx, 20
+    syscall
+
+    ; exit
+    mov rax, 60 
+    mov rdi, 0  
+    syscall
+
+
+child:
+    ; write
+    mov rax, 1
+    mov rdi, 1
+    mov rsi, child_message
+    mov rdx, 19
+    syscall
+
+    ; exit
+    mov rax, 60 
+    mov rdi, 0  
+    syscall
+```
