@@ -1579,6 +1579,52 @@ child:
 
 <br>
 
-# read from a file and print contents
+# read from a file and print contents (simple cat)
 
+```
+.intel_syntax noprefix
+.global _start
+
+.section .data
+filename:
+    .ascii "/tmp/test"
+
+.section .bss
+file_buf:    .skip 1024
+
+.section .text
+_start:
+
+    # open(filename, O_RDONLY) https://man7.org/linux/man-pages/man2/open.2.html
+    lea rdi, [rip + filename]        # arg0: filename
+    mov rsi, 0                       # arg1: flags (O_RDONLY)
+    mov rdx, 0                       # arg2: mode, only used if creating a new file
+    mov rax, 2                       # SYS_open
+    syscall
+    mov r14, rax                     # file fd
+
+    # read(fd, file_buf, 1024) https://man7.org/linux/man-pages/man2/read.2.html
+    mov rdi, r14                     # arg 0: fd
+    lea rsi, [rip + file_buf]        # arg 1: buffer
+    mov rdx, 1024                    # arg 2: buffer size
+    mov rax, 0                       # SYS_read
+    syscall
+
+    # close(file_fd)
+    mov rdi, r14
+    mov rax, 3           # SYS_close
+    syscall
+
+    # write(stdout, file_buf, 1024) https://man7.org/linux/man-pages/man2/write.2.html
+    mov rdi, 1                       # arg 0: fd = stdout
+    lea rsi, [rip + file_buf]        # arg 1: pointer to string 
+    mov rdx, 1024                    # arg 2: string length
+    mov rax, 1                       # SYS_write
+    syscall
+
+    # exit
+    mov rdi, 0
+    mov rax, 60                  # SYS_exit
+    syscall
+```
 
