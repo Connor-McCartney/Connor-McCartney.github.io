@@ -481,6 +481,25 @@ while True:
 ```
 
 
+<br>
+
+```
+[+] Opening connection to 34.170.146.252 on port 56821: Done
+INFO:pwnlib.tubes.remote.remote.140667801856336:Opening connection to 34.170.146.252 on port 56821: Done
+xxxxxxxx xxxxxxx xxxxxxxxxx xxxxxx xxxxxx xxxxxx xxxxxxxxx xxxxxxx xxxxxxx xxxxxxxx xxxxxx xxxxxxx xxxxxx xxxxxx xxxxxx xxxxxxxxx. xxxxxxxxxxxxxxx! xxx xxxx xx xxxxxxx{xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx}.
+202
+prefix_num_unknowns = 114
+few unknowns!!!!!!!!!!!!!!!!!!!!
+b'#1 seed: '
+resultant...
+done
+resultant...
+done
+BKZ block_size = 20 ...
+BKZ block_size = 21 ...
+BHFlagY{44164157d5fe70a6a5211c13fcfc6a9f}
+```
+
 
 
 <br>
