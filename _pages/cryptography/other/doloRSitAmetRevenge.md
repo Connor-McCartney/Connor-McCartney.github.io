@@ -198,4 +198,31 @@ The success rate will heavily depend on the random amount of unknown characters.
 
 We can make many connections and check before doing anything else to get an easier one with less unknowns. 
 
+```python
+import string
+import random
+import re
+import os
+from Crypto.Util.number import *
+
+flag = "BHFlagY{00000000000000000000000000000000}"
+p = getPrime(512)
+q = getPrime(512)
+n = p * q
+
+def lorem_sentence():
+    words = []
+    for _ in range(random.randint(16, 20)):
+        word = "".join(random.choices(string.ascii_letters, k=random.randint(6, 10)))
+        words.append(word)
+    return " ".join(words).capitalize() + "."
+
+sentence0 = lorem_sentence() + f" Congratulations! The flag is {flag}."
+prefix = sentence0.split('.')[0]
+prefix_num_unknowns = len(prefix) - prefix.count(' ')
+print(f'{prefix_num_unknowns = }')
+print(sentence0)
+```
+
+
 
