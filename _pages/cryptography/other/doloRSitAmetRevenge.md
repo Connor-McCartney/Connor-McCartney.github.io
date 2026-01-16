@@ -264,7 +264,7 @@ import re
 import os
 from Crypto.Util.number import *
 
-flag = f"BHFlagY{{{os.urandom(16).hex()}}}"
+flag = "BHFlagY{%s}" % os.urandom(16).hex()
 p = getPrime(512)
 q = getPrime(512)
 n = p * q
