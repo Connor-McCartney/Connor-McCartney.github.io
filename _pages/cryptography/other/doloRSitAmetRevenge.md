@@ -331,3 +331,153 @@ s0_mod_n = bytes_to_long(sentence0.encode()) % n
 solve(prefix, s0_mod_n)
 ```
 
+
+
+
+<br>
+
+
+<br>
+
+
+
+Full solver:
+
+
+
+```python
+from pwn import *
+from Crypto.Util.number import *
+
+def resultant(f, g, x):
+    # eliminates x
+    print('resultant...')
+    res = f.sylvester_matrix(g, x).det().univariate_polynomial()
+    print('done')
+    return res
+
+def polygcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a.monic()
+
+def FranklinReiter(f1, f2):
+    return int(-polygcd(f1, f2).coefficients()[0])
+
+def solve_s0_mod_n():
+    clump1_len = len(' '.join([sentences[1], sentences[2], sentences[3], sentences[4]]))
+    clump2_len = len(' '.join([sentences[2], sentences[3], sentences[4], sentences[5]]))
+    s0_len = len(sentences[0])
+
+    PR.<s0, clump1, clump2> = PolynomialRing(Zmod(n))
+
+    p0_ = s0     * 256**(clump1_len+1) + ord(' ') * 256**clump1_len + clump1
+    p1_ = clump1 * 256**(s0_len+1)     + ord(' ') * 256**s0_len     + s0
+    p2_ = s0     * 256**(clump2_len+1) + ord(' ') * 256**clump2_len + clump2
+    p3_ = clump2 * 256**(s0_len+1)     + ord(' ') * 256**s0_len     + s0
+
+    f0 = p0_**e-c0
+    f1 = p1_**e-c1
+    f2 = p2_**e-c2
+    f3 = p3_**e-c3
+
+    return FranklinReiter(resultant(f0, f1, clump1), resultant(f2, f3, clump2))
+
+def solve(prefix, s0_mod_n):
+    suffix_len = len(sentence0.split('.')[1]) + 1
+    space_powers = [(i + suffix_len + 1) for i, c in enumerate(prefix[::-1]) if c == ' ']
+    unknown_powers = [i for i in range(2, 34)] + [i+suffix_len+1 for i, c in enumerate(prefix[::-1]) if c != ' ']
+
+    t = bytes_to_long(b'}.') + bytes_to_long(b'. Congratulations! The flag is BHFlagY{') * 256**34 + sum([ord(' ') * 256**i for i in space_powers]) - s0_mod_n 
+
+
+    upper_avg = (ord('Z')+ord('A'))//2
+    lower_avg = (ord('z')+ord('a'))//2
+    hex_avg = (ord('f')+ord('0'))//2
+
+    for block_size in range(20, 40):
+
+        M = (Matrix([256**i for i in unknown_powers]).stack(diagonal_matrix([1]*(prefix_num_unknowns+32)))
+            .augment(vector([t] + [-hex_avg]*32 + [-lower_avg]*(prefix_num_unknowns-1) + [-upper_avg]))
+            .augment(vector([n] + [0]* (prefix_num_unknowns+32)))
+            .stack(vector([0] + [0] * (prefix_num_unknowns+31) + [1, 0]))
+            .T
+        )
+
+        NR = 1 # 1 equation
+        NV = prefix_num_unknowns + 32 + 1 # num variables
+        var_scale = [hex_avg]*32 + [lower_avg]*(prefix_num_unknowns-1) + [upper_avg]
+        S = max(var_scale)
+        eqS = S << (NR + NV + 1)
+        W = diagonal_matrix([eqS] + [S//v for v in var_scale] + [S])
+
+        M = (M*W).dense_matrix()
+        print(f'BKZ {block_size = } ...')
+        M = M.BKZ(block_size=block_size)#, fp='ld')
+        M /= W
+
+        for row in M:
+            if row[0] != 0 or abs(row[-1]) != 1:
+                continue
+            sol = row[1:-1] * row[-1]
+            sol += vector([hex_avg]*32 + [lower_avg]*(prefix_num_unknowns-1) + [upper_avg])
+            try:
+                print(bytes(sol)[::-1])
+                break
+            except:
+                pass
+
+while True:
+    #io = process(["/home/connor/.p/bin/python", "server.py"]) 
+    io = remote('34.170.146.252', 56821)
+    io.recvline()
+    e = 13
+    n = int(io.recvline().decode().split()[-1])
+
+    sentences = []
+    sentence0 = io.recvline().decode().strip()
+
+    print(sentence0)
+    print(len(sentence0))
+
+    prefix = sentence0.split('.')[0]
+    prefix_num_unknowns = len(prefix) - prefix.count(' ')
+    print(f'{prefix_num_unknowns = }')
+    if prefix_num_unknowns > 116: 
+        io.close()
+        continue
+    print('few unknowns!!!!!!!!!!!!!!!!!!!!')
+
+
+
+
+
+
+
+    sentences.append(sentence0)
+    for _ in range(9):
+        sentences.append(io.recvline().decode().strip())
+
+    print(io.recv())
+    io.sendline(b'15901')
+    c0 = int(io.recvline().decode().split()[-1])
+
+    io.recv()
+    io.sendline(b'17502')
+    c1 = int(io.recvline().decode().split()[-1])
+
+    io.recv()
+    io.sendline(b'4145')
+    c2 = int(io.recvline().decode().split()[-1])
+
+    io.recv()
+    io.sendline(b'15589')
+    c3 = int(io.recvline().decode().split()[-1])
+
+    s0_mod_n = solve_s0_mod_n()
+    solve(prefix, s0_mod_n)
+    break
+
+```
+
+
