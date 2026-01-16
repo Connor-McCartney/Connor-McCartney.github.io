@@ -422,7 +422,7 @@ def solve(prefix, s0_mod_n):
             sol = row[1:-1] * row[-1]
             sol += vector([hex_avg]*32 + [lower_avg]*(prefix_num_unknowns-1) + [upper_avg])
             try:
-                print(bytes(sol)[::-1])
+                print(f'BHFlagY{{{bytes(sol).decode()[::-1][-32:]}}}')
                 break
             except:
                 pass
