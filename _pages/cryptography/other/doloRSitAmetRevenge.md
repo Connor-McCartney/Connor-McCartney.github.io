@@ -189,5 +189,13 @@ print(s0_mod_n == bytes_to_long(sentences[0].encode()) % n)
 <br>
 
 
+Now for part 2. 
+
+
+Let's treat each character in the first sentence as an unknown and try solve mod n with LLL or BKZ. 
+
+The success rate will heavily depend on the random amount of unknown characters. 
+
+We can make many connections and check before doing anything else to get an easier one with less unknowns. 
 
 
