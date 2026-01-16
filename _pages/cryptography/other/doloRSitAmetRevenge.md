@@ -74,6 +74,13 @@ Solve:
 
 <br>
 
+Firstly, just note that many times I use f-strings with triple { but something to do with the HTML rendering gets messed up, so view this page at
+
+<https://github.com/Connor-McCartney/Connor-McCartney.github.io/blob/main/_pages/cryptography/other/doloRSitAmetRevenge.md>
+
+
+<br>
+
 
 ```python
 
