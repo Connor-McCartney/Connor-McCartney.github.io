@@ -481,3 +481,11 @@ while True:
 ```
 
 
+
+
+<br>
+
+First blood xD
+
+
+<img width="520" height="109" alt="image" src="https://github.com/user-attachments/assets/71d5f550-028e-49c6-8ab8-1c805750e174" />
