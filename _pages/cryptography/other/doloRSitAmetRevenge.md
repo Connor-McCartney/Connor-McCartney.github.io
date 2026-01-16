@@ -245,3 +245,86 @@ assert (t + sum([ord(c) * 256**i for i, c in unknown_powers.items()])) % n == 0
 
 
 
+
+<br>
+
+
+
+```python
+import string
+import random
+import re
+import os
+from Crypto.Util.number import *
+
+flag = f"BHFlagY{{{os.urandom(16).hex()}}}"
+p = getPrime(512)
+q = getPrime(512)
+n = p * q
+
+def solve(prefix, s0_mod_n):
+    suffix_len = len(sentence0.split('.')[1]) + 1
+    space_powers = [(i + suffix_len + 1) for i, c in enumerate(prefix[::-1]) if c == ' ']
+    unknown_powers = [i for i in range(2, 34)] + [i+suffix_len+1 for i, c in enumerate(prefix[::-1]) if c != ' ']
+
+    t = bytes_to_long(b'}.') + bytes_to_long(b'. Congratulations! The flag is BHFlagY{') * 256**34 + sum([ord(' ') * 256**i for i in space_powers]) - s0_mod_n 
+
+
+    upper_avg = (ord('Z')+ord('A'))//2
+    lower_avg = (ord('z')+ord('a'))//2
+    hex_avg = (ord('f')+ord('0'))//2
+
+    for block_size in range(2, 40):
+
+        M = (Matrix([256**i for i in unknown_powers]).stack(diagonal_matrix([1]*(prefix_num_unknowns+32)))
+            .augment(vector([t] + [-hex_avg]*32 + [-lower_avg]*(prefix_num_unknowns-1) + [-upper_avg]))
+            .augment(vector([n] + [0]* (prefix_num_unknowns+32)))
+            .stack(vector([0] + [0] * (prefix_num_unknowns+31) + [1, 0]))
+            .stack(vector([0] + [0] * (prefix_num_unknowns+31) + [0, 1]))
+            .T
+        )
+
+        W = diagonal_matrix([1] + [hex_avg]*32 + [lower_avg]*(prefix_num_unknowns-1) + [upper_avg] + [1, (256**len(sentence0))//n])
+
+        #block_size = 35
+        M = (M/W).dense_matrix()
+        print(f'BKZ {block_size = } ...')
+        M = M.BKZ(block_size=block_size, fp='rr', precision=200)
+        M *= W
+
+        for row in M:
+            if row[0] != 0 or abs(row[-2]) != 1:
+                continue
+            sol = row[1:-2] * row[-2]
+            sol += vector([hex_avg]*32 + [lower_avg]*(prefix_num_unknowns-1) + [upper_avg])
+            try:
+                print(bytes(sol)[::-1])
+                break
+            except:
+                pass
+
+def lorem_sentence():
+    words = []
+    #for _ in range(random.randint(16, 20)):
+    for _ in range(15):
+        word = "".join(random.choices(string.ascii_letters, k=random.randint(6, 10)))
+        words.append(word)
+    return " ".join(words).capitalize() + "."
+
+connections = 0
+while True:
+    connections += 1
+    sentence0 = lorem_sentence() + f" Congratulations! The flag is {flag}."
+    prefix = sentence0.split('.')[0]
+    prefix_num_unknowns = len(prefix) - prefix.count(' ')
+    if prefix_num_unknowns == 104:
+        break
+
+print(f'{connections = }')
+print(f'{prefix_num_unknowns = }')
+print(sentence0)
+
+s0_mod_n = bytes_to_long(sentence0.encode()) % n
+solve(prefix, s0_mod_n)
+```
+
