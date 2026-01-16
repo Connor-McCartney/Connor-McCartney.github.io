@@ -74,10 +74,6 @@ Solve:
 
 <br>
 
-Firstly, just note that many times I use f-strings with triple { but something to do with the HTML rendering gets messed up, so view this page at
-
-<https://github.com/Connor-McCartney/Connor-McCartney.github.io/blob/main/_pages/cryptography/other/doloRSitAmetRevenge.md>
-
 
 <br>
 
@@ -429,7 +425,7 @@ def solve(prefix, s0_mod_n):
             sol = row[1:-1] * row[-1]
             sol += vector([hex_avg]*32 + [lower_avg]*(prefix_num_unknowns-1) + [upper_avg])
             try:
-                print(f'BHFlagY{{{bytes(sol).decode()[::-1][-32:]}}}')
+                print('BHFlagY{%s}' % bytes(sol).decode()[::-1][-32:])
                 break
             except:
                 pass
