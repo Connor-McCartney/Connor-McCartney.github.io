@@ -224,21 +224,22 @@ print(f'{prefix_num_unknowns = }')
 print(sentence0)
 
 
-
-
+suffix_len = len(sentence0.split('.')[1]) + 1
+space_powers = [(i + suffix_len + 1) for i, c in enumerate(prefix[::-1]) if c == ' ']
 unknown_powers = {}
 for i in range(2, 34):
     unknown_powers[i] = sentence0[-(1+i)]
 for i, c in enumerate(prefix[::-1]):
-    unknown_powers[i+len(sentence0.split('.')[1])+2] = c
-s0_reconstruction = bytes_to_long(b'}.') + bytes_to_long(b'. Congratulations! The flag is BHFlagY{') * 256**34 + sum([ord(c) * 256**i for i, c in unknown_powers.items()])
+    if c != ' ':
+        unknown_powers[i+suffix_len+1] = c
+assert len(unknown_powers) == prefix_num_unknowns + 32
+s0_reconstruction = bytes_to_long(b'}.') + bytes_to_long(b'. Congratulations! The flag is BHFlagY{') * 256**34 + sum([ord(c) * 256**i for i, c in unknown_powers.items()]) + sum([ord(' ') * 256**i for i in space_powers])
 print(long_to_bytes(s0_reconstruction).decode() == sentence0)
 
 
 
-
 s0_mod_n = bytes_to_long(sentence0.encode()) % n
-t = bytes_to_long(b'}.') + bytes_to_long(b'. Congratulations! The flag is BHFlagY{') * 256**34 - s0_mod_n
+t = bytes_to_long(b'}.') + bytes_to_long(b'. Congratulations! The flag is BHFlagY{') * 256**34 + sum([ord(' ') * 256**i for i in space_powers]) - s0_mod_n 
 assert (t + sum([ord(c) * 256**i for i, c in unknown_powers.items()])) % n == 0
 ```
 
