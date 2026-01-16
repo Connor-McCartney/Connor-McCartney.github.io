@@ -274,28 +274,31 @@ def solve(prefix, s0_mod_n):
     lower_avg = (ord('z')+ord('a'))//2
     hex_avg = (ord('f')+ord('0'))//2
 
-    for block_size in range(2, 40):
+    for block_size in range(20, 40):
 
         M = (Matrix([256**i for i in unknown_powers]).stack(diagonal_matrix([1]*(prefix_num_unknowns+32)))
             .augment(vector([t] + [-hex_avg]*32 + [-lower_avg]*(prefix_num_unknowns-1) + [-upper_avg]))
             .augment(vector([n] + [0]* (prefix_num_unknowns+32)))
             .stack(vector([0] + [0] * (prefix_num_unknowns+31) + [1, 0]))
-            .stack(vector([0] + [0] * (prefix_num_unknowns+31) + [0, 1]))
             .T
         )
 
-        W = diagonal_matrix([1] + [hex_avg]*32 + [lower_avg]*(prefix_num_unknowns-1) + [upper_avg] + [1, (256**len(sentence0))//n])
+        NR = 1 # 1 equation
+        NV = prefix_num_unknowns + 32 + 1 # num variables
+        var_scale = [hex_avg]*32 + [lower_avg]*(prefix_num_unknowns-1) + [upper_avg]
+        S = max(var_scale)
+        eqS = S << (NR + NV + 1)
+        W = diagonal_matrix([eqS] + [S//v for v in var_scale] + [S])
 
-        #block_size = 35
-        M = (M/W).dense_matrix()
+        M = (M*W).dense_matrix()
         print(f'BKZ {block_size = } ...')
-        M = M.BKZ(block_size=block_size, fp='rr', precision=200)
-        M *= W
+        M = M.BKZ(block_size=block_size)#, fp='ld')
+        M /= W
 
         for row in M:
-            if row[0] != 0 or abs(row[-2]) != 1:
+            if row[0] != 0 or abs(row[-1]) != 1:
                 continue
-            sol = row[1:-2] * row[-2]
+            sol = row[1:-1] * row[-1]
             sol += vector([hex_avg]*32 + [lower_avg]*(prefix_num_unknowns-1) + [upper_avg])
             try:
                 print(bytes(sol)[::-1])
@@ -305,8 +308,7 @@ def solve(prefix, s0_mod_n):
 
 def lorem_sentence():
     words = []
-    #for _ in range(random.randint(16, 20)):
-    for _ in range(15):
+    for _ in range(random.randint(16, 20)):
         word = "".join(random.choices(string.ascii_letters, k=random.randint(6, 10)))
         words.append(word)
     return " ".join(words).capitalize() + "."
@@ -317,12 +319,13 @@ while True:
     sentence0 = lorem_sentence() + f" Congratulations! The flag is {flag}."
     prefix = sentence0.split('.')[0]
     prefix_num_unknowns = len(prefix) - prefix.count(' ')
-    if prefix_num_unknowns == 104:
+    if prefix_num_unknowns <= 115: 
         break
 
 print(f'{connections = }')
 print(f'{prefix_num_unknowns = }')
 print(sentence0)
+print(len(sentence0))
 
 s0_mod_n = bytes_to_long(sentence0.encode()) % n
 solve(prefix, s0_mod_n)
