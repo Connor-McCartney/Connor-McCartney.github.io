@@ -97,3 +97,97 @@ demo:
 
 <br>
 
+
+
+```python
+import string
+import random
+import re
+import os
+from Crypto.Util.number import *
+
+flag = os.environ.get("FLAG", "BHFlagY{00000000000000000000000000000000}")
+assert re.match(r"BHFlagY\{[0-9a-f]{32}}", flag)
+
+def lorem_sentence():
+    words = []
+    for _ in range(random.randint(16, 20)):
+        word = "".join(random.choices(string.ascii_letters, k=random.randint(6, 10)))
+        words.append(word)
+    return " ".join(words).capitalize() + "."
+
+sentences = []
+for i in range(10):
+    sentences.append(lorem_sentence())
+sentences[0] += f" Congratulations! The flag is {flag}."
+
+e = 13
+while True:
+    p = getPrime(512)
+    q = getPrime(512)
+    if gcd((p-1)*(q-1), e) == 1:
+        break
+n = p * q
+
+cts = []
+for seed in [15901, 17502, 4145, 15589]:
+    random.seed(int(seed))
+    paragraph = " ".join(random.sample(sentences, k=5))
+    pt = bytes_to_long(paragraph.encode())
+    ct = pow(pt, e, n)
+    cts.append(ct)
+
+c0, c1, c2, c3 = cts
+
+def resultant(f, g, x):
+    # eliminates x
+    print('resultant...')
+    res = f.sylvester_matrix(g, x).det().univariate_polynomial()
+    print('done')
+    return res
+
+def polygcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a.monic()
+
+def FranklinReiter(f1, f2):
+    return int(-polygcd(f1, f2).coefficients()[0])
+
+def solve_s0_mod_n():
+    clump1_len = len(' '.join([sentences[1], sentences[2], sentences[3], sentences[4]]))
+    clump2_len = len(' '.join([sentences[2], sentences[3], sentences[4], sentences[5]]))
+    s0_len = len(sentences[0])
+
+    PR.<s0, clump1, clump2> = PolynomialRing(Zmod(n))
+
+    p0_ = s0     * 256**(clump1_len+1) + ord(' ') * 256**clump1_len + clump1
+    p1_ = clump1 * 256**(s0_len+1)     + ord(' ') * 256**s0_len     + s0
+    p2_ = s0     * 256**(clump2_len+1) + ord(' ') * 256**clump2_len + clump2
+    p3_ = clump2 * 256**(s0_len+1)     + ord(' ') * 256**s0_len     + s0
+
+    f0 = p0_**e-c0
+    f1 = p1_**e-c1
+    f2 = p2_**e-c2
+    f3 = p3_**e-c3
+
+    return FranklinReiter(resultant(f0, f1, clump1), resultant(f2, f3, clump2))
+
+
+s0_mod_n = solve_s0_mod_n()
+print(f'{s0_mod_n = }')
+print(s0_mod_n == bytes_to_long(sentences[0].encode()) % n)
+```
+
+
+
+<br>
+
+
+<br>
+
+<br>
+
+
+
+
