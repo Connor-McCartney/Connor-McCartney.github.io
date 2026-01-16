@@ -260,7 +260,7 @@ import re
 import os
 from Crypto.Util.number import *
 
-flag = "BHFlagY{%s}" % os.urandom(16).hex()
+flag = "BHFlagY{" + os.urandom(16).hex() + "}"
 p = getPrime(512)
 q = getPrime(512)
 n = p * q
@@ -425,7 +425,7 @@ def solve(prefix, s0_mod_n):
             sol = row[1:-1] * row[-1]
             sol += vector([hex_avg]*32 + [lower_avg]*(prefix_num_unknowns-1) + [upper_avg])
             try:
-                print('BHFlagY{%s}' % bytes(sol).decode()[::-1][-32:])
+                print('BHFlagY{' + bytes(sol).decode()[::-1][-32:] + '}')
                 break
             except:
                 pass
