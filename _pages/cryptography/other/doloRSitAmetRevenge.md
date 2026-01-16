@@ -74,3 +74,26 @@ Solve:
 
 <br>
 
+
+```python
+
+Seed 15901 gives [0, 1, 2, 3, 4]  
+Seed 17502 gives [1, 2, 3, 4, 0]  
+
+Seed 4145  gives [0, 2, 3, 4, 5]  
+Seed 15589 gives [2, 3, 4, 5, 0]
+```
+
+The sentences are joined with spaces, we clump together s1, s2, s3, s4 and s2, s3, s4, s5. 
+
+Use resultants to eliminate the clumps. 
+
+Then polygcd/Franklin Reiter to solve s0 (mod n)
+
+
+<br>
+
+demo:
+
+<br>
+
