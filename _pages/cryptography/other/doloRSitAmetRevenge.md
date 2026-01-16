@@ -222,6 +222,17 @@ prefix = sentence0.split('.')[0]
 prefix_num_unknowns = len(prefix) - prefix.count(' ')
 print(f'{prefix_num_unknowns = }')
 print(sentence0)
+
+
+
+
+unknown_powers = {}
+for i in range(2, 34):
+    unknown_powers[i] = sentence0[-(1+i)]
+for i, c in enumerate(prefix[::-1]):
+    unknown_powers[i+len(sentence0.split('.')[1])+2] = c
+s0_reconstruction = bytes_to_long(b'}.') + bytes_to_long(b'. Congratulations! The flag is BHFlagY{') * 256**34 + sum([ord(c) * 256**i for i, c in unknown_powers.items()])
+print(long_to_bytes(s0_reconstruction).decode() == sentence0)
 ```
 
 
