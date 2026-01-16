@@ -233,6 +233,13 @@ for i, c in enumerate(prefix[::-1]):
     unknown_powers[i+len(sentence0.split('.')[1])+2] = c
 s0_reconstruction = bytes_to_long(b'}.') + bytes_to_long(b'. Congratulations! The flag is BHFlagY{') * 256**34 + sum([ord(c) * 256**i for i, c in unknown_powers.items()])
 print(long_to_bytes(s0_reconstruction).decode() == sentence0)
+
+
+
+
+s0_mod_n = bytes_to_long(sentence0.encode()) % n
+t = bytes_to_long(b'}.') + bytes_to_long(b'. Congratulations! The flag is BHFlagY{') * 256**34 - s0_mod_n
+assert (t + sum([ord(c) * 256**i for i, c in unknown_powers.items()])) % n == 0
 ```
 
 
