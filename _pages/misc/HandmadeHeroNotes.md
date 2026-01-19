@@ -187,3 +187,12 @@ refactoring, still a bit janky
 refactoring
 
 <br>
+
+<br>
+
+# Day 14 - Platform-independent Game Memory
+
+
+allocate a big block of memory at the start and just use that throughout
+
+<br>
