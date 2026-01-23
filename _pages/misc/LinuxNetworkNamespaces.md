@@ -154,3 +154,44 @@ Cleanup:
 $ sudo ip netns del my_container_a 
 $ sudo ip netns del my_container_b
 ```
+
+
+
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+One script combining all of the above:
+
+
+```bash
+# create network namespaces
+sudo ip netns add my_container_a
+sudo ip netns add my_container_b
+
+# create virtual ethernet cable
+sudo ip link add my_veth_end_a type veth peer name my_veth_end_b
+
+# 'plug in' each end of the cable
+sudo ip link set my_veth_end_a netns my_container_a
+sudo ip link set my_veth_end_b netns my_container_b
+
+# assign IPs
+sudo ip netns exec my_container_a ip addr add "10.0.0.1/24" dev my_veth_end_a
+sudo ip netns exec my_container_b ip addr add "10.0.0.2/24" dev my_veth_end_b
+
+# bring to UP state
+sudo ip netns exec my_container_a ip link set my_veth_end_a up
+sudo ip netns exec my_container_b ip link set my_veth_end_b up
+
+
+
+# access networks namespaces
+# sudo ip netns exec my_container_a bash
+```
