@@ -140,3 +140,17 @@ $ sudo ip netns exec my_container_b ip link set my_veth_end_b up
 ```
 
 And now both should be able to ping each other!!
+
+
+
+<br>
+
+<br>
+
+
+Cleanup:
+
+```
+$ sudo ip netns del my_container_a 
+$ sudo ip netns del my_container_b
+```
