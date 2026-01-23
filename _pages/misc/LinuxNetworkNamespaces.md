@@ -194,4 +194,5 @@ sudo ip netns exec my_container_b ip link set my_veth_end_b up
 
 # access networks namespaces
 # sudo ip netns exec my_container_a bash
+# sudo ip netns exec my_container_b bash
 ```
