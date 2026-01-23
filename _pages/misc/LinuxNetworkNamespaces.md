@@ -41,4 +41,8 @@ $ sudo ip netns exec my_container_a bash
 
 # ping 127.0.0.1
 ping: connect: Network is unreachable
+
+# ip a
+1: lo: <LOOPBACK> mtu 65536 qdisc noop state DOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
 ```
