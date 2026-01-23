@@ -29,7 +29,7 @@ title: Misc
 
 <span style="font-size:2em;">   [Hack the Box](/misc/htb)   </span>
 
-<span style="font-size:2em;">   [Linear Algebra Notes](/misc/linear-algebra)   </span>
+<span style="font-size:2em;">   [Linux Network Namespaces](/misc/LinuxNetworkNamespaces)   </span>
 
 <span style="font-size:2em;">   [Git/Github basics](/misc/git)   </span>
 
