@@ -28,3 +28,17 @@ $ ip netns list
 my_container_b
 my_container_a
 ```
+
+
+<br>
+
+Then you can kind of spawn a shell inside it. 
+
+You'll notice networking is not set up, it can't even ping localhost. 
+
+```
+$ sudo ip netns exec my_container_a bash
+
+# ping 127.0.0.1
+ping: connect: Network is unreachable
+```
