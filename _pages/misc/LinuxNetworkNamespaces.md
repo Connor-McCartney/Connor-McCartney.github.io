@@ -98,4 +98,45 @@ And should now be able to see it from within the container:
 
 <br>
 
+Then you can assign IPs, I'll give a 10.0.0.1 and b 10.0.0.2:
 
+```
+$ sudo ip netns exec my_container_a ip addr add "10.0.0.1/24" dev my_veth_end_a
+$ sudo ip netns exec my_container_b ip addr add "10.0.0.2/24" dev my_veth_end_b
+```
+
+```
+# ip a
+1: lo: <LOOPBACK> mtu 65536 qdisc noop state DOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+5: my_veth_end_a@if4: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+    link/ether 96:1a:bf:cf:64:ce brd ff:ff:ff:ff:ff:ff link-netns my_container_b
+    inet 10.0.0.1/24 scope global my_veth_end_a
+       valid_lft forever preferred_lft forever
+```
+
+
+<br>
+
+We can see the IP now but it still says state DOWN. Once the IPs are assigned, bring them to UP state:
+
+Note we can bring one up:
+
+```
+$ sudo ip netns exec my_container_a ip link set my_veth_end_a up
+```
+
+And try ping the other but get no reply:
+
+```
+# ping 10.0.0.2
+PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+```
+
+Then bring the other up:
+
+```
+$ sudo ip netns exec my_container_b ip link set my_veth_end_b up
+```
+
+And now both should be able to ping each other!!
