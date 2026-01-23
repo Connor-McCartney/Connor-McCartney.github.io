@@ -70,6 +70,14 @@ We use the veth interface, which is like a virtual ethernet cable.
 
 We actually create the 2 ends of the cable at once. 
 
+```
+$ sudo ip link add my_veth_end_a type veth peer name my_veth_end_b
+```
 
 
+Next we 'plug in' each end of the cable:
 
+```
+$ sudo ip link set my_veth_end_a netns my_container_a
+$ sudo ip link set my_veth_end_b netns my_container_b
+```
