@@ -46,3 +46,25 @@ ping: connect: Network is unreachable
 1: lo: <LOOPBACK> mtu 65536 qdisc noop state DOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
 ```
+
+
+
+<br>
+
+<br>
+
+
+Now let's connect my_container_a to my_container_b. 
+
+
+We use the veth interface, which is like a virtual ethernet cable. 
+
+We actually create the 2 ends of the cable at once. 
+
+<br>
+
+```
+[ my_container_a ] my_veth_end_a <==== virtual cable ==== > my_veth_end_b [ my_container_b ]
+```
+
+
