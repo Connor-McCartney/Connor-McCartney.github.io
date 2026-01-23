@@ -151,8 +151,8 @@ And now both should be able to ping each other!!
 Cleanup:
 
 ```
-$ sudo ip netns del my_container_a 
-$ sudo ip netns del my_container_b
+sudo ip netns del my_container_a 
+sudo ip netns del my_container_b
 ```
 
 
