@@ -74,12 +74,28 @@ We actually create the 2 ends of the cable at once.
 $ sudo ip link add my_veth_end_a type veth peer name my_veth_end_b
 ```
 
+<br>
 
 Next we 'plug in' each end of the cable:
-
-<br>
 
 ```
 $ sudo ip link set my_veth_end_a netns my_container_a
 $ sudo ip link set my_veth_end_b netns my_container_b
 ```
+
+<br>
+
+And should now be able to see it from within the container:
+
+```
+# ip a
+1: lo: <LOOPBACK> mtu 65536 qdisc noop state DOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+5: my_veth_end_a@if4: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+    link/ether 96:1a:bf:cf:64:ce brd ff:ff:ff:ff:ff:ff link-netns my_container_b
+```
+
+
+<br>
+
+
