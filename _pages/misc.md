@@ -59,4 +59,6 @@ title: Misc
 
 <span style="font-size:2em;">   [Matrix TUI](/misc/Matrix-TUI)   </span>
 
+<span style="font-size:2em;">   [Python Threads](/misc/pythonthreads)   </span>
+
 <span style="font-size:2em;">   [Resources](/misc/resources)   </span>
