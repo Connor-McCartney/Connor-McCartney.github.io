@@ -786,6 +786,15 @@ option 3: move the base pointer (kinda better practice than the stack pointer)
 <img width="733" height="657" alt="image" src="https://github.com/user-attachments/assets/e9d9c6ca-bfd7-417e-a15d-055decb99e8c" />
 
 
+
+<br>
+
+under the System V ABI, function arguments are passed in the registers rdi, rsi, rdx, rcx, r8, and r9 in order, and any additional arguments are passed on the stack.
+
+<br>
+
+
+
 r12, r13, r14, r15 are good for normal variables that you don't want to get overwritten
 
 
