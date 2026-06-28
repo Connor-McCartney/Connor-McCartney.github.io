@@ -84,6 +84,7 @@ print(long_to_bytes(pow(c,pow(0x10001,-1,(p-1)*(n//p-1)),n)))
 
 
 ```python
+
 R1 = (h1 * pow(h3, -1, n)) % n
 x1 = R1 % p
 y1 = R1 % q
@@ -110,13 +111,14 @@ x4 = R4 % p
 y4 = R4 % q
 assert x4 == (b2 * pow(b3, -1, p)) % p
 assert y4 == (a2 * pow(a3, -1, q)) % q
+assert ((R4 - x4) * (R4 - y4)) % n == 0
 
 R5 = (h3 * pow(h1, -1, n)) % n
 x5 = R5 % p
 y5 = R5 % q
 assert x5 == (b3 * pow(b1, -1, p)) % p
 assert y5 == (a3 * pow(a1, -1, q)) % q
-assert ((R4 - x4) * (R4 - y4)) % n == 0
+assert ((R5 - x5) * (R5 - y5)) % n == 0
 
 R6 = (h3 * pow(h2, -1, n)) % n
 x6 = R6 % p
@@ -124,6 +126,7 @@ y6 = R6 % q
 assert x6 == (b3 * pow(b2, -1, p)) % p
 assert y6 == (a3 * pow(a2, -1, q)) % q
 assert ((R6 - x6) * (R6 - y6)) % n == 0
+
 ```
 
 
