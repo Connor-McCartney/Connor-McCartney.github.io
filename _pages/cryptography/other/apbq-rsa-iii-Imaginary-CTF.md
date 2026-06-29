@@ -169,8 +169,6 @@ print(long_to_bytes(pow(c,pow(0x10001,-1,(p-1)*(n//p-1)),n)))
 
 
 
-
-q = n//p
 assert t == (x*h1/h3 + y*h3/h1) % n
 assert t == (x*h1/h3 + y*h3/h1) % p
 
