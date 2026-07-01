@@ -98,6 +98,8 @@ Linux syscalls <https://x64.syscall.sh> <br>
 Learn Azure <https://learn.microsoft.com/en-us/azure/?product=popular> <br>
 Arenas (Ryan Fleury, memory management) <https://www.youtube.com/watch?v=TZ5a3gCCZYo> <br>
 RAD Debugger <https://github.com/EpicGamesExt/raddebugger> <br>
+ECM <https://odysee.com/Elliptic-Curve-Multiplication:4> <br>
+LLL <https://odysee.com/LLL_CTF_Guide:f> <br>
 
 
 ## Operating systems
