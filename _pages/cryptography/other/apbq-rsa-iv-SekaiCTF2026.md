@@ -48,3 +48,6 @@ hints = [53753049076784771049677089805958501729045707448448404791124659739757160
 
 
 <br>
+
+
+"Intended is a bespoke coppersmith construction, basically a 160x160 lattice."
