@@ -55,6 +55,8 @@ I'll reuse my setup from <https://github.com/Connor-McCartney/deploy-arch-dwm/bl
 
 apk add git
 
+apk add make
+
 <br>
 
 
