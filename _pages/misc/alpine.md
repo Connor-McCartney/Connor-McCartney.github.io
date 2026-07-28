@@ -22,3 +22,13 @@ You can leave most things default, just change root password, create a user, and
 ---
 
 apk is the package manager, you can do apk search ... and apk add ... 
+
+hyperv didn't seem to work but VMware did...
+
+
+<br>
+
+---
+
+<br>
+
