@@ -63,7 +63,7 @@ apk add libx11-dev
 
 apk add libxft-dev
 
-
+apk add libxinerama-dev
 
 <br>
 
