@@ -73,7 +73,9 @@ apk add linux-headers
 
 apk add xf86-video-vesa
 
-apk add xf86-video-vmware
+apk add xf86-video-vmware    actually del this and apk add xf86-video-modesetting
+
+
 
 apk add xf86-video-fbdev
 
