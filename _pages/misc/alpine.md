@@ -81,7 +81,7 @@ apk add xf86-video-fbdev
 
 apk add dbus-x11
 
-apk add kitty feh xinit xterm xf86-input-evdev xorg-server
+apk add alacritty feh xinit xterm xf86-input-evdev xorg-server
 
 <br>
 
@@ -106,6 +106,8 @@ rm -rf /tmp/deploy-arch-dwm
 3d acceleration is off in vmware by default but worth checking? (in display tab)
 
 check logs in /var/log/Xorg.0.log
+
+Also note kitty will not work in VM (GPU accelerated) so use alacritty instead and make sure that's binded in config.def.h probs have to edit that and recompile
 
 <br>
 
