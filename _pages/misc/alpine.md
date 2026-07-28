@@ -79,6 +79,8 @@ apk add xf86-video-vmware    actually del this and apk add xf86-video-modesettin
 
 apk add xf86-video-fbdev
 
+apk add dbus-x11
+
 <br>
 
 
