@@ -67,7 +67,7 @@ apk add libxinerama-dev
 
 apk add alsa-lib-dev
 
-apk add linux-firmware
+apk add linux-firmware ?
 
 apk add xf86-video-vesa
 
