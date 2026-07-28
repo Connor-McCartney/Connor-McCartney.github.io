@@ -32,3 +32,9 @@ hyperv didn't seem to work but VMware did...
 
 <br>
 
+
+Alpine seems to have a built-in `setup-xorg-base` command you can run.
+
+
+
+
