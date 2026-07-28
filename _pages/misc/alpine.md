@@ -73,6 +73,8 @@ apk add linux-headers
 
 apk add xf86-video-vesa
 
+apk add xf86-video-vmware
+
 <br>
 
 
