@@ -13,4 +13,12 @@ login as root (password not required)
 
 run setup-alpine to install
 
-You can leave most things default, just change root password, create a user, and choose the disk
+You can leave most things default, just change root password, create a user, and choose the disk, choose sys
+
+
+
+<br>
+
+---
+
+apk is the package manager, you can do apk search ... and apk add ... 
