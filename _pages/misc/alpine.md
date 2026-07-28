@@ -51,6 +51,14 @@ exec dwm
 I'll reuse my setup from <https://github.com/Connor-McCartney/deploy-arch-dwm/blob/main/user.sh>
 
 
+<br>
+
+apk add git
+
+<br>
+
+
+
 ```
 # suckless
 cd /tmp
