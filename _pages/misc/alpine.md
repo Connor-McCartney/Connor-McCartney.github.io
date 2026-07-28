@@ -67,6 +67,8 @@ apk add libxinerama-dev
 
 apk add alsa-lib-dev
 
+apk add linux-firmware
+
 
 <br>
 
