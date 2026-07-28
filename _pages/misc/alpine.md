@@ -81,6 +81,8 @@ apk add xf86-video-fbdev
 
 apk add dbus-x11
 
+apk add kitty feh xinit xterm xf86-input-evdev xorg-server
+
 <br>
 
 
