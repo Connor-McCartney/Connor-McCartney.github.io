@@ -61,6 +61,8 @@ apk add build-base
 
 apk add libx11-dev
 
+apk add libxft-dev
+
 
 
 <br>
@@ -83,7 +85,6 @@ rm -rf /tmp/deploy-arch-dwm
 
 <br>
 
-I got xft working
 
 <br>
 
