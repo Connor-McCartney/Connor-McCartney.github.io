@@ -69,6 +69,7 @@ apk add alsa-lib-dev
 
 apk add linux-firmware
 
+apk add xf86-video-vesa
 
 <br>
 
