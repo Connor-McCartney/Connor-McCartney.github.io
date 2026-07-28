@@ -57,6 +57,8 @@ apk add git
 
 apk add make
 
+apk add build-base
+
 <br>
 
 
