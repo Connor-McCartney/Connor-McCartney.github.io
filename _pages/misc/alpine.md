@@ -59,6 +59,10 @@ apk add make
 
 apk add build-base
 
+apk add libx11-dev
+
+
+
 <br>
 
 
