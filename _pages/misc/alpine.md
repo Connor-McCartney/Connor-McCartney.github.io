@@ -99,6 +99,9 @@ rm -rf /tmp/deploy-arch-dwm
 
 <br>
 
+3d acceleration is off in vmware by default but worth checking? (in display tab)
+
+check logs in /var/log/Xorg.0.log
 
 <br>
 
