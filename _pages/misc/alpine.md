@@ -75,6 +75,8 @@ apk add xf86-video-vesa
 
 apk add xf86-video-vmware
 
+apk add xf86-video-fbdev
+
 <br>
 
 
