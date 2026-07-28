@@ -46,3 +46,30 @@ exec dwm
 
 
 
+<br>
+
+I'll reuse my setup from <https://github.com/Connor-McCartney/deploy-arch-dwm/blob/main/user.sh>
+
+
+```
+# suckless
+cd /tmp
+git clone https://github.com/Connor-McCartney/deploy-arch-dwm
+mv /tmp/deploy-arch-dwm/suckless /home/connor
+cd /home/connor/suckless/dwm && sudo make clean install
+cd /home/connor/suckless/dmenu && sudo make clean install
+cd /home/connor/suckless/slstatus && sudo make clean install
+#cd /home/connor/suckless/bongocat && sudo make install
+cd /home/connor/suckless/desktop_kirby && chmod +x build.sh && ./build.sh
+rm -rf /tmp/deploy-arch-dwm
+```
+
+
+<br>
+
+<br>
+
+<br>
+
+
+
