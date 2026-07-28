@@ -83,6 +83,8 @@ rm -rf /tmp/deploy-arch-dwm
 
 <br>
 
+I got xft working
+
 <br>
 
 <br>
