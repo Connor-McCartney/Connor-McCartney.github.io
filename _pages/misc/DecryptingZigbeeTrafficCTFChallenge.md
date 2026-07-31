@@ -36,7 +36,7 @@ trusted_network_key = b'ZigBeeAlliance09' # default for every zigbee network
 # there is a network key in the pcap but that has to be decrypted!
 encrypted_network_key = bytes.fromhex('328da53757f3e5cf09fe8326942326de')
 network_key = AES.new(trusted_network_key, AES.MODE_ECB).decrypt(encrypted_network_key)
-print(f'{network_key.hex() = }')
+print(f'{network_key.hex() = }')  # this can also be pasted into Wireshark, ctrl-shift-p > protocols > zigbee
 
 
 
