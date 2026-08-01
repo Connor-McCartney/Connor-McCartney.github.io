@@ -84,3 +84,9 @@ n -  number of elements
 `jump`
 
 `finish` - runs until the current function returns
+
+
+
+
+
+`nextcall` is also very convenient, eg `nextcall malloc`
