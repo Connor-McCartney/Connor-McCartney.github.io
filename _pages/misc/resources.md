@@ -25,7 +25,6 @@ fast discrete log - <https://gitlab.inria.fr/zimmerma/ecm>
 
 ## CTF
 
-CyberChef <https://gchq.github.io/CyberChef> <br>
 Cipher Identifier <https://www.dcode.fr/cipher-identifier> <br>
 AI substitution cipher solvers <https://www.guballa.de/substitution-solver> <br>
 <https://www.boxentriq.com/code-breaking/cryptogram> <br>
@@ -100,6 +99,8 @@ Arenas (Ryan Fleury, memory management) <https://www.youtube.com/watch?v=TZ5a3gC
 RAD Debugger <https://github.com/EpicGamesExt/raddebugger> <br>
 ECM <https://odysee.com/Elliptic-Curve-Multiplication:4> <br>
 LLL <https://odysee.com/LLL_CTF_Guide:f> <br>
+Modern Recon Red Team <https://youtu.be/B1YcflQRvOI> <br>
+
 
 
 ## Operating systems
