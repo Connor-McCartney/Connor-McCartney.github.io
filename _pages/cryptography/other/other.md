@@ -180,3 +180,6 @@ title: Other
 
 
 <span style="font-size:2em;">   [doloR Sit Amet Revenge](/cryptography/other/doloRSitAmetRevenge) </span> <br>
+
+
+<span style="font-size:2em;">   [Decrypting Zigbee Traffic CTF Challenge](/cryptography/other/DecryptingZigbeeTrafficCTFChallenge) </span> <br>
