@@ -25,3 +25,8 @@ When you call malloc, it will return some amount of memory greater than or equal
 
 <br>
 
+The usable size seems to be 24 at a minimum, otherwise the requested size rounded up to the next value such that it is equal to 8 modulo 16. 
+
+<br>
+
+Then the 
