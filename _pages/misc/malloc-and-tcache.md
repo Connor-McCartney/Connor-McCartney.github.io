@@ -30,3 +30,11 @@ The usable size seems to be 24 at a minimum, otherwise the requested size rounde
 <br>
 
 The chunk size seems to be equal to the usable size + 8. But how can this be, if malloc uses 16 bytes of metadata?
+
+<br>
+
+
+The first 8 bytes of metadata contains the total chunk size of the current chunk (5 bits) and 3 internal flags (3 bits). 
+
+<br>
+
