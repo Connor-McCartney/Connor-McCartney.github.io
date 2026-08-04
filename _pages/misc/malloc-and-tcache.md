@@ -8,7 +8,7 @@ title: malloc and tcache
 <br>
 
 
-I'll focus on ptmalloc on linux. 
+I'll focus on glibc ptmalloc on linux. 
 
 
 <br>
