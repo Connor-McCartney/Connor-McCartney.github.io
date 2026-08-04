@@ -55,6 +55,8 @@ title: Misc
 
 <span style="font-size:2em;">   [Memory](/misc/Memory)   </span>
 
+<span style="font-size:2em;">   [malloc and tcache](/misc/malloc-and-tcache)   </span>
+
 <span style="font-size:2em;">   [GUI stuff](/misc/xguic)   </span>
 
 <span style="font-size:2em;">   [Connecting Android phone to linux](/misc/ConnectingAndroidphonetolinux)   </span>
