@@ -38,7 +38,9 @@ The first 8 bytes of metadata is stored right before the usable memory, and cont
 
 <br>
 
-The other 8 bytes of metadata is stored right after the usable memory, and contains prev_size, the size of the prior chunk. This is technically a part of the next chunk, a clever optimisation. 
+The other 8 bytes of metadata is stored right before the other metadata, and contains prev_size, the size of the prior chunk. This bleeds in to the previous chunk's usable memory, a clever optimisation. 
+
+
 
 <br>
 
