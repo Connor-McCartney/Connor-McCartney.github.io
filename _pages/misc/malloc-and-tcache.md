@@ -29,4 +29,4 @@ The usable size seems to be 24 at a minimum, otherwise the requested size rounde
 
 <br>
 
-Then the 
+The chunk size seems to be equal to the usable size + 8. But how can this be, if malloc uses 16 bytes of metadata?
