@@ -34,7 +34,17 @@ The chunk size seems to be equal to the usable size + 8. But how can this be, if
 <br>
 
 
-The first 8 bytes of metadata contains the total chunk size of the current chunk (5 bits) and 3 internal flags (3 bits). 
+The first 8 bytes of metadata is stored right before the usable memory, and contains the total chunk size of the current chunk (5 bits) and 3 internal flags (3 bits). This is included as part of the chunk. 
 
 <br>
 
+The other 8 bytes of metadata is stored right after the usable memory, and contains prev_size, the size of the prior chunk. This is technically a part of the next chunk, a clever optimisation. 
+
+<br>
+
+
+```
+|---------------------|------------------------------------------------------------------|-------------------|
+|
+|---------------------|------------------------------------------------------------------|-------------------|
+```
