@@ -120,6 +120,9 @@ A (NON_MAIN_ARENA): Chunk belongs to a non-main thread arena (bit 2).
 
 The tcache bin index is calculated using the chunk size:   `#define csize2tidx(x) (((x) - MINSIZE + MALLOC_ALIGNMENT - 1) / MALLOC_ALIGNMENT)`
 
+MINSIZE = 0x20
+MALLOC_ALIGNMENT = 0x10
+
 More cleanly: index = (chunk_size-1)/16. 
 
 <br>
