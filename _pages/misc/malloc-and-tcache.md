@@ -60,3 +60,24 @@ The other 8 bytes of metadata is stored right after the usable memory, and conta
 
 <br>
 
+<br>
+
+<br>
+
+Internal metadata flags: 
+<br>
+
+P (PREV_INUSE): Previous chunk is allocated (bit 0).
+
+M (IS_MMAPPED): Chunk obtained via mmap (bit 1).
+
+A (NON_MAIN_ARENA): Chunk belongs to a non-main thread arena (bit 2).
+
+
+
+<br>
+
+
+<br>
+
+
