@@ -65,7 +65,7 @@ The other 8 bytes of metadata is stored right after the usable memory, and conta
 
 int main() {
     int requested_size = 25; 
-    void *ptr = malloc(25);
+    void *ptr = malloc(requested_size);
 
     size_t usable_size = malloc_usable_size(ptr);
     printf("Usable size: %zu bytes\n", usable_size);
