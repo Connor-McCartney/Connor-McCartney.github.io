@@ -57,6 +57,37 @@ The other 8 bytes of metadata is stored right after the usable memory, and conta
 
 <br>
 
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <malloc.h>
+
+int main() {
+    int requested_size = 25; 
+    void *ptr = malloc(25);
+
+    size_t usable_size = malloc_usable_size(ptr);
+    printf("Usable size: %zu bytes\n", usable_size);
+
+    size_t chunk_size = usable_size + 8;
+    printf("Chunk size: %zu bytes\n", chunk_size);
+
+    size_t *header_ptr = (size_t *)((char *)ptr - 8);
+    // The lower 3 bits of the size field are used for internal flags (A, M, P).
+    chunk_size = *header_ptr & 0b11111000;
+    printf("Chunk size read from metadata: %zu bytes\n", chunk_size);
+    
+
+
+    free(ptr);
+    return 0;
+}
+
+
+```
+
+
+
 
 <br>
 
