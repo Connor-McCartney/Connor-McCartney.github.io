@@ -21,5 +21,7 @@ There is an important distinction to be made between the *requested size*, the *
 
 <br>
 
+When you call malloc, it will return some amount of memory greater than or equal to the requested size, for alignment/other reasons. This is the usable size. 
+
 <br>
 
