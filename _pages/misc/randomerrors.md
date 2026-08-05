@@ -32,3 +32,13 @@ Use --help for more information.
 
 ### fix
 
+```
+$ yay -S aur/openvpn-update-resolv-conf-git
+```
+
+
+
+<br>
+
+<br>
+
