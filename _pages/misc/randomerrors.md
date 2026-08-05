@@ -7,7 +7,7 @@ title: Random Errors
 
 <br>
 
-Ever encounter some error that you know you've seen before but you forgot what you did?
+Ever encounter some error that you know you've seen before but you forgot how past you fixed it?
 
 Yeah that's what I'm gonna try use this page for....
 
