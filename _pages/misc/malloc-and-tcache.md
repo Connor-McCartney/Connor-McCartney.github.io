@@ -96,7 +96,7 @@ int main() {
 
     size_t *header_ptr = (size_t *)((char *)ptr - 8);
     // The lower 3 bits of the size field are used for internal flags (A, M, P).
-    chunk_size = *header_ptr & 0b11111000;
+    chunk_size = *header_ptr & (~ 0b111);
     printf("Chunk size read from metadata: %zu bytes\n", chunk_size);
     
 
