@@ -158,6 +158,37 @@ More cleanly: index = (chunk_size-1)/16.
 
 <br>
 
+<br>
+
+<br>
+
+
+<img width="347" height="212" alt="image" src="https://github.com/user-attachments/assets/44a3f667-08a8-491f-bebd-c0e507d76aa5" />
+
+
+<br>
+
+<br>
+
+<br>
+
+Relatively small chunks go into these tcache bins. They are LIFO (like a stack) though technically a linked list. 
+
+Each bin has a tcache_entry list. But an 'aha' moment for me was realising this is not stored somewhere random, each *next and *key pointer 
+
+<br>
+
+are written directly at the beginning of the chunk's usable memory whenever free is called!!
+
+
+<br>
+
+(In newer glibc versions, the *next pointer is kinda encrypted with xor, this is 'pointer mangling'/'safe linking')
+
+<br>
+
+<br>
+
 
 
 
