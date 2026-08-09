@@ -174,11 +174,7 @@ More cleanly: index = (chunk_size-1)/16.
 
 Relatively small chunks go into these tcache bins. They are LIFO (like a stack) though technically a linked list. 
 
-Each bin has a tcache_entry list. But an 'aha' moment for me was realising this is not stored somewhere random, each *next and *key pointer 
-
-<br>
-
-are written directly at the beginning of the chunk's usable memory whenever free is called!!
+Each bin has a tcache_entry list. But an 'aha' moment for me was realising this is not stored somewhere random, each *next and *key pointer are written directly at the beginning of the chunk's usable memory whenever free is called!!
 
 
 <br>
