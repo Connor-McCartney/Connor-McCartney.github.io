@@ -174,7 +174,11 @@ More cleanly: index = (chunk_size-1)/16.
 
 Relatively small chunks go into these tcache bins. They are LIFO (like a stack) though technically a linked list. 
 
-Each bin has a tcache_entry list. But an 'aha' moment for me was realising this is not stored somewhere random, each *next and *key pointer are written directly at the beginning of the chunk's usable memory whenever free is called!!
+Each bin has a tcache_entry list. This is not stored somewhere random, each *next and *key pointer are written directly at the beginning of the chunk's usable memory whenever free is called!!
+
+So within glibc code, only a pointer to the first element of the list is needed, and can be updated. The rest of the list is on the heap. 
+
+When free is called, a tcache entry is put at the head of the list. And when malloc is called, a tcache entry is removed from the head of the list. 
 
 
 <br>
