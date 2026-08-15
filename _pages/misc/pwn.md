@@ -1599,3 +1599,39 @@ $
 
 
 
+
+
+<br>
+
+---
+
+
+
+<br>
+
+
+
+
+
+<br>
+
+
+A note on restarting the program:
+
+Often just returning to main() can be problematic because of bad rsi, rdi/etc. registers (that should carry argv/argc/... ideally)
+
+Some solutions:
+
+
+1. Jump to main + offset (skipping the instructions that dereference rsi/rdi)
+
+2. return to _start instead
+
+3. Use a brief ROP gadget chain to set rdi and rsi to a valid data/address
+
+
+---
+
+
+<br>
+
