@@ -1828,22 +1828,16 @@ Some solutions:
 3. Use a brief ROP gadget chain to set rdi and rsi to a valid data/address
 
 
+
+<br>
+
+
+<br>
+
+
 ---
 
 
-<br>
-
-
-
-
-<br>
-
-
-<br>
-
-
-
----
 
 
 
@@ -1932,4 +1926,22 @@ io.interactive()
 <br>
 
 <br>
+
+
+
+<br>
+
+
+
+
+<br>
+
+
+<br>
+
+
+
+---
+
+
 
