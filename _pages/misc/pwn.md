@@ -1741,11 +1741,29 @@ rbp:
 -----------------------------------------
 ```
 
-
-
-
 <br>
 
+
+THEN ret will do pop rip; jmp rip
+
+```
+--------- __libc_start_main ---------------
+
+
+
+rbp+32: system
+rbp+24: RET_GADGET
+rbp+16: /bin/sh addr                 < rsp
+------------------main--------------------
+rbp+8: POP_RDI_GADGET                
+rbp:
+
+
+
+ 
+
+-----------------------------------------
+```
 
 
 <br>
