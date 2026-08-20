@@ -1684,8 +1684,67 @@ p.interactive()
 Let's trace the stack and rsp, ignoring rbp:
 
 
+<br>
 
 
+
+<br>
+
+Just before leave instruction:
+
+```
+--------- __libc_start_main ---------------
+prev_rbp:  
+
+
+
+
+------------------ main -------------------
+rbp+8: ret addr
+rbp:    prev_rbp                   < rbp
+
+
+
+
+
+
+ 
+                                  < rsp
+-------------------------------------------
+```
+
+<br>
+
+
+
+leave will do mov rsp, rbp; pop rbp
+
+So now:
+
+
+```
+--------- __libc_start_main ---------------
+
+
+
+
+
+
+------------------main--------------------
+rbp+8: ret addr                    < rsp
+rbp:
+
+
+
+ 
+
+-----------------------------------------
+```
+
+
+
+
+<br>
 
 
 
