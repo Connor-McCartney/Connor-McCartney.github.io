@@ -1768,9 +1768,33 @@ rbp:
 
 <br>
 
+Now the POP_rdi gadget will execute (pop rdi; ret)
+
+/bin/sh gets popped into rdi, and RET_GADGET gets popped into rip
+
+
+```
+--------- __libc_start_main ---------------
+
+
+
+rbp+32: system                       < rsp
+rbp+24: RET_GADGET
+rbp+16: /bin/sh addr                 
+------------------main--------------------
+rbp+8: POP_RDI_GADGET                
+rbp:
+
+
+
+ 
+
+-----------------------------------------
+```
 
 <br>
 
+Now the RET_GADGET executes, popping system into rip
 
 <br>
 
