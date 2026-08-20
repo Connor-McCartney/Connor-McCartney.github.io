@@ -1681,8 +1681,23 @@ p.interactive()
 
 <br>
 
+Let's trace the stack and rsp, ignoring rbp:
 
 
+
+
+
+
+
+<br>
+
+
+<br>
+
+
+<br>
+
+<br>
 
 
 
