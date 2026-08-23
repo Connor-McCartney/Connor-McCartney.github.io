@@ -222,3 +222,24 @@ scriptblocktext: function Check-VM
 
 <br>
 
+
+Search for hklm or HKLM
+
+the correct section is this:
+
+```powershell
+    if (!$hypervm)
+        {
+            $hyperv = Get-ChildItem HKLM:\SYSTEM\ControlSet001\Services
+            if (($hyperv -match "vmicheartbeat") -or ($hyperv -match "vmicvss") -or ($hyperv -match "vmicshutdown") -or ($hyperv -match "vmiexchange"))
+                {
+                    $hypervm = $true
+                }
+        }
+
+```
+
+
+<br>
+
+
