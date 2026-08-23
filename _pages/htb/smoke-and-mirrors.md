@@ -46,9 +46,21 @@ yay -S evtx
 <br>
 
 
+```
+[~/t] 
+$ evtx_dump Microsoft-Windows-Powershell-Operational.evtx -o json > Powershell-Operational.json
+
+[~/t] 
+$ evtx_dump Microsoft-Windows-Powershell.evtx -o json > Powershell.json
+
+[~/t] 
+$ evtx_dump Microsoft-Windows-Sysmon-Operational.evtx -o json > Sysmon-Operational.json
+```
 
 
 <br>
 
+
+<br>
 
 
