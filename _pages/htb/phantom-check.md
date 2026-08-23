@@ -98,3 +98,25 @@ for line in open('output.json').read().splitlines()[1::2][::-1]:
 <br>
 
 
+Scrolling through that we see
+
+
+```
+payload: CommandInvocation(Get-WmiObject): "Get-WmiObject"
+ParameterBinding(Get-WmiObject): name="Class"; value="Win32_ComputerSystem"
+CommandInvocation(Select-Object): "Select-Object"
+ParameterBinding(Select-Object): name="ExpandProperty"; value="Model"
+ParameterBinding(Select-Object): name="InputObject"; value="\\DESKTOP-M3AKJSD\root\cimv2:Win32_ComputerSystem.Name="DESKTOP-M3AKJSD""
+```
+
+
+<br>
+
+
+So the answer to q1 is `Win32_ComputerSystem`
+
+
+<br>
+
+
+
