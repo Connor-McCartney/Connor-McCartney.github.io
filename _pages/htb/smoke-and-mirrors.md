@@ -1,3 +1,10 @@
+---
+permalink: /misc/htb/smoke-and-mirrors
+title: Smoke & Mirrors
+---
+
+<br>
+
 
 
 <br>
