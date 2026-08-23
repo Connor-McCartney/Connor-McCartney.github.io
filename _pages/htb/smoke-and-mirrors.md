@@ -193,6 +193,13 @@ Q2: `Set-MpPreference -DisableIOAVProtection $true -DisableEmailScanning $true -
 <br>
 
 
+<img width="1382" height="191" alt="image" src="https://github.com/user-attachments/assets/e90647ac-8b47-4897-888c-ad3822e681cf" />
+
+
+<br>
+
+<br>
+
 
 
 
