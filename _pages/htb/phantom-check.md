@@ -73,3 +73,28 @@ evtx_dump Windows-Powershell-Operational.evtx -o json > output.json
 
 <br>
 
+
+
+I made a janky parser that grabs the powershell payload
+
+
+```python
+from json import loads
+for line in open('output.json').read().splitlines()[1::2][::-1]:
+    j = loads(line)["Event"]
+    #print(j)
+    #print('\n'*10)
+
+    eventdata = j.get("EventData")
+    if eventdata is not None:
+        payload = eventdata.get("Payload")
+        if payload is not None:
+            print(f'payload: {payload}')
+
+```
+
+
+
+<br>
+
+
