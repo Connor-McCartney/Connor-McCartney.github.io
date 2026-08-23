@@ -14,3 +14,5 @@ title: Hack the Box
 <span style="font-size:2em;">   [Spectra](/misc/htb/spectra)   </span>   (ChromeOS)
 
 <span style="font-size:2em;">   [Phantom Check](/misc/htb/phantom-check)   </span>   (Event Viewer)
+
+<span style="font-size:2em;">   [Smoke & Mirrors](/misc/htb/smoke-and-mirrors)   </span>   (Event Viewer)
