@@ -156,4 +156,20 @@ scriptblocktext: function Test-UnnecessaryFiles([string]$folder = $(throw "No fo
 
 <br>
 
+Q1: `HKLM\SYSTEM\CurrentControlSet\Control\LSA`
+
+
+<br>
+
+<br>
+
+
+<img width="712" height="169" alt="image" src="https://github.com/user-attachments/assets/b8b73504-33a8-4060-8e36-9992cf6f81be" />
+
+<br>
+
+<br>
+
+
+
 
