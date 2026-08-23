@@ -119,4 +119,26 @@ So the answer to q1 is `Win32_ComputerSystem`
 <br>
 
 
+<br>
+
+<br>
+
+<br>
+
+
+
+<img width="1383" height="188" alt="image" src="https://github.com/user-attachments/assets/3412e29b-a749-4c18-904f-00124e1a9780" />
+
+
+
+
+
+<br>
+
+<br>
+
+<br>
+
+
+
 
