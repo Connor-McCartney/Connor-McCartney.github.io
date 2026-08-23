@@ -174,3 +174,51 @@ So the answer to q2 is `SELECT * FROM MSAcpi_ThermalZoneTemperature`
 <br>
 
 
+I modified the prev parser
+
+
+```python
+from json import loads
+for line in open('output.json').read().splitlines()[1::2][::-1]:
+    j = loads(line)["Event"]
+    #print(j)
+    #print('\n'*10)
+
+    eventdata = j.get("EventData")
+    if eventdata is not None:
+        scriptblocktext = eventdata.get("ScriptBlockText")
+        if scriptblocktext is not None:
+            print(f'scriptblocktext: {scriptblocktext}')
+
+```
+
+
+
+scroll through that and you can find 
+
+```
+scriptblocktext: function Check-VM
+...
+```
+
+
+
+
+<br>
+
+<br>
+
+<br>
+
+
+<img width="1367" height="174" alt="image" src="https://github.com/user-attachments/assets/255b0f0b-50bc-48f1-8f99-1f124571f1a3" />
+
+
+
+
+<br>
+
+<br>
+
+<br>
+
