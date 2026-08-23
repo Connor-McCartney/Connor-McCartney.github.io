@@ -72,3 +72,19 @@ $ evtx_dump Microsoft-Windows-Sysmon-Operational.evtx -o json > Sysmon-Operation
 
 
 
+```python
+from json import loads
+for line in open('Powershell.json').read().splitlines()[1::2][::-1]:
+    j = loads(line)["Event"]
+
+    eventdata = j.get("EventData").get('Data').get('#text')
+    print(f'{eventdata = }\n\n\n\n')
+```
+
+<br>
+
+
+The Powershell.json seemed not so useful? no commands? so I moved on to Powershell-Operational.json
+
+<br>
+
