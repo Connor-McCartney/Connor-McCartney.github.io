@@ -37,4 +37,18 @@ Microsoft-Windows-Powershell.evtx  Microsoft-Windows-Powershell-Operational.evtx
 <br>
 
 
+Usually you just open .evtx files with Event Viewer on windows, but I’ll test on the rust tool evtx_dump on linux.
+
+```
+yay -S evtx
+```
+
+<br>
+
+
+
+
+<br>
+
+
 
