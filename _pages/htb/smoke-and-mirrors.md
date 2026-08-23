@@ -185,11 +185,12 @@ scriptblocktext: prompt
 ...
 ```
 
-<br>
 
-Q2: `Set-MpPreference -DisableRealtimeMonitoring $true -DisableScriptScanning $true -DisableBehaviorMonitoring $true -DisableIOAVProtection $true -DisableIntrusionPreventionSystem $true`
 
 <br>
+
+<br>
+
 
 
 
