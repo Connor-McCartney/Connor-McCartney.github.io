@@ -172,4 +172,25 @@ Q1: `HKLM\SYSTEM\CurrentControlSet\Control\LSA`
 
 
 
+```
+...
+scriptblocktext: prompt
+scriptblocktext: cls
+scriptblocktext: prompt
+scriptblocktext: Set-MpPreference -DisableRealtimeMonitoring $true -DisableScriptScanning $true -DisableBehaviorMonitoring $true -DisableIOAVProtection $true -DisableIntrusionPreventionSystem $true
+scriptblocktext: prompt
+scriptblocktext: cls
+scriptblocktext: prompt
+scriptblocktext: prompt
+...
+```
+
+<br>
+
+Q2: `Set-MpPreference -DisableRealtimeMonitoring $true -DisableScriptScanning $true -DisableBehaviorMonitoring $true -DisableIOAVProtection $true -DisableIntrusionPreventionSystem $true`
+
+<br>
+
+
+
 
