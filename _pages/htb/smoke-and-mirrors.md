@@ -63,4 +63,12 @@ $ evtx_dump Microsoft-Windows-Sysmon-Operational.evtx -o json > Sysmon-Operation
 
 <br>
 
+<img width="1377" height="175" alt="image" src="https://github.com/user-attachments/assets/b877633f-f26b-477e-aec4-e4e8ca6dc4d8" />
+
+
+<br>
+
+<br>
+
+
 
