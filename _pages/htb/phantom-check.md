@@ -307,5 +307,24 @@ Matching their requested format, answer to q5 is `vboxservice.exe, vboxtray.exe`
 
 
 
+For this I used my first parser again. 
+
+
+Search for 'This is a', and you can see the output log:
+
+```
+payload: CommandInvocation(Out-Default): "Out-Default"
+ParameterBinding(Out-Default): name="InputObject"; value="This is a Hyper-V machine."
+ParameterBinding(Out-Default): name="InputObject"; value="This is a VMWare machine."
+```
+
+
+<br>
+
+
+So answer to q6 is `Hyper-V, VMWare`
+
+<br>
+
 
 
