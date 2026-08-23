@@ -272,6 +272,17 @@ Q4: `bcdedit.exe /set safeboot network`
 
 <br>
 
+I just searched for istory and found this:
 
+<br>
+
+scriptblocktext: Set-PSReadlineOption -HistorySaveStyle SaveNothing
+
+
+<br>
+
+
+
+Q5: `scriptblocktext: Set-PSReadlineOption -HistorySaveStyle SaveNothing`
 
 
