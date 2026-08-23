@@ -249,7 +249,7 @@ I just searched for safe:
 scriptblocktext: bcdedit /set safeboot network
 ```
 
-Q4: `bcdedit /set safeboot network`
+Q4: ``
 
 <br>
 
