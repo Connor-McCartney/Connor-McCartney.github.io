@@ -53,3 +53,16 @@ There is no machine, just a zip file to analyse.
 <br>
 
 
+Usually you just open .evtx files with Event Viewer on windows, but I'll test on the rust tool evtx_dump on linux. 
+
+
+<br>
+
+
+```
+yay -S evtx
+```
+
+
+<br>
+
