@@ -1,4 +1,9 @@
+---
+permalink: /misc/htb/phantom-check
+title: Phantom Check
+---
 
+<br>
 
 
 
