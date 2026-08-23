@@ -23,3 +23,33 @@
 
 <br>
 
+
+
+<br>
+
+
+There is no machine, just a zip file to analyse. 
+
+
+
+<br>
+
+
+<br>
+
+
+
+
+<img width="1405" height="400" alt="image" src="https://github.com/user-attachments/assets/0e0e79ab-9392-4075-9c91-bc04f0c688c7" />
+
+
+
+
+<br>
+
+
+<br>
+
+<br>
+
+
