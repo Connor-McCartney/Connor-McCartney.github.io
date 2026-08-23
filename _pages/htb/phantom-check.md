@@ -261,6 +261,50 @@ the correct section is this:
 
 
 
+```powershell
+    #Virtual Box
+
+    $vb = Get-Process
+    if (($vb -eq "vboxservice.exe") -or ($vb -match "vboxtray.exe"))
+        {
+    
+        $vbvm = $true
+    
+        }
+```
+
+
+<br>
+
+<br>
+
+Matching their requested format, answer to q5 is `vboxservice.exe, vboxtray.exe`
+
+
+<br>
+
+
+<br>
+
+<br>
+
+
+
+
+<img width="1380" height="193" alt="image" src="https://github.com/user-attachments/assets/c8223093-61d6-485e-93a1-f5ef5f638767" />
+
+
+
+<br>
+
+
+<br>
+
+
+<br>
+
+
+
 
 
 
