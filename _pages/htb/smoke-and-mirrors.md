@@ -110,3 +110,50 @@ The commands/outputs didn't have any registry keys, but scriptblocks did!
 <br>
 
 
+```python
+from json import loads
+for line in open('Powershell-Operational.json').read().splitlines()[1::2][::-1]:
+    j = loads(line)["Event"]
+
+    eventdata = j.get("EventData")
+    if eventdata is not None:
+        #payload = eventdata.get("Payload")
+        #if payload is not None:
+        #    print(f'payload: {payload}')
+        scriptblocktext = eventdata.get("ScriptBlockText")
+        if scriptblocktext is not None:
+            print(f'scriptblocktext: {scriptblocktext}')
+
+```
+
+
+<br>
+
+
+```
+...
+scriptblocktext: C:\Program Files\Windows Defender\MpCmdRun.exe -RemoveDefinitions -All
+scriptblocktext: prompt
+scriptblocktext: reg add HKLM\SYSTEM\CurrentControlSet\Control\LSA /v RunAsPPL /t REG_DWORD /d 0 /f
+scriptblocktext: $Host
+scriptblocktext: prompt
+scriptblocktext: prompt
+scriptblocktext: reg add HKLM\SYSTEM\CurrentControlSet\Control\LSA /v RunAsPPL /t REG_DWORD /d 0 /f
+scriptblocktext: $Host
+scriptblocktext: prompt
+scriptblocktext: prompt
+scriptblocktext: cls
+scriptblocktext: prompt
+scriptblocktext: reg add /?
+scriptblocktext: prompt
+scriptblocktext: reg add
+scriptblocktext: $Host
+scriptblocktext: prompt
+scriptblocktext: function Test-UnnecessaryFiles([string]$folder = $(throw "No folder is specified")) {
+...
+```
+
+
+<br>
+
+
