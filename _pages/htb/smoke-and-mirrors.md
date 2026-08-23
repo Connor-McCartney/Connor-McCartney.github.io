@@ -243,3 +243,29 @@ Q3: `AmsiScanBuffer`
 <br>
 
 
+I just searched for safe:
+
+```
+scriptblocktext: bcdedit /set safeboot network
+```
+
+Q4: `bcdedit /set safeboot network`
+
+<br>
+
+<br>
+
+
+
+
+
+<img width="799" height="168" alt="image" src="https://github.com/user-attachments/assets/ade69691-a6a3-44e9-a035-a36b37b94e16" />
+
+
+<br>
+
+<br>
+
+
+
+
