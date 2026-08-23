@@ -80,7 +80,7 @@ evtx_dump Windows-Powershell-Operational.evtx -o json > output.json
 
 
 
-I made a janky parser that grabs the powershell payload
+I made a janky parser that grabs the powershell payloads (includes outputs too)
 
 
 ```python
