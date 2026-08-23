@@ -174,18 +174,19 @@ Q1: `HKLM\SYSTEM\CurrentControlSet\Control\LSA`
 
 ```
 ...
+scriptblocktext: Set-MpPreference -DisableIOAVProtection $true -DisableEmailScanning $true -DisableBlockAtFirstSeen $true
 scriptblocktext: prompt
-scriptblocktext: cls
+scriptblocktext: cmd.exe /c "C:\Program Files\Windows Defender\MpCmdRun.exe" -RemoveDefinitions -All
 scriptblocktext: prompt
-scriptblocktext: Set-MpPreference -DisableRealtimeMonitoring $true -DisableScriptScanning $true -DisableBehaviorMonitoring $true -DisableIOAVProtection $true -DisableIntrusionPreventionSystem $true
+scriptblocktext: { Set-StrictMode -Version 1; $_.OriginInfo }
+scriptblocktext: { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+scriptblocktext: { Set-StrictMode -Version 1; $_.PSMessageDetails }
 scriptblocktext: prompt
-scriptblocktext: cls
-scriptblocktext: prompt
-scriptblocktext: prompt
+
 ...
 ```
 
-
+Q2: `Set-MpPreference -DisableIOAVProtection $true -DisableEmailScanning $true -DisableBlockAtFirstSeen $true`
 
 <br>
 
