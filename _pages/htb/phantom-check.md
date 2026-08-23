@@ -61,7 +61,14 @@ Usually you just open .evtx files with Event Viewer on windows, but I'll test on
 
 ```
 yay -S evtx
+evtx_dump Windows-Powershell-Operational.evtx -o json > output.json
 ```
+
+
+
+<br>
+
+
 
 
 <br>
