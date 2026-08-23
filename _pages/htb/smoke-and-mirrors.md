@@ -243,13 +243,19 @@ Q3: `AmsiScanBuffer`
 <br>
 
 
-I just searched for safe:
+I just searched for safe (but they want you to add .exe at the end, I think they looked through the Sysmon one instead of the Powershell-Operational):
+
+<br>
+
 
 ```
 scriptblocktext: bcdedit /set safeboot network
 ```
 
-Q4: ``
+<br>
+
+
+Q4: `bcdedit.exe /set safeboot network`
 
 <br>
 
