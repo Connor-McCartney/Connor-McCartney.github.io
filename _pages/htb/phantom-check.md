@@ -140,5 +140,37 @@ So the answer to q1 is `Win32_ComputerSystem`
 <br>
 
 
+I searched for 'Temperature' and found one result
+
+```python
+payload: CommandInvocation(Get-WmiObject): "Get-WmiObject"
+ParameterBinding(Get-WmiObject): name="Query"; value="SELECT * FROM MSAcpi_ThermalZoneTemperature"
+ParameterBinding(Get-WmiObject): name="ErrorAction"; value="SilentlyContinue"
+NonTerminatingError(Get-WmiObject): "Invalid class "MSAcpi_ThermalZoneTemperature""
+```
+
+
+<br>
+
+So the answer to q2 is `SELECT * FROM MSAcpi_ThermalZoneTemperature`
+
+
+<br>
+
+<br>
+
+<br>
+
+
+<img width="1385" height="185" alt="image" src="https://github.com/user-attachments/assets/e1175ae5-8880-43cc-b059-0dc9b9b3153f" />
+
+
+
+
+<br>
+
+<br>
+
+<br>
 
 
