@@ -38,7 +38,7 @@ The first 8 bytes of metadata is stored right before the usable memory, and cont
 
 <br>
 
-The other 8 bytes of metadata is stored right before the other metadata, and contains prev_size, the size of the prior chunk. This bleeds in to the previous chunk's usable memory, a clever optimisation. 
+The other 8 bytes of metadata is stored right before the other metadata, and contains prev_size, the size of the prior chunk. This bleeds in to the previous chunk's usable memory, a clever optimisation. (but only when the P bit, PREV_IN_USE is 0, which is used to keep track. The very first chunk allocated always has this bit = 1, preventing access to nonexistent memory)
 
 
 
