@@ -320,6 +320,20 @@ I tried to make a tool for future use too:
 # Get-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging"
 
 
+# run this as admin to enable:
+
+"""
+$RegistryPath = "HKLM:\Software\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging"
+if (!(Test-Path $RegistryPath)) { New-Item -Path $RegistryPath -Force }
+Set-ItemProperty -Path $RegistryPath -Name "EnableScriptBlockLogging" -Value 1 -Type DWord
+"""
+
+
+
+
+
+
+
 
 from json import loads
 from evtx import PyEvtxParser
@@ -337,14 +351,10 @@ for record in PyEvtxParser(evtx_path).records_json():
 for (datetime, event) in sorted(events):
     date, time = datetime.split('T')
     year, month, day = date.split('-')
-    print(f'{date = } {time = }')
-    #continue
 
     # you can filter here
     #if year != '2026' or month != '08':
     #    continue
-
-
 
     eventdata = event.get("EventData")
     scriptblocktext = None
