@@ -293,3 +293,69 @@ scriptblocktext: Set-PSReadlineOption -HistorySaveStyle SaveNothing
 Q5: `scriptblocktext: Set-PSReadlineOption -HistorySaveStyle SaveNothing`
 
 
+
+
+<br>
+
+
+<br>
+
+
+<br>
+
+
+<br>
+
+
+I tried to make a tool for future use too:
+
+```python
+# pip install evtx
+# run as admin
+
+# NOTE windows does not log every executed powershell command by default.
+# Powershell logging policies can be configured via registry or group polkicy.
+
+# to check if logging is enabled: (if error it is not enabled)
+# Get-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging"
+
+
+
+from json import loads
+from evtx import PyEvtxParser
+
+evtx_path = "C:\\Windows\\System32\\winevt\\Logs\\Microsoft-Windows-PowerShell%4Operational.evtx"
+records = []
+for record in PyEvtxParser(evtx_path).records_json():
+    records.append(loads(record['data']).get('Event'))
+
+
+for record in records:
+    date, time = record.get('System').get('TimeCreated').get('#attributes').get('SystemTime').split('T')
+    year, month, day = date.split('-')
+    #print(f'{date = } {time = }')
+
+    # you can filter here
+    #if year != '2026' or month != '08':
+    #    continue
+
+
+
+    eventdata = record.get("EventData")
+    scriptblocktext = None
+    if eventdata is not None:
+
+        scriptblocktext = eventdata.get("ScriptBlockText")
+        if scriptblocktext is not None:
+                print(f'scriptblocktext {date} {time}: {scriptblocktext}')
+
+        payload = eventdata.get("Payload")
+        if payload is not None:
+            print(f'payload {date} {time}: {payload}')
+```
+
+
+<br>
+
+<br>
+
