@@ -323,17 +323,22 @@ I tried to make a tool for future use too:
 
 from json import loads
 from evtx import PyEvtxParser
+from datetime import datetime
 
 evtx_path = "C:\\Windows\\System32\\winevt\\Logs\\Microsoft-Windows-PowerShell%4Operational.evtx"
-records = []
+events = []
 for record in PyEvtxParser(evtx_path).records_json():
-    records.append(loads(record['data']).get('Event'))
+    event = loads(record['data']).get('Event')
+    datetime = event.get('System').get('TimeCreated').get('#attributes').get('SystemTime')
+    events.append( (datetime, event) )
 
 
-for record in records:
-    date, time = record.get('System').get('TimeCreated').get('#attributes').get('SystemTime').split('T')
+
+for (datetime, event) in sorted(events):
+    date, time = datetime.split('T')
     year, month, day = date.split('-')
-    #print(f'{date = } {time = }')
+    print(f'{date = } {time = }')
+    #continue
 
     # you can filter here
     #if year != '2026' or month != '08':
@@ -341,7 +346,7 @@ for record in records:
 
 
 
-    eventdata = record.get("EventData")
+    eventdata = event.get("EventData")
     scriptblocktext = None
     if eventdata is not None:
 
