@@ -8,6 +8,16 @@ title: malloc and tcache
 <br>
 
 
+<https://shuye.dev/blog/malloc_chunk/>
+
+<https://sourceware.org/glibc/wiki/MallocInternals>
+
+<https://zhouzhouzhang.co.uk/blog/12>
+
+
+
+<br>
+
 I'll focus on glibc ptmalloc on linux. 
 
 
