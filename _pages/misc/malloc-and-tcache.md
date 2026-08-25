@@ -258,6 +258,8 @@ printf("Malloc Allocated: %p\n\n", malloc(0x10));
 
 dummy malloc uses the memory at ptr1
 
+tcache_entry = target
+
 <br>
 
 ```c
