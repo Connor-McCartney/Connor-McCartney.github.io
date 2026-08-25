@@ -220,10 +220,25 @@ This link is very good: <https://guyinatuxedo.github.io/29-tcache/tcache_explana
 
 <br>
 
+```c
+ptr0 = malloc(0x10);
+ptr1 = malloc(0x10);
+free(ptr0);
+```
 
+The first `free` puts ptr0 at the head of the tcache_entry list
 
+tcache_entry = ptr0
 
+<br>
 
+```c
+free(ptr1);
+```
+
+The second `free` puts ptr1 at the head of the tcache_entry list
+
+tcache_entry = ptr1 -> ptr0
 
 
 
