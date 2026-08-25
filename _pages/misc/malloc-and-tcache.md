@@ -130,7 +130,7 @@ int main() {
 Internal metadata flags: 
 <br>
 
-P (PREV_INUSE): Previous chunk is allocated (bit 0).
+P (PREV_INUSE): Previous chunk is allocated (bit 0). If p=1, the previous chunk is in use, and prev_size is not needed. If p=0, the previous chunk is free, and prev_size can bleed into the prev chunk. 
 
 M (IS_MMAPPED): Chunk obtained via mmap (bit 1).
 
