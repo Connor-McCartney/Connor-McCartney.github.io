@@ -201,5 +201,36 @@ When free is called, a tcache entry is put at the head of the list. And when mal
 
 
 
+<br>
+
+<br>
+
+<br>
+
+---
+
+<br>
+
+
+Let's look at a simple tcache poisoning attack (naively only works in old glibc versions before safe linking was introduced)
+
+<br>
+
+
+
+
+
+
+
+
+
+
+<br>
+---
+
+
+<br>
+
+<br>
 
 
