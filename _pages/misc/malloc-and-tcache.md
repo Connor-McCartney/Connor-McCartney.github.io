@@ -216,6 +216,10 @@ Let's look at a simple tcache poisoning attack (naively only works in old glibc 
 
 <br>
 
+This link is very good: <https://guyinatuxedo.github.io/29-tcache/tcache_explanation/index.html>
+
+<br>
+
 
 
 
