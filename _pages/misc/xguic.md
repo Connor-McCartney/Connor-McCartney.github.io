@@ -214,6 +214,96 @@ int main(int argc, char **argv)
 
 <br>
 
+
+Epilepsy Troll: 
+
+
+```c
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <X11/Xatom.h>
+#include <X11/extensions/Xrender.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+int main() {
+    Display* dpy = XOpenDisplay(NULL);
+    if (!dpy) {
+        fprintf(stderr, "Failed to open display\n");
+        return 1;
+    }
+
+    int screen = DefaultScreen(dpy);
+    Window root = RootWindow(dpy, screen);
+
+    // Find a 32-bit TrueColor visual (ARGB)
+    XVisualInfo vinfo;
+    if (!XMatchVisualInfo(dpy, screen, 32, TrueColor, &vinfo)) {
+        fprintf(stderr, "No 32-bit TrueColor visual available\n");
+        return 1;
+    }
+
+    // Setup window attributes
+    XSetWindowAttributes attrs;
+    attrs.colormap = XCreateColormap(dpy, root, vinfo.visual, AllocNone);
+    attrs.background_pixel = 0x00000000;
+    attrs.border_pixel = 0;
+    attrs.override_redirect = True;
+
+    int screen_height = DisplayHeight(dpy, screen);
+    int screen_width = DisplayWidth(dpy, screen);
+    Window win = XCreateWindow(
+        dpy, root,
+        0, 0, screen_width, screen_height,
+        0, vinfo.depth, InputOutput, vinfo.visual,
+        CWColormap | CWBackPixel | CWBorderPixel | CWOverrideRedirect,
+        &attrs
+    );
+
+    XMapWindow(dpy, win);
+
+    // Create XRender Picture for drawing
+    XRenderPictFormat* fmt = XRenderFindVisualFormat(dpy, vinfo.visual);
+    Picture pict = XRenderCreatePicture(dpy, win, fmt, 0, NULL);
+
+    XRenderColor background = {0, 0, 0, 0}; // transparant
+    XRenderColor colour = {0xffff, 0x0000, 0x0000, 0xffff};  // rgba
+
+    while (1) {
+        // Clear window to transparent
+        XRectangle clear_rect = {0, 0, screen_width, screen_height};
+        XRenderFillRectangles(dpy, PictOpSrc, pict, &background, &clear_rect, 1);
+
+        // Update  rectangle colour
+        colour.green = rand() % 65536;
+        colour.red = rand() % 65536;
+        colour.blue = rand() % 65536;
+
+        // Draw rectangle
+        XRectangle rect = {0, 0, screen_width, screen_height};
+        XRenderFillRectangles(dpy, PictOpOver, pict, &colour, &rect, 1);
+
+        XFlush(dpy);
+
+
+        usleep(16000); 
+    }
+
+    // Cleanup (never actually reached)
+    XRenderFreePicture(dpy, pict);
+    XCloseDisplay(dpy);
+    return 0;
+}
+```
+
+
+
+
+<br>
+
+
+
 <br>
 
 # Transparant and unaffected by dwm tiling
