@@ -3,6 +3,26 @@ permalink: /misc/fluid
 title: Fluid Simulation
 ---
 
+
+
+
+<br>
+
+<br>
+
+
+quick note:
+
+The main difference between the Euler equations and the Navier-Stokes equations is that Euler equations ignore fluid viscosity (internal friction), whereas Navier-Stokes equations include it. 
+
+So, I'll use euler eqs because they're simpler. 
+
+
+<br>
+
+<br>
+
+
 # demo
 
 
