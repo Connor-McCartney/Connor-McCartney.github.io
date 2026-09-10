@@ -244,7 +244,45 @@ int main() {
 
 <br>
 
+If there's 2 mallocs, just repeat with 2 frees
 
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+int main() {
+    char* a = (char*) malloc(20);
+    char* b = (char*) malloc(20);
+    free(a);
+    free(b);
+
+    //-----
+    char* _ = (char*) malloc(20);
+    char* flag = (char*) malloc(20);
+    strcpy(flag, "flag{test}");
+    //-----
+
+    // same!
+    printf("%p\n", a);
+    printf("%p\n", flag);
+
+    printf("%s\n", a);
+}
+```
+
+
+---
+
+<br>
+
+Double free:
+
+
+
+
+<br>
 
 ---
 
