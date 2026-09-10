@@ -290,8 +290,7 @@ Double free:
 int main() {
     char* uaf = (char*) malloc(20);
     free(uaf);
-    strcpy(uaf, "NEXT_PTRKEY__PTR");
-
+    strcpy(uaf, "NEXT_PTRKEY__PTR"); // overwrite key! to avoid double free detection
     free(uaf);
 
     //-----
