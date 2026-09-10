@@ -279,6 +279,33 @@ int main() {
 
 Double free:
 
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+int main() {
+    char* uaf = (char*) malloc(20);
+    free(uaf);
+    strcpy(uaf, "AAAAAAAA");
+    free(uaf);
+
+    //-----
+    char* _ = (char*) malloc(20);
+    char* flag = (char*) malloc(20);
+    strcpy(flag, "flag{test}");
+    //-----
+
+    // same!
+    printf("%p\n", uaf);
+    printf("%p\n", flag);
+
+    printf("%s\n", uaf);
+}
+
+```
+
 
 
 
