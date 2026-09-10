@@ -279,6 +279,8 @@ int main() {
 
 Double free:
 
+(double frees are detected with the key. Recall Next and Key are written in to beginning of usable memory whenever free is called. So, overwrite key_ptr to avoid segfault.)
+
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -288,7 +290,8 @@ Double free:
 int main() {
     char* uaf = (char*) malloc(20);
     free(uaf);
-    strcpy(uaf, "AAAAAAAA");
+    strcpy(uaf, "NEXT_PTRKEY__PTR");
+
     free(uaf);
 
     //-----
