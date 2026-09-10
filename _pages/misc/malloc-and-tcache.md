@@ -207,6 +207,43 @@ When free is called, a tcache entry is put at the head of the list. And when mal
 
 <br>
 
+
+<br>
+
+---
+
+<br>
+
+
+Simple use-after-free:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+int main() {
+    char* uaf = (char*) malloc(20);
+    free(uaf);
+
+    //-----
+    char* flag = (char*) malloc(20);
+    strcpy(flag, "flag{test}");
+    //-----
+
+    // same!
+    printf("%p\n", uaf);
+    printf("%p\n", flag);
+
+    printf("%s\n", uaf);
+}
+```
+
+<br>
+
+
+
 ---
 
 <br>
