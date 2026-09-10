@@ -226,7 +226,7 @@ Simple use-after-free:
 int main() {
     char* uaf = (char*) malloc(20);
     free(uaf);
-    // uaf = NULL;  // preventative measure
+    // uaf = nullptr;  // preventative measure
 
 
     //-----
