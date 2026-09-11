@@ -277,7 +277,7 @@ int main() {
 
 <br>
 
-Double free:
+Double free (7):
 
 (double frees are detected with the key. Recall Next and Key are written in to beginning of usable memory whenever free is called. So, overwrite key_ptr to avoid segfault.)
 
