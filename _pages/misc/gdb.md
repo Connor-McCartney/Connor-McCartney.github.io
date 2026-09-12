@@ -90,3 +90,7 @@ n -  number of elements
 
 
 `nextcall` is also very convenient, eg `nextcall malloc`
+
+
+
+`bt` backtrace is useful especially with stripped binaries
