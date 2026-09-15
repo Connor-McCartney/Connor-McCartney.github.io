@@ -392,6 +392,69 @@ I test with glibc 2.31, I just download some old ubuntu iso <https://old-release
 <br>
 
 
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+int main() {
+    //-----
+    char* flag =  malloc(0x20); 
+    strcpy(flag, "aaaaaaaabbbbbbbbccccccccdddddddd");
+    //-----
+
+    unsigned long* ptr0;
+    unsigned long* ptr1;
+    ptr0 = malloc(0x20);
+    ptr1 = malloc(0x20);
+    free(ptr0);
+    free(ptr1);
+    *ptr1 = (unsigned long) flag;
+    malloc(0x20);
+    char* attack = malloc(0x20); // this is where *key ptr gets NULLed
+
+    // same!
+    printf("  flag = %p\n", flag);
+    printf("attack = %p\n", attack);
+
+    // note we can only see the first 8 bytes!
+    // why? because when malloc() is called, it makes the *key ptr NULL (0's)
+    printf("%s\n\n", attack);
+
+    // but we can still see all other bytes
+    printf("%016lx\n", (unsigned long) *( ((unsigned long*) attack) + 0 )); // aaaaaaaa
+    printf("%016lx\n", (unsigned long) *( ((unsigned long*) attack) + 1 )); // 00000000
+    printf("%016lx\n", (unsigned long) *( ((unsigned long*) attack) + 2 )); // bbbbbbbb
+    printf("%016lx\n", (unsigned long) *( ((unsigned long*) attack) + 3 )); // cccccccc
+}
+```
+
+<br>
+
+```
+connor@connor-Virtual-Machine:~$ gcc x.c; ./a.out
+  flag = 0x5621767222a0
+attack = 0x5621767222a0
+aaaaaaaa
+
+6161616161616161
+0000000000000000
+6363636363636363
+6464646464646464
+connor@connor-Virtual-Machine:~$ 
+```
+
+<br>
+
+<br>
+
+---
+
+
+<br>
+
+
 
 
 
