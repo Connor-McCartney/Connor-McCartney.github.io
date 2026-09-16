@@ -702,15 +702,73 @@ aaaaaaaa
 
 
 
+
+
 Up to this point everything is the same as the previous one. 
 
-Now...
+The additional stuff:
 
 <br>
 
 
 
 
+
+```c
+char* a = malloc(0x20);
+```
+
+(this chunk is allocated at whatever aaaaaaaa is as a numerical address)
+
+tcache_entry = ?
+
+Heap: 
+
+```
+...
+
+
+
+flag
+0
+aaaaaaaa
+```
+
+<br>
+
+<br>
+
+<br>
+
+
+
+
+
+
+
+```c
+free(a);
+```
+
+tcache_entry = aaaaaaaa
+
+Heap: 
+
+```
+0
+
+
+
+flag
+0
+aaaaaaaa
+```
+
+<br>
+
+<br>
+
+<br>
 
 
 
