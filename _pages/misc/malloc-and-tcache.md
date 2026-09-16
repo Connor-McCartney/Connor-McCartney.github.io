@@ -503,10 +503,43 @@ connor@connor-Virtual-Machine:~$
 
 What exactly is going on here?
 
+<br>
+
+Let's focus our analysis on just the first 8 bytes of usable memory of each chunk on the heap (which contains either actual data or the *next pointers) 
+
+<br>
+
+
+<br>
+
+
+
+
+
+
+```c
+char* flag =  malloc(0x20); 
+    strcpy(flag, "aaaaaaaa");
+```
+
+tcache_entry = target
+
+Heap: 
+
+```
+aaaaaaaa
+```
 
 <br>
 
 <br>
+
+<br>
+
+
+
+
+
 
 
 
