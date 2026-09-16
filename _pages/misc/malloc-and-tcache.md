@@ -654,6 +654,8 @@ aaaaaaaa
 malloc(0x20);
 ```
 
+(This chunk is allocated at ptr1)
+
 tcache_entry = flag -> aaaaaaaa
 
 Heap: 
@@ -680,6 +682,8 @@ char* attack = malloc(0x20);
 attack = NULL; // what if this happens? (malloc is called, but we lose the ptr)
 ```
 
+(this chunk is allocated at flag)
+
 tcache_entry = aaaaaaaa
 
 Heap: 
@@ -695,6 +699,16 @@ aaaaaaaa
 <br>
 
 <br>
+
+
+
+Up to this point everything is the same as the previous one. 
+
+Now...
+
+<br>
+
+
 
 
 
