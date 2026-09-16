@@ -770,7 +770,7 @@ free(leak);
 
 The head of the tcache_entry (aaaaaaaa) is written into the usable memory of leak!
 
-tcache_entry = a -> aaaaaaaa
+tcache_entry = leak -> aaaaaaaa
 
 count: 1
 
