@@ -519,10 +519,10 @@ Let's focus our analysis on just the first 8 bytes of usable memory of each chun
 
 ```c
 char* flag =  malloc(0x20); 
-    strcpy(flag, "aaaaaaaa");
+strcpy(flag, "aaaaaaaa");
 ```
 
-tcache_entry = target
+tcache_entry = nil
 
 Heap: 
 
@@ -543,13 +543,48 @@ aaaaaaaa
 
 
 
+```c
+unsigned long* ptr0;
+unsigned long* ptr1;
+ptr0 = malloc(0x20);
+ptr1 = malloc(0x20);
+```
+
+tcache_entry = nil
+
+Heap: 
+
+```
+...
+...
+aaaaaaaa
+```
+
+<br>
+
+<br>
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 <br>
-
-
 
 
 ---
