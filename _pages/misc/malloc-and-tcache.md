@@ -562,9 +562,9 @@ count: 0
 Heap: 
 
 ```
-...
-...
-aaaaaaaa
+ptr1: ...
+ptr0: ...
+flag: aaaaaaaa
 ```
 
 <br>
@@ -588,9 +588,9 @@ count: 1
 Heap: 
 
 ```
-...
-...
-aaaaaaaa
+ptr1: ...
+ptr0: ...
+flag: aaaaaaaa
 ```
 
 <br>
@@ -617,9 +617,9 @@ count: 2
 Heap: 
 
 ```
-ptr0
-...
-aaaaaaaa
+ptr1: ptr0
+ptr0: ...
+flag: aaaaaaaa
 ```
 
 <br>
@@ -644,9 +644,9 @@ count: 2
 Heap: 
 
 ```
-flag
-...
-aaaaaaaa
+ptr1: flag
+ptr0: ...
+flag: aaaaaaaa
 ```
 
 <br>
@@ -672,9 +672,9 @@ count: 1
 Heap: 
 
 ```
-flag
-...
-aaaaaaaa
+ptr1: flag
+ptr0: ...
+flag: aaaaaaaa
 ```
 
 <br>
@@ -701,9 +701,9 @@ count: 0
 Heap: 
 
 ```
-flag
-...
-aaaaaaaa
+ptr1: flag
+ptr0: ...
+flag: aaaaaaaa
 ```
 
 <br>
@@ -738,10 +738,10 @@ count: 0
 Heap: 
 
 ```
-...
-flag
-...
-aaaaaaaa
+leak: ...
+ptr1: flag
+ptr0: ...
+flag: aaaaaaaa
 ```
 
 <br>
@@ -768,10 +768,10 @@ count: 1
 Heap: 
 
 ```
-aaaaaaaa
-flag
-...
-aaaaaaaa
+leak: aaaaaaaa
+ptr1: flag
+ptr0: ...
+flag: aaaaaaaa
 ```
 
 <br>
