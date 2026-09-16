@@ -659,7 +659,7 @@ tcache_entry = flag -> aaaaaaaa
 Heap: 
 
 ```
-...
+flag
 0
 aaaaaaaa
 ```
@@ -670,6 +670,31 @@ aaaaaaaa
 
 <br>
 
+
+
+
+
+
+```c
+char* attack = malloc(0x20); 
+attack = NULL; // what if this happens? (malloc is called, but we lose the ptr)
+```
+
+tcache_entry = aaaaaaaa
+
+Heap: 
+
+```
+flag
+0
+aaaaaaaa
+```
+
+<br>
+
+<br>
+
+<br>
 
 
 
