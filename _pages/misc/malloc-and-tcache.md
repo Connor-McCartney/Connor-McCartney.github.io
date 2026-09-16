@@ -510,6 +510,11 @@ Let's focus our analysis on just the first 8 bytes of usable memory of each chun
 <br>
 
 
+Note 1: Remember free(x) writes x into the first 8 usable bytes (the *next ptr)
+
+Note 2: If the bin count is 0, the tcache is not used
+
+
 <br>
 
 
