@@ -482,9 +482,9 @@ int main() {
     char* attack = malloc(0x20); 
     attack = NULL; // what if this happens? (malloc is called, but we lose the ptr)
 
-    char* a = malloc(0x20);
-    free(a);
-    printf("leaked! %s\n\n", a);
+    char* leak = malloc(0x20);
+    free(leak);
+    printf("leaked! %s\n\n", leak);
 }
 ```
 
@@ -510,7 +510,7 @@ Let's focus our analysis on just the first 8 bytes of usable memory of each chun
 <br>
 
 
-Note 1: Remember free(x) writes x into the first 8 usable bytes (the *next ptr)
+Note 1: Remember free() writes whatever is at tcache_head into the first 8 usable bytes (the *next ptr)
 
 Note 2: If the bin count is 0, the tcache is not used
 
@@ -727,7 +727,7 @@ The additional stuff:
 
 
 ```c
-char* a = malloc(0x20);
+char* leak = malloc(0x20);
 ```
 
 Since the count is 0 (for this tcache bin), malloc does not bother to use the tcache at all.  
@@ -757,8 +757,10 @@ aaaaaaaa
 
 
 ```c
-free(a);
+free(leak);
 ```
+
+The head of the tcache_entry (aaaaaaaa) is written into the usable memory of leak!
 
 tcache_entry = a -> aaaaaaaa
 count: 1
