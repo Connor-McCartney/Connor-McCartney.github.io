@@ -528,6 +528,7 @@ strcpy(flag, "aaaaaaaa");
 ```
 
 tcache_entry = 
+
 count: 0
 
 Heap: 
@@ -557,6 +558,7 @@ ptr1 = malloc(0x20);
 ```
 
 tcache_entry = 
+
 count: 0
 
 Heap: 
@@ -583,6 +585,7 @@ free(ptr0);
 ```
 
 tcache_entry = ptr0
+
 count: 1
 
 Heap: 
@@ -612,6 +615,7 @@ free(ptr1);
 ```
 
 tcache_entry = ptr1 -> ptr0
+
 count: 2
 
 Heap: 
@@ -639,6 +643,7 @@ flag: aaaaaaaa
 ```
 
 tcache_entry = ptr1 -> flag -> aaaaaaaa
+
 count: 2
 
 Heap: 
@@ -667,6 +672,7 @@ malloc(0x20);
 (This chunk is allocated at ptr1)
 
 tcache_entry = flag -> aaaaaaaa
+
 count: 1
 
 Heap: 
@@ -696,6 +702,7 @@ attack = NULL; // what if this happens? (malloc is called, but we lose the ptr)
 (this chunk is allocated at flag)
 
 tcache_entry = aaaaaaaa
+
 count: 0
 
 Heap: 
@@ -733,6 +740,7 @@ char* leak = malloc(0x20);
 Since the count is 0 (for this tcache bin), malloc does not bother to use the tcache at all.  
 
 tcache_entry = aaaaaaaa
+
 count: 0
 
 Heap: 
@@ -763,6 +771,7 @@ free(leak);
 The head of the tcache_entry (aaaaaaaa) is written into the usable memory of leak!
 
 tcache_entry = a -> aaaaaaaa
+
 count: 1
 
 Heap: 
