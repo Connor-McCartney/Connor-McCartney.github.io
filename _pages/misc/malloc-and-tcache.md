@@ -571,11 +571,104 @@ aaaaaaaa
 
 
 
+```c
+free(ptr0);
+```
+
+tcache_entry = ptr0 -> nil
+
+Heap: 
+
+```
+...
+0
+aaaaaaaa
+```
+
+<br>
+
+<br>
+
+<br>
 
 
 
 
 
+
+
+
+
+```c
+free(ptr1);
+```
+
+tcache_entry = ptr1 -> ptr0 -> nil
+
+Heap: 
+
+```
+ptr0
+0
+aaaaaaaa
+```
+
+<br>
+
+<br>
+
+<br>
+
+
+
+
+
+
+
+```c
+*ptr1 = (unsigned long) flag;
+```
+
+tcache_entry = ptr1 -> flag -> aaaaaaaa
+
+Heap: 
+
+```
+flag
+0
+aaaaaaaa
+```
+
+<br>
+
+<br>
+
+<br>
+
+
+
+
+
+
+```c
+malloc(0x20);
+```
+
+tcache_entry = flag -> aaaaaaaa
+
+Heap: 
+
+```
+...
+0
+aaaaaaaa
+```
+
+<br>
+
+<br>
+
+<br>
 
 
 
