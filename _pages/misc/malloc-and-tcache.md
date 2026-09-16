@@ -454,7 +454,76 @@ connor@connor-Virtual-Machine:~$
 
 <br>
 
+What if you lose access to the attack pointer? (18)
+
+<br>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 
+int main() {
+    //-----
+    char* flag =  malloc(0x20); 
+    strcpy(flag, "aaaaaaaa");
+    //-----
+
+    unsigned long* ptr0;
+    unsigned long* ptr1;
+    ptr0 = malloc(0x20);
+    ptr1 = malloc(0x20);
+    free(ptr0);
+    free(ptr1);
+    *ptr1 = (unsigned long) flag;
+    malloc(0x20);
+
+    char* attack = malloc(0x20); 
+    attack = NULL; // what if this happens? (malloc is called, but we lose the ptr)
+
+    char* a = malloc(0x20);
+    free(a);
+    printf("leaked! %s\n\n", a);
+}
+```
+
+<br>
+
+```
+connor@connor-Virtual-Machine:~$ gcc x.c; ./a.out
+leaked! aaaaaaaa��rU
+
+connor@connor-Virtual-Machine:~$ 
+```
+
+
+<br>
+
+
+What exactly is going on here?
+
+
+<br>
+
+<br>
+
+
+
+
+
+
+
+<br>
+
+
+
+
+---
+
+
+<br>
+
+<br>
 
 
