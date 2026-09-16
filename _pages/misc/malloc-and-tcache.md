@@ -522,7 +522,7 @@ char* flag =  malloc(0x20);
 strcpy(flag, "aaaaaaaa");
 ```
 
-tcache_entry = nil
+tcache_entry = 
 count: 0
 
 Heap: 
@@ -551,7 +551,7 @@ ptr0 = malloc(0x20);
 ptr1 = malloc(0x20);
 ```
 
-tcache_entry = nil
+tcache_entry = 
 count: 0
 
 Heap: 
@@ -577,14 +577,14 @@ aaaaaaaa
 free(ptr0);
 ```
 
-tcache_entry = ptr0 -> nil
+tcache_entry = ptr0
 count: 1
 
 Heap: 
 
 ```
 ...
-0
+...
 aaaaaaaa
 ```
 
@@ -606,14 +606,14 @@ aaaaaaaa
 free(ptr1);
 ```
 
-tcache_entry = ptr1 -> ptr0 -> nil
+tcache_entry = ptr1 -> ptr0
 count: 2
 
 Heap: 
 
 ```
 ptr0
-0
+...
 aaaaaaaa
 ```
 
@@ -640,7 +640,7 @@ Heap:
 
 ```
 flag
-0
+...
 aaaaaaaa
 ```
 
@@ -668,7 +668,7 @@ Heap:
 
 ```
 flag
-0
+...
 aaaaaaaa
 ```
 
@@ -697,7 +697,7 @@ Heap:
 
 ```
 flag
-0
+...
 aaaaaaaa
 ```
 
@@ -735,7 +735,7 @@ Heap:
 ```
 ...
 flag
-0
+...
 aaaaaaaa
 ```
 
@@ -755,15 +755,15 @@ aaaaaaaa
 free(a);
 ```
 
-tcache_entry = aaaaaaaa
+tcache_entry = a -> aaaaaaaa
 count: 1
 
 Heap: 
 
 ```
-0
+aaaaaaaa
 flag
-0
+...
 aaaaaaaa
 ```
 
