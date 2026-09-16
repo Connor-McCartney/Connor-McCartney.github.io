@@ -527,7 +527,7 @@ char* flag =  malloc(0x20);
 strcpy(flag, "aaaaaaaa");
 ```
 
-tcache_entry = 
+tcache_entry = 0
 
 count: 0
 
@@ -557,15 +557,15 @@ ptr0 = malloc(0x20);
 ptr1 = malloc(0x20);
 ```
 
-tcache_entry = 
+tcache_entry = 0
 
 count: 0
 
 Heap: 
 
 ```
-ptr1: ...
-ptr0: ...
+ptr1: ...  (uninitialised)
+ptr0: ...  (uninitialised)
 flag: aaaaaaaa
 ```
 
@@ -591,8 +591,8 @@ count: 1
 Heap: 
 
 ```
-ptr1: ...
-ptr0: ...
+ptr1: ...  (uninitialised)
+ptr0: 0
 flag: aaaaaaaa
 ```
 
@@ -622,7 +622,7 @@ Heap:
 
 ```
 ptr1: ptr0
-ptr0: ...
+ptr0: 0
 flag: aaaaaaaa
 ```
 
@@ -650,7 +650,7 @@ Heap:
 
 ```
 ptr1: flag
-ptr0: ...
+ptr0: 0
 flag: aaaaaaaa
 ```
 
@@ -679,7 +679,7 @@ Heap:
 
 ```
 ptr1: flag
-ptr0: ...
+ptr0: 0
 flag: aaaaaaaa
 ```
 
@@ -709,7 +709,7 @@ Heap:
 
 ```
 ptr1: flag
-ptr0: ...
+ptr0: 0
 flag: aaaaaaaa
 ```
 
@@ -746,9 +746,9 @@ count: 0
 Heap: 
 
 ```
-leak: ...
+leak: ...  (uninitialised)
 ptr1: flag
-ptr0: ...
+ptr0: 0
 flag: aaaaaaaa
 ```
 
@@ -779,7 +779,7 @@ Heap:
 ```
 leak: aaaaaaaa
 ptr1: flag
-ptr0: ...
+ptr0: 0
 flag: aaaaaaaa
 ```
 
