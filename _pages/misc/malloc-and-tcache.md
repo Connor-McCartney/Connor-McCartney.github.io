@@ -523,6 +523,7 @@ strcpy(flag, "aaaaaaaa");
 ```
 
 tcache_entry = nil
+count: 0
 
 Heap: 
 
@@ -551,6 +552,7 @@ ptr1 = malloc(0x20);
 ```
 
 tcache_entry = nil
+count: 0
 
 Heap: 
 
@@ -576,6 +578,7 @@ free(ptr0);
 ```
 
 tcache_entry = ptr0 -> nil
+count: 1
 
 Heap: 
 
@@ -604,6 +607,7 @@ free(ptr1);
 ```
 
 tcache_entry = ptr1 -> ptr0 -> nil
+count: 2
 
 Heap: 
 
@@ -630,6 +634,7 @@ aaaaaaaa
 ```
 
 tcache_entry = ptr1 -> flag -> aaaaaaaa
+count: 2
 
 Heap: 
 
@@ -657,6 +662,7 @@ malloc(0x20);
 (This chunk is allocated at ptr1)
 
 tcache_entry = flag -> aaaaaaaa
+count: 1
 
 Heap: 
 
@@ -685,6 +691,7 @@ attack = NULL; // what if this happens? (malloc is called, but we lose the ptr)
 (this chunk is allocated at flag)
 
 tcache_entry = aaaaaaaa
+count: 0
 
 Heap: 
 
@@ -718,17 +725,15 @@ The additional stuff:
 char* a = malloc(0x20);
 ```
 
-(this chunk is allocated at whatever aaaaaaaa is as a numerical address)
+Since the count is 0 (for this tcache bin), malloc does not bother to use the tcache at all.  
 
-tcache_entry = ?
+tcache_entry = aaaaaaaa
+count: 0
 
 Heap: 
 
 ```
 ...
-
-
-
 flag
 0
 aaaaaaaa
@@ -751,14 +756,12 @@ free(a);
 ```
 
 tcache_entry = aaaaaaaa
+count: 1
 
 Heap: 
 
 ```
 0
-
-
-
 flag
 0
 aaaaaaaa
