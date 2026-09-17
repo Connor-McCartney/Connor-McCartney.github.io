@@ -869,7 +869,7 @@ connor@connor-Virtual-Machine:~$
 <br>
 
 
-It's also possible to use fake metadata to control where chunks are created: (23)
+It's also possible to cause malloc() to return a stack pointer! and you can use fake metadata to control the size: (23)
 
 
 ```c
