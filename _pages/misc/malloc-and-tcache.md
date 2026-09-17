@@ -866,3 +866,43 @@ connor@connor-Virtual-Machine:~$
 
 <br>
 
+<br>
+
+
+It's also possible to use fake metadata to control where chunks are created:
+
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <malloc.h>
+
+int main() {
+	unsigned long stack_memory[20] = {0};
+	void* stackptr = &stack_memory[2]; // free(): invalid pointer means this is not 16-byte alligned
+	stack_memory[1] = 80; // req size is 63, usable size is 72, chunk size is 80
+	free(stackptr);
+
+	// also ensure the NEXT chunk's header has the P flag set
+	stack_memory[11] = 0x1;
+
+	void* allocated_ptr = malloc(63);
+	printf("%zu\n", malloc_usable_size(allocated_ptr)); //72, success!
+}
+```
+
+
+
+
+<br>
+
+<br>
+
+---
+
+
+<br>
+
+<br>
+
