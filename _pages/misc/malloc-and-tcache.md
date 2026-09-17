@@ -869,7 +869,7 @@ connor@connor-Virtual-Machine:~$
 <br>
 
 
-It's also possible to use fake metadata to control where chunks are created:
+It's also possible to use fake metadata to control where chunks are created: (23)
 
 
 ```c
