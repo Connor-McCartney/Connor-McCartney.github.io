@@ -888,7 +888,7 @@ int main() {
 	stack_memory[11] = 0x1;
 
 	void* allocated_ptr = malloc(63);
-	printf("%p\n", allocated_ptr); // stack addr not heap addr! success!
+	printf("%p\n", allocated_ptr); // stack addr not heap addr! success! (it equals stackptr)
 	printf("%zu\n", malloc_usable_size(allocated_ptr)); //72! success!
 }
 ```
