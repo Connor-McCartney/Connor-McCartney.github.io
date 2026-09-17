@@ -884,8 +884,8 @@ int main() {
 	stack_memory[1] = 80; // req size is 63, usable size is 72, chunk size is 80
 	free(stackptr);
 
-	// also ensure the NEXT chunk's header has the P flag set
-	stack_memory[11] = 0x1;
+	
+	stack_memory[11] = 0x1; // also ensure the NEXT chunk's header has the P flag set
 
 	void* allocated_ptr = malloc(63);
 	printf("%p\n", allocated_ptr); // stack addr not heap addr! success! (it equals stackptr)
