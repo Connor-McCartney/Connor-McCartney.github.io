@@ -900,7 +900,7 @@ This is House of Spirit <https://guyinatuxedo.github.io/39-house_of_spirit/house
 
 <br>
 
-We are freeing something that has never actually been malloc'd, so we have to trick it into looking like it has
+We are freeing something that has never actually been malloc'd, so we have to trick it into looking like it has (otherwise free will error)
 
 <br>
 
