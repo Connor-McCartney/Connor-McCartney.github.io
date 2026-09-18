@@ -454,7 +454,7 @@ connor@connor-Virtual-Machine:~$
 
 <br>
 
-What if you lose access to the attack pointer? (18)
+(glibc 2.31) What if you lose access to the attack pointer? (18)
 
 <br>
 
@@ -807,7 +807,7 @@ flag: aaaaaaaa
 
 <br>
 
-Tcache poisoning can be combined with other techniques like ret2win (19)
+(glibc 2.31) Tcache poisoning can be combined with other techniques like ret2win (19)
 
 <br>
 
@@ -869,7 +869,7 @@ connor@connor-Virtual-Machine:~$
 <br>
 
 
-It's also possible to cause malloc() to return a stack pointer! and you can use fake metadata to control the size: (23)
+(glibc 2.31) It's also possible to cause malloc() to return a stack pointer! and you can use fake metadata to control the size: (23)
 
 
 ```c
@@ -898,8 +898,9 @@ int main() {
 
 This is House of Spirit <https://guyinatuxedo.github.io/39-house_of_spirit/house_spirit_exp/index.html>
 
-
 <br>
+
+We are freeing something that has never actually been malloc'd, so we have to trick it into looking like it has
 
 <br>
 
