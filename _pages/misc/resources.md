@@ -100,7 +100,7 @@ RAD Debugger <https://github.com/EpicGamesExt/raddebugger> <br>
 ECM <https://odysee.com/Elliptic-Curve-Multiplication:4> <br>
 LLL <https://odysee.com/LLL_CTF_Guide:f> <br>
 Modern Recon Red Team <https://youtu.be/B1YcflQRvOI> <br>
-
+Windows Internals <https://youtu.be/AjzXGaH5VPY> <br>
 
 
 ## Operating systems
