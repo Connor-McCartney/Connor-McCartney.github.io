@@ -94,3 +94,6 @@ n -  number of elements
 
 
 `bt` backtrace is useful especially with stripped binaries
+
+
+`stack -f` shows stack top to bottom
