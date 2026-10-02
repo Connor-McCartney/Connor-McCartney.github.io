@@ -13,6 +13,8 @@ title: Misc
 
 <span style="font-size:2em;">   [Configuring QEMU/Virt Manager](/misc/qemu)   </span>
 
+<span style="font-size:2em;">   [ESP32](/misc/esp32)   </span>
+
 <span style="font-size:2em;">   [Shortest Bash Code Challenges - Mystiko CTF 2022](/misc/shortest-bash-code-challs)   </span>
 
 <span style="font-size:2em;">   [Fluid Simulation](/misc/fluid)   </span>
