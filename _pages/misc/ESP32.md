@@ -56,3 +56,5 @@ void loop() {
 <br>
 
 
+Wired it up, this is the result:
+
