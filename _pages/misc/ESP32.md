@@ -58,3 +58,24 @@ void loop() {
 
 Wired it up, this is the result:
 
+<img width="3472" height="4624" alt="PXL_20261002_102745515" src="https://github.com/user-attachments/assets/cd3cbb5b-5fd0-45e2-bfc3-64644b778bf0" />
+
+
+<br>
+
+<br>
+
+
+<br>
+
+<br>
+
+<br>
+
+---
+
+
+<br>
+
+
+
