@@ -162,6 +162,48 @@ GND to GND, VCC to 3V3, SCL to D22, SDA to D21
 
 <br>
 
+code for random black and white pixels noise like broken tv:
+
+```cpp
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+#define SCREEN_WIDTH 128 
+#define SCREEN_HEIGHT 64 
+#define OLED_RESET     -1 
+#define SCREEN_ADDRESS 0x3C 
+
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
+void setup() {
+  if(!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
+    for(;;); 
+  }
+  
+  display.clearDisplay();
+}
+
+void loop() {
+
+    for (int y = 0; y < SCREEN_HEIGHT; y++) {
+      for (int x = 0; x < SCREEN_WIDTH; x++) {
+        if (rand() % 2 == 0) {
+          display.drawPixel(x, y, SSD1306_WHITE);
+        } else {
+          display.drawPixel(x, y, SSD1306_BLACK);
+        }
+      }
+    }
+
+
+    display.display();
+}
+
+```
+
+
+
 <br>
 
 ---
