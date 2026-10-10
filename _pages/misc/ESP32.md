@@ -78,4 +78,76 @@ Wired it up, this is the result:
 <br>
 
 
+<br>
+
+
+Next project I got a display working!
+
+
+<br>
+
+First I installed Adafruit SSD 1306 and dependencies
+
+<br>
+
+<img width="963" height="449" alt="image" src="https://github.com/user-attachments/assets/940633fd-72b6-402b-a341-3553ba64e733" />
+
+
+
+<br>
+
+<br>
+
+<br>
+
+```cpp
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+#define SCREEN_WIDTH 128 // OLED display width, in pixels
+#define SCREEN_HEIGHT 64 // OLED display height, in pixels
+#define OLED_RESET     -1 // Reset pin # (or -1 if sharing Arduino reset pin)
+#define SCREEN_ADDRESS 0x3C // See datasheet for Address; 0x3C for 128x64, 0x3D for 128x32
+
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
+void setup() {
+  Serial.begin(115200); // baud rate
+
+  // Initialize with I2C address 0x3C (for the 128x64)
+  if(!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
+    Serial.println(F("SSD1306 allocation failed"));
+    for(;;); // Don't proceed, loop forever
+  }
+
+  // Clear the buffer
+  display.clearDisplay();
+
+  // Draw white text
+  display.setTextSize(1);      // Normal 1:1 pixel scale
+  display.setTextColor(SSD1306_WHITE); // Draw white text
+  display.setCursor(0, 0);     // Start at top-left corner
+  display.println(F("Hello, world!"));
+
+  display.display(); // Show initial text
+}
+
+void loop() {
+}
+
+```
+
+
+<br>
+
+
+<br>
+
+GND to GND, VCC to 3V3, SCL to D22, SDA to D21
+
+<br>
+
+<br>
+
 
