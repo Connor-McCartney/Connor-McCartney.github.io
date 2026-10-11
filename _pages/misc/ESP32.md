@@ -279,3 +279,44 @@ cargo install cargo-generate
 cargo generate esp-rs/esp-template
 ```
 
+<br>
+
+```rs
+#![no_std]
+#![no_main]
+
+use esp_hal::{
+    delay::Delay,
+    gpio::{Level, Output},
+    peripherals::Peripherals,
+    prelude::*,
+};
+use esp_backtrace as _;
+
+#[entry]
+fn main() -> ! {
+    let peripherals = Peripherals::take();
+    
+    // Configure GPIO 19 and GPIO 18 as outputs
+    let mut led_a = Output::new(peripherals.GPIO19, Level::Low);
+    let mut led_b = Output::new(peripherals.GPIO18, Level::Low);
+
+    let delay = Delay::new();
+
+    loop {
+        led_a.set_high();
+        led_b.set_high();
+        delay.delay_millis(1000);
+
+        led_a.set_low();
+        led_b.set_low();
+        delay.delay_millis(1000);
+    }
+}
+
+```
+
+
+<br>
+
+
