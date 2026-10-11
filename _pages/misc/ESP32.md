@@ -211,3 +211,21 @@ void loop() {
 <br>
 
 
+
+<br>
+
+<br>
+
+Now I'll try get it working with rust on linux. 
+
+
+<br>
+
+```
+cargo install espflash
+```
+
+
+<br>
+
+
