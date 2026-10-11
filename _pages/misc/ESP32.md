@@ -271,3 +271,10 @@ Security features: None
 
 <br>
 
+<br>
+
+```
+yay -Syu --noconfirm
+cargo install cargo-generate
+```
+
