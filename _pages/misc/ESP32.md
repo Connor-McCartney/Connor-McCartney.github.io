@@ -228,4 +228,13 @@ cargo install espflash
 
 <br>
 
+Put this in bashrc
+
+```
+export PATH=/home/connor/.cargo/bin:$PATH
+```
+
+
+<br>
+
 
