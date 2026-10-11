@@ -231,6 +231,7 @@ cargo install espflash
 Put this in bashrc
 
 ```
+. ~/export-esp.sh
 export PATH=/home/connor/.cargo/bin:$PATH
 ```
 
