@@ -288,19 +288,23 @@ cargo generate esp-rs/esp-template
 
 use esp_hal::{
     delay::Delay,
-    gpio::{Level, Output},
-    peripherals::Peripherals,
-    prelude::*,
+    gpio::{Level, Output, OutputConfig},
 };
 use esp_backtrace as _;
 
-#[entry]
+// Required for esp-hal v1.2+ binaries to be recognized by the bootloader
+esp_bootloader_esp_idf::esp_app_desc!();
+
+#[esp_hal::main]
 fn main() -> ! {
-    let peripherals = Peripherals::take();
+    let peripherals = esp_hal::init({
+        let config = esp_hal::Config::default();
+        config
+    });
     
     // Configure GPIO 19 and GPIO 18 as outputs
-    let mut led_a = Output::new(peripherals.GPIO19, Level::Low);
-    let mut led_b = Output::new(peripherals.GPIO18, Level::Low);
+    let mut led_a = Output::new(peripherals.GPIO19, Level::Low, OutputConfig::default());
+    let mut led_b = Output::new(peripherals.GPIO18, Level::Low, OutputConfig::default());
 
     let delay = Delay::new();
 
@@ -315,6 +319,38 @@ fn main() -> ! {
     }
 }
 
+
+```
+
+
+```rs
+[package]
+name = "test"
+version = "0.1.0"
+authors = ["Connor McCartney <connormccartney363@gmail.com>"]
+edition = "2021"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+esp-hal = { version = "1.2.2", features = ["esp32", "unstable"] }
+esp-backtrace = { version = "0.14.2", features = ["esp32", "panic-handler", "println"] }
+esp-println = { version = "0.12.0", features = ["esp32"] }
+esp-bootloader-esp-idf = { version = "0.5.0", features = ["esp32"] }
+log = { version = "0.4.22" }
+
+[profile.dev]
+# Rust debug is too slow.
+# For debug builds always builds with some optimization
+opt-level = "s"
+
+[profile.release]
+codegen-units = 1 # LLVM can perform better optimizations using a single thread
+debug = 2
+debug-assertions = false
+incremental = false
+lto = 'fat'
+opt-level = 's'
+overflow-checks = false
 ```
 
 
