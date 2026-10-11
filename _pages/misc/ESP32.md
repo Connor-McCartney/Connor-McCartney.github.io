@@ -238,3 +238,36 @@ export PATH=/home/connor/.cargo/bin:$PATH
 <br>
 
 
+```
+[~/t] 
+$ espflash board-info
+[2026-10-11T03:51:22Z INFO ] Serial port: '/dev/ttyUSB0'
+[2026-10-11T03:51:22Z INFO ] Connecting...
+Error:   × Failed to open serial port /dev/
+  │ ttyUSB0
+  ├─▶ Error while connecting to device
+  ╰─▶ Permission denied
+
+
+[~/t] 
+$ sudo usermod -aG uucp connor
+
+[~/t] 
+$ newgrp uucp
+
+[~/t] 
+$ espflash board-info
+[2026-10-11T03:51:54Z INFO ] Serial port: '/dev/ttyUSB0'
+[2026-10-11T03:51:54Z INFO ] Connecting...
+[2026-10-11T03:52:00Z INFO ] Using flash stub
+Chip type:         esp32 (revision v3.1)
+Crystal frequency: 40 MHz
+Flash size:        4MB
+Features:          WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+MAC address:       14:08:08:ab:62:b4
+Security features: None
+```
+
+
+<br>
+
