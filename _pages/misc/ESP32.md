@@ -276,6 +276,6 @@ Security features: None
 ```
 yay -Syu --noconfirm
 cargo install cargo-generate
-cargo generate esp-rs/esp-generate
+cargo generate esp-rs/esp-template
 ```
 
