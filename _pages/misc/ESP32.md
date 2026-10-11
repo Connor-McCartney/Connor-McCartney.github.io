@@ -319,4 +319,12 @@ fn main() -> ! {
 
 <br>
 
+```
+cargo install espup
+espup install
+cargo run
+```
+
+<br>
+
 
