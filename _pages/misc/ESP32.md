@@ -379,3 +379,135 @@ works!
 ---
 
 
+<br>
+
+<br>
+
+<br>
+
+random noise on the display:
+
+```rs
+#![no_std]
+#![no_main]
+
+use core::default::Default;
+use embedded_graphics::{
+    draw_target::DrawTarget,
+    pixelcolor::BinaryColor,
+};
+
+use esp_hal::{
+    delay::Delay,
+    i2c::master::{Config as I2cConfig, I2c},
+    time::Rate,
+};
+use esp_backtrace as _;
+use ssd1306::{prelude::*, I2CDisplayInterface, Ssd1306};
+
+esp_bootloader_esp_idf::esp_app_desc!();
+
+struct SimpleRng {
+    state: u32,
+}
+
+impl SimpleRng {
+    fn new(seed: u32) -> Self {
+        Self { state: seed }
+    }
+
+    fn next_bool(&mut self) -> bool {
+        self.state = self.state.wrapping_mul(1103515245).wrapping_add(12345);
+        (self.state / 65536) % 2 == 0
+    }
+}
+
+#[esp_hal::main]
+fn main() -> ! {
+    let peripherals = esp_hal::init({
+        let config = esp_hal::Config::default();
+        config
+    });
+
+    // Initialize I2C at 400 kHz Fast Mode (GPIO 21 SDA, GPIO 22 SCL)
+    let i2c = I2c::new(
+        peripherals.I2C0,
+        I2cConfig::default().with_frequency(Rate::from_khz(400)),
+    )
+    .unwrap()
+    .with_sda(peripherals.GPIO21)
+    .with_scl(peripherals.GPIO22);
+
+    let interface = I2CDisplayInterface::new(i2c);
+    let mut display = Ssd1306::new(interface, DisplaySize128x64, DisplayRotation::Rotate0)
+        .into_buffered_graphics_mode();
+    
+    display.init().unwrap();
+    display.clear(BinaryColor::Off).unwrap();
+    display.flush().unwrap();
+
+    let mut rng = SimpleRng::new(42);
+    let delay = Delay::new();
+
+    loop {
+        for y in 0..64 {
+            for x in 0..128 {
+                let is_on = rng.next_bool();
+                display.set_pixel(x, y, is_on);
+            }
+        }
+
+        display.flush().unwrap();
+        delay.delay_millis(10);
+    }
+}
+
+```
+
+
+<br>
+
+```rs
+[package]
+name = "test"
+version = "0.1.0"
+authors = ["Connor McCartney <connormccartney363@gmail.com>"]
+edition = "2021"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+esp-hal = { version = "1.2.2", features = ["esp32", "unstable"] }
+esp-backtrace = { version = "0.14.2", features = ["esp32", "panic-handler", "println"] }
+esp-println = { version = "0.12.0", features = ["esp32"] }
+esp-bootloader-esp-idf = { version = "0.5.0", features = ["esp32"] }
+embedded-graphics = "0.8.1"
+ssd1306 = "0.10.0"
+log = { version = "0.4.22" }
+
+
+
+[profile.dev]
+# Rust debug is too slow.
+# For debug builds always builds with some optimization
+opt-level = "s"
+
+[profile.release]
+codegen-units = 1 # LLVM can perform better optimizations using a single thread
+debug = 2
+debug-assertions = false
+incremental = false
+lto = 'fat'
+opt-level = 's'
+overflow-checks = false
+```
+
+<br>
+
+<br>
+
+<br>
+
+---
+
+<br>
+
