@@ -511,3 +511,12 @@ overflow-checks = false
 
 <br>
 
+
+<br>
+
+Now I will connect to wifi. Note it can only connect to 2.4GHz, not 5GHz. 
+
+
+<br>
+
+
