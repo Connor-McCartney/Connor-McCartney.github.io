@@ -67,6 +67,8 @@ title: Misc
 
 <span style="font-size:2em;">   [Python Threads](/misc/pythonthreads)   </span>
 
+<span style="font-size:2em;">   [Posix threads and semaphores](/misc/semaphores)   </span>
+
 <span style="font-size:2em;">   [Random Errors](/misc/randomerrors)   </span>
 
 <span style="font-size:2em;">   [Resources](/misc/resources)   </span>
