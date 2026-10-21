@@ -348,7 +348,8 @@ for record in PyEvtxParser(evtx_path).records_json():
 
 
 
-for (datetime, event) in sorted(events):
+#for (datetime, event) in sorted(events):
+for (datetime, event) in sorted(events, key=lambda x: x[0]):
     date, time = datetime.split('T')
     year, month, day = date.split('-')
 
