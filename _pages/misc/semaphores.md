@@ -1,11 +1,13 @@
-
+---
+permalink: /misc/semaphores
+title: Posix threads and semaphores
+---
 
 
 
 <br>
 
-
-# Posix threads and semaphores
+<br>
 
 
 <br>
