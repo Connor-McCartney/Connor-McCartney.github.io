@@ -58,4 +58,10 @@ Hello world sanity check:
 /LD tells the compiler to output a DLL instead of an exe
 
 
+<br>
+
+
+You can compile with a .lib at compile time, or link at runtime using Explicit Linking (aka Dynamic Loading)
+
+
 
