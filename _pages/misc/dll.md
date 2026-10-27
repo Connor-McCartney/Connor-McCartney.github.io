@@ -29,5 +29,27 @@ Now I can open developer powershell for windows and have access to cl command to
 
 <br>
 
+Hello world sanity check:
+
+
+
+<br>
+
+
+<img width="1638" height="352" alt="image" src="https://github.com/user-attachments/assets/2361f85f-9b0a-413e-b6d1-e2b1ce202a22" />
+
+
+
+<br>
+
+
+<br>
+
+
+<br>
+
+<br>
+
+
 
 
