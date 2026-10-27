@@ -61,7 +61,101 @@ Hello world sanity check:
 <br>
 
 
+```c
+#include <stdio.h>
+
+__declspec(dllimport) int add(int a, int b);
+
+int main() {
+        int a = 6;
+        int b = 7;
+
+        int sum = add(a, b);
+
+        printf("sum = %d\n", sum);
+}
+```
+
+
+<br>
+
+```c
+#include <stdio.h>
+
+// __declspec(dllexport) tells MSVC to make this function visible outside the DLL
+__declspec(dllexport) int add(int a, int b) {
+        return a + b;
+}
+```
+
+
+<br>
+
 You can compile with a .lib at compile time, or link at runtime using Explicit Linking (aka Dynamic Loading)
 
 
+<br>
+
+Compile time:
+
+```
+PS C:\Users\DFSS-User\Desktop> cat x.c
+#include <stdio.h>
+
+__declspec(dllimport) int add(int a, int b);
+
+int main() {
+        int a = 6;
+        int b = 7;
+
+        int sum = add(a, b);
+
+        printf("sum = %d\n", sum);
+}
+
+PS C:\Users\DFSS-User\Desktop> cat connordll.c
+#include <stdio.h>
+
+// __declspec(dllexport) tells MSVC to make this function visible outside the DLL
+__declspec(dllexport) int add(int a, int b) {
+        return a + b;
+}
+PS C:\Users\DFSS-User\Desktop> cl /LD .\connordll.c
+Microsoft (R) C/C++ Optimizing Compiler Version 19.51.36260 for x86
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+connordll.c
+Microsoft (R) Incremental Linker Version 14.51.36260.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:connordll.dll
+/dll
+/implib:connordll.lib
+connordll.obj
+   Creating library connordll.lib and object connordll.exp
+PS C:\Users\DFSS-User\Desktop> cl x.c connordll.lib; .\x.exe
+Microsoft (R) C/C++ Optimizing Compiler Version 19.51.36260 for x86
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+x.c
+Microsoft (R) Incremental Linker Version 14.51.36260.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:x.exe
+x.obj
+connordll.lib
+sum = 13
+PS C:\Users\DFSS-User\Desktop>
+
+```
+
+
+
+<br>
+
+
+<br>
+
+
+Runtime:
 
