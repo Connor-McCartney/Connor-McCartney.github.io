@@ -53,3 +53,9 @@ Hello world sanity check:
 
 
 
+
+
+/LD tells the compiler to output a DLL instead of an exe
+
+
+
