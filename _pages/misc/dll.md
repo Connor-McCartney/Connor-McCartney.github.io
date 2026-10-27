@@ -1,3 +1,9 @@
+---
+permalink: /misc/dll
+title: Making a simple DLL
+---
+
+
 <br>
 
 As much as I hate Windows, I'm bored so gonna try write a simple DLL. 
