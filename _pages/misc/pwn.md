@@ -2066,10 +2066,10 @@ s7 = int(p.recvline().split()[-1], 16)
 s8 = int(p.recvline().split()[-1], 16)
 s9 = int(p.recvline().split()[-1], 16)
 print(f'{win:x}')
-print(f'{s4:x}')
-print(f'{s5:x}')
-print(f'{s6:x}')
-print(f'{s7:x}')
+print(f'{s4:x}') # canary
+print(f'{s5:x}') # uninitialised
+print(f'{s6:x}') # saved rdi
+print(f'{s7:x}') # ret
 print(f'{s8:x}')
 print(f'{s9:x}')
 print(p.recv())
